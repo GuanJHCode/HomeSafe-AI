@@ -1,0 +1,201 @@
+**详细设计与本地 Agent 交接包已完成，共 62 个文件。远仓推送未成功：实际执行 `git push` 时，当前环境返回 `Could not resolve host: github.com`，因此本次没有写入你的 GitHub 仓库。**
+
+材料已做成本地 Git 提交，并提供完整压缩包、设计文档和保留提交历史的 Git bundle。
+
+## 一、下载交接材料
+
+| 文件 | 用途 |
+|---|---|
+| **HomeSafe-AI-implementation-handoff-20261103.zip[下载完整交接包 ZIP](sandbox:/mnt/data/HomeSafe-AI-implementation-handoff-20261103.zip)** | **推荐直接交给本地 Agent**。包含设计文档、接口契约、参考代码、测试、任务清单和提交模板 |
+| HomeSafe_AI_详细设计与落地交接_v3.md[下载完整设计方案 Markdown](sandbox:/mnt/data/HomeSafe_AI_详细设计与落地交接_v3.md) | 集中阅读全部架构、类与方法设计、Lux3D 接入和赛事交付方案 |
+| HomeSafe-AI-handoff-20261103.bundle[下载 Git bundle](sandbox:/mnt/data/HomeSafe-AI-handoff-20261103.bundle) | 保留本地 Git 提交历史，可用于恢复仓库 |
+
+**交付边界：这是可实施的详细设计、交接材料和经过测试的参考内核，不是已经完成的参赛应用。**真实 Lux3D 模型、完整前后端、演示视频和官网提交仍需要按任务清单完成。
+
+---
+
+## 二、代码已经细化到哪些层级？
+
+方案固定采用：
+
+> **Python 后端＋Vue 3 / TypeScript / Three.js 前端＋Lux3D 核心资产。**
+
+运行时不依赖编程助手，也不额外引入通用大模型。代码按照职责分层，而不是把生成、空间计算、数据库和界面全部混在一起。
+
+### 主要分层、类名与方法
+
+| 层级 | 主要类 | 已定义的方法示例 | 职责 |
+|---|---|---|---|
+| 场景应用层 | `SceneService` | `create_from_template()`、`get_snapshot()`、`update_object()`、`replace_snapshot()` | 创建房间、变更对象、版本控制和保存 |
+| 资产应用层 | `AssetService` | `import_manual()`、`import_provider_output()`、`set_calibration()`、`approve()` | 导入模型、校准、核验来源和入库 |
+| 评估应用层 | `AssessmentService` | `evaluate()`、`build_context()`、`explain()` | 固定输入快照、执行检查、解释结果 |
+| 整改应用层 | `RemediationService` | `begin()`、`compare()`、`detect_tradeoffs()` | 整改前后比较和一老一小的需求冲突检测 |
+| 空间计算层 | `FootprintService` | `corners()`、`overlaps()`、`distance()` | 家具旋转后的占地边界、相交和距离计算 |
+| 规则层 | `RuleEngine`、各规则类 | `evaluate()`、`applies()` | 执行八条明确规则，不让 AI 自由判断安全 |
+| 差异计算层 | `FindingDiffer` | `compare()` | 区分新增问题、条件变化、信息缺失和对象移出范围 |
+| Lux3D 适配层 | `AholoSdkGateway` | `create_image_task()`、`retrieve_task()` | 隔离官方 SDK，与其他业务代码解耦 |
+| 生成任务层 | `GenerationService`、`GenerationWorker` | `request()`、`submit()`、`poll()`、`materialize()` | 幂等请求、状态恢复、轮询和结果保存 |
+| 积分控制层 | `CreditBudgetService` | `reserve()`、`reconcile()` | 内部预算预留与实际扣分核对 |
+| 前端渲染层 | `SceneRuntime`、`AssetLoader` | `mount()`、`setSnapshot()`、`load()`、`dispose()` | 场景显示、模型加载与资源释放 |
+| 前端交互层 | `TransformController`、`WorkspaceController` | `beginDrag()`、`commitDrag()`、`undo()`、`assess()` | 拖动、撤销、保存及重新计算 |
+| 结果展示层 | `FindingOverlay`、`ComparisonController` | `showFinding()`、`compareWithCurrent()` | 高亮对象、解释关系、展示整改差异 |
+| 报告层 | `ReportService` | `render_html()`、`render_json()`、`export_public_bundle()` | 导出带版本、依据与局限的行动清单 |
+
+文档不只列方法名，还写明了**参数、返回值、前置条件、异常、事务边界和对应测试**。
+
+同时提供了 **19 个应用接口的 OpenAPI 设计契约**、场景和资产的 JSON Schema，以及前端 TypeScript 类型。这里的应用接口与 Aholo 官方接口明确分开，避免后续 Agent 混用。
+
+### 三个必须落实的代码约束
+
+**第一，外观与计算数据分开。**  
+换成 Lux3D 模型时，只替换视觉资产和相关校准，不改变对象编号、已确认尺寸、规则关联及历史记录。
+
+**第二，未知信息不能被当作安全。**  
+检查结果固定为 `triggered`、`needs_review`、`not_triggered`。例如没有确认柜体固定情况，就必须保持“需要人工核查”。
+
+**第三，所有整改结果可以追溯。**  
+结果绑定场景版本、输入摘要和规则版本。拖动家具后重算，旧请求晚到时不能覆盖新结果；删除一个对象，也不能自动写成“现实风险已经解决”。
+
+---
+
+## 三、代码和 Lux3D 的接手路径
+
+官方要求 Lux3D 参与核心三维内容或关键创作流程，但 **API 接入不是强制要求**。因此，方案保留一条不依赖 API 权限的交付主路径，再把在线生成放到增强阶段。[aholo3d.cn](https://www.aholo3d.cn/hackathon?utm_source=chatgpt.com)
+
+### 主路径：先保证可以完成作品
+
+```text
+占位模型开发核心功能
+        ↓
+尽早用 Lux3D 生成椅子、柜子各一个
+        ↓
+下载 GLB，记录来源与生成过程
+        ↓
+AssetService 导入、验证、校准
+        ↓
+替换占位模型，保持对象与规则不变
+        ↓
+完成检查、整改、冲突检测和报告
+        ↓
+补齐其他核心家具并录制真实运行视频
+```
+
+**不是等代码全部完成后，再第一次接触 Lux3D。**接手任务要求尽早验证真实模型，提前发现方向、比例、文件复杂度和加载问题。
+
+### 增强路径：应用内生成
+
+完整核心流程稳定后，再加入：
+
+```text
+管理员上传素材并确认预算
+        ↓
+GenerationService 创建本地任务
+        ↓
+GenerationWorker 调用 Lux3D
+        ↓
+轮询同一个官方任务
+        ↓
+下载、验证、保存模型
+        ↓
+人工校准后加入房间
+```
+
+官方 Python SDK 的生成与任务查询方法已经核对；文档还写入了任务状态映射，以及生成结果下载链接约两小时有效、需及时持久化的处理要求。**本次只测试了模拟 SDK 适配，没有执行真实收费调用。**[Aholo Spatial Labs](https://labs.aholo.ai/api-docs/sdk/python)
+
+另外明确规定：
+
+> **创建请求超时，不代表官方没有受理。不能自动重发生成请求，以免重复扣费。**
+
+### 3300 积分如何进入方案？
+
+已提供资产生产表、扣分台账和预算分组，并将收费调用默认关闭。
+
+预算只用于控制项目支出，**不把它冒充官方余额同步，也不再按“每次固定 1 积分”计算**。实际消耗仍需以账号提交按钮及用量记录为准。[Aholo](https://aholo.featurebase.app/zh-CN/help/articles/6916933-dashboardji-fen-yu-api-mi-yao)
+
+---
+
+## 四、后续 Agent 要做到什么程度才算完成？
+
+交接包把开发到官方提交拆成了 **T00–T15 共 16 项任务**，每项都有依赖、交付物和验收证据。
+
+| 阶段 | 需要完成 | 验收重点 |
+|---|---|---|
+| **A：代码原型** | 房间、占位对象、拖动、保存、规则、报告 | 真正可以操作和重新计算，不是静态页面 |
+| **B：真实资产接入** | Lux3D 模型导入、校准、来源记录、替换 | 关键家具真实进入主功能，不只是装饰 |
+| **C：双人群闭环** | 儿童检查、老人通道检查、整改冲突、再次调整 | 同一次移动能产生两类人的不同结果 |
+| **D：可选在线生成** | API 任务、预算、错误恢复、下载保存 | 不重复收费；失败不影响已有样例 |
+| **E：候选提交版** | 异常测试、浏览器验证、真实模型验证、操作录像 | 功能稳定，宣传与实际完成情况一致 |
+| **F：官方提交** | 最终报告、真实视频或 Demo、源码与授权清单、提交回执 | 官网确实完成最终提交，不停留在草稿 |
+
+### 首版核心演示已明确
+
+> **窗边椅子触发相关检查 → 移走椅子 → 新位置占用老人指定通道 → 再次调整 → 比较结果 → 导出清单。**
+
+同时，窗口防护等独立的未知检查项仍保留，不能因为椅子移走就宣布“整个家庭已经安全”。
+
+这里还做了一次技术范围修正：**首版准确表述为“空间关系与指定通道占用检查”**，不把简单的几何相交宣传为完整人体可达性分析。完整导航作为可选增强，避免后续实现和报名宣传脱节。
+
+### 最终提交材料已准备模板
+
+包内包含项目报告提纲、视频脚本、社媒草稿、资产来源表、测试记录、提交清单和回执模板。
+
+官方必交的是项目报告，以及可运行 Demo 链接或包含真实运行画面的视频；这些模板必须填入真实成果，不能直接当作成品提交。[Aholo](https://www.aholo.ai/hackathon)
+
+方案按官方公开的 **2026 年 11 月 19 日 19:00，北京时间**截止安排任务，并建议提前完成首轮提交。具体上传限制、授权条款和最终提交状态仍需本人在登录后的页面核验。[aholo3d.cn](https://www.aholo3d.cn/hackathon?utm_source=chatgpt.com)
+
+---
+
+## 五、本次实际验证结果
+
+| 检查 | 结果 |
+|---|---|
+| Python 参考内核与模拟 SDK 适配测试 | **62 项通过** |
+| JSON、Schema、示例及文档链接等包检查 | **23 项通过，0 跳过、0 失败** |
+| OpenAPI 结构及内部引用检查 | **19 个接口操作通过**，不是线上接口联调 |
+| TypeScript 类型检查 | **严格模式通过** |
+| Git bundle 恢复验证 | **恢复后重新运行，62 项测试通过** |
+| 真实 Lux3D 生成、完整网页、用户试用 | **尚未执行** |
+| 正式参赛提交检查 | **按预期阻止发布**，因为真实资产、完整应用和最终材料还未完成 |
+
+完整记录位于包内：
+
+```text
+evidence/BUILD_VALIDATION.md
+evidence/build-logs/
+```
+
+**参考测试通过，只证明参考代码在合成输入下符合设计，不证明真实家庭安全有效性，也不证明整个参赛应用已经完成。**
+
+---
+
+## 六、将材料提交到你的远仓
+
+本地已经生成以下 Git 提交：
+
+```text
+分支：
+docs/implementation-handoff-20261103
+
+最终本地提交：
+4c24b947534acfc20ee9fd92d9ed0e107d7eb2a6
+```
+
+但远程推送失败，记录已保存在：
+
+```text
+evidence/REMOTE_STATUS.md
+evidence/build-logs/remote-push.txt
+```
+
+在**网络正常、已配置该仓库写权限的本地环境**中，解压 ZIP 后执行：
+
+```bash
+unzip HomeSafe-AI-implementation-handoff-20261103.zip
+cd HomeSafe-AI
+
+bash scripts/publish_docs.sh
+```
+
+脚本会先运行检查，然后在新的工作目录中拉取远仓、创建交接分支、提交材料并推送，最后核对远端提交编号。**不会强制推送，不会覆盖远程历史；遇到同名分支或已有不同内容时会停止。**
+
+本地 Agent 的阅读入口是 **`AGENTS.md` → `docs/10-agent-handoff.md` → `docs/07-delivery-plan.md`**，第一步从 **T00 工程初始化和 T01 真实 Lux3D 小样验证**开始。
