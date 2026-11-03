@@ -1,0 +1,29 @@
+# Private/runtime paths, NOT every image/model extension.
+.git/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+.env.*
+!.env.example
+node_modules/
+dist/
+coverage/
+data/
+private/
+.private/
+assets/raw/
+evidence/private/
+downloads/
+browser-spike/vendor/
+apps/web/public/vendor/
+*.sqlite*
+*.db
+*.pem
+*.key
+*.p12
+*.pfx
+# Public curated icons/screenshots/GLB and deterministic code ZIPs are allowed.
+# Review every binary and license before committing. No blanket *.png/*.jpg/*.glb/*.zip.

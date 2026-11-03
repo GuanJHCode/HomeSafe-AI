@@ -1,0 +1,28 @@
+before : [('R001', ['chair', 'window'], 'triggered'), ('R002', ['window'], 'needs_review'), ('R005', ['chair'], 'not_triggered')]
+conflict : [('R001', ['chair', 'window'], 'not_triggered'), ('R002', ['window'], 'needs_review'), ('R005', ['chair'], 'triggered')]
+improved : [('R001', ['chair', 'window'], 'not_triggered'), ('R002', ['window'], 'needs_review'), ('R005', ['chair'], 'not_triggered')]
+{
+  "before_input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69",
+  "after_input_hash": "6b36e4ff1e739ac9c42499212c8e48025d745d0361e0b830dbdbbca20a772644",
+  "new_triggered": [
+    "99f7958ea5f112a850af38ce"
+  ],
+  "no_longer_triggered": [
+    "92c6d93d56742aac9cdd5203"
+  ],
+  "still_triggered": [
+    "4a85368d219250e4710fab58",
+    "c59dd7b69df3c0de74a49f22"
+  ],
+  "became_unknown": [],
+  "needs_review": [
+    "45dc67408aa623e0255c0f31",
+    "5ab29a57fefca8858396c42b",
+    "8113d090f561ecdcaa2fad59",
+    "dc26ee1c75b4081b77a77cd3"
+  ],
+  "removed_from_scope": [],
+  "added_to_scope": [],
+  "change_interpretation": "仅为相同检查基础下的条件变化；不证明现实中完成整改。"
+}
+SYNTHETIC REFERENCE DEMO ONLY — no GLB or real safety validation.

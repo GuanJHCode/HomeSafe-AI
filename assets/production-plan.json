@@ -1,0 +1,38 @@
+{
+  "credits_observed": 3300,
+  "observed_on": "2026-11-03",
+  "exact_expiry": null,
+  "may_already_include_team_grant": true,
+  "expected_extra_grant": null,
+  "first_assets": [
+    "chair",
+    "cabinet"
+  ],
+  "quality_target_not_official_minimum": [
+    6,
+    10
+  ],
+  "candidate_assets": [
+    "chair",
+    "cabinet",
+    "bookcase",
+    "table",
+    "sofa",
+    "stool",
+    "rug",
+    "toy_box",
+    "child_gate"
+  ],
+  "style_brief": "统一简洁家居风格、结构清楚、无人物/品牌/文字；不用全部候选凑数",
+  "required_per_asset": [
+    "source_rights",
+    "generation_settings",
+    "iteration_comparison",
+    "sha256",
+    "calibration",
+    "actual_in_app_use",
+    "public_distribution_decision"
+  ],
+  "ai_predict_size": "explicit optional experiment; candidate dimensions remain unconfirmed",
+  "budget_policy": "Use current logged-in actual prices and granted balance; no assumed unlimited credits"
+}

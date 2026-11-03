@@ -1,0 +1,21 @@
+$ /opt/pyvenv/bin/python -S tools/lux3d_local.py plan --help
+exit=0
+usage: lux3d_local.py [-h] [--image IMAGE] [--job JOB]
+                      [--version {G1,G1-Turbo}] [--face-count FACE_COUNT]
+                      [--predict-size] [--execute] [--allow-paid]
+                      [--approved-demo-material]
+                      {plan,generate,resume}
+
+positional arguments:
+  {plan,generate,resume}
+
+options:
+  -h, --help            show this help message and exit
+  --image IMAGE
+  --job JOB
+  --version {G1,G1-Turbo}
+  --face-count FACE_COUNT
+  --predict-size
+  --execute
+  --allow-paid
+  --approved-demo-material

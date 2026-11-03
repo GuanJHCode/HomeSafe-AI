@@ -1,0 +1,24 @@
+PASS JSON examples/comparison.json
+PASS JSON examples/scene-improved.json
+PASS JSON examples/assessment-before.json
+PASS JSON examples/scene-before.json
+PASS JSON examples/assessment-conflict.json
+PASS JSON examples/scene-conflict.json
+PASS JSON examples/assessment-improved.json
+PASS JSON contracts/submission-manifest.schema.json
+PASS JSON contracts/scene-v1.schema.json
+PASS JSON contracts/asset-manifest.schema.json
+PASS JSON assets/asset-manifest.json
+PASS JSON evidence/task-status.json
+PASS JSON submission/submission-manifest.json
+PASS SCHEMA submission-manifest.schema.json
+PASS SCHEMA scene-v1.schema.json
+PASS SCHEMA asset-manifest.schema.json
+PASS INSTANCE examples/scene-before.json
+PASS INSTANCE examples/scene-conflict.json
+PASS INSTANCE examples/scene-improved.json
+PASS INSTANCE assets/asset-manifest.json
+PASS INSTANCE submission/submission-manifest.json
+PASS OPENAPI structural/pointer check: 19 operations (not live API)
+PASS Markdown local links
+23 checks; 0 skipped; 0 failed. No product release implied.

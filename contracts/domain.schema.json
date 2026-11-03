@@ -1,0 +1,1529 @@
+{
+  "$defs": {
+    "Assessment": {
+      "additionalProperties": false,
+      "properties": {
+        "scene_id": {
+          "title": "Scene Id",
+          "type": "string"
+        },
+        "scene_revision": {
+          "title": "Scene Revision",
+          "type": "integer"
+        },
+        "input_hash": {
+          "title": "Input Hash",
+          "type": "string"
+        },
+        "ruleset_version": {
+          "title": "Ruleset Version",
+          "type": "string"
+        },
+        "comparison_basis": {
+          "$ref": "#/$defs/ComparisonBasis"
+        },
+        "findings": {
+          "items": {
+            "$ref": "#/$defs/Finding"
+          },
+          "title": "Findings",
+          "type": "array"
+        },
+        "coverage": {
+          "items": {
+            "$ref": "#/$defs/Coverage"
+          },
+          "title": "Coverage",
+          "type": "array"
+        },
+        "unsupported_domains": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Unsupported Domains",
+          "type": "array"
+        },
+        "setup_items": {
+          "items": {
+            "$ref": "#/$defs/SetupItem"
+          },
+          "title": "Setup Items",
+          "type": "array"
+        }
+      },
+      "required": [
+        "scene_id",
+        "scene_revision",
+        "input_hash",
+        "ruleset_version",
+        "comparison_basis",
+        "findings",
+        "coverage",
+        "unsupported_domains"
+      ],
+      "title": "Assessment",
+      "type": "object"
+    },
+    "AssessmentRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "revision": {
+          "minimum": 1,
+          "title": "Revision",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "revision"
+      ],
+      "title": "AssessmentRequest",
+      "type": "object"
+    },
+    "AssetCalibration": {
+      "additionalProperties": false,
+      "properties": {
+        "revision": {
+          "minimum": 1,
+          "title": "Revision",
+          "type": "integer"
+        },
+        "orientation": {
+          "$ref": "#/$defs/Quaternion"
+        },
+        "pivot_offset_after_rotation": {
+          "$ref": "#/$defs/Vec3"
+        },
+        "normalized_bounds_m": {
+          "$ref": "#/$defs/Dimensions"
+        },
+        "reviewed": {
+          "title": "Reviewed",
+          "type": "boolean"
+        },
+        "strategy": {
+          "enum": [
+            "runtime_axis_fit",
+            "baked_standard_glb"
+          ],
+          "title": "Strategy",
+          "type": "string"
+        },
+        "notes": {
+          "default": "",
+          "title": "Notes",
+          "type": "string"
+        }
+      },
+      "required": [
+        "revision",
+        "orientation",
+        "pivot_offset_after_rotation",
+        "normalized_bounds_m",
+        "reviewed",
+        "strategy"
+      ],
+      "title": "AssetCalibration",
+      "type": "object"
+    },
+    "AssetRenderDTO": {
+      "additionalProperties": false,
+      "properties": {
+        "asset_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Asset Id",
+          "type": "string"
+        },
+        "content_hash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Content Hash",
+          "type": "string"
+        },
+        "render_url": {
+          "pattern": "^(assets/public/[A-Za-z0-9_-]+(?:/[A-Za-z0-9_-]+)*\\.glb|/api/v1/assets/[A-Za-z0-9_.:-]+/file)$",
+          "title": "Render Url",
+          "type": "string"
+        },
+        "calibration": {
+          "$ref": "#/$defs/AssetCalibration"
+        },
+        "provenance_summary": {
+          "enum": [
+            "lux3d_web",
+            "lux3d_api",
+            "procedural",
+            "unverified"
+          ],
+          "title": "Provenance Summary",
+          "type": "string"
+        }
+      },
+      "required": [
+        "asset_id",
+        "content_hash",
+        "render_url",
+        "calibration",
+        "provenance_summary"
+      ],
+      "title": "AssetRenderDTO",
+      "type": "object"
+    },
+    "BoolObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "source_kind": {
+          "default": "unknown",
+          "enum": [
+            "unknown",
+            "demo",
+            "user_reported",
+            "measurement",
+            "simulated"
+          ],
+          "title": "Source Kind",
+          "type": "string"
+        },
+        "observed_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Observed At"
+        },
+        "verification_state": {
+          "default": "unknown",
+          "enum": [
+            "unknown",
+            "provided",
+            "owner_checked"
+          ],
+          "title": "Verification State",
+          "type": "string"
+        },
+        "evidence_ref": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence Ref"
+        }
+      },
+      "title": "BoolObservation",
+      "type": "object"
+    },
+    "CompareRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "before_assessment_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Before Assessment Id",
+          "type": "string"
+        },
+        "after_assessment_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "After Assessment Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "before_assessment_id",
+        "after_assessment_id"
+      ],
+      "title": "CompareRequest",
+      "type": "object"
+    },
+    "Comparison": {
+      "additionalProperties": false,
+      "properties": {
+        "before_input_hash": {
+          "title": "Before Input Hash",
+          "type": "string"
+        },
+        "after_input_hash": {
+          "title": "After Input Hash",
+          "type": "string"
+        },
+        "new_triggered": {
+          "items": {
+            "type": "string"
+          },
+          "title": "New Triggered",
+          "type": "array"
+        },
+        "no_longer_triggered": {
+          "items": {
+            "type": "string"
+          },
+          "title": "No Longer Triggered",
+          "type": "array"
+        },
+        "still_triggered": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Still Triggered",
+          "type": "array"
+        },
+        "became_unknown": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Became Unknown",
+          "type": "array"
+        },
+        "needs_review": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Needs Review",
+          "type": "array"
+        },
+        "removed_from_scope": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Removed From Scope",
+          "type": "array"
+        },
+        "added_to_scope": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Added To Scope",
+          "type": "array"
+        },
+        "resolved_unknown": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Resolved Unknown",
+          "type": "array"
+        },
+        "change_kinds": {
+          "items": {
+            "enum": [
+              "layout",
+              "observation",
+              "scope",
+              "visual_or_metadata"
+            ],
+            "type": "string"
+          },
+          "title": "Change Kinds",
+          "type": "array"
+        },
+        "change_interpretation": {
+          "default": "仅为相同检查基础下的条件变化；不证明现实中完成整改。",
+          "title": "Change Interpretation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "before_input_hash",
+        "after_input_hash",
+        "new_triggered",
+        "no_longer_triggered",
+        "still_triggered",
+        "became_unknown",
+        "needs_review",
+        "removed_from_scope",
+        "added_to_scope"
+      ],
+      "title": "Comparison",
+      "type": "object"
+    },
+    "ComparisonBasis": {
+      "additionalProperties": false,
+      "properties": {
+        "scene_id": {
+          "title": "Scene Id",
+          "type": "string"
+        },
+        "ruleset_version": {
+          "title": "Ruleset Version",
+          "type": "string"
+        },
+        "context_hash": {
+          "title": "Context Hash",
+          "type": "string"
+        },
+        "object_scope": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Object Scope",
+          "type": "object"
+        },
+        "layout_hash": {
+          "default": "",
+          "title": "Layout Hash",
+          "type": "string"
+        },
+        "observation_hash": {
+          "default": "",
+          "title": "Observation Hash",
+          "type": "string"
+        }
+      },
+      "required": [
+        "scene_id",
+        "ruleset_version",
+        "context_hash",
+        "object_scope"
+      ],
+      "title": "ComparisonBasis",
+      "type": "object"
+    },
+    "Coverage": {
+      "additionalProperties": false,
+      "properties": {
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "profile_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Profile Id"
+        },
+        "state": {
+          "enum": [
+            "evaluated",
+            "missing_input",
+            "not_applicable",
+            "unsupported",
+            "error"
+          ],
+          "title": "State",
+          "type": "string"
+        },
+        "evaluated_count": {
+          "default": 0,
+          "title": "Evaluated Count",
+          "type": "integer"
+        },
+        "pending_count": {
+          "default": 0,
+          "title": "Pending Count",
+          "type": "integer"
+        },
+        "reason": {
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "rule_id",
+        "profile_id",
+        "state",
+        "reason"
+      ],
+      "title": "Coverage",
+      "type": "object"
+    },
+    "DemoEvaluationRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "template_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Template Id",
+          "type": "string"
+        },
+        "client_revision": {
+          "minimum": 1,
+          "title": "Client Revision",
+          "type": "integer"
+        },
+        "transforms": {
+          "additionalProperties": {
+            "$ref": "#/$defs/TransformInput"
+          },
+          "title": "Transforms",
+          "type": "object"
+        }
+      },
+      "required": [
+        "template_id",
+        "client_revision",
+        "transforms"
+      ],
+      "title": "DemoEvaluationRequest",
+      "type": "object"
+    },
+    "Dimensions": {
+      "additionalProperties": false,
+      "properties": {
+        "width": {
+          "exclusiveMinimum": 0,
+          "title": "Width",
+          "type": "number"
+        },
+        "height": {
+          "exclusiveMinimum": 0,
+          "title": "Height",
+          "type": "number"
+        },
+        "depth": {
+          "exclusiveMinimum": 0,
+          "title": "Depth",
+          "type": "number"
+        }
+      },
+      "required": [
+        "width",
+        "height",
+        "depth"
+      ],
+      "title": "Dimensions",
+      "type": "object"
+    },
+    "ErrorDTO": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "issues": {
+          "items": {
+            "$ref": "#/$defs/PlacementIssue"
+          },
+          "title": "Issues",
+          "type": "array"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "request_id"
+      ],
+      "title": "ErrorDTO",
+      "type": "object"
+    },
+    "Finding": {
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "title": "Key",
+          "type": "string"
+        },
+        "rule_id": {
+          "title": "Rule Id",
+          "type": "string"
+        },
+        "profile_id": {
+          "title": "Profile Id",
+          "type": "string"
+        },
+        "object_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Object Ids",
+          "type": "array"
+        },
+        "scope_id": {
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "triggered",
+            "needs_review",
+            "not_triggered"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "evidence": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "title": "Evidence",
+          "type": "object"
+        },
+        "limitation": {
+          "default": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。",
+          "title": "Limitation",
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "rule_id",
+        "profile_id",
+        "object_ids",
+        "scope_id",
+        "status",
+        "evidence"
+      ],
+      "title": "Finding",
+      "type": "object"
+    },
+    "GenerationRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "input_asset_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Input Asset Id",
+          "type": "string"
+        },
+        "version": {
+          "enum": [
+            "G1",
+            "G1-Turbo"
+          ],
+          "title": "Version",
+          "type": "string"
+        },
+        "face_count": {
+          "maximum": 300000,
+          "minimum": 10000,
+          "title": "Face Count",
+          "type": "integer"
+        },
+        "approved_ceiling": {
+          "exclusiveMinimum": 0,
+          "title": "Approved Ceiling",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "input_asset_id",
+        "version",
+        "face_count",
+        "approved_ceiling"
+      ],
+      "title": "GenerationRequest",
+      "type": "object"
+    },
+    "HealthDTO": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "ok",
+          "title": "Status",
+          "type": "string"
+        },
+        "product_mode": {
+          "enum": [
+            "local",
+            "public_demo",
+            "public_sandbox"
+          ],
+          "title": "Product Mode",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "product_mode"
+      ],
+      "title": "HealthDTO",
+      "type": "object"
+    },
+    "JobDTO": {
+      "additionalProperties": false,
+      "properties": {
+        "job_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Job Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "queued",
+            "submitting",
+            "submitting_unknown",
+            "polling",
+            "downloading",
+            "validation_pending",
+            "completed",
+            "stalled",
+            "failed",
+            "manual_review"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "asset_id": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Asset Id"
+        },
+        "error_code": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error Code"
+        }
+      },
+      "required": [
+        "job_id",
+        "status"
+      ],
+      "title": "JobDTO",
+      "type": "object"
+    },
+    "NumberObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "source_kind": {
+          "default": "unknown",
+          "enum": [
+            "unknown",
+            "demo",
+            "user_reported",
+            "measurement",
+            "simulated"
+          ],
+          "title": "Source Kind",
+          "type": "string"
+        },
+        "observed_at": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Observed At"
+        },
+        "verification_state": {
+          "default": "unknown",
+          "enum": [
+            "unknown",
+            "provided",
+            "owner_checked"
+          ],
+          "title": "Verification State",
+          "type": "string"
+        },
+        "evidence_ref": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence Ref"
+        },
+        "coordinate_reference": {
+          "default": "not_applicable",
+          "enum": [
+            "world_floor",
+            "object_base",
+            "not_applicable"
+          ],
+          "title": "Coordinate Reference",
+          "type": "string"
+        }
+      },
+      "title": "NumberObservation",
+      "type": "object"
+    },
+    "ObjectPatch": {
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "minimum": 1,
+          "title": "Expected Revision",
+          "type": "integer"
+        },
+        "transform": {
+          "$ref": "#/$defs/TransformInput"
+        }
+      },
+      "required": [
+        "expected_revision",
+        "transform"
+      ],
+      "title": "ObjectPatch",
+      "type": "object"
+    },
+    "PlacementIssue": {
+      "additionalProperties": false,
+      "properties": {
+        "object_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Object Id"
+        },
+        "related_object_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Related Object Ids",
+          "type": "array"
+        },
+        "field": {
+          "title": "Field",
+          "type": "string"
+        },
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        }
+      },
+      "required": [
+        "field",
+        "code",
+        "message"
+      ],
+      "title": "PlacementIssue",
+      "type": "object"
+    },
+    "Profile": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "child",
+            "elder"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "can_climb": {
+          "$ref": "#/$defs/BoolObservation"
+        },
+        "reach_height": {
+          "$ref": "#/$defs/NumberObservation"
+        }
+      },
+      "required": [
+        "id",
+        "role"
+      ],
+      "title": "Profile",
+      "type": "object"
+    },
+    "Properties": {
+      "additionalProperties": false,
+      "properties": {
+        "anchored": {
+          "$ref": "#/$defs/BoolObservation"
+        },
+        "protection_reported": {
+          "$ref": "#/$defs/BoolObservation"
+        },
+        "locked": {
+          "$ref": "#/$defs/BoolObservation"
+        },
+        "accessible": {
+          "$ref": "#/$defs/BoolObservation"
+        },
+        "secured": {
+          "$ref": "#/$defs/BoolObservation"
+        },
+        "raised_threshold_present": {
+          "$ref": "#/$defs/BoolObservation"
+        },
+        "storage_height": {
+          "$ref": "#/$defs/NumberObservation"
+        }
+      },
+      "title": "Properties",
+      "type": "object"
+    },
+    "Quaternion": {
+      "additionalProperties": false,
+      "properties": {
+        "x": {
+          "title": "X",
+          "type": "number"
+        },
+        "y": {
+          "title": "Y",
+          "type": "number"
+        },
+        "z": {
+          "title": "Z",
+          "type": "number"
+        },
+        "w": {
+          "title": "W",
+          "type": "number"
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "z",
+        "w"
+      ],
+      "title": "Quaternion",
+      "type": "object"
+    },
+    "Rect": {
+      "additionalProperties": false,
+      "properties": {
+        "x": {
+          "description": "XZ axis-aligned rectangle CENTER x in meters, not left edge.",
+          "title": "X",
+          "type": "number"
+        },
+        "z": {
+          "description": "XZ axis-aligned rectangle CENTER z in meters, not bottom edge.",
+          "title": "Z",
+          "type": "number"
+        },
+        "width": {
+          "exclusiveMinimum": 0,
+          "title": "Width",
+          "type": "number"
+        },
+        "depth": {
+          "exclusiveMinimum": 0,
+          "title": "Depth",
+          "type": "number"
+        }
+      },
+      "required": [
+        "x",
+        "z",
+        "width",
+        "depth"
+      ],
+      "title": "Rect",
+      "type": "object"
+    },
+    "ReportDTO": {
+      "additionalProperties": false,
+      "properties": {
+        "report_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Report Id",
+          "type": "string"
+        },
+        "assessment_hash": {
+          "title": "Assessment Hash",
+          "type": "string"
+        },
+        "download_url": {
+          "title": "Download Url",
+          "type": "string"
+        },
+        "format": {
+          "enum": [
+            "html",
+            "json"
+          ],
+          "title": "Format",
+          "type": "string"
+        }
+      },
+      "required": [
+        "report_id",
+        "assessment_hash",
+        "download_url",
+        "format"
+      ],
+      "title": "ReportDTO",
+      "type": "object"
+    },
+    "ReportRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "assessment_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Assessment Id",
+          "type": "string"
+        },
+        "comparison_id": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Comparison Id"
+        }
+      },
+      "required": [
+        "assessment_id"
+      ],
+      "title": "ReportRequest",
+      "type": "object"
+    },
+    "Route": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "rect": {
+          "$ref": "#/$defs/Rect"
+        },
+        "confirmed": {
+          "title": "Confirmed",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "rect",
+        "confirmed"
+      ],
+      "title": "Route",
+      "type": "object"
+    },
+    "RuleConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "near_window_m": {
+          "default": 0.6,
+          "exclusiveMinimum": 0,
+          "title": "Near Window M",
+          "type": "number"
+        },
+        "parameter_source": {
+          "default": "demo_heuristic",
+          "enum": [
+            "demo_heuristic",
+            "owner_defined"
+          ],
+          "title": "Parameter Source",
+          "type": "string"
+        }
+      },
+      "title": "RuleConfig",
+      "type": "object"
+    },
+    "Scene": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "2.0",
+          "default": "2.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "scene_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Scene Id",
+          "type": "string"
+        },
+        "revision": {
+          "minimum": 1,
+          "title": "Revision",
+          "type": "integer"
+        },
+        "is_demo": {
+          "title": "Is Demo",
+          "type": "boolean"
+        },
+        "room": {
+          "$ref": "#/$defs/Dimensions"
+        },
+        "profiles": {
+          "items": {
+            "$ref": "#/$defs/Profile"
+          },
+          "maxItems": 8,
+          "title": "Profiles",
+          "type": "array"
+        },
+        "routes": {
+          "items": {
+            "$ref": "#/$defs/Route"
+          },
+          "maxItems": 16,
+          "title": "Routes",
+          "type": "array"
+        },
+        "rule_config": {
+          "$ref": "#/$defs/RuleConfig"
+        },
+        "objects": {
+          "items": {
+            "$ref": "#/$defs/SceneObject"
+          },
+          "maxItems": 100,
+          "title": "Objects",
+          "type": "array"
+        }
+      },
+      "required": [
+        "scene_id",
+        "revision",
+        "is_demo",
+        "room",
+        "profiles",
+        "routes",
+        "rule_config",
+        "objects"
+      ],
+      "title": "Scene",
+      "type": "object"
+    },
+    "SceneCreate": {
+      "additionalProperties": false,
+      "properties": {
+        "template_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Template Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "template_id"
+      ],
+      "title": "SceneCreate",
+      "type": "object"
+    },
+    "SceneObject": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "asset_id": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Asset Id"
+        },
+        "label": {
+          "default": "",
+          "title": "Label",
+          "type": "string"
+        },
+        "category": {
+          "title": "Category",
+          "type": "string"
+        },
+        "position": {
+          "$ref": "#/$defs/Vec3"
+        },
+        "yaw_rad": {
+          "title": "Yaw Rad",
+          "type": "number"
+        },
+        "dimensions_m": {
+          "$ref": "#/$defs/Dimensions"
+        },
+        "dimensions_confirmed": {
+          "title": "Dimensions Confirmed",
+          "type": "boolean"
+        },
+        "position_confirmed": {
+          "title": "Position Confirmed",
+          "type": "boolean"
+        },
+        "collision_layer": {
+          "enum": [
+            "solid",
+            "surface",
+            "fixture",
+            "marker"
+          ],
+          "title": "Collision Layer",
+          "type": "string"
+        },
+        "placement_mode": {
+          "enum": [
+            "floor",
+            "wall",
+            "surface",
+            "supported"
+          ],
+          "title": "Placement Mode",
+          "type": "string"
+        },
+        "supported_by": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Supported By"
+        },
+        "traits": {
+          "$ref": "#/$defs/Traits"
+        },
+        "properties": {
+          "$ref": "#/$defs/Properties"
+        }
+      },
+      "required": [
+        "id",
+        "category",
+        "position",
+        "yaw_rad",
+        "dimensions_m",
+        "dimensions_confirmed",
+        "position_confirmed",
+        "collision_layer",
+        "placement_mode",
+        "traits",
+        "properties"
+      ],
+      "title": "SceneObject",
+      "type": "object"
+    },
+    "SceneReplace": {
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "minimum": 1,
+          "title": "Expected Revision",
+          "type": "integer"
+        },
+        "snapshot": {
+          "$ref": "#/$defs/Scene"
+        }
+      },
+      "required": [
+        "expected_revision",
+        "snapshot"
+      ],
+      "title": "SceneReplace",
+      "type": "object"
+    },
+    "SetupItem": {
+      "additionalProperties": false,
+      "properties": {
+        "object_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Object Id",
+          "type": "string"
+        },
+        "unknown_traits": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Unknown Traits",
+          "type": "array"
+        },
+        "suggested_true_traits": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Suggested True Traits",
+          "type": "array"
+        },
+        "suggestion_source": {
+          "const": "category_hint_unconfirmed",
+          "default": "category_hint_unconfirmed",
+          "title": "Suggestion Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "object_id",
+        "unknown_traits",
+        "suggested_true_traits"
+      ],
+      "title": "SetupItem",
+      "type": "object"
+    },
+    "Traits": {
+      "additionalProperties": false,
+      "properties": {
+        "possible_climb_support": {
+          "$ref": "#/$defs/BoolObservation"
+        },
+        "requires_anchor_check": {
+          "$ref": "#/$defs/BoolObservation"
+        },
+        "contains_hazardous_items": {
+          "$ref": "#/$defs/BoolObservation"
+        },
+        "blocks_floor_route": {
+          "$ref": "#/$defs/BoolObservation"
+        },
+        "window_opening": {
+          "$ref": "#/$defs/BoolObservation"
+        },
+        "loose_cord": {
+          "$ref": "#/$defs/BoolObservation"
+        },
+        "rug": {
+          "$ref": "#/$defs/BoolObservation"
+        },
+        "child_gate": {
+          "$ref": "#/$defs/BoolObservation"
+        }
+      },
+      "title": "Traits",
+      "type": "object"
+    },
+    "TransformInput": {
+      "additionalProperties": false,
+      "properties": {
+        "position": {
+          "$ref": "#/$defs/Vec3"
+        },
+        "yaw_rad": {
+          "title": "Yaw Rad",
+          "type": "number"
+        }
+      },
+      "required": [
+        "position",
+        "yaw_rad"
+      ],
+      "title": "TransformInput",
+      "type": "object"
+    },
+    "Vec3": {
+      "additionalProperties": false,
+      "properties": {
+        "x": {
+          "title": "X",
+          "type": "number"
+        },
+        "y": {
+          "title": "Y",
+          "type": "number"
+        },
+        "z": {
+          "title": "Z",
+          "type": "number"
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "z"
+      ],
+      "title": "Vec3",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Build root. All active wire types derive from the same Python source.",
+  "properties": {
+    "scene": {
+      "$ref": "#/$defs/Scene"
+    },
+    "assessment": {
+      "$ref": "#/$defs/Assessment"
+    },
+    "comparison": {
+      "$ref": "#/$defs/Comparison"
+    },
+    "asset": {
+      "$ref": "#/$defs/AssetRenderDTO"
+    },
+    "patch": {
+      "$ref": "#/$defs/ObjectPatch"
+    },
+    "assess_request": {
+      "$ref": "#/$defs/AssessmentRequest"
+    },
+    "compare_request": {
+      "$ref": "#/$defs/CompareRequest"
+    },
+    "demo_request": {
+      "$ref": "#/$defs/DemoEvaluationRequest"
+    },
+    "generation_request": {
+      "$ref": "#/$defs/GenerationRequest"
+    },
+    "scene_create": {
+      "$ref": "#/$defs/SceneCreate"
+    },
+    "scene_replace": {
+      "$ref": "#/$defs/SceneReplace"
+    },
+    "report_request": {
+      "$ref": "#/$defs/ReportRequest"
+    },
+    "report": {
+      "$ref": "#/$defs/ReportDTO"
+    },
+    "job": {
+      "$ref": "#/$defs/JobDTO"
+    },
+    "health": {
+      "$ref": "#/$defs/HealthDTO"
+    },
+    "error": {
+      "$ref": "#/$defs/ErrorDTO"
+    },
+    "placement_issue": {
+      "$ref": "#/$defs/PlacementIssue"
+    }
+  },
+  "required": [
+    "scene",
+    "assessment",
+    "comparison",
+    "asset",
+    "patch",
+    "assess_request",
+    "compare_request",
+    "demo_request",
+    "generation_request",
+    "scene_create",
+    "scene_replace",
+    "report_request",
+    "report",
+    "job",
+    "health",
+    "error",
+    "placement_issue"
+  ],
+  "title": "ContractBundle",
+  "type": "object"
+}

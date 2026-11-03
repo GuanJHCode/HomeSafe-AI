@@ -1,0 +1,191 @@
+{
+  "scope": "V3 local handoff only; no live SDK, no remote repository, no official submission",
+  "inspection_completed": true,
+  "probe_count": 11,
+  "review_gaps_reproduced": 11,
+  "observations": [
+    {
+      "id": "R01",
+      "title": "同一柜体的危险品属性未触发收纳检查",
+      "observed": {
+        "child_rule_ids": [
+          "R003"
+        ]
+      },
+      "review_gap_reproduced": true,
+      "expected_after_revision": "同一对象按多个已确认语义特征参加多个适用规则，而非只选一个类别",
+      "locations": [
+        "reference/homesafe_core/engine.py:RuleEngine.evaluate",
+        "contracts/scene-v1.schema.json:$defs.Object.category"
+      ]
+    },
+    {
+      "id": "R02",
+      "title": "临窗柜体没有支点关系评估入口",
+      "observed": {
+        "child_rule_ids": [
+          "R003"
+        ]
+      },
+      "review_gap_reproduced": true,
+      "expected_after_revision": "通过可核实的支点特征决定适用性；未知特征进入待核查，不能仅由cabinet类别排除",
+      "locations": [
+        "reference/homesafe_core/engine.py:RuleEngine.evaluate"
+      ]
+    },
+    {
+      "id": "R03",
+      "title": "把椅子放进柜体也能通过场景验证",
+      "observed": {
+        "solid_footprints_overlap": true,
+        "validation": "accepted",
+        "no_longer_triggered": [
+          "92c6d93d56742aac9cdd5203"
+        ]
+      },
+      "review_gap_reproduced": true,
+      "expected_after_revision": "地面实体之间的体积穿透不得作为可提交整改；地毯等允许重叠对象由碰撞层区别处理",
+      "locations": [
+        "reference/homesafe_core/engine.py:validate_scene",
+        "reference/homesafe_core/engine.py:FootprintService"
+      ]
+    },
+    {
+      "id": "R04",
+      "title": "2.7米房间内100米收纳高度被接受",
+      "observed": {
+        "room_height_m": 2.7,
+        "storage_height_m": 100,
+        "finding_status": "not_triggered"
+      },
+      "review_gap_reproduced": true,
+      "expected_after_revision": "明确局部/世界高度语义并验证跨字段一致性；非法高度不能变成未触发",
+      "locations": [
+        "reference/homesafe_core/engine.py:validate_scene",
+        "contracts/scene-v1.schema.json:$defs.Properties"
+      ]
+    },
+    {
+      "id": "R05",
+      "title": "没有指定通道时老人检查静默消失",
+      "observed": {
+        "elder_findings": 0,
+        "coverage_summary": null
+      },
+      "review_gap_reproduced": true,
+      "expected_after_revision": "Assessment.coverage明确缺失通道导致哪些规则未评估，不能把空列表解释为检查完成",
+      "locations": [
+        "reference/homesafe_core/engine.py:RuleEngine.evaluate",
+        "contracts/http/openapi.yaml:AssessmentDTO"
+      ]
+    },
+    {
+      "id": "R06",
+      "title": "只移动检查通道也会记为不再触发",
+      "observed": {
+        "objects_unchanged": true,
+        "chair_marked_no_longer_triggered": true
+      },
+      "review_gap_reproduced": true,
+      "expected_after_revision": "服务层固定检查范围/通道快照，改变检查目标时显示scope_changed，不算家具整改成效；此项不声称未实现服务层已经失效",
+      "locations": [
+        "reference/homesafe_core/engine.py:FindingDiffer.compare",
+        "docs/05-rules-and-geometry.md:6"
+      ]
+    },
+    {
+      "id": "C01",
+      "title": "资产返回DTO未携带持久化校准数据",
+      "observed": {
+        "AssetDTO_properties": [
+          "asset_id",
+          "source_kind",
+          "provider_task_id",
+          "source_evidence",
+          "generator_version",
+          "file_path",
+          "sha256",
+          "approval_state",
+          "license_reviewed",
+          "public_distribution_allowed",
+          "modifications"
+        ],
+        "has_calibration": false
+      },
+      "review_gap_reproduced": true,
+      "expected_after_revision": "返回规范化资产变换、版本和公开下载地址，并测试保存后刷新仍保持视觉/代理一致",
+      "locations": [
+        "contracts/http/openapi.yaml:AssetDTO",
+        "docs/04-frontend-contracts.md:AssetLoader.normalize"
+      ]
+    },
+    {
+      "id": "C02",
+      "title": "PropertyObservation只在说明书出现，传输契约没有来源字段",
+      "observed": {
+        "observation_keys": [
+          "anchored",
+          "protection_verified",
+          "locked",
+          "hazardous_contents",
+          "accessible",
+          "secured",
+          "raised_threshold_present",
+          "storage_height_m"
+        ]
+      },
+      "review_gap_reproduced": true,
+      "expected_after_revision": "正式对象属性包含source、确认时间及simulation/user_reported/measurement区别；升级契约与迁移同步",
+      "locations": [
+        "docs/02-domain-and-storage.md:PropertyObservation",
+        "contracts/http/openapi.yaml:Properties"
+      ]
+    },
+    {
+      "id": "I01",
+      "title": "供应商任务ID不匹配时仍接受结果",
+      "observed": {
+        "requested": "123",
+        "returned_by_provider": 999,
+        "normalized_task_id": "123",
+        "normalized_status": "provider_succeeded"
+      },
+      "review_gap_reproduced": true,
+      "expected_after_revision": "有taskId时核对标准化后的同一任务；不匹配进入manual_review，不绑定资产来源",
+      "locations": [
+        "reference/homesafe_core/lux3d_adapter.py:AholoSdkGateway.retrieve_task"
+      ]
+    },
+    {
+      "id": "G01",
+      "title": "空材料和不存在的重复模型可通过本地预检",
+      "observed": {
+        "exit_code": 0,
+        "stdout": "LOCAL MATERIALS READY; does not prove official submission or acceptance.",
+        "actual_glb_count": 0,
+        "report_bytes": 0,
+        "video_bytes": 0,
+        "distinct_asset_ids": 1,
+        "commit_valid": false
+      },
+      "review_gap_reproduced": true,
+      "expected_after_revision": "验证实际文件/hash/唯一资产/最终场景引用/发布授权/证据/媒体有效性/commit；人工评审签署另存",
+      "locations": [
+        "scripts/check_submission.py",
+        "contracts/asset-manifest.schema.json"
+      ]
+    },
+    {
+      "id": "S01",
+      "title": "推送脚本按目录选择，没有逐文件公开证据审核",
+      "observed": {
+        "synthetic_unclassified_evidence_selected": true
+      },
+      "review_gap_reproduced": true,
+      "expected_after_revision": "仅发布owner_reviewed且public的显式文件白名单；未知可见性默认拒绝；本次没有真实隐私外发",
+      "locations": [
+        "scripts/publish_docs.sh:allowed and recursive files selection"
+      ]
+    }
+  ]
+}

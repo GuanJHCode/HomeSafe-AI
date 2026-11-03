@@ -1,0 +1,16 @@
+{
+  "status": "ACCOUNT_FORM_NOT_YET_OPENED_BY_THIS_ASSISTANT",
+  "demo_policy": "PREFER_ONLINE_LINK",
+  "supports_both_in_one_field": null,
+  "selected_demo_mode": null,
+  "primary_demo_url": null,
+  "video_locations": [
+    "project_report",
+    "social_post",
+    "optional_supplement_if_allowed"
+  ],
+  "file_limits_confirmed": false,
+  "owner_checked_at": null,
+  "evidence_ref": null,
+  "note": "核对的是当前账号实际字段，不要求重新质疑已核实的二选一文案。"
+}

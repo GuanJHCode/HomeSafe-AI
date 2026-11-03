@@ -2,11 +2,11 @@
 
 面向成年照护者的三维居家空间改造演练：观察儿童与老人的空间需求，调整家具、解释冲突，并导出仍需现场核查的行动清单。
 
-**当前分支交付 V6.1 实施方案文档，尚未导入参考实现或完成三维应用。** 活动架构为 Vue 3 / TypeScript / Three.js ＋ module Worker / Pyodide 中的单一 Python 规则内核。旧版服务端优先方案只供追溯。
+**当前分支已导入 V6.1 参考源码、测试、契约、浏览器诊断和部署工具；完整三维应用尚待实现。** 活动架构为 Vue 3 / TypeScript / Three.js ＋ module Worker / Pyodide 中的单一 Python 规则内核。旧版服务端优先方案只供追溯。
 
 ## 阅读入口
 
-从 [START_HERE](START_HERE.md) 了解开工顺序。
+从 [START_HERE](START_HERE.md) 运行参考检查；本次实际结果见 [源码导入验证](evidence/IMPORT_VALIDATION_20261103.md)。
 
 | 文档 | 内容 |
 | --- | --- |
@@ -26,5 +26,5 @@
 - 未触发只表示指定条件未触发；未知、已触发及未覆盖项必须保留。
 - 参考包的历史测试通过不等于当前仓库可运行，也不证明现实家庭安全有效性。
 
-本次从现有 main 历史创建 master，保留旧文档与原始摘要；后续开发以 docs/v6.1/ 为准。任务状态见 [task-status.json](evidence/task-status.json)，接手事项见 [HANDOFF](evidence/HANDOFF.md)。
+本次从现有 main 历史创建 master，保留旧文档与原始摘要；后续以 docs/v6.1/ 为概要导航，恢复的原包详细文档和源码为实现基线，关系见 [源码补齐说明](docs/V6_1_SOURCE_IMPORT.md)。任务状态见 [task-status.json](evidence/task-status.json)，接手事项见 [HANDOFF](evidence/HANDOFF.md)。
 

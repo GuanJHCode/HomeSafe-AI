@@ -1,0 +1,157 @@
+{
+  "repository": "GuanJHCode/HomeSafe-AI",
+  "ref": "master",
+  "commit_sha": "01d48fca76f77856b5e9f31a37090bb1284e47db",
+  "tree_sha": "e0943b6781c2f09a8a5fa01bb4e21cb459210075",
+  "truncated": false,
+  "source": "GitHub.fetch REST git/trees recursive response; file entries transcribed without file contents",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "type": "blob",
+      "mode": "100644",
+      "sha": "bc9a63f0acd8b363651b05b7f9af8934be2c7560",
+      "size": 1280
+    },
+    {
+      "path": "README.md",
+      "type": "blob",
+      "mode": "100644",
+      "sha": "ba3645569dd08eec432ed857c69e58b4df3e58d1",
+      "size": 2074
+    },
+    {
+      "path": "START_HERE.md",
+      "type": "blob",
+      "mode": "100644",
+      "sha": "5c77ff662a57613b8221c9ebd357403c038e1087",
+      "size": 1556
+    },
+    {
+      "path": "docs/01-requirements.md",
+      "type": "blob",
+      "mode": "100644",
+      "sha": "8d422d3c7e9a643a3c49922ebc054e4375ba0c91",
+      "size": 3070
+    },
+    {
+      "path": "docs/02-architecture.md",
+      "type": "blob",
+      "mode": "100644",
+      "sha": "05b0d590548e18acb755bc0f37c18340304f98c5",
+      "size": 5215
+    },
+    {
+      "path": "docs/03-lux3d-integration.md",
+      "type": "blob",
+      "mode": "100644",
+      "sha": "a8fa7683a9c386de37ab5b8e6f3ec39493240fb8",
+      "size": 3349
+    },
+    {
+      "path": "docs/04-implementation-handoff.md",
+      "type": "blob",
+      "mode": "100644",
+      "sha": "ae8e66289b11a3ea9889a4b46321c103b38248ba",
+      "size": 3746
+    },
+    {
+      "path": "docs/05-validation-and-delivery.md",
+      "type": "blob",
+      "mode": "100644",
+      "sha": "c59cf73c9f046f7166d7f0ecb01c0c6ff2c8b281",
+      "size": 3640
+    },
+    {
+      "path": "docs/06-import-record.md",
+      "type": "blob",
+      "mode": "100644",
+      "sha": "24b6a3eb84d9614fe318dbdda27359017aef8410",
+      "size": 2011
+    },
+    {
+      "path": "docs/v6.1/00-overview.md",
+      "type": "blob",
+      "mode": "100644",
+      "sha": "d869f0fa79ce5f6b6c80ce0e55a473271bcc0a29",
+      "size": 3501
+    },
+    {
+      "path": "docs/v6.1/01-architecture.md",
+      "type": "blob",
+      "mode": "100644",
+      "sha": "cdb47e035c3a803e995e1f69d527ad751c262297",
+      "size": 4771
+    },
+    {
+      "path": "docs/v6.1/02-rules-and-interaction.md",
+      "type": "blob",
+      "mode": "100644",
+      "sha": "5b7d8d777252ddcc486168fd0f9a81411cc998f0",
+      "size": 3469
+    },
+    {
+      "path": "docs/v6.1/03-assets.md",
+      "type": "blob",
+      "mode": "100644",
+      "sha": "6e3a06d309ef7bff70ff795f311b6af18b67c495",
+      "size": 2074
+    },
+    {
+      "path": "docs/v6.1/04-deployment.md",
+      "type": "blob",
+      "mode": "100644",
+      "sha": "5b68b84b95b59ae94d06460c397ee42fed0d448c",
+      "size": 3967
+    },
+    {
+      "path": "docs/v6.1/05-delivery-plan.md",
+      "type": "blob",
+      "mode": "100644",
+      "sha": "d3af1b26225424294eb65a7c0739004d5be110b3",
+      "size": 3682
+    },
+    {
+      "path": "docs/v6.1/06-acceptance.md",
+      "type": "blob",
+      "mode": "100644",
+      "sha": "925fd6bcf6b394cb05d2c944b70c310412a32a27",
+      "size": 3962
+    },
+    {
+      "path": "docs/v6.1/07-sources.md",
+      "type": "blob",
+      "mode": "100644",
+      "sha": "96566b26b44718d9396e789fe7a21f4f992b00cb",
+      "size": 3472
+    },
+    {
+      "path": "evidence/HANDOFF.md",
+      "type": "blob",
+      "mode": "100644",
+      "sha": "3ad12d1559e38e776175b0b7236fb5785ea9f7d4",
+      "size": 958
+    },
+    {
+      "path": "evidence/task-status.json",
+      "type": "blob",
+      "mode": "100644",
+      "sha": "c38e9346033ea83388e0f444b7df98c08d3a7c4c",
+      "size": 3886
+    },
+    {
+      "path": "materials/source/README.md",
+      "type": "blob",
+      "mode": "100644",
+      "sha": "d7b40ef467d030374cf589617ec2e53492beee52",
+      "size": 2511
+    },
+    {
+      "path": "materials/source/handoff-summary-20261103.txt",
+      "type": "blob",
+      "mode": "100644",
+      "sha": "ae31f069f45075bc88dc58fbbcf90d5b18e265c0",
+      "size": 11282
+    }
+  ]
+}

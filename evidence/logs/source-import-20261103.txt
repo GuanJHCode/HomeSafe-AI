@@ -1,0 +1,105 @@
+HomeSafe V6.1 source import validation | 2026-11-03 | CPython 3.14.3 | Node 24.13.0
+
+
+$ python (Pydantic 2.13.5) -m pytest reference/tests -q
+exit=0 expected=0
+........................................................................ [ 38%]
+........................................................................ [ 77%]
+...........................................                              [100%]
+187 passed in 0.39s
+
+
+$ python (Pydantic 2.12.5) -m pytest reference/tests -q
+exit=0 expected=0
+........................................................................ [ 38%]
+........................................................................ [ 77%]
+...........................................                              [100%]
+187 passed in 0.41s
+
+
+$ python (Pydantic 2.13.5) scripts/generate_contracts.py --check
+exit=0 expected=0
+Canonical contracts match (3 files; not a live API)
+
+
+$ python (Pydantic 2.13.5) scripts/validate_package.py
+exit=0 expected=0
+PASS generated contracts match canonical models
+PASS JSON Schema Draft 2020-12
+PASS schema and deterministic example before
+PASS schema and deterministic example conflict
+PASS schema and deterministic example improved
+PASS example comparison reproducible
+PASS OpenAPI internal pointers and operation IDs (not HTTP validation)
+PASS active Markdown local links
+8 package checks, 0 failures
+
+
+$ node typescript@5.8.3/lib/tsc.js --strict --noEmit --target ES2022 contracts/frontend/domain.ts
+exit=0 expected=0
+
+
+$ python (Pydantic 2.13.5) scripts/stage_browser_core.py
+exit=0 expected=0
+Staged 10 modules; runtime/vendor packages are NOT included.
+
+
+$ python (Pydantic 2.13.5) scripts/check_submission.py
+exit=2 expected=2
+BLOCKED: product/materials are not verified for submission
+- valid source commit required
+- owner_review: expected file descriptor
+- product_acceptance: expected file descriptor
+- report: expected file descriptor
+- video: expected file descriptor
+- final_scene: expected file descriptor
+- core feature→Lux3D evidence mapping missing
+- V6.1 primary public interactive HTTPS URL not recorded
+- V6.1 real browser/anonymous access evidence missing
+
+
+$ python -m unittest -v test_import_missing
+test_apply_preserves_and_hashes_existing (test_import_missing.ImportTests.test_apply_preserves_and_hashes_existing) ... ok
+test_changed_existing_stops (test_import_missing.ImportTests.test_changed_existing_stops) ... ok
+test_changed_source_stops (test_import_missing.ImportTests.test_changed_source_stops) ... ok
+test_different_target_stops_all_writes (test_import_missing.ImportTests.test_different_target_stops_all_writes) ... ok
+test_duplicate_copy_stops (test_import_missing.ImportTests.test_duplicate_copy_stops) ... ok
+test_failure_rolls_back_new_files (test_import_missing.ImportTests.test_failure_rolls_back_new_files) ... ok
+test_git_head_change_rejected (test_import_missing.ImportTests.test_git_head_change_rejected) ... ok
+test_idempotent (test_import_missing.ImportTests.test_idempotent) ... ok
+test_missing_expected_existing_stops (test_import_missing.ImportTests.test_missing_expected_existing_stops) ... ok
+test_preview_makes_no_changes (test_import_missing.ImportTests.test_preview_makes_no_changes) ... ok
+test_remote_overlap_stops (test_import_missing.ImportTests.test_remote_overlap_stops) ... ok
+test_source_symlink_stops (test_import_missing.ImportTests.test_source_symlink_stops) ... ok
+test_target_symlink_stops (test_import_missing.ImportTests.test_target_symlink_stops) ... ok
+test_unlisted_private_never_exported (test_import_missing.ImportTests.test_unlisted_private_never_exported) ... ok
+test_unsafe_paths_stop (test_import_missing.ImportTests.test_unsafe_paths_stop) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.029s
+
+OK
+
+
+$ node --test browser-spike/*.test.mjs
+✔ request IDs route out-of-order replies without stale acceptance (0.636375ms)
+✔ structured placement failures propagate (0.26525ms)
+✔ dispose rejects pending work and terminates worker (0.11525ms)
+✔ timeouts never manufacture a success (5.872375ms)
+✔ synchronous postMessage failure rejects and clears pending request (0.190541ms)
+✔ rejected initialization is cleared and a second attempt can succeed (1.767583ms)
+✔ evaluation after failed init cannot turn into success (0.175375ms)
+✔ successful initialization is reused and queued evaluation waits for it (5.051708ms)
+✔ dispatch failure does not poison subsequent commands (0.198166ms)
+✔ oversized message is rejected before calling Python (0.787166ms)
+✔ malformed message remains structured and the queue recovers (0.081375ms)
+✔ goal-met summary never omits outstanding triggered findings (0.108584ms)
+✔ missing summary counts cannot masquerade as zero (0.0565ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 58.732584

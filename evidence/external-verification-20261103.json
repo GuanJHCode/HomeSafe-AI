@@ -1,0 +1,66 @@
+{
+  "date": "2026-11-03",
+  "record_type": "USER_SUPPLIED_LOCAL_CLAUDE_VERIFICATION",
+  "artifact_version": "V6-browser-first-20261103",
+  "artifact_zip_sha256": "7f88d242010db241f8ce9123d27482bc4bbd4bbea760ad0e5887e355c4261ba5",
+  "raw_logs_attached": false,
+  "assistant_reexecuted_browser": false,
+  "native_pydantic_2_12_5": {
+    "python_tests_passed": 170,
+    "status": "USER_VERIFIED_RUN"
+  },
+  "pyodide_node": "USER_VERIFIED_RUN",
+  "chrome": {
+    "version": "155 headless",
+    "origin": "localhost static server",
+    "status": "USER_VERIFIED_RUN",
+    "same_origin_ready_ms": 1600,
+    "cdn_total_ready_ms": 10400,
+    "cdn_startup_ms": 7800,
+    "cdn_packages_ms": 2300,
+    "evaluation_ms_range": [
+      5,
+      31
+    ],
+    "examples_match": [
+      true,
+      true,
+      true
+    ],
+    "challenge": {
+      "status": "goal_met",
+      "remaining_needs_review": 4,
+      "remaining_triggered": 2
+    }
+  },
+  "runtime_selection_after_temporary_lock_edit": {
+    "file_count": 10,
+    "reported_mb": 15.37,
+    "status": "USER_VERIFIED_RUN_WITH_V6_WORKAROUND"
+  },
+  "lock": {
+    "info": {
+      "python": "3.14.2",
+      "abi_version": "2026_0",
+      "arch": "wasm32"
+    },
+    "fields": [
+      "abi_version",
+      "arch",
+      "platform",
+      "python"
+    ],
+    "has_info_version": false,
+    "sha256_prefix": "3fdaef09",
+    "sha256_suffix": "8ad4",
+    "sha256_full": null,
+    "note": "只有截断摘要，不伪造或用其作完整哈希锁定；platform确切值未在消息中给出。"
+  },
+  "official_js": {
+    "filename": "entry.e7225bf8c5dc922c.js",
+    "sha256_full": null,
+    "reported_local_path": "claude-verification-20261103/official/",
+    "raw_in_package": false
+  },
+  "applicability": "这些本地结果证明V6诊断的既有验证；不能冒充V6.1重测、正式Three.js完成或魔搭公网性能。"
+}

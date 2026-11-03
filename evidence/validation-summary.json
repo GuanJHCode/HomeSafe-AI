@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-03",
+  "release": "V6.1-fixed",
+  "scope": "deployment-recovery-and-handoff-patch",
+  "python": "3.13.5",
+  "native_pydantic": "2.13.5",
+  "node": "v22.16.0",
+  "typescript": "Version 5.8.3",
+  "python_tests": {
+    "passed": 187,
+    "failed": 0,
+    "skipped": 0,
+    "baseline_v6_count": 170
+  },
+  "javascript_tests": {
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0,
+    "scope": "FakeWorker and injected lifecycle; NOT a real Pyodide VM"
+  },
+  "package_checks": {
+    "passed": 8,
+    "failed": 0
+  },
+  "canonical_contracts": {
+    "files": 3,
+    "status": "MATCH"
+  },
+  "typescript_strict": "PASS",
+  "python_compile": "PASS",
+  "javascript_syntax": "PASS",
+  "browser_bundle": {
+    "modules": 10,
+    "contains_sdk": false,
+    "status": "REBUILT_AND_HASH_CHECKED"
+  },
+  "vendor_unit_tests": "REAL_METADATA_LAYOUT_SYNTHETIC_PAYLOAD",
+  "official_distribution_download": "BLOCKED_ENVIRONMENT_DNS",
+  "real_browser_this_run": "NOT_RUN",
+  "user_previous_browser_verification": {
+    "status": "USER_VERIFIED_RUN",
+    "artifact": "V6",
+    "source": "evidence/external-verification-20261103.json"
+  },
+  "submission_preflight": {
+    "status": "BLOCKED_EXPECTED",
+    "exit": 2
+  },
+  "complete_3d_app": "NOT_IMPLEMENTED",
+  "real_lux3d": "NOT_RUN",
+  "real_hosting": "NOT_DEPLOYED",
+  "official_submission": "NOT_SUBMITTED",
+  "remote_git": "NOT_TOUCHED",
+  "paid_api_calls": 0,
+  "fresh_extract_retest": {
+    "status": "PASS",
+    "python": 187,
+    "javascript": 13,
+    "package_checks": 8,
+    "checksums": "PASS",
+    "source_export_dry_run": "PASS",
+    "preflight_exit": 2,
+    "scope": "Fresh ZIP extraction; native CPython and injected lifecycle, not real Pyodide/Chrome"
+  }
+}

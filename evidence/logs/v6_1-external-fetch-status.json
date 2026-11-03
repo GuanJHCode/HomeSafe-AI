@@ -1,0 +1,10 @@
+{
+  "container_http": "FAILED_DNS",
+  "attempted": [
+    "https://cdn.jsdelivr.net/pyodide/v314.0.6/full/pyodide-lock.json",
+    "https://www.aholo3d.cn/hackathon",
+    "https://www.aholo.ai/hackathon"
+  ],
+  "web": "Official Pyodide docs and Aholo my-page index readable; raw lock/bundle not retrieved",
+  "no_raw_hash_invented": true
+}

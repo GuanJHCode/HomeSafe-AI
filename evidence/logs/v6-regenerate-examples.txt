@@ -1,0 +1,15 @@
+$ /opt/pyvenv/bin/python -S -c 
+import sys,json
+from pathlib import Path
+R=Path('.');sys.path.insert(0,'reference')
+from homesafe_core.engine import RuleEngine,FindingDiffer
+assessments=[]
+for name in ('before','conflict','improved'):
+ a=RuleEngine().evaluate(json.loads((R/f'examples/scene-{name}.json').read_text()))
+ assessments.append(a)
+ (R/f'examples/assessment-{name}.json').write_text(a.model_dump_json(indent=2)+'\n')
+(R/'examples/comparison.json').write_text(FindingDiffer().compare(assessments[0],assessments[1]).model_dump_json(indent=2)+'\n')
+print('3 assessments + comparison regenerated from demo-rules-3.0')
+
+exit=0
+3 assessments + comparison regenerated from demo-rules-3.0

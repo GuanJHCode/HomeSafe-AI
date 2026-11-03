@@ -1,0 +1,2 @@
+$ tsc --strict --noEmit --target ES2022 contracts/frontend/domain.ts
+exit=0

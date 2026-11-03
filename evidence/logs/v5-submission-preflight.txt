@@ -1,0 +1,8 @@
+BLOCKED: product/materials are not verified for submission
+- valid source commit required
+- owner_review: expected file descriptor
+- product_acceptance: expected file descriptor
+- report: expected file descriptor
+- video: expected file descriptor
+- final_scene: expected file descriptor
+- core feature→Lux3D evidence mapping missing

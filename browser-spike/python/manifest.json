@@ -1,0 +1,47 @@
+{
+  "bundle_sha256": "22ddc26ade1546adf5ddef995c0f97bc6775173f3ccd9b2ae9e5789113ba11c7",
+  "files": [
+    {
+      "path": "__init__.py",
+      "sha256": "c5e8710c299d2e26d971f48d464da6e63f3a58ddae8b7376c60a60e33ff09349"
+    },
+    {
+      "path": "models.py",
+      "sha256": "0dbfe657f5cf393f10d6291bbabeb4a3afcbd2e1661f706df54a8ef1f287ae4a"
+    },
+    {
+      "path": "geometry.py",
+      "sha256": "2640c467c7ccea074713d3a7a141836aa8e612e3c5387ba464e73cb9dcadbecc"
+    },
+    {
+      "path": "validation.py",
+      "sha256": "1480bfa9b32c45b6ae088dcf4913adef92d775de4e453d5bf7ddf9e73c0e531d"
+    },
+    {
+      "path": "rule_support.py",
+      "sha256": "e7a0aea5e8f1381ec7e55cbef05544a7d5eede41811c31d4081bfc50a8db7d80"
+    },
+    {
+      "path": "policy.py",
+      "sha256": "5eae12611dcc118dc44e0654c403a7c38077a3b9b986aeeb53316e15dc8b5d67"
+    },
+    {
+      "path": "rules.py",
+      "sha256": "8e7b7935153309b01f8befb9cd40a4461846f653e8dba10bcfdb22feb36dfd3f"
+    },
+    {
+      "path": "engine.py",
+      "sha256": "9e185d4b23c77ce7ba5896fdc7380d67f51885e0515e73b7fac68165f503c2b0"
+    },
+    {
+      "path": "challenge.py",
+      "sha256": "2c788692cae1fbe97bf498f9e49dc6a80c124f726577cbbb8c4973b864fd9c85"
+    },
+    {
+      "path": "browser_bridge.py",
+      "sha256": "881b077e51a7e7837df16b391c03fb4c2f081008caae55cd065c4b2bbd5eddfd"
+    }
+  ],
+  "contains_paid_sdk": false,
+  "contains_release_tool": false
+}

@@ -1,0 +1,388 @@
+FFFFFFFFFFFF.                                                            [100%]
+=================================== FAILURES ===================================
+________ test_official_shape_has_no_info_version_and_selects_ten_files _________
+
+distribution = PosixPath('/tmp/pytest-of-root/pytest-1/test_official_shape_has_no_inf0')
+
+    def test_official_shape_has_no_info_version_and_selects_ten_files(distribution):
+        lock = json.loads((distribution / 'pyodide-lock.json').read_text())
+        assert 'version' not in lock['info']
+>       records = vendor.selection(distribution)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+reference/tests/test_v61_vendor_bridge.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+source = PosixPath('/tmp/pytest-of-root/pytest-1/test_official_shape_has_no_inf0')
+
+    def selection(source: Path):
+        source=source.resolve()
+        lock=json.loads((source/"pyodide-lock.json").read_text())
+        if lock.get("info",{}).get("version") != VERSION:
+>           raise ValueError("expected the pinned Pyodide "+VERSION+" distribution")
+E           ValueError: expected the pinned Pyodide 314.0.6 distribution
+
+scripts/vendor_pyodide_from_dir.py:18: ValueError
+______________ test_incompatible_metadata_rejected[python-3.13.0] ______________
+
+distribution = PosixPath('/tmp/pytest-of-root/pytest-1/test_incompatible_metadata_rej0')
+key = 'python', value = '3.13.0'
+
+    @pytest.mark.parametrize('key,value', [('python', '3.13.0'), ('abi_version', '2025_0'),
+                                          ('arch', 'x86_64')])
+    def test_incompatible_metadata_rejected(distribution, key, value):
+        mutate_lock(distribution, lambda lock: lock['info'].update({key: value}))
+        with pytest.raises(ValueError, match='metadata'):
+>           vendor.selection(distribution)
+
+reference/tests/test_v61_vendor_bridge.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+source = PosixPath('/tmp/pytest-of-root/pytest-1/test_incompatible_metadata_rej0')
+
+    def selection(source: Path):
+        source=source.resolve()
+        lock=json.loads((source/"pyodide-lock.json").read_text())
+        if lock.get("info",{}).get("version") != VERSION:
+>           raise ValueError("expected the pinned Pyodide "+VERSION+" distribution")
+E           ValueError: expected the pinned Pyodide 314.0.6 distribution
+
+scripts/vendor_pyodide_from_dir.py:18: ValueError
+
+During handling of the above exception, another exception occurred:
+
+distribution = PosixPath('/tmp/pytest-of-root/pytest-1/test_incompatible_metadata_rej0')
+key = 'python', value = '3.13.0'
+
+    @pytest.mark.parametrize('key,value', [('python', '3.13.0'), ('abi_version', '2025_0'),
+                                          ('arch', 'x86_64')])
+    def test_incompatible_metadata_rejected(distribution, key, value):
+        mutate_lock(distribution, lambda lock: lock['info'].update({key: value}))
+>       with pytest.raises(ValueError, match='metadata'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'metadata'
+E         Actual message: 'expected the pinned Pyodide 314.0.6 distribution'
+
+reference/tests/test_v61_vendor_bridge.py:61: AssertionError
+___________ test_incompatible_metadata_rejected[abi_version-2025_0] ____________
+
+distribution = PosixPath('/tmp/pytest-of-root/pytest-1/test_incompatible_metadata_rej1')
+key = 'abi_version', value = '2025_0'
+
+    @pytest.mark.parametrize('key,value', [('python', '3.13.0'), ('abi_version', '2025_0'),
+                                          ('arch', 'x86_64')])
+    def test_incompatible_metadata_rejected(distribution, key, value):
+        mutate_lock(distribution, lambda lock: lock['info'].update({key: value}))
+        with pytest.raises(ValueError, match='metadata'):
+>           vendor.selection(distribution)
+
+reference/tests/test_v61_vendor_bridge.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+source = PosixPath('/tmp/pytest-of-root/pytest-1/test_incompatible_metadata_rej1')
+
+    def selection(source: Path):
+        source=source.resolve()
+        lock=json.loads((source/"pyodide-lock.json").read_text())
+        if lock.get("info",{}).get("version") != VERSION:
+>           raise ValueError("expected the pinned Pyodide "+VERSION+" distribution")
+E           ValueError: expected the pinned Pyodide 314.0.6 distribution
+
+scripts/vendor_pyodide_from_dir.py:18: ValueError
+
+During handling of the above exception, another exception occurred:
+
+distribution = PosixPath('/tmp/pytest-of-root/pytest-1/test_incompatible_metadata_rej1')
+key = 'abi_version', value = '2025_0'
+
+    @pytest.mark.parametrize('key,value', [('python', '3.13.0'), ('abi_version', '2025_0'),
+                                          ('arch', 'x86_64')])
+    def test_incompatible_metadata_rejected(distribution, key, value):
+        mutate_lock(distribution, lambda lock: lock['info'].update({key: value}))
+>       with pytest.raises(ValueError, match='metadata'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'metadata'
+E         Actual message: 'expected the pinned Pyodide 314.0.6 distribution'
+
+reference/tests/test_v61_vendor_bridge.py:61: AssertionError
+_______________ test_incompatible_metadata_rejected[arch-x86_64] _______________
+
+distribution = PosixPath('/tmp/pytest-of-root/pytest-1/test_incompatible_metadata_rej2')
+key = 'arch', value = 'x86_64'
+
+    @pytest.mark.parametrize('key,value', [('python', '3.13.0'), ('abi_version', '2025_0'),
+                                          ('arch', 'x86_64')])
+    def test_incompatible_metadata_rejected(distribution, key, value):
+        mutate_lock(distribution, lambda lock: lock['info'].update({key: value}))
+        with pytest.raises(ValueError, match='metadata'):
+>           vendor.selection(distribution)
+
+reference/tests/test_v61_vendor_bridge.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+source = PosixPath('/tmp/pytest-of-root/pytest-1/test_incompatible_metadata_rej2')
+
+    def selection(source: Path):
+        source=source.resolve()
+        lock=json.loads((source/"pyodide-lock.json").read_text())
+        if lock.get("info",{}).get("version") != VERSION:
+>           raise ValueError("expected the pinned Pyodide "+VERSION+" distribution")
+E           ValueError: expected the pinned Pyodide 314.0.6 distribution
+
+scripts/vendor_pyodide_from_dir.py:18: ValueError
+
+During handling of the above exception, another exception occurred:
+
+distribution = PosixPath('/tmp/pytest-of-root/pytest-1/test_incompatible_metadata_rej2')
+key = 'arch', value = 'x86_64'
+
+    @pytest.mark.parametrize('key,value', [('python', '3.13.0'), ('abi_version', '2025_0'),
+                                          ('arch', 'x86_64')])
+    def test_incompatible_metadata_rejected(distribution, key, value):
+        mutate_lock(distribution, lambda lock: lock['info'].update({key: value}))
+>       with pytest.raises(ValueError, match='metadata'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'metadata'
+E         Actual message: 'expected the pinned Pyodide 314.0.6 distribution'
+
+reference/tests/test_v61_vendor_bridge.py:61: AssertionError
+__________________ test_optional_package_json_version_checked __________________
+
+distribution = PosixPath('/tmp/pytest-of-root/pytest-1/test_optional_package_json_ver0')
+
+    def test_optional_package_json_version_checked(distribution):
+        (distribution / 'package.json').write_text(json.dumps({'name': 'pyodide', 'version': '314.0.5'}))
+        with pytest.raises(ValueError, match='package.json'):
+>           vendor.selection(distribution)
+
+reference/tests/test_v61_vendor_bridge.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+source = PosixPath('/tmp/pytest-of-root/pytest-1/test_optional_package_json_ver0')
+
+    def selection(source: Path):
+        source=source.resolve()
+        lock=json.loads((source/"pyodide-lock.json").read_text())
+        if lock.get("info",{}).get("version") != VERSION:
+>           raise ValueError("expected the pinned Pyodide "+VERSION+" distribution")
+E           ValueError: expected the pinned Pyodide 314.0.6 distribution
+
+scripts/vendor_pyodide_from_dir.py:18: ValueError
+
+During handling of the above exception, another exception occurred:
+
+distribution = PosixPath('/tmp/pytest-of-root/pytest-1/test_optional_package_json_ver0')
+
+    def test_optional_package_json_version_checked(distribution):
+        (distribution / 'package.json').write_text(json.dumps({'name': 'pyodide', 'version': '314.0.5'}))
+>       with pytest.raises(ValueError, match='package.json'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'package.json'
+E         Actual message: 'expected the pinned Pyodide 314.0.6 distribution'
+
+reference/tests/test_v61_vendor_bridge.py:67: AssertionError
+________________________ test_optional_full_lock_digest ________________________
+
+distribution = PosixPath('/tmp/pytest-of-root/pytest-1/test_optional_full_lock_digest0')
+
+    def test_optional_full_lock_digest(distribution):
+        digest = hashlib.sha256((distribution / 'pyodide-lock.json').read_bytes()).hexdigest()
+>       assert len(vendor.selection(distribution, expected_lock_sha256=digest)) == 10
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: selection() got an unexpected keyword argument 'expected_lock_sha256'
+
+reference/tests/test_v61_vendor_bridge.py:73: TypeError
+___________________ test_truncated_lock_digest_is_not_a_pin ____________________
+
+distribution = PosixPath('/tmp/pytest-of-root/pytest-1/test_truncated_lock_digest_is_0')
+
+    def test_truncated_lock_digest_is_not_a_pin(distribution):
+        with pytest.raises(ValueError, match='64'):
+>           vendor.selection(distribution, expected_lock_sha256='3fdaef09...8ad4')
+E           TypeError: selection() got an unexpected keyword argument 'expected_lock_sha256'
+
+reference/tests/test_v61_vendor_bridge.py:80: TypeError
+____________________ test_missing_wheel_digest_is_rejected _____________________
+
+distribution = PosixPath('/tmp/pytest-of-root/pytest-1/test_missing_wheel_digest_is_r0')
+
+    def test_missing_wheel_digest_is_rejected(distribution):
+        mutate_lock(distribution, lambda lock: lock['packages']['pydantic'].pop('sha256'))
+        with pytest.raises(ValueError, match='sha256'):
+>           vendor.selection(distribution)
+
+reference/tests/test_v61_vendor_bridge.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+source = PosixPath('/tmp/pytest-of-root/pytest-1/test_missing_wheel_digest_is_r0')
+
+    def selection(source: Path):
+        source=source.resolve()
+        lock=json.loads((source/"pyodide-lock.json").read_text())
+        if lock.get("info",{}).get("version") != VERSION:
+>           raise ValueError("expected the pinned Pyodide "+VERSION+" distribution")
+E           ValueError: expected the pinned Pyodide 314.0.6 distribution
+
+scripts/vendor_pyodide_from_dir.py:18: ValueError
+
+During handling of the above exception, another exception occurred:
+
+distribution = PosixPath('/tmp/pytest-of-root/pytest-1/test_missing_wheel_digest_is_r0')
+
+    def test_missing_wheel_digest_is_rejected(distribution):
+        mutate_lock(distribution, lambda lock: lock['packages']['pydantic'].pop('sha256'))
+>       with pytest.raises(ValueError, match='sha256'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'sha256'
+E         Actual message: 'expected the pinned Pyodide 314.0.6 distribution'
+
+reference/tests/test_v61_vendor_bridge.py:85: AssertionError
+________________ test_duplicate_normalized_package_is_rejected _________________
+
+distribution = PosixPath('/tmp/pytest-of-root/pytest-1/test_duplicate_normalized_pack0')
+
+    def test_duplicate_normalized_package_is_rejected(distribution):
+        mutate_lock(distribution, lambda lock: lock['packages'].update(
+            {'typing-extensions': dict(lock['packages']['typing_extensions'])}))
+        with pytest.raises(ValueError, match='duplicate'):
+>           vendor.selection(distribution)
+
+reference/tests/test_v61_vendor_bridge.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+source = PosixPath('/tmp/pytest-of-root/pytest-1/test_duplicate_normalized_pack0')
+
+    def selection(source: Path):
+        source=source.resolve()
+        lock=json.loads((source/"pyodide-lock.json").read_text())
+        if lock.get("info",{}).get("version") != VERSION:
+>           raise ValueError("expected the pinned Pyodide "+VERSION+" distribution")
+E           ValueError: expected the pinned Pyodide 314.0.6 distribution
+
+scripts/vendor_pyodide_from_dir.py:18: ValueError
+
+During handling of the above exception, another exception occurred:
+
+distribution = PosixPath('/tmp/pytest-of-root/pytest-1/test_duplicate_normalized_pack0')
+
+    def test_duplicate_normalized_package_is_rejected(distribution):
+        mutate_lock(distribution, lambda lock: lock['packages'].update(
+            {'typing-extensions': dict(lock['packages']['typing_extensions'])}))
+>       with pytest.raises(ValueError, match='duplicate'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'duplicate'
+E         Actual message: 'expected the pinned Pyodide 314.0.6 distribution'
+
+reference/tests/test_v61_vendor_bridge.py:92: AssertionError
+__________________ test_symlink_lock_is_rejected_before_read ___________________
+
+distribution = PosixPath('/tmp/pytest-of-root/pytest-1/test_symlink_lock_is_rejected_0')
+
+    def test_symlink_lock_is_rejected_before_read(distribution):
+        original = distribution / 'real-lock.json'
+        (distribution / 'pyodide-lock.json').rename(original)
+        (distribution / 'pyodide-lock.json').symlink_to(original)
+        with pytest.raises(ValueError, match='unsafe'):
+>           vendor.selection(distribution)
+
+reference/tests/test_v61_vendor_bridge.py:101: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+source = PosixPath('/tmp/pytest-of-root/pytest-1/test_symlink_lock_is_rejected_0')
+
+    def selection(source: Path):
+        source=source.resolve()
+        lock=json.loads((source/"pyodide-lock.json").read_text())
+        if lock.get("info",{}).get("version") != VERSION:
+>           raise ValueError("expected the pinned Pyodide "+VERSION+" distribution")
+E           ValueError: expected the pinned Pyodide 314.0.6 distribution
+
+scripts/vendor_pyodide_from_dir.py:18: ValueError
+
+During handling of the above exception, another exception occurred:
+
+distribution = PosixPath('/tmp/pytest-of-root/pytest-1/test_symlink_lock_is_rejected_0')
+
+    def test_symlink_lock_is_rejected_before_read(distribution):
+        original = distribution / 'real-lock.json'
+        (distribution / 'pyodide-lock.json').rename(original)
+        (distribution / 'pyodide-lock.json').symlink_to(original)
+>       with pytest.raises(ValueError, match='unsafe'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'unsafe'
+E         Actual message: 'expected the pinned Pyodide 314.0.6 distribution'
+
+reference/tests/test_v61_vendor_bridge.py:100: AssertionError
+___________________ test_deep_json_is_a_structured_error[70] ___________________
+
+depth = 70
+
+    @pytest.mark.parametrize('depth', [70, 2000])
+    def test_deep_json_is_a_structured_error(depth):
+        raw = '{"op":"evaluate","payload":{"scene":' + '[' * depth + '0' + ']' * depth + '}}'
+        result = json.loads(dispatch_json(raw))
+        assert result['ok'] is False
+>       assert result['error']['code'] == 'INPUT_TOO_DEEP'
+E       AssertionError: assert 'INVALID_INPUT' == 'INPUT_TOO_DEEP'
+E         
+E         - INPUT_TOO_DEEP
+E         + INVALID_INPUT
+
+reference/tests/test_v61_vendor_bridge.py:109: AssertionError
+__________________ test_deep_json_is_a_structured_error[2000] __________________
+
+depth = 2000
+
+    @pytest.mark.parametrize('depth', [70, 2000])
+    def test_deep_json_is_a_structured_error(depth):
+        raw = '{"op":"evaluate","payload":{"scene":' + '[' * depth + '0' + ']' * depth + '}}'
+        result = json.loads(dispatch_json(raw))
+        assert result['ok'] is False
+>       assert result['error']['code'] == 'INPUT_TOO_DEEP'
+E       AssertionError: assert 'INVALID_INPUT' == 'INPUT_TOO_DEEP'
+E         
+E         - INPUT_TOO_DEEP
+E         + INVALID_INPUT
+
+reference/tests/test_v61_vendor_bridge.py:109: AssertionError
+=========================== short test summary info ============================
+FAILED reference/tests/test_v61_vendor_bridge.py::test_official_shape_has_no_info_version_and_selects_ten_files - ValueError: expected the pinned Pyodide 314.0.6 distribution
+FAILED reference/tests/test_v61_vendor_bridge.py::test_incompatible_metadata_rejected[python-3.13.0] - AssertionError: Regex pattern did not match.
+  Expected regex: 'metadata'
+  Actual message: 'expected the pinned Pyodide 314.0.6 distribution'
+FAILED reference/tests/test_v61_vendor_bridge.py::test_incompatible_metadata_rejected[abi_version-2025_0] - AssertionError: Regex pattern did not match.
+  Expected regex: 'metadata'
+  Actual message: 'expected the pinned Pyodide 314.0.6 distribution'
+FAILED reference/tests/test_v61_vendor_bridge.py::test_incompatible_metadata_rejected[arch-x86_64] - AssertionError: Regex pattern did not match.
+  Expected regex: 'metadata'
+  Actual message: 'expected the pinned Pyodide 314.0.6 distribution'
+FAILED reference/tests/test_v61_vendor_bridge.py::test_optional_package_json_version_checked - AssertionError: Regex pattern did not match.
+  Expected regex: 'package.json'
+  Actual message: 'expected the pinned Pyodide 314.0.6 distribution'
+FAILED reference/tests/test_v61_vendor_bridge.py::test_optional_full_lock_digest - TypeError: selection() got an unexpected keyword argument 'expected_lock_sha256'
+FAILED reference/tests/test_v61_vendor_bridge.py::test_truncated_lock_digest_is_not_a_pin - TypeError: selection() got an unexpected keyword argument 'expected_lock_sha256'
+FAILED reference/tests/test_v61_vendor_bridge.py::test_missing_wheel_digest_is_rejected - AssertionError: Regex pattern did not match.
+  Expected regex: 'sha256'
+  Actual message: 'expected the pinned Pyodide 314.0.6 distribution'
+FAILED reference/tests/test_v61_vendor_bridge.py::test_duplicate_normalized_package_is_rejected - AssertionError: Regex pattern did not match.
+  Expected regex: 'duplicate'
+  Actual message: 'expected the pinned Pyodide 314.0.6 distribution'
+FAILED reference/tests/test_v61_vendor_bridge.py::test_symlink_lock_is_rejected_before_read - AssertionError: Regex pattern did not match.
+  Expected regex: 'unsafe'
+  Actual message: 'expected the pinned Pyodide 314.0.6 distribution'
+FAILED reference/tests/test_v61_vendor_bridge.py::test_deep_json_is_a_structured_error[70] - AssertionError: assert 'INVALID_INPUT' == 'INPUT_TOO_DEEP'
+  
+  - INPUT_TOO_DEEP
+  + INVALID_INPUT
+FAILED reference/tests/test_v61_vendor_bridge.py::test_deep_json_is_a_structured_error[2000] - AssertionError: assert 'INVALID_INPUT' == 'INPUT_TOO_DEEP'
+  
+  - INPUT_TOO_DEEP
+  + INVALID_INPUT
+12 failed, 1 passed in 0.19s

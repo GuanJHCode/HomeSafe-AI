@@ -1,0 +1,2 @@
+$ node --check browser-spike/main.mjs
+exit=0

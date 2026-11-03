@@ -1,0 +1,3 @@
+$ /opt/pyvenv/bin/python -S scripts/generate_contracts.py
+exit=0
+Canonical contracts generated (3 files; not a live API)

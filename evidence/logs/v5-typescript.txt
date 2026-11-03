@@ -1,0 +1,2 @@
+Version 5.8.3
+TypeScript strict check exit=0

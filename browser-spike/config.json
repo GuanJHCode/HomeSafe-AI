@@ -1,0 +1,9 @@
+{
+  "pyodideVersion": "314.0.6",
+  "pydanticVersion": "2.12.5",
+  "pyodideIndexURL": "https://cdn.jsdelivr.net/pyodide/v314.0.6/full/",
+  "coreBundle": "python/homesafe_core.zip",
+  "coreManifest": "python/manifest.json",
+  "mode": "diagnostic_spike_not_submission",
+  "runtimeNetworkPolicy": "CDN only for initial compatibility spike; production must benchmark same-origin vendored files"
+}

@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: request IDs route out-of-order replies without stale acceptance
+ok 1 - request IDs route out-of-order replies without stale acceptance
+  ---
+  duration_ms: 0.954841
+  type: 'test'
+  ...
+# Subtest: structured placement failures propagate
+ok 2 - structured placement failures propagate
+  ---
+  duration_ms: 0.811104
+  type: 'test'
+  ...
+# Subtest: dispose rejects pending work and terminates worker
+ok 3 - dispose rejects pending work and terminates worker
+  ---
+  duration_ms: 0.261574
+  type: 'test'
+  ...
+# Subtest: timeouts never manufacture a success
+ok 4 - timeouts never manufacture a success
+  ---
+  duration_ms: 5.316942
+  type: 'test'
+  ...
+# Subtest: synchronous postMessage failure rejects and clears pending request
+ok 5 - synchronous postMessage failure rejects and clears pending request
+  ---
+  duration_ms: 0.450639
+  type: 'test'
+  ...
+# Subtest: rejected initialization is cleared and a second attempt can succeed
+ok 6 - rejected initialization is cleared and a second attempt can succeed
+  ---
+  duration_ms: 4.053785
+  type: 'test'
+  ...
+# Subtest: evaluation after failed init cannot turn into success
+ok 7 - evaluation after failed init cannot turn into success
+  ---
+  duration_ms: 0.307404
+  type: 'test'
+  ...
+# Subtest: successful initialization is reused and queued evaluation waits for it
+ok 8 - successful initialization is reused and queued evaluation waits for it
+  ---
+  duration_ms: 7.478672
+  type: 'test'
+  ...
+# Subtest: dispatch failure does not poison subsequent commands
+ok 9 - dispatch failure does not poison subsequent commands
+  ---
+  duration_ms: 0.348556
+  type: 'test'
+  ...
+# Subtest: oversized message is rejected before calling Python
+ok 10 - oversized message is rejected before calling Python
+  ---
+  duration_ms: 2.663808
+  type: 'test'
+  ...
+# Subtest: malformed message remains structured and the queue recovers
+ok 11 - malformed message remains structured and the queue recovers
+  ---
+  duration_ms: 0.191389
+  type: 'test'
+  ...
+# Subtest: goal-met summary never omits outstanding triggered findings
+ok 12 - goal-met summary never omits outstanding triggered findings
+  ---
+  duration_ms: 0.19883
+  type: 'test'
+  ...
+# Subtest: missing summary counts cannot masquerade as zero
+ok 13 - missing summary counts cannot masquerade as zero
+  ---
+  duration_ms: 0.094182
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 76.009998

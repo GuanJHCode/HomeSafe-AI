@@ -1,0 +1,17 @@
+{
+  "manifest_version": "2.0",
+  "status": "DRAFT",
+  "channel": "public",
+  "source_commit": "",
+  "owner_review": null,
+  "product_acceptance": null,
+  "report": null,
+  "video": null,
+  "scene": null,
+  "assets": [],
+  "feature_asset_map": [],
+  "official_receipt": null,
+  "release_profile": "interactive_browser_demo_with_video",
+  "primary_demo_url": null,
+  "deployment_receipt": null
+}

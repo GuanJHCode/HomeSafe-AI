@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "baseline": "V6.1-browser-first-patch",
+  "product_status": "REFERENCE_AND_SPIKE_SOURCE_ONLY",
+  "tasks": [
+    {
+      "id": "T00",
+      "target_date": "2026-11-03",
+      "title": "规则核验与报名选题",
+      "priority": "P0",
+      "status": "PARTIALLY_VERIFIED",
+      "owner": null,
+      "commit": null,
+      "evidence": [
+        "evidence/rules-verification.json"
+      ],
+      "remaining": "账户报名/团队/选题状态与实际表单字段仍需本人操作；固定条款已纳入核验"
+    },
+    {
+      "id": "T01",
+      "target_date": "2026-11-05",
+      "title": "浏览器风险探针",
+      "priority": "P0",
+      "status": "USER_VERIFIED_V6_RECHECK_PATCH",
+      "owner": null,
+      "commit": null,
+      "evidence": [
+        "evidence/external-verification-20261103.json"
+      ],
+      "remaining": "V6.1同源复制与重试回归；正式目标托管及真实3D尚未验证"
+    },
+    {
+      "id": "T02",
+      "target_date": "2026-11-06",
+      "title": "第一条3D互动",
+      "priority": "P0",
+      "status": "NOT_STARTED",
+      "owner": null,
+      "commit": null,
+      "evidence": []
+    },
+    {
+      "id": "T03",
+      "target_date": "2026-11-06",
+      "title": "两件真实Lux3D模型",
+      "priority": "P0",
+      "status": "NOT_STARTED",
+      "owner": null,
+      "commit": null,
+      "evidence": []
+    },
+    {
+      "id": "T04",
+      "target_date": "2026-11-07",
+      "title": "首次在线部署",
+      "priority": "P0",
+      "status": "NOT_STARTED",
+      "owner": null,
+      "commit": null,
+      "evidence": []
+    },
+    {
+      "id": "T05",
+      "target_date": "2026-11-09",
+      "title": "统一资产与双视角",
+      "priority": "P0",
+      "status": "NOT_STARTED",
+      "owner": null,
+      "commit": null,
+      "evidence": []
+    },
+    {
+      "id": "T06",
+      "target_date": "2026-11-11",
+      "title": "改造挑战",
+      "priority": "P0",
+      "status": "NOT_STARTED",
+      "owner": null,
+      "commit": null,
+      "evidence": []
+    },
+    {
+      "id": "T07",
+      "target_date": "2026-11-12",
+      "title": "清单与性能",
+      "priority": "P0",
+      "status": "NOT_STARTED",
+      "owner": null,
+      "commit": null,
+      "evidence": []
+    },
+    {
+      "id": "T08",
+      "target_date": "2026-11-12",
+      "title": "可选本地图生3D",
+      "priority": "P1",
+      "status": "NOT_STARTED",
+      "owner": null,
+      "commit": null,
+      "evidence": []
+    },
+    {
+      "id": "T09",
+      "target_date": "2026-11-14",
+      "title": "冻结与回归",
+      "priority": "P0",
+      "status": "NOT_STARTED",
+      "owner": null,
+      "commit": null,
+      "evidence": []
+    },
+    {
+      "id": "T10",
+      "target_date": "2026-11-14",
+      "title": "报告视频社媒",
+      "priority": "P0",
+      "status": "NOT_STARTED",
+      "owner": null,
+      "commit": null,
+      "evidence": []
+    },
+    {
+      "id": "T11",
+      "target_date": "2026-11-15",
+      "title": "首次正式提交",
+      "priority": "P0",
+      "status": "NOT_STARTED",
+      "owner": null,
+      "commit": null,
+      "evidence": []
+    },
+    {
+      "id": "T12",
+      "target_date": "2026-11-18",
+      "title": "修错与复交",
+      "priority": "P0",
+      "status": "NOT_STARTED",
+      "owner": null,
+      "commit": null,
+      "evidence": []
+    },
+    {
+      "id": "T13",
+      "target_date": "2026-11-19",
+      "title": "截止前复核",
+      "priority": "P0",
+      "status": "NOT_STARTED",
+      "owner": null,
+      "commit": null,
+      "evidence": []
+    },
+    {
+      "id": "T14",
+      "target_date": null,
+      "title": "评审及后续维护",
+      "priority": "P0",
+      "status": "NOT_STARTED",
+      "owner": null,
+      "commit": null,
+      "evidence": []
+    }
+  ]
+}

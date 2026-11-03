@@ -1,0 +1,2 @@
+$ /opt/pyvenv/bin/python -S -m compileall -q reference scripts tools
+exit=0

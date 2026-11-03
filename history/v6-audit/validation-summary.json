@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-03",
+  "release": "V6-browser-first",
+  "scope": "design-reference-core-and-browser-diagnostic-source",
+  "python": "3.13.5",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "node": "v22.16.0",
+  "typescript": "Version 5.8.3",
+  "native_pydantic": "2.13.5",
+  "browser_target": {
+    "pyodide": "314.0.6",
+    "pydantic": "2.12.5",
+    "execution": "NOT_RUN"
+  },
+  "python_tests": {
+    "passed": 170,
+    "failed": 0,
+    "skipped": 0,
+    "includes_original_v5_tests": 146
+  },
+  "js_client_tests": {
+    "passed": 4,
+    "failed": 0,
+    "skipped": 0,
+    "uses": "FakeWorker, not Pyodide"
+  },
+  "package_checks": {
+    "passed": 8,
+    "failed": 0
+  },
+  "canonical_contracts": {
+    "files": 3,
+    "status": "MATCH"
+  },
+  "typescript_strict": "PASS",
+  "submission_preflight": {
+    "status": "BLOCKED_EXPECTED",
+    "exit": 2
+  },
+  "browser_ui": "DIAGNOSTIC_SOURCE_ONLY",
+  "complete_3d_app": "NOT_IMPLEMENTED",
+  "real_lux3d": "NOT_RUN",
+  "real_pyodide_node": "NOT_RUN",
+  "real_browser_pyodide": "NOT_RUN",
+  "real_hosting": "NOT_DEPLOYED",
+  "official_submission": "NOT_SUBMITTED",
+  "github_actions": "NOT_RUN",
+  "remote_git": "NOT_TOUCHED",
+  "paid_api_calls": 0,
+  "claude_node_benchmarks": "USER_REPORTED_NOT_INDEPENDENTLY_REPRODUCED"
+}

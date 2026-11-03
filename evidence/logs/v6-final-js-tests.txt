@@ -1,0 +1,42 @@
+$ node --test browser-spike/client.test.mjs
+exit=0
+TAP version 13
+# (node:1324) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: request IDs route out-of-order replies without stale acceptance
+ok 1 - request IDs route out-of-order replies without stale acceptance
+  ---
+  duration_ms: 1.168372
+  type: 'test'
+  ...
+# Subtest: structured placement failures propagate
+ok 2 - structured placement failures propagate
+  ---
+  duration_ms: 1.357467
+  type: 'test'
+  ...
+# Subtest: dispose rejects pending work and terminates worker
+ok 3 - dispose rejects pending work and terminates worker
+  ---
+  duration_ms: 0.377559
+  type: 'test'
+  ...
+# Subtest: timeouts never manufacture a success
+ok 4 - timeouts never manufacture a success
+  ---
+  duration_ms: 4.955962
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 66.480588
+
+STDERR:
+(node:1317) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

@@ -1,0 +1,21 @@
+{
+  "status": "NOT_DEPLOYED",
+  "primary_url": null,
+  "backup_url": null,
+  "owner": null,
+  "release_commit": null,
+  "anonymous_access": "NOT_RUN",
+  "browser_worker": "NOT_RUN",
+  "real_glb_rendering": "NOT_RUN",
+  "cold_start_measurement": null,
+  "hot_evaluation_measurement": null,
+  "pyodide_version": "314.0.6",
+  "pydantic_version": "2.12.5",
+  "minimum_retention_date": "2026-12-31",
+  "actual_results_date": null,
+  "maintain_until": null,
+  "shutdown_allowed": false,
+  "retention_policy": "max(2026-12-31, actual_results_date+30days); conservative project policy pending form verification",
+  "user_reported_terms_verified_by_owner": false,
+  "evidence_files": []
+}

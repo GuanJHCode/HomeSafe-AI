@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HomeSafe V6.1 · 浏览器兼容性探针</title>
+<style>
+body{max-width:1000px;margin:2rem auto;padding:0 1rem;font:16px/1.7 system-ui}
+button{padding:.65rem 1rem;margin:.3rem}pre{white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid;padding:1rem}
+</style>
+<h1>HomeSafe V6.1 浏览器兼容性探针</h1>
+<p>这是规则迁移测试页，不是已完成的三维作品。无照片上传、无密钥、无收费生成。
+首次会按 config.json 加载指定 Pyodide 运行时；公网最终版需另行部署验收。</p>
+<p>重新初始化会清除当前挑战状态；运行失败后可以直接重试。同源探针使用 <code>?runtime=same-origin</code>。</p>
+<button id="init">初始化 / 重试 Python Worker</button>
+<button id="examples" disabled>验证三个样例与原生 Python 一致</button>
+<button id="challenge" disabled>执行示例挑战流程</button>
+<pre id="output" aria-live="polite">尚未运行。请先执行 python scripts/stage_browser_core.py，再通过 HTTP 访问。</pre>
+<script type="module" src="./main.mjs"></script></html>

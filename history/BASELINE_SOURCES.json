@@ -1,0 +1,18 @@
+{
+  "sources": [
+    {
+      "filename": "HomeSafe-AI-implementation-handoff-20261103.zip",
+      "sha256": "c1d7205f0c0a22dcbd17b72a479211297b8ce4c8eb4cc1e3c0723347677d889a"
+    },
+    {
+      "filename": "HomeSafe-AI-review-v4-20261103.zip",
+      "sha256": "45d80d6de3ab60a2774999412977817ebf081f04993779e7e511a0fe7e82ddfb"
+    }
+  ],
+  "note": "Historical source references only; old archives are not required to use this V5 package.",
+  "v6_parent_zip": {
+    "name": "HomeSafe-AI-V6-browser-first-20261103.zip",
+    "bytes": 237330,
+    "sha256": "7f88d242010db241f8ce9123d27482bc4bbd4bbea760ad0e5887e355c4261ba5"
+  }
+}

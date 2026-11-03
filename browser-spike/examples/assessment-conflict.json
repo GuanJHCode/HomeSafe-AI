@@ -1,0 +1,281 @@
+{
+  "scene_id": "demo-living-room",
+  "scene_revision": 2,
+  "input_hash": "6b36e4ff1e739ac9c42499212c8e48025d745d0361e0b830dbdbbca20a772644",
+  "ruleset_version": "demo-rules-3.0",
+  "comparison_basis": {
+    "scene_id": "demo-living-room",
+    "ruleset_version": "demo-rules-3.0",
+    "context_hash": "5b320cc6d49c8ecaf7d8d1c9920329d9eea84ec36c0f9b22b21fb70338927acf",
+    "object_scope": {
+      "chair": "9797478b14d60e2eb9bef754d625491a0784d8cf03791b0839898e81d68a274c",
+      "window": "c9271d266915361bec404436aba6c2ef27d0e4448f36dc95e4c6422afee3fd65",
+      "cabinet": "e88903455935c54f155b8f721321352db1ad5fb116da17fb71c330896ce55dfc",
+      "storage": "681a7907e2be5bb5561854a7a7804d5935bee2bebdd9a6481ae2a3f04ba95f5c",
+      "rug": "5e1f16edf1eb9a32f7a230eea389bb825f215a2427dc13eb6a25d48dfccd2d17",
+      "cord": "8bbdb4aa98b09cc77a365c0bf8f7c7c2670084b9bb34ff2405781487ccdf8575",
+      "gate": "55a7c634e0882ec4b52031ee5d9d35df505196017a041adc3d5f4e4585ec767a"
+    },
+    "layout_hash": "61519ece585dbdd385f6dc8b80fc177ab2d2638f8146c1a5ed41aa9c1f7d246e",
+    "observation_hash": "70df947b8b49fd9ea09e756d636f7fdb00cab71bac5dd7125694fb2bcfa5047b"
+  },
+  "findings": [
+    {
+      "key": "4a279e19461caaa6006271bf",
+      "rule_id": "R001",
+      "profile_id": "child",
+      "object_ids": [
+        "cabinet",
+        "window"
+      ],
+      "scope_id": "scene",
+      "status": "not_triggered",
+      "evidence": {
+        "distance_m": 5.000000000000001,
+        "attention_band_m": 0.6,
+        "parameter_source": "demo_heuristic",
+        "approach_route_verified": false,
+        "can_climb_source": "demo"
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。"
+    },
+    {
+      "key": "92c6d93d56742aac9cdd5203",
+      "rule_id": "R001",
+      "profile_id": "child",
+      "object_ids": [
+        "chair",
+        "window"
+      ],
+      "scope_id": "scene",
+      "status": "not_triggered",
+      "evidence": {
+        "distance_m": 2.668332812825267,
+        "attention_band_m": 0.6,
+        "parameter_source": "demo_heuristic",
+        "approach_route_verified": false,
+        "can_climb_source": "demo"
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。"
+    },
+    {
+      "key": "dc26ee1c75b4081b77a77cd3",
+      "rule_id": "R002",
+      "profile_id": "child",
+      "object_ids": [
+        "window"
+      ],
+      "scope_id": "scene",
+      "status": "needs_review",
+      "evidence": {
+        "protection_reported": null,
+        "source": "unknown"
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。"
+    },
+    {
+      "key": "5ab29a57fefca8858396c42b",
+      "rule_id": "R003",
+      "profile_id": "child",
+      "object_ids": [
+        "cabinet"
+      ],
+      "scope_id": "scene",
+      "status": "needs_review",
+      "evidence": {
+        "anchored_reported": null,
+        "source": "unknown"
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。"
+    },
+    {
+      "key": "c59dd7b69df3c0de74a49f22",
+      "rule_id": "R004",
+      "profile_id": "child",
+      "object_ids": [
+        "storage"
+      ],
+      "scope_id": "scene",
+      "status": "triggered",
+      "evidence": {
+        "storage_world_height_m": 0.5,
+        "configured_reach_height_m": 0.8,
+        "locked_reported": false,
+        "height_source": "demo",
+        "lock_source": "demo",
+        "not_total_access_proof": true
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。"
+    },
+    {
+      "key": "220825f2bca4bc89ffb1759a",
+      "rule_id": "R005",
+      "profile_id": "elder",
+      "object_ids": [
+        "cabinet"
+      ],
+      "scope_id": "elder-route",
+      "status": "not_triggered",
+      "evidence": {
+        "overlaps_designated_route": false,
+        "route_confirmed": true,
+        "alternative_routes_evaluated": false
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。"
+    },
+    {
+      "key": "99f7958ea5f112a850af38ce",
+      "rule_id": "R005",
+      "profile_id": "elder",
+      "object_ids": [
+        "chair"
+      ],
+      "scope_id": "elder-route",
+      "status": "triggered",
+      "evidence": {
+        "overlaps_designated_route": true,
+        "route_confirmed": true,
+        "alternative_routes_evaluated": false
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。"
+    },
+    {
+      "key": "39eb28e49bb8c8fff1a14744",
+      "rule_id": "R005",
+      "profile_id": "elder",
+      "object_ids": [
+        "storage"
+      ],
+      "scope_id": "elder-route",
+      "status": "not_triggered",
+      "evidence": {
+        "overlaps_designated_route": false,
+        "route_confirmed": true,
+        "alternative_routes_evaluated": false
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。"
+    },
+    {
+      "key": "45dc67408aa623e0255c0f31",
+      "rule_id": "R006",
+      "profile_id": "elder",
+      "object_ids": [
+        "rug"
+      ],
+      "scope_id": "elder-route",
+      "status": "needs_review",
+      "evidence": {
+        "overlaps_designated_route": true,
+        "route_confirmed": true,
+        "alternative_routes_evaluated": false
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。"
+    },
+    {
+      "key": "8113d090f561ecdcaa2fad59",
+      "rule_id": "R007",
+      "profile_id": "child",
+      "object_ids": [
+        "cord"
+      ],
+      "scope_id": "scene",
+      "status": "needs_review",
+      "evidence": {
+        "accessible_reported": true,
+        "secured_reported": null,
+        "source": "unknown"
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。"
+    },
+    {
+      "key": "4a85368d219250e4710fab58",
+      "rule_id": "R008",
+      "profile_id": "elder",
+      "object_ids": [
+        "gate"
+      ],
+      "scope_id": "elder-route",
+      "status": "triggered",
+      "evidence": {
+        "overlaps_designated_route": true,
+        "route_confirmed": true,
+        "alternative_routes_evaluated": false
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。"
+    }
+  ],
+  "coverage": [
+    {
+      "rule_id": "R001",
+      "profile_id": "child",
+      "state": "evaluated",
+      "evaluated_count": 2,
+      "pending_count": 0,
+      "reason": "仅覆盖明确建模的对象及指定关系"
+    },
+    {
+      "rule_id": "R002",
+      "profile_id": "child",
+      "state": "missing_input",
+      "evaluated_count": 0,
+      "pending_count": 1,
+      "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+    },
+    {
+      "rule_id": "R003",
+      "profile_id": "child",
+      "state": "missing_input",
+      "evaluated_count": 0,
+      "pending_count": 1,
+      "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+    },
+    {
+      "rule_id": "R004",
+      "profile_id": "child",
+      "state": "evaluated",
+      "evaluated_count": 1,
+      "pending_count": 0,
+      "reason": "仅覆盖明确建模的对象及指定关系"
+    },
+    {
+      "rule_id": "R007",
+      "profile_id": "child",
+      "state": "missing_input",
+      "evaluated_count": 0,
+      "pending_count": 1,
+      "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+    },
+    {
+      "rule_id": "R005",
+      "profile_id": "elder",
+      "state": "evaluated",
+      "evaluated_count": 3,
+      "pending_count": 0,
+      "reason": "仅覆盖明确建模的对象及指定关系"
+    },
+    {
+      "rule_id": "R006",
+      "profile_id": "elder",
+      "state": "missing_input",
+      "evaluated_count": 0,
+      "pending_count": 1,
+      "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+    },
+    {
+      "rule_id": "R008",
+      "profile_id": "elder",
+      "state": "evaluated",
+      "evaluated_count": 1,
+      "pending_count": 0,
+      "reason": "仅覆盖明确建模的对象及指定关系"
+    }
+  ],
+  "unsupported_domains": [
+    "真实攀爬/人体可达性",
+    "家具倾倒物理",
+    "动态步态与转身",
+    "全屋及全部伤害类型",
+    "安装质量核验"
+  ],
+  "setup_items": []
+}

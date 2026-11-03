@@ -1,0 +1,3 @@
+$ /opt/pyvenv/bin/python -S scripts/stage_browser_core.py
+exit=0
+Staged 10 modules; runtime/vendor packages are NOT included.

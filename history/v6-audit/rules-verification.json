@@ -1,0 +1,106 @@
+{
+  "checked_on": "2026-11-03",
+  "original_js_or_form_keys_received": false,
+  "official_sources": {
+    "S01": "https://www.aholo3d.cn/hackathon",
+    "S02": "https://www.aholo.ai/hackathon",
+    "S03": "https://labs.aholo.ai/api-docs/sdk/python",
+    "S04": "https://pyodide.org/en/314.0.6/usage/webworker.html",
+    "S05": "https://pyodide.org/en/314.0.6/usage/packages-in-pyodide.html",
+    "S06": "https://pyodide.org/en/314.0.6/usage/downloading-and-deploying.html",
+    "S07": "https://github.com/modelscope/modelscope-skills/blob/main/skills/ms-studio-deploy/SKILL.md",
+    "S08": "https://aholo.featurebase.app/zh-CN/help/articles/6916933-dashboardji-fen-yu-api-mi-yao"
+  },
+  "records": [
+    {
+      "claim": "Lux3D核心/API可选",
+      "status": "INDEPENDENTLY_VERIFIED",
+      "source": "S01",
+      "project_action": "保留核心资产；不强制API"
+    },
+    {
+      "claim": "五维评分30/25/20/20/5与专家玩家70/30",
+      "status": "INDEPENDENTLY_VERIFIED",
+      "source": "S01",
+      "project_action": "按评分排序；社媒列任务"
+    },
+    {
+      "claim": "50名玩家评委",
+      "status": "INDEPENDENTLY_VERIFIED",
+      "source": "S01",
+      "project_action": "不是前50名入围的证据"
+    },
+    {
+      "claim": "前50名阶段才适用最终评审",
+      "status": "USER_REPORTED_PENDING",
+      "source": "user Claude JS summary",
+      "project_action": "未独立取得入围条款，不用于资格推断"
+    },
+    {
+      "claim": "项目报告与Demo链接或真实运行视频",
+      "status": "INDEPENDENTLY_VERIFIED",
+      "source": "S01/S02",
+      "project_action": "项目选择在线互动为主、视频补充"
+    },
+    {
+      "claim": "Demo维持到2026-12-31且结果后30天",
+      "status": "USER_REPORTED_PENDING",
+      "source": "user Claude JS summary",
+      "project_action": "PROJECT_POLICY按max执行，待本人截图确认"
+    },
+    {
+      "claim": "提交表单推荐魔搭",
+      "status": "USER_REPORTED_PENDING",
+      "source": "user Claude JS summary",
+      "project_action": "公开页鼓励魔搭已核实；精确字段文案待核"
+    },
+    {
+      "claim": "作品禁止真实用户数据",
+      "status": "USER_REPORTED_PENDING",
+      "source": "user Claude JS summary",
+      "project_action": "PROJECT_POLICY不收集/不提交真实数据"
+    },
+    {
+      "claim": "截止前可多次提交，以最后为准",
+      "status": "USER_REPORTED_PENDING",
+      "source": "user Claude JS summary",
+      "project_action": "11/15首交；复交前核对实际表单"
+    },
+    {
+      "claim": "确认组队→选题→作品门禁",
+      "status": "USER_REPORTED_PENDING",
+      "source": "user Claude JS summary",
+      "project_action": "当天核验，不绕过门禁"
+    },
+    {
+      "claim": "团队提交选题后奖励、后入成员不补发",
+      "status": "INDEPENDENTLY_VERIFIED",
+      "source": "S01",
+      "project_action": "先定名单；实际到账不作无限保证"
+    },
+    {
+      "claim": "人气奖11/20 10:00–11/30 17:00",
+      "status": "USER_REPORTED_PENDING",
+      "source": "user Claude JS summary",
+      "project_action": "待原文确认，保留待办"
+    },
+    {
+      "claim": "Pyodide314.0.6和pydantic2.12.5",
+      "status": "INDEPENDENTLY_VERIFIED",
+      "source": "S04/S05",
+      "project_action": "锁版本并做真实浏览器探针"
+    },
+    {
+      "claim": "V5 Pyodide146通过/35.7ms/启动及下载耗时",
+      "status": "USER_REPORTED_PENDING",
+      "source": "user Claude benchmark summary",
+      "project_action": "仅用户转述Node成绩，本次未收到原日志，也不代表V6浏览器"
+    },
+    {
+      "claim": "ai_predict_size默认True",
+      "status": "INDEPENDENTLY_VERIFIED",
+      "source": "S03",
+      "project_action": "允许显式实验；不证明真实尺寸"
+    }
+  ]
+}

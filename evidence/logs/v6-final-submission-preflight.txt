@@ -1,0 +1,12 @@
+$ /opt/pyvenv/bin/python -S scripts/check_submission.py
+exit=2
+BLOCKED: product/materials are not verified for submission
+- valid source commit required
+- owner_review: expected file descriptor
+- product_acceptance: expected file descriptor
+- report: expected file descriptor
+- video: expected file descriptor
+- final_scene: expected file descriptor
+- core feature→Lux3D evidence mapping missing
+- V6 primary public interactive HTTPS URL not recorded
+- V6 real browser/anonymous access evidence missing

@@ -1,0 +1,141 @@
+{
+  "checked_on": "2026-11-03",
+  "original_js_or_form_keys_received": false,
+  "official_sources": {
+    "S01": "https://www.aholo3d.cn/hackathon",
+    "S02": "https://www.aholo.ai/hackathon",
+    "S03": "https://labs.aholo.ai/api-docs/sdk/python",
+    "S04": "https://pyodide.org/en/314.0.6/usage/webworker.html",
+    "S05": "https://pyodide.org/en/314.0.6/usage/packages-in-pyodide.html",
+    "S06": "https://pyodide.org/en/314.0.6/usage/downloading-and-deploying.html",
+    "S07": "https://github.com/modelscope/modelscope-skills/blob/main/skills/ms-studio-deploy/SKILL.md",
+    "S08": "https://aholo.featurebase.app/zh-CN/help/articles/6916933-dashboardji-fen-yu-api-mi-yao",
+    "S09": "https://www.aholo3d.cn/hackathon/my"
+  },
+  "records": [
+    {
+      "claim": "Lux3D核心/API可选",
+      "status": "VERIFIED",
+      "source": "S01",
+      "project_action": "保留核心资产；不强制API",
+      "verification_method": "OFFICIAL_PAGE_OR_INDEX"
+    },
+    {
+      "claim": "五维评分30/25/20/20/5与专家玩家70/30",
+      "status": "VERIFIED",
+      "source": "S01",
+      "project_action": "按评分排序；社媒列任务",
+      "verification_method": "OFFICIAL_PAGE_OR_INDEX"
+    },
+    {
+      "claim": "50名玩家评委",
+      "status": "VERIFIED",
+      "source": "S01",
+      "project_action": "与Top 50阶段同时成立，不混同、不相互否定",
+      "verification_method": "OFFICIAL_PAGE_OR_INDEX"
+    },
+    {
+      "claim": "资格审核→Top 50初评→Top 6终评→结果公示；Top 50专业/玩家70/30",
+      "status": "VERIFIED",
+      "source": "用户本地官方JS/表单复核：entry.e7225bf8c5dc922c.js；原件路径claude-verification-20261103/official/，本包未收录",
+      "project_action": "已纳入执行；登录时记录实际字段及更新，不反复视为未知",
+      "verification_method": "USER_LOCAL_CLAUDE_REVIEW",
+      "raw_evidence_in_package": false
+    },
+    {
+      "claim": "项目报告与Demo链接或真实运行视频",
+      "status": "VERIFIED",
+      "source": "S01/S02",
+      "project_action": "项目选择在线互动为主、视频补充",
+      "verification_method": "OFFICIAL_PAGE_OR_INDEX"
+    },
+    {
+      "claim": "Demo维持到2026-12-31且结果后30天",
+      "status": "VERIFIED",
+      "source": "用户本地官方JS/表单复核：entry.e7225bf8c5dc922c.js；原件路径claude-verification-20261103/official/，本包未收录",
+      "project_action": "已纳入执行；登录时记录实际字段及更新，不反复视为未知",
+      "verification_method": "USER_LOCAL_CLAUDE_REVIEW",
+      "raw_evidence_in_package": false
+    },
+    {
+      "claim": "提交表单推荐魔搭",
+      "status": "VERIFIED",
+      "source": "用户本地官方JS/表单复核：entry.e7225bf8c5dc922c.js；原件路径claude-verification-20261103/official/，本包未收录",
+      "project_action": "已纳入执行；登录时记录实际字段及更新，不反复视为未知",
+      "verification_method": "USER_LOCAL_CLAUDE_REVIEW",
+      "raw_evidence_in_package": false
+    },
+    {
+      "claim": "作品禁止真实用户数据",
+      "status": "VERIFIED",
+      "source": "用户本地官方JS/表单复核：entry.e7225bf8c5dc922c.js；原件路径claude-verification-20261103/official/，本包未收录",
+      "project_action": "已纳入执行；登录时记录实际字段及更新，不反复视为未知",
+      "verification_method": "USER_LOCAL_CLAUDE_REVIEW",
+      "raw_evidence_in_package": false
+    },
+    {
+      "claim": "截止前可多次提交，以最后为准",
+      "status": "VERIFIED",
+      "source": "用户本地官方JS/表单复核：entry.e7225bf8c5dc922c.js；原件路径claude-verification-20261103/official/，本包未收录",
+      "project_action": "已纳入执行；登录时记录实际字段及更新，不反复视为未知",
+      "verification_method": "USER_LOCAL_CLAUDE_REVIEW",
+      "raw_evidence_in_package": false
+    },
+    {
+      "claim": "确认组队→选题→作品门禁",
+      "status": "VERIFIED",
+      "source": "S09 + 用户本地官方JS/表单",
+      "project_action": "已纳入执行；登录时记录实际字段及更新，不反复视为未知",
+      "verification_method": "OFFICIAL_PAGE_OR_INDEX_AND_USER_LOCAL_CLAUDE_REVIEW",
+      "raw_evidence_in_package": false
+    },
+    {
+      "claim": "团队提交选题后奖励、后入成员不补发",
+      "status": "VERIFIED",
+      "source": "S01",
+      "project_action": "先定名单；实际到账不作无限保证",
+      "verification_method": "OFFICIAL_PAGE_OR_INDEX"
+    },
+    {
+      "claim": "人气奖11/20 10:00–11/30 17:00",
+      "status": "VERIFIED",
+      "source": "用户本地官方JS/表单复核：entry.e7225bf8c5dc922c.js；原件路径claude-verification-20261103/official/，本包未收录",
+      "project_action": "已纳入执行；登录时记录实际字段及更新，不反复视为未知",
+      "verification_method": "USER_LOCAL_CLAUDE_REVIEW",
+      "raw_evidence_in_package": false
+    },
+    {
+      "claim": "Pyodide314.0.6和pydantic2.12.5",
+      "status": "VERIFIED",
+      "source": "S04/S05",
+      "project_action": "锁版本并做真实浏览器探针",
+      "verification_method": "OFFICIAL_PAGE_OR_INDEX"
+    },
+    {
+      "claim": "V5 Pyodide146通过/35.7ms/启动及下载耗时",
+      "status": "USER_VERIFIED_RUN",
+      "source": "user Claude benchmark summary",
+      "project_action": "历史V5数据保留；当前V6新记录见external-verification-20261103.json",
+      "verification_method": "USER_LOCAL_CLAUDE_REVIEW"
+    },
+    {
+      "claim": "ai_predict_size默认True",
+      "status": "VERIFIED",
+      "source": "S03",
+      "project_action": "允许显式实验；不证明真实尺寸",
+      "verification_method": "OFFICIAL_PAGE_OR_INDEX"
+    },
+    {
+      "claim": "Demo字段链接/视频二选一文案",
+      "status": "VERIFIED",
+      "verification_method": "USER_LOCAL_CLAUDE_REVIEW",
+      "raw_evidence_in_package": false,
+      "source": "用户本地官方JS/表单复核",
+      "project_action": "主字段优先在线链接，视频放报告/补充区/社媒；核对实际登录字段能力"
+    }
+  ],
+  "release": "V6.1",
+  "reviewer_evidence_received": "USER_MESSAGE_WITH_DETAILED_LOCAL_VERIFICATION",
+  "raw_official_js_in_package": false,
+  "verification_note": "已接受用户本地Claude官方JS核验；本环境可读取官方索引但网络DNS无法下载原JS/lock。VERIFIED不等于本环境全都重新抓取。"
+}

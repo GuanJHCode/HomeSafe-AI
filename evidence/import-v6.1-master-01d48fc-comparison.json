@@ -1,0 +1,1576 @@
+{
+  "repository": "GuanJHCode/HomeSafe-AI",
+  "branch": "master",
+  "commit_sha": "01d48fca76f77856b5e9f31a37090bb1284e47db",
+  "tree_sha": "e0943b6781c2f09a8a5fa01bb4e21cb459210075",
+  "reference_zip": "HomeSafe-AI-V6.1-fixed-20261103.zip",
+  "reference_zip_sha256": "b6c674f532fd30ff7ab086b08c814b086e94e2aa0f12cff80c1b6d94b96d3752",
+  "reference_files": 181,
+  "remote_files": 21,
+  "counts": {
+    "missing": 176,
+    "different_same_path": 5,
+    "remote_only": 16
+  },
+  "missing_by_top_level": {
+    ".github": 1,
+    "[root]": 9,
+    "assets": 5,
+    "browser-spike": 19,
+    "contracts": 4,
+    "docs": 16,
+    "evidence": 50,
+    "examples": 8,
+    "history": 28,
+    "reference": 19,
+    "scripts": 8,
+    "submission": 8,
+    "tools": 1
+  },
+  "files": [
+    {
+      "path": ".env.example",
+      "status": "missing",
+      "baseline_sha256": "e6953403415377e340ba61ec8d1d91fc3175a7c8ba14b3003ac64a7cca03a5c1",
+      "baseline_git_blob": "5b3cb65d7d72cb9726b14593796ff92bc02cae73",
+      "baseline_size": 169,
+      "remote_git_blob": null
+    },
+    {
+      "path": ".github/workflows/reference-checks.yml",
+      "status": "missing",
+      "baseline_sha256": "39be74992033c3edda60b815bc5c56377646b0bc66b135c738a2da1142fcf4bf",
+      "baseline_git_blob": "53e5cfb0e66000c669064c29992637fddda8658f",
+      "baseline_size": 1148,
+      "remote_git_blob": null
+    },
+    {
+      "path": ".gitignore",
+      "status": "missing",
+      "baseline_sha256": "75e0e3f28408ff044ed9e46f1a8841c2d858ff4eb4a641f65f2ac3e79dc60626",
+      "baseline_git_blob": "51b15af74b474125b830efa0a007c12c65c47d71",
+      "baseline_size": 491,
+      "remote_git_blob": null
+    },
+    {
+      "path": "AGENTS.md",
+      "status": "different_same_path",
+      "baseline_sha256": "d0dc856bf20b45580e487b7203d91658b3c6e10be68a6c31bcd83a43aa7f8bd4",
+      "baseline_git_blob": "2ebc0efd4c6a7fc18c832fc3b2e1a383dcc55cca",
+      "baseline_size": 2763,
+      "remote_git_blob": "bc9a63f0acd8b363651b05b7f9af8934be2c7560"
+    },
+    {
+      "path": "CHECKSUMS.sha256",
+      "status": "missing",
+      "baseline_sha256": "9904ed491f4b0a6df0bd3a4dc4014efc557e60d4dfaaa7ca95590c589936f401",
+      "baseline_git_blob": "7414fd3d6b41cc7c107f1af63eabb8bb9620b764",
+      "baseline_size": 18020,
+      "remote_git_blob": null
+    },
+    {
+      "path": "HomeSafe_AI_V6.1_修订说明.md",
+      "status": "missing",
+      "baseline_sha256": "7bc9086f1a7b21a2cede4af3f2409db2fe9b4c6ccc3b7a7a3ed8b9321672c39d",
+      "baseline_git_blob": "4a8a42178c0441a494b8a50886e22334a1d879ec",
+      "baseline_size": 3927,
+      "remote_git_blob": null
+    },
+    {
+      "path": "README.md",
+      "status": "different_same_path",
+      "baseline_sha256": "5347205711fe2220a25b7ce44e9d53da794dc8023fb388477ef0b0f8e9353df3",
+      "baseline_git_blob": "fd34b1dd0bd5b7ac599e714c5cb9bb4f49083539",
+      "baseline_size": 1623,
+      "remote_git_blob": "ba3645569dd08eec432ed857c69e58b4df3e58d1"
+    },
+    {
+      "path": "REVIEW_V5.md",
+      "status": "missing",
+      "baseline_sha256": "c33ccb1ae8328878b8932f8def3137926937c921fb5663f74d6db2c57beaf526",
+      "baseline_git_blob": "f48af98c9771da4f5be5a73c203965af613d0b64",
+      "baseline_size": 248,
+      "remote_git_blob": null
+    },
+    {
+      "path": "REVIEW_V6.md",
+      "status": "missing",
+      "baseline_sha256": "d68d0787cd33eaaea7bbc3927ac6f81f11092365f41ff0994466c1d777530c56",
+      "baseline_git_blob": "d1ceb1bf1d1fc38f0a5b7904b81f499a3b83c772",
+      "baseline_size": 6648,
+      "remote_git_blob": null
+    },
+    {
+      "path": "REVIEW_V6_1.md",
+      "status": "missing",
+      "baseline_sha256": "7bc9086f1a7b21a2cede4af3f2409db2fe9b4c6ccc3b7a7a3ed8b9321672c39d",
+      "baseline_git_blob": "4a8a42178c0441a494b8a50886e22334a1d879ec",
+      "baseline_size": 3927,
+      "remote_git_blob": null
+    },
+    {
+      "path": "START_HERE.md",
+      "status": "different_same_path",
+      "baseline_sha256": "bbdbf787b89c83a4770f6000fd869bd2714babd196536a2708e216ad69985c6f",
+      "baseline_git_blob": "92a187bec3e1cfeb724464e4db61339324186c00",
+      "baseline_size": 3804,
+      "remote_git_blob": "5c77ff662a57613b8221c9ebd357403c038e1087"
+    },
+    {
+      "path": "assets/README.md",
+      "status": "missing",
+      "baseline_sha256": "d7b08a7376c6460564fbf411e16d64291d764ae9282d9e50053553400978849d",
+      "baseline_git_blob": "be961884582f3aeebe4553a4d3c17bd2dec134e0",
+      "baseline_size": 514,
+      "remote_git_blob": null
+    },
+    {
+      "path": "assets/asset-manifest.json",
+      "status": "missing",
+      "baseline_sha256": "36d2123e31bb079bafed01bac2d171cb3e7a052726a17c475bb93ba0dca82edd",
+      "baseline_git_blob": "7f69a9fb279d600447c538824f03299cd1a99161",
+      "baseline_size": 48,
+      "remote_git_blob": null
+    },
+    {
+      "path": "assets/feature_asset_map.json",
+      "status": "missing",
+      "baseline_sha256": "c4d883a4bb156f8618fd58719719df5df0b588070224a3001e87f851d14b377d",
+      "baseline_git_blob": "e092f77b331dce661c88f284e9a900b64fe4d453",
+      "baseline_size": 21,
+      "remote_git_blob": null
+    },
+    {
+      "path": "assets/production-plan.json",
+      "status": "missing",
+      "baseline_sha256": "52a62004b60a2fcec8a91c6fbc196bda7b565adeb8e19a87ff6406285488a590",
+      "baseline_git_blob": "e26e0c164630ce28eb9b9471e7fb5ca42c5dd6ff",
+      "baseline_size": 943,
+      "remote_git_blob": null
+    },
+    {
+      "path": "assets/public/README.md",
+      "status": "missing",
+      "baseline_sha256": "40e1c1e322654aa8561cea4d7fd97596b11d72876813bbebedd548ba839aa3e5",
+      "baseline_git_blob": "dad98e4dfe4cac1500a09875298a31e7de561beb",
+      "baseline_size": 217,
+      "remote_git_blob": null
+    },
+    {
+      "path": "browser-spike/BrowserRuleClient.mjs",
+      "status": "missing",
+      "baseline_sha256": "3e9c389fa9f842bd5f83e2720de324cccb19dc780601436e511421894e69a7a2",
+      "baseline_git_blob": "13041c16f71c32557741bf3c589990e1fa132e3f",
+      "baseline_size": 2271,
+      "remote_git_blob": null
+    },
+    {
+      "path": "browser-spike/README.md",
+      "status": "missing",
+      "baseline_sha256": "5051cdea6a193e4774aa999661b4eaa90083d611b31db4cd1bfe3223390d8cec",
+      "baseline_git_blob": "00c9e87b603984e4989dca8bcb09ee04769f270b",
+      "baseline_size": 2526,
+      "remote_git_blob": null
+    },
+    {
+      "path": "browser-spike/challenge-summary.mjs",
+      "status": "missing",
+      "baseline_sha256": "b3e32068c98c47a3f89ad8e629661ac33b174c5114513aa170f4d0dcf2e7fa0c",
+      "baseline_git_blob": "b538c5e9a8eea7f21ddd4cdaea93577996227c59",
+      "baseline_size": 709,
+      "remote_git_blob": null
+    },
+    {
+      "path": "browser-spike/client.test.mjs",
+      "status": "missing",
+      "baseline_sha256": "84919b67d90e26ec9d878fc33d87b5efe036b776ff7f784b701e9f8579a4e4ad",
+      "baseline_git_blob": "f1272be283a966c6d80a1802712007d8810da9ef",
+      "baseline_size": 2200,
+      "remote_git_blob": null
+    },
+    {
+      "path": "browser-spike/config.json",
+      "status": "missing",
+      "baseline_sha256": "d2c910267f971a907a7e910ac47c781a2a14b070cfc87d2f0587a60dd2ae9bea",
+      "baseline_git_blob": "16f755f57cdd21d1b7a0a85fc92fc17d3d69b984",
+      "baseline_size": 392,
+      "remote_git_blob": null
+    },
+    {
+      "path": "browser-spike/config.same-origin.json",
+      "status": "missing",
+      "baseline_sha256": "3368edd5b732939bd9e78d342a4e024051305084fa54799a6095039a5b0cae3a",
+      "baseline_git_blob": "83ed5e1cc7bb9fd0e738a98add69d8b25e16b767",
+      "baseline_size": 363,
+      "remote_git_blob": null
+    },
+    {
+      "path": "browser-spike/examples/assessment-before.json",
+      "status": "missing",
+      "baseline_sha256": "10e182b27791aa45c94552ab31cbb93e65928aca6273165b5a4aa15b79e91069",
+      "baseline_git_blob": "9569e36dc064134c6d8a76395ad60fdb92a41461",
+      "baseline_size": 8751,
+      "remote_git_blob": null
+    },
+    {
+      "path": "browser-spike/examples/assessment-conflict.json",
+      "status": "missing",
+      "baseline_sha256": "b42ca8c6056989bddf4aa99a81c4c042abed5f9ae0a6d445dcf828119d4b41cd",
+      "baseline_git_blob": "73a027e2be57935787f492ab80a6fa67df347edc",
+      "baseline_size": 8749,
+      "remote_git_blob": null
+    },
+    {
+      "path": "browser-spike/examples/assessment-improved.json",
+      "status": "missing",
+      "baseline_sha256": "36ed2d6117452f869440c627e8c91723a73b21ae26435fa8a4c0b475587b334c",
+      "baseline_git_blob": "991fdd0fa14cbe3cdc7937498b7752a96cf90ae2",
+      "baseline_size": 8755,
+      "remote_git_blob": null
+    },
+    {
+      "path": "browser-spike/examples/scene-before.json",
+      "status": "missing",
+      "baseline_sha256": "2d25206150c0adf464b44db959c945c81d9a95b031dc23de1fd5f60982d297b0",
+      "baseline_git_blob": "a60f522adf3d97354a1eddd2fa464089a3d7fee0",
+      "baseline_size": 13914,
+      "remote_git_blob": null
+    },
+    {
+      "path": "browser-spike/examples/scene-conflict.json",
+      "status": "missing",
+      "baseline_sha256": "001b5b96c1dbb3b05995daa48db2d4ead62e5045376ab12f018d48f49bef4368",
+      "baseline_git_blob": "97a1d0cdd6e16d49a8bd7c4416c4456c30ce6a6d",
+      "baseline_size": 13914,
+      "remote_git_blob": null
+    },
+    {
+      "path": "browser-spike/examples/scene-improved.json",
+      "status": "missing",
+      "baseline_sha256": "273419c1dac84112801151aa78d0b76372b36eb5668235694ee2052bb8fbc581",
+      "baseline_git_blob": "698d04e0b7b1dde029b33663a4083df4f747495c",
+      "baseline_size": 13914,
+      "remote_git_blob": null
+    },
+    {
+      "path": "browser-spike/index.html",
+      "status": "missing",
+      "baseline_sha256": "008a87906e39385a33c296137a643a9b7c7bc5dfa65ab3e61a798a64222b52ec",
+      "baseline_git_blob": "4010591984c4388c92c3757505d1f7b51859d48e",
+      "baseline_size": 1204,
+      "remote_git_blob": null
+    },
+    {
+      "path": "browser-spike/main.mjs",
+      "status": "missing",
+      "baseline_sha256": "a6ff9bee8735ca13f93822a5ddab99017cbdeed8953584e82ead55dde0a6070c",
+      "baseline_git_blob": "5cebfe61e4f4e0f863518a81108826f46656c23f",
+      "baseline_size": 3733,
+      "remote_git_blob": null
+    },
+    {
+      "path": "browser-spike/python/homesafe_core.zip",
+      "status": "missing",
+      "baseline_sha256": "22ddc26ade1546adf5ddef995c0f97bc6775173f3ccd9b2ae9e5789113ba11c7",
+      "baseline_git_blob": "e6d293b306871b57d91429554ffe79c85fac915b",
+      "baseline_size": 16846,
+      "remote_git_blob": null
+    },
+    {
+      "path": "browser-spike/python/manifest.json",
+      "status": "missing",
+      "baseline_sha256": "bd8c2b63ce6473c27c07cb279bf676759b098d2c6085b74030b9e002112043de",
+      "baseline_git_blob": "0d4637eeb95447a9a98002537704d2c56d245d8d",
+      "baseline_size": 1425,
+      "remote_git_blob": null
+    },
+    {
+      "path": "browser-spike/rule-worker.mjs",
+      "status": "missing",
+      "baseline_sha256": "69e055ec3959de5b044b20fee1b021d9c86c3e8ca19dab5bd002bb1c941c59c0",
+      "baseline_git_blob": "506e09bde31501f4396bb0938c6314fcf997756e",
+      "baseline_size": 2060,
+      "remote_git_blob": null
+    },
+    {
+      "path": "browser-spike/worker-controller.mjs",
+      "status": "missing",
+      "baseline_sha256": "84cdd57f921548258cbe59d31c31a45f45d41f9415b9991f39a28a814e6ae954",
+      "baseline_git_blob": "0187070f834963e0b1af6ea28938aca3b83e4703",
+      "baseline_size": 1972,
+      "remote_git_blob": null
+    },
+    {
+      "path": "browser-spike/worker-controller.test.mjs",
+      "status": "missing",
+      "baseline_sha256": "5db3445ee1d24e074804e2f3ffa764dde54b9cd7d0397129aad4485d66da5278",
+      "baseline_git_blob": "12a780d9b9e033e7aa9f37f74b1f35061942f414",
+      "baseline_size": 3542,
+      "remote_git_blob": null
+    },
+    {
+      "path": "contracts/README.md",
+      "status": "missing",
+      "baseline_sha256": "78ab60d1e9ce03b432286508412b73500a2ed3b1e3d0011745f59d84aacc10de",
+      "baseline_git_blob": "33823f8aee917b9eee8511cb9687092bb7007d48",
+      "baseline_size": 471,
+      "remote_git_blob": null
+    },
+    {
+      "path": "contracts/domain.schema.json",
+      "status": "missing",
+      "baseline_sha256": "37cf25a9e94d711a3478595ad5bb21eab219db6e82d3dac3b7b96ce62c6952e1",
+      "baseline_git_blob": "f7a8570f8eb287213764fe273629cdba43566174",
+      "baseline_size": 35141,
+      "remote_git_blob": null
+    },
+    {
+      "path": "contracts/frontend/domain.ts",
+      "status": "missing",
+      "baseline_sha256": "3f6a26432415f99c02cdc4692df29a188be1ae97c05fc7ae4a741232dc7cd538",
+      "baseline_git_blob": "6d9611c5458f2e3dd7a627230705025c1316d8c6",
+      "baseline_size": 6779,
+      "remote_git_blob": null
+    },
+    {
+      "path": "contracts/http/openapi.json",
+      "status": "missing",
+      "baseline_sha256": "6699acb6213f9bfe86f63a9b457c2da7c66ed93bbe5e75b6673edda6297e0783",
+      "baseline_git_blob": "7393eb6332616562500b413b9964880bd6d2d2a2",
+      "baseline_size": 52435,
+      "remote_git_blob": null
+    },
+    {
+      "path": "docs/00-scope-and-rules.md",
+      "status": "missing",
+      "baseline_sha256": "77c4932b00cb3a3b6791b8ab3f7d64d259a3934ab51d43f9166151cf5f1118c9",
+      "baseline_git_blob": "90df507e3e5a448a3484098de6a791d9a5a5421b",
+      "baseline_size": 3104,
+      "remote_git_blob": null
+    },
+    {
+      "path": "docs/01-architecture.md",
+      "status": "missing",
+      "baseline_sha256": "4e5dc3026e8179198bbadfb73c22376218f311cbbf50d2df55cc959b14c8718b",
+      "baseline_git_blob": "7269eee54bfafcc173be2fe45a270b3f960b3799",
+      "baseline_size": 2708,
+      "remote_git_blob": null
+    },
+    {
+      "path": "docs/02-domain-and-storage.md",
+      "status": "missing",
+      "baseline_sha256": "3747b3557918aa174486a6462f32f868af13e384e7d0507a98aaf4f78eaa6ca8",
+      "baseline_git_blob": "f204b43f8b290216559789c21caa7a2401eb2ffb",
+      "baseline_size": 2692,
+      "remote_git_blob": null
+    },
+    {
+      "path": "docs/03-backend-contracts.md",
+      "status": "missing",
+      "baseline_sha256": "c142505465f14855d0924cdf8c720ec06865cff48fb8f290db1a33c66763512e",
+      "baseline_git_blob": "d0d2963a49c8f449e26fa7264e1bd6a1bf9425e7",
+      "baseline_size": 3089,
+      "remote_git_blob": null
+    },
+    {
+      "path": "docs/04-frontend-contracts.md",
+      "status": "missing",
+      "baseline_sha256": "82876b97ee8b6fe9c6d991944122fce7992d67df5e7d10f45d922d0d3415981a",
+      "baseline_git_blob": "1b05c69c9fc41a334d176c7adba4b3d9beb0c45c",
+      "baseline_size": 2739,
+      "remote_git_blob": null
+    },
+    {
+      "path": "docs/05-rules-and-geometry.md",
+      "status": "missing",
+      "baseline_sha256": "a1d30b5896b116c73405417c9c177f5ed3b93bb21f8ae3d026fef3ec844346bc",
+      "baseline_git_blob": "e578257787a90947042b8c7e60c54c61cc1e73b4",
+      "baseline_size": 2605,
+      "remote_git_blob": null
+    },
+    {
+      "path": "docs/06-lux3d-runbook.md",
+      "status": "missing",
+      "baseline_sha256": "3e19bcac57d0952b71052710290a0d0b9857af3921238967e1d6a577218bbdd1",
+      "baseline_git_blob": "bdc1459a56720bc56fb1bb2ad78b5049f25bace0",
+      "baseline_size": 3460,
+      "remote_git_blob": null
+    },
+    {
+      "path": "docs/07-delivery-plan.md",
+      "status": "missing",
+      "baseline_sha256": "d41d47b55182030cea6d60b2cc079da000102566e9a332c879f53377e0ecf7ff",
+      "baseline_git_blob": "3e6ec985bb3abd43a08dd42c523895818541dbe3",
+      "baseline_size": 2954,
+      "remote_git_blob": null
+    },
+    {
+      "path": "docs/08-testing-and-acceptance.md",
+      "status": "missing",
+      "baseline_sha256": "a1f9646ce21e71855cbd370710ad224e179f507c032c618b1e62ea08cf2f26c4",
+      "baseline_git_blob": "57e2ec1680839eef178569ab6f9438a069061f2e",
+      "baseline_size": 2733,
+      "remote_git_blob": null
+    },
+    {
+      "path": "docs/09-deployment-security.md",
+      "status": "missing",
+      "baseline_sha256": "090179ea7c1e9ee0d5eaa31d02adf26ba47091558dd93ee3d3eb75e6c195b5d0",
+      "baseline_git_blob": "6feb8e5bf27edb0dfce6f66edaf57588fab0c3f1",
+      "baseline_size": 3451,
+      "remote_git_blob": null
+    },
+    {
+      "path": "docs/10-agent-handoff.md",
+      "status": "missing",
+      "baseline_sha256": "ed5a9fd036cc481f6c2744364caaef0b76913a2ef404698e80e0f5672106042d",
+      "baseline_git_blob": "f383107bc242e9fe231784ac7a8c6daa0cd2db5b",
+      "baseline_size": 2446,
+      "remote_git_blob": null
+    },
+    {
+      "path": "docs/11-official-submission.md",
+      "status": "missing",
+      "baseline_sha256": "287e78e5aaf45b9b18be9cd009c2554aee07b959222187c855941add82ab5764",
+      "baseline_git_blob": "ddfb625c0e7a4f834c981c89b373e8df724f9277",
+      "baseline_size": 3661,
+      "remote_git_blob": null
+    },
+    {
+      "path": "docs/12-sources-and-open-questions.md",
+      "status": "missing",
+      "baseline_sha256": "df48c9ba0ccb65bf9f23d49fd710494189133da4800a5e23dbee0efc31948a8d",
+      "baseline_git_blob": "83e0b93b0e892c38f516451d2d1e685c8af9e15b",
+      "baseline_size": 2606,
+      "remote_git_blob": null
+    },
+    {
+      "path": "docs/13-gameplay-and-scoring.md",
+      "status": "missing",
+      "baseline_sha256": "daaab669c75a0e5626db37fc88fd8fd628ebb25112e5858400dfb06d305d7763",
+      "baseline_git_blob": "1ed5d8772c6963e4fdf67529735eb8b674badc9f",
+      "baseline_size": 3419,
+      "remote_git_blob": null
+    },
+    {
+      "path": "docs/ADR-0001-baseline-freeze.md",
+      "status": "missing",
+      "baseline_sha256": "bac7b03e66931ca98cdb2e5bbf7d424420257a6099f69b7d4817eee0d64839a7",
+      "baseline_git_blob": "1b722ca885de10203d85ebbe3ce4fcdac4249414",
+      "baseline_size": 469,
+      "remote_git_blob": null
+    },
+    {
+      "path": "docs/ADR-0002-browser-first-competition.md",
+      "status": "missing",
+      "baseline_sha256": "c597bafd88c86f2c78b69b9a20050ec8ab3d752e9e4f4a0179d809149e989312",
+      "baseline_git_blob": "c7b76e6a5bb41d0ccfa439a2a798ca0aa64cdc94",
+      "baseline_size": 3338,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/BUILD_VALIDATION.md",
+      "status": "missing",
+      "baseline_sha256": "01c493f796dae353a0ea63cb65eeed2603bd9a36d79b21c397cadef4df03b7ad",
+      "baseline_git_blob": "c5481573c7c3183f5099c991b2f98ea3882f26e3",
+      "baseline_size": 2385,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/HANDOFF.md",
+      "status": "different_same_path",
+      "baseline_sha256": "edc0db642f263ac9a489805f65f10917229463ab708422f70b267c9d6a394675",
+      "baseline_git_blob": "03008e46ef984567d57e6dd0b47f7d85e8266f03",
+      "baseline_size": 898,
+      "remote_git_blob": "3ad12d1559e38e776175b0b7236fb5785ea9f7d4"
+    },
+    {
+      "path": "evidence/deployment-checklist.json",
+      "status": "missing",
+      "baseline_sha256": "a1285fa281e34d70421c648714bbe715b1e59820df4628fb6d371315c165d056",
+      "baseline_git_blob": "a6bc42a22e15a2b38fe8e72cf7805fb942b28f73",
+      "baseline_size": 680,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/external-verification-20261103.json",
+      "status": "missing",
+      "baseline_sha256": "01f46ac10a2a0ff768c6fc13d742d4dcb5afdf67fc02172088a20f7c0272fdb9",
+      "baseline_git_blob": "569ab5ca8f27b7c62df2b4a919cef2e2953b8bd6",
+      "baseline_size": 1867,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v3-baseline-contracts.txt",
+      "status": "missing",
+      "baseline_sha256": "def54c3eda6352c74824a83a2fd9e0c73a017f9e64689dcb9c0fe7ee367b425d",
+      "baseline_git_blob": "1151d746366bd1dcdc1fb0e589840dd70e85d603",
+      "baseline_size": 1027,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v3-baseline-unit.txt",
+      "status": "missing",
+      "baseline_sha256": "a2e30f489c0427b9a0a76a715dfd0bdae0197b3ff7e8a9c504ad31f716409a59",
+      "baseline_git_blob": "a8f2ef8a53d9bfd6422eb014c5bb73703450041a",
+      "baseline_size": 5085,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v4-probes-reproduced.json",
+      "status": "missing",
+      "baseline_sha256": "634505b6cac6b20ce572b066491ba9a23860750be41f58a07a2ad9b5b2104bff",
+      "baseline_git_blob": "af01092a78dbeb8d2e76231641927d9c4c0818e9",
+      "baseline_size": 6770,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v5-compile.txt",
+      "status": "missing",
+      "baseline_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "baseline_git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "baseline_size": 0,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v5-contract-generation.txt",
+      "status": "missing",
+      "baseline_sha256": "79cb740e874a6678549a2dfadae9cc939ef5b36ff26d762e763b363366aff32d",
+      "baseline_git_blob": "759fc9d9a7dd81072a63b07ecc490b6e8f4d5b98",
+      "baseline_size": 52,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v5-package-validation.txt",
+      "status": "missing",
+      "baseline_sha256": "6c956fe8bdb88633cf01bc8479cc92b2aea7191f4212475043c3b86af01012ec",
+      "baseline_git_blob": "b86b450dbf6d6510c8fa30ebd83050f4dfa3cd88",
+      "baseline_size": 388,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v5-reference-demo.txt",
+      "status": "missing",
+      "baseline_sha256": "8a9e7840a90b6cdc92e7b43524e64eb05097843590ad5fd62f856705527e0c98",
+      "baseline_git_blob": "b000dff31a019ed37c17cc3142d06c521689a870",
+      "baseline_size": 1198,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v5-submission-preflight.txt",
+      "status": "missing",
+      "baseline_sha256": "ec0230f4e17a8541b63b99d0e65b391015bb80e20bbd3b1d02dee506ef7c531a",
+      "baseline_git_blob": "ed01d38155ddd0e444dd5e8b141af7dce22b306d",
+      "baseline_size": 335,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v5-typescript.txt",
+      "status": "missing",
+      "baseline_sha256": "52b1c0f4f28e916e966da67507bd0369d473bce6a028174de20eef9513d95a6b",
+      "baseline_git_blob": "bdd8bd0cd3be7e2802e6971065bd50fb998e340e",
+      "baseline_size": 45,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v5-unit-tests.txt",
+      "status": "missing",
+      "baseline_sha256": "0ddfd610b5900269b72cbb84a49e00cae9855f951a3b7fa329b8dcefd5d27fa9",
+      "baseline_git_blob": "58706daae4dc33cf4ce017587c22ec5895e23503",
+      "baseline_size": 260,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-after-core-regression.txt",
+      "status": "missing",
+      "baseline_sha256": "6ff7f7dffa02d57ac90159ef985c3256a59424a08fccdd5671dfd5ad56de941a",
+      "baseline_git_blob": "3b27aecc0122f5de97af58db7ae6e70a0682be6b",
+      "baseline_size": 260,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-browser-bundle.txt",
+      "status": "missing",
+      "baseline_sha256": "03e50a8dd63050ab0f49aed1a38ccd2e56b6ef4e352d625ed7c78e843f14d088",
+      "baseline_git_blob": "63da5ea3271c35f064347005d9095ef1a0c3a501",
+      "baseline_size": 126,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-contract-generation.txt",
+      "status": "missing",
+      "baseline_sha256": "69381607c0d8bbb060eb78bd66caf0f59df82b3b52922d7dbe03492321f4c2b1",
+      "baseline_git_blob": "8ab6100923d302e2426de3d0de7459d20e4409d1",
+      "baseline_size": 121,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-core-tests.txt",
+      "status": "missing",
+      "baseline_sha256": "aec48799b8c660313f2734a80c518601f854b563d39f6930db35a63e8533ee7f",
+      "baseline_git_blob": "9785b075de629e7d6c0edb3cda647abd2caa7359",
+      "baseline_size": 260,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-final-contract-check.txt",
+      "status": "missing",
+      "baseline_sha256": "b5491d5009fc906b8fdcb71773608ec9e8a477ef9edc441564322148fbd0a3ef",
+      "baseline_git_blob": "a7cd28f1b7564a873e0b3ee1a1980eae2a5326b8",
+      "baseline_size": 125,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-final-js-tests.txt",
+      "status": "missing",
+      "baseline_sha256": "2b26a2df5566d16c9b9d45bcd27b560cc4da9cf675ed6b37021b142f4e438c86",
+      "baseline_git_blob": "03f7fe801df787ed06c453da9ea151fdc398cd4b",
+      "baseline_size": 1168,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-final-package-checks.txt",
+      "status": "missing",
+      "baseline_sha256": "04072972ab220fc1b1975f77f73c94a33447a6bf27bec8641d842a8a19971113",
+      "baseline_git_blob": "0cbb2281bd7a43665df62815c6bf5a4b0c3f0371",
+      "baseline_size": 451,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-final-python-compile.txt",
+      "status": "missing",
+      "baseline_sha256": "d847d4014a80c5d4ed9adca602bf361169adef5a41cdd720dcfdf04c9499686e",
+      "baseline_git_blob": "0e6e6ad51f296a2974695f612cdc2199e3531084",
+      "baseline_size": 76,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-final-submission-preflight.txt",
+      "status": "missing",
+      "baseline_sha256": "6002e27c87411d162a895f04d6f5f290701d68a00a8ee215934931ce461af0c2",
+      "baseline_git_blob": "6d88fb881d6521820d2c30ad6cf7db7a80674615",
+      "baseline_size": 505,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-final-typescript.txt",
+      "status": "missing",
+      "baseline_sha256": "f362e371d907205c513bc85d77f0933d3b120af5ad8b4d58a4930217717ca783",
+      "baseline_git_blob": "7694a3e3072e10052c27123c18c568186956dfa0",
+      "baseline_size": 76,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-final-unit-tests.txt",
+      "status": "missing",
+      "baseline_sha256": "32d962a5c44edd77460a6d16ed2b57a8135b09873f69bbf94856323db4d47b41",
+      "baseline_git_blob": "47d11dee6bd61d96da3c2b00349f839060afb630",
+      "baseline_size": 335,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-js-client-tests.txt",
+      "status": "missing",
+      "baseline_sha256": "bb54d37292fc9cee306b99b6c13b963ec31039fbbc63970666b4bcc60d4f9771",
+      "baseline_git_blob": "6ca5ca3d15e567374c4bcc2bf254c46dee5718dd",
+      "baseline_size": 778,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-local-cli-plan.txt",
+      "status": "missing",
+      "baseline_sha256": "a9454ef8927248dcc9a707cc88a8c92d96fe19795d1214073b6fef0d59bd5b12",
+      "baseline_git_blob": "0659c7c87e5e41a6946cdfff4eb5d12d6d552713",
+      "baseline_size": 622,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-package-validation.txt",
+      "status": "missing",
+      "baseline_sha256": "04072972ab220fc1b1975f77f73c94a33447a6bf27bec8641d842a8a19971113",
+      "baseline_git_blob": "0cbb2281bd7a43665df62815c6bf5a4b0c3f0371",
+      "baseline_size": 451,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-regenerate-examples.txt",
+      "status": "missing",
+      "baseline_sha256": "0436301304f82f2efab8645a2dc5808373e6b6b3e54a6d1a9c2832227c5b1f0a",
+      "baseline_git_blob": "64a499d4980c3783ed28d1b5d54e6a587f43eda0",
+      "baseline_size": 691,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-submission-preflight.txt",
+      "status": "missing",
+      "baseline_sha256": "6002e27c87411d162a895f04d6f5f290701d68a00a8ee215934931ce461af0c2",
+      "baseline_git_blob": "6d88fb881d6521820d2c30ad6cf7db7a80674615",
+      "baseline_size": 505,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-syntax-BrowserRuleClient.txt",
+      "status": "missing",
+      "baseline_sha256": "98dc69607725f3b85ce42c7d25aaa45c625abb1ed61d148813639edc028714a8",
+      "baseline_git_blob": "99c1905c4a05769d36b62a51228db2f3e7cf3818",
+      "baseline_size": 58,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-syntax-main.txt",
+      "status": "missing",
+      "baseline_sha256": "d2e7a313c815cfcf790b14303623b9e5ea2aa402049ff9647c76ae8080bb2268",
+      "baseline_git_blob": "6f43b66152e19bbfa3ae5e80f57c29161d5ae994",
+      "baseline_size": 45,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-syntax-pyodide_smoke.txt",
+      "status": "missing",
+      "baseline_sha256": "65aef510001e4d3e5b21342bc57ede949e986f03e37ea4b920647282f39bdc65",
+      "baseline_git_blob": "bcfe27832f20bdf7aed2fdf38aae0c9cccc8c43b",
+      "baseline_size": 48,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-syntax-rule-worker.txt",
+      "status": "missing",
+      "baseline_sha256": "60d6954e5358241eb76b19289876d330b67418fa67c8bdaf663f80e0e5399908",
+      "baseline_git_blob": "35ab045cb3cb9e1394c7462bd27dc71554ad1c09",
+      "baseline_size": 52,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-typescript.txt",
+      "status": "missing",
+      "baseline_sha256": "f362e371d907205c513bc85d77f0933d3b120af5ad8b4d58a4930217717ca783",
+      "baseline_git_blob": "7694a3e3072e10052c27123c18c568186956dfa0",
+      "baseline_size": 76,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-unit-tests.txt",
+      "status": "missing",
+      "baseline_sha256": "154252a349fceb1d4f0ac878c3fbc3b491b50448df35a6296849fc87717c3057",
+      "baseline_git_blob": "b9a7bc6aa2bea2d8c87bc315b0e3c9849975f44e",
+      "baseline_size": 335,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6-v5-baseline.txt",
+      "status": "missing",
+      "baseline_sha256": "ad1c7be23282d803e1296c7f5135bcaca0a615eb3d71676b0fc6e53470a8a672",
+      "baseline_git_blob": "2576e1320e6ce7046927eeb21666692c710953b6",
+      "baseline_size": 2696,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6_1-before-js.txt",
+      "status": "missing",
+      "baseline_sha256": "e69ff1f853c62fb55bde4698eede4d69058df1a8a7d217979e7f60655a58a278",
+      "baseline_git_blob": "254fcc32b04857b6d31995cc9b79daab8f0591a1",
+      "baseline_size": 778,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6_1-before-python.txt",
+      "status": "missing",
+      "baseline_sha256": "cc3ce44ee77292e0e12b89a5331da016f02bca6a73c7c05e45682c34a66493cc",
+      "baseline_git_blob": "3bdb81f3d3f8adff8b5c1bab299bbb522f8cb17f",
+      "baseline_size": 260,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6_1-browser-bundle.txt",
+      "status": "missing",
+      "baseline_sha256": "6faf2444339343d1655fb894c8892fe8b1a4927f9d6c2777cb42aa6c573dc805",
+      "baseline_git_blob": "32b54064b6fbaa75f43be4145a611180afa23091",
+      "baseline_size": 61,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6_1-contracts.txt",
+      "status": "missing",
+      "baseline_sha256": "79cb740e874a6678549a2dfadae9cc939ef5b36ff26d762e763b363366aff32d",
+      "baseline_git_blob": "759fc9d9a7dd81072a63b07ecc490b6e8f4d5b98",
+      "baseline_size": 52,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6_1-external-fetch-status.json",
+      "status": "missing",
+      "baseline_sha256": "26a15a29eb0f6bb81ae023fad2122c1525a8e93e0596a1aeb9e6b2424d7328d1",
+      "baseline_git_blob": "7c67e855af8d53fd9388728962ea597716ac8ca3",
+      "baseline_size": 338,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6_1-js-tests.txt",
+      "status": "missing",
+      "baseline_sha256": "44d3675414d988c75900a0f71f74b12b627e8f89b759902f21d01717e83c4def",
+      "baseline_git_blob": "1397d97ffec97c5e2ae67b7486d240066de0daf4",
+      "baseline_size": 2473,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6_1-package-checks.txt",
+      "status": "missing",
+      "baseline_sha256": "6c956fe8bdb88633cf01bc8479cc92b2aea7191f4212475043c3b86af01012ec",
+      "baseline_git_blob": "b86b450dbf6d6510c8fa30ebd83050f4dfa3cd88",
+      "baseline_size": 388,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6_1-red-regressions.txt",
+      "status": "missing",
+      "baseline_sha256": "ced6ee70d1dc31aa14cd9529c0e9f6598bd2ca7184ee3bbedbd33933af9adf06",
+      "baseline_git_blob": "a857d1e659c9c4f354a790ab88ebd4c4093d819a",
+      "baseline_size": 19721,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6_1-submission-preflight.txt",
+      "status": "missing",
+      "baseline_sha256": "cd3fedcd2a32ed076812654cc8564a22a96c3bc9204e5b56addbedc770f31aec",
+      "baseline_git_blob": "ba5db47ce5760db47a651c35567427184cbaf748",
+      "baseline_size": 446,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6_1-typescript.txt",
+      "status": "missing",
+      "baseline_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "baseline_git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "baseline_size": 0,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/logs/v6_1-unit-tests.txt",
+      "status": "missing",
+      "baseline_sha256": "e64fb8527978b40fb8fe6ef28928bead44c7ba624867afa01859ec1c0821bf16",
+      "baseline_git_blob": "f1d50de140d06002b2cecd104549d0ff22f4e7e9",
+      "baseline_size": 260,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/rules-verification.json",
+      "status": "missing",
+      "baseline_sha256": "ab4822d92ad256c4a9a0e6c12b6c071edad50e363acca525ba3916ea08cad9d0",
+      "baseline_git_blob": "c91927a749e18a3150fe88583e1ffbc94d53dd49",
+      "baseline_size": 6584,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/submission-form-check.json",
+      "status": "missing",
+      "baseline_sha256": "07088763897e4289bd372dec12d63485b4ea57824b1401b7d896f7a5fbf319a0",
+      "baseline_git_blob": "0c000a3ef70295f2bbd51750ce91feb72bbf9be0",
+      "baseline_size": 495,
+      "remote_git_blob": null
+    },
+    {
+      "path": "evidence/task-status.json",
+      "status": "different_same_path",
+      "baseline_sha256": "16f09f3111a1b2a657f58f4e6ccdf0a8abe21fc5121056f1ac4ea4712d3c7e5b",
+      "baseline_git_blob": "0c962599d5d91bfd9e1a38e099429a52d889f3a0",
+      "baseline_size": 3850,
+      "remote_git_blob": "c38e9346033ea83388e0f444b7df98c08d3a7c4c"
+    },
+    {
+      "path": "evidence/validation-summary.json",
+      "status": "missing",
+      "baseline_sha256": "6dbeaec85e17c0ac197b0885b29fb742e961e937b479076ea2232d9175aa0caf",
+      "baseline_git_blob": "218b22812e265d35daa40575d52bec1d1c86f9ae",
+      "baseline_size": 1727,
+      "remote_git_blob": null
+    },
+    {
+      "path": "examples/README.md",
+      "status": "missing",
+      "baseline_sha256": "59b82e58638324b60b3f12390a414c28d8c0fba50e85e8fc6c794a916b8deb12",
+      "baseline_git_blob": "d73ad04965931ba1caf702b3c0ac30afaf7c8a92",
+      "baseline_size": 244,
+      "remote_git_blob": null
+    },
+    {
+      "path": "examples/assessment-before.json",
+      "status": "missing",
+      "baseline_sha256": "10e182b27791aa45c94552ab31cbb93e65928aca6273165b5a4aa15b79e91069",
+      "baseline_git_blob": "9569e36dc064134c6d8a76395ad60fdb92a41461",
+      "baseline_size": 8751,
+      "remote_git_blob": null
+    },
+    {
+      "path": "examples/assessment-conflict.json",
+      "status": "missing",
+      "baseline_sha256": "b42ca8c6056989bddf4aa99a81c4c042abed5f9ae0a6d445dcf828119d4b41cd",
+      "baseline_git_blob": "73a027e2be57935787f492ab80a6fa67df347edc",
+      "baseline_size": 8749,
+      "remote_git_blob": null
+    },
+    {
+      "path": "examples/assessment-improved.json",
+      "status": "missing",
+      "baseline_sha256": "36ed2d6117452f869440c627e8c91723a73b21ae26435fa8a4c0b475587b334c",
+      "baseline_git_blob": "991fdd0fa14cbe3cdc7937498b7752a96cf90ae2",
+      "baseline_size": 8755,
+      "remote_git_blob": null
+    },
+    {
+      "path": "examples/comparison.json",
+      "status": "missing",
+      "baseline_sha256": "e2a2f6898cb749b69d8f40021642f8db60c0b6390f99dd924dafd492cd0c368e",
+      "baseline_git_blob": "b44f59451149893e5613b233908f2c648652df1a",
+      "baseline_size": 796,
+      "remote_git_blob": null
+    },
+    {
+      "path": "examples/scene-before.json",
+      "status": "missing",
+      "baseline_sha256": "2d25206150c0adf464b44db959c945c81d9a95b031dc23de1fd5f60982d297b0",
+      "baseline_git_blob": "a60f522adf3d97354a1eddd2fa464089a3d7fee0",
+      "baseline_size": 13914,
+      "remote_git_blob": null
+    },
+    {
+      "path": "examples/scene-conflict.json",
+      "status": "missing",
+      "baseline_sha256": "001b5b96c1dbb3b05995daa48db2d4ead62e5045376ab12f018d48f49bef4368",
+      "baseline_git_blob": "97a1d0cdd6e16d49a8bd7c4416c4456c30ce6a6d",
+      "baseline_size": 13914,
+      "remote_git_blob": null
+    },
+    {
+      "path": "examples/scene-improved.json",
+      "status": "missing",
+      "baseline_sha256": "273419c1dac84112801151aa78d0b76372b36eb5668235694ee2052bb8fbc581",
+      "baseline_git_blob": "698d04e0b7b1dde029b33663a4083df4f747495c",
+      "baseline_size": 13914,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/BASELINE_SOURCES.json",
+      "status": "missing",
+      "baseline_sha256": "aced319651544ec2e1079b8a5d5a65de904718aaf6301df0962a8f6d418cb81e",
+      "baseline_git_blob": "339f600ee64bb4f7c684e29da04d2392394b590f",
+      "baseline_size": 626,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/README.md",
+      "status": "missing",
+      "baseline_sha256": "53100c904ed3762e96871861acf761320cb4740d0678cab04c72aaa9edaa88ee",
+      "baseline_git_blob": "20430fb185dacb5a5742024136f0bb0cf5a955a2",
+      "baseline_size": 231,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/REVIEW_V4.md",
+      "status": "missing",
+      "baseline_sha256": "cfce484b21598b4d7669282c521ef79ee6569d036913ba0ea5b572e0b1a7b92b",
+      "baseline_git_blob": "a3a12d36a79d010461a01cf4c38bb3971d2c89a2",
+      "baseline_size": 22861,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/AGENTS.md",
+      "status": "missing",
+      "baseline_sha256": "f0c9e1c702927c1bc0481815fa7171e32ca425de2ee18cdac8f3c3f40783069c",
+      "baseline_git_blob": "a8dcf24d80e5ceabb44d3cd31751eb774d2a99ae",
+      "baseline_size": 2872,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/README.md",
+      "status": "missing",
+      "baseline_sha256": "3f2c71c2b8aa1bbef345d3037c6524b0e89ae37c316e4d97465ac42f6564d991",
+      "baseline_git_blob": "168ccf7fe0251877e5bfb7e0414c2966243fba11",
+      "baseline_size": 3526,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/REVIEW_V5.md",
+      "status": "missing",
+      "baseline_sha256": "8c69abaa988fc6e59a2dce060f4ba2df5b62784ae074a1f1126eab105941ad63",
+      "baseline_git_blob": "829abcb7234f71c5a5c45ea7e074799fdeb92bb8",
+      "baseline_size": 4284,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/START_HERE.md",
+      "status": "missing",
+      "baseline_sha256": "c34745254c0e0b5e46837c420f7955469d2ff07ce1d3fb49ccda62063f69f4d9",
+      "baseline_git_blob": "493be1c4442592af6ce6ae2cd58190505c5947ca",
+      "baseline_size": 2544,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/docs/00-scope-and-rules.md",
+      "status": "missing",
+      "baseline_sha256": "f8f091e5943c52f80adc17efa937be8a6e1bb2c8dba4fd794a58f362002348d6",
+      "baseline_git_blob": "59996d8d4d87f76793abf0f2dd029608e4e43c65",
+      "baseline_size": 1642,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/docs/01-architecture.md",
+      "status": "missing",
+      "baseline_sha256": "73635231d2b4af40d39db8ce61cfd34b55d06fa2c670870b3b5ad21c74699c5d",
+      "baseline_git_blob": "8c4958b8b91541179c47e028fc55208decfade60",
+      "baseline_size": 2520,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/docs/02-domain-and-storage.md",
+      "status": "missing",
+      "baseline_sha256": "4a176ae8a19449fc802aef3e08d6908f5194d40366819abee9216712bc0dc284",
+      "baseline_git_blob": "20f0779afd48f4b0c601f36856b87b134f347c57",
+      "baseline_size": 3940,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/docs/03-backend-contracts.md",
+      "status": "missing",
+      "baseline_sha256": "b53f939dc7470f0db845c055040a28ef9fe7496a7e82b0639a60849652c21291",
+      "baseline_git_blob": "b82d942567e8dbda47e640096f7a7b14f8816e69",
+      "baseline_size": 16671,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/docs/04-frontend-contracts.md",
+      "status": "missing",
+      "baseline_sha256": "84f34e23d88277b2a1ff33a034464f110c83a61d3fee3fb545d5efd90319588b",
+      "baseline_git_blob": "be4d83de36ec11c44c7ec835dbaef99ade6a39ef",
+      "baseline_size": 4000,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/docs/05-rules-and-geometry.md",
+      "status": "missing",
+      "baseline_sha256": "8dd60402503eb362c405913dac4aa585029ae22c692f115fe337c7032cf44f28",
+      "baseline_git_blob": "26a62df14eb0fb8cfb2a9c97bc03d5d8a3747928",
+      "baseline_size": 3173,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/docs/06-lux3d-runbook.md",
+      "status": "missing",
+      "baseline_sha256": "0dc1b2907430f2032b6a629255d30c5cc89bb9b4b485e285bbda1a401deb8d7e",
+      "baseline_git_blob": "5d4793b0d873efb43de9abcaa8784342cd884b27",
+      "baseline_size": 3524,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/docs/07-delivery-plan.md",
+      "status": "missing",
+      "baseline_sha256": "e80a67cf245e3b3c1242cbd7c9ceba8b4d692187e4206f7efc5e0d59fdef7915",
+      "baseline_git_blob": "1922cd7f1e1ff6e3b3b52b26235e6e6411af2e96",
+      "baseline_size": 2731,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/docs/08-testing-and-acceptance.md",
+      "status": "missing",
+      "baseline_sha256": "c9cd0c33e431c9c42f894b4e7830a96aee22126115cf72adb638225b89b1e461",
+      "baseline_git_blob": "c89813faf637afbf1e0c2cdf4b0f30e9e0d9cb9e",
+      "baseline_size": 2313,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/docs/09-deployment-security.md",
+      "status": "missing",
+      "baseline_sha256": "823988dc789fba93a4df50df40548ce36a0a1dd5965b49e9325859a8e3275f3d",
+      "baseline_git_blob": "4a832d35dd124e3272703ae0e7f80ff8a9fca2e8",
+      "baseline_size": 2189,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/docs/10-agent-handoff.md",
+      "status": "missing",
+      "baseline_sha256": "3d3ffaa8f6cb2e47ded06c0ec8e279663dfb97c2f666f6422d39a215b3715e9f",
+      "baseline_git_blob": "ae2a57219b689bc760ceed397ae5224ba16ec5f5",
+      "baseline_size": 2084,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/docs/11-official-submission.md",
+      "status": "missing",
+      "baseline_sha256": "90b7bf91a362af01e6d3febdf3bfff736bb854afdd5e41dd4df78ac256c2b257",
+      "baseline_git_blob": "cbb5cd65a715a314469428c4d69d44fcda8f705b",
+      "baseline_size": 2155,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/docs/12-sources-and-open-questions.md",
+      "status": "missing",
+      "baseline_sha256": "999fe665f82e61862fe300241e6a479407a6a56121686607447a328c40c13c5b",
+      "baseline_git_blob": "25ef999bbfba8c4731fa007b4bd88eb6cfe8ba00",
+      "baseline_size": 2383,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/docs/ADR-0001-baseline-freeze.md",
+      "status": "missing",
+      "baseline_sha256": "43d3da828104ef3628f908b56f9ecbb43071f95e1bd4baa41e0df45ba9c47860",
+      "baseline_git_blob": "6b8b0af7165b9a2eee25e08f9e94b2cfabb03f20",
+      "baseline_size": 475,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/env.example",
+      "status": "missing",
+      "baseline_sha256": "89974bb4f14a2032e647178e56e40e8a03b56b88ba83f1e48debc9642f076bfe",
+      "baseline_git_blob": "f77fa91ab1d17123769365603257ba9fc92e424a",
+      "baseline_size": 165,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/evidence/BUILD_VALIDATION.md",
+      "status": "missing",
+      "baseline_sha256": "0e07627b42251a911c3332f240a81f5c52db610e6a854c473b9f197aeb89af76",
+      "baseline_git_blob": "2255b097878ff53ce5aaa55eb5efcbecdfe28903",
+      "baseline_size": 1732,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/evidence/validation-summary.json",
+      "status": "missing",
+      "baseline_sha256": "ce569ee05e0972d9549928522d6e89d040b9ba181ffa55ef0b539fde1972016c",
+      "baseline_git_blob": "1aaed2a096e530519a19a2fab5980dd9980e3962",
+      "baseline_size": 577,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v5-design/gitignore",
+      "status": "missing",
+      "baseline_sha256": "08fac8c57c39698de7a45c0d52b7f982a154596234641331da222132abdae6d4",
+      "baseline_git_blob": "a282982011079e589935e05914c43822138e5501",
+      "baseline_size": 214,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v6-audit/BUILD_VALIDATION.md",
+      "status": "missing",
+      "baseline_sha256": "39a19a5dc728b17a68c5e2b1a28991feb5ac0fb4432c779cb31935bed6f41271",
+      "baseline_git_blob": "a0dda3c30a852879ad8ea53e80287a0a8876b69e",
+      "baseline_size": 2518,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v6-audit/rules-verification.json",
+      "status": "missing",
+      "baseline_sha256": "db7aebee26ab2e136881f12241a67bd6a919a08874c775fe73984c566fbc7902",
+      "baseline_git_blob": "b089a2a1410c2878b32c86499d2830d7bed1344a",
+      "baseline_size": 3894,
+      "remote_git_blob": null
+    },
+    {
+      "path": "history/v6-audit/validation-summary.json",
+      "status": "missing",
+      "baseline_sha256": "320ad17ba45c27c60a9f6d269e1da6f0747ea1af1aaa3ceee5f688de837dd4b2",
+      "baseline_git_blob": "2bc792fdc60398d2ac874887daa132251d1ed5e3",
+      "baseline_size": 1285,
+      "remote_git_blob": null
+    },
+    {
+      "path": "package-manifest.json",
+      "status": "missing",
+      "baseline_sha256": "1296f7bbca38f350ceaea211f3457062dab29115348ff0b331b099ffce938693",
+      "baseline_git_blob": "9d4d3c5bae1e82b4dcbef08b813265f385c43a86",
+      "baseline_size": 39601,
+      "remote_git_blob": null
+    },
+    {
+      "path": "reference/homesafe_core/__init__.py",
+      "status": "missing",
+      "baseline_sha256": "c5e8710c299d2e26d971f48d464da6e63f3a58ddae8b7376c60a60e33ff09349",
+      "baseline_git_blob": "ee448d18c55bfc335f3d599085ca3bc32cfae740",
+      "baseline_size": 91,
+      "remote_git_blob": null
+    },
+    {
+      "path": "reference/homesafe_core/browser_bridge.py",
+      "status": "missing",
+      "baseline_sha256": "881b077e51a7e7837df16b391c03fb4c2f081008caae55cd065c4b2bbd5eddfd",
+      "baseline_git_blob": "1b50efd7a2cd1b578cb12535f1c06609983f2150",
+      "baseline_size": 4220,
+      "remote_git_blob": null
+    },
+    {
+      "path": "reference/homesafe_core/challenge.py",
+      "status": "missing",
+      "baseline_sha256": "2c788692cae1fbe97bf498f9e49dc6a80c124f726577cbbb8c4973b864fd9c85",
+      "baseline_git_blob": "547e0ef7d1525777147e529d099d864c70656f74",
+      "baseline_size": 4810,
+      "remote_git_blob": null
+    },
+    {
+      "path": "reference/homesafe_core/engine.py",
+      "status": "missing",
+      "baseline_sha256": "9e185d4b23c77ce7ba5896fdc7380d67f51885e0515e73b7fac68165f503c2b0",
+      "baseline_git_blob": "f8cf72e720eddcdeb121f5aec12039a636fee0b7",
+      "baseline_size": 7721,
+      "remote_git_blob": null
+    },
+    {
+      "path": "reference/homesafe_core/geometry.py",
+      "status": "missing",
+      "baseline_sha256": "2640c467c7ccea074713d3a7a141836aa8e612e3c5387ba464e73cb9dcadbecc",
+      "baseline_git_blob": "323861c48d2174677ad1652d1cc296616e8e46ef",
+      "baseline_size": 2249,
+      "remote_git_blob": null
+    },
+    {
+      "path": "reference/homesafe_core/lux3d_adapter.py",
+      "status": "missing",
+      "baseline_sha256": "5ecf6f2adb7b103770e9c3b6a4acd8346aefdfb2b1e97ba095d5ce531cc55860",
+      "baseline_git_blob": "98240d730d2706cff0035c6a3208cdbb2d3668c1",
+      "baseline_size": 3345,
+      "remote_git_blob": null
+    },
+    {
+      "path": "reference/homesafe_core/models.py",
+      "status": "missing",
+      "baseline_sha256": "0dbfe657f5cf393f10d6291bbabeb4a3afcbd2e1661f706df54a8ef1f287ae4a",
+      "baseline_git_blob": "81b4803514eba5a39ce056a72a1605a61b5768f4",
+      "baseline_size": 13183,
+      "remote_git_blob": null
+    },
+    {
+      "path": "reference/homesafe_core/policy.py",
+      "status": "missing",
+      "baseline_sha256": "5eae12611dcc118dc44e0654c403a7c38077a3b9b986aeeb53316e15dc8b5d67",
+      "baseline_git_blob": "84d2f4e9786f789777a0eb3e2065b6018bf195fa",
+      "baseline_size": 1848,
+      "remote_git_blob": null
+    },
+    {
+      "path": "reference/homesafe_core/release.py",
+      "status": "missing",
+      "baseline_sha256": "ec7d380c74b5ef5b535d646d4a9d995f0c64f3483492781d5b3230778fde73a1",
+      "baseline_git_blob": "575fecb009f53d51614993bc59074a253cedf1e4",
+      "baseline_size": 9490,
+      "remote_git_blob": null
+    },
+    {
+      "path": "reference/homesafe_core/rule_support.py",
+      "status": "missing",
+      "baseline_sha256": "e7a0aea5e8f1381ec7e55cbef05544a7d5eede41811c31d4081bfc50a8db7d80",
+      "baseline_git_blob": "03d41cf4b2d5c9473aeb0fdddd423674c64bfc6d",
+      "baseline_size": 1077,
+      "remote_git_blob": null
+    },
+    {
+      "path": "reference/homesafe_core/rules.py",
+      "status": "missing",
+      "baseline_sha256": "8e7b7935153309b01f8befb9cd40a4461846f653e8dba10bcfdb22feb36dfd3f",
+      "baseline_git_blob": "2d5f8ff0931f27221f84751441a6c1928475ac03",
+      "baseline_size": 6311,
+      "remote_git_blob": null
+    },
+    {
+      "path": "reference/homesafe_core/validation.py",
+      "status": "missing",
+      "baseline_sha256": "1480bfa9b32c45b6ae088dcf4913adef92d775de4e453d5bf7ddf9e73c0e531d",
+      "baseline_git_blob": "b2099db5b2e6f93715a6fe9a2b17262e16b5c25a",
+      "baseline_size": 6270,
+      "remote_git_blob": null
+    },
+    {
+      "path": "reference/tests/conftest.py",
+      "status": "missing",
+      "baseline_sha256": "69a53b2cec0798614f29d4a59734838b11dffdac7ef2750c6c78166ca64c9492",
+      "baseline_git_blob": "d70c9e2f8333302450997fcb85fb94c9770a5c7f",
+      "baseline_size": 96,
+      "remote_git_blob": null
+    },
+    {
+      "path": "reference/tests/test_adapter.py",
+      "status": "missing",
+      "baseline_sha256": "4c1dc118a5780b040214bf4c16211ca0ec72945a3255382f403780d425af371d",
+      "baseline_git_blob": "d9dbfed8cf66eb57c2fc3a0f04e135a8a8e760de",
+      "baseline_size": 2148,
+      "remote_git_blob": null
+    },
+    {
+      "path": "reference/tests/test_core.py",
+      "status": "missing",
+      "baseline_sha256": "4c962d2790318073c825f5fa22aad414a1e154d9d792a550dee9687de7dd3ccb",
+      "baseline_git_blob": "886bc883d03eab1739a1f6ab32b01b824f1101a7",
+      "baseline_size": 12127,
+      "remote_git_blob": null
+    },
+    {
+      "path": "reference/tests/test_release_export.py",
+      "status": "missing",
+      "baseline_sha256": "b44d5245dc0bff55edee4015c6e7f4695fddd13c15179164c06f9db3a81cb111",
+      "baseline_git_blob": "3276b208aeca0380694488c65b04fbc78c61981b",
+      "baseline_size": 6476,
+      "remote_git_blob": null
+    },
+    {
+      "path": "reference/tests/test_v61_vendor_bridge.py",
+      "status": "missing",
+      "baseline_sha256": "dc3694b7ae88c64037ac80f13791a65d40be2df95731a7110c83d30d6598b236",
+      "baseline_git_blob": "fa5ebc6b3128373ff80330180f58d3c598164d35",
+      "baseline_size": 6834,
+      "remote_git_blob": null
+    },
+    {
+      "path": "reference/tests/test_v6_review.py",
+      "status": "missing",
+      "baseline_sha256": "95ee66f1d44ffc8410cbbfde98bf821ce76945277c59a9b0e6b9a92ca103a30c",
+      "baseline_git_blob": "08ebbbee5bdaaa24eac327ba355cf10f67a8422e",
+      "baseline_size": 7482,
+      "remote_git_blob": null
+    },
+    {
+      "path": "reference/tests/test_v6_tools.py",
+      "status": "missing",
+      "baseline_sha256": "a37606e4027fb38ec92b84412b82dc9c4f208344a00a514b7f5595acce2dcbc2",
+      "baseline_git_blob": "0459c861f666cd0b539f9813aeb8845e1b6ef5f0",
+      "baseline_size": 2687,
+      "remote_git_blob": null
+    },
+    {
+      "path": "requirements-validation.txt",
+      "status": "missing",
+      "baseline_sha256": "e584cfc4b0691c5d18486e681b798a447a437d6b43fcea93ea0f68513e6b8f39",
+      "baseline_git_blob": "816bdd550897ae9a6d3f0c9e1f91e3ef64b7267e",
+      "baseline_size": 298,
+      "remote_git_blob": null
+    },
+    {
+      "path": "scripts/check_submission.py",
+      "status": "missing",
+      "baseline_sha256": "66a750fcd712003cf17c9d5adcb8ab3bd0e8122db8585116aef00d095f3f55d6",
+      "baseline_git_blob": "e861dfe8bb47d430bf9a6bebe23a5e3ca5074697",
+      "baseline_size": 1958,
+      "remote_git_blob": null
+    },
+    {
+      "path": "scripts/export_sources.py",
+      "status": "missing",
+      "baseline_sha256": "f5d352c545769396283e4cca940171c42b1452421f2f20e22fae8f8ff29e6b6e",
+      "baseline_git_blob": "24bf6e3e0f951ee3218e1476315e3af4f7b2e874",
+      "baseline_size": 3282,
+      "remote_git_blob": null
+    },
+    {
+      "path": "scripts/generate_contracts.py",
+      "status": "missing",
+      "baseline_sha256": "7de75bba159027d069ffa1561da2bfe9dfcf8c3939cc7ba7d9bd6f1e936554f2",
+      "baseline_git_blob": "ca2ed45b5a02f49be77702379d3a584fefe77339",
+      "baseline_size": 5017,
+      "remote_git_blob": null
+    },
+    {
+      "path": "scripts/pyodide_smoke.mjs",
+      "status": "missing",
+      "baseline_sha256": "8df324e87785d25f4477b0658dfe82b607639a94a34a3cf08b33ac4cddd0ab76",
+      "baseline_git_blob": "7dc871ed8ed7fa0290adb44b9d7365b8ccead6fe",
+      "baseline_size": 2093,
+      "remote_git_blob": null
+    },
+    {
+      "path": "scripts/run_reference_demo.py",
+      "status": "missing",
+      "baseline_sha256": "961a9872bc9b02d2d38ae2d7a9306edf89ebf91287ba38efce14d50b59744d19",
+      "baseline_git_blob": "50702a0101f1b6d907f9ad0d39a6aedbf0914088",
+      "baseline_size": 633,
+      "remote_git_blob": null
+    },
+    {
+      "path": "scripts/stage_browser_core.py",
+      "status": "missing",
+      "baseline_sha256": "b4f2ce699b1a8625b583ce54770c4e500768fc2b34a7b14949922d4a139bc62e",
+      "baseline_git_blob": "2b82a2697ddb087adbebc1c75da060571750b84d",
+      "baseline_size": 1604,
+      "remote_git_blob": null
+    },
+    {
+      "path": "scripts/validate_package.py",
+      "status": "missing",
+      "baseline_sha256": "4ac04531e351fdf2090825d07ac75a22e87e5b1ef7d7337f037d615aaae9fe93",
+      "baseline_git_blob": "5941b2250cc3af65df7fe27e6d2263d34ba9963c",
+      "baseline_size": 3211,
+      "remote_git_blob": null
+    },
+    {
+      "path": "scripts/vendor_pyodide_from_dir.py",
+      "status": "missing",
+      "baseline_sha256": "a8ea14429b90a37470e2e4fbc55de756ab8e504bac611eb4e2e27c939716fa0a",
+      "baseline_git_blob": "b9eb33a4e2d358f4894a9eff1d55bf394d026e72",
+      "baseline_size": 6532,
+      "remote_git_blob": null
+    },
+    {
+      "path": "submission/submission-manifest.json",
+      "status": "missing",
+      "baseline_sha256": "980fa0bd6d7926e8ee7c94145cd3f39be0375073e484dae437e11853739479fb",
+      "baseline_git_blob": "e806aa31f3fb405a8b152e3d39488a6d0cbec8d8",
+      "baseline_size": 394,
+      "remote_git_blob": null
+    },
+    {
+      "path": "submission/templates/asset-record.md",
+      "status": "missing",
+      "baseline_sha256": "d9896f2b0a04eff11108a0c26f92d469d33daf66a1252302c9b9b866a250642c",
+      "baseline_git_blob": "06fdc33774fe884e44a513d34aa23c430c3a9f73",
+      "baseline_size": 382,
+      "remote_git_blob": null
+    },
+    {
+      "path": "submission/templates/owner-review.json",
+      "status": "missing",
+      "baseline_sha256": "86007a530b80b39722078a4d27ec5c3d9255b304de76abb78f79069511c25221",
+      "baseline_git_blob": "4921094c8ecd27bf8f1f9ea9e69fb9829774eb55",
+      "baseline_size": 217,
+      "remote_git_blob": null
+    },
+    {
+      "path": "submission/templates/product-acceptance.json",
+      "status": "missing",
+      "baseline_sha256": "4563fcf6c30635f5b2c16bbdf476920eb29afefe0d3e5905c84fbada0545e863",
+      "baseline_git_blob": "d7d5eebb77554c1d26bca3e8d3d58e9d44d8c42e",
+      "baseline_size": 179,
+      "remote_git_blob": null
+    },
+    {
+      "path": "submission/templates/receipt.md",
+      "status": "missing",
+      "baseline_sha256": "8d56ead5c0462d0439d469b3bd2851af9943e208bd1f1d9c1a48300fc5513873",
+      "baseline_git_blob": "7ed3d23d56166f24b68d8aec339fb91e3adf488a",
+      "baseline_size": 150,
+      "remote_git_blob": null
+    },
+    {
+      "path": "submission/templates/report-outline.md",
+      "status": "missing",
+      "baseline_sha256": "4cac201bf70926b78347c3999958fa5282c35b5a39393ceda179fd0e7e5841f3",
+      "baseline_git_blob": "23b64af016ae434d57af185f947ae89fb6c1230b",
+      "baseline_size": 993,
+      "remote_git_blob": null
+    },
+    {
+      "path": "submission/templates/social-post.md",
+      "status": "missing",
+      "baseline_sha256": "8d85223f1423b973e73274bb09df82538b2793bd75e94c247ef49a624d270154",
+      "baseline_git_blob": "2634097503d021f8f4e90c5d8be58bb1537f3c6d",
+      "baseline_size": 605,
+      "remote_git_blob": null
+    },
+    {
+      "path": "submission/templates/video-script.md",
+      "status": "missing",
+      "baseline_sha256": "0930c602159f4d74b8a0b867c74281c71dbd06f7f18e519779582015ff58f2be",
+      "baseline_git_blob": "1cc45b40473e4d0c622e2ae340a2b45521a54c45",
+      "baseline_size": 698,
+      "remote_git_blob": null
+    },
+    {
+      "path": "tools/lux3d_local.py",
+      "status": "missing",
+      "baseline_sha256": "f37453a5581d27a37810f1a3caa2c8780a36022d29afd0161c861ff0411ac9a3",
+      "baseline_git_blob": "a7fec1b09512ef0641b3b5b16a328122b4dd4009",
+      "baseline_size": 5465,
+      "remote_git_blob": null
+    },
+    {
+      "path": "docs/01-requirements.md",
+      "status": "remote_only",
+      "remote_git_blob": "8d422d3c7e9a643a3c49922ebc054e4375ba0c91",
+      "remote_size": 3070
+    },
+    {
+      "path": "docs/02-architecture.md",
+      "status": "remote_only",
+      "remote_git_blob": "05b0d590548e18acb755bc0f37c18340304f98c5",
+      "remote_size": 5215
+    },
+    {
+      "path": "docs/03-lux3d-integration.md",
+      "status": "remote_only",
+      "remote_git_blob": "a8fa7683a9c386de37ab5b8e6f3ec39493240fb8",
+      "remote_size": 3349
+    },
+    {
+      "path": "docs/04-implementation-handoff.md",
+      "status": "remote_only",
+      "remote_git_blob": "ae8e66289b11a3ea9889a4b46321c103b38248ba",
+      "remote_size": 3746
+    },
+    {
+      "path": "docs/05-validation-and-delivery.md",
+      "status": "remote_only",
+      "remote_git_blob": "c59cf73c9f046f7166d7f0ecb01c0c6ff2c8b281",
+      "remote_size": 3640
+    },
+    {
+      "path": "docs/06-import-record.md",
+      "status": "remote_only",
+      "remote_git_blob": "24b6a3eb84d9614fe318dbdda27359017aef8410",
+      "remote_size": 2011
+    },
+    {
+      "path": "docs/v6.1/00-overview.md",
+      "status": "remote_only",
+      "remote_git_blob": "d869f0fa79ce5f6b6c80ce0e55a473271bcc0a29",
+      "remote_size": 3501
+    },
+    {
+      "path": "docs/v6.1/01-architecture.md",
+      "status": "remote_only",
+      "remote_git_blob": "cdb47e035c3a803e995e1f69d527ad751c262297",
+      "remote_size": 4771
+    },
+    {
+      "path": "docs/v6.1/02-rules-and-interaction.md",
+      "status": "remote_only",
+      "remote_git_blob": "5b7d8d777252ddcc486168fd0f9a81411cc998f0",
+      "remote_size": 3469
+    },
+    {
+      "path": "docs/v6.1/03-assets.md",
+      "status": "remote_only",
+      "remote_git_blob": "6e3a06d309ef7bff70ff795f311b6af18b67c495",
+      "remote_size": 2074
+    },
+    {
+      "path": "docs/v6.1/04-deployment.md",
+      "status": "remote_only",
+      "remote_git_blob": "5b68b84b95b59ae94d06460c397ee42fed0d448c",
+      "remote_size": 3967
+    },
+    {
+      "path": "docs/v6.1/05-delivery-plan.md",
+      "status": "remote_only",
+      "remote_git_blob": "d3af1b26225424294eb65a7c0739004d5be110b3",
+      "remote_size": 3682
+    },
+    {
+      "path": "docs/v6.1/06-acceptance.md",
+      "status": "remote_only",
+      "remote_git_blob": "925fd6bcf6b394cb05d2c944b70c310412a32a27",
+      "remote_size": 3962
+    },
+    {
+      "path": "docs/v6.1/07-sources.md",
+      "status": "remote_only",
+      "remote_git_blob": "96566b26b44718d9396e789fe7a21f4f992b00cb",
+      "remote_size": 3472
+    },
+    {
+      "path": "materials/source/README.md",
+      "status": "remote_only",
+      "remote_git_blob": "d7b40ef467d030374cf589617ec2e53492beee52",
+      "remote_size": 2511
+    },
+    {
+      "path": "materials/source/handoff-summary-20261103.txt",
+      "status": "remote_only",
+      "remote_git_blob": "ae31f069f45075bc88dc58fbbcf90d5b18e265c0",
+      "remote_size": 11282
+    }
+  ]
+}

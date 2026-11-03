@@ -1,0 +1,9 @@
+{
+  "pyodideVersion": "314.0.6",
+  "pydanticVersion": "2.12.5",
+  "pyodideIndexURL": "./vendor/pyodide/",
+  "coreBundle": "python/homesafe_core.zip",
+  "coreManifest": "python/manifest.json",
+  "mode": "diagnostic_spike_not_submission",
+  "runtimeNetworkPolicy": "Same-origin diagnostic; no implicit CDN fallback; vendor files must be copied and checked first"
+}

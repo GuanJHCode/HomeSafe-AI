@@ -1,0 +1,28 @@
+name: browser-first-reference-baseline
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  reference:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: python -m pip install -r requirements-validation.txt
+      - run: python -m pytest reference/tests -q
+      - run: python scripts/generate_contracts.py --check
+      - run: python scripts/validate_package.py
+      - run: node --test browser-spike/*.test.mjs
+      - run: python scripts/stage_browser_core.py
+      - run: git diff --exit-code -- browser-spike/python browser-spike/examples
+      - run: node --check browser-spike/worker-controller.mjs
+      - run: node --check browser-spike/rule-worker.mjs
+      - run: node --check browser-spike/main.mjs
+      - run: npm install --no-save --package-lock=false typescript@5.8.3
+      - run: npx tsc --strict --noEmit --target ES2022 contracts/frontend/domain.ts
+# This workflow has not run on GitHub in this delivery. No paid API use.
