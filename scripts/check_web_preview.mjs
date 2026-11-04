@@ -10,6 +10,9 @@ import { setTimeout as delay } from 'node:timers/promises';
 import { failNextConfig } from './browser_fault.mjs';
 
 const [url, chrome, puppeteerEntry] = process.argv.slice(2);
+const expectedRealAssets = Number(process.env.HOMESAFE_EXPECT_REAL_ASSETS || 0);
+const expectedAssetLabel = process.env.HOMESAFE_ASSET_PROVENANCE === 'procedural'
+  ? '程序生成模型已加载' : 'Lux3D 模型已加载';
 if (!url || !chrome) throw new Error('Pass the application URL and Chrome executable, plus a puppeteer-core entry point if needed.');
 const puppeteer = await import(puppeteerEntry
   ? pathToFileURL(resolve(puppeteerEntry)).href
@@ -55,6 +58,30 @@ try {
   await ready();
   await page.waitForSelector(canvas, { visible: true });
   const coldReadyMs = performance.now() - opened;
+  if (expectedRealAssets) {
+    await assertModelsLoaded();
+    if (process.env.HOMESAFE_EVIDENCE_DIR) {
+      await mkdir(process.env.HOMESAFE_EVIDENCE_DIR, { recursive: true });
+      await page.screenshot({ path: resolve(process.env.HOMESAFE_EVIDENCE_DIR, 'real-models.png'), fullPage: true });
+    }
+    // The chair is covered by pointer dragging below; exercise the second real
+    // model independently through the existing keyboard-accessible controls.
+    await page.select('.toolbar select', 'cabinet');
+    const cabinetStart = await currentHash();
+    await page.click('button[aria-label="向前移动"]');
+    await ready();
+    assertPosition(await visibleText(position), { x: cabinet.x, z: cabinet.z - 0.25 });
+    const cabinetMoved = await currentHash();
+    assert.notEqual(cabinetMoved, cabinetStart);
+    await click('旋转 45°'); await ready();
+    assert.notEqual(await currentHash(), cabinetMoved);
+    assertPosition(await visibleText(position), { x: cabinet.x, z: cabinet.z - 0.25 });
+    await click(labels.undo); await ready();
+    await click(labels.undo); await ready();
+    assertPosition(await visibleText(position), cabinet);
+    await click(labels.reset); await ready();
+    await assertModelsLoaded();
+  }
 
   await dragChair(chairBefore, chairConflict);
   await ready();
@@ -141,6 +168,7 @@ try {
   await ready();
   await page.waitForSelector(canvas, { visible: true });
   const warmReadyMs = performance.now() - warmOpened;
+  if (expectedRealAssets) await assertModelsLoaded();
 
   const config = await page.evaluate(async () =>
     (await fetch(new URL('engine/config.json', location.href))).json());
@@ -156,6 +184,7 @@ try {
   await click('重建 Worker 并重试');
   await ready();
   assert.equal(await page.evaluate(() => performance.timeOrigin), failedDocument, 'Recovery needs no page refresh');
+  if (expectedRealAssets) await assertModelsLoaded();
   assert.ok(workerCount > failedWorkers, 'Recovery creates a new real Worker');
   assert.deepEqual(pageErrors, []);
   console.log(JSON.stringify({
@@ -163,6 +192,8 @@ try {
     cold_ready_ms: Math.round(coldReadyMs), warm_ready_ms: Math.round(warmReadyMs),
     ruleset: challengeReport.ruleset_version,
     result: 'PASS',
+    expected_real_assets: expectedRealAssets,
+    asset_provenance: expectedRealAssets ? (process.env.HOMESAFE_ASSET_PROVENANCE || 'lux3d_web') : 'none',
     cases: [
       'real pointer drag and one-entry undo', 'invalid placement rebound',
       'child and elder views', 'layout conflict', 'redo, reset and rotation',
@@ -179,6 +210,14 @@ try {
     }, {}, resultPanel);
     const failure = await page.$eval(resultPanel, node => node.querySelector('[role="alert"]')?.textContent);
     assert.ok(!failure, failure);
+  }
+
+  async function assertModelsLoaded() {
+    await page.waitForFunction(count => document.body.textContent.includes(`已加载 ${count} 件模型`), {}, expectedRealAssets);
+    for (const id of ['chair', 'cabinet']) {
+      await page.select('.toolbar select', id);
+      await page.waitForFunction(label => document.body.textContent.includes(label), {}, expectedAssetLabel);
+    }
   }
 
   async function click(label) {

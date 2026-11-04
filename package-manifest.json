@@ -13,8 +13,8 @@
     },
     {
       "path": ".github/workflows/reference-checks.yml",
-      "sha256": "20ffe51fe8dccb05583413db278478a67b7f5015eb0f4c0dd47110384cb27cd5",
-      "bytes": 3771,
+      "sha256": "1b038fab4d414daaff72016bd7222d549a4d26736661e20b3ab0e1fefce348ec",
+      "bytes": 4577,
       "classification": "generated_project_source"
     },
     {
@@ -61,8 +61,8 @@
     },
     {
       "path": "START_HERE.md",
-      "sha256": "77e36123e7cc5485c1e99daad9112a94b9b06bdd999ff0f65ff2f402b61ded54",
-      "bytes": 5232,
+      "sha256": "ee88fdb975df666dfedec92e34a25a9e2043ca7453d3d89161fa816cfeb74fa4",
+      "bytes": 5481,
       "classification": "generated_project_source"
     },
     {
@@ -189,6 +189,30 @@
       "path": "apps/web/tests/findings.test.ts",
       "sha256": "dbfbfff71bef0113d18dd2fa17699fc879f50e5efa8a2b4a822117f832188ab3",
       "bytes": 3055,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/tests/private-asset-calibration.test.ts",
+      "sha256": "cdcc0c8ca557efdad1f0dffb31be6691091b6f3164a65cfd44cbd76a1b155494",
+      "bytes": 943,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/tests/private-asset-calibration.ts",
+      "sha256": "75f38b73419d27420c1ac51adb1d7821055d184cc7af5dcbd0adab853c5a56db",
+      "bytes": 1231,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/tests/private-assets.html",
+      "sha256": "90f26bbfa0d93542436ee03736bd5bb1c62b0008ca5cfaa03eac3757dc633ed2",
+      "bytes": 374,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/tests/private-assets.ts",
+      "sha256": "b9f9641433b766405f7cd37edead23e8fbfe192f9204a812220e894c50bfa10f",
+      "bytes": 5786,
       "classification": "generated_project_source"
     },
     {
@@ -588,6 +612,12 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "docs/v6.1/08-private-asset-intake.md",
+      "sha256": "bfd064c87b007b1fd31658a2084c13ea80ca8a1c87b71ee389e3d03948336854",
+      "bytes": 2666,
+      "classification": "generated_project_source"
+    },
+    {
       "path": "evidence/BUILD_VALIDATION.md",
       "sha256": "01c493f796dae353a0ea63cb65eeed2603bd9a36d79b21c397cadef4df03b7ad",
       "bytes": 2385,
@@ -607,8 +637,8 @@
     },
     {
       "path": "evidence/HANDOFF.md",
-      "sha256": "9cac7f254405af24208a6c4df52c2191c49f20e68f90c030b02ad2d6cae5499d",
-      "bytes": 4014,
+      "sha256": "3fbea73060de9a629f80f9a9cf3d15e6bfdc79215963de33a09c710afa2bd6df",
+      "bytes": 4448,
       "classification": "generated_project_source"
     },
     {
@@ -621,6 +651,12 @@
       "path": "evidence/T01-browser-20261104.md",
       "sha256": "51694730b2a1a0fbbb08df27bbdab0da2c39fa32d296a6c29d229a344d2873da",
       "bytes": 2665,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "evidence/T03_PRIVATE_INTAKE_20261104.md",
+      "sha256": "a824bf7cd3e1cfcc2a93ff76934e2a0a1a8371134a63c8a6573eaeb92d66b38c",
+      "bytes": 2132,
       "classification": "generated_project_source"
     },
     {
@@ -996,6 +1032,12 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "evidence/lux3d-geometry-20261104.json",
+      "sha256": "bd3403982a40d569d9d40f9fa73080840b2860d7a597746967c0dfe2799ba92c",
+      "bytes": 2762,
+      "classification": "generated_project_source"
+    },
+    {
       "path": "evidence/rules-verification.json",
       "sha256": "ab4822d92ad256c4a9a0e6c12b6c071edad50e363acca525ba3916ea08cad9d0",
       "bytes": 6584,
@@ -1009,8 +1051,8 @@
     },
     {
       "path": "evidence/task-status.json",
-      "sha256": "9b89742d5fb00e39f43a655f19544e8de8b972221eb87a07d81024edf9dd2fec",
-      "bytes": 8274,
+      "sha256": "8bacc07143fcb3e4103ed1c17d1d7d27506e59daa417ea6c3134dfa8b42b6529",
+      "bytes": 8805,
       "classification": "generated_project_source"
     },
     {
@@ -1458,6 +1500,18 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "scripts/check_private_asset_geometry.ts",
+      "sha256": "1889821758427e85b57037811a492ff799ceedba35ac21637021e0c5ec842495",
+      "bytes": 3962,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "scripts/check_private_assets.mjs",
+      "sha256": "18cb5e0db9a301455718d102647cb0eb00b1e5bf417eaeed0e6e2c9c940aed3c",
+      "bytes": 7563,
+      "classification": "generated_project_source"
+    },
+    {
       "path": "scripts/check_submission.py",
       "sha256": "66a750fcd712003cf17c9d5adcb8ab3bd0e8122db8585116aef00d095f3f55d6",
       "bytes": 1958,
@@ -1471,8 +1525,14 @@
     },
     {
       "path": "scripts/check_web_preview.mjs",
-      "sha256": "e37eb4cd60c33fc4f691e9a9b1d9aa073b7cb4f51792a2218751d0f752ecfd36",
-      "bytes": 13222,
+      "sha256": "351a74165a51cd8364aea3722e925188664eb40991a47973a90fa96f71346f03",
+      "bytes": 15338,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "scripts/create_private_asset_fixture.py",
+      "sha256": "e8302bc6be56a25977b0251c39e34a15c2f6ef3bd88650b1d00bf38d43cca03b",
+      "bytes": 3120,
       "classification": "generated_project_source"
     },
     {
@@ -1491,6 +1551,18 @@
       "path": "scripts/generate_contracts.py",
       "sha256": "7de75bba159027d069ffa1561da2bfe9dfcf8c3939cc7ba7d9bd6f1e936554f2",
       "bytes": 5017,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "scripts/private_asset_inputs.mjs",
+      "sha256": "f53a892178aaa2c915b88e5d90826b60327ab2621bf222fba9ea5e7f68390e1f",
+      "bytes": 2354,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "scripts/private_asset_inputs.test.mjs",
+      "sha256": "bc1c1833b83406aeb09a80450c05aa93b9e82c7e0904d94cce4125077edeba58",
+      "bytes": 2622,
       "classification": "generated_project_source"
     },
     {

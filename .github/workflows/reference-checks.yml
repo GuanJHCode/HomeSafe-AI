@@ -19,6 +19,7 @@ jobs:
       - run: python scripts/generate_contracts.py --check
       - run: python scripts/validate_package.py
       - run: node --test browser-spike/*.test.mjs
+      - run: node --test scripts/*.test.mjs
       - run: python scripts/stage_browser_core.py
       - run: git diff --exit-code -- browser-spike/python browser-spike/examples
       - run: node --check browser-spike/worker-controller.mjs
@@ -38,6 +39,12 @@ jobs:
       - run: node scripts/check_web_core.mjs
       - name: Install isolated browser driver
         run: npm --prefix "$RUNNER_TEMP/homesafe-browser" install --no-audit --no-fund puppeteer-core@24.15.0
+      - name: Private intake tooling with procedural textured fixtures only
+        shell: bash
+        run: |
+          python scripts/create_private_asset_fixture.py --output "$RUNNER_TEMP/private-fixtures"
+          node scripts/check_private_asset_geometry.ts --chair "$RUNNER_TEMP/private-fixtures/chair.glb" --cabinet "$RUNNER_TEMP/private-fixtures/cabinet.glb" --output evidence/private/ci-geometry
+          node scripts/check_private_assets.mjs --chair "$RUNNER_TEMP/private-fixtures/chair.glb" --cabinet "$RUNNER_TEMP/private-fixtures/cabinet.glb" --provenance procedural --chrome "$(command -v google-chrome)" --driver "$RUNNER_TEMP/homesafe-browser/node_modules/puppeteer-core/lib/esm/puppeteer/puppeteer-core.js" --output evidence/private/ci-intake
       - name: Real browser on a nested path
         shell: bash
         env:

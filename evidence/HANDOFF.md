@@ -22,3 +22,7 @@
 原有 ZIP、SHA 文件和 `claude-verification-20261103/` 未覆盖、未清理、未纳入源码发布。历史验证记录保留；当前机器状态见 [task-status.json](task-status.json)，部署状态见[部署检查表](deployment-checklist.json)。
 
 本轮完成 T04-anonymous-resource-probe：远端提交 `0be5873`，完整 CI 41771015579 通过（Python 228、探针 15、应用 19；真实 HTTP 与 Chrome 验收通过）。两项 URL 反例修复后独立 agent 复审 PASS，并独立核对 CI 后批准关闭该子任务；T04 整体仍 BLOCKED。详情见 [核验工具记录](DEPLOYMENT_PROBE_20261104.md)，使用方式见 START_HERE。后续功能同样必须独立审查后才关闭。
+
+## T03 接续（2026-11-04）
+
+已取得用户提供的椅子与柜体原始GLB及来源材料，替代上文“未提供”的历史状态。18个摘要通过；两原件Node/Three.js数值校准通过。公开分发仍待确认，真实浏览器被当前云环境socket权限阻断，不用Node结果代替。私下工具与复审进展见[T03记录](T03_PRIVATE_INTAKE_20261104.md)。公开manifest为空，T03整体仍BLOCKED。

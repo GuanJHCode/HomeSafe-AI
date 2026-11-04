@@ -95,16 +95,30 @@
         "assets/asset-manifest.json",
         "evidence/TAKEOVER_VALIDATION_20261104.md",
         "reference/tests/test_public_assets.py",
-        "assets/README.md"
+        "assets/README.md",
+        "evidence/T03_PRIVATE_INTAKE_20261104.md",
+        "evidence/lux3d-geometry-20261104.json"
       ],
       "checks": {
         "approved_lux3d_assets": 0,
-        "real_asset_browser_test": "NOT_RUN",
+        "real_asset_browser_test": "BLOCKED_NOT_RUN",
         "publication_catalog_and_binding": "IMPLEMENTED",
-        "synthetic_publication_regression": "PASS"
+        "synthetic_publication_regression": "PASS",
+        "received_lux3d_glbs": 2,
+        "original_checksums": "PASS_18_FILES",
+        "real_asset_geometry": "PASS_NODE_GEOMETRY_ONLY"
       },
       "blockers": [
-        "Awaiting approved chair and cabinet GLBs with provenance, distribution rights and calibration evidence."
+        "Distribution rights under applicable China-site terms remain unconfirmed.",
+        "Actual GLB browser/visual acceptance not run: current cloud Chromium socket creation denied."
+      ],
+      "subtasks": [
+        {
+          "id": "T03-private-intake-tooling",
+          "status": "IN_PROGRESS",
+          "review": "CHANGES_REQUESTED_FIRST_REVIEW",
+          "ci": "PENDING"
+        }
       ]
     },
     {

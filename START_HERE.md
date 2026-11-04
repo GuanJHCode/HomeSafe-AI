@@ -79,3 +79,7 @@ python scripts/check_deployment.py --url https://YOUR-APPROVED-HOST/preview/ --d
 此命令先核验本地分发清单、摘要和未列出文件，再匿名请求目标首页、清单与全部资源；检查精确字节、Worker/WASM MIME 和子路径尾斜杠跳转。无登录、Cookie 或 API Key。资源重定向、登录页和 SPA 回退不能通过。输出必须放在 dist 外。
 
 HTTP 检查通过仍不是浏览器或公开部署验收：回执固定保留 `browser_interaction: NOT_RUN`、`public_deployment: NOT_VERIFIED`。随后按浏览器验收脚本在同一目标完成真实交互、刷新、恢复与性能检查，再人工更新部署证据。`--allow-local-http` 仅供显式 loopback 测试，回执不会声称匿名 HTTPS 通过。CI 在真实 HTTP 子路径运行该命令；目前没有公开托管地址。
+
+## 未核准公开分发的模型
+
+已收到原件但权利待确认时，先按[私下接收流程](docs/v6.1/08-private-asset-intake.md)做几何检查与隔离浏览器验证。原件不进入公开目录，Node检查不替代真实浏览器。

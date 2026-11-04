@@ -1,0 +1,129 @@
+// Run from the repo after staging the ordinary placeholder preview. Requires an
+// explicitly supplied isolated Chromium and puppeteer-core; never uses a user profile.
+import assert from 'node:assert/strict';
+import { readFile, mkdir, writeFile } from 'node:fs/promises';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { parseArgs } from 'node:util';
+import { spawn } from 'node:child_process';
+import { createServer } from '../apps/web/node_modules/vite/dist/node/index.js';
+import { inspectGlb, privateOutputPath, isLoopbackRequest } from './private_asset_inputs.mjs';
+
+const { values } = parseArgs({ options: Object.fromEntries(
+  ['chair', 'cabinet', 'chrome', 'driver', 'output', 'provenance'].map(name => [name, { type: 'string' }])) });
+for (const name of ['chair', 'cabinet', 'chrome', 'driver', 'output', 'provenance']) {
+  if (!values[name]) throw new Error(`Required: --${name}`);
+}
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+assert.ok(['lux3d_web', 'procedural'].includes(values.provenance), 'Explicit provenance must be lux3d_web or procedural');
+const output = await privateOutputPath(root, values.output);
+const scene = JSON.parse(await readFile(resolve(root, 'examples/scene-before.json'), 'utf8'));
+const originals = new Map();
+const inputs = [];
+for (const id of ['chair', 'cabinet']) {
+  const raw = await readFile(resolve(values[id]));
+  const inspection = inspectGlb(raw);
+  originals.set(id, raw);
+  inputs.push({ id, asset_id: `private-${values.provenance}-${id}`, provenance: values.provenance, ...inspection,
+    dimensions: scene.objects.find(object => object.id === id).dimensions_m });
+}
+// Prerequisite: official runtime and ordinary empty publication catalog staged.
+await readFile(resolve(root, 'apps/web/public/engine/config.json'));
+assert.deepEqual(JSON.parse(await readFile(resolve(root, 'assets/asset-manifest.json'), 'utf8')).assets, [],
+  'This intake harness expects the placeholder-only public catalog');
+const publicBefore = await readFile(resolve(root, 'assets/asset-manifest.json'));
+const puppeteer = await import(pathToFileURL(resolve(values.driver)).href);
+let assets = [], port = 0, browser;
+const server = await createServer({
+  configFile: false, root: resolve(root, 'apps/web'),
+  plugins: [(await import('../apps/web/node_modules/@vitejs/plugin-vue/dist/index.mjs')).default(), {
+    name: 'private-intake-loopback',
+    configureServer(vite) {
+      vite.middlewares.use((req, res, next) => {
+        if (!isLoopbackRequest(req.headers.host, req.headers.origin, port) ||
+            req.headers['sec-fetch-site'] === 'cross-site') {
+          res.statusCode = 403; res.end('Loopback requests only'); return;
+        }
+        const path = new URL(req.url, `http://127.0.0.1:${port}`).pathname;
+        let body, mime = 'application/json';
+        if (path === '/__intake/info.json') body = JSON.stringify(inputs);
+        for (const id of ['chair', 'cabinet']) {
+          if (path === `/__intake/${id}.glb` || path === `/assets/public/private-test-${id}.glb`) {
+            body = originals.get(id); mime = 'model/gltf-binary';
+          }
+        }
+        if (path === '/engine/assets.json') body = JSON.stringify(assets);
+        if (path === '/engine/scene-before.json') {
+          const bound = structuredClone(scene);
+          for (const item of inputs) bound.objects.find(o => o.id === item.id).asset_id = item.asset_id;
+          body = JSON.stringify(bound);
+        }
+        if (body !== undefined) {
+          res.setHeader('Content-Type', mime); res.setHeader('Cache-Control', 'no-store'); res.end(body); return;
+        }
+        if (path.startsWith('/__intake/') || path.startsWith('/assets/public/private-test-')) {
+          res.statusCode = 404; res.end(); return;
+        }
+        next();
+      });
+    },
+  }],
+  server: { host: '127.0.0.1', port: 0, cors: false, fs: { strict: true, allow: [root],
+    deny: ['**/.git/**', '**/.env*', '**/*.{crt,pem,key}', '**/assets/raw/**', '**/evidence/private/**'] } },
+});
+
+await mkdir(output, { recursive: true });
+try {
+  await server.listen(); port = server.httpServer.address().port;
+  const url = `http://127.0.0.1:${port}/`;
+  browser = await puppeteer.default.launch({ executablePath: resolve(values.chrome), headless: true,
+    args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', ...(process.env.CI ? ['--no-sandbox'] : [])] });
+  const page = await browser.newPage(); await page.setViewport({ width: 1150, height: 950 });
+  const errors = []; page.on('pageerror', error => errors.push(error.message));
+  await page.goto(`${url}tests/private-assets.html`, { waitUntil: 'domcontentloaded' });
+  await page.waitForFunction(() => ['PASS', 'FAIL'].includes(window.privateAssetResult?.status), { timeout: 90_000 });
+  const calibration = await page.evaluate(() => window.privateAssetResult);
+  assert.equal(calibration.status, 'PASS', calibration.error); assert.deepEqual(errors, []);
+  assets = calibration.assets;
+  await page.screenshot({ path: resolve(output, 'calibration.png'), fullPage: true });
+  await writeFile(resolve(output, 'calibration.json'), JSON.stringify(calibration, null, 2) + '\n');
+  await browser.close(); browser = undefined;
+  const code = await new Promise((done, reject) => {
+    const child = spawn(process.execPath, [resolve(root, 'scripts/check_web_preview.mjs'), url,
+      resolve(values.chrome), resolve(values.driver)], {
+      cwd: root, timeout: 240_000, env: { ...process.env, HOMESAFE_EVIDENCE_DIR: output,
+        HOMESAFE_EXPECT_REAL_ASSETS: '2', HOMESAFE_ASSET_PROVENANCE: values.provenance },
+      stdio: ['ignore', 'pipe', 'pipe'],
+    });
+    let stdout = '', stderr = '';
+    child.stdout.on('data', chunk => { stdout += chunk; });
+    child.stderr.on('data', chunk => { stderr += chunk; });
+    child.on('error', reject);
+    child.on('close', async exit => {
+      try {
+        await writeFile(resolve(output, 'web-preview.json'), stdout);
+        await writeFile(resolve(output, 'web-preview.stderr.txt'), stderr);
+        done(exit);
+      } catch (error) { reject(error); }
+    });
+  });
+  assert.equal(code, 0, `Real interaction failed; inspect ${output}/web-preview.stderr.txt`);
+  for (const id of ['chair', 'cabinet']) assert.deepEqual(await readFile(resolve(values[id])), originals.get(id));
+  assert.deepEqual(await readFile(resolve(root, 'assets/asset-manifest.json')), publicBefore);
+  const report = { scope: values.provenance === 'lux3d_web' ? 'PRIVATE_LOOPBACK_LUX3D_INPUTS' : 'PRIVATE_LOOPBACK_PROCEDURAL_FIXTURE',
+    source_kind: values.provenance, result: 'PASS',
+    rights_status: 'PENDING', public_deployment: 'NOT_RUN', publication_catalog_changed: false,
+    original_bytes_unchanged: true, orientation: 'Y-up/+Z front; visual review required',
+    dimensions: 'Synthetic scenario fit, not measured real furniture',
+    assets: inputs, checks: calibration.checks,
+    interaction: JSON.parse(await readFile(resolve(output, 'web-preview.json'), 'utf8')) };
+  await writeFile(resolve(output, 'result.json'), JSON.stringify(report, null, 2) + '\n');
+  console.log(JSON.stringify({ result: 'PASS', scope: report.scope, output, rights_status: 'PENDING' }));
+} catch (error) {
+  await writeFile(resolve(output, 'failure.json'), JSON.stringify({ result: 'FAIL_OR_BLOCKED',
+    source_kind: values.provenance, browser_acceptance: 'NOT_PASSED', error: String(error) }, null, 2) + '\n');
+  throw error;
+} finally {
+  if (browser) await browser.close();
+  await server.close();
+}

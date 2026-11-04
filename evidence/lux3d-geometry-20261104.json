@@ -1,0 +1,89 @@
+{
+  "scope": "NODE_GEOMETRY_ONLY",
+  "result": "PASS",
+  "publication_approved": false,
+  "physical_measurement": false,
+  "visual_review": "PENDING",
+  "checks": [
+    {
+      "object_id": "chair",
+      "bytes": 10352404,
+      "sha256": "e2606d75f4ef91a7395b9447ca5d65d972fd38595bcf53d6c6ef11ee9462e71a",
+      "calibration_candidate": {
+        "revision": 1,
+        "strategy": "runtime_axis_fit",
+        "reviewed": false,
+        "orientation": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1
+        },
+        "pivot_offset_after_rotation": {
+          "x": 0,
+          "y": -0.42500001192092896,
+          "z": 0
+        },
+        "normalized_bounds_m": {
+          "width": 0.48822829127311707,
+          "height": 0.8500000238418579,
+          "depth": 0.5772185921669006
+        },
+        "notes": "Private test-only candidate: reviewed=true exercises the runtime gate, not publication approval. Y-up/+Z front assumption. Original coordinate bounds are not physical measurements. Rights and visual review remain separate."
+      },
+      "target_dimensions": {
+        "width": 0.5,
+        "height": 0.8,
+        "depth": 0.5
+      },
+      "numerical_fit": "PASS",
+      "bottom_center": "PASS",
+      "rotations_and_translation": "PASS",
+      "multiple_instances": "PASS",
+      "source_object_unchanged": true,
+      "raw_bytes_unchanged": true,
+      "textures": "NOT_DECODED",
+      "browser": "NOT_RUN"
+    },
+    {
+      "object_id": "cabinet",
+      "bytes": 8689480,
+      "sha256": "a8398b16be4d4d2f0c7c703575d0679ce16cc3aeacc276af48c9d26379ad940b",
+      "calibration_candidate": {
+        "revision": 1,
+        "strategy": "runtime_axis_fit",
+        "reviewed": false,
+        "orientation": {
+          "x": 0,
+          "y": 0,
+          "z": 0,
+          "w": 1
+        },
+        "pivot_offset_after_rotation": {
+          "x": 0,
+          "y": -0.8999999761581421,
+          "z": 0
+        },
+        "normalized_bounds_m": {
+          "width": 0.6822696924209595,
+          "height": 1.7999999523162842,
+          "depth": 0.48448124527931213
+        },
+        "notes": "Private test-only candidate: reviewed=true exercises the runtime gate, not publication approval. Y-up/+Z front assumption. Original coordinate bounds are not physical measurements. Rights and visual review remain separate."
+      },
+      "target_dimensions": {
+        "width": 0.7,
+        "height": 1.6,
+        "depth": 0.5
+      },
+      "numerical_fit": "PASS",
+      "bottom_center": "PASS",
+      "rotations_and_translation": "PASS",
+      "multiple_instances": "PASS",
+      "source_object_unchanged": true,
+      "raw_bytes_unchanged": true,
+      "textures": "NOT_DECODED",
+      "browser": "NOT_RUN"
+    }
+  ]
+}
