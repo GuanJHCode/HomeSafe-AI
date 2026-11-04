@@ -97,8 +97,8 @@
     },
     {
       "path": "apps/web/src/domain/EvaluationController.ts",
-      "sha256": "278b21d33c43e4fcc12e0c962f4f9958d06b20615df9b70fdd9a0f979ab4e7d1",
-      "bytes": 4915,
+      "sha256": "b218e9d69935bf2f3b07cbaa6ec0cfd5e2ca52ef198152005f10c076c81034d4",
+      "bytes": 4998,
       "classification": "generated_project_source"
     },
     {
@@ -163,8 +163,8 @@
     },
     {
       "path": "apps/web/src/useLivingRoom.ts",
-      "sha256": "7b45752fa7bf854bb1195f15d73582565ce654fbc03541c996c3e933798cd768",
-      "bytes": 14779,
+      "sha256": "e33332fc89a038e6575bab1da3bca00f7878f7ecf55775dd66a86cd5ddead05a",
+      "bytes": 14836,
       "classification": "generated_project_source"
     },
     {
@@ -181,8 +181,8 @@
     },
     {
       "path": "apps/web/tests/evaluation.test.ts",
-      "sha256": "c8ecb4dc44dae4167f1f97bd4d248e7c6695b988edafddf232953dad6c5d5c0a",
-      "bytes": 4378,
+      "sha256": "9221dafe7355cba062108def55f3a4ecebbbaac7cb81ac0c9a4370832615aafd",
+      "bytes": 5396,
       "classification": "generated_project_source"
     },
     {
@@ -595,8 +595,8 @@
     },
     {
       "path": "evidence/CI_CONTINUATION_20261104.md",
-      "sha256": "81f4aa2074fa93f3ca281617b20a2ebf165b6f1b8c8cd4e01cf20cbab5476277",
-      "bytes": 3513,
+      "sha256": "e2df1a2d6417ad61b7728e9217c5259701ca2f9de30ac7728eb6fd0cc7d6a263",
+      "bytes": 4086,
       "classification": "generated_project_source"
     },
     {

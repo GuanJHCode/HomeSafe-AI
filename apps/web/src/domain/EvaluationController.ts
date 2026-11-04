@@ -79,9 +79,10 @@ export class EvaluationController {
     }
   }
 
-  restart(): Promise<WorkerMetadata | null> {
+  restart(config?: WorkerConfig): Promise<WorkerMetadata | null> {
     this.#ticket++;
     this.#closeClient();
+    if (config) this.#options = { ...this.#options, config };
     return this.ensureReady();
   }
 

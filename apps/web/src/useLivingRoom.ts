@@ -21,8 +21,8 @@ const names: Record<string, string> = {
   rug: '地毯', cord: '线缆', gate: '儿童门栏', 'elder-route': '老人指定通道',
 };
 
-async function read<T>(url: URL): Promise<T> {
-  const response = await fetch(url);
+async function read<T>(url: URL, options?: RequestInit): Promise<T> {
+  const response = await fetch(url, options);
   if (!response.ok) throw new Error(`资源加载失败：${url.pathname}（${response.status}）`);
   return response.json() as Promise<T>;
 }
@@ -276,13 +276,13 @@ export function useLivingRoom() {
         runtime?.setRoleView(view.value);
       }
       stage.value = '正在加载同源 Pyodide、依赖和规则';
+      const config = await read<WorkerConfig>(new URL('engine/config.json', base), { cache: 'no-store' });
+      if (disposed) return;
       if (!evaluation) {
-        const config = await read<WorkerConfig>(new URL('engine/config.json', base));
-        if (disposed) return;
         evaluation = new EvaluationController({ config, base });
         challenge = new ChallengeController(evaluation);
       }
-      const metadata = await (retry ? evaluation.restart() : evaluation.ensureReady());
+      const metadata = await (retry ? evaluation.restart(config) : evaluation.ensureReady());
       if (disposed) return;
       if (!metadata) throw new Error('规则 Worker 未就绪。');
       if (mode.value === 'challenge') await startChallenge();

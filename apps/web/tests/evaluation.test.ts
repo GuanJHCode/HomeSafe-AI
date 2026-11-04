@@ -99,3 +99,28 @@ test('structured placement issues survive a current request failure', async () =
   await assert.rejects(response, error => (error as { details?: unknown }).details === details);
   evaluation.dispose();
 });
+
+test('retry uses refreshed runtime configuration and never replays a failed operation', async () => {
+  const received: string[] = [];
+  let stopped = 0;
+  let requests = 0;
+  const evaluation = new EvaluationController({
+    config: { ...config, pyodideIndexURL: './vendor/missing/' },
+    base: 'https://example.test/subpath/',
+    createClient: () => ({
+      initialize: async current => {
+        received.push(current.pyodideIndexURL);
+        if (current.pyodideIndexURL.includes('missing')) throw new Error('runtime unavailable');
+        return { result: metadata };
+      },
+      request: async () => { requests++; throw new Error('unexpected replay'); },
+      dispose: () => { stopped++; },
+    }),
+  });
+  await assert.rejects(evaluation.ensureReady(), /runtime unavailable/);
+  assert.deepEqual(await evaluation.restart(config), metadata);
+  assert.deepEqual(received, ['./vendor/missing/', config.pyodideIndexURL]);
+  assert.equal(stopped, 1);
+  assert.equal(requests, 0);
+  evaluation.dispose();
+});
