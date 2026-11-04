@@ -1,0 +1,209 @@
+2026-11-04 takeover validation; no browser or hosting execution.
+Synthetic staging tests are not a production build.
+
+$ /tmp/homesafe-review-20261103/.venv/bin/python -m pytest reference/tests -q
+........................................................................ [ 34%]
+........................................................................ [ 69%]
+..............................................................           [100%]
+206 passed in 0.54s
+EXIT 0 (expected 0)
+
+$ /tmp/homesafe-review-20261103/.venv-pyd212/bin/python -m pytest reference/tests -q
+........................................................................ [ 34%]
+........................................................................ [ 69%]
+..............................................................           [100%]
+206 passed in 0.58s
+EXIT 0 (expected 0)
+
+$ /tmp/homesafe-review-20261103/.venv/bin/python scripts/generate_contracts.py --check
+Canonical contracts match (3 files; not a live API)
+EXIT 0 (expected 0)
+
+$ /tmp/homesafe-review-20261103/.venv/bin/python scripts/validate_package.py
+PASS generated contracts match canonical models
+PASS JSON Schema Draft 2020-12
+PASS schema and deterministic example before
+PASS schema and deterministic example conflict
+PASS schema and deterministic example improved
+PASS example comparison reproducible
+PASS OpenAPI internal pointers and operation IDs (not HTTP validation)
+FAIL active Markdown local links START_HERE.md -> evidence/TAKEOVER_VALIDATION_20261104.md
+8 package checks, 1 failures
+EXIT 1 (expected 0)
+
+$ node --test browser-spike/challenge-probe.test.mjs browser-spike/client.test.mjs browser-spike/worker-controller.test.mjs
+✔ diagnostic exercises both moves, undo and reset without losing coverage (4.313291ms)
+✔ restarting a diagnostic stops it before issuing more challenge commands (0.91025ms)
+✔ request IDs route out-of-order replies without stale acceptance (0.571666ms)
+✔ structured placement failures propagate (0.250417ms)
+✔ dispose rejects pending work and terminates worker (0.098166ms)
+✔ timeouts never manufacture a success (5.469916ms)
+✔ synchronous postMessage failure rejects and clears pending request (0.154375ms)
+✔ rejected initialization is cleared and a second attempt can succeed (1.663666ms)
+✔ evaluation after failed init cannot turn into success (0.224625ms)
+✔ successful initialization is reused and queued evaluation waits for it (5.526167ms)
+✔ dispatch failure does not poison subsequent commands (0.238708ms)
+✔ oversized message is rejected before calling Python (0.834167ms)
+✔ malformed message remains structured and the queue recovers (0.079083ms)
+✔ goal-met summary never omits outstanding triggered findings (0.068083ms)
+✔ missing summary counts cannot masquerade as zero (0.039916ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 52.511042
+EXIT 0 (expected 0)
+
+$ node --test apps/web/tests/challenge.test.ts apps/web/tests/evaluation.test.ts apps/web/tests/findings.test.ts apps/web/tests/report.test.ts apps/web/tests/transform.test.ts apps/web/tests/workspace.test.ts
+✔ sends only the canonical transform and renders remaining issues after Python confirms the goal (1.131834ms)
+✔ rejects a changed challenge state if its comparison does not bind both input hashes (0.260625ms)
+✔ a late result cannot replace the current revision (3.468875ms)
+✔ mismatched response revision and comparison hashes cannot become current (0.689083ms)
+✔ a failed Worker is terminated and a fresh Worker can evaluate without replaying the failed request (0.417541ms)
+✔ structured placement issues survive a current request failure (0.340334ms)
+✔ role switching filters findings and coverage using configured profile roles (0.750834ms)
+✔ comparison highlights a child–elder tradeoff and rejects unrelated hashes (1.266875ms)
+✔ observation-only comparisons cannot be described as layout conflicts (0.12525ms)
+✔ JSON and print view model use the same accepted version and actual assessment (2.389125ms)
+✔ stale assessment and mixed-version comparison cannot be exported (0.2585ms)
+✔ drag previews until release, sends one proposal, and restores the last legal pose on rejection (1.635458ms)
+✔ a drag changes layout and history only after accepted evaluation (5.544125ms)
+✔ undo, redo and reset keep the last legal layout until reevaluated (0.81ms)
+✔ a newer proposal supersedes an older one at the same scene revision (0.341708ms)
+✔ invalid placement highlights both colliding objects and structured room boundaries (0.274375ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 96.420334
+EXIT 0 (expected 0)
+
+$ /tmp/homesafe-review-20261103/ts-check/node_modules/.bin/tsc --strict --noEmit --target ES2022 contracts/frontend/domain.ts
+EXIT 0 (expected 0)
+
+$ /tmp/homesafe-review-20261103/ts-check/node_modules/.bin/tsc --strict --noEmit --target ES2022 --module ESNext --moduleResolution Bundler --allowImportingTsExtensions --allowJs apps/web/src/domain/ChallengeController.ts apps/web/src/domain/EvaluationController.ts apps/web/src/domain/FindingsPresenter.ts apps/web/src/domain/ReportBuilder.ts apps/web/src/domain/WorkspaceController.ts apps/web/src/domain/layout-result.ts apps/web/src/scene/TransformController.ts
+EXIT 0 (expected 0)
+
+$ /tmp/homesafe-review-20261103/.venv/bin/python scripts/stage_browser_core.py
+Staged 10 modules; runtime/vendor packages are NOT included.
+EXIT 0 (expected 0)
+
+$ /tmp/homesafe-review-20261103/.venv/bin/python scripts/stage_web_preview.py
+Staged 10 modules; runtime/vendor packages are NOT included.
+Staged same-origin runtime, canonical scene and 0 reviewed asset descriptors.
+EXIT 0 (expected 0)
+
+$ node scripts/check_web_core.mjs
+Loading annotated-types, pydantic, pydantic_core, typing-extensions, typing-inspection
+Loaded annotated-types, pydantic, pydantic_core, typing-extensions, typing-inspection
+{
+  "scope": "NODE_WASM_CONTROLLER_INTEGRATION_NOT_BROWSER",
+  "result": "PASS",
+  "pyodide": "314.0.6",
+  "pydantic": "2.12.5",
+  "conflict": true,
+  "goal": "goal_met",
+  "remaining_triggered": 2,
+  "remaining_needs_review": 4,
+  "unsupported_domains": 5
+}
+EXIT 0 (expected 0)
+
+$ /tmp/homesafe-review-20261103/.venv/bin/python scripts/check_submission.py
+BLOCKED: product/materials are not verified for submission
+- valid source commit required
+- owner_review: expected file descriptor
+- product_acceptance: expected file descriptor
+- report: expected file descriptor
+- video: expected file descriptor
+- final_scene: expected file descriptor
+- core feature→Lux3D evidence mapping missing
+- V6.1 primary public interactive HTTPS URL not recorded
+- V6.1 real browser/anonymous access evidence missing
+EXIT 2 (expected 2)
+
+$ npm --prefix apps/web run typecheck
+
+> @homesafe/web@0.1.0 typecheck
+> vue-tsc --noEmit
+
+sh: vue-tsc: command not found
+EXIT 127 (expected 127)
+
+$ node --test apps/web/tests/asset-loader.test.ts
+node:internal/modules/package_json_reader:316
+  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+        ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'three' imported from /Users/guanjunhui/code/ai/HomeSafe-AI/apps/web/tests/asset-loader.test.ts
+    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:316:9)
+    at packageResolve (node:internal/modules/esm/resolve:768:81)
+    at moduleResolve (node:internal/modules/esm/resolve:858:18)
+    at defaultResolve (node:internal/modules/esm/resolve:990:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:718:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:735:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:764:52)
+    at #resolve (node:internal/modules/esm/loader:700:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:620:35)
+    at ModuleJob.syncLink (node:internal/modules/esm/module_job:143:33) {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.13.0
+✖ apps/web/tests/asset-loader.test.ts (52.173ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 55.687
+
+✖ failing tests:
+
+test at apps/web/tests/asset-loader.test.ts:1:1
+✖ apps/web/tests/asset-loader.test.ts (52.173ms)
+  'test failed'
+EXIT 1 (expected 1)
+
+$ npm --prefix apps/web run build
+
+> @homesafe/web@0.1.0 build
+> python3 ../../scripts/stage_web_preview.py && npm run build:frontend && python3 ../../scripts/stage_web_preview.py --verify-dist
+
+Staged 10 modules; runtime/vendor packages are NOT included.
+Staged same-origin runtime, canonical scene and 0 reviewed asset descriptors.
+
+> @homesafe/web@0.1.0 build:frontend
+> npm run typecheck && vite build
+
+
+> @homesafe/web@0.1.0 typecheck
+> vue-tsc --noEmit
+
+sh: vue-tsc: command not found
+EXIT 127 (expected 127)
+
+$ /tmp/homesafe-review-20261103/.venv/bin/python scripts/stage_web_preview.py --verify-dist
+BLOCKED: Missing preview files: engine/assets.json, engine/config.json, engine/python/homesafe_core.zip, engine/python/manifest.json, engine/rule-worker.mjs, engine/scene-before.json, engine/worker-controller.mjs, index.html, vendor/pyodide/annotated_types-0.7.0-py3-none-any.whl, vendor/pyodide/pydantic-2.12.5-py3-none-any.whl, vendor/pyodide/pydantic_core-2.41.5-cp314-cp314-pyemscripten_2026_0_wasm32.whl, vendor/pyodide/pyodide-lock.json, vendor/pyodide/pyodide.asm.mjs, vendor/pyodide/pyodide.asm.wasm, vendor/pyodide/pyodide.mjs, vendor/pyodide/python_stdlib.zip, vendor/pyodide/typing_extensions-4.15.0-py3-none-any.whl, vendor/pyodide/typing_inspection-0.4.2-py3-none-any.whl, vendor/pyodide/vendor-manifest.json
+EXIT 1 (expected 1)
+
+After completing linked handoff documents:
+$ /tmp/homesafe-review-20261103/.venv/bin/python scripts/validate_package.py
+PASS generated contracts match canonical models
+PASS JSON Schema Draft 2020-12
+PASS schema and deterministic example before
+PASS schema and deterministic example conflict
+PASS schema and deterministic example improved
+PASS example comparison reproducible
+PASS OpenAPI internal pointers and operation IDs (not HTTP validation)
+PASS active Markdown local links
+8 package checks, 0 failures
+EXIT 0

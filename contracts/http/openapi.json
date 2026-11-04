@@ -1275,6 +1275,27 @@
         "title": "ErrorDTO",
         "type": "object"
       },
+      "FileEvidence": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "minLength": 1,
+            "title": "Path",
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Sha256",
+            "type": "string"
+          }
+        },
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "title": "FileEvidence",
+        "type": "object"
+      },
       "Finding": {
         "additionalProperties": false,
         "properties": {
@@ -1669,6 +1690,95 @@
           }
         },
         "title": "Properties",
+        "type": "object"
+      },
+      "PublicAssetCatalog": {
+        "additionalProperties": false,
+        "properties": {
+          "manifest_version": {
+            "const": "2.0",
+            "title": "Manifest Version",
+            "type": "string"
+          },
+          "assets": {
+            "items": {
+              "$ref": "#/components/schemas/PublishedAsset"
+            },
+            "title": "Assets",
+            "type": "array"
+          }
+        },
+        "required": [
+          "manifest_version",
+          "assets"
+        ],
+        "title": "PublicAssetCatalog",
+        "type": "object"
+      },
+      "PublishedAsset": {
+        "additionalProperties": false,
+        "properties": {
+          "asset_id": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "title": "Asset Id",
+            "type": "string"
+          },
+          "content_hash": {
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Content Hash",
+            "type": "string"
+          },
+          "render_url": {
+            "pattern": "^(assets/public/[A-Za-z0-9_-]+(?:/[A-Za-z0-9_-]+)*\\.glb|/api/v1/assets/[A-Za-z0-9_.:-]+/file)$",
+            "title": "Render Url",
+            "type": "string"
+          },
+          "calibration": {
+            "$ref": "#/components/schemas/AssetCalibration"
+          },
+          "provenance_summary": {
+            "enum": [
+              "lux3d_web",
+              "lux3d_api",
+              "procedural",
+              "unverified"
+            ],
+            "title": "Provenance Summary",
+            "type": "string"
+          },
+          "object_ids": {
+            "items": {
+              "maxLength": 100,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9_.:-]+$",
+              "type": "string"
+            },
+            "minItems": 1,
+            "title": "Object Ids",
+            "type": "array"
+          },
+          "rights_scope": {
+            "const": "public",
+            "title": "Rights Scope",
+            "type": "string"
+          },
+          "generation_evidence": {
+            "$ref": "#/components/schemas/FileEvidence"
+          }
+        },
+        "required": [
+          "asset_id",
+          "content_hash",
+          "render_url",
+          "calibration",
+          "provenance_summary",
+          "object_ids",
+          "rights_scope",
+          "generation_evidence"
+        ],
+        "title": "PublishedAsset",
         "type": "object"
       },
       "Quaternion": {

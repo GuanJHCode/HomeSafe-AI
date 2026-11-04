@@ -44,6 +44,8 @@ node scripts/check_web_core.mjs
 
 ## 启动开发预览与打包
 
+保持上述 Python 虚拟环境已激活：打包暂存脚本会调用同一份 canonical 模型校验资源清单。真实模型的手动接入步骤见[资产目录](assets/README.md)；空清单使用明确标注的占位对象。
+
 ```bash
 npm --prefix apps/web run dev
 ```
@@ -56,4 +58,4 @@ npm --prefix apps/web run build
 npm --prefix apps/web run preview
 ```
 
-`build` 重新暂存同源资源，运行严格检查和 Vite 构建，并生成 `apps/web/dist/preview-manifest.json` 与 `CHECKSUMS.sha256`。只有上述命令成功才有可用构建目录。运行结果、正式托管步骤及限制见[本轮验证](evidence/WEB_PREVIEW_20261104.md)。
+`build` 重新暂存同源资源和经审核的模型，运行严格检查和 Vite 构建，并生成 `apps/web/dist/preview-manifest.json` 与 `CHECKSUMS.sha256`。发布校验会对照当前源码重新生成的 Python bundle、官方 vendor 清单和审核资产字节，拒绝过期或被改写的资源。只有上述命令成功才有可用构建目录。最新复核见[接续验证](evidence/TAKEOVER_VALIDATION_20261104.md)，托管步骤见[实施记录](evidence/WEB_PREVIEW_20261104.md)。

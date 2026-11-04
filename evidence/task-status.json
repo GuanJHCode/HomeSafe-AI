@@ -28,10 +28,12 @@
         "evidence/IMPORT_VALIDATION_20261103.md",
         "evidence/logs/source-import-20261103.txt",
         "evidence/T01-browser-20261104.md",
-        "evidence/WEB_PREVIEW_20261104.md"
+        "evidence/WEB_PREVIEW_20261104.md",
+        "evidence/TAKEOVER_VALIDATION_20261104.md"
       ],
       "blockers": [
-        "Terminal sandbox rejects binding a local HTTP port; target hosting entry has not been established."
+        "Terminal sandbox rejects binding a local HTTP port; target hosting entry has not been established.",
+        "Browser operations paused following the user warning about recurring Chrome crashes; no browser attempted in this continuation."
       ],
       "remaining": [
         "Verify official same-origin runtime, challenge moves, undo, reset, recovery and timing in Chrome.",
@@ -55,7 +57,8 @@
       "evidence": [
         "evidence/WEB_PREVIEW_20261104.md",
         "scripts/check_web_core.mjs",
-        "scripts/check_web_preview.mjs"
+        "scripts/check_web_preview.mjs",
+        "evidence/TAKEOVER_VALIDATION_20261104.md"
       ],
       "checks": {
         "preview_source": "IMPLEMENTED",
@@ -64,7 +67,9 @@
         "app_strict_typecheck": "BLOCKED",
         "synthetic_glb_regression": "BLOCKED",
         "production_build": "BLOCKED",
-        "real_browser": "NOT_RUN"
+        "real_browser": "NOT_RUN",
+        "asset_catalog_ui_source": "IMPLEMENTED",
+        "scoped_typescript_strict": "PASS"
       },
       "blockers": [
         "npm registry DNS is unavailable and the local cache lacks required Vue, Three.js and build dependencies."
@@ -84,11 +89,16 @@
       "commit": null,
       "evidence": [
         "evidence/WEB_PREVIEW_20261104.md",
-        "assets/asset-manifest.json"
+        "assets/asset-manifest.json",
+        "evidence/TAKEOVER_VALIDATION_20261104.md",
+        "reference/tests/test_public_assets.py",
+        "assets/README.md"
       ],
       "checks": {
         "approved_lux3d_assets": 0,
-        "real_asset_browser_test": "NOT_RUN"
+        "real_asset_browser_test": "NOT_RUN",
+        "publication_catalog_and_binding": "IMPLEMENTED",
+        "synthetic_publication_regression": "PASS"
       },
       "blockers": [
         "Awaiting approved chair and cabinet GLBs with provenance, distribution rights and calibration evidence."
@@ -104,12 +114,15 @@
       "commit": null,
       "evidence": [
         "evidence/WEB_PREVIEW_20261104.md",
-        "evidence/deployment-checklist.json"
+        "evidence/deployment-checklist.json",
+        "evidence/TAKEOVER_VALIDATION_20261104.md",
+        "reference/tests/test_web_staging.py"
       ],
       "checks": {
         "preview_distribution": "BLOCKED",
         "public_deployment": "NOT_RUN",
-        "anonymous_access": "NOT_RUN"
+        "anonymous_access": "NOT_RUN",
+        "resource_verifier_synthetic_regression": "PASS"
       },
       "blockers": [
         "No verified preview dist and no approved target hosting entry."
@@ -219,7 +232,7 @@
   "timezone": "Asia/Shanghai",
   "planning_status": "DOCUMENTATION_PREPARED",
   "source_import_status": "IMPORTED_AND_NATIVE_VALIDATED",
-  "validation_scope": "Implementation checks and their limits are recorded in evidence/WEB_PREVIEW_20261104.md and evidence/T01-browser-20261104.md. Source import results are historical.",
+  "validation_scope": "Current continuation: evidence/TAKEOVER_VALIDATION_20261104.md and evidence/logs/takeover-20261104.txt. Node WASM and synthetic fixtures do not establish browser, real GLB or hosting acceptance.",
   "source_import": {
     "base_commit": "01d48fca76f77856b5e9f31a37090bb1284e47db",
     "supplement_sha256": "81b72b3dd0d61cfe6854414bf92a4dfd90a4cf2ef2358b019f43566a424a47ea",
@@ -229,5 +242,6 @@
     "real_browser_status": "NOT_RUN"
   },
   "baseline_commit": "2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f",
-  "implementation_branch": "codex/v6.1-browser-3d"
+  "implementation_branch": "codex/v6.1-browser-3d",
+  "continuation_base_commit": "69df60fdb04742ad369a6f4a54f6c1d2c35eb126"
 }

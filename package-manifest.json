@@ -1,6 +1,6 @@
 {
   "manifest_version": "1.0",
-  "release": "V6.1-browser-3d-development-preview-source-20261104",
+  "release": "V6.1-browser-3d-reviewed-asset-publication-source-20261104",
   "base_commit": "2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f",
   "baseline_zip_sha256": "b6c674f532fd30ff7ab086b08c814b086e94e2aa0f12cff80c1b6d94b96d3752",
   "classification_policy": "Verified master tracked source and explicitly staged preview code/evidence. Excludes runtime vendor, build outputs, private or unapproved assets and original untracked archives.",
@@ -19,8 +19,8 @@
     },
     {
       "path": ".gitignore",
-      "sha256": "e004f3518f7100ad06e83ccf33c817aa5861eea5f91826587a0a7680cbe154bb",
-      "bytes": 567,
+      "sha256": "cfb420047114f6b6186e6431c637b68d01f49874e28556dc1058907ee167875e",
+      "bytes": 591,
       "classification": "generated_project_source"
     },
     {
@@ -37,8 +37,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "e169aff8bcca39864f89306897673a399d0b34e943fe6aa23d4a8154d009f72f",
-      "bytes": 2294,
+      "sha256": "346b2b3010725327bc2b08f8afedc4f142ed3dad39c0db3494ddfb87467539f4",
+      "bytes": 2358,
       "classification": "generated_project_source"
     },
     {
@@ -61,8 +61,8 @@
     },
     {
       "path": "START_HERE.md",
-      "sha256": "aa189e0842c0c0d3ffb5205b47b7e957b5a1aa1d6c6fef6d84f5687e59d61e30",
-      "bytes": 3043,
+      "sha256": "99d31acc6b84b4950747f8066feed518d6e6ebce089b360a39f386437ca9438b",
+      "bytes": 3489,
       "classification": "generated_project_source"
     },
     {
@@ -79,8 +79,8 @@
     },
     {
       "path": "apps/web/src/App.vue",
-      "sha256": "03a65fa5f8c1a043b68469bace8d63e024c272e06be86fc97e0bdcffe4dc1021",
-      "bytes": 11034,
+      "sha256": "e56f34b0fc6aab5c2826133bd6b2a0add5f72d635a1a9abd8bc32473b32d7a6b",
+      "bytes": 11511,
       "classification": "generated_project_source"
     },
     {
@@ -133,8 +133,8 @@
     },
     {
       "path": "apps/web/src/scene/SceneRuntime.ts",
-      "sha256": "072e037bc07aafadb951978820540b92481c62cc4822a92c3f31adecde011bd0",
-      "bytes": 11405,
+      "sha256": "73996d464a9f0370e4f2c3318f3d9bb2efdc4efcf810da51da6a0d4189da1423",
+      "bytes": 11835,
       "classification": "generated_project_source"
     },
     {
@@ -157,8 +157,8 @@
     },
     {
       "path": "apps/web/src/useLivingRoom.ts",
-      "sha256": "4338c35383c94c940e6b1dfcf265774c854169d64d0fd97006494d4278b6be4b",
-      "bytes": 13225,
+      "sha256": "e1c4afee029057323f70d33fe83bdee6842ec0f0c36519937ec125e1f91bffe9",
+      "bytes": 14802,
       "classification": "generated_project_source"
     },
     {
@@ -217,8 +217,8 @@
     },
     {
       "path": "assets/README.md",
-      "sha256": "d7b08a7376c6460564fbf411e16d64291d764ae9282d9e50053553400978849d",
-      "bytes": 514,
+      "sha256": "f3636e58ad5ee771c9d01d02a041697cc9b961f3d0d45250ff038b9a156e2cbd",
+      "bytes": 3160,
       "classification": "generated_project_source"
     },
     {
@@ -343,13 +343,13 @@
     },
     {
       "path": "browser-spike/python/homesafe_core.zip",
-      "sha256": "ab34fc57b6674e6fb72e12f5d5a09fd55ca1effdf1c4e382f46a518560f026e3",
-      "bytes": 16987,
+      "sha256": "990cd35ca344cc4a62894b19ba6ff8e825478882d3290eaac70c2b454e613abf",
+      "bytes": 17210,
       "classification": "generated_project_source"
     },
     {
       "path": "browser-spike/python/manifest.json",
-      "sha256": "97f401af6199f143544e62a573c05d0b360f1adf483ca4251be5912f6e30a3ab",
+      "sha256": "80304860a29a7efd788bfdb9666e64eb1d02f0e503d80794f3d660fdc7d0de02",
       "bytes": 1425,
       "classification": "generated_project_source"
     },
@@ -379,20 +379,20 @@
     },
     {
       "path": "contracts/domain.schema.json",
-      "sha256": "3c31dd3e5e21378f1b371efa4b3723d03bca1e4cf4b3a61175a90fa6a2a08b85",
-      "bytes": 37991,
+      "sha256": "eb0f239d3e84a882c7fccc98b36b843fa77868967cd7964ec4b350f011813762",
+      "bytes": 40809,
       "classification": "generated_project_source"
     },
     {
       "path": "contracts/frontend/domain.ts",
-      "sha256": "fd9a35376b0258b0bd0070f36a5f703924c1751326710c3b4669db86715cb970",
-      "bytes": 7337,
+      "sha256": "1b31b50d9526777355931e897581b5acaa4bc5c0bac0c7c0652a3c82f6d2fe5f",
+      "bytes": 7832,
       "classification": "generated_project_source"
     },
     {
       "path": "contracts/http/openapi.json",
-      "sha256": "8e9f9c992c8b5731c84ed6bdf58ff0917d7e9f71804d160000231235c303573b",
-      "bytes": 55383,
+      "sha256": "77bf74d2ce2d6fbbe85aa54f52d97185f403758f706e9ff379809bd8b24fac21",
+      "bytes": 58366,
       "classification": "generated_project_source"
     },
     {
@@ -589,8 +589,8 @@
     },
     {
       "path": "evidence/HANDOFF.md",
-      "sha256": "6ecc67658d252c7f9cd6e287602d86ce6e9dda3ebbc6af8aa5c81b8d75e6e582",
-      "bytes": 2151,
+      "sha256": "87956c89645b307d578bf81c975bfad8e6f70572e5b16dc30c3315b65a86cbb2",
+      "bytes": 2661,
       "classification": "generated_project_source"
     },
     {
@@ -606,6 +606,12 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "evidence/TAKEOVER_VALIDATION_20261104.md",
+      "sha256": "0ae55fd2ffffa592ffab8993c30db8cd5ab8f866255db8b1e7684be4126d4be5",
+      "bytes": 5300,
+      "classification": "generated_project_source"
+    },
+    {
       "path": "evidence/WEB_PREVIEW_20261104.md",
       "sha256": "c4757d925e0bfea353e51f8cb63df317e1bab985c0b798a05b2e3c2475ed9022",
       "bytes": 5440,
@@ -613,8 +619,8 @@
     },
     {
       "path": "evidence/deployment-checklist.json",
-      "sha256": "948c5d49532213cf4c0dc43911fe50751ce06dc8bb388107ebf526600c584211",
-      "bytes": 883,
+      "sha256": "490101e6308cb5d8c28bb9b2001211f3732278f714627e5e30642b6074aa76c8",
+      "bytes": 931,
       "classification": "generated_project_source"
     },
     {
@@ -639,6 +645,12 @@
       "path": "evidence/logs/source-import-20261103.txt",
       "sha256": "8d09f7739f6cc46472643e014ed81470ab3c3adffa9235dc18d40751771eb5a1",
       "bytes": 4883,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "evidence/logs/takeover-20261104.txt",
+      "sha256": "5e38c1752303aaf661954728c4ada135e1ce80ef7fbdc4fd62c69dc8d41ba2fb",
+      "bytes": 10242,
       "classification": "generated_project_source"
     },
     {
@@ -919,8 +931,8 @@
     },
     {
       "path": "evidence/task-status.json",
-      "sha256": "dc3b4d4acb7cdc7ce79ef4a890cdc951098b19b25b245fe4dd42fb91c1fd51a8",
-      "bytes": 6552,
+      "sha256": "22ef67b636b293a5c509d7790b0931cb6756026aade5a43c3425e08864c6e2e4",
+      "bytes": 7390,
       "classification": "generated_project_source"
     },
     {
@@ -1206,6 +1218,12 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "reference/homesafe_core/asset_publication.py",
+      "sha256": "91d16f00db6752ec89d696a37529623a16660a56278145eb7f742fcf4324fb7a",
+      "bytes": 2460,
+      "classification": "generated_project_source"
+    },
+    {
       "path": "reference/homesafe_core/browser_bridge.py",
       "sha256": "881b077e51a7e7837df16b391c03fb4c2f081008caae55cd065c4b2bbd5eddfd",
       "bytes": 4220,
@@ -1237,8 +1255,8 @@
     },
     {
       "path": "reference/homesafe_core/models.py",
-      "sha256": "a1a868f078efa3c7672a5d18dc1142f4f2dbb0a78a5c0ecc844f4e9bcf57a28d",
-      "bytes": 13756,
+      "sha256": "f23453ff309bfab8d65b73c5b7eaf3ae0c992021f9ed8a279546cdfc74364876",
+      "bytes": 14716,
       "classification": "generated_project_source"
     },
     {
@@ -1249,8 +1267,8 @@
     },
     {
       "path": "reference/homesafe_core/release.py",
-      "sha256": "ec7d380c74b5ef5b535d646d4a9d995f0c64f3483492781d5b3230778fde73a1",
-      "bytes": 9490,
+      "sha256": "1e7d8464faa868cced69373521bd5acd4aa328b66a0611b97c57e7b4749f8055",
+      "bytes": 9767,
       "classification": "generated_project_source"
     },
     {
@@ -1290,6 +1308,12 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "reference/tests/test_public_assets.py",
+      "sha256": "6e3083372d97fe71ef23ce0d672c22f3e0c3d92c4835c49f11ddbeeabbabb68a",
+      "bytes": 5223,
+      "classification": "generated_project_source"
+    },
+    {
       "path": "reference/tests/test_release_export.py",
       "sha256": "b44d5245dc0bff55edee4015c6e7f4695fddd13c15179164c06f9db3a81cb111",
       "bytes": 6476,
@@ -1311,6 +1335,12 @@
       "path": "reference/tests/test_v6_tools.py",
       "sha256": "a37606e4027fb38ec92b84412b82dc9c4f208344a00a514b7f5595acce2dcbc2",
       "bytes": 2687,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "reference/tests/test_web_staging.py",
+      "sha256": "54ae0bbd4cecdd37cb825a7436dcd395c8b14b224c63ed6e6e7fe99dfb84248f",
+      "bytes": 4418,
       "classification": "generated_project_source"
     },
     {
@@ -1369,14 +1399,14 @@
     },
     {
       "path": "scripts/stage_browser_core.py",
-      "sha256": "b4f2ce699b1a8625b583ce54770c4e500768fc2b34a7b14949922d4a139bc62e",
-      "bytes": 1604,
+      "sha256": "972ed578a23c90a6d6fec792f5f3b2d12e0a7068aea74c208fe5a2c05a635281",
+      "bytes": 1689,
       "classification": "generated_project_source"
     },
     {
       "path": "scripts/stage_web_preview.py",
-      "sha256": "98b0b3017dc382f7a68a7e0817566d26a540b3a6ea007b33b9734e8e5640c144",
-      "bytes": 5018,
+      "sha256": "33273f415f9f9be1b73483c580245cb1d899ab1da4e3799a424a21c7d4b00328",
+      "bytes": 5880,
       "classification": "generated_project_source"
     },
     {

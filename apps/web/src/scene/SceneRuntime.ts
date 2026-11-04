@@ -11,6 +11,7 @@ import { AssetLoader, disposeObject } from './AssetLoader.ts';
 import { createPlaceholder, createRoom } from './roomGeometry.ts';
 
 type View = Profile['role'] | 'overview';
+export type AssetLoadState = 'placeholder' | 'loading' | 'loaded' | 'error';
 
 interface ObjectView {
   root: Group;
@@ -28,6 +29,7 @@ export class SceneRuntime {
   private readonly renderer: WebGLRenderer;
   private readonly host: HTMLElement;
   private readonly assets: AssetLoader;
+  private readonly onAssetState: (id: string, state: AssetLoadState | null) => void;
   private readonly resizeObserver: ResizeObserver;
   private readonly raycaster = new Raycaster();
   private readonly ground = new Plane(new Vector3(0, 1, 0), 0);
@@ -46,8 +48,10 @@ export class SceneRuntime {
   private frame = 0;
   private disposed = false;
 
-  constructor(host: HTMLElement, assets: readonly AssetRenderDTO[] = []) {
+  constructor(host: HTMLElement, assets: readonly AssetRenderDTO[] = [],
+    onAssetState: (id: string, state: AssetLoadState | null) => void = () => {}) {
     this.host = host;
+    this.onAssetState = onAssetState;
     this.renderer = new WebGLRenderer({ antialias: true });
     this.assets = new AssetLoader(assets);
     this.renderer.shadowMap.enabled = true;
@@ -140,6 +144,7 @@ export class SceneRuntime {
     const view: ObjectView = { root, hitProxy, outline, visual, asset: false, key };
     this.objects.set(id, view);
     this.world.add(root);
+    this.onAssetState(id, asset_id ? 'loading' : 'placeholder');
 
     if (asset_id) {
       void this.assets.load(asset_id).then((template) => {
@@ -151,9 +156,10 @@ export class SceneRuntime {
         root.add(replacement);
         view.visual = replacement;
         view.asset = true;
+        this.onAssetState(id, 'loaded');
         this.requestRender();
       }).catch(() => {
-        // A missing or invalid reviewed model leaves the procedural proxy usable.
+        if (!this.disposed && this.objects.get(id) === view) this.onAssetState(id, 'error');
       });
     }
   }
@@ -165,6 +171,7 @@ export class SceneRuntime {
     object.root.removeFromParent();
     disposeObject(object.root);
     this.objects.delete(id);
+    this.onAssetState(id, null);
   }
 
   setRoleView(role: View): void {

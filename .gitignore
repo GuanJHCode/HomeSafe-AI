@@ -29,3 +29,4 @@ apps/web/public/vendor/
 # Review every binary and license before committing. No blanket *.png/*.jpg/*.glb/*.zip.
 # Staged public assets for the browser application.
 apps/web/public/engine/
+apps/web/public/assets/

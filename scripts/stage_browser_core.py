@@ -5,8 +5,7 @@ from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 FILES=("__init__.py","models.py","geometry.py","validation.py","rule_support.py",
        "policy.py","rules.py","engine.py","challenge.py","browser_bridge.py")
-def stage():
-    dest=R/"browser-spike/python";dest.mkdir(parents=True,exist_ok=True)
+def build_bundle():
     buffer=io.BytesIO();records=[]
     with zipfile.ZipFile(buffer,"w",zipfile.ZIP_DEFLATED) as archive:
         for name in FILES:
@@ -15,9 +14,15 @@ def stage():
             info.compress_type=zipfile.ZIP_DEFLATED
             archive.writestr(info,raw)
             records.append({"path":name,"sha256":hashlib.sha256(raw).hexdigest()})
-    raw=buffer.getvalue();(dest/"homesafe_core.zip").write_bytes(raw)
+    raw=buffer.getvalue()
     manifest={"bundle_sha256":hashlib.sha256(raw).hexdigest(),"files":records,
               "contains_paid_sdk":False,"contains_release_tool":False}
+    return raw, manifest
+
+def stage():
+    raw, manifest = build_bundle()
+    dest=R/"browser-spike/python";dest.mkdir(parents=True,exist_ok=True)
+    (dest/"homesafe_core.zip").write_bytes(raw)
     (dest/"manifest.json").write_text(json.dumps(manifest,indent=2)+"\n")
     samples=R/"browser-spike/examples";samples.mkdir(exist_ok=True)
     for name in ("before","conflict","improved"):

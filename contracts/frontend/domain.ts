@@ -125,6 +125,11 @@ export type ErrorDTO = {
   "issues"?: Array<PlacementIssue>;
 };
 
+export type FileEvidence = {
+  "path": string;
+  "sha256": string;
+};
+
 export type Finding = {
   "key": string;
   "rule_id": string;
@@ -192,6 +197,22 @@ export type Properties = {
   "secured"?: BoolObservation;
   "raised_threshold_present"?: BoolObservation;
   "storage_height"?: NumberObservation;
+};
+
+export type PublicAssetCatalog = {
+  "manifest_version": "2.0";
+  "assets": Array<PublishedAsset>;
+};
+
+export type PublishedAsset = {
+  "asset_id": string;
+  "content_hash": string;
+  "render_url": string;
+  "calibration": AssetCalibration;
+  "provenance_summary": "lux3d_web" | "lux3d_api" | "procedural" | "unverified";
+  "object_ids": Array<string>;
+  "rights_scope": "public";
+  "generation_evidence": FileEvidence;
 };
 
 export type Quaternion = {

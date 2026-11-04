@@ -2,7 +2,7 @@
 import { useLivingRoom } from './useLivingRoom.ts';
 
 const {
-  host, mode, role, view, busy, failure, renderFailure, stage, selected, selectedObject,
+  host, mode, role, view, busy, failure, renderFailure, modelCounts, selectedModel, stage, selected, selectedObject,
   layout, checks, comparison, progress, feedback, report, canUndo, canRedo,
   objectName, movable, canMove, select, useView, moveBy, rotate, history, switchMode, focus,
   retry, exportReport, printReport,
@@ -29,7 +29,7 @@ const actionSections = [
       <p>给孩子留探索空间，也给老人留通道。拖动家具，看看同一次调整如何改变两种检查结果。</p>
     </header>
 
-    <div class="notice">合成客厅 · 家具为程序占位模型 · 教学演练 · 无法用于安全认证</div>
+    <div class="notice">合成客厅 · 教学演练 · 无法用于安全认证</div>
 
     <div class="workspace">
       <section class="panel scene-panel" aria-label="三维客厅">
@@ -49,6 +49,11 @@ const actionSections = [
           <button :aria-pressed="view === 'elder'" @click="useView('elder')">老人视角</button>
         </div>
         <div ref="host" class="viewport"></div>
+        <p v-if="layout && !renderFailure" class="small" aria-live="polite">
+          已加载 {{ modelCounts.loaded }} 件模型 · {{ modelCounts.placeholders }} 件程序占位模型
+          <span v-if="modelCounts.loading"> · {{ modelCounts.loading }} 件加载中</span>
+          <span v-if="modelCounts.failed"> · {{ modelCounts.failed }} 件加载失败，保留占位模型</span>
+        </p>
         <p v-if="renderFailure" class="warning" role="alert">当前浏览器无法打开 3D。可用下面的家具按钮操作。{{ renderFailure }}</p>
         <p class="small">相机高度仅用于观察示意。实际触及能力需要独立确认。</p>
 
@@ -78,6 +83,7 @@ const actionSections = [
         <p v-if="selectedObject" class="small" data-testid="selected-position">
           {{ objectName(selectedObject.id) }} · x {{ selectedObject.position.x.toFixed(2) }} 米 · z {{ selectedObject.position.z.toFixed(2) }} 米
         </p>
+        <p v-if="selectedObject" class="small">{{ selectedModel }}</p>
         <div v-if="feedback.issues.length" class="warning" role="alert" data-testid="placement-rejected">
           <strong>已恢复最后合法位置</strong>
           <ul>

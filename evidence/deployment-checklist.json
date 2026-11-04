@@ -18,7 +18,8 @@
   "retention_policy": "max(2026-12-31, actual_results_date+30days); conservative project policy pending form verification",
   "user_reported_terms_verified_by_owner": false,
   "evidence_files": [
-    "evidence/WEB_PREVIEW_20261104.md"
+    "evidence/WEB_PREVIEW_20261104.md",
+    "evidence/TAKEOVER_VALIDATION_20261104.md"
   ],
   "blockers": [
     "Complete static preview build is blocked by npm dependencies.",

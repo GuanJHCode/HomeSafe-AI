@@ -1,13 +1,13 @@
 import { computed, onMounted, onUnmounted, ref, shallowRef, watch } from 'vue';
 import type {
-  Assessment, ChallengeResult, Comparison, PlacementIssue, Profile, Scene, TransformInput,
+  Assessment, AssetRenderDTO, ChallengeResult, Comparison, PlacementIssue, Profile, Scene, TransformInput,
 } from '../../../contracts/frontend/domain.ts';
 import { ChallengeController } from './domain/ChallengeController.ts';
 import { EvaluationController, type WorkerConfig } from './domain/EvaluationController.ts';
 import { FindingsPresenter, type ComparisonPresentation } from './domain/FindingsPresenter.ts';
 import { ReportBuilder } from './domain/ReportBuilder.ts';
 import { placementFeedback, WorkspaceController, type LayoutChange } from './domain/WorkspaceController.ts';
-import { SceneRuntime } from './scene/SceneRuntime.ts';
+import { SceneRuntime, type AssetLoadState } from './scene/SceneRuntime.ts';
 import { TransformController } from './scene/TransformController.ts';
 
 const challengeObjects = ['chair'];
@@ -41,6 +41,8 @@ export function useLivingRoom() {
   const busy = ref(true);
   const failure = ref('');
   const renderFailure = ref('');
+  const assetStates = ref<Record<string, AssetLoadState>>({});
+  const renderAssets = shallowRef<AssetRenderDTO[]>([]);
   const stage = ref('正在加载客厅');
   const selected = ref<string | null>(null);
   const placement = shallowRef<PlacementIssue[]>([]);
@@ -69,6 +71,26 @@ export function useLivingRoom() {
   const report = computed(() => current.value && layout.value && accepted.value
     ? ReportBuilder.buildViewModel(layout.value, accepted.value, comparison.value ?? undefined) : null);
   const selectedObject = computed(() => layout.value?.objects.find(object => object.id === selected.value));
+  const modelCounts = computed(() => {
+    const states = Object.values(assetStates.value);
+    return {
+      loaded: states.filter(state => state === 'loaded').length,
+      loading: states.filter(state => state === 'loading').length,
+      failed: states.filter(state => state === 'error').length,
+      placeholders: states.filter(state => state === 'placeholder' || state === 'error').length,
+    };
+  });
+  const selectedModel = computed(() => {
+    const object = selectedObject.value;
+    if (!object) return '';
+    const state = assetStates.value[object.id];
+    if (state === 'loading') return '模型加载中，当前显示占位模型';
+    if (state === 'error') return '模型加载失败，当前使用占位模型';
+    if (state !== 'loaded') return '程序占位模型';
+    const asset = renderAssets.value.find(item => item.asset_id === object.asset_id);
+    const source = asset?.provenance_summary;
+    return source === 'lux3d_web' || source === 'lux3d_api' ? 'Lux3D 模型已加载' : '程序生成模型已加载';
+  });
   const feedback = computed(() => placementFeedback(placement.value));
   const canUndo = computed(() => !busy.value && !failure.value &&
     (mode.value === 'challenge' ? challengeUndo.value > 0 : workspaceUndo.value));
@@ -230,13 +252,21 @@ export function useLivingRoom() {
     runtime?.showPlacementIssues([]);
     try {
       if (!template) {
-        const scene = await read<Scene>(new URL('engine/scene-before.json', base));
+        const [scene, assets] = await Promise.all([
+          read<Scene>(new URL('engine/scene-before.json', base)),
+          read<AssetRenderDTO[]>(new URL('engine/assets.json', base)),
+        ]);
         if (disposed) return;
         template = scene;
+        renderAssets.value = assets;
         workspace = new WorkspaceController(scene);
         if (host.value) {
           try {
-            runtime = new SceneRuntime(host.value);
+            runtime = new SceneRuntime(host.value, assets, (id, state) => {
+              if (disposed) return;
+              if (state === null) delete assetStates.value[id];
+              else assetStates.value[id] = state;
+            });
             transforms = new TransformController(runtime, { canMove, select, commit });
           } catch (error) {
             renderFailure.value = error instanceof Error ? error.message : String(error);
@@ -303,7 +333,7 @@ export function useLivingRoom() {
   });
 
   return {
-    host, mode, role, view, busy, failure, renderFailure, stage, selected, selectedObject,
+    host, mode, role, view, busy, failure, renderFailure, modelCounts, selectedModel, stage, selected, selectedObject,
     layout, checks, comparison, progress, feedback, report, canUndo, canRedo,
     objectName, movable, canMove, select, useView, moveBy, rotate, history, switchMode, focus,
     retry: () => void initialize(true),

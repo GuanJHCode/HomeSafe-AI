@@ -283,6 +283,29 @@ class AssetRenderDTO(Model):
     calibration: AssetCalibration
     provenance_summary: Literal['lux3d_web', 'lux3d_api', 'procedural', 'unverified']
 
+class FileEvidence(Model):
+    path: Annotated[str, Field(min_length=1)]
+    sha256: Annotated[str, Field(pattern=r'^[a-f0-9]{64}$')]
+
+class PublishedAsset(AssetRenderDTO):
+    object_ids: Annotated[list[Id], Field(min_length=1)]
+    rights_scope: Literal['public']
+    generation_evidence: FileEvidence
+
+    @model_validator(mode='after')
+    def publication_review(self):
+        if not self.render_url.startswith('assets/public/'):
+            raise ValueError('public preview requires a static asset path')
+        if not self.calibration.reviewed or self.provenance_summary == 'unverified':
+            raise ValueError('asset calibration and provenance must be reviewed')
+        if len(self.object_ids) != len(set(self.object_ids)):
+            raise ValueError('duplicate object binding')
+        return self
+
+class PublicAssetCatalog(Model):
+    manifest_version: Literal['2.0']
+    assets: list[PublishedAsset]
+
 class TransformInput(Model):
     position: Vec3
     yaw_rad: Number
@@ -350,6 +373,7 @@ class ContractBundle(Model):
     challenge_goal: ChallengeGoal
     challenge_result: ChallengeResult
     asset: AssetRenderDTO
+    public_assets: PublicAssetCatalog
     patch: ObjectPatch
     assess_request: AssessmentRequest
     compare_request: CompareRequest

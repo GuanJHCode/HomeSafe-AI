@@ -26,7 +26,11 @@ def validate_glb(path: Path, max_bytes=50_000_000) -> dict:
     """Structural subset only; rejects external resources and malformed chunks."""
     size=path.stat().st_size
     if size<20 or size>max_bytes:raise ValueError('GLB size outside project limit')
-    raw=path.read_bytes()
+    return validate_glb_bytes(path.read_bytes(), max_bytes)
+
+def validate_glb_bytes(raw: bytes, max_bytes=50_000_000) -> dict:
+    """Validate the exact bytes selected for publication without reopening a file."""
+    if not 20 <= len(raw) <= max_bytes:raise ValueError('GLB size outside project limit')
     magic,version,total=struct.unpack_from('<4sII',raw,0)
     if (magic,version,total)!=(b'glTF',2,len(raw)):raise ValueError('invalid GLB header')
     pos=12;chunks=[]
