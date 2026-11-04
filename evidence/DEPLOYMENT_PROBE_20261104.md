@@ -18,4 +18,12 @@
 
 ## 验证与状态
 
-CI 待本次提交触发。子任务在 CI 完成前保持 IN_PROGRESS；T04 整体 BLOCKED。公网地址、匿名 HTTPS 与真实公网交互均 NOT_RUN。真实 Lux3D 资产仍为 0，T03 BLOCKED。
+代码远端提交 `0be587345015bc99eeed4208b7a12a9d551d1926`，对应本地 `57a343798909b3e6294a21dd74c303fe56b7bb72`，树均为 `6a33bdc4d520e088ff79ead2b6bbda4630df9a8d`。未改写 master，使用带 expected_sha 的非强制功能分支更新。
+
+- 本地：Python 227 passed / 1 skipped（仅 socket 限制）；15 项探针 JS、契约生成、包验证 8 项、core 暂存及契约 TypeScript 严格检查通过。`check_submission.py` 仍为预期 BLOCKED / 退出码 2。
+- [完整 CI 41771015579](https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41771015579)，job 126380455412：Python **228 passed，无跳过**；15 项探针 JS、19 项应用测试通过；契约与 Vue/TypeScript 严格检查、Vite 正式构建及 22 文件分发校验通过。
+- 新工具在真实 loopback HTTP `/preview` 子路径通过：24 个资源（22 个构建文件 + manifest + CHECKSUMS）、首页与目录跳转通过。摘要、MIME 与明确的 localhost scope 见 [资源回执](ci-deployment-transport-0be5873.json)。匿名公网 HTTPS 未运行。
+- Linux Chrome 156.0.8078.47 的同源三样例、挑战/剩余事项、Worker 恢复和完整三维交互回归通过：[探针回执](ci-browser-spike-0be5873.json)、[应用回执](ci-web-preview-0be5873.json)。本次应用冷启动 4063 ms、热刷新 3148 ms，仅为 CI localhost 单次结果。
+- [构建 artifact](https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41771015579/artifacts/13294682528)，8,602,532 bytes，SHA-256 `5c8e4290a92427ff2308c992c105bd06795b1ed85c6723ca118929587f752f70`，到期 2026-11-18。[元数据](ci-artifact-0be5873.json)、[CI 摘录](logs/deployment-probe-ci-0be5873.txt)。只部署 artifact 中的 apps/web/dist，不发布验收文件。
+
+独立 agent 再次核验上述 GitHub CI，并明确批准关闭 **T04-anonymous-resource-probe**；该子任务现在 DONE。T04 整体仍 BLOCKED。公网地址、匿名 HTTPS 与真实公网交互均 NOT_RUN。真实 Lux3D 资产仍为 0，T03 BLOCKED。下一步仍需获准托管入口与模型来源/校准材料，不伪造完成。

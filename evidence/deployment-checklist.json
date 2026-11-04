@@ -21,7 +21,9 @@
     "evidence/WEB_PREVIEW_20261104.md",
     "evidence/TAKEOVER_VALIDATION_20261104.md",
     "evidence/CI_CONTINUATION_20261104.md",
-    "evidence/ci-artifact-4bb18cd.json"
+    "evidence/ci-artifact-4bb18cd.json",
+    "evidence/DEPLOYMENT_PROBE_20261104.md",
+    "evidence/ci-deployment-transport-0be5873.json"
   ],
   "blockers": [
     "Target public hosting entry and deployment access are pending.",
@@ -30,5 +32,6 @@
   "preview_build_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6",
   "preview_build_status": "PASS_CI",
   "local_browser_acceptance": "PASS_CI_LINUX_LOCALHOST",
-  "preview_artifact_url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41769312093/artifacts/13294017524"
+  "preview_artifact_url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41769312093/artifacts/13294017524",
+  "resource_probe_local_transport": "PASS_CI"
 }

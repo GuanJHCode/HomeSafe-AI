@@ -601,14 +601,14 @@
     },
     {
       "path": "evidence/DEPLOYMENT_PROBE_20261104.md",
-      "sha256": "55da150b52bfb6e51c0a2cf520e4416da9d70f0a3a51dd0bc340df61a61d6c62",
-      "bytes": 2046,
+      "sha256": "402b8449971d83f913c5d8cc0b5f074f7f22ed47aaca8fa40e156fbeeee2c6e9",
+      "bytes": 3937,
       "classification": "generated_project_source"
     },
     {
       "path": "evidence/HANDOFF.md",
-      "sha256": "ee79506cd1df48397b82f6551c03bd9b6ff27f85786e5eae0dbe64650c62584b",
-      "bytes": 3780,
+      "sha256": "9cac7f254405af24208a6c4df52c2191c49f20e68f90c030b02ad2d6cae5499d",
+      "bytes": 4014,
       "classification": "generated_project_source"
     },
     {
@@ -636,9 +636,21 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "evidence/ci-artifact-0be5873.json",
+      "sha256": "7d7b2b5a55a53628daa49694c40759ff313c4345cfa131ca7336a783ff4963a4",
+      "bytes": 1039,
+      "classification": "generated_project_source"
+    },
+    {
       "path": "evidence/ci-artifact-4bb18cd.json",
       "sha256": "29f94f8f27383c81c52afbb49c802a9e96f48c9a843a4b8a5c46e7ee4da98ebc",
       "bytes": 784,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "evidence/ci-browser-spike-0be5873.json",
+      "sha256": "a26cc0be2c97ca1099eb0a6469aa7b011c4b135dd0b65d4ba12191bcb05c8c8e",
+      "bytes": 17387,
       "classification": "generated_project_source"
     },
     {
@@ -654,6 +666,18 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "evidence/ci-deployment-transport-0be5873.json",
+      "sha256": "d4b6870acef7900a4052e83084356866a2e590809d653a9e25ef40c2444faf7a",
+      "bytes": 7342,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "evidence/ci-web-preview-0be5873.json",
+      "sha256": "19378c4fd912df8386bf909e68dc954186531775770be3e7ba0eade215aca309",
+      "bytes": 547,
+      "classification": "generated_project_source"
+    },
+    {
       "path": "evidence/ci-web-preview-4bb18cd.json",
       "sha256": "a1641068302ea1a54d02c05872a5216a9626a1c2f65df0965cf3f217d93a2dee",
       "bytes": 547,
@@ -661,8 +685,8 @@
     },
     {
       "path": "evidence/deployment-checklist.json",
-      "sha256": "a4d8bcf743664b92dbfd191e8a590d4ec74a4ac69e15a3f0bd89e8d9e9f5c883",
-      "bytes": 1322,
+      "sha256": "6a70d30079036be4b9e39f1192e9e5a2b6949c74e3664553f623c6f912aee082",
+      "bytes": 1467,
       "classification": "generated_project_source"
     },
     {
@@ -687,6 +711,12 @@
       "path": "evidence/logs/ci-build-browser-4bb18cd.txt",
       "sha256": "a1ee224a41467e24654ad84f01bc0f9503e10130dcf8f52f23e6691143e79128",
       "bytes": 1085,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "evidence/logs/deployment-probe-ci-0be5873.txt",
+      "sha256": "0007f70f4c4e6d9b4457bc402968cef21fa44c81875df8b5a10dd78ec8c079e2",
+      "bytes": 896,
       "classification": "generated_project_source"
     },
     {
@@ -979,8 +1009,8 @@
     },
     {
       "path": "evidence/task-status.json",
-      "sha256": "b0bcdac3ffff6c6c51de53bf613420c5990290bf98e481b0d007e4e752ff5229",
-      "bytes": 8035,
+      "sha256": "9b89742d5fb00e39f43a655f19544e8de8b972221eb87a07d81024edf9dd2fec",
+      "bytes": 8274,
       "classification": "generated_project_source"
     },
     {

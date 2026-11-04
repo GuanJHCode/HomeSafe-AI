@@ -2,7 +2,7 @@
 
 日期：2026-11-04。活动方案仍为 V6.1 浏览器优先。远端 master 为 `2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f`；开发在 `codex/v6.1-browser-3d`，未合并或改写 master。
 
-最近通过完整 CI 的代码提交为 `4bb18cda5274267d4a9912e417e29f89287d12e6`，对应本地源码提交 `f858d0a`，Git 文件树相同。由于本机终端不能解析 GitHub/npm，使用获准的 GitHub 连接器上传；本地快照用隔离 Git 元数据保留提交，并提供 Git bundle。详细失败、修复与验收链见 [CI 接续记录](CI_CONTINUATION_20261104.md)。
+三维闭环最初通过完整 CI 的代码提交为 `4bb18cda5274267d4a9912e417e29f89287d12e6`，对应本地源码提交 `f858d0a`，Git 文件树相同。本轮资源核验工具及最新 CI 见文末记录。由于本机终端不能解析 GitHub/npm，使用获准的 GitHub 连接器上传；本地快照用隔离 Git 元数据保留提交，并提供 Git bundle。详细失败、修复与验收链见 [CI 接续记录](CI_CONTINUATION_20261104.md)。
 
 | 任务 | 实际完成范围 | 待办 |
 | --- | --- | --- |
@@ -21,4 +21,4 @@
 
 原有 ZIP、SHA 文件和 `claude-verification-20261103/` 未覆盖、未清理、未纳入源码发布。历史验证记录保留；当前机器状态见 [task-status.json](task-status.json)，部署状态见[部署检查表](deployment-checklist.json)。
 
-本轮新增 T04 匿名资源核验工具，独立 agent 审查及两项 URL 反例修复已通过；CI 完成前该子任务不关闭。详情见 [核验工具记录](DEPLOYMENT_PROBE_20261104.md)，使用方式见 START_HERE。后续功能同样必须独立审查后才关闭。
+本轮完成 T04-anonymous-resource-probe：远端提交 `0be5873`，完整 CI 41771015579 通过（Python 228、探针 15、应用 19；真实 HTTP 与 Chrome 验收通过）。两项 URL 反例修复后独立 agent 复审 PASS，并独立核对 CI 后批准关闭该子任务；T04 整体仍 BLOCKED。详情见 [核验工具记录](DEPLOYMENT_PROBE_20261104.md)，使用方式见 START_HERE。后续功能同样必须独立审查后才关闭。

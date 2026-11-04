@@ -122,13 +122,16 @@
         "reference/tests/test_web_staging.py",
         "evidence/CI_CONTINUATION_20261104.md",
         "evidence/ci-artifact-4bb18cd.json",
-        "evidence/DEPLOYMENT_PROBE_20261104.md"
+        "evidence/DEPLOYMENT_PROBE_20261104.md",
+        "evidence/ci-deployment-transport-0be5873.json",
+        "evidence/ci-artifact-0be5873.json"
       ],
       "checks": {
         "preview_distribution": "PASS_CI_ARTIFACT",
         "public_deployment": "NOT_RUN",
         "anonymous_access": "NOT_RUN",
-        "resource_verifier_synthetic_regression": "PASS"
+        "resource_verifier_synthetic_regression": "PASS",
+        "anonymous_resource_probe": "PASS_CI_LOCAL_HTTP"
       },
       "blockers": [
         "No approved target hosting entry or anonymous public deployment verification."
@@ -136,10 +139,11 @@
       "subtasks": [
         {
           "id": "T04-anonymous-resource-probe",
-          "status": "IN_PROGRESS",
-          "review": "PASS",
-          "ci": "PENDING",
-          "evidence": "evidence/DEPLOYMENT_PROBE_20261104.md"
+          "status": "DONE",
+          "review": "PASS_AFTER_REGRESSIONS_AND_CI",
+          "ci": "PASS",
+          "evidence": "evidence/DEPLOYMENT_PROBE_20261104.md",
+          "commit": "0be587345015bc99eeed4208b7a12a9d551d1926"
         }
       ]
     },
