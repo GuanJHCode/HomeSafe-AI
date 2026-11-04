@@ -1,0 +1,20 @@
+{
+  "scope": "REAL_CHROME_PREVIEW",
+  "url": "http://127.0.0.1:4173/preview/",
+  "browser": "Chrome/156.0.8078.47",
+  "cold_ready_ms": 3216,
+  "warm_ready_ms": 2655,
+  "ruleset": "demo-rules-3.0",
+  "result": "PASS",
+  "cases": [
+    "real pointer drag and one-entry undo",
+    "invalid placement rebound",
+    "child and elder views",
+    "layout conflict",
+    "redo, reset and rotation",
+    "challenge remaining findings and coverage",
+    "JSON and printable action checklist",
+    "refresh",
+    "real Worker recovery without refresh"
+  ]
+}

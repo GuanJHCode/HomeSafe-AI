@@ -23,7 +23,7 @@ python scripts/check_submission.py
 当前提交预检预期为 BLOCKED、退出码 2。契约严格检查使用 TypeScript 5.8.3。
 
 ```bash
-npm --prefix apps/web install --no-audit --no-fund
+npm --prefix apps/web ci --no-audit --no-fund
 apps/web/node_modules/.bin/tsc --strict --noEmit --target ES2022 contracts/frontend/domain.ts
 npm --prefix apps/web run typecheck
 npm --prefix apps/web test
@@ -33,9 +33,15 @@ npm --prefix apps/web test
 
 准备官方 Pyodide 314.0.6 分发到仓库外。需要运行时文件及官方 lock 指定的 Pydantic 2.12.5 依赖闭包。保持官方 lock 原件，先检查复制计划，再写入空的默认目标目录。若已复制且校验通过，可直接运行暂存命令。
 
+在可以访问官方 CDN 的环境，可先执行下面的固定摘要下载命令。目标目录必须尚不存在；已下载的分发可以复用。下载后仍执行后面的预览与复制，不手工修改 lock。
+
 ```bash
-python scripts/vendor_pyodide_from_dir.py --source /absolute/path/to/official-distribution
-python scripts/vendor_pyodide_from_dir.py --source /absolute/path/to/official-distribution --copy
+python scripts/download_pyodide.py --dest /tmp/homesafe-official-314.0.6
+```
+
+```bash
+python scripts/vendor_pyodide_from_dir.py --source /tmp/homesafe-official-314.0.6
+python scripts/vendor_pyodide_from_dir.py --source /tmp/homesafe-official-314.0.6 --copy
 python scripts/stage_web_preview.py
 node scripts/check_web_core.mjs
 ```
@@ -58,4 +64,6 @@ npm --prefix apps/web run build
 npm --prefix apps/web run preview
 ```
 
-`build` 重新暂存同源资源和经审核的模型，运行严格检查和 Vite 构建，并生成 `apps/web/dist/preview-manifest.json` 与 `CHECKSUMS.sha256`。发布校验会对照当前源码重新生成的 Python bundle、官方 vendor 清单和审核资产字节，拒绝过期或被改写的资源。只有上述命令成功才有可用构建目录。最新复核见[接续验证](evidence/TAKEOVER_VALIDATION_20261104.md)，托管步骤见[实施记录](evidence/WEB_PREVIEW_20261104.md)。
+`build` 重新暂存同源资源和经审核的模型，运行严格检查和 Vite 构建，并生成 `apps/web/dist/preview-manifest.json` 与 `CHECKSUMS.sha256`。发布校验会对照当前源码重新生成的 Python bundle、官方 vendor 清单和审核资产字节，拒绝过期或被改写的资源。只有上述命令成功才有可用构建目录。最新实测与构建 artifact 见[CI 接续验证](evidence/CI_CONTINUATION_20261104.md)，托管步骤见[实施记录](evidence/WEB_PREVIEW_20261104.md)。
+
+CI 在临时 Linux 环境运行真实 Chrome 和完整构建，不会启动用户电脑上的浏览器。artifact 中的 `apps/web/dist/` 才是静态页面目录；`ci-evidence/` 是验收输出、截图与打印 PDF，不能作为公网部署成功的证明。下载后先进入 dist 运行 SHA-256 校验，只将该目录提交给已核准的静态托管入口。

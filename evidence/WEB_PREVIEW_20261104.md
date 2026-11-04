@@ -1,5 +1,7 @@
 # V6.1 开发预览实施与验证
 
+本文件保留首轮实施与本机阻断记录。后续完整类型检查、构建和真实 Linux Chrome 交互已经通过，最新结果及构建包见[CI 接续记录](CI_CONTINUATION_20261104.md)。真实 Lux3D 与公开部署仍未完成。
+
 日期 2026-11-04，Asia/Shanghai。功能分支 `codex/v6.1-browser-3d`，起点为 GitHub 已核对的 `master` 提交 `2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f`。
 
 ## T02 实现范围

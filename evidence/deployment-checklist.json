@@ -19,10 +19,16 @@
   "user_reported_terms_verified_by_owner": false,
   "evidence_files": [
     "evidence/WEB_PREVIEW_20261104.md",
-    "evidence/TAKEOVER_VALIDATION_20261104.md"
+    "evidence/TAKEOVER_VALIDATION_20261104.md",
+    "evidence/CI_CONTINUATION_20261104.md",
+    "evidence/ci-artifact-4bb18cd.json"
   ],
   "blockers": [
-    "Complete static preview build is blocked by npm dependencies.",
-    "Target public hosting entry and deployment authorization are pending."
-  ]
+    "Target public hosting entry and deployment access are pending.",
+    "Runtime and dependency redistribution notices still require review before public deployment."
+  ],
+  "preview_build_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6",
+  "preview_build_status": "PASS_CI",
+  "local_browser_acceptance": "PASS_CI_LINUX_LOCALHOST",
+  "preview_artifact_url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41769312093/artifacts/13294017524"
 }

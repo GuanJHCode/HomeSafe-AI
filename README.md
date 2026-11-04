@@ -6,7 +6,7 @@
 
 ## 阅读入口
 
-从 [START_HERE](START_HERE.md) 准备官方同源运行时、运行检查和启动开发预览。最新实测范围见[接续验证](evidence/TAKEOVER_VALIDATION_20261104.md)，模型导入见[资产目录](assets/README.md)。
+从 [START_HERE](START_HERE.md) 准备官方同源运行时、运行检查和启动开发预览。最新实测范围见[CI 接续验证](evidence/CI_CONTINUATION_20261104.md)，模型导入见[资产目录](assets/README.md)。
 
 | 文档 | 内容 |
 | --- | --- |

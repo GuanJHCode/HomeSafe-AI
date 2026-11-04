@@ -18,4 +18,23 @@
 
 第四次 CI：[运行 41769000265](https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41769000265)，提交 `8ce4b45`。三维拖动、非法回弹、双角色、撤销重做重置、挑战、两次 JSON 导出、真实打印 PDF 和刷新已执行通过，最后的应用恢复断言失败：重试仍使用缓存的错误配置。保留真实浏览器反例，先增加控制器回归并确认因旧配置失败，再最小修复 `restart(config)`；应用重试以 no-store 重新读取同源配置，重建 Worker，不重放动作。等待整条 CI 再验收。
 
+## 最终代码验收
+
+[运行 41769312093](https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41769312093) 完整通过，代码提交 `4bb18cda5274267d4a9912e417e29f89287d12e6`，对应本地 `f858d0a065bf9db20391df02677664609f75c372`，文件树 `01708f74b362ccc24fff94fe8701d8318736161f` 已核对一致。
+
+| 范围 | 实际结果 |
+| --- | --- |
+| Python | 209 项通过 |
+| JS 探针 / 应用测试 | 15 / 19 项通过，含真实 Three.js 的合成 GLB 加载器回归 |
+| 严格检查与构建 | Vue/TypeScript 通过；Vite 6.4.5 完整构建；22 个分发文件校验通过 |
+| 官方 Pyodide + TS 控制器 | 通过；使用原始官方分发和同一份 Python 内核 |
+| 真实浏览器探针 | Chrome 156.0.8078.47：同源、三样例、挑战、恢复、MIME、子路径通过；[原始 JSON](ci-browser-spike-4bb18cd.json) |
+| 真实三维应用 | 9 类操作通过，包含实际鼠标拖动、回弹、双角色、冲突、历史、挑战、JSON、打印、刷新与恢复；[原始 JSON](ci-web-preview-4bb18cd.json) |
+| 冷/热与评估 | 探针冷启动墙钟 3296 ms，热重建 2247 ms；三例评估 40.2 / 9.0 / 11.4 ms；应用冷启动 3216 ms、热刷新 2655 ms |
+| 公网部署 / 真实 Lux3D | NOT_RUN / 等待材料，均未宣称完成 |
+
+T02 第一条占位开发预览闭环已完成。T01 的本地真实浏览器子项通过，目标公开托管仍待验证。性能仅代表这次临时 Linux localhost 的样本，不是公网指标或 p95 统计。
+
+[构建与截图/PDF artifact](https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41769312093/artifacts/13294017524) 共 8,600,359 字节，SHA-256 为 `77584d781bf3f2339e5b206a9b82df8dd7d14b8d305cf6d3f171fbc91079852c`，保留到 2026-11-18。分发目录为包内 `apps/web/dist`；[元数据记录](ci-artifact-4bb18cd.json)。完整构建在 CI 生成，本机终端 npm 仍受 DNS 限制，不能把远端构建说成本机已安装成功。
+
 官方工具需求遵循 [资产方案](../docs/v6.1/03-assets.md)：Lux3D 网页生成并手动导出两件 GLB 是主路径；官方 API/SDK 不是当前阻断项，也没有获准收费调用。仍需真实椅子、柜体、来源和公开分发权利、摘要及人工校准。官方 Pyodide 分发已核验，保持原样使用。

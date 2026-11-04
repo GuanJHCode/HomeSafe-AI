@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "baseline": "V6.1-source-imported",
-  "product_status": "DEVELOPMENT_PREVIEW_SOURCE",
+  "product_status": "DEVELOPMENT_PREVIEW_BUILT_AND_BROWSER_VERIFIED",
   "tasks": [
     {
       "id": "T00",
@@ -31,11 +31,11 @@
         "evidence/WEB_PREVIEW_20261104.md",
         "evidence/TAKEOVER_VALIDATION_20261104.md",
         "evidence/CI_CONTINUATION_20261104.md",
-        "evidence/ci-browser-spike-94c0470.json"
+        "evidence/ci-browser-spike-94c0470.json",
+        "evidence/ci-browser-spike-4bb18cd.json"
       ],
       "blockers": [
-        "Terminal sandbox rejects binding a local HTTP port; target hosting entry has not been established.",
-        "Browser operations paused following the user warning about recurring Chrome crashes; no browser attempted in this continuation."
+        "No verified public target hosting entry; local Linux CI browser acceptance passed. User Mac Chrome was not operated."
       ],
       "remaining": [
         "Verify public target hosting, subpath, iframe, Worker, WASM MIME and anonymous HTTPS access."
@@ -44,7 +44,8 @@
         "official_distribution": "PASS",
         "node_wasm_samples": "PASS",
         "real_browser": "PASS_CI_LOCALHOST",
-        "target_host": "NOT_RUN"
+        "target_host": "NOT_RUN",
+        "worker_recovery": "PASS_REAL_BROWSER"
       }
     },
     {
@@ -52,15 +53,16 @@
       "target_date": "2026-11-06",
       "title": "第一条3D互动",
       "priority": "P0",
-      "status": "IN_PROGRESS",
+      "status": "DONE",
       "owner": null,
-      "commit": null,
+      "commit": "4bb18cda5274267d4a9912e417e29f89287d12e6",
       "evidence": [
         "evidence/WEB_PREVIEW_20261104.md",
         "scripts/check_web_core.mjs",
         "scripts/check_web_preview.mjs",
         "evidence/TAKEOVER_VALIDATION_20261104.md",
-        "evidence/CI_CONTINUATION_20261104.md"
+        "evidence/CI_CONTINUATION_20261104.md",
+        "evidence/ci-web-preview-4bb18cd.json"
       ],
       "checks": {
         "preview_source": "IMPLEMENTED",
@@ -69,18 +71,16 @@
         "app_strict_typecheck": "PASS_CI",
         "synthetic_glb_regression": "PASS",
         "production_build": "PASS_CI",
-        "real_browser": "FAILED_CI_FIX_PENDING",
+        "real_browser": "PASS_CI_LOCALHOST",
         "asset_catalog_ui_source": "IMPLEMENTED",
         "scoped_typescript_strict": "PASS",
-        "all_app_tests_ci": "PASS"
+        "all_app_tests_ci": "PASS",
+        "worker_recovery": "PASS_REAL_BROWSER",
+        "json_and_print_export": "PASS_REAL_BROWSER"
       },
-      "blockers": [
-        "Local terminal npm DNS unavailable; CI installation, strict typecheck and complete build have passed. App browser export regression fix pending rerun."
-      ],
-      "remaining": [
-        "Complete app browser regression for repeated exports, print and recovery.",
-        "Run on the eventual public target and review real assets after materials arrive."
-      ]
+      "blockers": [],
+      "remaining": [],
+      "acceptance_scope": "Synthetic living-room development preview in real Linux Chrome; actual Lux3D assets and public hosting remain T03/T04."
     },
     {
       "id": "T03",
@@ -120,7 +120,8 @@
         "evidence/deployment-checklist.json",
         "evidence/TAKEOVER_VALIDATION_20261104.md",
         "reference/tests/test_web_staging.py",
-        "evidence/CI_CONTINUATION_20261104.md"
+        "evidence/CI_CONTINUATION_20261104.md",
+        "evidence/ci-artifact-4bb18cd.json"
       ],
       "checks": {
         "preview_distribution": "PASS_CI_ARTIFACT",
@@ -236,7 +237,7 @@
   "timezone": "Asia/Shanghai",
   "planning_status": "DOCUMENTATION_PREPARED",
   "source_import_status": "IMPORTED_AND_NATIVE_VALIDATED",
-  "validation_scope": "Current continuation: evidence/TAKEOVER_VALIDATION_20261104.md and evidence/logs/takeover-20261104.txt. Node WASM and synthetic fixtures do not establish browser, real GLB or hosting acceptance.",
+  "validation_scope": "Current CI/browser evidence: evidence/CI_CONTINUATION_20261104.md. T02 development preview passed real Linux Chrome; T03 real Lux3D and T04 public hosting remain blocked. Historical local-only limits are retained in earlier evidence.",
   "source_import": {
     "base_commit": "01d48fca76f77856b5e9f31a37090bb1284e47db",
     "supplement_sha256": "81b72b3dd0d61cfe6854414bf92a4dfd90a4cf2ef2358b019f43566a424a47ea",
@@ -247,5 +248,6 @@
   },
   "baseline_commit": "2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f",
   "implementation_branch": "codex/v6.1-browser-3d",
-  "continuation_base_commit": "69df60fdb04742ad369a6f4a54f6c1d2c35eb126"
+  "continuation_base_commit": "69df60fdb04742ad369a6f4a54f6c1d2c35eb126",
+  "validated_source_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6"
 }
