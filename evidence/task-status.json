@@ -30,20 +30,20 @@
         "evidence/T01-browser-20261104.md",
         "evidence/WEB_PREVIEW_20261104.md",
         "evidence/TAKEOVER_VALIDATION_20261104.md",
-        "evidence/CI_CONTINUATION_20261104.md"
+        "evidence/CI_CONTINUATION_20261104.md",
+        "evidence/ci-browser-spike-94c0470.json"
       ],
       "blockers": [
         "Terminal sandbox rejects binding a local HTTP port; target hosting entry has not been established.",
         "Browser operations paused following the user warning about recurring Chrome crashes; no browser attempted in this continuation."
       ],
       "remaining": [
-        "Verify official same-origin runtime, challenge moves, undo, reset, recovery and timing in Chrome.",
-        "Verify target hosting, subpath, iframe, Worker, MIME and anonymous access."
+        "Verify public target hosting, subpath, iframe, Worker, WASM MIME and anonymous HTTPS access."
       ],
       "checks": {
         "official_distribution": "PASS",
         "node_wasm_samples": "PASS",
-        "real_browser": "NOT_RUN",
+        "real_browser": "PASS_CI_LOCALHOST",
         "target_host": "NOT_RUN"
       }
     },
@@ -66,20 +66,20 @@
         "preview_source": "IMPLEMENTED",
         "native_controller_tests": "PASS",
         "node_wasm_integration": "PASS",
-        "app_strict_typecheck": "FAILED_CI_FIX_PENDING",
+        "app_strict_typecheck": "PASS_CI",
         "synthetic_glb_regression": "PASS",
-        "production_build": "BLOCKED",
-        "real_browser": "NOT_RUN",
+        "production_build": "PASS_CI",
+        "real_browser": "FAILED_CI_FIX_PENDING",
         "asset_catalog_ui_source": "IMPLEMENTED",
         "scoped_typescript_strict": "PASS",
         "all_app_tests_ci": "PASS"
       },
       "blockers": [
-        "npm registry DNS is unavailable and the local cache lacks required Vue, Three.js and build dependencies."
+        "Local terminal npm DNS unavailable; CI installation, strict typecheck and complete build have passed. App browser export regression fix pending rerun."
       ],
       "remaining": [
-        "Install and lock dependencies; run all app tests, strict checks and complete build.",
-        "Verify the 3D pointer interaction, role views, rebound and export in real Chrome."
+        "Complete app browser regression for repeated exports, print and recovery.",
+        "Run on the eventual public target and review real assets after materials arrive."
       ]
     },
     {
@@ -123,13 +123,13 @@
         "evidence/CI_CONTINUATION_20261104.md"
       ],
       "checks": {
-        "preview_distribution": "BLOCKED",
+        "preview_distribution": "PASS_CI_ARTIFACT",
         "public_deployment": "NOT_RUN",
         "anonymous_access": "NOT_RUN",
         "resource_verifier_synthetic_regression": "PASS"
       },
       "blockers": [
-        "No verified preview dist and no approved target hosting entry."
+        "No approved target hosting entry or anonymous public deployment verification."
       ]
     },
     {

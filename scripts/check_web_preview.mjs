@@ -212,6 +212,9 @@ try {
         assert.match(await visibleText('.report'), new RegExp(`布局 v${report.scene_revision}\\b`));
         assert.ok(report.actions.onSite.every(item => item.status === 'triggered'));
         assert.ok(report.actions.information.every(item => item.status === 'needs_review'));
+        // CDP may reuse a filename. Remove only this harness-owned temporary file
+        // so a repeated export of the same layout can be observed independently.
+        await rm(join(downloadPath, file));
         return report;
       }
       await delay(50);

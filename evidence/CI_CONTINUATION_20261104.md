@@ -12,4 +12,8 @@
 
 第二次 CI：[运行 41768151675](https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41768151675)，提交 `6ad8e1e`。完整类型检查、209 项 Python、17 项应用测试、官方运行时下载、完整 Vite 构建及 22 个分发文件校验通过。真实浏览器探针运行至故障注入时失败：Puppeteer 的全局拦截把 `Fetch.enable` 发给不支持它的 Worker target。改为仅拦截页面配置请求的 CDP session；不替换真实 Worker 或 Python 评估。该次构建 artifact 已实际生成，浏览器整体仍未通过。补充应用 Worker 重建、打印 PDF 与热启动测量后继续复验。
 
+第三次 CI：[运行 41768555185](https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41768555185)，提交 `94c0470`。真实 Chrome 156.0.8078.47 同源探针完整通过，原始输出见 [探针证据](ci-browser-spike-94c0470.json)：冷启动墙钟 3627 ms，热重建 3032 ms；三例评估 76.3 / 21.4 / 16.6 ms。挑战、剩余事项、MIME、Worker 失败后重建恢复均通过。这是临时 Linux localhost 子路径实测，不是公网托管或用户 Mac 的结果。
+
+三维应用已执行至挑战后的第二次导出，因 CDP 重用同名文件而触发验收脚本超时；整体未通过。修复测试临时文件生命周期，同时新增失败回归后为产品导出名加入实际 input_hash 前缀，区分同一 revision 的不同布局。保存 CI 真正解析出的 113 个包记录的 npm lock，后续改为 npm ci，不手写依赖解析结果。
+
 官方工具需求遵循 [资产方案](../docs/v6.1/03-assets.md)：Lux3D 网页生成并手动导出两件 GLB 是主路径；官方 API/SDK 不是当前阻断项，也没有获准收费调用。仍需真实椅子、柜体、来源和公开分发权利、摘要及人工校准。官方 Pyodide 分发已核验，保持原样使用。

@@ -50,6 +50,10 @@ export class ReportBuilder {
     return `${JSON.stringify(report, null, 2)}\n`
   }
 
+  static fileName(report: ReportViewModel): string {
+    return `homesafe-action-list-v${report.scene_revision}-${report.input_hash.slice(0, 12)}.json`
+  }
+
   static print(): void {
     window.print()
   }

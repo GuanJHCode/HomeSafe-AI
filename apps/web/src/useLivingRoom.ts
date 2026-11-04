@@ -312,7 +312,7 @@ export function useLivingRoom() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `homesafe-action-list-v${currentReport.scene_revision}.json`;
+    link.download = ReportBuilder.fileName(currentReport);
     document.body.append(link);
     link.click();
     link.remove();

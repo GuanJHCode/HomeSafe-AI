@@ -2,6 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import type { Assessment, Comparison, Scene } from '../../../contracts/frontend/domain.ts'
 import conflictScene from '../../../browser-spike/examples/scene-conflict.json' with { type: 'json' }
+import beforeScene from '../../../browser-spike/examples/scene-before.json' with { type: 'json' }
 import beforeAssessment from '../../../browser-spike/examples/assessment-before.json' with { type: 'json' }
 import conflictAssessment from '../../../browser-spike/examples/assessment-conflict.json' with { type: 'json' }
 import comparison from '../../../examples/comparison.json' with { type: 'json' }
@@ -33,4 +34,14 @@ test('JSON and print view model use the same accepted version and actual assessm
 test('stale assessment and mixed-version comparison cannot be exported', () => {
   assert.throws(() => ReportBuilder.buildViewModel(scene, beforeAssessment as unknown as Assessment), /版本/)
   assert.throws(() => ReportBuilder.buildViewModel(scene, assessment, { ...delta!, afterInputHash: 'other' }), /版本/)
+})
+
+test('different evaluated layouts at the same revision have traceable export filenames', () => {
+  const before = ReportBuilder.buildViewModel(beforeScene as Scene,
+    beforeAssessment as unknown as Assessment)
+  const after = ReportBuilder.buildViewModel(scene, assessment, delta)
+  const name = ReportBuilder.fileName(after)
+  assert.match(name, /^homesafe-action-list-v\d+-[a-f0-9]{12}\.json$/)
+  assert.ok(name.includes(after.input_hash.slice(0, 12)))
+  assert.notEqual(name, ReportBuilder.fileName({ ...before, scene_revision: after.scene_revision }))
 })
