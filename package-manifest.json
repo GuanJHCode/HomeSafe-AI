@@ -1,6 +1,6 @@
 {
   "manifest_version": "1.0",
-  "release": "V6.1-browser-3d-reviewed-asset-publication-source-20261104",
+  "release": "V6.1-browser-3d-ci-preview-source-20261104",
   "base_commit": "2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f",
   "baseline_zip_sha256": "b6c674f532fd30ff7ab086b08c814b086e94e2aa0f12cff80c1b6d94b96d3752",
   "classification_policy": "Verified master tracked source and explicitly staged preview code/evidence. Excludes runtime vendor, build outputs, private or unapproved assets and original untracked archives.",
@@ -13,14 +13,14 @@
     },
     {
       "path": ".github/workflows/reference-checks.yml",
-      "sha256": "9f90b4f300d544649dd7fcd5c6e05c6707144477aed151d01d774be2df6b1cae",
-      "bytes": 1306,
+      "sha256": "90421969c2ea09769d60ef674ff8463557b894dbcbcf06fadc8694cd3ebcd1e7",
+      "bytes": 3550,
       "classification": "generated_project_source"
     },
     {
       "path": ".gitignore",
-      "sha256": "cfb420047114f6b6186e6431c637b68d01f49874e28556dc1058907ee167875e",
-      "bytes": 591,
+      "sha256": "5bbbc4d34b7352a5994483c2832c83473d474e21e39f5ccbb4a5335994eb1c08",
+      "bytes": 604,
       "classification": "generated_project_source"
     },
     {
@@ -181,14 +181,14 @@
     },
     {
       "path": "apps/web/tests/findings.test.ts",
-      "sha256": "20fbcb86f8448fc05fff030b7273bb6807f09b8b0591e65ea1a2ed9e235b4567",
-      "bytes": 2857,
+      "sha256": "dbfbfff71bef0113d18dd2fa17699fc879f50e5efa8a2b4a822117f832188ab3",
+      "bytes": 3055,
       "classification": "generated_project_source"
     },
     {
       "path": "apps/web/tests/report.test.ts",
-      "sha256": "ffaf32e6e4641a67d2b1f2d92ba66d73827e15765766b8fe48e1c0ed2846f009",
-      "bytes": 2421,
+      "sha256": "f933ed7704182307189a48e0a3de7b05d3dd6c960d6b3f9a215934d6200370d4",
+      "bytes": 2619,
       "classification": "generated_project_source"
     },
     {
@@ -199,8 +199,8 @@
     },
     {
       "path": "apps/web/tests/workspace.test.ts",
-      "sha256": "e301c976a1927ff0f546599aaa8860cc469b411365e948635df5a50991bc306b",
-      "bytes": 4085,
+      "sha256": "8c5f3198a5f2298547f4cfda84dceea8714e5af519001c3d7ecba77d66bf01c1",
+      "bytes": 4305,
       "classification": "generated_project_source"
     },
     {
@@ -588,9 +588,15 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "evidence/CI_CONTINUATION_20261104.md",
+      "sha256": "59bc0f88f8ebcc70d4a62600372e3615f1d8efc7923cd437e16468b43f4b1e4e",
+      "bytes": 1982,
+      "classification": "generated_project_source"
+    },
+    {
       "path": "evidence/HANDOFF.md",
-      "sha256": "87956c89645b307d578bf81c975bfad8e6f70572e5b16dc30c3315b65a86cbb2",
-      "bytes": 2661,
+      "sha256": "f8fffb7e4d1ccb1c4b7cc2b367b51d897f9ad1f36859c82baf2c4b2d2988f4c0",
+      "bytes": 3076,
       "classification": "generated_project_source"
     },
     {
@@ -931,8 +937,8 @@
     },
     {
       "path": "evidence/task-status.json",
-      "sha256": "22ef67b636b293a5c509d7790b0931cb6756026aade5a43c3425e08864c6e2e4",
-      "bytes": 7390,
+      "sha256": "d094a946c0a51d7f570d68e1f7cd54ea890741d1f6bd9d7a9e3ee9f5435d4d7a",
+      "bytes": 7581,
       "classification": "generated_project_source"
     },
     {
@@ -1320,6 +1326,12 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "reference/tests/test_runtime_download.py",
+      "sha256": "7a3be2596d86dceef85d1ead6ad28d1acbf65aeb05918f37d8bf732dd06bcc8f",
+      "bytes": 1652,
+      "classification": "generated_project_source"
+    },
+    {
       "path": "reference/tests/test_v61_vendor_bridge.py",
       "sha256": "dc3694b7ae88c64037ac80f13791a65d40be2df95731a7110c83d30d6598b236",
       "bytes": 6834,
@@ -1351,8 +1363,8 @@
     },
     {
       "path": "scripts/check_browser_spike.mjs",
-      "sha256": "8641c36d0195557be2e10aaee629c626b4c6538ba8da6220187b4aa523de6ce1",
-      "bytes": 5303,
+      "sha256": "3f9e34ac9d97b49520de6dc977db9a1ba7fd0782c93698a157f6ed846d4142b9",
+      "bytes": 5351,
       "classification": "generated_project_source"
     },
     {
@@ -1369,8 +1381,14 @@
     },
     {
       "path": "scripts/check_web_preview.mjs",
-      "sha256": "4862400b1d91127b9a1c9d59283cbfd11fb204b81677adfed82a0fb12ff0c94f",
-      "bytes": 11059,
+      "sha256": "97fb44de89748e7e7070232bbe9d41801e4c7e34bd9154f43d5278472a898ffc",
+      "bytes": 11108,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "scripts/download_pyodide.py",
+      "sha256": "4c39f847be5d13268b2ee792a607ddf99ac6ed17b22915382d093c29b84caf04",
+      "bytes": 1995,
       "classification": "generated_project_source"
     },
     {
@@ -1383,6 +1401,12 @@
       "path": "scripts/generate_contracts.py",
       "sha256": "7de75bba159027d069ffa1561da2bfe9dfcf8c3939cc7ba7d9bd6f1e936554f2",
       "bytes": 5017,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "scripts/pyodide-runtime-lock.json",
+      "sha256": "063561a7a0917794ec17d4fa3c45130ebd9b6794b80949c08dfbeff1197cc591",
+      "bytes": 2030,
       "classification": "generated_project_source"
     },
     {

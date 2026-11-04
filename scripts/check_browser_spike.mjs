@@ -11,7 +11,8 @@ url.searchParams.set('runtime', 'same-origin');
 const { launch } = await import(puppeteerEntry
   ? pathToFileURL(resolve(puppeteerEntry)).href
   : 'puppeteer-core');
-const browser = await launch({ executablePath: chrome, headless: true });
+const browser = await launch({ executablePath: chrome, headless: true,
+  args: process.env.CI ? ['--no-sandbox'] : [] });
 try {
   const page = await browser.newPage();
   page.setDefaultTimeout(120_000);

@@ -7,7 +7,9 @@ import conflictAssessment from '../../../browser-spike/examples/assessment-confl
 import comparison from '../../../examples/comparison.json' with { type: 'json' }
 import { FindingsPresenter } from '../src/domain/FindingsPresenter.ts'
 
-const assessment = conflictAssessment as Assessment
+// Canonical JSON fixtures are validated by the Python contract check; JSON imports
+// infer absent evidence keys as optional undefined, unlike the wire dictionary.
+const assessment = conflictAssessment as unknown as Assessment
 const scene = conflictScene as Scene
 
 test('role switching filters findings and coverage using configured profile roles', () => {
@@ -30,7 +32,7 @@ test('role switching filters findings and coverage using configured profile role
 
 test('comparison highlights a child–elder tradeoff and rejects unrelated hashes', () => {
   const presenter = new FindingsPresenter(scene, assessment)
-  const delta = presenter.comparison(beforeAssessment as Assessment, comparison as Comparison)
+  const delta = presenter.comparison(beforeAssessment as unknown as Assessment, comparison as Comparison)
   assert.equal(delta?.conflict, true)
   assert.deepEqual(delta?.newTriggered.map(finding => finding.role), ['elder'])
   assert.deepEqual(delta?.noLongerTriggered.map(finding => finding.role), ['child'])
@@ -39,7 +41,7 @@ test('comparison highlights a child–elder tradeoff and rejects unrelated hashe
 
 test('observation-only comparisons cannot be described as layout conflicts', () => {
   const presenter = new FindingsPresenter(scene, assessment)
-  const delta = presenter.comparison(beforeAssessment as Assessment, {
+  const delta = presenter.comparison(beforeAssessment as unknown as Assessment, {
     ...comparison as Comparison,
     change_kinds: ['observation'],
     resolved_unknown: [assessment.findings.find(finding => finding.rule_id === 'R002')!.key],

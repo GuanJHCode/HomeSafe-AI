@@ -5,6 +5,7 @@ permissions:
 jobs:
   reference:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -27,5 +28,41 @@ jobs:
       - run: npx tsc --strict --noEmit --target ES2022 contracts/frontend/domain.ts
       - run: npm --prefix apps/web install --no-audit --no-fund
       - run: npm --prefix apps/web test
-      - run: npm --prefix apps/web run build:frontend
-# This workflow has not run on GitHub in this delivery. No paid API use.
+      - name: Download pinned official runtime
+        run: python scripts/download_pyodide.py --dest "$RUNNER_TEMP/homesafe-pyodide"
+      - name: Preview official vendor selection
+        run: python scripts/vendor_pyodide_from_dir.py --source "$RUNNER_TEMP/homesafe-pyodide" --expected-lock-sha256 3fdaef09e9e365c85e002737720f8d0ab8f278c1c244a2dde6a37663cf488ad4
+      - name: Copy verified official vendor files
+        run: python scripts/vendor_pyodide_from_dir.py --source "$RUNNER_TEMP/homesafe-pyodide" --expected-lock-sha256 3fdaef09e9e365c85e002737720f8d0ab8f278c1c244a2dde6a37663cf488ad4 --copy
+      - run: npm --prefix apps/web run build
+      - run: node scripts/check_web_core.mjs
+      - name: Install isolated browser driver
+        run: npm --prefix "$RUNNER_TEMP/homesafe-browser" install --no-audit --no-fund puppeteer-core@24.15.0
+      - name: Real browser on a nested path
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/homesafe-host/preview" "$RUNNER_TEMP/homesafe-host/probe" ci-evidence
+          cp -R apps/web/dist/. "$RUNNER_TEMP/homesafe-host/preview/"
+          cp -R browser-spike/. "$RUNNER_TEMP/homesafe-host/probe/"
+          python -m http.server 4173 --bind 127.0.0.1 --directory "$RUNNER_TEMP/homesafe-host" > ci-evidence/http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:4173/preview/ > /dev/null; then break; fi
+            sleep 1
+          done
+          chrome=$(command -v google-chrome)
+          driver="$RUNNER_TEMP/homesafe-browser/node_modules/puppeteer-core/lib/esm/puppeteer/puppeteer-core.js"
+          node scripts/check_browser_spike.mjs http://127.0.0.1:4173/probe/ "$chrome" "$driver" | tee ci-evidence/browser-spike.json
+          node scripts/check_web_preview.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" | tee ci-evidence/web-preview.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: development-preview-${{ github.sha }}
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            apps/web/dist/
+            apps/web/package-lock.json
+            ci-evidence/
+# CI uses an ephemeral Linux browser; it does not launch the user's Chrome or deploy a site.

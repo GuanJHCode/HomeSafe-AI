@@ -30,3 +30,4 @@ apps/web/public/vendor/
 # Staged public assets for the browser application.
 apps/web/public/engine/
 apps/web/public/assets/
+ci-evidence/

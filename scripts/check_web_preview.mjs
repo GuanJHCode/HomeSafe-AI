@@ -33,7 +33,8 @@ const launch = puppeteer.launch ?? puppeteer.default.launch;
 const browser = await launch({
   executablePath: chrome,
   headless: true,
-  args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader'],
+  args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader',
+    ...(process.env.CI ? ['--no-sandbox'] : [])],
 });
 const downloadPath = await mkdtemp(join(tmpdir(), 'homesafe-web-'));
 try {

@@ -7,7 +7,9 @@ import conflictAssessment from '../../../browser-spike/examples/assessment-confl
 import { WorkspaceController, placementFeedback } from '../src/domain/WorkspaceController.ts'
 
 const scene = beforeScene as Scene
-const assessment = beforeAssessment as Assessment
+// Canonical JSON fixtures are validated by the Python contract check; JSON imports
+// infer absent evidence keys as optional undefined, unlike the wire dictionary.
+const assessment = beforeAssessment as unknown as Assessment
 const chair = scene.objects.find(object => object.id === 'chair')!
 const pose = { position: { x: 3, y: 0, z: 2 }, yaw_rad: 0 }
 
@@ -24,17 +26,17 @@ test('a drag changes layout and history only after accepted evaluation', () => {
   assert.deepEqual(chairPosition(workspace), chair.position)
   assert.equal(workspace.canUndo, false)
   assert.equal(workspace.accept(change, assessment), false)
-  assert.equal(workspace.accept(change, atRevision(conflictAssessment as Assessment, change.scene)), true)
+  assert.equal(workspace.accept(change, atRevision(conflictAssessment as unknown as Assessment, change.scene)), true)
   assert.deepEqual(chairPosition(workspace), pose.position)
   assert.equal(workspace.canUndo, true)
-  assert.equal(workspace.accept(change, atRevision(conflictAssessment as Assessment, change.scene)), false)
+  assert.equal(workspace.accept(change, atRevision(conflictAssessment as unknown as Assessment, change.scene)), false)
   assert.equal(workspace.proposal('chair', pose), null)
 })
 
 test('undo, redo and reset keep the last legal layout until reevaluated', () => {
   const workspace = new WorkspaceController(scene)
   const change = workspace.proposal('chair', pose)!
-  workspace.accept(change, atRevision(conflictAssessment as Assessment, change.scene))
+  workspace.accept(change, atRevision(conflictAssessment as unknown as Assessment, change.scene))
 
   const undo = workspace.undo()!
   assert.equal(workspace.canRedo, false)
@@ -45,7 +47,7 @@ test('undo, redo and reset keep the last legal layout until reevaluated', () => 
   assert.equal(workspace.canUndo, false)
 
   const redo = workspace.redo()!
-  assert.ok(workspace.accept(redo, atRevision(conflictAssessment as Assessment, redo.scene)))
+  assert.ok(workspace.accept(redo, atRevision(conflictAssessment as unknown as Assessment, redo.scene)))
   assert.deepEqual(chairPosition(workspace), pose.position)
 
   const reset = workspace.reset()!

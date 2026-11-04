@@ -29,7 +29,8 @@
         "evidence/logs/source-import-20261103.txt",
         "evidence/T01-browser-20261104.md",
         "evidence/WEB_PREVIEW_20261104.md",
-        "evidence/TAKEOVER_VALIDATION_20261104.md"
+        "evidence/TAKEOVER_VALIDATION_20261104.md",
+        "evidence/CI_CONTINUATION_20261104.md"
       ],
       "blockers": [
         "Terminal sandbox rejects binding a local HTTP port; target hosting entry has not been established.",
@@ -58,18 +59,20 @@
         "evidence/WEB_PREVIEW_20261104.md",
         "scripts/check_web_core.mjs",
         "scripts/check_web_preview.mjs",
-        "evidence/TAKEOVER_VALIDATION_20261104.md"
+        "evidence/TAKEOVER_VALIDATION_20261104.md",
+        "evidence/CI_CONTINUATION_20261104.md"
       ],
       "checks": {
         "preview_source": "IMPLEMENTED",
         "native_controller_tests": "PASS",
         "node_wasm_integration": "PASS",
-        "app_strict_typecheck": "BLOCKED",
-        "synthetic_glb_regression": "BLOCKED",
+        "app_strict_typecheck": "FAILED_CI_FIX_PENDING",
+        "synthetic_glb_regression": "PASS",
         "production_build": "BLOCKED",
         "real_browser": "NOT_RUN",
         "asset_catalog_ui_source": "IMPLEMENTED",
-        "scoped_typescript_strict": "PASS"
+        "scoped_typescript_strict": "PASS",
+        "all_app_tests_ci": "PASS"
       },
       "blockers": [
         "npm registry DNS is unavailable and the local cache lacks required Vue, Three.js and build dependencies."
@@ -116,7 +119,8 @@
         "evidence/WEB_PREVIEW_20261104.md",
         "evidence/deployment-checklist.json",
         "evidence/TAKEOVER_VALIDATION_20261104.md",
-        "reference/tests/test_web_staging.py"
+        "reference/tests/test_web_staging.py",
+        "evidence/CI_CONTINUATION_20261104.md"
       ],
       "checks": {
         "preview_distribution": "BLOCKED",

@@ -9,8 +9,10 @@ import { FindingsPresenter } from '../src/domain/FindingsPresenter.ts'
 import { ReportBuilder } from '../src/domain/ReportBuilder.ts'
 
 const scene = conflictScene as Scene
-const assessment = conflictAssessment as Assessment
-const delta = new FindingsPresenter(scene, assessment).comparison(beforeAssessment as Assessment, comparison as Comparison)
+// Canonical JSON fixtures are validated by the Python contract check; JSON imports
+// infer absent evidence keys as optional undefined, unlike the wire dictionary.
+const assessment = conflictAssessment as unknown as Assessment
+const delta = new FindingsPresenter(scene, assessment).comparison(beforeAssessment as unknown as Assessment, comparison as Comparison)
 
 test('JSON and print view model use the same accepted version and actual assessment', () => {
   const report = ReportBuilder.buildViewModel(scene, assessment, delta)
@@ -29,6 +31,6 @@ test('JSON and print view model use the same accepted version and actual assessm
 })
 
 test('stale assessment and mixed-version comparison cannot be exported', () => {
-  assert.throws(() => ReportBuilder.buildViewModel(scene, beforeAssessment as Assessment), /版本/)
+  assert.throws(() => ReportBuilder.buildViewModel(scene, beforeAssessment as unknown as Assessment), /版本/)
   assert.throws(() => ReportBuilder.buildViewModel(scene, assessment, { ...delta!, afterInputHash: 'other' }), /版本/)
 })

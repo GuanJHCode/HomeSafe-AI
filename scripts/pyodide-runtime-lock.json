@@ -1,0 +1,58 @@
+{
+  "version": "314.0.6",
+  "base_url": "https://cdn.jsdelivr.net/pyodide/v314.0.6/full/",
+  "lock_sha256": "3fdaef09e9e365c85e002737720f8d0ab8f278c1c244a2dde6a37663cf488ad4",
+  "files": [
+    {
+      "path": "annotated_types-0.7.0-py3-none-any.whl",
+      "sha256": "6b34f564725f8d309442f8d15abcceed1bf140fe2412e2c58da721426ae2222e",
+      "bytes": 11963
+    },
+    {
+      "path": "pydantic-2.12.5-py3-none-any.whl",
+      "sha256": "52d15d19fbe2a62ac9b63348df7b38e5ebb186063a9b923a837dd6e43273b414",
+      "bytes": 463578
+    },
+    {
+      "path": "pydantic_core-2.41.5-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "sha256": "9802bd7a5e6679ec4c13be778f19f021e6147459c89cc916b913f7970f86dddb",
+      "bytes": 1310163
+    },
+    {
+      "path": "pyodide-lock.json",
+      "sha256": "3fdaef09e9e365c85e002737720f8d0ab8f278c1c244a2dde6a37663cf488ad4",
+      "bytes": 114440
+    },
+    {
+      "path": "pyodide.asm.mjs",
+      "sha256": "2ac5eba365ec12839c75c03b39b3be1dd63b798852cc460b014b52238be042f7",
+      "bytes": 1250344
+    },
+    {
+      "path": "pyodide.asm.wasm",
+      "sha256": "3a0a00dfeaa348ac20f9ef09904233d32d33f644339662d4af368f8a2010f37a",
+      "bytes": 9598218
+    },
+    {
+      "path": "pyodide.mjs",
+      "sha256": "69e3f6ccec3e14b465df60be577ca62f536251406b9a00cce019eac5252a2495",
+      "bytes": 17931
+    },
+    {
+      "path": "python_stdlib.zip",
+      "sha256": "80c5be6babfe03297069703410c3c29404dcf2525d2b128746bae5536f94831f",
+      "bytes": 2545564
+    },
+    {
+      "path": "typing_extensions-4.15.0-py3-none-any.whl",
+      "sha256": "3f122252f0d498d80f7a684cc1d8baa6fa65b75e99447d77a6dd90e0f04302e3",
+      "bytes": 44613
+    },
+    {
+      "path": "typing_inspection-0.4.2-py3-none-any.whl",
+      "sha256": "c9270737700f07813e1a87b63138993997afedbd2548f20fa739cc398f1b9f2f",
+      "bytes": 14610
+    }
+  ],
+  "source_note": "Hashes from the official unmodified distribution verified during T01 on 2026-11-04; download verification does not establish browser or hosting acceptance."
+}
