@@ -1,0 +1,53 @@
+{
+  "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(returned.events.some(e=>e.type==='pagehide'&&e.persisted&&e.isTrusted&&e.active_after_handlers===0))\n",
+  "stack": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(returned.events.some(e=>e.type==='pagehide'&&e.persisted&&e.isTrusted&&e.active_after_handlers===0))\n\n    at file:///workspace/scratch/review-pr3-native-bfcache.mjs:22:20",
+  "result": {
+    "scope": "INDEPENDENT_ACTUAL_CHROMIUM_NAVIGATION_NOT_SYNTHETIC_PAGE_EVENTS",
+    "browser": "Chrome/154.0.8037.57",
+    "configured_difference": "Removed only BackForwardCache from Puppeteer default disabled-feature list; no performance claims.",
+    "original_disabled_feature_flags": [
+      "--disable-features=Translate,AcceptCHFrame,MediaRouter,OptimizationHints,ProcessPerSiteUpToMainFrameThreshold,IsolateSandboxedIframes"
+    ],
+    "native_document_reused": true,
+    "before": {
+      "document_id": "277f92a4-4cfd-4830-8b7e-924688db35c2",
+      "active": 1,
+      "created": 1,
+      "events": [
+        {
+          "type": "pageshow",
+          "persisted": false,
+          "isTrusted": true,
+          "active_after_handlers": 0
+        }
+      ]
+    },
+    "returned": {
+      "document_id": "277f92a4-4cfd-4830-8b7e-924688db35c2",
+      "active": 0,
+      "created": 1,
+      "events": [
+        {
+          "type": "pageshow",
+          "persisted": false,
+          "isTrusted": true,
+          "active_after_handlers": 0
+        },
+        {
+          "type": "pagehide",
+          "persisted": true,
+          "isTrusted": true,
+          "active_after_handlers": 1
+        },
+        {
+          "type": "pageshow",
+          "persisted": true,
+          "isTrusted": true,
+          "active_after_handlers": 0
+        }
+      ]
+    },
+    "not_restored_reasons": []
+  },
+  "errors": []
+}

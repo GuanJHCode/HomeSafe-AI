@@ -1,0 +1,15 @@
+{
+  "duplicate_successful_init": {
+    "requested_generation": 12,
+    "received_generation": 11
+  },
+  "bounded_sanitizer": {
+    "events": 1,
+    "serialized_bytes": 200302,
+    "end_field_type": "string"
+  },
+  "diagnostic_snapshot_failure": {
+    "reply_count": 0,
+    "enqueue_error": "injected diagnostic failure"
+  }
+}

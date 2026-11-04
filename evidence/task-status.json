@@ -264,7 +264,9 @@
       "commit": null,
       "evidence": [
         "evidence/CONTINUATION_20261104.md",
-        "evidence/FEATURE_CONTINUATION_20261104.md"
+        "evidence/FEATURE_CONTINUATION_20261104.md",
+        "evidence/CI_PUSH_64e1665_20261104.md",
+        "evidence/STARTUP_ADJUSTMENTS_20261104.md"
       ],
       "subtasks": [
         {
@@ -306,20 +308,33 @@
           "id": "T07-first-editable-budget",
           "status": "OPEN_NOT_MET",
           "acceptance_scope": "Cold first editable p95 <=3000ms, with actual accepted edit per sample; no canvas-proxy substitution",
-          "evidence": "evidence/REVIEW_PERFORMANCE_CI_CONTINUATION_20261104.md"
+          "evidence": "evidence/STARTUP_ADJUSTMENTS_20261104.md"
         }
       ],
       "remaining": [
         "Actual Lux3D load/render/release and print validation; final target device/network performance.",
-        "First-editable <=3s budget is NOT MET in isolated cloud Chrome; engineering work remains, separate from external asset/hosting blockers."
+        "First-editable <=3s remains OPEN_NOT_MET: final retained-source local enforce p95=4086.1ms. PR2 bounded paired benefit334.4ms remains separately supported; PR3 discarded and reverted. New fixed remoteCI awaits push authorization. No cross-environment inference or unauthorized runtime/backend/threshold changes."
       ],
       "checks": {
-        "first_editable_budget": "NOT_MET",
-        "hot_evaluation_budget": "PASS_LOCAL_ONLY",
-        "cold_rule_budget": "PASS_LOCAL_ONLY",
-        "current_remote_ci": "NOT_RUN_NO_PUSH",
+        "first_editable_budget": "OPEN_NOT_MET",
+        "hot_evaluation_budget": "PASS_CI_LOCALHOST_AT_64e1665",
+        "cold_rule_budget": "PASS_CI_LOCALHOST_AT_64e1665",
+        "current_remote_ci": "FAIL_FIRST_EDITABLE_AT_64e1665",
         "local_ci_equivalent_functional_steps": "PASS",
-        "strict_ci_failure_propagation": "PASS_INDEPENDENT_SYNTHETIC_SHELL_TEST"
+        "strict_ci_failure_propagation": "PASS_INDEPENDENT_SYNTHETIC_SHELL_TEST",
+        "functional_validation": "PASS_CI_LOCALHOST_AT_64e1665",
+        "first_editable_p95_ms": 3386,
+        "hot_evaluation_p95_ms": 9.9,
+        "current_startup_changes_remote_ci": "NOT_RUN",
+        "current_local_startup_phase": {
+          "functional_validation": "PASS_RETAINED_PR1_PR2_AND_INDEPENDENT_ROLLBACK",
+          "first_editable_p95_ms": 4086.1,
+          "first_editable_budget": "OPEN_NOT_MET",
+          "hot_evaluation_p95_ms": 12.6,
+          "hot_evaluation_budget": "PASS_LOCAL_ONLY",
+          "cold_rule_budget": "PASS_LOCAL_ONLY",
+          "evidence": "evidence/startup-benchmark/final-retained-enforce-performance.json"
+        }
       }
     },
     {
@@ -461,10 +476,10 @@
   "baseline_commit": "2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f",
   "implementation_branch": "codex/v6.1-browser-3d",
   "continuation_base_commit": "f6245e13bc41e36a0efeabeba3ca0fba2174c2f5",
-  "current_validation_scope": "evidence/FEATURE_CONTINUATION_20261104.md",
-  "historical_validation_scope": "Current CI/browser evidence: evidence/CI_CONTINUATION_20261104.md. T02 development preview passed real Linux Chrome; T03 real Lux3D and T04 public hosting remain blocked. Historical local-only limits are retained in earlier evidence.",
+  "current_validation_scope": "evidence/STARTUP_ADJUSTMENTS_20261104.md",
+  "historical_validation_scope": "Earlier local and remote validation records remain historical. See evidence/FEATURE_CONTINUATION_20261104.md and evidence/CI_CONTINUATION_20261104.md; no earlier pass overrides the fixed 64e1665 first-editable failure.",
   "historical_validated_source_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6",
-  "validation_scope": "Current isolated cloud local browser and canonical tests: evidence/FEATURE_CONTINUATION_20261104.md. Modified CI not remotely run. First-editable budget OPEN; actual Lux3D/public hosting BLOCKED.",
+  "validation_scope": "Remote fixed64e1665 CI41807603537 functionalPASS/3386ms firsteditableFAIL remains latest remote. Local final retains reviewedPR1/PR2; PR3DISCARDED and28distfiles restoredexactly. Single final enforce4086.1ms firsteditableFAIL/hot12.6PASS. NewremoteCI NOT_RUN; realassets/publichostBLOCKED.",
   "recovery_sync": {
     "task_id": "RECOVERY-SYNC-20261104",
     "date": "2026-11-04",
@@ -490,5 +505,128 @@
     "current_scope": "evidence/FEATURE_CONTINUATION_20261104.md"
   },
   "previous_continuation_base_commit": "57faf384d64e9770407b28086fdfeb5b193a6d6f",
-  "current_source_sync": "LOCAL_ONLY_NOT_PUSHED"
+  "current_source_sync": "SOURCE_64e1665_REMOTE_CI_CONFIRMED; STARTUP_PHASE_LOCAL_CHANGES_NOT_PUSHED",
+  "previous_source_sync": "LOCAL_ONLY_NOT_PUSHED",
+  "latest_verified_remote_ci": {
+    "source_commit": "64e166540495126f618dd65aa8dc88760ed70604",
+    "remote_branch": "codex/v6.1-browser-3d",
+    "run_id": 41807603537,
+    "job_id": 126498424922,
+    "run_attempt": 1,
+    "run_url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41807603537",
+    "conclusion": "failure",
+    "functional_validation": "PASS_CI_LOCALHOST",
+    "performance_budget": "FAIL_FIRST_EDITABLE",
+    "real_asset_browser": "BLOCKED_NOT_RUN_FILE_UNAVAILABLE",
+    "public_host": "BLOCKED_NOT_RUN_NO_APPROVED_HOST",
+    "first_editable_p95_ms": 3386,
+    "hot_evaluation_p95_ms": 9.9,
+    "evidence": "evidence/CI_PUSH_64e1665_20261104.md"
+  },
+  "startup_phase": {
+    "base_commit": "64e166540495126f618dd65aa8dc88760ed70604",
+    "local_branch": "codex/startup-profile-20261104",
+    "current_changes_remote_ci": "NOT_RUN_NO_CURRENT_PHASE_PUSH_AUTHORIZATION",
+    "status_sync_review": "PASS_INDEPENDENT",
+    "original_and_continuation_worktrees": "PRESERVED",
+    "status_sync_review_evidence": "evidence/REVIEW_STARTUP_PR0_20261104.md",
+    "ci_step_separation": {
+      "status": "DONE",
+      "review": "PASS_INDEPENDENT",
+      "evidence": "evidence/REVIEW_STARTUP_PR4_20261104.md",
+      "synthetic_shell_regressions_passed": 8,
+      "current_changes_remote_ci": "NOT_RUN",
+      "acceptance_scope": "Separate CI functional/performance steps, same distribution and servers, strict failure propagation, cleanup and honest summaries only; stability/performance objective remains OPEN"
+    },
+    "record_status": "FINAL_RETAINED_PR1_PR2_PR3_DISCARDED_FIRST_EDITABLE_OPEN",
+    "record": "evidence/STARTUP_ADJUSTMENTS_20261104.md",
+    "source_commit": "LOCAL_COMMIT_SEE_DELIVERY_RECEIPT",
+    "pr1": {
+      "status": "DONE",
+      "review": "PASS_INDEPENDENT_FINAL",
+      "evidence": "evidence/REVIEW_STARTUP_PR1_20261104.md",
+      "overhead_review": "evidence/REVIEW_STARTUP_BENCHMARK_20261104.md",
+      "overhead_B_minus_A_median_ms": -278.9,
+      "overhead_interpretation": "BOUNDED_OBSERVATION_NOT_TRACING_SPEEDUP_OR_ZERO_COST_PROOF"
+    },
+    "pr2": {
+      "status": "DONE_ADOPTED",
+      "review": "ADOPT_PR2_SCOPED_OPTIMIZATION",
+      "evidence": "evidence/REVIEW_STARTUP_PR2_20261104.md",
+      "baseline": "64e1665_PLUS_REVIEWED_PR1_TRACE_NOT_BARE_64e1665",
+      "improving_pairs": 5,
+      "paired_median_saving_ms": 334.4,
+      "core_hash": "9292ae7a2ec4a2e91cf90640dbf318ecafa0a25bc2698875c311e5d6a1540be8",
+      "full_enforce_exit_code": 1,
+      "first_editable_p95_ms": 3858.5,
+      "hot_evaluation_p95_ms": 12.5,
+      "first_editable_budget": "OPEN_NOT_MET"
+    },
+    "pr3": {
+      "status": "EXPERIMENT_COMPLETED_DISCARDED",
+      "adoption": "DISCARD_OPTIMIZATION",
+      "feature_done": false,
+      "candidate_functional_checks": "PASS_FOR_DISCARDED_CANDIDATE_ONLY",
+      "improving_pairs": 3,
+      "paired_median_saving_ms": 43.9,
+      "baseline_first_editable_p95_ms": 3946.1,
+      "candidate_first_editable_p95_ms": 4311.6,
+      "candidate_full_hot_enforce": "NOT_RUN",
+      "restore_to_pr2": "PASS_INDEPENDENT_ALL_28_DIST_FILES_BYTE_IDENTICAL",
+      "evidence": "evidence/REVIEW_STARTUP_BENCHMARK_20261104.md",
+      "decision_record": "docs/ADR-0003-startup-profiling-and-bounded-optimization.md",
+      "rollback_evidence": "evidence/review-startup-pr3-rollback-20261104.json",
+      "discarded_archive": "evidence/startup-pr3-discarded/README.md",
+      "independent_final_decision": "evidence/REVIEW_STARTUP_PR3_20261104.md"
+    },
+    "pr4_stability": {
+      "status": "OPEN",
+      "step_separation": "DONE_INDEPENDENTLY_REVIEWED",
+      "three_new_remote_ci_runs": "NOT_RUN_NO_CURRENT_PHASE_PUSH_AUTHORIZATION",
+      "first_editable_budget": "OPEN_NOT_MET"
+    },
+    "remote_write": "NOT_PERFORMED_THIS_PHASE",
+    "final_retained_source_validation": {
+      "status": "RESTORE_PASS_FINAL_ENFORCE_FAIL_FIRST_EDITABLE",
+      "retained": "PR1_PROFILING_PR2_MODEL_SPLIT_CI_IMPROVEMENTS",
+      "restored_dist_manifest_sha256": "3ee69e5e576a0f9a54efdb1fb050c88354b814a4a212f0a1df4dc000f2fdb9f4",
+      "dist_byte_identical_files": 28,
+      "measured_at": "2026-11-04T11:05:54.485Z",
+      "enforce_exit_code": 1,
+      "cold_samples_ms": [
+        3913.5,
+        4086.1,
+        3784.6,
+        3843.3,
+        4049.8
+      ],
+      "first_editable_p50_ms": 3913.5,
+      "first_editable_p95_ms": 4086.1,
+      "first_editable_budget": "OPEN_NOT_MET",
+      "cold_rule_p95_ms": 4086.1,
+      "cold_rule_budget": "PASS_LOCAL_ONLY",
+      "hot_evaluation_p95_ms": 12.6,
+      "hot_evaluation_budget": "PASS_LOCAL_ONLY",
+      "accepted_cold_and_cached_edits": 10,
+      "hot_evaluations": 30,
+      "hot_warmups": 3,
+      "browser": "Chrome/154.0.8037.57",
+      "sample_policy": "ONE_PREDECLARED_FINAL_ENFORCE_NO_REPLACEMENT_OF_PRIOR_RESULTS",
+      "review": "PASS_INDEPENDENT_RECEIPT_AUDIT_PERFORMANCE_FAIL_CONFIRMED",
+      "registration": "evidence/startup-benchmark/final-retained-enforce-registration.json",
+      "evidence": "evidence/startup-benchmark/final-retained-enforce-performance.json",
+      "independent_review": "evidence/startup-benchmark/independent-final-retained-enforce-review.json",
+      "final_non_browser_checks": {
+        "status": "PASS",
+        "native": 334,
+        "ci_workflow_cases_included_in_native": 8,
+        "app": 36,
+        "javascript": 30,
+        "unchanged_contracts": 3,
+        "package_checks": 8,
+        "evidence": "evidence/startup-final-checks/summary.json",
+        "browser_and_performance": "NOT_RUN_IN_THIS_NON_BROWSER_CHECK_COMMAND_SET"
+      }
+    }
+  }
 }

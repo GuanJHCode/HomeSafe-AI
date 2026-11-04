@@ -1,0 +1,37 @@
+{
+  "reviewer": "/root/review_ux",
+  "decision": "PASS_FUNCTIONAL_AND_LIFECYCLE_ONLY_PERFORMANCE_PENDING",
+  "files": {
+    "apps/web/src/domain/PreparedStartup.ts": "dc22c0700084a7c683d0ce145ac79d6d89a7885185292fe2a807fc019d15d126",
+    "apps/web/src/domain/entry-lifecycle.ts": "8e729036fcb864605c10dd678dd289e2bb7ac2399fc50e2c7b8bf5be5135ea60",
+    "apps/web/src/mountApp.ts": "299d5ef1db1e683c537b2f61f561f138bfb89ec9e282f18dd436511ab42db998",
+    "apps/web/src/main.ts": "f1f141bea6287aef8a05ff60976508dd3535746b609c696ee9171e71141b41b4",
+    "apps/web/src/App.vue": "37a145619654d5198b1977729b3af832aa0e26c59112b10b725b64d80c06243d",
+    "apps/web/src/useLivingRoom.ts": "e0938538bc4bd0378f7e168180aeb96e158ae74b117167b478d8eba604f0f0c2",
+    "apps/web/tests/prepared-startup.test.ts": "2a2f2183428181a03df104177f6070fdc6c03e6159e2b616de015bb5b935a9bd",
+    "scripts/check_startup_bootstrap.mjs": "ab371486357c8ad1aefb8d5a769c8b3132bbce3299e828dbbff7c5f8a7195ebc",
+    "scripts/check_web_experience.mjs": "b94cab7d905deaf3b0575f63aebbf0f5941571c4fd0e852ff1ccfb32187c3e26",
+    ".github/workflows/reference-checks.yml": "bc41bf5efa4c06c8043b771019c1730387b0599d661c46f3e54d8f8399b5c383",
+    "reference/tests/test_ci_workflow_scopes.py": "931d059a1bf1088261f43781cc52201f5b4438837138489e702a4daa8f78f927",
+    "scripts/check_web_performance.mjs": "9eb5fe0166cbc6392b56fb0b9ff21935888f341055ecef5559a44a3e7b754d95"
+  },
+  "dist_manifest_sha256": "c7a4096f70b5ef0ff2023575f82214d24d77806ca3e606228657b4d201c30ff9",
+  "independent_results": {
+    "postapply_lifecycle_unit_tests": "14 PASS",
+    "ci_scope_tests": "8 PASS",
+    "bootstrap_browser_cases": 3,
+    "startup_trace_browser_cases": 3,
+    "native_bfcache": "PASS actual post-adoption navigation; no override of effective default flags",
+    "static_entry_graph": "PASS no Vue/Three in static source closure or built entry"
+  },
+  "earlier_scratch_results": {
+    "full_app_tests": "50 PASS",
+    "typecheck": "PASS"
+  },
+  "limits": [
+    "PR3 fixed paired performance comparison and final enforce pending",
+    "Native pre-adoption BFCache not tested; pre-adoption events explicitly injected",
+    "Native navigation checks Worker cleanup/layout/hash/history, not GPU pixel equivalence",
+    "No real Lux3D/public network/Edge/Safari"
+  ]
+}

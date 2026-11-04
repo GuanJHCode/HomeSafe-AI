@@ -1,0 +1,25 @@
+{
+  "reviewer": "/root/review_ux",
+  "verified_at": "2026-11-04T11:04:46.691243+00:00",
+  "status": "PASS",
+  "decision": "DISCARD_PR3; PR2_BYTES_RESTORED; READY_FOR_DECLARED_FINAL_ENFORCE",
+  "checks": {
+    "pr2_runtime_inventory_hashes": 32,
+    "seven_product_files_restored_or_absent": true,
+    "dist_exact_paths_and_hashes": 28,
+    "active_bootstrap_probe_removed": true,
+    "independent_product_patch_replay": 7,
+    "independent_integration_patch_replay": [
+      "scripts/check_web_experience.mjs",
+      "scripts/check_startup_bootstrap.mjs",
+      ".github/workflows/reference-checks.yml",
+      "reference/tests/test_ci_workflow_scopes.py"
+    ]
+  },
+  "raw_result_sha256": "20479c43d8430cafb4e81dd45fec35216379b0410e187699725d0fcbc94e8904",
+  "candidate_patch_sha256": "7e77f48bfccf6484dedbe75c1b274fdb251efcafe22f3e29978ffb8f6a134055",
+  "integration_patch_sha256": "b660c64030bfb0cccb4f07e74313bb30f70a6914092b4f6b0668ce0f1109f8a0",
+  "restored_pr2_manifest_sha256": "3ee69e5e576a0f9a54efdb1fb050c88354b814a4a212f0a1df4dc000f2fdb9f4",
+  "replay_directory": "/workspace/scratch/review-pr3-replay-vhfjoghd",
+  "scope": "Read-only active source/archive inspection plus isolated patch replay; no browser, rebuild or benchmark resampling. Author test counts not claimed as reviewer execution."
+}

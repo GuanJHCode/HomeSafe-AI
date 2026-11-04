@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "scope": "INDEPENDENT_SOURCE_STATIC_CLOSURE_AND_BUILT_ENTRY_GRAPH",
+  "source_static_closure": [
+    "apps/web/src/main.ts",
+    "apps/web/src/domain/PreparedStartup.ts",
+    "apps/web/src/domain/EvaluationController.ts",
+    "browser-spike/BrowserRuleClient.mjs",
+    "apps/web/src/domain/layout-result.ts",
+    "browser-spike/startup-trace.mjs",
+    "apps/web/src/domain/resource-loading.ts",
+    "apps/web/src/domain/entry-lifecycle.ts"
+  ],
+  "external_runtime_imports": [],
+  "static_assets": [
+    "./style.css"
+  ],
+  "built_entry": {
+    "path": "apps/web/dist/assets/index-Cgf58-rE.js",
+    "bytes": 16368,
+    "sha256": "feafb9dc9ea61b05fd921dbfbd648ce3110f8d8b3dd9e0d46e7c05e71e51f388",
+    "static_imports": [],
+    "dynamic_imports": [
+      "./mountApp-eKjpM_4I.js"
+    ],
+    "vue_three_markers": false
+  },
+  "dynamic_ui_chunk": {
+    "path": "apps/web/dist/assets/mountApp-eKjpM_4I.js",
+    "bytes": 699922,
+    "sha256": "e24a52f360324a38d9994e48e25edeacd090c0b34134bd217f834e1ddadec7f6",
+    "vue_runtime_and_three_renderer_markers": true
+  },
+  "distribution_manifest_sha256": "c7a4096f70b5ef0ff2023575f82214d24d77806ca3e606228657b4d201c30ff9",
+  "limits": "Static graph and bundle inspection only. Dynamic UI still loads in parallel; this is not proof of performance improvement."
+}

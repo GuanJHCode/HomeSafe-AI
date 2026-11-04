@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "scope": "ISOLATED_CHROMIUM_LOCALHOST_ONLY",
+  "url": "http://127.0.0.1:4200/candidate/",
+  "browser": "Chrome/154.0.8037.57",
+  "executed_at": "2026-11-04T10:22:19.335Z",
+  "checks": [
+    "startup cancel",
+    "late startup response discarded",
+    "fresh Worker retry",
+    "simultaneous dual-role summaries",
+    "role focus preserves camera and report hash",
+    "repeated-download unique names with equal content",
+    "375px button move and no overflow",
+    "print PDF",
+    "procedural model failed download then explicit retry loads without altering report hash"
+  ],
+  "filenames": [
+    "homesafe-action-list-v1-a5f096ac43e6-2026-11-04T10-22-12-996Z-1.json",
+    "homesafe-action-list-v1-a5f096ac43e6-2026-11-04T10-22-13-067Z-2.json"
+  ],
+  "procedural_model_retry": "PASS",
+  "real_asset_retry": "NOT_RUN",
+  "public_deployment": "NOT_RUN"
+}

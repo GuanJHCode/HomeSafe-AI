@@ -1,0 +1,38 @@
+✔ diagnostic exercises both moves, undo and reset without losing coverage (7.39655ms)
+✔ restarting a diagnostic stops it before issuing more challenge commands (1.294117ms)
+✔ request IDs route out-of-order replies without stale acceptance (1.091903ms)
+✔ structured placement failures propagate (0.569267ms)
+✔ dispose rejects pending work and terminates worker (0.225399ms)
+✔ timeouts never manufacture a success (6.0113ms)
+✔ synchronous postMessage failure rejects and clears pending request (0.471479ms)
+✔ an idle Worker crash rejects the next request immediately without posting or replay (0.223927ms)
+✔ thread epochs align without subtracting relative clocks; overlapping spans remain separate (1.78741ms)
+✔ trace is bounded, snapshots detached and failure/retry generations cannot mix (2.122784ms)
+✔ resource diagnostics allow only owned runtime/build paths and never expose URL/query/model names (0.929383ms)
+✔ malformed numeric fields cannot smuggle strings into diagnostic snapshots (0.559512ms)
+✔ broken recorder/clock cannot block callbacks or swallow their real errors (2.19976ms)
+✔ rejected initialization is cleared and a second attempt can succeed (5.909131ms)
+✔ evaluation after failed init cannot turn into success (0.447383ms)
+✔ successful initialization is reused and queued evaluation waits for it (6.014625ms)
+✔ dispatch failure does not poison subsequent commands (0.65836ms)
+✔ oversized message is rejected before calling Python (2.024977ms)
+✔ malformed message remains structured and the queue recovers (0.601235ms)
+✔ goal-met summary never omits outstanding triggered findings (0.159249ms)
+✔ missing summary counts cannot masquerade as zero (0.084106ms)
+✔ startup trace carries a new generation after failure and first evaluation metadata stays outside result (0.845371ms)
+✔ cached init uses a request-only trace linked to its original runtime generation (0.569336ms)
+✔ a failed diagnostic snapshot cannot stop an otherwise successful initialization reply (1.032744ms)
+✔ private intake rejects corrupt headers and external resources (2.550969ms)
+✔ private output cannot enter public trees, overwrite files, or follow symlinks (10.751777ms)
+✔ local server rejects foreign hosts and origins (0.376807ms)
+✔ overlapping initialization stages use wall-time union, not their sum (7.354376ms)
+✔ uninstrumented baseline remains measurable while required candidate tracing fails closed (0.729187ms)
+✔ required traces reject missing lifecycle marks and wrongly typed or incomplete phases (6.052997ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 152.27301

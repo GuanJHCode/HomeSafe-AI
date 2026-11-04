@@ -2,7 +2,8 @@
 import hashlib
 from pathlib import Path
 
-from .models import AssetRenderDTO, PublicAssetCatalog, Scene
+from .models import Scene
+from .asset_models import AssetRenderDTO, PublicAssetCatalog
 from .release import contained_file, validate_glb_bytes
 from .validation import validate_scene
 

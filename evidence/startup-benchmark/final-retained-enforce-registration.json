@@ -1,0 +1,29 @@
+{
+  "experiment_id": "FINAL_RETAINED_PR1_PR2_AFTER_PR3_DISCARD_20261104",
+  "registered_at": "2026-11-04T11:04:34.294154+00:00",
+  "purpose": "One final unchanged enforce after exact rollback of rejected PR3. No replacement/retry or selection for green.",
+  "scope": "Retained PR1 tracing and PR2 canonical split; synthetic localhost only",
+  "url": "http://127.0.0.1:4200/candidate/",
+  "source_base": "64e166540495126f618dd65aa8dc88760ed70604",
+  "dist_manifest_sha256": "3ee69e5e576a0f9a54efdb1fb050c88354b814a4a212f0a1df4dc000f2fdb9f4",
+  "core_hash": "9292ae7a2ec4a2e91cf90640dbf318ecafa0a25bc2698875c311e5d6a1540be8",
+  "measurement_files": {
+    "scripts/check_web_performance.mjs": "9eb5fe0166cbc6392b56fb0b9ff21935888f341055ecef5559a44a3e7b754d95",
+    "scripts/startup-trace-analysis.mjs": "3601bc320f999f433c871e9e5cfe27d9350eee6b5ff716b89b443ce65183952b",
+    "browser-spike/startup-trace.mjs": "14d504f051b759da7ab4e432f6a3ecf99c4e6c682d8e1f83f6602d95b1e7a686"
+  },
+  "expected_browser": "Chrome/154.0.8037.57",
+  "method": "Five fresh contexts, each cold then warm; actual move/hash acceptance each sample;30 hot evaluations after3warmups; nearest-rank.",
+  "budget_mode": "enforce",
+  "trace_mode": "required",
+  "thresholds_ms": {
+    "cold_first_editable_p95": 3000,
+    "cold_rules_p95": 12000,
+    "hot_evaluation_p95": 150
+  },
+  "output": "/workspace/scratch/final-retained-enforce-performance.json",
+  "prerequisites": [
+    "Independent PR3 discard and exact restored PR2 distribution audit PASS",
+    "No concurrent project browsers/builds/heavyCPU tasks"
+  ]
+}

@@ -1,0 +1,2494 @@
+{
+  "status": "PASS",
+  "scope": "ISOLATED_CHROMIUM_LOCALHOST_TRACE_FUNCTIONAL_NOT_PERFORMANCE",
+  "source_base": "64e166540495126f618dd65aa8dc88760ed70604",
+  "distribution_manifest_sha256": "8c59b3663eb691c38e00f7f25d3eb4ade3ebf76b3ad42d3e2dff2f27f738a6d1",
+  "browser": "Chrome/154.0.8037.57",
+  "executed_at": "2026-11-04T10:22:15.206Z",
+  "receipts": [
+    {
+      "case": "happy",
+      "status": "PASS",
+      "attempts": [
+        {
+          "generation": 1,
+          "window_trace": {
+            "schema_version": 1,
+            "trace_version": "startup-v1",
+            "generation": 1,
+            "thread": "window",
+            "time_origin_ms": 1793787716760.8,
+            "status": "ready",
+            "identity": {
+              "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+              "pyodide": "314.0.6",
+              "pydantic": "2.12.5",
+              "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69",
+              "ruleset_version": "demo-rules-3.0"
+            },
+            "events": [
+              {
+                "phase": "attempt_started",
+                "kind": "mark",
+                "start_ms": 138.69999999925494,
+                "start_epoch_ms": 1793787716899.5
+              },
+              {
+                "phase": "config_fetch",
+                "kind": "span",
+                "start_ms": 139.09999999962747,
+                "start_epoch_ms": 1793787716899.9001,
+                "end_ms": 246.90000000037253,
+                "end_epoch_ms": 1793787717007.7,
+                "duration_ms": 107.80000000074506,
+                "status": "ok"
+              },
+              {
+                "phase": "worker_created",
+                "kind": "mark",
+                "start_ms": 247.2999999988824,
+                "start_epoch_ms": 1793787717008.1
+              },
+              {
+                "phase": "init_sent",
+                "kind": "mark",
+                "start_ms": 247.40000000037253,
+                "start_epoch_ms": 1793787717008.2
+              },
+              {
+                "phase": "scene_fetch",
+                "kind": "span",
+                "start_ms": 165.2999999988824,
+                "start_epoch_ms": 1793787716926.1,
+                "end_ms": 247.59999999962747,
+                "end_epoch_ms": 1793787717008.4001,
+                "duration_ms": 82.30000000074506,
+                "status": "ok"
+              },
+              {
+                "phase": "renderer_create",
+                "kind": "span",
+                "start_ms": 248.59999999962747,
+                "start_epoch_ms": 1793787717009.4001,
+                "end_ms": 492.09999999962747,
+                "end_epoch_ms": 1793787717252.9001,
+                "duration_ms": 243.5,
+                "status": "ok"
+              },
+              {
+                "phase": "init_received",
+                "kind": "mark",
+                "start_ms": 3934.0999999996275,
+                "start_epoch_ms": 1793787720694.9001
+              },
+              {
+                "phase": "first_evaluation_sent",
+                "kind": "mark",
+                "start_ms": 3935,
+                "start_epoch_ms": 1793787720695.8
+              },
+              {
+                "phase": "first_evaluation_received",
+                "kind": "mark",
+                "start_ms": 4003.2999999988824,
+                "start_epoch_ms": 1793787720764.1
+              },
+              {
+                "phase": "first_evaluation_accepted",
+                "kind": "mark",
+                "start_ms": 4004.0999999996275,
+                "start_epoch_ms": 1793787720764.9001
+              },
+              {
+                "phase": "attempt_ready",
+                "kind": "mark",
+                "start_ms": 4004.4000000003725,
+                "start_epoch_ms": 1793787720765.2
+              },
+              {
+                "phase": "edit_eligible",
+                "kind": "mark",
+                "start_ms": 4011.2999999988824,
+                "start_epoch_ms": 1793787720772.1
+              }
+            ],
+            "truncated": false
+          },
+          "worker_trace": {
+            "schema_version": 1,
+            "trace_version": "startup-v1",
+            "generation": 1,
+            "thread": "worker",
+            "time_origin_ms": 1793787717335.5,
+            "status": "ready",
+            "identity": {
+              "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+              "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69",
+              "pyodide": "314.0.6",
+              "pydantic": "2.12.5",
+              "ruleset_version": "demo-rules-3.0"
+            },
+            "events": [
+              {
+                "phase": "init_enqueued",
+                "kind": "mark",
+                "start_ms": 28.699999999254942,
+                "start_epoch_ms": 1793787717364.2
+              },
+              {
+                "phase": "init_handler_started",
+                "kind": "mark",
+                "start_ms": 28.800000000745058,
+                "start_epoch_ms": 1793787717364.3
+              },
+              {
+                "phase": "worker_module_evaluated",
+                "kind": "mark",
+                "start_ms": 27.199999999254942,
+                "start_epoch_ms": 1793787717362.7
+              },
+              {
+                "phase": "runtime_module",
+                "kind": "span",
+                "start_ms": 29.199999999254942,
+                "start_epoch_ms": 1793787717364.7,
+                "end_ms": 40,
+                "end_epoch_ms": 1793787717375.5,
+                "duration_ms": 10.800000000745058,
+                "status": "ok"
+              },
+              {
+                "phase": "core_fetch",
+                "kind": "span",
+                "start_ms": 30,
+                "start_epoch_ms": 1793787717365.5,
+                "end_ms": 44.09999999962747,
+                "end_epoch_ms": 1793787717379.6,
+                "duration_ms": 14.099999999627471,
+                "status": "ok"
+              },
+              {
+                "phase": "core_hash",
+                "kind": "span",
+                "start_ms": 44.09999999962747,
+                "start_epoch_ms": 1793787717379.6,
+                "end_ms": 44.5,
+                "end_epoch_ms": 1793787717380,
+                "duration_ms": 0.40000000037252903,
+                "status": "ok"
+              },
+              {
+                "phase": "load_pyodide",
+                "kind": "span",
+                "start_ms": 40.09999999962747,
+                "start_epoch_ms": 1793787717375.6,
+                "end_ms": 2629.9000000003725,
+                "end_epoch_ms": 1793787719965.4,
+                "duration_ms": 2589.800000000745,
+                "status": "ok"
+              },
+              {
+                "phase": "ensure_package",
+                "kind": "span",
+                "start_ms": 2630,
+                "start_epoch_ms": 1793787719965.5,
+                "end_ms": 2633.5,
+                "end_epoch_ms": 1793787719969,
+                "duration_ms": 3.5,
+                "status": "ok"
+              },
+              {
+                "phase": "pydantic_import",
+                "kind": "span",
+                "start_ms": 2633.5,
+                "start_epoch_ms": 1793787719969,
+                "end_ms": 2779.300000000745,
+                "end_epoch_ms": 1793787720114.8,
+                "duration_ms": 145.80000000074506,
+                "status": "ok"
+              },
+              {
+                "phase": "bundle_join_wait",
+                "kind": "span",
+                "start_ms": 2779.4000000003725,
+                "start_epoch_ms": 1793787720114.9,
+                "end_ms": 2779.4000000003725,
+                "end_epoch_ms": 1793787720114.9,
+                "duration_ms": 0,
+                "status": "ok"
+              },
+              {
+                "phase": "unpack",
+                "kind": "span",
+                "start_ms": 2779.5,
+                "start_epoch_ms": 1793787720115,
+                "end_ms": 2782.5999999996275,
+                "end_epoch_ms": 1793787720118.1,
+                "duration_ms": 3.099999999627471,
+                "status": "ok"
+              },
+              {
+                "phase": "canonical_import",
+                "kind": "span",
+                "start_ms": 2782.5999999996275,
+                "start_epoch_ms": 1793787720118.1,
+                "end_ms": 3353.300000000745,
+                "end_epoch_ms": 1793787720688.8,
+                "duration_ms": 570.7000000011176,
+                "status": "ok"
+              },
+              {
+                "phase": "dispatcher_bind",
+                "kind": "span",
+                "start_ms": 3353.4000000003725,
+                "start_epoch_ms": 1793787720688.9,
+                "end_ms": 3356.4000000003725,
+                "end_epoch_ms": 1793787720691.9,
+                "duration_ms": 3,
+                "status": "ok"
+              },
+              {
+                "phase": "attempt_ready",
+                "kind": "mark",
+                "start_ms": 3358.800000000745,
+                "start_epoch_ms": 1793787720694.3
+              },
+              {
+                "phase": "init_reply_ready",
+                "kind": "mark",
+                "start_ms": 3358.800000000745,
+                "start_epoch_ms": 1793787720694.3
+              },
+              {
+                "phase": "first_evaluation",
+                "kind": "span",
+                "start_ms": 3361.0999999996275,
+                "start_epoch_ms": 1793787720696.6,
+                "end_ms": 3428.300000000745,
+                "end_epoch_ms": 1793787720763.8,
+                "duration_ms": 67.20000000111759,
+                "status": "ok"
+              }
+            ],
+            "truncated": false
+          }
+        }
+      ],
+      "metadata": {
+        "pyodide": "314.0.6",
+        "pydantic": "2.12.5",
+        "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+        "startup_mode": "runtime_with_preloaded_pydantic",
+        "startup_ms": 2600.9000000003725,
+        "packages_ms": 149.5,
+        "timing_note": "startup_ms includes runtime and preloaded packages; packages_ms is final package/import validation",
+        "total_ready_ms": 3327.4000000003725
+      },
+      "resources": [
+        {
+          "label": "runtime_module",
+          "start_epoch_ms": 1793787717365.2,
+          "startTime": 29.699999999254942,
+          "duration": 7,
+          "fetchStart": 29.699999999254942,
+          "domainLookupStart": 31,
+          "domainLookupEnd": 31,
+          "connectStart": 31,
+          "connectEnd": 32,
+          "requestStart": 32.09999999962747,
+          "responseStart": 36.19999999925494,
+          "responseEnd": 36.69999999925494,
+          "transferSize": 18231,
+          "encodedBodySize": 17931,
+          "decodedBodySize": 17931
+        },
+        {
+          "label": "core_manifest",
+          "start_epoch_ms": 1793787717366.7,
+          "startTime": 31.199999999254942,
+          "duration": 5.300000000745058,
+          "fetchStart": 31.199999999254942,
+          "domainLookupStart": 31.59999999962747,
+          "domainLookupEnd": 31.59999999962747,
+          "connectStart": 31.59999999962747,
+          "connectEnd": 32,
+          "requestStart": 32.19999999925494,
+          "responseStart": 35.80000000074506,
+          "responseEnd": 36.5,
+          "transferSize": 1854,
+          "encodedBodySize": 1554,
+          "decodedBodySize": 1554
+        },
+        {
+          "label": "core_bundle",
+          "start_epoch_ms": 1793787717370.4,
+          "startTime": 34.90000000037253,
+          "duration": 4.099999999627471,
+          "fetchStart": 34.90000000037253,
+          "domainLookupStart": 35.40000000037253,
+          "domainLookupEnd": 35.40000000037253,
+          "connectStart": 35.40000000037253,
+          "connectEnd": 36.19999999925494,
+          "requestStart": 36.90000000037253,
+          "responseStart": 38.69999999925494,
+          "responseEnd": 39,
+          "transferSize": 19383,
+          "encodedBodySize": 19083,
+          "decodedBodySize": 19083
+        },
+        {
+          "label": "runtime_lock",
+          "start_epoch_ms": 1793787717376.1,
+          "startTime": 40.59999999962747,
+          "duration": 7.5,
+          "fetchStart": 40.59999999962747,
+          "domainLookupStart": 41.19999999925494,
+          "domainLookupEnd": 41.19999999925494,
+          "connectStart": 41.19999999925494,
+          "connectEnd": 41.69999999925494,
+          "requestStart": 41.69999999925494,
+          "responseStart": 45.5,
+          "responseEnd": 48.09999999962747,
+          "transferSize": 114740,
+          "encodedBodySize": 114440,
+          "decodedBodySize": 114440
+        },
+        {
+          "label": "python_stdlib",
+          "start_epoch_ms": 1793787717377.1,
+          "startTime": 41.59999999962747,
+          "duration": 30.800000000745058,
+          "fetchStart": 41.59999999962747,
+          "domainLookupStart": 42.40000000037253,
+          "domainLookupEnd": 42.40000000037253,
+          "connectStart": 42.40000000037253,
+          "connectEnd": 44.69999999925494,
+          "requestStart": 46.90000000037253,
+          "responseStart": 48.69999999925494,
+          "responseEnd": 72.40000000037253,
+          "transferSize": 2545864,
+          "encodedBodySize": 2545564,
+          "decodedBodySize": 2545564
+        },
+        {
+          "label": "runtime_wasm",
+          "start_epoch_ms": 1793787717377.7,
+          "startTime": 42.19999999925494,
+          "duration": 159.2000000011176,
+          "fetchStart": 42.19999999925494,
+          "domainLookupStart": 43,
+          "domainLookupEnd": 43,
+          "connectStart": 43,
+          "connectEnd": 45.80000000074506,
+          "requestStart": 47.09999999962747,
+          "responseStart": 51,
+          "responseEnd": 201.40000000037253,
+          "transferSize": 9598518,
+          "encodedBodySize": 9598218,
+          "decodedBodySize": 9598218
+        },
+        {
+          "label": "runtime_bootstrap",
+          "start_epoch_ms": 1793787717378.1,
+          "startTime": 42.59999999962747,
+          "duration": 25.09999999962747,
+          "fetchStart": 42.59999999962747,
+          "domainLookupStart": 45.09999999962747,
+          "domainLookupEnd": 45.09999999962747,
+          "connectStart": 45.09999999962747,
+          "connectEnd": 45.90000000037253,
+          "requestStart": 47.80000000074506,
+          "responseStart": 52.59999999962747,
+          "responseEnd": 67.69999999925494,
+          "transferSize": 1250644,
+          "encodedBodySize": 1250344,
+          "decodedBodySize": 1250344
+        },
+        {
+          "label": "wheel_pydantic",
+          "start_epoch_ms": 1793787717500.9,
+          "startTime": 165.40000000037253,
+          "duration": 12.799999998882413,
+          "fetchStart": 165.40000000037253,
+          "domainLookupStart": 166,
+          "domainLookupEnd": 166.19999999925494,
+          "connectStart": 166.19999999925494,
+          "connectEnd": 168.90000000037253,
+          "requestStart": 169,
+          "responseStart": 172,
+          "responseEnd": 178.19999999925494,
+          "transferSize": 463878,
+          "encodedBodySize": 463578,
+          "decodedBodySize": 463578
+        },
+        {
+          "label": "wheel_typing_extensions",
+          "start_epoch_ms": 1793787717501.1,
+          "startTime": 165.59999999962747,
+          "duration": 7.700000001117587,
+          "fetchStart": 165.59999999962747,
+          "domainLookupStart": 167.40000000037253,
+          "domainLookupEnd": 167.40000000037253,
+          "connectStart": 167.40000000037253,
+          "connectEnd": 168.90000000037253,
+          "requestStart": 169,
+          "responseStart": 172.59999999962747,
+          "responseEnd": 173.30000000074506,
+          "transferSize": 44913,
+          "encodedBodySize": 44613,
+          "decodedBodySize": 44613
+        },
+        {
+          "label": "wheel_pydantic_core",
+          "start_epoch_ms": 1793787717501.2,
+          "startTime": 165.69999999925494,
+          "duration": 14.800000000745058,
+          "fetchStart": 165.69999999925494,
+          "domainLookupStart": 167.90000000037253,
+          "domainLookupEnd": 167.90000000037253,
+          "connectStart": 167.90000000037253,
+          "connectEnd": 168.90000000037253,
+          "requestStart": 169.09999999962747,
+          "responseStart": 172.80000000074506,
+          "responseEnd": 180.5,
+          "transferSize": 1310463,
+          "encodedBodySize": 1310163,
+          "decodedBodySize": 1310163
+        },
+        {
+          "label": "wheel_annotated_types",
+          "start_epoch_ms": 1793787717501.6,
+          "startTime": 166.09999999962747,
+          "duration": 9.300000000745058,
+          "fetchStart": 166.09999999962747,
+          "domainLookupStart": 168.19999999925494,
+          "domainLookupEnd": 168.19999999925494,
+          "connectStart": 168.19999999925494,
+          "connectEnd": 168.90000000037253,
+          "requestStart": 169.09999999962747,
+          "responseStart": 174.69999999925494,
+          "responseEnd": 175.40000000037253,
+          "transferSize": 12263,
+          "encodedBodySize": 11963,
+          "decodedBodySize": 11963
+        },
+        {
+          "label": "wheel_typing_inspection",
+          "start_epoch_ms": 1793787717501.8,
+          "startTime": 166.30000000074506,
+          "duration": 9,
+          "fetchStart": 166.30000000074506,
+          "domainLookupStart": 168.59999999962747,
+          "domainLookupEnd": 168.59999999962747,
+          "connectStart": 168.59999999962747,
+          "connectEnd": 168.90000000037253,
+          "requestStart": 169.19999999925494,
+          "responseStart": 174.69999999925494,
+          "responseEnd": 175.30000000074506,
+          "transferSize": 14910,
+          "encodedBodySize": 14610,
+          "decodedBodySize": 14610
+        }
+      ],
+      "workers": {
+        "created": 1,
+        "active": 1
+      },
+      "analysis": {
+        "status": "AVAILABLE",
+        "generation": 1,
+        "trace_version": "startup-v1",
+        "window_trace": {
+          "schema_version": 1,
+          "trace_version": "startup-v1",
+          "generation": 1,
+          "thread": "window",
+          "time_origin_ms": 1793787716760.8,
+          "status": "ready",
+          "identity": {
+            "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+            "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69",
+            "pyodide": "314.0.6",
+            "pydantic": "2.12.5",
+            "ruleset_version": "demo-rules-3.0"
+          },
+          "events": [
+            {
+              "phase": "attempt_started",
+              "kind": "mark",
+              "start_ms": 138.69999999925494,
+              "start_epoch_ms": 1793787716899.5
+            },
+            {
+              "phase": "config_fetch",
+              "kind": "span",
+              "start_ms": 139.09999999962747,
+              "start_epoch_ms": 1793787716899.9001,
+              "end_ms": 246.90000000037253,
+              "end_epoch_ms": 1793787717007.7,
+              "duration_ms": 107.80000000074506,
+              "status": "ok"
+            },
+            {
+              "phase": "worker_created",
+              "kind": "mark",
+              "start_ms": 247.2999999988824,
+              "start_epoch_ms": 1793787717008.1
+            },
+            {
+              "phase": "init_sent",
+              "kind": "mark",
+              "start_ms": 247.40000000037253,
+              "start_epoch_ms": 1793787717008.2
+            },
+            {
+              "phase": "scene_fetch",
+              "kind": "span",
+              "start_ms": 165.2999999988824,
+              "start_epoch_ms": 1793787716926.1,
+              "end_ms": 247.59999999962747,
+              "end_epoch_ms": 1793787717008.4001,
+              "duration_ms": 82.30000000074506,
+              "status": "ok"
+            },
+            {
+              "phase": "renderer_create",
+              "kind": "span",
+              "start_ms": 248.59999999962747,
+              "start_epoch_ms": 1793787717009.4001,
+              "end_ms": 492.09999999962747,
+              "end_epoch_ms": 1793787717252.9001,
+              "duration_ms": 243.5,
+              "status": "ok"
+            },
+            {
+              "phase": "init_received",
+              "kind": "mark",
+              "start_ms": 3934.0999999996275,
+              "start_epoch_ms": 1793787720694.9001
+            },
+            {
+              "phase": "first_evaluation_sent",
+              "kind": "mark",
+              "start_ms": 3935,
+              "start_epoch_ms": 1793787720695.8
+            },
+            {
+              "phase": "first_evaluation_received",
+              "kind": "mark",
+              "start_ms": 4003.2999999988824,
+              "start_epoch_ms": 1793787720764.1
+            },
+            {
+              "phase": "first_evaluation_accepted",
+              "kind": "mark",
+              "start_ms": 4004.0999999996275,
+              "start_epoch_ms": 1793787720764.9001
+            },
+            {
+              "phase": "attempt_ready",
+              "kind": "mark",
+              "start_ms": 4004.4000000003725,
+              "start_epoch_ms": 1793787720765.2
+            },
+            {
+              "phase": "edit_eligible",
+              "kind": "mark",
+              "start_ms": 4011.2999999988824,
+              "start_epoch_ms": 1793787720772.1
+            }
+          ],
+          "truncated": false
+        },
+        "worker_trace": {
+          "schema_version": 1,
+          "trace_version": "startup-v1",
+          "generation": 1,
+          "thread": "worker",
+          "time_origin_ms": 1793787717335.5,
+          "status": "ready",
+          "identity": {
+            "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+            "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69",
+            "pyodide": "314.0.6",
+            "pydantic": "2.12.5",
+            "ruleset_version": "demo-rules-3.0"
+          },
+          "events": [
+            {
+              "phase": "init_enqueued",
+              "kind": "mark",
+              "start_ms": 28.699999999254942,
+              "start_epoch_ms": 1793787717364.2
+            },
+            {
+              "phase": "init_handler_started",
+              "kind": "mark",
+              "start_ms": 28.800000000745058,
+              "start_epoch_ms": 1793787717364.3
+            },
+            {
+              "phase": "worker_module_evaluated",
+              "kind": "mark",
+              "start_ms": 27.199999999254942,
+              "start_epoch_ms": 1793787717362.7
+            },
+            {
+              "phase": "runtime_module",
+              "kind": "span",
+              "start_ms": 29.199999999254942,
+              "start_epoch_ms": 1793787717364.7,
+              "end_ms": 40,
+              "end_epoch_ms": 1793787717375.5,
+              "duration_ms": 10.800000000745058,
+              "status": "ok"
+            },
+            {
+              "phase": "core_fetch",
+              "kind": "span",
+              "start_ms": 30,
+              "start_epoch_ms": 1793787717365.5,
+              "end_ms": 44.09999999962747,
+              "end_epoch_ms": 1793787717379.6,
+              "duration_ms": 14.099999999627471,
+              "status": "ok"
+            },
+            {
+              "phase": "core_hash",
+              "kind": "span",
+              "start_ms": 44.09999999962747,
+              "start_epoch_ms": 1793787717379.6,
+              "end_ms": 44.5,
+              "end_epoch_ms": 1793787717380,
+              "duration_ms": 0.40000000037252903,
+              "status": "ok"
+            },
+            {
+              "phase": "load_pyodide",
+              "kind": "span",
+              "start_ms": 40.09999999962747,
+              "start_epoch_ms": 1793787717375.6,
+              "end_ms": 2629.9000000003725,
+              "end_epoch_ms": 1793787719965.4,
+              "duration_ms": 2589.800000000745,
+              "status": "ok"
+            },
+            {
+              "phase": "ensure_package",
+              "kind": "span",
+              "start_ms": 2630,
+              "start_epoch_ms": 1793787719965.5,
+              "end_ms": 2633.5,
+              "end_epoch_ms": 1793787719969,
+              "duration_ms": 3.5,
+              "status": "ok"
+            },
+            {
+              "phase": "pydantic_import",
+              "kind": "span",
+              "start_ms": 2633.5,
+              "start_epoch_ms": 1793787719969,
+              "end_ms": 2779.300000000745,
+              "end_epoch_ms": 1793787720114.8,
+              "duration_ms": 145.80000000074506,
+              "status": "ok"
+            },
+            {
+              "phase": "bundle_join_wait",
+              "kind": "span",
+              "start_ms": 2779.4000000003725,
+              "start_epoch_ms": 1793787720114.9,
+              "end_ms": 2779.4000000003725,
+              "end_epoch_ms": 1793787720114.9,
+              "duration_ms": 0,
+              "status": "ok"
+            },
+            {
+              "phase": "unpack",
+              "kind": "span",
+              "start_ms": 2779.5,
+              "start_epoch_ms": 1793787720115,
+              "end_ms": 2782.5999999996275,
+              "end_epoch_ms": 1793787720118.1,
+              "duration_ms": 3.099999999627471,
+              "status": "ok"
+            },
+            {
+              "phase": "canonical_import",
+              "kind": "span",
+              "start_ms": 2782.5999999996275,
+              "start_epoch_ms": 1793787720118.1,
+              "end_ms": 3353.300000000745,
+              "end_epoch_ms": 1793787720688.8,
+              "duration_ms": 570.7000000011176,
+              "status": "ok"
+            },
+            {
+              "phase": "dispatcher_bind",
+              "kind": "span",
+              "start_ms": 3353.4000000003725,
+              "start_epoch_ms": 1793787720688.9,
+              "end_ms": 3356.4000000003725,
+              "end_epoch_ms": 1793787720691.9,
+              "duration_ms": 3,
+              "status": "ok"
+            },
+            {
+              "phase": "attempt_ready",
+              "kind": "mark",
+              "start_ms": 3358.800000000745,
+              "start_epoch_ms": 1793787720694.3
+            },
+            {
+              "phase": "init_reply_ready",
+              "kind": "mark",
+              "start_ms": 3358.800000000745,
+              "start_epoch_ms": 1793787720694.3
+            },
+            {
+              "phase": "first_evaluation",
+              "kind": "span",
+              "start_ms": 3361.0999999996275,
+              "start_epoch_ms": 1793787720696.6,
+              "end_ms": 3428.300000000745,
+              "end_epoch_ms": 1793787720763.8,
+              "duration_ms": 67.20000000111759,
+              "status": "ok"
+            }
+          ],
+          "truncated": false
+        },
+        "stage_durations_ms": {
+          "runtime_module": 10.800000000745058,
+          "core_fetch": 14.099999999627471,
+          "core_hash": 0.40000000037252903,
+          "load_pyodide": 2589.800000000745,
+          "ensure_package": 3.5,
+          "pydantic_import": 145.80000000074506,
+          "bundle_join_wait": 0,
+          "unpack": 3.099999999627471,
+          "canonical_import": 570.7000000011176,
+          "dispatcher_bind": 3,
+          "first_evaluation": 67.20000000111759
+        },
+        "alignment": {
+          "worker_minus_window_time_origin_ms": 574.699951171875,
+          "init_send_to_enqueue_ms": 356,
+          "init_queue_wait_ms": 0.10009765625,
+          "reply_ready_to_received_ms": 0.60009765625
+        },
+        "initialization_wall_ms": 3327.599853515625,
+        "measured_span_union_ms": 3326.800048828125,
+        "unattributed_initialization_wall_ms": 0.7998046875,
+        "note": "Epochs equal timeOrigin+now. Parallel spans use interval union, never summed; residuals are not assigned to compilation/import/network. Edit-eligible is diagnostic, not the enforced actual DOM editable metric."
+      }
+    },
+    {
+      "case": "failed_init",
+      "status": "PASS",
+      "attempts": [
+        {
+          "generation": 1,
+          "window_trace": {
+            "schema_version": 1,
+            "trace_version": "startup-v1",
+            "generation": 1,
+            "thread": "window",
+            "time_origin_ms": 1793787721199.1,
+            "status": "failed",
+            "identity": {},
+            "events": [
+              {
+                "phase": "attempt_started",
+                "kind": "mark",
+                "start_ms": 98.70000000111759,
+                "start_epoch_ms": 1793787721297.8
+              },
+              {
+                "phase": "config_fetch",
+                "kind": "span",
+                "start_ms": 98.90000000037253,
+                "start_epoch_ms": 1793787721298,
+                "end_ms": 161.10000000149012,
+                "end_epoch_ms": 1793787721360.2002,
+                "duration_ms": 62.20000000111759,
+                "status": "ok"
+              },
+              {
+                "phase": "worker_created",
+                "kind": "mark",
+                "start_ms": 161.80000000074506,
+                "start_epoch_ms": 1793787721360.9001
+              },
+              {
+                "phase": "init_sent",
+                "kind": "mark",
+                "start_ms": 161.80000000074506,
+                "start_epoch_ms": 1793787721360.9001
+              },
+              {
+                "phase": "scene_fetch",
+                "kind": "span",
+                "start_ms": 116.40000000037253,
+                "start_epoch_ms": 1793787721315.5,
+                "end_ms": 162.2000000011176,
+                "end_epoch_ms": 1793787721361.3,
+                "duration_ms": 45.80000000074506,
+                "status": "ok"
+              },
+              {
+                "phase": "renderer_create",
+                "kind": "span",
+                "start_ms": 163.7000000011176,
+                "start_epoch_ms": 1793787721362.8,
+                "end_ms": 283.5,
+                "end_epoch_ms": 1793787721482.6,
+                "duration_ms": 119.79999999888241,
+                "status": "ok"
+              },
+              {
+                "phase": "attempt_failed",
+                "kind": "mark",
+                "start_ms": 456.6000000014901,
+                "start_epoch_ms": 1793787721655.7002
+              }
+            ],
+            "truncated": false
+          },
+          "worker_trace": {
+            "schema_version": 1,
+            "trace_version": "startup-v1",
+            "generation": 1,
+            "thread": "worker",
+            "time_origin_ms": 1793787721627.5,
+            "status": "failed",
+            "identity": {},
+            "events": [
+              {
+                "phase": "init_enqueued",
+                "kind": "mark",
+                "start_ms": 17.40000000037253,
+                "start_epoch_ms": 1793787721644.9
+              },
+              {
+                "phase": "init_handler_started",
+                "kind": "mark",
+                "start_ms": 17.699999999254942,
+                "start_epoch_ms": 1793787721645.2
+              },
+              {
+                "phase": "worker_module_evaluated",
+                "kind": "mark",
+                "start_ms": 16.90000000037253,
+                "start_epoch_ms": 1793787721644.4
+              },
+              {
+                "phase": "runtime_module",
+                "kind": "span",
+                "start_ms": 18.09999999962747,
+                "start_epoch_ms": 1793787721645.6,
+                "end_ms": 27,
+                "end_epoch_ms": 1793787721654.5,
+                "duration_ms": 8.900000000372529,
+                "status": "failed"
+              },
+              {
+                "phase": "attempt_failed",
+                "kind": "mark",
+                "start_ms": 27,
+                "start_epoch_ms": 1793787721654.5
+              }
+            ],
+            "truncated": false
+          }
+        },
+        {
+          "generation": 2,
+          "window_trace": {
+            "schema_version": 1,
+            "trace_version": "startup-v1",
+            "generation": 2,
+            "thread": "window",
+            "time_origin_ms": 1793787721199.1,
+            "status": "ready",
+            "identity": {
+              "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+              "pyodide": "314.0.6",
+              "pydantic": "2.12.5",
+              "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69",
+              "ruleset_version": "demo-rules-3.0"
+            },
+            "events": [
+              {
+                "phase": "attempt_started",
+                "kind": "mark",
+                "start_ms": 464.7000000011176,
+                "start_epoch_ms": 1793787721663.8
+              },
+              {
+                "phase": "scene_reused",
+                "kind": "mark",
+                "start_ms": 465.30000000074506,
+                "start_epoch_ms": 1793787721664.4001
+              },
+              {
+                "phase": "renderer_reused",
+                "kind": "mark",
+                "start_ms": 465.30000000074506,
+                "start_epoch_ms": 1793787721664.4001
+              },
+              {
+                "phase": "config_fetch",
+                "kind": "span",
+                "start_ms": 464.80000000074506,
+                "start_epoch_ms": 1793787721663.9001,
+                "end_ms": 475.40000000037253,
+                "end_epoch_ms": 1793787721674.5,
+                "duration_ms": 10.599999999627471,
+                "status": "ok"
+              },
+              {
+                "phase": "worker_created",
+                "kind": "mark",
+                "start_ms": 475.7000000011176,
+                "start_epoch_ms": 1793787721674.8
+              },
+              {
+                "phase": "init_sent",
+                "kind": "mark",
+                "start_ms": 475.7000000011176,
+                "start_epoch_ms": 1793787721674.8
+              },
+              {
+                "phase": "init_received",
+                "kind": "mark",
+                "start_ms": 5123.60000000149,
+                "start_epoch_ms": 1793787726322.7002
+              },
+              {
+                "phase": "first_evaluation_sent",
+                "kind": "mark",
+                "start_ms": 5125.60000000149,
+                "start_epoch_ms": 1793787726324.7002
+              },
+              {
+                "phase": "first_evaluation_received",
+                "kind": "mark",
+                "start_ms": 5322.5,
+                "start_epoch_ms": 1793787726521.6
+              },
+              {
+                "phase": "first_evaluation_accepted",
+                "kind": "mark",
+                "start_ms": 5323.800000000745,
+                "start_epoch_ms": 1793787726522.9001
+              },
+              {
+                "phase": "attempt_ready",
+                "kind": "mark",
+                "start_ms": 5323.800000000745,
+                "start_epoch_ms": 1793787726522.9001
+              },
+              {
+                "phase": "edit_eligible",
+                "kind": "mark",
+                "start_ms": 5335.300000000745,
+                "start_epoch_ms": 1793787726534.4001
+              }
+            ],
+            "truncated": false
+          },
+          "worker_trace": {
+            "schema_version": 1,
+            "trace_version": "startup-v1",
+            "generation": 2,
+            "thread": "worker",
+            "time_origin_ms": 1793787721680.4,
+            "status": "ready",
+            "identity": {
+              "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+              "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69",
+              "pyodide": "314.0.6",
+              "pydantic": "2.12.5",
+              "ruleset_version": "demo-rules-3.0"
+            },
+            "events": [
+              {
+                "phase": "init_enqueued",
+                "kind": "mark",
+                "start_ms": 11.900000000372529,
+                "start_epoch_ms": 1793787721692.2998
+              },
+              {
+                "phase": "init_handler_started",
+                "kind": "mark",
+                "start_ms": 12.199999999254942,
+                "start_epoch_ms": 1793787721692.5999
+              },
+              {
+                "phase": "worker_module_evaluated",
+                "kind": "mark",
+                "start_ms": 11.400000000372529,
+                "start_epoch_ms": 1793787721691.7998
+              },
+              {
+                "phase": "runtime_module",
+                "kind": "span",
+                "start_ms": 12.599999999627471,
+                "start_epoch_ms": 1793787721693,
+                "end_ms": 22.09999999962747,
+                "end_epoch_ms": 1793787721702.5,
+                "duration_ms": 9.5,
+                "status": "ok"
+              },
+              {
+                "phase": "core_fetch",
+                "kind": "span",
+                "start_ms": 13.300000000745058,
+                "start_epoch_ms": 1793787721693.7,
+                "end_ms": 25.90000000037253,
+                "end_epoch_ms": 1793787721706.2998,
+                "duration_ms": 12.599999999627471,
+                "status": "ok"
+              },
+              {
+                "phase": "core_hash",
+                "kind": "span",
+                "start_ms": 25.90000000037253,
+                "start_epoch_ms": 1793787721706.2998,
+                "end_ms": 26.199999999254942,
+                "end_epoch_ms": 1793787721706.5999,
+                "duration_ms": 0.2999999988824129,
+                "status": "ok"
+              },
+              {
+                "phase": "load_pyodide",
+                "kind": "span",
+                "start_ms": 22.09999999962747,
+                "start_epoch_ms": 1793787721702.5,
+                "end_ms": 2962.699999999255,
+                "end_epoch_ms": 1793787724643.0999,
+                "duration_ms": 2940.5999999996275,
+                "status": "ok"
+              },
+              {
+                "phase": "ensure_package",
+                "kind": "span",
+                "start_ms": 2962.699999999255,
+                "start_epoch_ms": 1793787724643.0999,
+                "end_ms": 2998.300000000745,
+                "end_epoch_ms": 1793787724678.7,
+                "duration_ms": 35.600000001490116,
+                "status": "ok"
+              },
+              {
+                "phase": "pydantic_import",
+                "kind": "span",
+                "start_ms": 2998.4000000003725,
+                "start_epoch_ms": 1793787724678.7998,
+                "end_ms": 3496,
+                "end_epoch_ms": 1793787725176.4,
+                "duration_ms": 497.59999999962747,
+                "status": "ok"
+              },
+              {
+                "phase": "bundle_join_wait",
+                "kind": "span",
+                "start_ms": 3496.0999999996275,
+                "start_epoch_ms": 1793787725176.5,
+                "end_ms": 3496.0999999996275,
+                "end_epoch_ms": 1793787725176.5,
+                "duration_ms": 0,
+                "status": "ok"
+              },
+              {
+                "phase": "unpack",
+                "kind": "span",
+                "start_ms": 3496.199999999255,
+                "start_epoch_ms": 1793787725176.5999,
+                "end_ms": 3503.5999999996275,
+                "end_epoch_ms": 1793787725184,
+                "duration_ms": 7.400000000372529,
+                "status": "ok"
+              },
+              {
+                "phase": "canonical_import",
+                "kind": "span",
+                "start_ms": 3503.699999999255,
+                "start_epoch_ms": 1793787725184.0999,
+                "end_ms": 4635.5,
+                "end_epoch_ms": 1793787726315.9,
+                "duration_ms": 1131.800000000745,
+                "status": "ok"
+              },
+              {
+                "phase": "dispatcher_bind",
+                "kind": "span",
+                "start_ms": 4635.5,
+                "start_epoch_ms": 1793787726315.9,
+                "end_ms": 4636.199999999255,
+                "end_epoch_ms": 1793787726316.5999,
+                "duration_ms": 0.6999999992549419,
+                "status": "ok"
+              },
+              {
+                "phase": "attempt_ready",
+                "kind": "mark",
+                "start_ms": 4641.5999999996275,
+                "start_epoch_ms": 1793787726322
+              },
+              {
+                "phase": "init_reply_ready",
+                "kind": "mark",
+                "start_ms": 4641.699999999255,
+                "start_epoch_ms": 1793787726322.0999
+              },
+              {
+                "phase": "first_evaluation",
+                "kind": "span",
+                "start_ms": 4644.9000000003725,
+                "start_epoch_ms": 1793787726325.2998,
+                "end_ms": 4840.300000000745,
+                "end_epoch_ms": 1793787726520.7,
+                "duration_ms": 195.40000000037253,
+                "status": "ok"
+              }
+            ],
+            "truncated": false
+          }
+        }
+      ],
+      "metadata": {
+        "pyodide": "314.0.6",
+        "pydantic": "2.12.5",
+        "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+        "startup_mode": "runtime_with_preloaded_pydantic",
+        "startup_ms": 2950.2999999988824,
+        "packages_ms": 533.4000000003725,
+        "timing_note": "startup_ms includes runtime and preloaded packages; packages_ms is final package/import validation",
+        "total_ready_ms": 4623.799999998882
+      },
+      "resources": [
+        {
+          "label": "runtime_module",
+          "start_epoch_ms": 1793787721693.4,
+          "startTime": 13,
+          "duration": 4.900000000372529,
+          "fetchStart": 13,
+          "domainLookupStart": 14.300000000745058,
+          "domainLookupEnd": 14.300000000745058,
+          "connectStart": 14.300000000745058,
+          "connectEnd": 15.5,
+          "requestStart": 15.599999999627471,
+          "responseStart": 16.40000000037253,
+          "responseEnd": 17.90000000037253,
+          "transferSize": 18231,
+          "encodedBodySize": 17931,
+          "decodedBodySize": 17931
+        },
+        {
+          "label": "core_manifest",
+          "start_epoch_ms": 1793787721694,
+          "startTime": 13.599999999627471,
+          "duration": 3.300000000745058,
+          "fetchStart": 13.599999999627471,
+          "domainLookupStart": 13.599999999627471,
+          "domainLookupEnd": 13.599999999627471,
+          "connectStart": 13.599999999627471,
+          "connectEnd": 13.599999999627471,
+          "requestStart": 15.5,
+          "responseStart": 15.699999999254942,
+          "responseEnd": 16.90000000037253,
+          "transferSize": 0,
+          "encodedBodySize": 1554,
+          "decodedBodySize": 1554
+        },
+        {
+          "label": "core_bundle",
+          "start_epoch_ms": 1793787721694.2,
+          "startTime": 13.800000000745058,
+          "duration": 4.5,
+          "fetchStart": 13.800000000745058,
+          "domainLookupStart": 13.800000000745058,
+          "domainLookupEnd": 13.800000000745058,
+          "connectStart": 13.800000000745058,
+          "connectEnd": 13.800000000745058,
+          "requestStart": 17.09999999962747,
+          "responseStart": 17.699999999254942,
+          "responseEnd": 18.300000000745058,
+          "transferSize": 0,
+          "encodedBodySize": 19083,
+          "decodedBodySize": 19083
+        },
+        {
+          "label": "runtime_lock",
+          "start_epoch_ms": 1793787721703.0999,
+          "startTime": 22.699999999254942,
+          "duration": 5,
+          "fetchStart": 22.699999999254942,
+          "domainLookupStart": 23.59999999962747,
+          "domainLookupEnd": 23.59999999962747,
+          "connectStart": 23.59999999962747,
+          "connectEnd": 24.09999999962747,
+          "requestStart": 24.199999999254942,
+          "responseStart": 25.40000000037253,
+          "responseEnd": 27.699999999254942,
+          "transferSize": 114740,
+          "encodedBodySize": 114440,
+          "decodedBodySize": 114440
+        },
+        {
+          "label": "python_stdlib",
+          "start_epoch_ms": 1793787721703.7998,
+          "startTime": 23.40000000037253,
+          "duration": 22.90000000037253,
+          "fetchStart": 23.40000000037253,
+          "domainLookupStart": 24.5,
+          "domainLookupEnd": 24.5,
+          "connectStart": 24.5,
+          "connectEnd": 25.40000000037253,
+          "requestStart": 26.5,
+          "responseStart": 27.40000000037253,
+          "responseEnd": 46.30000000074506,
+          "transferSize": 2545864,
+          "encodedBodySize": 2545564,
+          "decodedBodySize": 2545564
+        },
+        {
+          "label": "runtime_wasm",
+          "start_epoch_ms": 1793787721704.0999,
+          "startTime": 23.699999999254942,
+          "duration": 154.2000000011176,
+          "fetchStart": 23.699999999254942,
+          "domainLookupStart": 24.699999999254942,
+          "domainLookupEnd": 24.699999999254942,
+          "connectStart": 24.699999999254942,
+          "connectEnd": 26.300000000745058,
+          "requestStart": 27.199999999254942,
+          "responseStart": 28.199999999254942,
+          "responseEnd": 177.90000000037253,
+          "transferSize": 9598518,
+          "encodedBodySize": 9598218,
+          "decodedBodySize": 9598218
+        },
+        {
+          "label": "runtime_bootstrap",
+          "start_epoch_ms": 1793787721705.4,
+          "startTime": 25,
+          "duration": 18.199999999254942,
+          "fetchStart": 25,
+          "domainLookupStart": 29.800000000745058,
+          "domainLookupEnd": 29.800000000745058,
+          "connectStart": 29.800000000745058,
+          "connectEnd": 30.300000000745058,
+          "requestStart": 31.09999999962747,
+          "responseStart": 32.30000000074506,
+          "responseEnd": 43.19999999925494,
+          "transferSize": 1250644,
+          "encodedBodySize": 1250344,
+          "decodedBodySize": 1250344
+        },
+        {
+          "label": "wheel_pydantic",
+          "start_epoch_ms": 1793787721820.2,
+          "startTime": 139.80000000074506,
+          "duration": 10.5,
+          "fetchStart": 139.80000000074506,
+          "domainLookupStart": 140.90000000037253,
+          "domainLookupEnd": 140.90000000037253,
+          "connectStart": 140.90000000037253,
+          "connectEnd": 142.19999999925494,
+          "requestStart": 143.30000000074506,
+          "responseStart": 145.80000000074506,
+          "responseEnd": 150.30000000074506,
+          "transferSize": 463878,
+          "encodedBodySize": 463578,
+          "decodedBodySize": 463578
+        },
+        {
+          "label": "wheel_typing_extensions",
+          "start_epoch_ms": 1793787721820.5,
+          "startTime": 140.09999999962747,
+          "duration": 8.300000000745058,
+          "fetchStart": 140.09999999962747,
+          "domainLookupStart": 141.90000000037253,
+          "domainLookupEnd": 141.90000000037253,
+          "connectStart": 141.90000000037253,
+          "connectEnd": 143,
+          "requestStart": 143.40000000037253,
+          "responseStart": 145.90000000037253,
+          "responseEnd": 148.40000000037253,
+          "transferSize": 44913,
+          "encodedBodySize": 44613,
+          "decodedBodySize": 44613
+        },
+        {
+          "label": "wheel_pydantic_core",
+          "start_epoch_ms": 1793787721820.7,
+          "startTime": 140.30000000074506,
+          "duration": 24.09999999962747,
+          "fetchStart": 140.30000000074506,
+          "domainLookupStart": 142.40000000037253,
+          "domainLookupEnd": 142.5,
+          "connectStart": 142.5,
+          "connectEnd": 143.30000000074506,
+          "requestStart": 143.40000000037253,
+          "responseStart": 145.90000000037253,
+          "responseEnd": 164.40000000037253,
+          "transferSize": 1310463,
+          "encodedBodySize": 1310163,
+          "decodedBodySize": 1310163
+        },
+        {
+          "label": "wheel_annotated_types",
+          "start_epoch_ms": 1793787721821,
+          "startTime": 140.59999999962747,
+          "duration": 5.5,
+          "fetchStart": 140.59999999962747,
+          "domainLookupStart": 142.69999999925494,
+          "domainLookupEnd": 142.69999999925494,
+          "connectStart": 142.69999999925494,
+          "connectEnd": 143.30000000074506,
+          "requestStart": 143.40000000037253,
+          "responseStart": 144.09999999962747,
+          "responseEnd": 146.09999999962747,
+          "transferSize": 12263,
+          "encodedBodySize": 11963,
+          "decodedBodySize": 11963
+        },
+        {
+          "label": "wheel_typing_inspection",
+          "start_epoch_ms": 1793787721821.0999,
+          "startTime": 140.69999999925494,
+          "duration": 7.600000001490116,
+          "fetchStart": 140.69999999925494,
+          "domainLookupStart": 143,
+          "domainLookupEnd": 143,
+          "connectStart": 143,
+          "connectEnd": 143.30000000074506,
+          "requestStart": 143.5,
+          "responseStart": 145.90000000037253,
+          "responseEnd": 148.30000000074506,
+          "transferSize": 14910,
+          "encodedBodySize": 14610,
+          "decodedBodySize": 14610
+        }
+      ],
+      "workers": {
+        "created": 2,
+        "active": 1
+      },
+      "analysis": {
+        "status": "AVAILABLE",
+        "generation": 2,
+        "trace_version": "startup-v1",
+        "window_trace": {
+          "schema_version": 1,
+          "trace_version": "startup-v1",
+          "generation": 2,
+          "thread": "window",
+          "time_origin_ms": 1793787721199.1,
+          "status": "ready",
+          "identity": {
+            "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+            "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69",
+            "pyodide": "314.0.6",
+            "pydantic": "2.12.5",
+            "ruleset_version": "demo-rules-3.0"
+          },
+          "events": [
+            {
+              "phase": "attempt_started",
+              "kind": "mark",
+              "start_ms": 464.7000000011176,
+              "start_epoch_ms": 1793787721663.8
+            },
+            {
+              "phase": "scene_reused",
+              "kind": "mark",
+              "start_ms": 465.30000000074506,
+              "start_epoch_ms": 1793787721664.4001
+            },
+            {
+              "phase": "renderer_reused",
+              "kind": "mark",
+              "start_ms": 465.30000000074506,
+              "start_epoch_ms": 1793787721664.4001
+            },
+            {
+              "phase": "config_fetch",
+              "kind": "span",
+              "start_ms": 464.80000000074506,
+              "start_epoch_ms": 1793787721663.9001,
+              "end_ms": 475.40000000037253,
+              "end_epoch_ms": 1793787721674.5,
+              "duration_ms": 10.599999999627471,
+              "status": "ok"
+            },
+            {
+              "phase": "worker_created",
+              "kind": "mark",
+              "start_ms": 475.7000000011176,
+              "start_epoch_ms": 1793787721674.8
+            },
+            {
+              "phase": "init_sent",
+              "kind": "mark",
+              "start_ms": 475.7000000011176,
+              "start_epoch_ms": 1793787721674.8
+            },
+            {
+              "phase": "init_received",
+              "kind": "mark",
+              "start_ms": 5123.60000000149,
+              "start_epoch_ms": 1793787726322.7002
+            },
+            {
+              "phase": "first_evaluation_sent",
+              "kind": "mark",
+              "start_ms": 5125.60000000149,
+              "start_epoch_ms": 1793787726324.7002
+            },
+            {
+              "phase": "first_evaluation_received",
+              "kind": "mark",
+              "start_ms": 5322.5,
+              "start_epoch_ms": 1793787726521.6
+            },
+            {
+              "phase": "first_evaluation_accepted",
+              "kind": "mark",
+              "start_ms": 5323.800000000745,
+              "start_epoch_ms": 1793787726522.9001
+            },
+            {
+              "phase": "attempt_ready",
+              "kind": "mark",
+              "start_ms": 5323.800000000745,
+              "start_epoch_ms": 1793787726522.9001
+            },
+            {
+              "phase": "edit_eligible",
+              "kind": "mark",
+              "start_ms": 5335.300000000745,
+              "start_epoch_ms": 1793787726534.4001
+            }
+          ],
+          "truncated": false
+        },
+        "worker_trace": {
+          "schema_version": 1,
+          "trace_version": "startup-v1",
+          "generation": 2,
+          "thread": "worker",
+          "time_origin_ms": 1793787721680.4,
+          "status": "ready",
+          "identity": {
+            "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+            "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69",
+            "pyodide": "314.0.6",
+            "pydantic": "2.12.5",
+            "ruleset_version": "demo-rules-3.0"
+          },
+          "events": [
+            {
+              "phase": "init_enqueued",
+              "kind": "mark",
+              "start_ms": 11.900000000372529,
+              "start_epoch_ms": 1793787721692.2998
+            },
+            {
+              "phase": "init_handler_started",
+              "kind": "mark",
+              "start_ms": 12.199999999254942,
+              "start_epoch_ms": 1793787721692.5999
+            },
+            {
+              "phase": "worker_module_evaluated",
+              "kind": "mark",
+              "start_ms": 11.400000000372529,
+              "start_epoch_ms": 1793787721691.7998
+            },
+            {
+              "phase": "runtime_module",
+              "kind": "span",
+              "start_ms": 12.599999999627471,
+              "start_epoch_ms": 1793787721693,
+              "end_ms": 22.09999999962747,
+              "end_epoch_ms": 1793787721702.5,
+              "duration_ms": 9.5,
+              "status": "ok"
+            },
+            {
+              "phase": "core_fetch",
+              "kind": "span",
+              "start_ms": 13.300000000745058,
+              "start_epoch_ms": 1793787721693.7,
+              "end_ms": 25.90000000037253,
+              "end_epoch_ms": 1793787721706.2998,
+              "duration_ms": 12.599999999627471,
+              "status": "ok"
+            },
+            {
+              "phase": "core_hash",
+              "kind": "span",
+              "start_ms": 25.90000000037253,
+              "start_epoch_ms": 1793787721706.2998,
+              "end_ms": 26.199999999254942,
+              "end_epoch_ms": 1793787721706.5999,
+              "duration_ms": 0.2999999988824129,
+              "status": "ok"
+            },
+            {
+              "phase": "load_pyodide",
+              "kind": "span",
+              "start_ms": 22.09999999962747,
+              "start_epoch_ms": 1793787721702.5,
+              "end_ms": 2962.699999999255,
+              "end_epoch_ms": 1793787724643.0999,
+              "duration_ms": 2940.5999999996275,
+              "status": "ok"
+            },
+            {
+              "phase": "ensure_package",
+              "kind": "span",
+              "start_ms": 2962.699999999255,
+              "start_epoch_ms": 1793787724643.0999,
+              "end_ms": 2998.300000000745,
+              "end_epoch_ms": 1793787724678.7,
+              "duration_ms": 35.600000001490116,
+              "status": "ok"
+            },
+            {
+              "phase": "pydantic_import",
+              "kind": "span",
+              "start_ms": 2998.4000000003725,
+              "start_epoch_ms": 1793787724678.7998,
+              "end_ms": 3496,
+              "end_epoch_ms": 1793787725176.4,
+              "duration_ms": 497.59999999962747,
+              "status": "ok"
+            },
+            {
+              "phase": "bundle_join_wait",
+              "kind": "span",
+              "start_ms": 3496.0999999996275,
+              "start_epoch_ms": 1793787725176.5,
+              "end_ms": 3496.0999999996275,
+              "end_epoch_ms": 1793787725176.5,
+              "duration_ms": 0,
+              "status": "ok"
+            },
+            {
+              "phase": "unpack",
+              "kind": "span",
+              "start_ms": 3496.199999999255,
+              "start_epoch_ms": 1793787725176.5999,
+              "end_ms": 3503.5999999996275,
+              "end_epoch_ms": 1793787725184,
+              "duration_ms": 7.400000000372529,
+              "status": "ok"
+            },
+            {
+              "phase": "canonical_import",
+              "kind": "span",
+              "start_ms": 3503.699999999255,
+              "start_epoch_ms": 1793787725184.0999,
+              "end_ms": 4635.5,
+              "end_epoch_ms": 1793787726315.9,
+              "duration_ms": 1131.800000000745,
+              "status": "ok"
+            },
+            {
+              "phase": "dispatcher_bind",
+              "kind": "span",
+              "start_ms": 4635.5,
+              "start_epoch_ms": 1793787726315.9,
+              "end_ms": 4636.199999999255,
+              "end_epoch_ms": 1793787726316.5999,
+              "duration_ms": 0.6999999992549419,
+              "status": "ok"
+            },
+            {
+              "phase": "attempt_ready",
+              "kind": "mark",
+              "start_ms": 4641.5999999996275,
+              "start_epoch_ms": 1793787726322
+            },
+            {
+              "phase": "init_reply_ready",
+              "kind": "mark",
+              "start_ms": 4641.699999999255,
+              "start_epoch_ms": 1793787726322.0999
+            },
+            {
+              "phase": "first_evaluation",
+              "kind": "span",
+              "start_ms": 4644.9000000003725,
+              "start_epoch_ms": 1793787726325.2998,
+              "end_ms": 4840.300000000745,
+              "end_epoch_ms": 1793787726520.7,
+              "duration_ms": 195.40000000037253,
+              "status": "ok"
+            }
+          ],
+          "truncated": false
+        },
+        "stage_durations_ms": {
+          "runtime_module": 9.5,
+          "core_fetch": 12.599999999627471,
+          "core_hash": 0.2999999988824129,
+          "load_pyodide": 2940.5999999996275,
+          "ensure_package": 35.600000001490116,
+          "pydantic_import": 497.59999999962747,
+          "bundle_join_wait": 0,
+          "unpack": 7.400000000372529,
+          "canonical_import": 1131.800000000745,
+          "dispatcher_bind": 0.6999999992549419,
+          "first_evaluation": 195.40000000037253
+        },
+        "alignment": {
+          "worker_minus_window_time_origin_ms": 481.2998046875,
+          "init_send_to_enqueue_ms": 17.499755859375,
+          "init_queue_wait_ms": 0.300048828125,
+          "reply_ready_to_received_ms": 0.600341796875
+        },
+        "initialization_wall_ms": 4624,
+        "measured_span_union_ms": 4623.2001953125,
+        "unattributed_initialization_wall_ms": 0.7998046875,
+        "note": "Epochs equal timeOrigin+now. Parallel spans use interval union, never summed; residuals are not assigned to compilation/import/network. Edit-eligible is diagnostic, not the enforced actual DOM editable metric."
+      }
+    },
+    {
+      "case": "cancel_parallel_init",
+      "status": "PASS",
+      "attempts": [
+        {
+          "generation": 1,
+          "window_trace": {
+            "schema_version": 1,
+            "trace_version": "startup-v1",
+            "generation": 1,
+            "thread": "window",
+            "time_origin_ms": 1793787727449.7,
+            "status": "cancelled",
+            "identity": {},
+            "events": [
+              {
+                "phase": "attempt_started",
+                "kind": "mark",
+                "start_ms": 272.90000000037253,
+                "start_epoch_ms": 1793787727722.5999
+              },
+              {
+                "phase": "config_fetch",
+                "kind": "span",
+                "start_ms": 273.2000000011176,
+                "start_epoch_ms": 1793787727722.9,
+                "end_ms": 475.90000000037253,
+                "end_epoch_ms": 1793787727925.5999,
+                "duration_ms": 202.69999999925494,
+                "status": "ok"
+              },
+              {
+                "phase": "worker_created",
+                "kind": "mark",
+                "start_ms": 476.7000000011176,
+                "start_epoch_ms": 1793787727926.4
+              },
+              {
+                "phase": "init_sent",
+                "kind": "mark",
+                "start_ms": 476.7000000011176,
+                "start_epoch_ms": 1793787727926.4
+              },
+              {
+                "phase": "attempt_cancelled",
+                "kind": "mark",
+                "start_ms": 583.2000000011176,
+                "start_epoch_ms": 1793787728032.9
+              }
+            ],
+            "truncated": false
+          }
+        },
+        {
+          "generation": 2,
+          "window_trace": {
+            "schema_version": 1,
+            "trace_version": "startup-v1",
+            "generation": 2,
+            "thread": "window",
+            "time_origin_ms": 1793787727449.7,
+            "status": "ready",
+            "identity": {
+              "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+              "pyodide": "314.0.6",
+              "pydantic": "2.12.5",
+              "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69",
+              "ruleset_version": "demo-rules-3.0"
+            },
+            "events": [
+              {
+                "phase": "attempt_started",
+                "kind": "mark",
+                "start_ms": 634.9000000003725,
+                "start_epoch_ms": 1793787728084.5999
+              },
+              {
+                "phase": "config_fetch",
+                "kind": "span",
+                "start_ms": 635,
+                "start_epoch_ms": 1793787728084.7,
+                "end_ms": 673.5,
+                "end_epoch_ms": 1793787728123.2,
+                "duration_ms": 38.5,
+                "status": "ok"
+              },
+              {
+                "phase": "worker_created",
+                "kind": "mark",
+                "start_ms": 673.9000000003725,
+                "start_epoch_ms": 1793787728123.5999
+              },
+              {
+                "phase": "init_sent",
+                "kind": "mark",
+                "start_ms": 673.9000000003725,
+                "start_epoch_ms": 1793787728123.5999
+              },
+              {
+                "phase": "scene_fetch",
+                "kind": "span",
+                "start_ms": 635.5,
+                "start_epoch_ms": 1793787728085.2,
+                "end_ms": 677.4000000003725,
+                "end_epoch_ms": 1793787728127.0999,
+                "duration_ms": 41.90000000037253,
+                "status": "ok"
+              },
+              {
+                "phase": "renderer_create",
+                "kind": "span",
+                "start_ms": 678.3000000007451,
+                "start_epoch_ms": 1793787728128,
+                "end_ms": 988.7000000011176,
+                "end_epoch_ms": 1793787728438.4,
+                "duration_ms": 310.40000000037253,
+                "status": "ok"
+              },
+              {
+                "phase": "init_received",
+                "kind": "mark",
+                "start_ms": 7056.800000000745,
+                "start_epoch_ms": 1793787734506.5
+              },
+              {
+                "phase": "first_evaluation_sent",
+                "kind": "mark",
+                "start_ms": 7058.300000000745,
+                "start_epoch_ms": 1793787734508
+              },
+              {
+                "phase": "first_evaluation_received",
+                "kind": "mark",
+                "start_ms": 7145.10000000149,
+                "start_epoch_ms": 1793787734594.8
+              },
+              {
+                "phase": "first_evaluation_accepted",
+                "kind": "mark",
+                "start_ms": 7146.10000000149,
+                "start_epoch_ms": 1793787734595.8
+              },
+              {
+                "phase": "attempt_ready",
+                "kind": "mark",
+                "start_ms": 7146.200000001118,
+                "start_epoch_ms": 1793787734595.9
+              },
+              {
+                "phase": "edit_eligible",
+                "kind": "mark",
+                "start_ms": 7166.5,
+                "start_epoch_ms": 1793787734616.2
+              }
+            ],
+            "truncated": false
+          },
+          "worker_trace": {
+            "schema_version": 1,
+            "trace_version": "startup-v1",
+            "generation": 2,
+            "thread": "worker",
+            "time_origin_ms": 1793787728633.9,
+            "status": "ready",
+            "identity": {
+              "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+              "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69",
+              "pyodide": "314.0.6",
+              "pydantic": "2.12.5",
+              "ruleset_version": "demo-rules-3.0"
+            },
+            "events": [
+              {
+                "phase": "init_enqueued",
+                "kind": "mark",
+                "start_ms": 476.7999999988824,
+                "start_epoch_ms": 1793787729110.7
+              },
+              {
+                "phase": "init_handler_started",
+                "kind": "mark",
+                "start_ms": 477.09999999962747,
+                "start_epoch_ms": 1793787729111
+              },
+              {
+                "phase": "worker_module_evaluated",
+                "kind": "mark",
+                "start_ms": 56.19999999925494,
+                "start_epoch_ms": 1793787728690.0999
+              },
+              {
+                "phase": "runtime_module",
+                "kind": "span",
+                "start_ms": 477.5,
+                "start_epoch_ms": 1793787729111.4,
+                "end_ms": 492.59999999962747,
+                "end_epoch_ms": 1793787729126.5,
+                "duration_ms": 15.099999999627471,
+                "status": "ok"
+              },
+              {
+                "phase": "core_fetch",
+                "kind": "span",
+                "start_ms": 478.40000000037253,
+                "start_epoch_ms": 1793787729112.2998,
+                "end_ms": 502.59999999962747,
+                "end_epoch_ms": 1793787729136.5,
+                "duration_ms": 24.199999999254942,
+                "status": "ok"
+              },
+              {
+                "phase": "core_hash",
+                "kind": "span",
+                "start_ms": 502.59999999962747,
+                "start_epoch_ms": 1793787729136.5,
+                "end_ms": 502.90000000037253,
+                "end_epoch_ms": 1793787729136.7998,
+                "duration_ms": 0.30000000074505806,
+                "status": "ok"
+              },
+              {
+                "phase": "load_pyodide",
+                "kind": "span",
+                "start_ms": 492.59999999962747,
+                "start_epoch_ms": 1793787729126.5,
+                "end_ms": 4684,
+                "end_epoch_ms": 1793787733317.9,
+                "duration_ms": 4191.4000000003725,
+                "status": "ok"
+              },
+              {
+                "phase": "ensure_package",
+                "kind": "span",
+                "start_ms": 4684,
+                "start_epoch_ms": 1793787733317.9,
+                "end_ms": 4689.299999998882,
+                "end_epoch_ms": 1793787733323.2,
+                "duration_ms": 5.299999998882413,
+                "status": "ok"
+              },
+              {
+                "phase": "pydantic_import",
+                "kind": "span",
+                "start_ms": 4689.4000000003725,
+                "start_epoch_ms": 1793787733323.2998,
+                "end_ms": 4954.5,
+                "end_epoch_ms": 1793787733588.4,
+                "duration_ms": 265.09999999962747,
+                "status": "ok"
+              },
+              {
+                "phase": "bundle_join_wait",
+                "kind": "span",
+                "start_ms": 4954.699999999255,
+                "start_epoch_ms": 1793787733588.5999,
+                "end_ms": 4954.699999999255,
+                "end_epoch_ms": 1793787733588.5999,
+                "duration_ms": 0,
+                "status": "ok"
+              },
+              {
+                "phase": "unpack",
+                "kind": "span",
+                "start_ms": 4954.799999998882,
+                "start_epoch_ms": 1793787733588.7,
+                "end_ms": 4958,
+                "end_epoch_ms": 1793787733591.9,
+                "duration_ms": 3.200000001117587,
+                "status": "ok"
+              },
+              {
+                "phase": "canonical_import",
+                "kind": "span",
+                "start_ms": 4958,
+                "start_epoch_ms": 1793787733591.9,
+                "end_ms": 5869.0999999996275,
+                "end_epoch_ms": 1793787734503,
+                "duration_ms": 911.0999999996275,
+                "status": "ok"
+              },
+              {
+                "phase": "dispatcher_bind",
+                "kind": "span",
+                "start_ms": 5869.199999999255,
+                "start_epoch_ms": 1793787734503.0999,
+                "end_ms": 5869.799999998882,
+                "end_epoch_ms": 1793787734503.7,
+                "duration_ms": 0.599999999627471,
+                "status": "ok"
+              },
+              {
+                "phase": "attempt_ready",
+                "kind": "mark",
+                "start_ms": 5871.9000000003725,
+                "start_epoch_ms": 1793787734505.7998
+              },
+              {
+                "phase": "init_reply_ready",
+                "kind": "mark",
+                "start_ms": 5871.9000000003725,
+                "start_epoch_ms": 1793787734505.7998
+              },
+              {
+                "phase": "first_evaluation",
+                "kind": "span",
+                "start_ms": 5877,
+                "start_epoch_ms": 1793787734510.9,
+                "end_ms": 5960.299999998882,
+                "end_epoch_ms": 1793787734594.2,
+                "duration_ms": 83.29999999888241,
+                "status": "ok"
+              }
+            ],
+            "truncated": false
+          }
+        }
+      ],
+      "metadata": {
+        "pyodide": "314.0.6",
+        "pydantic": "2.12.5",
+        "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+        "startup_mode": "runtime_with_preloaded_pydantic",
+        "startup_ms": 4206.700000001118,
+        "packages_ms": 270.69999999925494,
+        "timing_note": "startup_ms includes runtime and preloaded packages; packages_ms is final package/import validation",
+        "total_ready_ms": 5392.60000000149
+      },
+      "resources": [
+        {
+          "label": "runtime_module",
+          "start_epoch_ms": 1793787729111.9,
+          "startTime": 478,
+          "duration": 10.599999999627471,
+          "fetchStart": 478,
+          "domainLookupStart": 480.59999999962747,
+          "domainLookupEnd": 480.7999999988824,
+          "connectStart": 480.7999999988824,
+          "connectEnd": 481.7999999988824,
+          "requestStart": 481.7999999988824,
+          "responseStart": 483.09999999962747,
+          "responseEnd": 488.59999999962747,
+          "transferSize": 18231,
+          "encodedBodySize": 17931,
+          "decodedBodySize": 17931
+        },
+        {
+          "label": "core_manifest",
+          "start_epoch_ms": 1793787729112.5999,
+          "startTime": 478.69999999925494,
+          "duration": 9.599999999627471,
+          "fetchStart": 478.69999999925494,
+          "domainLookupStart": 481.09999999962747,
+          "domainLookupEnd": 481.09999999962747,
+          "connectStart": 481.09999999962747,
+          "connectEnd": 481.7999999988824,
+          "requestStart": 481.90000000037253,
+          "responseStart": 483.19999999925494,
+          "responseEnd": 488.2999999988824,
+          "transferSize": 1854,
+          "encodedBodySize": 1554,
+          "decodedBodySize": 1554
+        },
+        {
+          "label": "core_bundle",
+          "start_epoch_ms": 1793787729113.7998,
+          "startTime": 479.90000000037253,
+          "duration": 9,
+          "fetchStart": 479.90000000037253,
+          "domainLookupStart": 481.40000000037253,
+          "domainLookupEnd": 481.40000000037253,
+          "connectStart": 481.40000000037253,
+          "connectEnd": 481.7999999988824,
+          "requestStart": 481.90000000037253,
+          "responseStart": 488,
+          "responseEnd": 488.90000000037253,
+          "transferSize": 19383,
+          "encodedBodySize": 19083,
+          "decodedBodySize": 19083
+        },
+        {
+          "label": "runtime_lock",
+          "start_epoch_ms": 1793787729127.0999,
+          "startTime": 493.19999999925494,
+          "duration": 7.700000001117587,
+          "fetchStart": 493.19999999925494,
+          "domainLookupStart": 498.09999999962747,
+          "domainLookupEnd": 498.09999999962747,
+          "connectStart": 498.09999999962747,
+          "connectEnd": 498.59999999962747,
+          "requestStart": 498.69999999925494,
+          "responseStart": 499.7999999988824,
+          "responseEnd": 500.90000000037253,
+          "transferSize": 114740,
+          "encodedBodySize": 114440,
+          "decodedBodySize": 114440
+        },
+        {
+          "label": "python_stdlib",
+          "start_epoch_ms": 1793787729129.2,
+          "startTime": 495.2999999988824,
+          "duration": 46.80000000074506,
+          "fetchStart": 495.2999999988824,
+          "domainLookupStart": 504.19999999925494,
+          "domainLookupEnd": 504.19999999925494,
+          "connectStart": 504.19999999925494,
+          "connectEnd": 504.59999999962747,
+          "requestStart": 504.59999999962747,
+          "responseStart": 505.69999999925494,
+          "responseEnd": 542.0999999996275,
+          "transferSize": 2545864,
+          "encodedBodySize": 2545564,
+          "decodedBodySize": 2545564
+        },
+        {
+          "label": "runtime_wasm",
+          "start_epoch_ms": 1793787729133.0999,
+          "startTime": 499.19999999925494,
+          "duration": 195.2000000011176,
+          "fetchStart": 499.19999999925494,
+          "domainLookupStart": 504.69999999925494,
+          "domainLookupEnd": 504.69999999925494,
+          "connectStart": 504.69999999925494,
+          "connectEnd": 505.69999999925494,
+          "requestStart": 505.7999999988824,
+          "responseStart": 506.19999999925494,
+          "responseEnd": 694.4000000003725,
+          "transferSize": 9598518,
+          "encodedBodySize": 9598218,
+          "decodedBodySize": 9598218
+        },
+        {
+          "label": "runtime_bootstrap",
+          "start_epoch_ms": 1793787729133.7,
+          "startTime": 499.7999999988824,
+          "duration": 25.90000000037253,
+          "fetchStart": 499.7999999988824,
+          "domainLookupStart": 505.2999999988824,
+          "domainLookupEnd": 505.2999999988824,
+          "connectStart": 505.2999999988824,
+          "connectEnd": 505.7999999988824,
+          "requestStart": 506,
+          "responseStart": 512.0999999996275,
+          "responseEnd": 525.6999999992549,
+          "transferSize": 1250644,
+          "encodedBodySize": 1250344,
+          "decodedBodySize": 1250344
+        },
+        {
+          "label": "wheel_pydantic",
+          "start_epoch_ms": 1793787729281.7,
+          "startTime": 647.7999999988824,
+          "duration": 23,
+          "fetchStart": 647.7999999988824,
+          "domainLookupStart": 649.4000000003725,
+          "domainLookupEnd": 649.4000000003725,
+          "connectStart": 649.4000000003725,
+          "connectEnd": 657.0999999996275,
+          "requestStart": 658.0999999996275,
+          "responseStart": 660.7999999988824,
+          "responseEnd": 670.7999999988824,
+          "transferSize": 463878,
+          "encodedBodySize": 463578,
+          "decodedBodySize": 463578
+        },
+        {
+          "label": "wheel_typing_extensions",
+          "start_epoch_ms": 1793787729282,
+          "startTime": 648.0999999996275,
+          "duration": 21,
+          "fetchStart": 648.0999999996275,
+          "domainLookupStart": 651.9000000003725,
+          "domainLookupEnd": 651.9000000003725,
+          "connectStart": 651.9000000003725,
+          "connectEnd": 657.7999999988824,
+          "requestStart": 659.2999999988824,
+          "responseStart": 665.9000000003725,
+          "responseEnd": 669.0999999996275,
+          "transferSize": 44913,
+          "encodedBodySize": 44613,
+          "decodedBodySize": 44613
+        },
+        {
+          "label": "wheel_pydantic_core",
+          "start_epoch_ms": 1793787729282.2,
+          "startTime": 648.2999999988824,
+          "duration": 28.600000001490116,
+          "fetchStart": 648.2999999988824,
+          "domainLookupStart": 653.9000000003725,
+          "domainLookupEnd": 653.9000000003725,
+          "connectStart": 653.9000000003725,
+          "connectEnd": 657.7999999988824,
+          "requestStart": 660.0999999996275,
+          "responseStart": 661.6999999992549,
+          "responseEnd": 676.9000000003725,
+          "transferSize": 1310463,
+          "encodedBodySize": 1310163,
+          "decodedBodySize": 1310163
+        },
+        {
+          "label": "wheel_annotated_types",
+          "start_epoch_ms": 1793787729282.4,
+          "startTime": 648.5,
+          "duration": 20.799999998882413,
+          "fetchStart": 648.5,
+          "domainLookupStart": 657.0999999996275,
+          "domainLookupEnd": 657.0999999996275,
+          "connectStart": 657.0999999996275,
+          "connectEnd": 657.7999999988824,
+          "requestStart": 660.1999999992549,
+          "responseStart": 667.1999999992549,
+          "responseEnd": 669.2999999988824,
+          "transferSize": 12263,
+          "encodedBodySize": 11963,
+          "decodedBodySize": 11963
+        },
+        {
+          "label": "wheel_typing_inspection",
+          "start_epoch_ms": 1793787729282.5,
+          "startTime": 648.5999999996275,
+          "duration": 20.59999999962747,
+          "fetchStart": 648.5999999996275,
+          "domainLookupStart": 657.4000000003725,
+          "domainLookupEnd": 657.4000000003725,
+          "connectStart": 657.4000000003725,
+          "connectEnd": 657.7999999988824,
+          "requestStart": 660.2999999988824,
+          "responseStart": 666,
+          "responseEnd": 669.1999999992549,
+          "transferSize": 14910,
+          "encodedBodySize": 14610,
+          "decodedBodySize": 14610
+        }
+      ],
+      "workers": {
+        "created": 2,
+        "active": 1
+      },
+      "analysis": {
+        "status": "AVAILABLE",
+        "generation": 2,
+        "trace_version": "startup-v1",
+        "window_trace": {
+          "schema_version": 1,
+          "trace_version": "startup-v1",
+          "generation": 2,
+          "thread": "window",
+          "time_origin_ms": 1793787727449.7,
+          "status": "ready",
+          "identity": {
+            "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+            "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69",
+            "pyodide": "314.0.6",
+            "pydantic": "2.12.5",
+            "ruleset_version": "demo-rules-3.0"
+          },
+          "events": [
+            {
+              "phase": "attempt_started",
+              "kind": "mark",
+              "start_ms": 634.9000000003725,
+              "start_epoch_ms": 1793787728084.5999
+            },
+            {
+              "phase": "config_fetch",
+              "kind": "span",
+              "start_ms": 635,
+              "start_epoch_ms": 1793787728084.7,
+              "end_ms": 673.5,
+              "end_epoch_ms": 1793787728123.2,
+              "duration_ms": 38.5,
+              "status": "ok"
+            },
+            {
+              "phase": "worker_created",
+              "kind": "mark",
+              "start_ms": 673.9000000003725,
+              "start_epoch_ms": 1793787728123.5999
+            },
+            {
+              "phase": "init_sent",
+              "kind": "mark",
+              "start_ms": 673.9000000003725,
+              "start_epoch_ms": 1793787728123.5999
+            },
+            {
+              "phase": "scene_fetch",
+              "kind": "span",
+              "start_ms": 635.5,
+              "start_epoch_ms": 1793787728085.2,
+              "end_ms": 677.4000000003725,
+              "end_epoch_ms": 1793787728127.0999,
+              "duration_ms": 41.90000000037253,
+              "status": "ok"
+            },
+            {
+              "phase": "renderer_create",
+              "kind": "span",
+              "start_ms": 678.3000000007451,
+              "start_epoch_ms": 1793787728128,
+              "end_ms": 988.7000000011176,
+              "end_epoch_ms": 1793787728438.4,
+              "duration_ms": 310.40000000037253,
+              "status": "ok"
+            },
+            {
+              "phase": "init_received",
+              "kind": "mark",
+              "start_ms": 7056.800000000745,
+              "start_epoch_ms": 1793787734506.5
+            },
+            {
+              "phase": "first_evaluation_sent",
+              "kind": "mark",
+              "start_ms": 7058.300000000745,
+              "start_epoch_ms": 1793787734508
+            },
+            {
+              "phase": "first_evaluation_received",
+              "kind": "mark",
+              "start_ms": 7145.10000000149,
+              "start_epoch_ms": 1793787734594.8
+            },
+            {
+              "phase": "first_evaluation_accepted",
+              "kind": "mark",
+              "start_ms": 7146.10000000149,
+              "start_epoch_ms": 1793787734595.8
+            },
+            {
+              "phase": "attempt_ready",
+              "kind": "mark",
+              "start_ms": 7146.200000001118,
+              "start_epoch_ms": 1793787734595.9
+            },
+            {
+              "phase": "edit_eligible",
+              "kind": "mark",
+              "start_ms": 7166.5,
+              "start_epoch_ms": 1793787734616.2
+            }
+          ],
+          "truncated": false
+        },
+        "worker_trace": {
+          "schema_version": 1,
+          "trace_version": "startup-v1",
+          "generation": 2,
+          "thread": "worker",
+          "time_origin_ms": 1793787728633.9,
+          "status": "ready",
+          "identity": {
+            "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+            "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69",
+            "pyodide": "314.0.6",
+            "pydantic": "2.12.5",
+            "ruleset_version": "demo-rules-3.0"
+          },
+          "events": [
+            {
+              "phase": "init_enqueued",
+              "kind": "mark",
+              "start_ms": 476.7999999988824,
+              "start_epoch_ms": 1793787729110.7
+            },
+            {
+              "phase": "init_handler_started",
+              "kind": "mark",
+              "start_ms": 477.09999999962747,
+              "start_epoch_ms": 1793787729111
+            },
+            {
+              "phase": "worker_module_evaluated",
+              "kind": "mark",
+              "start_ms": 56.19999999925494,
+              "start_epoch_ms": 1793787728690.0999
+            },
+            {
+              "phase": "runtime_module",
+              "kind": "span",
+              "start_ms": 477.5,
+              "start_epoch_ms": 1793787729111.4,
+              "end_ms": 492.59999999962747,
+              "end_epoch_ms": 1793787729126.5,
+              "duration_ms": 15.099999999627471,
+              "status": "ok"
+            },
+            {
+              "phase": "core_fetch",
+              "kind": "span",
+              "start_ms": 478.40000000037253,
+              "start_epoch_ms": 1793787729112.2998,
+              "end_ms": 502.59999999962747,
+              "end_epoch_ms": 1793787729136.5,
+              "duration_ms": 24.199999999254942,
+              "status": "ok"
+            },
+            {
+              "phase": "core_hash",
+              "kind": "span",
+              "start_ms": 502.59999999962747,
+              "start_epoch_ms": 1793787729136.5,
+              "end_ms": 502.90000000037253,
+              "end_epoch_ms": 1793787729136.7998,
+              "duration_ms": 0.30000000074505806,
+              "status": "ok"
+            },
+            {
+              "phase": "load_pyodide",
+              "kind": "span",
+              "start_ms": 492.59999999962747,
+              "start_epoch_ms": 1793787729126.5,
+              "end_ms": 4684,
+              "end_epoch_ms": 1793787733317.9,
+              "duration_ms": 4191.4000000003725,
+              "status": "ok"
+            },
+            {
+              "phase": "ensure_package",
+              "kind": "span",
+              "start_ms": 4684,
+              "start_epoch_ms": 1793787733317.9,
+              "end_ms": 4689.299999998882,
+              "end_epoch_ms": 1793787733323.2,
+              "duration_ms": 5.299999998882413,
+              "status": "ok"
+            },
+            {
+              "phase": "pydantic_import",
+              "kind": "span",
+              "start_ms": 4689.4000000003725,
+              "start_epoch_ms": 1793787733323.2998,
+              "end_ms": 4954.5,
+              "end_epoch_ms": 1793787733588.4,
+              "duration_ms": 265.09999999962747,
+              "status": "ok"
+            },
+            {
+              "phase": "bundle_join_wait",
+              "kind": "span",
+              "start_ms": 4954.699999999255,
+              "start_epoch_ms": 1793787733588.5999,
+              "end_ms": 4954.699999999255,
+              "end_epoch_ms": 1793787733588.5999,
+              "duration_ms": 0,
+              "status": "ok"
+            },
+            {
+              "phase": "unpack",
+              "kind": "span",
+              "start_ms": 4954.799999998882,
+              "start_epoch_ms": 1793787733588.7,
+              "end_ms": 4958,
+              "end_epoch_ms": 1793787733591.9,
+              "duration_ms": 3.200000001117587,
+              "status": "ok"
+            },
+            {
+              "phase": "canonical_import",
+              "kind": "span",
+              "start_ms": 4958,
+              "start_epoch_ms": 1793787733591.9,
+              "end_ms": 5869.0999999996275,
+              "end_epoch_ms": 1793787734503,
+              "duration_ms": 911.0999999996275,
+              "status": "ok"
+            },
+            {
+              "phase": "dispatcher_bind",
+              "kind": "span",
+              "start_ms": 5869.199999999255,
+              "start_epoch_ms": 1793787734503.0999,
+              "end_ms": 5869.799999998882,
+              "end_epoch_ms": 1793787734503.7,
+              "duration_ms": 0.599999999627471,
+              "status": "ok"
+            },
+            {
+              "phase": "attempt_ready",
+              "kind": "mark",
+              "start_ms": 5871.9000000003725,
+              "start_epoch_ms": 1793787734505.7998
+            },
+            {
+              "phase": "init_reply_ready",
+              "kind": "mark",
+              "start_ms": 5871.9000000003725,
+              "start_epoch_ms": 1793787734505.7998
+            },
+            {
+              "phase": "first_evaluation",
+              "kind": "span",
+              "start_ms": 5877,
+              "start_epoch_ms": 1793787734510.9,
+              "end_ms": 5960.299999998882,
+              "end_epoch_ms": 1793787734594.2,
+              "duration_ms": 83.29999999888241,
+              "status": "ok"
+            }
+          ],
+          "truncated": false
+        },
+        "stage_durations_ms": {
+          "runtime_module": 15.099999999627471,
+          "core_fetch": 24.199999999254942,
+          "core_hash": 0.30000000074505806,
+          "load_pyodide": 4191.4000000003725,
+          "ensure_package": 5.299999998882413,
+          "pydantic_import": 265.09999999962747,
+          "bundle_join_wait": 0,
+          "unpack": 3.200000001117587,
+          "canonical_import": 911.0999999996275,
+          "dispatcher_bind": 0.599999999627471,
+          "first_evaluation": 83.29999999888241
+        },
+        "alignment": {
+          "worker_minus_window_time_origin_ms": 1184.199951171875,
+          "init_send_to_enqueue_ms": 987.10009765625,
+          "init_queue_wait_ms": 0.300048828125,
+          "reply_ready_to_received_ms": 0.7001953125
+        },
+        "initialization_wall_ms": 5392.699951171875,
+        "measured_span_union_ms": 5391.80029296875,
+        "unattributed_initialization_wall_ms": 0.899658203125,
+        "note": "Epochs equal timeOrigin+now. Parallel spans use interval union, never summed; residuals are not assigned to compilation/import/network. Edit-eligible is diagnostic, not the enforced actual DOM editable metric."
+      }
+    }
+  ],
+  "limits": [
+    "Faults intentionally injected through page-only CDP; no natural outage claim.",
+    "No timing target claim from this functional run; full fixed profile/overhead experiment separate.",
+    "Private models, public hosting, Edge/Safari NOT_RUN."
+  ]
+}

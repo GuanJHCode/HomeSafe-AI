@@ -1,0 +1,80 @@
+{
+  "scope": "INDEPENDENT_OFFLINE_PR3_FIXED_RESULT_AUDIT",
+  "reviewer": "/root/review_delivery",
+  "reviewed_at": "2026-11-04T11:02:34.201Z",
+  "decision": "DISCARD_PR3_OPTIMIZATION_PREDECLARED_GATE_FAILED",
+  "result_sha256": "20479c43d8430cafb4e81dd45fec35216379b0410e187699725d0fcbc94e8904",
+  "registration_sha256": "5e9cef303ea32e5dcf21095bdd02486a571455183950b41cab3580e2a2df3c96",
+  "harness_sha256": "dd4992e09ad258c1f5a0f5f373656e6146c3c94d5a516355aef7831756bf1353",
+  "checks": {
+    "schedule_and_ten_attempts": "PASS",
+    "initial_edited_hashes_actual_edit": "PASS",
+    "core_runtime_environment": "PASS",
+    "registered_manifest_and_frozen_candidate_files": "PASS",
+    "source_inventory_fingerprints": "PASS",
+    "all_required_raw_trace_analysis_and_epoch_UI_sequence": "PASS; independently recomputed",
+    "all_statistics_and_decision": "PASS; independently recomputed"
+  },
+  "pairs": [
+    {
+      "pair": 1,
+      "order": [
+        "A",
+        "B"
+      ],
+      "A_ms": 3929.699999999255,
+      "B_ms": 4311.5999999996275,
+      "saving_ms": -381.90000000037253
+    },
+    {
+      "pair": 2,
+      "order": [
+        "B",
+        "A"
+      ],
+      "A_ms": 3822.0999999996275,
+      "B_ms": 3696.800000000745,
+      "saving_ms": 125.29999999888241
+    },
+    {
+      "pair": 3,
+      "order": [
+        "A",
+        "B"
+      ],
+      "A_ms": 3498.5999999996275,
+      "B_ms": 3569.10000000149,
+      "saving_ms": -70.50000000186265
+    },
+    {
+      "pair": 4,
+      "order": [
+        "B",
+        "A"
+      ],
+      "A_ms": 3510.7000000011176,
+      "B_ms": 3466.800000000745,
+      "saving_ms": 43.90000000037253
+    },
+    {
+      "pair": 5,
+      "order": [
+        "A",
+        "B"
+      ],
+      "A_ms": 3946.0999999996275,
+      "B_ms": 3666.2999999988824,
+      "saving_ms": 279.80000000074506
+    }
+  ],
+  "improving_pairs": 3,
+  "paired_median_saving_ms": 43.90000000037253,
+  "baseline_first_editable_p95_ms": 3946.0999999996275,
+  "candidate_first_editable_p95_ms": 4311.5999999996275,
+  "optimization_gate": "FAIL",
+  "first_editable_3000ms": "FAIL",
+  "candidate_hot_budget": "NOT_RUN",
+  "candidate_extra_full_enforce": "NOT_RUN_DISCARDED",
+  "interpretation": "Both predeclared minimum4/5 and median100ms requirements fail. Discard this candidate; no repeat-to-green. Functional correctness passing does not establish a startup benefit. Any finalenforce after returning to frozenPR2 belongs to restoredPR2, not this PR3 candidate.",
+  "new_browser_test_or_measurement_by_reviewer": false
+}

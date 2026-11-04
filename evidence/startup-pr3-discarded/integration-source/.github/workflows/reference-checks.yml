@@ -1,0 +1,171 @@
+name: browser-first-reference-baseline
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  reference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: python -m pip install -r requirements-validation.txt
+      - run: python -m pytest reference/tests -q
+      - run: python scripts/generate_contracts.py --check
+      - run: python scripts/validate_package.py
+      - run: node --test browser-spike/*.test.mjs
+      - run: node --test scripts/*.test.mjs
+      - run: python scripts/stage_browser_core.py
+      - run: git diff --exit-code -- browser-spike/python browser-spike/examples
+      - run: node --check browser-spike/worker-controller.mjs
+      - run: node --check browser-spike/rule-worker.mjs
+      - run: node --check browser-spike/main.mjs
+      - run: npm install --no-save --package-lock=false typescript@5.8.3
+      - run: npx tsc --strict --noEmit --target ES2022 contracts/frontend/domain.ts
+      - run: npm --prefix apps/web ci --no-audit --no-fund
+      - run: npm --prefix apps/web test
+      - name: Download pinned official runtime
+        run: python scripts/download_pyodide.py --dest "$RUNNER_TEMP/homesafe-pyodide"
+      - name: Preview official vendor selection
+        run: python scripts/vendor_pyodide_from_dir.py --source "$RUNNER_TEMP/homesafe-pyodide" --expected-lock-sha256 3fdaef09e9e365c85e002737720f8d0ab8f278c1c244a2dde6a37663cf488ad4
+      - name: Copy verified official vendor files
+        run: python scripts/vendor_pyodide_from_dir.py --source "$RUNNER_TEMP/homesafe-pyodide" --expected-lock-sha256 3fdaef09e9e365c85e002737720f8d0ab8f278c1c244a2dde6a37663cf488ad4 --copy
+      - run: npm --prefix apps/web run build
+      - run: node scripts/check_web_core.mjs
+      - name: Verify runtime-only ZIP closure in real Pyodide
+        run: node scripts/check_runtime_bundle.mjs browser-spike/vendor/pyodide browser-spike/python/homesafe_core.zip browser-spike/python/manifest.json runtime-only ci-evidence/runtime-bundle-closure.json
+      - name: Install isolated browser driver
+        run: npm --prefix "$RUNNER_TEMP/homesafe-browser" install --no-audit --no-fund puppeteer-core@24.15.0
+      - name: Private intake tooling with procedural textured fixtures only
+        shell: bash
+        run: |
+          python scripts/create_private_asset_fixture.py --output "$RUNNER_TEMP/private-fixtures"
+          node scripts/check_private_asset_geometry.ts --chair "$RUNNER_TEMP/private-fixtures/chair.glb" --cabinet "$RUNNER_TEMP/private-fixtures/cabinet.glb" --output evidence/private/ci-geometry
+          node scripts/check_private_assets.mjs --chair "$RUNNER_TEMP/private-fixtures/chair.glb" --cabinet "$RUNNER_TEMP/private-fixtures/cabinet.glb" --provenance procedural --chrome "$(command -v google-chrome)" --driver "$RUNNER_TEMP/homesafe-browser/node_modules/puppeteer-core/lib/esm/puppeteer/puppeteer-core.js" --output evidence/private/ci-intake
+      - name: Prepare shared nested-path browser host
+        id: browser_host
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/homesafe-host/preview" "$RUNNER_TEMP/homesafe-host/probe" ci-evidence
+          cp -R apps/web/dist/. "$RUNNER_TEMP/homesafe-host/preview/"
+          cp -R browser-spike/. "$RUNNER_TEMP/homesafe-host/probe/"
+          server_pid=
+          parent_pid=
+          cleanup_setup() {
+            for started_pid in "$server_pid" "$parent_pid"; do
+              if [[ "$started_pid" =~ ^[0-9]+$ ]]; then
+                kill "$started_pid" 2>/dev/null || true
+                wait "$started_pid" 2>/dev/null || true
+              fi
+            done
+          }
+          trap cleanup_setup EXIT
+          python -m http.server 4173 --bind 127.0.0.1 --directory "$RUNNER_TEMP/homesafe-host" > ci-evidence/http.log 2>&1 &
+          server_pid=$!
+          echo "$server_pid" > "$RUNNER_TEMP/homesafe-app-server.pid"
+          python -m http.server 4174 --bind 127.0.0.1 --directory "$RUNNER_TEMP/homesafe-host" > ci-evidence/parent-http.log 2>&1 &
+          parent_pid=$!
+          echo "$parent_pid" > "$RUNNER_TEMP/homesafe-parent-server.pid"
+          ready=0
+          for attempt in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:4173/preview/ > /dev/null && curl --fail --silent http://127.0.0.1:4174/ > /dev/null; then ready=1; break; fi
+            sleep 1
+          done
+          test "$ready" -eq 1
+          # Leave these exact servers/distribution alive for both subsequent steps.
+          trap - EXIT
+      - name: Real browser functional checks on a nested path
+        id: browser_functional
+        shell: bash
+        env:
+          HOMESAFE_EVIDENCE_DIR: ci-evidence
+        run: |
+          python scripts/check_deployment.py --url http://127.0.0.1:4173/preview --dist apps/web/dist --allow-local-http --output ci-evidence/deployment-transport.json
+          chrome=$(command -v google-chrome)
+          driver="$RUNNER_TEMP/homesafe-browser/node_modules/puppeteer-core/lib/esm/puppeteer/puppeteer-core.js"
+          node scripts/check_browser_spike.mjs http://127.0.0.1:4173/probe/ "$chrome" "$driver" | tee ci-evidence/browser-spike.json
+          node scripts/check_web_preview.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" | tee ci-evidence/web-preview.json
+          node scripts/check_web_experience.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" ci-evidence/experience | tee ci-evidence/experience.json
+          node scripts/check_web_observations.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" ci-evidence/observations | tee ci-evidence/observations.json
+          node scripts/check_web_recovery.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" ci-evidence/recovery | tee ci-evidence/recovery.json
+          node scripts/check_startup_trace.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" ci-evidence/startup-trace | tee ci-evidence/startup-trace-summary.json
+          node scripts/check_startup_bootstrap.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" ci-evidence/startup-bootstrap | tee ci-evidence/startup-bootstrap-summary.json
+          node scripts/check_web_embedding.mjs http://127.0.0.1:4173/preview/ http://127.0.0.1:4174/ "$chrome" "$driver" | tee ci-evidence/embedding.json
+      - name: Strict real-browser performance budgets
+        id: browser_performance
+        shell: bash
+        run: |
+          chrome=$(command -v google-chrome)
+          driver="$RUNNER_TEMP/homesafe-browser/node_modules/puppeteer-core/lib/esm/puppeteer/puppeteer-core.js"
+          # Keep the exact budgets blocking, including the known-open 3s target.
+          # Preserve evidence/summary even when enforce returns a budget failure.
+          # Sequential execution avoids competing Chromium instances during timing.
+          performance_status=0
+          node scripts/check_web_performance.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" enforce required | tee ci-evidence/performance.json || performance_status=$?
+          python - <<'PYREPORT'
+          import json, os
+          result = json.load(open('ci-evidence/performance.json'))
+          lines = ['## Local isolated Chromium performance', '', '| Budget | Result |', '| --- | --- |']
+          for target, passed in result['targets'].items():
+              lines.append(f"| {target} | {'PASS' if passed else 'NOT MET'} |")
+              if not passed:
+                  print(f'::error title=Performance budget not met::{target}. See performance.json; the strict performance step fails.')
+          lines.extend(['', 'First-editable p95 (ms): ' + str(result['summary']['cold_first_editable']['p95']),
+                        'Local synthetic scene only; no public, real-asset or other-browser performance claim.'])
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as report:
+              report.write('\n'.join(lines) + '\n')
+          PYREPORT
+          exit "$performance_status"
+      - name: Stop shared browser servers
+        if: always()
+        shell: bash
+        run: |
+          for pid_file in "$RUNNER_TEMP/homesafe-app-server.pid" "$RUNNER_TEMP/homesafe-parent-server.pid"; do
+            if [[ -f "$pid_file" ]]; then
+              read -r server_pid < "$pid_file"
+              if [[ "$server_pid" =~ ^[0-9]+$ ]]; then kill "$server_pid" 2>/dev/null || true; fi
+              rm -f "$pid_file"
+            fi
+          done
+      - name: Summarize separate validation scopes
+        if: always()
+        shell: bash
+        env:
+          FUNCTIONAL_OUTCOME: ${{ steps.browser_functional.outcome }}
+          PERFORMANCE_OUTCOME: ${{ steps.browser_performance.outcome }}
+        run: |
+          python - <<'PYSUMMARY'
+          import json, os
+          from pathlib import Path
+          def status(outcome):
+              return {'success': 'PASS', 'failure': 'FAIL', 'cancelled': 'CANCELLED', 'skipped': 'NOT_RUN'}.get(outcome, 'NOT_RUN')
+          result = {
+              'functional_validation': status(os.environ.get('FUNCTIONAL_OUTCOME')),
+              'performance_budget': status(os.environ.get('PERFORMANCE_OUTCOME')),
+              'real_asset_browser': 'NOT_RUN',
+              'public_host': 'NOT_RUN',
+              'scope': 'CI_LOCALHOST_SYNTHETIC_SCENE_ONLY',
+          }
+          Path('ci-evidence').mkdir(exist_ok=True)
+          Path('ci-evidence/validation-summary.json').write_text(json.dumps(result, indent=2) + '\n')
+          lines = ['## Separate validation scopes', '', '| Scope | Result |', '| --- | --- |']
+          lines.extend(f'| {key} | {value} |' for key, value in result.items())
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as report:
+              report.write('\n'.join(lines) + '\n')
+          PYSUMMARY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: development-preview-${{ github.sha }}
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            apps/web/dist/
+            apps/web/package-lock.json
+            ci-evidence/
+# CI uses an ephemeral Linux browser; it does not launch the user's Chrome or deploy a site.

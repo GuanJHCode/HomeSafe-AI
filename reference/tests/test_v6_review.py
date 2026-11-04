@@ -2,7 +2,8 @@ import copy, json
 from pathlib import Path
 import pytest
 from homesafe_core.engine import RuleEngine, FindingDiffer
-from homesafe_core.models import Scene, Rect, AssetRenderDTO
+from homesafe_core.models import Scene, Rect
+from homesafe_core.asset_models import AssetRenderDTO
 from homesafe_core.validation import PlacementValidationError
 from homesafe_core.challenge import ChallengeService
 from homesafe_core.browser_bridge import dispatch_json

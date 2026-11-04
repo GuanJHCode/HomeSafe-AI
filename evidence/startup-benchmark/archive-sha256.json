@@ -1,0 +1,31 @@
+{
+  "scope": "Selected reviewed benchmark evidence only; no runtime binaries or private assets",
+  "files": {
+    "A-source-tree.txt": "f53efa12af05b406a99645c7787c645f5315838dd63207f83845ba869d62e491",
+    "B-source-runtime-inventory.json": "91ecf2ba06a7a5b007d655010123ad0f0ebac624387b51b045ee6a89f1363e29",
+    "PR2-candidate-source-runtime-inventory.json": "79ce366fb4c02c4e4dbd7a2f25525c98954351b1b85c36598d22aeefb8682ec1",
+    "PR3-candidate-source-runtime-inventory.json": "4b0d88cd4d3e43ef5f329bdd24ccbc050e89be2f3b6feece0b5375900d6e29a7",
+    "README.md": "25cecb9250ae2834bec853cbb8167fd6ce77a27a337d7e3a6c8cee8d8a7161ab",
+    "final-retained-enforce-performance.json": "305dc1a7b4d0b01b75782b022465edfc212bda630a60d28406013bc50abafa63",
+    "final-retained-enforce-registration.json": "273ffd05982955214ecc96f233c390a14a861eee81a859fd895cb06b737e9e68",
+    "independent-final-retained-enforce-review.json": "d9b60339fc5df8da347d53a6dd612aa5392592f379a2ed6e6fec2d4f9934df92",
+    "independent-optimization-prereg-review.json": "49f1a3f4f503ef5a48e138437c01ba6f5044acbdddf088936a88f9c585c403b9",
+    "independent-optimization-result-review.json": "c3daa98ca6237a522b884cf465be348d93e0e75f700c3340628ec2e3137d8fe1",
+    "independent-overhead-review.json": "36b301418b2d973b5b39e2c16d8dd9b5344fb22f99ef54451b9472af113b4a16",
+    "independent-pr3-prereg-review.json": "166620a83a0e05d91f13468e68ed84f953f5f59c5944375179213b3c10851f8c",
+    "independent-pr3-result-review.json": "986c602e960809aabdda260156c4faf8db740185a420e38107e703a03a66f498",
+    "independent-pre-run-review.json": "e3179b1f2b29bb3e186a896472198e729cd5590828db4146fc3f6366404e2373",
+    "measurement/browser-spike/startup-trace.mjs": "14d504f051b759da7ab4e432f6a3ecf99c4e6c682d8e1f83f6602d95b1e7a686",
+    "measurement/scripts/check_web_performance.mjs": "9eb5fe0166cbc6392b56fb0b9ff21935888f341055ecef5559a44a3e7b754d95",
+    "measurement/scripts/startup-trace-analysis.mjs": "3601bc320f999f433c871e9e5cfe27d9350eee6b5ff716b89b443ce65183952b",
+    "measurement-fingerprints.json": "3654fa7f6ae24dc08ee6368a068eb54a498d006f6971681b7c145463aaf6ef82",
+    "optimization-registration.json": "d8cdd8ed45153fa85e0bb435d48f01dc45f40594936021c6114332b3866f3fb8",
+    "optimization-result.json": "a8604f03a5a1070407575cf08dbe5c7b4f801bfbf43385d8a7212eba79205364",
+    "overhead-registration.json": "3882ed851fe46796ae806bf4f2ab8b94cc6653cab024c664b2f989aaf0008f02",
+    "overhead-result.json": "6709bc9fca868265853a0b1dd4a623034a738833ec8cda1293ae737beb1888da",
+    "paired-startup.mjs": "dd4992e09ad258c1f5a0f5f373656e6146c3c94d5a516355aef7831756bf1353",
+    "paired-startup.test.mjs": "f8dfc9ae8962e588acf124ee9c5055afb78c0ae341d2be1c7be9d02752141e29",
+    "pr3-optimization-registration.json": "5e9cef303ea32e5dcf21095bdd02486a571455183950b41cab3580e2a2df3c96",
+    "pr3-optimization-result.json": "20479c43d8430cafb4e81dd45fec35216379b0410e187699725d0fcbc94e8904"
+  }
+}

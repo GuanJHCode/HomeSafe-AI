@@ -60,3 +60,46 @@ test('goal-met summary never omits outstanding triggered findings',()=>{
 test('missing summary counts cannot masquerade as zero',()=>{
   assert.match(formatChallengeSummary({status:'goal_met'}),/状态不完整/);
 });
+
+test('startup trace carries a new generation after failure and first evaluation metadata stays outside result', async () => {
+  let calls = 0; const messages = [];
+  const worker = createWorkerController(async (_config, _base, trace) => {
+    if (++calls === 1) throw new Error('private error not trace data');
+    trace?.identify({ core_hash: 'a'.repeat(64), pyodide: '314.0.6', pydantic: '2.12.5' });
+    return response();
+  }, message => messages.push(message));
+  await worker.enqueue({ ...init(1), trace: { schema_version: 1, generation: 11 } });
+  await worker.enqueue({ ...init(2), trace: { schema_version: 1, generation: 12 } });
+  await worker.enqueue(evaluate(3));
+  assert.equal(messages[0].startup_trace.generation, 11);
+  assert.equal(messages[0].startup_trace.status, 'failed');
+  assert.equal(messages[1].startup_trace.generation, 12);
+  assert.ok(messages[1].startup_trace.events.some(event => event.phase === 'init_reply_ready'));
+  assert.ok(messages[2].startup_trace.events.some(event => event.phase === 'first_evaluation'));
+  assert.deepEqual(messages[2].result, { op: 'evaluate', payload: { scene: {} } });
+  assert.equal(messages[2].startup_trace.identity.core_hash, 'a'.repeat(64));
+});
+
+test('cached init uses a request-only trace linked to its original runtime generation', async () => {
+  const messages = [];
+  const worker = createWorkerController(async (_config, _base, trace) => {
+    trace.interval('load_pyodide', 1, 2); return response();
+  }, message => messages.push(message));
+  await worker.enqueue({ ...init(1), trace: { schema_version: 1, generation: 11 } });
+  await worker.enqueue({ ...init(2), trace: { schema_version: 1, generation: 12 } });
+  assert.equal(messages[1].startup_trace.generation, 12);
+  assert.equal(messages[1].startup_trace.runtime_generation, 11);
+  assert.equal(messages[1].startup_trace.cached_initialization, true);
+  assert.ok(!messages[1].startup_trace.events.some(event => event.phase === 'load_pyodide'));
+});
+
+test('a failed diagnostic snapshot cannot stop an otherwise successful initialization reply', async context => {
+  const { StartupTrace } = await import('./startup-trace.mjs');
+  context.mock.method(StartupTrace.prototype, 'snapshot', () => { throw new Error('observer failed'); });
+  context.mock.method(StartupTrace.prototype, 'mark', () => { throw new Error('mark failed'); });
+  const messages = [];
+  const worker = createWorkerController(async () => response(), message => messages.push(message));
+  await worker.enqueue(init(1)); await worker.enqueue(evaluate(2));
+  assert.equal(messages[0].ok, true); assert.equal(messages[1].ok, true);
+  assert.equal(messages[0].startup_trace, undefined);
+});

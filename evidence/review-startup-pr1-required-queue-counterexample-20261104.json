@@ -1,0 +1,18 @@
+{
+  "status": "FALSE_POSITIVE",
+  "removed": [
+    "init_enqueued",
+    "init_handler_started",
+    "init_reply_ready",
+    "worker_module_evaluated"
+  ],
+  "require_trace": true,
+  "returned_status": "AVAILABLE",
+  "alignment": {
+    "worker_minus_window_time_origin_ms": 574.699951171875,
+    "init_send_to_enqueue_ms": null,
+    "init_queue_wait_ms": null,
+    "reply_ready_to_received_ms": null
+  },
+  "initialization_wall_ms": null
+}

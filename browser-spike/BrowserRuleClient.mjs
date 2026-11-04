@@ -13,7 +13,7 @@ export class BrowserRuleClient {
       this.pending.delete(data.id);
       if (data.ok) pending.resolve(data);
       else pending.reject(Object.assign(new Error(data.error?.message || "Evaluation failed"),
-                                        {details:data.error,clientRevision:data.clientRevision}));
+                                        {details:data.error,clientRevision:data.clientRevision,startup_trace:data.startup_trace}));
     };
     this.onError = () => {
       this.failure = new Error("Worker crashed; restart explicitly");
@@ -22,7 +22,8 @@ export class BrowserRuleClient {
     worker.addEventListener("message",this.onMessage);
     worker.addEventListener("error",this.onError);
   }
-  request(op,payload={},clientRevision=0,timeoutMs=45000) {
+  /** @param {{schema_version:number,generation:number}|undefined} trace */
+  request(op,payload={},clientRevision=0,timeoutMs=45000,trace=undefined) {
     if (this.closed) return Promise.reject(new Error("Worker disposed"));
     if (this.failure) return Promise.reject(this.failure);
     const id=this.nextId++;
@@ -33,7 +34,7 @@ export class BrowserRuleClient {
       },timeoutMs);
       this.pending.set(id,{resolve,reject,timer});
       try {
-        this.worker.postMessage({id,op,payload,clientRevision});
+        this.worker.postMessage({id,op,payload,clientRevision,...(trace ? {trace} : {})});
       } catch (error) {
         clearTimeout(timer);
         this.pending.delete(id);
@@ -41,7 +42,8 @@ export class BrowserRuleClient {
       }
     });
   }
-  initialize(config,base) { return this.request("init",{config,base},0,120000); }
+  /** @param {{schema_version:number,generation:number}|undefined} trace */
+  initialize(config,base,trace=undefined) { return this.request("init",{config,base},0,120000,trace); }
   evaluate(scene,revision) { return this.request("evaluate",{scene},revision); }
   isCurrent(response,currentRevision) { return response.clientRevision===currentRevision; }
   failAll(error) {

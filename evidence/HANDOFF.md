@@ -1,5 +1,21 @@
 # 接手记录
 
+## 当前本地阶段：保留 PR-1/PR-2，PR-3 实验已否决
+
+本地提交见交付回执；本轮无远端写入。工作分支 `codex/startup-profile-20261104` 基于 `64e1665`。完整记录见[启动调整阶段](STARTUP_ADJUSTMENTS_20261104.md)。PR-1 剖析独立 PASS；PR-2 拆分独立 ADOPT（5/5 改善，中位节省 334.4 ms），先前完整 enforce p95=3858.5 ms 仍失败。PR-3 轻入口候选虽通过生命周期/功能检查，但固定配对只有 3/5 改善、中位 43.9 ms，按门槛 DISCARD；其 BFCache/功能和补丁归档是候选历史，不是最终代码能力。
+
+PR-3 已精确撤回，最终 28 个分发文件与冻结 PR-2 逐字节一致并独立通过。还原后的唯一最终 enforce 仍退出 1：冷首次可编辑 p95 **4086.1 ms**（p50 3913.5）、热评估 p95 **12.6 ms**；冷规则与热预算通过。此前 3858.5/12.5 是 PR-2 早先阶段结果，保留历史而不替代最终值；PR-3 自身完整 hot/enforce 未运行。T07 始终 IN_PROGRESS、首次可编辑 OPEN_NOT_MET；PR-4 步骤拆分通过，完整稳定性仍 OPEN。新远端固定 CI（含建议的三次验证）未运行、等待推送授权；下方远端3386 ms与本地不同Chrome/环境不能相减归因。见[决策记录](../docs/ADR-0003-startup-profiling-and-bounded-optimization.md)。真实 GLB 读取/权利与公开托管阻断不变。
+
+## 当前有效状态：固定提交 64e1665 的远端 CI（2026-11-04）
+
+已核对远端开发源码 `64e166540495126f618dd65aa8dc88760ed70604`、分支 `codex/v6.1-browser-3d`，对应 [CI 41807603537](https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41807603537) / job `126498424922`。**功能验收 PASS_CI_LOCALHOST；性能 FAIL_FIRST_EDITABLE；CI 整体 failure**。冷首次可编辑五样本 p95=3386 ms，高于 3000 ms；冷规则 p95=3386 ms、热评估 p95≈9.9 ms 分别通过 12000/150 ms 门槛。T07-first-editable-budget 仍为 OPEN_NOT_MET，T07 整体仍 IN_PROGRESS。
+
+详见[固定源码推送与 CI 记录](CI_PUSH_64e1665_20261104.md)、[机器回执](ci-push-64e1665.json)和[原始性能 JSON 摘录](ci-performance-64e1665.json)。以上是已发生的固定版本运行，不是本轮新代码验证；当前 `codex/startup-profile-20261104` 基于该提交的调整尚未推送、尚未远端运行。历史“未推送 / NOT_RUN_NO_PUSH”只适用于对应当时记录，不再代表 64e1665。
+
+真实 Lux3D 两件原件已交付，曾通过摘要和 Node 数值检查；本执行环境原件字节仍不可读，真实模型浏览器验收 BLOCKED_NOT_RUN_FILE_UNAVAILABLE，公开再分发权利未确认。没有获准的公开托管入口，public_host=BLOCKED_NOT_RUN_NO_APPROVED_HOST。CI 占位场景及受控本地 iframe 不能关闭 T03/T04/T09。既有 defer_build 实验已独立判定 DISCARD，不重做；本阶段从启动剖析与可控依赖减量开始。
+
+以下历史按原文保留，时间较早的通过、未推送与环境阻断均须按各段版本解释。
+
 最新续作状态见 [f6245e1 后续功能与验收](FEATURE_CONTINUATION_20261104.md)。下文旧记录按时间保留；不要把早期性能画布指标当首次可编辑通过。
 
 当前接手执行入口：[给小杂的完整提示词](../docs/NEXT_AGENT_PROMPT_20261104.md)。从功能分支最新HEAD开始，不只拉master。原始Lux3D附件未公开提交Git，领取方式和哈希在提示词中；本文历史段落需结合后文最新记录阅读。

@@ -1,0 +1,17 @@
+{
+  "status": "PASS_PARTIAL_CURRENT_SCOPE",
+  "business_protocol_fixture_responses_compared": 8,
+  "baseline": "64e1665",
+  "independently_injected_recorder_failures": [
+    "mark",
+    "identify",
+    "snapshot",
+    "start",
+    "interval",
+    "finish"
+  ],
+  "numeric_string_sanitization": "PASS",
+  "resource_nonnumeric_start_rejected": "PASS",
+  "cached_init_generation_and_runtime_generation": "PASS",
+  "limits": "No browser, real Python or stable final source claim; author remains active."
+}

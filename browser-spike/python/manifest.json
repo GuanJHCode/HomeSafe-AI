@@ -1,5 +1,5 @@
 {
-  "bundle_sha256": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+  "bundle_sha256": "9292ae7a2ec4a2e91cf90640dbf318ecafa0a25bc2698875c311e5d6a1540be8",
   "files": [
     {
       "path": "__init__.py",
@@ -7,7 +7,7 @@
     },
     {
       "path": "models.py",
-      "sha256": "551b87a607e5319c7dc203cc4ff55a0ed21e3cb1ab062bc319adbd8e51f09cd3"
+      "sha256": "0194bd5ec04ecc80c65aed60214244f73b9002500d0de993fe769edf8cecd541"
     },
     {
       "path": "geometry.py",

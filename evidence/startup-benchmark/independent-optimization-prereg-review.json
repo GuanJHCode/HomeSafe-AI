@@ -1,0 +1,36 @@
+{
+  "scope": "INDEPENDENT_PR2_PREREGISTRATION_REVIEW_NO_EXECUTION",
+  "reviewer": "/root/review_delivery",
+  "reviewed_at": "2026-11-04T10:33:16.501785+00:00",
+  "decision": "PASS_DESIGN_AND_FROZEN_INPUTS; EXECUTION_REQUIRES_SEPARATE_CORRECTNESS_REVIEW_AND_EXCLUSIVE_WINDOW",
+  "registration_sha256": "d8cdd8ed45153fa85e0bb435d48f01dc45f40594936021c6114332b3866f3fb8",
+  "baseline": "Traced64e1665 + PR1; NOT bare64e1665",
+  "candidate": "Same PR1 frontend/worker/runtime with PR2 canonical model split",
+  "dist_files_count": 28,
+  "changed_distribution_files": [
+    "CHECKSUMS.sha256",
+    "engine/python/homesafe_core.zip",
+    "engine/python/manifest.json",
+    "preview-manifest.json"
+  ],
+  "source_inventory_difference": [
+    "frozen_core_zip/homesafe_core/models.py"
+  ],
+  "manifest_and_core_bytes": "Both distributions every listed entry size+digest verified offline",
+  "trace_mode": "required for A and B",
+  "harness": "Same reviewed frozen harness and fingerprint set",
+  "adoption_rule": "At least4/5 improving pairs AND median A-B savings>=100ms, eligible for independent review only; actual3000ms target remains separate; final enforce required",
+  "execution_preconditions": [
+    "DO_NOT_RUN until actual Pyodide bundle and browser correctness acceptance completed and independently reviewed",
+    "DO_NOT_RUN concurrently with overhead experiment or other browser/heavy CPU work",
+    "Require explicit parent authorization for the single optimization measurement window"
+  ],
+  "run_claim_exists": false,
+  "browser_started": false,
+  "new_network_requests": false,
+  "limitations": [
+    "Does not approve PR2 Python correctness, Pyodide dependency closure or browser functional regression; those require the separate assigned reviewers",
+    "No optimization effect is claimed before the fixed comparison",
+    "CoreZIP changes expected; browser/runtime/Vue/Three source and distribution bytes otherwise identical except derived manifest/checksums"
+  ]
+}

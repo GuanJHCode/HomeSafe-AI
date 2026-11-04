@@ -1,0 +1,78 @@
+{
+  "scope": "INDEPENDENT_OFFLINE_PR2_PAIRED_RESULT_AUDIT",
+  "reviewer": "/root/review_delivery",
+  "reviewed_at": "2026-11-04T10:37:54.012692+00:00",
+  "decision": "PASS_FIXED_ENGINEERING_ADOPTION_SIGNAL; FIRST_EDITABLE_BUDGET_STILL_FAILS",
+  "result_sha256": "a8604f03a5a1070407575cf08dbe5c7b4f801bfbf43385d8a7212eba79205364",
+  "registration_sha256": "d8cdd8ed45153fa85e0bb435d48f01dc45f40594936021c6114332b3866f3fb8",
+  "harness_sha256": "dd4992e09ad258c1f5a0f5f373656e6146c3c94d5a516355aef7831756bf1353",
+  "checks": {
+    "all10_fixed_order_fresh_context_actual_edits": "PASS",
+    "paired_initial_and_edited_hashes": "PASS",
+    "raw_core_runtime_and_registered_environment": "PASS",
+    "registration_helper_harness_identity": "PASS",
+    "required_trace_lifecycle_phase_generation_identity": "PASS all10",
+    "thread_epochs_stage_durations_UI_order_and_overlap_union": "PASS independently recomputed",
+    "all_summary_and_paired_statistics": "PASS independently recomputed"
+  },
+  "pairs": [
+    {
+      "pair": 1,
+      "order": [
+        "A",
+        "B"
+      ],
+      "A_ms": 4163.5,
+      "B_ms": 3660.300000000745,
+      "saving_ms": 503.19999999925494
+    },
+    {
+      "pair": 2,
+      "order": [
+        "B",
+        "A"
+      ],
+      "A_ms": 4125.800000000745,
+      "B_ms": 3667.5,
+      "saving_ms": 458.30000000074506
+    },
+    {
+      "pair": 3,
+      "order": [
+        "A",
+        "B"
+      ],
+      "A_ms": 3983.89999999851,
+      "B_ms": 3649.5,
+      "saving_ms": 334.3999999985099
+    },
+    {
+      "pair": 4,
+      "order": [
+        "B",
+        "A"
+      ],
+      "A_ms": 4144.89999999851,
+      "B_ms": 3877.9000000003725,
+      "saving_ms": 266.99999999813735
+    },
+    {
+      "pair": 5,
+      "order": [
+        "A",
+        "B"
+      ],
+      "A_ms": 3952.4000000003725,
+      "B_ms": 3690.5999999996275,
+      "saving_ms": 261.80000000074506
+    }
+  ],
+  "improving_pairs": 5,
+  "paired_median_saving_ms": 334.3999999985099,
+  "candidate_first_editable_p95_ms": 3877.9000000003725,
+  "candidate_first_editable_target_ms": 3000,
+  "candidate_first_editable_budget": "FAIL",
+  "hot_budget_this_paired_harness": "NOT_RUN",
+  "adoption_scope": "Meets predeclared4/5+median100 engineering signal relative to traced64 baseline. Final implementation adoption requires assigned independent correctness review; finalfullenforce separately required. This does not claim population significance or solve3s target.",
+  "reviewer_started_browser_or_tests": false
+}

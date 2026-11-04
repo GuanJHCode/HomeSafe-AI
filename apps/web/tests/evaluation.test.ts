@@ -124,3 +124,40 @@ test('retry uses refreshed runtime configuration and never replays a failed oper
   assert.equal(requests, 0);
   evaluation.dispose();
 });
+
+test('optional trace observers cannot reject business results and wrong generations are ignored', async () => {
+  const { createStartupTrace } = await import('../../../browser-spike/startup-trace.mjs');
+  const windowTrace = createStartupTrace({ thread: 'window', generation: 4 });
+  const wrong = createStartupTrace({ thread: 'worker', generation: 3 });
+  const correct = createStartupTrace({ thread: 'worker', generation: 4 });
+  let observed = 0;
+  const evaluation = new EvaluationController({ config, base: 'https://example.test/', trace: windowTrace,
+    onStartupTrace: () => { observed++; throw new Error('broken observer'); },
+    createClient: () => ({
+      initialize: async (_config, _base, context) => {
+        assert.equal(context?.generation, 4);
+        return { result: metadata, startup_trace: wrong.snapshot() };
+      },
+      request: async (_op, _payload, revision) => ({ clientRevision: revision, result: assessment, startup_trace: correct.snapshot() }),
+      dispose: () => {},
+    }),
+  });
+  assert.deepEqual(await evaluation.ensureReady(), metadata); assert.equal(observed, 0);
+  assert.deepEqual((await evaluation.evaluateDraft(scene, 1))?.assessment, assessment);
+  assert.equal(observed, 1); evaluation.dispose();
+});
+
+test('failed first evaluation retains same-generation diagnostics while preserving its real error', async () => {
+  const { createStartupTrace } = await import('../../../browser-spike/startup-trace.mjs');
+  const windowTrace = createStartupTrace({ thread: 'window', generation: 9 });
+  const workerTrace = createStartupTrace({ thread: 'worker', generation: 9 });
+  workerTrace.mark('first_evaluation');
+  let observed = 0;
+  const error = Object.assign(new Error('actual rule failure'), { startup_trace: workerTrace.snapshot() });
+  const evaluation = new EvaluationController({ config, base: 'https://example.test/', trace: windowTrace,
+    onStartupTrace: () => { observed++; },
+    createClient: () => ({ initialize: async () => ({ result: metadata }), request: async () => { throw error; }, dispose: () => {} }),
+  });
+  await assert.rejects(evaluation.evaluateDraft(scene, 1), value => value === error);
+  assert.equal(observed, 1); evaluation.dispose();
+});

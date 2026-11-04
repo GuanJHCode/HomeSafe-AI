@@ -1,0 +1,51 @@
+{
+  "scope": "INDEPENDENT_PRE_RUN_REVIEW_NO_BROWSER",
+  "reviewer": "/root/review_delivery",
+  "reviewed_at": "2026-11-04T10:29:26.760975+00:00",
+  "decision": "PASS_RUNNABLE_FROZEN_INSTRUMENTATION_OVERHEAD_EXPERIMENT",
+  "blocking_findings": [],
+  "registration": "overhead-registration.json",
+  "registration_sha256": "3882ed851fe46796ae806bf4f2ab8b94cc6653cab024c664b2f989aaf0008f02",
+  "harness_sha256": "dd4992e09ad258c1f5a0f5f373656e6146c3c94d5a516355aef7831756bf1353",
+  "measurement_fingerprints_sha256": "3654fa7f6ae24dc08ee6368a068eb54a498d006f6971681b7c145463aaf6ef82",
+  "purpose": "instrumentation_overhead",
+  "checks": {
+    "independent_pure_tests": "9 PASS",
+    "independent_cli_validate": "PASS; NO_NETWORK; NO_BROWSER; NO_RESULT_CREATED",
+    "source_inventory_digests": "MATCH registration",
+    "measurement_callback_and_actual_edit_block": "Exact frozen production parity PASS",
+    "same_actual_UI_core_and_runtime_versions": "Assertions require expected core, Pyodide314.0.6/Pydantic2.12.5",
+    "pair_order": "AB/BA/AB/BA/AB",
+    "attempt_policy": "Ten fixed sequential fresh contexts; failures retained without replacements; setup failure records unattempted schedule",
+    "canonical_pair_comparability": "Initial and edited hashes must match within every pair",
+    "output_policy": "Exclusive preregistration run-claim and exclusive result file; persisted checkpoints",
+    "failure_statistics": "No success-only percentile or eligibility after failed sample/pair",
+    "cleanup_failure": "Explicit decision invalidation and regression PASS",
+    "trace": "B required, A optional; thread generation/identity plus timeOrigin+now alignment and required lifecycle/span checks; overlapping stages use interval union",
+    "decision_modes": "instrumentation_overhead => NOT_APPLICABLE; optimization => at least4/5 improving pairs and median saving>=100ms; separate latency gates",
+    "cgroup_now_matches_registration": {
+      "cpu_max": "400000 100000",
+      "memory_max": "17179869184"
+    }
+  },
+  "scope_limits": [
+    "No browser, performance or network run in this review",
+    "Served distribution/core hash and actual browser version validation occur in actual run preflight",
+    "Source/lock provenance inventory declarations checked for digest identity; full served distribution bytes not rehashed by this harness",
+    "B inventory is scoped browser-runtime input and frozen core ZIP, not full active PR2/tool-source tree",
+    "Five pairs are bounded engineering evidence, not population significance",
+    "Instrument overhead cannot qualify an optimization; final original enforce still required",
+    "Hot150ms gate NOT_RUN in paired harness",
+    "No real GLB/public HTTPS/Edge/Safari acceptance"
+  ],
+  "fixes_reviewed": [
+    "Expected runtime versions compared to each actual UI Worker",
+    "Browser cleanup failure disables otherwise eligible decision"
+  ],
+  "actions_not_taken": [
+    "No browser launch",
+    "No runtime measurement",
+    "No implementation edit",
+    "No push/deployment"
+  ]
+}

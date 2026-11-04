@@ -4,7 +4,7 @@ import sys,json,argparse
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(R/'reference'))
-from homesafe_core.models import ContractBundle
+from homesafe_core.contract_bundle import ContractBundle
 
 def ts_type(s):
     if '$ref' in s: return s['$ref'].split('/')[-1]

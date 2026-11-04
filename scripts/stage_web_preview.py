@@ -50,7 +50,7 @@ def preview_files():
     files['engine/assets.json'] = json_bytes([asset.model_dump(mode='json') for asset in assets])
     files['engine/scene-before.json'] = json_bytes(scene.model_dump(mode='json'))
     files['engine/scene-main-challenge.json'] = json_bytes(main_challenge_scene(scene).model_dump(mode='json'))
-    for name in ('rule-worker.mjs', 'worker-controller.mjs'):
+    for name in ('rule-worker.mjs', 'worker-controller.mjs', 'startup-trace.mjs'):
         files[f'engine/{name}'] = (spike / name).read_bytes()
     bundle, core_manifest = build_bundle()
     files['engine/python/homesafe_core.zip'] = bundle

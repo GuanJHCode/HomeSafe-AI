@@ -1,0 +1,60 @@
+{
+  "scope": "PR2_IMPLEMENTER_LOCAL_CORRECTNESS_NOT_PERFORMANCE_ADOPTION",
+  "receipts": [
+    {
+      "source": "/workspace/scratch/pr2-baseline-runtime-closure.json",
+      "saved": "evidence/startup-pr2/pr2-baseline-runtime-closure.json",
+      "sha256": "fb94728b593c205d61812f3ccd056e5bb6c68ebf11171ca57f5fa61394fe4c44"
+    },
+    {
+      "source": "/workspace/scratch/pr2-candidate-runtime-closure.json",
+      "saved": "evidence/startup-pr2/pr2-candidate-runtime-closure.json",
+      "sha256": "01314488658e54569d6d236ad8bade9be0d5c625eda70164712850227e79ec6e"
+    },
+    {
+      "source": "/workspace/scratch/pr2-functionality/browser-spike.json",
+      "saved": "evidence/startup-pr2/browser-spike.json",
+      "sha256": "73080b88b2a2778f428bbcaa1c3ccd125ddaa694b5eb33cc3900e8c0037aebc4"
+    },
+    {
+      "source": "/workspace/scratch/pr2-functionality/deployment-transport.json",
+      "saved": "evidence/startup-pr2/deployment-transport.json",
+      "sha256": "7ae404f5fa43d902af17a3353ad3ba824b81832aad16cba186f1be02c816f342"
+    },
+    {
+      "source": "/workspace/scratch/pr2-functionality/embedding.json",
+      "saved": "evidence/startup-pr2/embedding.json",
+      "sha256": "1d902e94509256b681d628fbfeaded333d3f3639e565042bb82e4cdea527b43c"
+    },
+    {
+      "source": "/workspace/scratch/pr2-functionality/experience.json",
+      "saved": "evidence/startup-pr2/experience.json",
+      "sha256": "b2333e40cc605f2fe76bcd03e96cee7dcd5098f66b6acac24184f3f3545b6448"
+    },
+    {
+      "source": "/workspace/scratch/pr2-functionality/node-wasm-controller.json",
+      "saved": "evidence/startup-pr2/node-wasm-controller.json",
+      "sha256": "a67c8df9620bb8fb68159b043aba89cdd1ed5bde085bd58f8fc4feb635c26ae1"
+    },
+    {
+      "source": "/workspace/scratch/pr2-functionality/observations.json",
+      "saved": "evidence/startup-pr2/observations.json",
+      "sha256": "ce187e8bac2fd9754e56fc8e3769197e6d5bd507d826f63b0c436e2fcc984015"
+    },
+    {
+      "source": "/workspace/scratch/pr2-functionality/recovery.json",
+      "saved": "evidence/startup-pr2/recovery.json",
+      "sha256": "90500c29891e2a9ce79afe59623d88d723d1bbd9fafbd8713d19077f0b195b3d"
+    },
+    {
+      "source": "/workspace/scratch/pr2-functionality/startup-trace.json",
+      "saved": "evidence/startup-pr2/startup-trace.json",
+      "sha256": "4d401a86663015d19a56ac7c082552ac0670ee769aacd6bc9737241a352a230e"
+    },
+    {
+      "source": "/workspace/scratch/pr2-functionality/web-preview.json",
+      "saved": "evidence/startup-pr2/web-preview.json",
+      "sha256": "0bb5b5855fc563b410d6dbd6ad7ee38a9f723e88d811468ae83357df141a76a8"
+    }
+  ]
+}

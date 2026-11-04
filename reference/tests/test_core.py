@@ -2,7 +2,9 @@ import copy,json,math,random
 from pathlib import Path
 import pytest
 from pydantic import ValidationError
-from homesafe_core.models import Scene, AssetRenderDTO, ContractBundle
+from homesafe_core.models import Scene
+from homesafe_core.asset_models import AssetRenderDTO
+from homesafe_core.contract_bundle import ContractBundle
 from homesafe_core.engine import RuleEngine,FindingDiffer,ComparisonGuard
 from homesafe_core.validation import validate_scene
 from homesafe_core.geometry import FootprintService as G
@@ -217,6 +219,6 @@ def test_measured_observation_needs_timestamp():
     with pytest.raises(ValueError):validate_scene(s)
 
 def test_baked_asset_cannot_double_normalize():
-    from homesafe_core.models import AssetCalibration
+    from homesafe_core.asset_models import AssetCalibration
     args=dict(revision=1,orientation=dict(x=0.,y=0.,z=0.,w=1.),pivot_offset_after_rotation=dict(x=1.,y=0.,z=0.),normalized_bounds_m=dict(width=1.,height=1.,depth=1.),reviewed=True,strategy='baked_standard_glb')
     with pytest.raises(ValueError,match='second time'):AssetCalibration.model_validate(args)

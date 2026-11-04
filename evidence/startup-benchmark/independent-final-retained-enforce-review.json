@@ -1,0 +1,42 @@
+{
+  "reviewer": "/root/review_ux",
+  "verified_at": "2026-11-04T11:07:28.221580+00:00",
+  "audit_status": "PASS",
+  "performance_gate": "FAIL",
+  "retained_version": "PR1 tracing + PR2 canonical split; PR3 discarded and exact PR2 distribution restored",
+  "scope": "Offline independent recomputation and source/trace/registration verification; no browser, resampling, rebuild or threshold changes",
+  "registration_sha256": "273ffd05982955214ecc96f233c390a14a861eee81a859fd895cb06b737e9e68",
+  "result_sha256": "305dc1a7b4d0b01b75782b022465edfc212bda630a60d28406013bc50abafa63",
+  "manifest_sha256": "3ee69e5e576a0f9a54efdb1fb050c88354b814a4a212f0a1df4dc000f2fdb9f4",
+  "core_hash": "9292ae7a2ec4a2e91cf90640dbf318ecafa0a25bc2698875c311e5d6a1540be8",
+  "cold_first_editable_ms": [
+    3913.5,
+    4086.0999999996275,
+    3784.5999999996275,
+    3843.2999999988824,
+    4049.800000000745
+  ],
+  "cold_first_editable_p50_ms": 3913.5,
+  "cold_first_editable_p95_ms": 4086.0999999996275,
+  "cold_rules_ready_p95_ms": 4086.0999999996275,
+  "hot_evaluation_p95_ms": 12.600000001490116,
+  "targets": {
+    "first_editable_p95_le_3000_ms": false,
+    "cold_rules_le_12000_ms": true,
+    "hot_evaluation_p95_le_150_ms": true
+  },
+  "actual_accepted_edits": 10,
+  "required_traces_revalidated": 10,
+  "trace_analysis_exact_recomputation": "PASS using reviewed analyzer; Window/Worker epochs, phases, thread/generation, core/runtime identity checked; all accepted edit hashes differ from initial trace hashes",
+  "hot_samples": 30,
+  "hot_warmups": 3,
+  "registered_measurement_file_hashes": "PASS",
+  "historical_results": "Earlier PR2 3858.5ms is historical, not the final retained-version result. PR3 paired result and NOT_RUN_DISCARDED full enforce remain separately scoped.",
+  "limitations": [
+    "First observation is diagnostic only; the 3s target uses cold first-editable p95. Every sample verifies an actual accepted edit.",
+    "Placeholder model scene; real Lux3D load/render/release performance NOT_RUN.",
+    "Fresh contexts isolate browser cache, not operating-system caches or all runtime process reuse.",
+    "Localhost results do not establish anonymous HTTPS or public performance.",
+    "Chrome only; Edge and Safari NOT_RUN."
+  ]
+}

@@ -1,0 +1,114 @@
+// Isolated functional checks; injected persisted events do not certify native BFCache.
+// node scripts/check_startup_bootstrap.mjs URL CHROMIUM PUPPETEER_ENTRY OUTPUT_DIR
+import assert from 'node:assert/strict';
+import { mkdir,writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
+const [url,chrome,driver,output]=process.argv.slice(2);
+if(!url||!chrome||!driver||!output)throw new Error('Pass URL, Chromium, puppeteer entry and output directory.');
+const {launch}=await import(pathToFileURL(resolve(driver)).href);
+const browser=await launch({executablePath:chrome,headless:true,
+  args:['--use-angle=swiftshader','--enable-unsafe-swiftshader',...(process.env.CI?['--no-sandbox']:[])]});
+await mkdir(output,{recursive:true});
+const cases=[];
+try {
+  for(const kind of ['pre_adoption_cancel','ui_chunk_failure','adopted_suspend']) {
+    const context=await browser.createBrowserContext();const page=await context.newPage();
+    page.setDefaultTimeout(30000);await page.setViewport({width:1280,height:1000});
+    const errors=[];page.on('pageerror',error=>errors.push(error.message));
+    let navigations=0;page.on('framenavigated',frame=>{if(frame===page.mainFrame())navigations++;});
+    await page.evaluateOnNewDocument(()=>{
+      const Native=window.Worker;window.__entryWorkers={created:0,active:new Set(),requests:[]};
+      window.Worker=class extends Native {
+        constructor(...args){super(...args);window.__entryWorkers.created++;window.__entryWorkers.active.add(this);}
+        postMessage(message,...rest){window.__entryWorkers.requests.push(message.op);return super.postMessage(message,...rest);}
+        terminate(){window.__entryWorkers.active.delete(this);return super.terminate();}
+      };
+    });
+    let held,intercepted=0,cdp;
+    try {
+      if(kind!=='adopted_suspend'){
+        cdp=await page.createCDPSession();
+        cdp.on('Fetch.requestPaused',event=>{
+          intercepted++;
+          if(intercepted===1&&kind==='pre_adoption_cancel')held=event.requestId;
+          else if(intercepted===1)void cdp.send('Fetch.failRequest',{requestId:event.requestId,errorReason:'ConnectionReset'});
+          else void cdp.send('Fetch.continueRequest',{requestId:event.requestId});
+        });
+        await cdp.send('Fetch.enable',{patterns:[{urlPattern:'*/assets/mountApp-*.js',requestStage:'Request'}]});
+      }
+      await page.goto(url,{waitUntil:'domcontentloaded'});
+      if(kind==='pre_adoption_cancel'){
+        await page.waitForFunction(()=>window.__entryWorkers.created===1);
+        const deadline=Date.now()+10000;while(!held&&Date.now()<deadline)await new Promise(done=>setTimeout(done,20));
+        assert.ok(held,'UI chunk must be held while the real Worker starts');
+        assert.equal(await page.$('canvas'),null);
+        await transition('pagehide');
+        assert.equal(await active(),0);
+        await cdp.send('Fetch.continueRequest',{requestId:held});
+        await transition('pageshow');
+        await page.waitForFunction(()=>document.body.innerText.includes('已取消加载'));
+        assert.equal(await page.$('canvas'),null,'Late UI import must not mount a cancelled generation');
+        assert.equal(await page.evaluate(()=>window.__entryWorkers.created),1,'Persisted return cannot automatically restart');
+        await click('重试加载');await ready();
+        assert.equal(await page.evaluate(()=>window.__entryWorkers.created),2);assert.equal(await active(),1);
+        await realEdit();
+      } else if(kind==='ui_chunk_failure'){
+        await page.waitForFunction(()=>document.body.innerText.includes('界面加载失败'));
+        assert.equal(await active(),0);
+        await click('重新加载页面');await ready();assert.equal(await active(),1);assert.ok(navigations>=2);await realEdit();
+      } else {
+        await ready();await page.select('.toolbar select','chair');
+        const original=await position();await realEdit();const accepted=await position();const hash=await currentHash();
+        const canvas='canvas[aria-label="样例客厅三维场景"]';
+        const bounds=await page.$eval(canvas,node=>{node.scrollIntoView({block:'center'});const r=node.getBoundingClientRect();return{left:r.left,top:r.top,width:r.width,height:r.height};});
+        const values=accepted.match(/x (-?\d+\.\d+) 米 · z (-?\d+\.\d+) 米/);assert.ok(values);
+        const hit=project([Number(values[1]),.4,Number(values[2])],bounds);
+        await page.mouse.move(hit.x,hit.y);await page.mouse.down();await page.mouse.move(hit.x+18,hit.y+12,{steps:3});
+        assert.equal(await page.$eval(canvas,node=>node.dataset.dragging),'true');
+        await transition('pagehide');await page.mouse.up();
+        assert.notEqual(await page.$eval(canvas,node=>node.dataset.dragging),'true');
+        assert.equal(await active(),0);await transition('pageshow');
+        assert.equal(await page.$('.report .hash'),null);assert.equal(await position(),accepted);
+        await click('重建 Worker 并重试');await ready();assert.equal(await currentHash(),hash);assert.equal(await position(),accepted);
+        await click('撤销');await page.waitForFunction(text=>document.querySelector('[data-testid="selected-position"]')?.textContent?.trim()===text,{},original);
+        await realEdit();const beforePending=await position();const acceptedHash=await currentHash();
+        const posted=await page.evaluate(async()=>{
+          const before=window.__entryWorkers.requests.filter(op=>op==='evaluate').length;
+          document.querySelector('button[aria-label="向前移动"]').click();
+          for(let i=0;i<6;i++)await Promise.resolve();
+          const after=window.__entryWorkers.requests.filter(op=>op==='evaluate').length;
+          window.dispatchEvent(new PageTransitionEvent('pagehide',{persisted:true}));
+          return after-before;
+        });
+        assert.equal(posted,1,'A real evaluate request must be interrupted');
+        await page.waitForSelector('[aria-label="检查结果"] [role="alert"]');
+        assert.equal(await active(),0);assert.equal(await position(),beforePending);
+        await transition('pageshow');await click('重建 Worker 并重试');await ready();
+        assert.equal(await currentHash(),acceptedHash);assert.equal(await position(),beforePending);
+        await click('撤销');await page.waitForFunction(text=>document.querySelector('[data-testid="selected-position"]')?.textContent?.trim()===text,{},original);
+        assert.equal(await active(),1);
+      }
+      assert.deepEqual(errors,[]);
+      cases.push({case:kind,status:'PASS',navigations,intercepted_ui_requests:intercepted,
+        workers:await page.evaluate(()=>({created:window.__entryWorkers.created,active:window.__entryWorkers.active.size}))});
+    }catch(error){await writeFile(resolve(output,`${kind}-failure.txt`),String(error)+'\n'+await page.evaluate(()=>document.body.innerText));throw error;}
+    finally{await context.close();}
+    async function active(){return page.evaluate(()=>window.__entryWorkers.active.size);}
+    async function transition(type){await page.evaluate(value=>window.dispatchEvent(new PageTransitionEvent(value,{persisted:true})),type);}
+    async function position(){return page.$eval('[data-testid="selected-position"]',node=>node.textContent.trim());}
+    async function currentHash(){return page.$eval('.report .hash',node=>node.textContent);}
+    async function ready(){await page.waitForFunction(()=>document.querySelector('[aria-label="检查结果"]')?.getAttribute('aria-busy')==='false'&&document.querySelector('.report .hash')&&!document.querySelector('[aria-label="检查结果"] [role="alert"]'));}
+    async function click(text){assert.equal(await page.evaluate(value=>{const node=[...document.querySelectorAll('button')].find(item=>item.textContent.trim()===value);if(!node||node.disabled)return false;node.click();return true;},text),true);}
+    async function realEdit(){await ready();await page.select('.toolbar select','chair');const before=await currentHash();await page.click('button[aria-label="向前移动"]');await page.waitForFunction(hash=>document.querySelector('.report .hash')?.textContent&&document.querySelector('.report .hash').textContent!==hash,{},before);await ready();}
+  }
+  const result={status:'PASS',scope:'ISOLATED_CHROMIUM_BOOTSTRAP_FUNCTIONAL',browser:await browser.version(),url,
+    executed_at:new Date().toISOString(),cases,fault_injection:{ui_chunk:'page-only CDP holds/fails actual mountApp module fetch',
+      lifecycle:'PageTransitionEvent pagehide/pageshow with persisted=true injected into real Window handlers; native BFCache navigation NOT_RUN',
+      dragging:'real Puppeteer pointer drag cancelled by pagehide',pending_move:'real evaluate posted, then pagehide in the same Window task'},
+    limits:['No performance claim','No public/private-model/Edge/Safari certification']};
+  await writeFile(resolve(output,'bootstrap.json'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result,null,2));
+}finally{await browser.close();}
+
+function project(point,bounds){const eye=[-2.76,5.16,-3.92];const f=unit(diff([3,.45,2.24],eye));const r=unit(cross(f,[0,1,0]));const u=cross(r,f);const o=diff(point,eye);const scale=bounds.height/(2*Math.tan(24*Math.PI/180)*dot(o,f));return{x:bounds.left+bounds.width/2+scale*dot(o,r),y:bounds.top+bounds.height/2-scale*dot(o,u)};}
+function diff(a,b){return a.map((v,i)=>v-b[i]);}function dot(a,b){return a.reduce((s,v,i)=>s+v*b[i],0);}function unit(a){return a.map(v=>v/Math.hypot(...a));}function cross([x,y,z],[a,b,c]){return[y*c-z*b,z*a-x*c,x*b-y*a];}

@@ -1,0 +1,31 @@
+{
+  "scope": "INDEPENDENT_PR3_FINAL_PREREGISTRATION_REVIEW_NO_EXECUTION",
+  "reviewer": "/root/review_delivery",
+  "review_record_written_at": "2026-11-04T10:58:56.089843+00:00",
+  "decision": "PASS_RUNNABLE_FROZEN_PR3_COMPARISON_ROOT_ONLY_EXCLUSIVE_WINDOW",
+  "registration_sha256": "5e9cef303ea32e5dcf21095bdd02486a571455183950b41cab3580e2a2df3c96",
+  "inventory_sha256": "4b0d88cd4d3e43ef5f329bdd24ccbc050e89be2f3b6feece0b5375900d6e29a7",
+  "harness_sha256": "dd4992e09ad258c1f5a0f5f373656e6146c3c94d5a516355aef7831756bf1353",
+  "source_freeze_receipt_sha256": "646ab8e259b565dd06da4b20133af52159c483783d20bc23dba6995d988948fd",
+  "checks": {
+    "final_source_freeze": "All11 source files and29 distribution files match supplied freeze receipt",
+    "registration_and_source_inventory": "Exact hashes; all current runtime/7 implementation-test files and frozenZIP contents checked",
+    "single_change": "Only6 declared frontendpaths differ from preservedPR2 inventory; canonical/runtime/worker/trace unchanged",
+    "actual_distributions": "A28/B29 file sets; commonchanges index.html plus previewmanifest/checksums; old monolithic JS replaced by light entry and mountApp chunks; all listed filebytes verified",
+    "core": "Both9292ae7a2ec4a2e91cf90640dbf318ecafa0a25bc2698875c311e5d6a1540be8",
+    "runtime_lock_browser_harness": "Same registered versions/lock/frozen measurement code",
+    "fixed_measurement": "AB/BA/AB/BA/AB tenfresh attempts, bothrequired trace, actualDOM+move/hash unchanged, failuresretained",
+    "adoption_gate": "Original>=4/5 pairedimprovement AND mediansaving>=100ms; no3000ms threshold change",
+    "cli_validate": "PASS;NO_NETWORK;NO_BROWSER;NO_RESULT_CREATED",
+    "cgroup_registration": "Matches currentvalues",
+    "run_claim": "Absent before approval communication"
+  },
+  "implementation_correctness_boundary": "Parent reports final independent functional review PASS; detailed code/browser correctness belongs to its assigned reviewer, not this comparability audit",
+  "new_browser_or_sampling_run_by_reviewer": false,
+  "limitations": [
+    "No PR3 performance benefit or adoption conclusion before actualfixed round",
+    "Finalfullenforce and exactsource staging still required",
+    "Source workingtree uncommitted; registry inventories identify frozen inputs",
+    "Synthetic localhost only, no realGLB/publicnetwork/otherbrowser claim"
+  ]
+}

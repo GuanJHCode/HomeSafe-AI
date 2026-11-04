@@ -1,0 +1,113 @@
+{
+  "scope": "FINAL_RETAINED_PR2_CORRECTNESS_AFTER_PR3_ROLLBACK",
+  "started_at": "2026-11-04T11:07:19.230610+00:00",
+  "commands": [
+    {
+      "name": "native",
+      "argv": [
+        "/workspace/homesafe-venv/bin/python",
+        "-m",
+        "pytest",
+        "reference/tests",
+        "-q"
+      ],
+      "started_at": "2026-11-04T11:07:19.230621+00:00",
+      "ended_at": "2026-11-04T11:07:22.758629+00:00",
+      "exit_code": 0,
+      "stdout": "native.stdout.log",
+      "stderr": "native.stderr.log",
+      "stdout_sha256": "c9f243bedb2ef2d2eadc96f6f305f6bf63d07d6207091870d2ead49809bf628d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "passed": 334,
+      "included_ci_workflow_cases": 8
+    },
+    {
+      "name": "app",
+      "argv": [
+        "npm",
+        "--prefix",
+        "apps/web",
+        "test"
+      ],
+      "started_at": "2026-11-04T11:07:22.758889+00:00",
+      "ended_at": "2026-11-04T11:07:23.528318+00:00",
+      "exit_code": 0,
+      "stdout": "app.stdout.log",
+      "stderr": "app.stderr.log",
+      "stdout_sha256": "c6faa4acf2264e9884112acc884e323209477c1904929753816cda9f389a6c23",
+      "stderr_sha256": "45342ca54fc3787657ce6eb4dbe6d4510cbf68d24318d44416c0176ab31ebf4b",
+      "tests": 36,
+      "passed": 36,
+      "failed": 0
+    },
+    {
+      "name": "javascript",
+      "argv": [
+        "bash",
+        "-c",
+        "node --test browser-spike/*.test.mjs scripts/*.test.mjs"
+      ],
+      "started_at": "2026-11-04T11:07:23.528601+00:00",
+      "ended_at": "2026-11-04T11:07:23.720955+00:00",
+      "exit_code": 0,
+      "stdout": "javascript.stdout.log",
+      "stderr": "javascript.stderr.log",
+      "stdout_sha256": "34b8b45c0a4bd8296a0f568f3c0eafdf22e5736d29d330d5a6efd08a0607277a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests": 30,
+      "passed": 30,
+      "failed": 0
+    },
+    {
+      "name": "contracts",
+      "argv": [
+        "/workspace/homesafe-venv/bin/python",
+        "scripts/generate_contracts.py",
+        "--check"
+      ],
+      "started_at": "2026-11-04T11:07:23.721221+00:00",
+      "ended_at": "2026-11-04T11:07:23.900889+00:00",
+      "exit_code": 0,
+      "stdout": "contracts.stdout.log",
+      "stderr": "contracts.stderr.log",
+      "stdout_sha256": "79cb740e874a6678549a2dfadae9cc939ef5b36ff26d762e763b363366aff32d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "files_unchanged": 3
+    },
+    {
+      "name": "package",
+      "argv": [
+        "/workspace/homesafe-venv/bin/python",
+        "scripts/validate_package.py"
+      ],
+      "started_at": "2026-11-04T11:07:23.901146+00:00",
+      "ended_at": "2026-11-04T11:07:24.343013+00:00",
+      "exit_code": 0,
+      "stdout": "package.stdout.log",
+      "stderr": "package.stderr.log",
+      "stdout_sha256": "6c956fe8bdb88633cf01bc8479cc92b2aea7191f4212475043c3b86af01012ec",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "checks": 8,
+      "failed": 0
+    }
+  ],
+  "not_run": [
+    "browser",
+    "performance",
+    "rebuild",
+    "export_package"
+  ],
+  "notes": [
+    "CI workflow eight tests are included in the full native suite.",
+    "Package manifest and CHECKSUMS are parent-owned pending final update; no export validation attempted.",
+    "Post-rollback typecheck/build and exact dist equivalence use existing rollback receipts."
+  ],
+  "ended_at": "2026-11-04T11:07:24.343329+00:00",
+  "result": "PASS",
+  "reused_evidence": [
+    "evidence/startup-pr3-rollback-verification-20261104.json",
+    "evidence/review-startup-pr3-rollback-20261104.json"
+  ],
+  "product_changes_during_validation": "NONE",
+  "app_stderr": "npm informational update notice only; no test failures"
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "experiment_id": "PR2_CANONICAL_MODEL_SPLIT_20261104_FIXED_FIVE_PAIRS",
+  "purpose": "optimization",
+  "pair_order": [
+    [
+      "A",
+      "B"
+    ],
+    [
+      "B",
+      "A"
+    ],
+    [
+      "A",
+      "B"
+    ],
+    [
+      "B",
+      "A"
+    ],
+    [
+      "A",
+      "B"
+    ]
+  ],
+  "baseline_definition": "A is fixed64e1665 plus reviewed PR1 instrumentation, separately measured by overhead-registration.json; it is NOT the bare64e1665 distribution.",
+  "single_change": "Canonical model split reducing browser-only model initialization; identical PR1 trace instrumentation on A and B.",
+  "trace_comparability_note": "Both A and B require the same reviewed PR1 traces and use the identical frozen measurement harness. Separate instrumentation_overhead experiment quantifies trace-versus-bare64 cost; this optimization estimates split-versus-traced-baseline, not split-versus-bare64.",
+  "treatments": {
+    "A": {
+      "url": "http://127.0.0.1:4200/traced-baseline/",
+      "trace_mode": "required",
+      "source_revision": "64e1665 + PR1 traced unoptimized working snapshot",
+      "source_fingerprint_sha256": "91ecf2ba06a7a5b007d655010123ad0f0ebac624387b51b045ee6a89f1363e29",
+      "lock_sha256": "5916b596901449dc42736a8e50bb8ee647ae1b90c06f63e818c6a654401da84d",
+      "dist_manifest_sha256": "8c59b3663eb691c38e00f7f25d3eb4ade3ebf76b3ad42d3e2dff2f27f738a6d1",
+      "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+      "source_fingerprint_scope": "B-source-runtime-inventory.json from prior overhead registration; traced unoptimized baseline, not bare64"
+    },
+    "B": {
+      "url": "http://127.0.0.1:4200/candidate/",
+      "trace_mode": "required",
+      "source_revision": "64e1665 + PR1 instrumentation + PR2 canonical split working snapshot",
+      "source_fingerprint_sha256": "79ce366fb4c02c4e4dbd7a2f25525c98954351b1b85c36598d22aeefb8682ec1",
+      "lock_sha256": "5916b596901449dc42736a8e50bb8ee647ae1b90c06f63e818c6a654401da84d",
+      "dist_manifest_sha256": "3ee69e5e576a0f9a54efdb1fb050c88354b814a4a212f0a1df4dc000f2fdb9f4",
+      "core_hash": "9292ae7a2ec4a2e91cf90640dbf318ecafa0a25bc2698875c311e5d6a1540be8",
+      "source_fingerprint_scope": "PR2-candidate-source-runtime-inventory.json; browser runtime inputs only"
+    }
+  },
+  "chrome": {
+    "executable": "/usr/bin/chromium",
+    "expected_version": "Chrome/154.0.8037.57"
+  },
+  "driver": {
+    "path": "/workspace/homesafe-browser/node_modules/puppeteer-core/lib/esm/puppeteer/puppeteer-core.js",
+    "sha256": "8e51079d7c2c493ca8ea928bc734ac50fd4700f38674a669cf9da2a9a2dae545"
+  },
+  "harness_sha256": "dd4992e09ad258c1f5a0f5f373656e6146c3c94d5a516355aef7831756bf1353",
+  "measurement_fingerprints_sha256": "3654fa7f6ae24dc08ee6368a068eb54a498d006f6971681b7c145463aaf6ef82",
+  "expected_runtime": {
+    "pyodide": "314.0.6",
+    "pydantic": "2.12.5"
+  },
+  "expected_environment": {
+    "cgroup_cpu_max": "400000 100000",
+    "cgroup_memory_max": "17179869184"
+  },
+  "execution_preconditions": [
+    "DO_NOT_RUN until actual Pyodide bundle and browser correctness acceptance completed and independently reviewed",
+    "DO_NOT_RUN concurrently with overhead experiment or other browser/heavy CPU work",
+    "Require explicit parent authorization for the single optimization measurement window"
+  ]
+}

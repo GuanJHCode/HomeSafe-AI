@@ -1,4 +1,5 @@
-import { computed, onMounted, onUnmounted, ref, shallowRef, watch } from 'vue';
+import { computed, nextTick, onMounted, onUnmounted, ref, shallowRef, watch } from 'vue';
+import { createStartupTrace, type StartupTraceHandle, type TraceSnapshot } from '../../../browser-spike/startup-trace.mjs';
 import type {
   Assessment, AssetRenderDTO, ChallengeResult, Comparison, ObservationEdit, ObservationOption, PlacementIssue, Profile, Scene, TransformInput,
 } from '../../../contracts/frontend/domain.ts';
@@ -72,6 +73,16 @@ export function useLivingRoom() {
   let revision = 0;
   let disposed = false;
   let startup: AbortController | null = null;
+  let startupGeneration = 0;
+  let startupTrace: StartupTraceHandle | null = null;
+
+  function publishStartupTrace(trace: StartupTraceHandle, workerTrace?: TraceSnapshot) {
+    try {
+      window.dispatchEvent(new CustomEvent('homesafe-startup-trace', {
+        detail: { window_trace: trace.snapshot(), ...(workerTrace ? { worker_trace: workerTrace } : {}) },
+      }));
+    } catch { /* Passive diagnostics never alter scene or Worker lifecycle. */ }
+  }
 
   const base = new URL(import.meta.env.BASE_URL, window.location.href).href;
   const current = computed(() => !busy.value && !failure.value && layout.value && accepted.value
@@ -315,6 +326,8 @@ export function useLivingRoom() {
 
   function mountRenderer() {
     if (disposed || !host.value) return;
+    const endRender = startupTrace?.status === 'running' ? startupTrace.start('renderer_create') : null;
+    let rendered = false;
     transforms?.dispose();
     transforms = null;
     runtime?.dispose();
@@ -340,6 +353,7 @@ export function useLivingRoom() {
       mounted.setFindings(checks.value?.findings.filter(finding => finding.status === 'triggered')
         .flatMap(finding => finding.object_ids) ?? []);
       mounted.showPlacementIssues(placement.value);
+      rendered = true;
     } catch (error) {
       transforms?.dispose();
       transforms = null;
@@ -347,11 +361,20 @@ export function useLivingRoom() {
       runtime = null;
       assetStates.value = {};
       renderFailure.value = error instanceof Error ? error.message : String(error);
+    } finally {
+      endRender?.(rendered ? 'ok' : 'failed');
     }
   }
 
   async function initialize(retry: boolean) {
     if (disposed) return;
+    if (startupTrace?.status === 'running') {
+      startupTrace.finish('cancelled');
+      publishStartupTrace(startupTrace);
+    }
+    const trace = createStartupTrace({ thread: 'window', generation: ++startupGeneration });
+    startupTrace = trace;
+    trace.mark('attempt_started');
     startup?.abort(new Error('已取消旧加载'));
     const attempt = new AbortController();
     startup = attempt;
@@ -366,21 +389,25 @@ export function useLivingRoom() {
       // Observe both promises immediately: scene/network errors cannot leave an
       // unhandled rule startup, and cancellation prevents late controller creation.
       const loadRules = async () => {
-        const config = await readJsonResource<WorkerConfig>(new URL('engine/config.json', base), { cache: 'no-store', signal: attempt.signal });
+        const config = await trace.measure('config_fetch', () => readJsonResource<WorkerConfig>(new URL('engine/config.json', base), { cache: 'no-store', signal: attempt.signal }));
         if (!active()) return null;
         if (!evaluation) {
-          evaluation = new EvaluationController({ config, base });
+          evaluation = new EvaluationController({ config, base, trace,
+            onStartupTrace: snapshot => {
+              if (startupTrace?.generation === snapshot.generation) publishStartupTrace(startupTrace, snapshot);
+            },
+          });
           challenge = new ChallengeController(evaluation);
         }
-        return retry ? evaluation.restart(config) : evaluation.ensureReady();
+        return retry ? evaluation.restart(config, trace) : evaluation.ensureReady();
       };
       const loadScene = async () => {
         if (!template) {
-          const [scene, assets, mainScene] = await Promise.all([
+          const [scene, assets, mainScene] = await trace.measure('scene_fetch', () => Promise.all([
             readJsonResource<Scene>(new URL('engine/scene-before.json', base), { signal: attempt.signal }),
             readJsonResource<AssetRenderDTO[]>(new URL('engine/assets.json', base), { signal: attempt.signal }),
             readJsonResource<Scene>(new URL('engine/scene-main-challenge.json', base), { signal: attempt.signal }),
-          ]);
+          ]));
           if (!active()) return;
           template = scene;
           mainTemplate = mainScene;
@@ -388,6 +415,9 @@ export function useLivingRoom() {
           workspace = new WorkspaceController(scene);
           publishWorkspace();
           mountRenderer();
+        } else {
+          trace.mark('scene_reused');
+          if (runtime && !renderFailure.value) trace.mark('renderer_reused');
         }
       };
       const [metadata] = await Promise.all([loadRules(), loadScene()]);
@@ -400,6 +430,8 @@ export function useLivingRoom() {
         if (!result || !workspace.setAssessment(result.assessment)) throw new Error('未取得当前布局的评估结果。');
         publishWorkspace();
       }
+      if (accepted.value) trace.identify({ input_hash: accepted.value.input_hash, ruleset_version: accepted.value.ruleset_version });
+      trace.mark('first_evaluation_accepted');
       stage.value = '规则已就绪';
     } catch (error) {
       if (active()) {
@@ -409,6 +441,8 @@ export function useLivingRoom() {
         evaluation = null;
         challenge = null;
         failure.value = error instanceof Error ? error.message : String(error);
+        trace.finish('failed');
+        publishStartupTrace(trace);
       }
     } finally {
       if (active()) {
@@ -416,12 +450,24 @@ export function useLivingRoom() {
         initializing.value = false;
         startup = null;
         attempt.abort();
+        if (!failure.value) {
+          trace.finish('ready');
+          publishStartupTrace(trace);
+          // Diagnostic only: no extra await or change to edit enabling/acceptance.
+          void nextTick(() => {
+            if (disposed || startupTrace !== trace || busy.value || failure.value) return;
+            if (runtime && !renderFailure.value && report.value && canMove('chair')) trace.mark('edit_eligible');
+            publishStartupTrace(trace);
+          });
+        }
       }
     }
   }
 
   function cancelLoading() {
     if (!initializing.value) return;
+    startupTrace?.finish('cancelled');
+    if (startupTrace) publishStartupTrace(startupTrace);
     startup?.abort(new Error('已取消加载'));
     startup = null;
     evaluation?.dispose();
@@ -475,6 +521,7 @@ export function useLivingRoom() {
   onMounted(() => void initialize(false));
   onUnmounted(() => {
     disposed = true;
+    if (startupTrace?.status === 'running') startupTrace.finish('cancelled');
     startup?.abort(new Error('页面已关闭'));
     transforms?.dispose();
     runtime?.dispose();

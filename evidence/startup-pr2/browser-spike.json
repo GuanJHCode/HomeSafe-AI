@@ -1,0 +1,534 @@
+{
+  "scope": "REAL_CHROME_BROWSER_SPIKE",
+  "url": "http://127.0.0.1:4200/probe/?runtime=same-origin",
+  "browser": "Chrome/154.0.8037.57",
+  "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+  "cold": {
+    "pyodide": "314.0.6",
+    "pydantic": "2.12.5",
+    "core_hash": "9292ae7a2ec4a2e91cf90640dbf318ecafa0a25bc2698875c311e5d6a1540be8",
+    "startup_mode": "runtime_with_preloaded_pydantic",
+    "startup_ms": 2607.699999999255,
+    "packages_ms": 146.2000000011176,
+    "timing_note": "startup_ms includes runtime and preloaded packages; packages_ms is final package/import validation",
+    "total_ready_ms": 3289.699999999255,
+    "wall_ms": 3396
+  },
+  "warm": {
+    "pyodide": "314.0.6",
+    "pydantic": "2.12.5",
+    "core_hash": "9292ae7a2ec4a2e91cf90640dbf318ecafa0a25bc2698875c311e5d6a1540be8",
+    "startup_mode": "runtime_with_preloaded_pydantic",
+    "startup_ms": 2058.0999999996275,
+    "packages_ms": 155.09999999962747,
+    "timing_note": "startup_ms includes runtime and preloaded packages; packages_ms is final package/import validation",
+    "total_ready_ms": 2740.699999999255,
+    "wall_ms": 2799
+  },
+  "recovered": {
+    "pyodide": "314.0.6",
+    "pydantic": "2.12.5",
+    "core_hash": "9292ae7a2ec4a2e91cf90640dbf318ecafa0a25bc2698875c311e5d6a1540be8",
+    "startup_mode": "runtime_with_preloaded_pydantic",
+    "startup_ms": 1948,
+    "packages_ms": 154.7000000011176,
+    "timing_note": "startup_ms includes runtime and preloaded packages; packages_ms is final package/import validation",
+    "total_ready_ms": 2640.300000000745,
+    "wall_ms": 2689
+  },
+  "results": [
+    {
+      "name": "before",
+      "matches_expected": true,
+      "evaluation_ms": 56.59999999962747
+    },
+    {
+      "name": "conflict",
+      "matches_expected": true,
+      "evaluation_ms": 21.5
+    },
+    {
+      "name": "improved",
+      "matches_expected": true,
+      "evaluation_ms": 16.199999999254942
+    }
+  ],
+  "states": [
+    {
+      "name": "before",
+      "status": "in_progress",
+      "goal_results": [
+        false,
+        true
+      ],
+      "steps": 0,
+      "conflict_events": 0,
+      "invalid_attempts": 0,
+      "remaining_triggered": 3,
+      "remaining_needs_review": 4,
+      "setup_objects": 0,
+      "label": "仅本教学关卡目标；未解决的检查和未覆盖内容仍须核查，不表示家庭安全。",
+      "summary": "本关布局目标尚未完成；仍有3项已触发、4项待核查。未覆盖范围另见覆盖说明，不表示家庭安全。",
+      "coverage": [
+        {
+          "rule_id": "R001",
+          "profile_id": "child",
+          "state": "evaluated",
+          "evaluated_count": 2,
+          "pending_count": 0,
+          "reason": "仅覆盖明确建模的对象及指定关系"
+        },
+        {
+          "rule_id": "R002",
+          "profile_id": "child",
+          "state": "missing_input",
+          "evaluated_count": 0,
+          "pending_count": 1,
+          "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+        },
+        {
+          "rule_id": "R003",
+          "profile_id": "child",
+          "state": "missing_input",
+          "evaluated_count": 0,
+          "pending_count": 1,
+          "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+        },
+        {
+          "rule_id": "R004",
+          "profile_id": "child",
+          "state": "evaluated",
+          "evaluated_count": 1,
+          "pending_count": 0,
+          "reason": "仅覆盖明确建模的对象及指定关系"
+        },
+        {
+          "rule_id": "R007",
+          "profile_id": "child",
+          "state": "missing_input",
+          "evaluated_count": 0,
+          "pending_count": 1,
+          "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+        },
+        {
+          "rule_id": "R005",
+          "profile_id": "elder",
+          "state": "evaluated",
+          "evaluated_count": 3,
+          "pending_count": 0,
+          "reason": "仅覆盖明确建模的对象及指定关系"
+        },
+        {
+          "rule_id": "R006",
+          "profile_id": "elder",
+          "state": "missing_input",
+          "evaluated_count": 0,
+          "pending_count": 1,
+          "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+        },
+        {
+          "rule_id": "R008",
+          "profile_id": "elder",
+          "state": "evaluated",
+          "evaluated_count": 1,
+          "pending_count": 0,
+          "reason": "仅覆盖明确建模的对象及指定关系"
+        }
+      ],
+      "unsupported_domains": [
+        "真实攀爬/人体可达性",
+        "家具倾倒物理",
+        "动态步态与转身",
+        "全屋及全部伤害类型",
+        "安装质量核验"
+      ],
+      "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69",
+      "evaluation_ms": 81.40000000037253
+    },
+    {
+      "name": "conflict",
+      "status": "in_progress",
+      "goal_results": [
+        true,
+        false
+      ],
+      "steps": 1,
+      "conflict_events": 1,
+      "invalid_attempts": 0,
+      "remaining_triggered": 3,
+      "remaining_needs_review": 4,
+      "setup_objects": 0,
+      "label": "仅本教学关卡目标；未解决的检查和未覆盖内容仍须核查，不表示家庭安全。",
+      "summary": "本关布局目标尚未完成；仍有3项已触发、4项待核查。未覆盖范围另见覆盖说明，不表示家庭安全。",
+      "coverage": [
+        {
+          "rule_id": "R001",
+          "profile_id": "child",
+          "state": "evaluated",
+          "evaluated_count": 2,
+          "pending_count": 0,
+          "reason": "仅覆盖明确建模的对象及指定关系"
+        },
+        {
+          "rule_id": "R002",
+          "profile_id": "child",
+          "state": "missing_input",
+          "evaluated_count": 0,
+          "pending_count": 1,
+          "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+        },
+        {
+          "rule_id": "R003",
+          "profile_id": "child",
+          "state": "missing_input",
+          "evaluated_count": 0,
+          "pending_count": 1,
+          "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+        },
+        {
+          "rule_id": "R004",
+          "profile_id": "child",
+          "state": "evaluated",
+          "evaluated_count": 1,
+          "pending_count": 0,
+          "reason": "仅覆盖明确建模的对象及指定关系"
+        },
+        {
+          "rule_id": "R007",
+          "profile_id": "child",
+          "state": "missing_input",
+          "evaluated_count": 0,
+          "pending_count": 1,
+          "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+        },
+        {
+          "rule_id": "R005",
+          "profile_id": "elder",
+          "state": "evaluated",
+          "evaluated_count": 3,
+          "pending_count": 0,
+          "reason": "仅覆盖明确建模的对象及指定关系"
+        },
+        {
+          "rule_id": "R006",
+          "profile_id": "elder",
+          "state": "missing_input",
+          "evaluated_count": 0,
+          "pending_count": 1,
+          "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+        },
+        {
+          "rule_id": "R008",
+          "profile_id": "elder",
+          "state": "evaluated",
+          "evaluated_count": 1,
+          "pending_count": 0,
+          "reason": "仅覆盖明确建模的对象及指定关系"
+        }
+      ],
+      "unsupported_domains": [
+        "真实攀爬/人体可达性",
+        "家具倾倒物理",
+        "动态步态与转身",
+        "全屋及全部伤害类型",
+        "安装质量核验"
+      ],
+      "input_hash": "6b36e4ff1e739ac9c42499212c8e48025d745d0361e0b830dbdbbca20a772644",
+      "evaluation_ms": 17.40000000037253
+    },
+    {
+      "name": "improved",
+      "status": "goal_met",
+      "goal_results": [
+        true,
+        true
+      ],
+      "steps": 2,
+      "conflict_events": 1,
+      "invalid_attempts": 0,
+      "remaining_triggered": 2,
+      "remaining_needs_review": 4,
+      "setup_objects": 0,
+      "label": "仅本教学关卡目标；未解决的检查和未覆盖内容仍须核查，不表示家庭安全。",
+      "summary": "本关布局目标已完成；仍有2项已触发、4项待核查。未覆盖范围另见覆盖说明，不表示家庭安全。",
+      "coverage": [
+        {
+          "rule_id": "R001",
+          "profile_id": "child",
+          "state": "evaluated",
+          "evaluated_count": 2,
+          "pending_count": 0,
+          "reason": "仅覆盖明确建模的对象及指定关系"
+        },
+        {
+          "rule_id": "R002",
+          "profile_id": "child",
+          "state": "missing_input",
+          "evaluated_count": 0,
+          "pending_count": 1,
+          "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+        },
+        {
+          "rule_id": "R003",
+          "profile_id": "child",
+          "state": "missing_input",
+          "evaluated_count": 0,
+          "pending_count": 1,
+          "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+        },
+        {
+          "rule_id": "R004",
+          "profile_id": "child",
+          "state": "evaluated",
+          "evaluated_count": 1,
+          "pending_count": 0,
+          "reason": "仅覆盖明确建模的对象及指定关系"
+        },
+        {
+          "rule_id": "R007",
+          "profile_id": "child",
+          "state": "missing_input",
+          "evaluated_count": 0,
+          "pending_count": 1,
+          "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+        },
+        {
+          "rule_id": "R005",
+          "profile_id": "elder",
+          "state": "evaluated",
+          "evaluated_count": 3,
+          "pending_count": 0,
+          "reason": "仅覆盖明确建模的对象及指定关系"
+        },
+        {
+          "rule_id": "R006",
+          "profile_id": "elder",
+          "state": "missing_input",
+          "evaluated_count": 0,
+          "pending_count": 1,
+          "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+        },
+        {
+          "rule_id": "R008",
+          "profile_id": "elder",
+          "state": "evaluated",
+          "evaluated_count": 1,
+          "pending_count": 0,
+          "reason": "仅覆盖明确建模的对象及指定关系"
+        }
+      ],
+      "unsupported_domains": [
+        "真实攀爬/人体可达性",
+        "家具倾倒物理",
+        "动态步态与转身",
+        "全屋及全部伤害类型",
+        "安装质量核验"
+      ],
+      "input_hash": "b3e4247773cfb4c1562301d0dc32d46f69e10446fda4c9b08eabe4dc072bf693",
+      "evaluation_ms": 12.400000000372529
+    },
+    {
+      "name": "undo",
+      "status": "in_progress",
+      "goal_results": [
+        true,
+        false
+      ],
+      "steps": 3,
+      "conflict_events": 1,
+      "invalid_attempts": 0,
+      "remaining_triggered": 3,
+      "remaining_needs_review": 4,
+      "setup_objects": 0,
+      "label": "仅本教学关卡目标；未解决的检查和未覆盖内容仍须核查，不表示家庭安全。",
+      "summary": "本关布局目标尚未完成；仍有3项已触发、4项待核查。未覆盖范围另见覆盖说明，不表示家庭安全。",
+      "coverage": [
+        {
+          "rule_id": "R001",
+          "profile_id": "child",
+          "state": "evaluated",
+          "evaluated_count": 2,
+          "pending_count": 0,
+          "reason": "仅覆盖明确建模的对象及指定关系"
+        },
+        {
+          "rule_id": "R002",
+          "profile_id": "child",
+          "state": "missing_input",
+          "evaluated_count": 0,
+          "pending_count": 1,
+          "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+        },
+        {
+          "rule_id": "R003",
+          "profile_id": "child",
+          "state": "missing_input",
+          "evaluated_count": 0,
+          "pending_count": 1,
+          "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+        },
+        {
+          "rule_id": "R004",
+          "profile_id": "child",
+          "state": "evaluated",
+          "evaluated_count": 1,
+          "pending_count": 0,
+          "reason": "仅覆盖明确建模的对象及指定关系"
+        },
+        {
+          "rule_id": "R007",
+          "profile_id": "child",
+          "state": "missing_input",
+          "evaluated_count": 0,
+          "pending_count": 1,
+          "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+        },
+        {
+          "rule_id": "R005",
+          "profile_id": "elder",
+          "state": "evaluated",
+          "evaluated_count": 3,
+          "pending_count": 0,
+          "reason": "仅覆盖明确建模的对象及指定关系"
+        },
+        {
+          "rule_id": "R006",
+          "profile_id": "elder",
+          "state": "missing_input",
+          "evaluated_count": 0,
+          "pending_count": 1,
+          "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+        },
+        {
+          "rule_id": "R008",
+          "profile_id": "elder",
+          "state": "evaluated",
+          "evaluated_count": 1,
+          "pending_count": 0,
+          "reason": "仅覆盖明确建模的对象及指定关系"
+        }
+      ],
+      "unsupported_domains": [
+        "真实攀爬/人体可达性",
+        "家具倾倒物理",
+        "动态步态与转身",
+        "全屋及全部伤害类型",
+        "安装质量核验"
+      ],
+      "input_hash": "6b36e4ff1e739ac9c42499212c8e48025d745d0361e0b830dbdbbca20a772644",
+      "evaluation_ms": 12.5
+    },
+    {
+      "name": "reset",
+      "status": "in_progress",
+      "goal_results": [
+        false,
+        true
+      ],
+      "steps": 0,
+      "conflict_events": 0,
+      "invalid_attempts": 0,
+      "remaining_triggered": 3,
+      "remaining_needs_review": 4,
+      "setup_objects": 0,
+      "label": "仅本教学关卡目标；未解决的检查和未覆盖内容仍须核查，不表示家庭安全。",
+      "summary": "本关布局目标尚未完成；仍有3项已触发、4项待核查。未覆盖范围另见覆盖说明，不表示家庭安全。",
+      "coverage": [
+        {
+          "rule_id": "R001",
+          "profile_id": "child",
+          "state": "evaluated",
+          "evaluated_count": 2,
+          "pending_count": 0,
+          "reason": "仅覆盖明确建模的对象及指定关系"
+        },
+        {
+          "rule_id": "R002",
+          "profile_id": "child",
+          "state": "missing_input",
+          "evaluated_count": 0,
+          "pending_count": 1,
+          "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+        },
+        {
+          "rule_id": "R003",
+          "profile_id": "child",
+          "state": "missing_input",
+          "evaluated_count": 0,
+          "pending_count": 1,
+          "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+        },
+        {
+          "rule_id": "R004",
+          "profile_id": "child",
+          "state": "evaluated",
+          "evaluated_count": 1,
+          "pending_count": 0,
+          "reason": "仅覆盖明确建模的对象及指定关系"
+        },
+        {
+          "rule_id": "R007",
+          "profile_id": "child",
+          "state": "missing_input",
+          "evaluated_count": 0,
+          "pending_count": 1,
+          "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+        },
+        {
+          "rule_id": "R005",
+          "profile_id": "elder",
+          "state": "evaluated",
+          "evaluated_count": 3,
+          "pending_count": 0,
+          "reason": "仅覆盖明确建模的对象及指定关系"
+        },
+        {
+          "rule_id": "R006",
+          "profile_id": "elder",
+          "state": "missing_input",
+          "evaluated_count": 0,
+          "pending_count": 1,
+          "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+        },
+        {
+          "rule_id": "R008",
+          "profile_id": "elder",
+          "state": "evaluated",
+          "evaluated_count": 1,
+          "pending_count": 0,
+          "reason": "仅覆盖明确建模的对象及指定关系"
+        }
+      ],
+      "unsupported_domains": [
+        "真实攀爬/人体可达性",
+        "家具倾倒物理",
+        "动态步态与转身",
+        "全屋及全部伤害类型",
+        "安装质量核验"
+      ],
+      "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69",
+      "evaluation_ms": 12.599999999627471
+    }
+  ],
+  "network": [
+    {
+      "path": "rule-worker.mjs",
+      "url": "http://127.0.0.1:4200/probe/rule-worker.mjs",
+      "status": 200,
+      "mime": "text/javascript"
+    },
+    {
+      "path": "vendor/pyodide/pyodide.mjs",
+      "url": "http://127.0.0.1:4200/probe/vendor/pyodide/pyodide.mjs",
+      "status": 200,
+      "mime": "text/javascript"
+    },
+    {
+      "path": "vendor/pyodide/pyodide.asm.wasm",
+      "url": "http://127.0.0.1:4200/probe/vendor/pyodide/pyodide.asm.wasm",
+      "status": 200,
+      "mime": "application/wasm"
+    }
+  ],
+  "worker_recovery": "PASS"
+}

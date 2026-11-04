@@ -1,11 +1,14 @@
 // Isolated local-session measurements of an explicitly supplied preview. No deployment or uploads.
 // node scripts/check_web_performance.mjs URL CHROMIUM PUPPETEER_ENTRY
 import assert from 'node:assert/strict';
+import { safeResourceTimings } from '../browser-spike/startup-trace.mjs';
+import { analyzeStartupTrace } from './startup-trace-analysis.mjs';
 import { cpus, totalmem, platform, arch } from 'node:os';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-const [url, chrome, driver, budgetMode = "report"] = process.argv.slice(2);
+const [url, chrome, driver, budgetMode = "report", traceMode = "optional"] = process.argv.slice(2);
+assert.ok(["optional", "required"].includes(traceMode), "Trace mode must be optional or required");
 assert.ok(["report", "enforce"].includes(budgetMode), "Budget mode must be report or enforce");
 if (!url || !chrome || !driver) throw new Error('Pass preview URL, isolated Chromium and puppeteer-core entry.');
 const { launch } = await import(pathToFileURL(resolve(driver)).href);
@@ -21,7 +24,37 @@ try {
       await page.setViewport({ width: 1280, height: 1000, deviceScaleFactor: 1 });
       page.setDefaultTimeout(120000);
       await page.evaluateOnNewDocument(() => {
-        window.__measurement = { first_observation_ms: null, rules_ready_ms: null, first_editable_ms: null };
+        window.__measurement = { first_observation_ms: null, rules_ready_ms: null, first_editable_ms: null,
+          startup_traces: [], long_tasks: [], long_tasks_supported: false };
+        window.addEventListener('homesafe-startup-trace', event => {
+          try {
+            const detail = event.detail;
+            const generation = detail?.window_trace?.generation;
+            if (!Number.isSafeInteger(generation) || generation <= 0) return;
+            const attempts = window.__measurement.startup_traces;
+            let attempt = attempts.find(item => item.generation === generation);
+            if (!attempt) { attempt = { generation }; attempts.push(attempt); }
+            attempt.window_trace = detail.window_trace;
+            if (detail.worker_trace?.generation === generation) attempt.worker_trace = detail.worker_trace;
+            if (attempts.length > 8) attempts.splice(0, attempts.length - 8);
+          } catch { /* Observer failure must not affect readiness. */ }
+        });
+        try {
+          if (PerformanceObserver.supportedEntryTypes.includes('longtask')) {
+            const observer = new PerformanceObserver(list => {
+              try {
+                for (const entry of list.getEntries()) {
+                  if (window.__measurement.long_tasks.length >= 96) break;
+                  if (Number.isFinite(entry.startTime) && Number.isFinite(entry.duration))
+                    window.__measurement.long_tasks.push({ start_ms: entry.startTime,
+                      start_epoch_ms: performance.timeOrigin + entry.startTime, duration_ms: entry.duration });
+                }
+              } catch { /* No task attribution/URLs or application changes. */ }
+            });
+            observer.observe({ type: 'longtask', buffered: true });
+            window.__measurement.long_tasks_supported = true;
+          }
+        } catch { /* Unsupported browser diagnostics are explicitly unavailable. */ }
         // Passive test instrumentation of the actual application Worker (not the
         // separate warm engine probe). Messages and product state are untouched.
         const NativeWorker = window.Worker;
@@ -42,6 +75,7 @@ try {
                 window.__measurement.ui_worker = {
                   created_ms: createdMs, init_sent_ms: initSentMs,
                   init_received_ms: performance.now(), metadata: result,
+                  startup_resources: data.startup_resources ?? [],
                 };
               }
             });
@@ -97,7 +131,9 @@ try {
           first_edit_confirmed_ms: performance.now(),
           accepted_input_hash: document.querySelector('.report .hash').textContent.trim(),
         }));
-        samples.push({ trial: trial + 1, cache, ...measured, ...confirmed });
+        const resources = await page.evaluate(safeResourceTimings, { base: url });
+        const traceAnalysis = analyzeStartupTrace(measured.startup_traces.at(-1), measured.ui_worker.metadata, traceMode === 'required');
+        samples.push({ trial: trial + 1, cache, ...measured, ...confirmed, resources, startup_analysis: traceAnalysis });
       }
       if (trial === 0) {
         // A separate real module Worker exercises the canonical engine; does not alter UI/history.
@@ -174,6 +210,8 @@ try {
     limits: ['First observation is diagnostic only; the 3s target uses cold first-editable p95. Every sample verifies an actual accepted edit.', 'Placeholder model scene; real Lux3D load/render/release performance NOT_RUN.',
       'Fresh contexts isolate browser cache, not operating-system caches or all runtime process reuse.',
       'Localhost results do not establish anonymous HTTPS or public performance.', 'Chrome only; Edge and Safari NOT_RUN.'],
-    budget_mode: budgetMode, targets, summary, samples, engine }, null, 2));
+    budget_mode: budgetMode, trace_mode: traceMode,
+    trace_method: 'Bounded passive application marks plus allowlisted Resource Timing and unattributed Window long tasks. Separate Window/Worker epochs. Stage intervals may overlap; do not add stage p95s or equate residuals to compilation. Observation overhead must be measured against the same uninstrumented baseline.',
+    targets, summary, samples, engine }, null, 2));
   if (budgetMode === 'enforce' && Object.values(targets).some(pass => !pass)) process.exitCode = 1;
 } finally { await browser.close(); }

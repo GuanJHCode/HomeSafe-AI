@@ -1,0 +1,30 @@
+{
+  "reviewer": "/root/review_ux",
+  "decision": "PASS_FOR_APPLY_AND_BROWSER_VALIDATION_ONLY",
+  "scope": "SCRATCH_ONLY_PR3_LIFECYCLE_PRE_REVIEW",
+  "candidate": "/workspace/scratch/pr3-candidate",
+  "tests": {
+    "application_tests": {
+      "passed": 50,
+      "failed": 0,
+      "skipped": 0
+    },
+    "vue_typecheck": "PASS"
+  },
+  "files": {
+    "apps/web/src/domain/PreparedStartup.ts": "dc22c0700084a7c683d0ce145ac79d6d89a7885185292fe2a807fc019d15d126",
+    "apps/web/src/domain/entry-lifecycle.ts": "8e729036fcb864605c10dd678dd289e2bb7ac2399fc50e2c7b8bf5be5135ea60",
+    "apps/web/src/mountApp.ts": "299d5ef1db1e683c537b2f61f561f138bfb89ec9e282f18dd436511ab42db998",
+    "apps/web/src/main.ts": "9f46dcd6ad3ec7851733dc12e6418e696aef835abeefbf2aadfa09516bcc4d84",
+    "apps/web/src/App.vue": "37a145619654d5198b1977729b3af832aa0e26c59112b10b725b64d80c06243d",
+    "apps/web/src/useLivingRoom.ts": "302f895db220c2f0611b871a620764e6541b0ae333409a9975316028239623b4",
+    "apps/web/tests/prepared-startup.test.ts": "2a2f2183428181a03df104177f6070fdc6c03e6159e2b616de015bb5b935a9bd"
+  },
+  "not_run": [
+    "Production build/static dependency graph",
+    "Actual browser lifecycle including BFCache",
+    "Actual dynamic module fetch failure recovery",
+    "Fixed AB/BA performance comparison",
+    "PR3 full feature closure"
+  ]
+}

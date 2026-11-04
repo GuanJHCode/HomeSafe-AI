@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import {writeFile}from'node:fs/promises';
+import puppeteer from '/workspace/homesafe-browser/node_modules/puppeteer-core/lib/esm/puppeteer/puppeteer-core.js';
+const suppressed=puppeteer.defaultArgs().filter(x=>x.startsWith('--disable-features='));
+const featureArgs=suppressed.map(x=>'--disable-features='+x.slice('--disable-features='.length).split(',').filter(f=>f!=='BackForwardCache').join(','));
+const browser=await puppeteer.launch({executablePath:'/usr/bin/chromium',headless:true,ignoreDefaultArgs:suppressed,args:[...featureArgs,'--no-sandbox','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const page=await browser.newPage();page.setDefaultTimeout(60000);const errors=[],reasons=[];page.on('pageerror',e=>errors.push(e.message));const cdp=await page.createCDPSession();await cdp.send('Page.enable');cdp.on('Page.backForwardCacheNotUsed',event=>reasons.push(event.notRestoredExplanations));
+await page.evaluateOnNewDocument(()=>{
+ const data=window.__nativeReview={document_id:crypto.randomUUID(),active:0,created:0,events:[]};
+ const Native=window.Worker;window.Worker=class extends Native{constructor(...a){super(...a);data.active++;data.created++;this.live=true}terminate(){if(this.live){this.live=false;data.active--}return super.terminate()}};
+ for(const type of ['pagehide','pageshow'])window.addEventListener(type,e=>{const row={type,persisted:e.persisted,isTrusted:e.isTrusted};data.events.push(row);queueMicrotask(()=>row.active_at_early_listener_microtask=data.active)});
+});
+async function ready(){await page.waitForFunction(()=>document.querySelector('[aria-label="检查结果"]')?.getAttribute('aria-busy')==='false'&&!!document.querySelector('.report .hash'))}
+async function hash(){return page.$eval('.report .hash',e=>e.textContent)}
+async function click(text){assert.equal(await page.evaluate(text=>{const b=[...document.querySelectorAll('button')].find(b=>b.textContent.trim()===text);if(!b||b.disabled)return false;b.click();return true},text),true)}
+let result;
+try{
+ await page.goto('http://127.0.0.1:4200/candidate/',{waitUntil:'load'});await ready();await page.select('.toolbar select','chair');const initial=await hash();await page.click('[aria-label="向前移动"]');await page.waitForFunction(h=>document.querySelector('.report .hash')?.textContent&&document.querySelector('.report .hash').textContent!==h,{},initial);await ready();const moved=await hash();await page.evaluate(()=>window.addEventListener('pagehide',e=>window.__nativeReview.events.push({type:'pagehide_after_ui',persisted:e.persisted,isTrusted:e.isTrusted,active:window.__nativeReview.active})));const before=await page.evaluate(()=>window.__nativeReview);
+ await page.goto('http://127.0.0.1:4200/?away=native-review',{waitUntil:'load'});await page.goBack({waitUntil:'load',timeout:15000});
+ const returned=await page.evaluate(()=>window.__nativeReview);const reused=returned.document_id===before.document_id;
+ result={scope:'INDEPENDENT_ACTUAL_CHROMIUM_NAVIGATION_NOT_SYNTHETIC_PAGE_EVENTS',browser:await browser.version(),configured_difference:suppressed.some(x=>x.split('=')[1].split(',').includes('BackForwardCache'))?'Removed BackForwardCache from disabled-feature list for this functional test':'No BackForwardCache override: inspected defaults already permit it; effective disabled-feature flags unchanged',original_disabled_feature_flags:suppressed,native_document_reused:reused,before,returned,not_restored_reasons:reasons};
+ if(reused){assert.ok(returned.events.some(e=>e.type==='pagehide_after_ui'&&e.persisted&&e.isTrusted&&e.active===0));assert.ok(returned.events.some(e=>e.type==='pageshow'&&e.persisted&&e.isTrusted));assert.equal(returned.active,0);assert.equal(await page.$('.report .hash'),null);await click('重建 Worker 并重试');await ready();assert.equal(await hash(),moved);await click('撤销');await page.waitForFunction(h=>document.querySelector('.report .hash')?.textContent===h,{},initial);const final=await page.evaluate(()=>window.__nativeReview);assert.equal(final.active,1);assert.equal(final.created,2);result.status='PASS_NATIVE_BFCACHE_RESTORE_AND_EXPLICIT_RECOVERY';result.recovery={preserved_accepted_hash:true,undo_history_preserved:true,workers:final}}else{result.status='NATIVE_BFCACHE_NOT_SELECTED';result.limits='Actual navigation executed, but browser did not restore cached document; this is not proof of BFCache restoration.'}
+ assert.deepEqual(errors,[]);result.page_errors=errors;result.executed_at=new Date().toISOString();await writeFile('/workspace/scratch/review-pr3-native-bfcache.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({status:result.status,native_document_reused:reused,not_restored_reasons:reasons},null,2));
+}catch(error){await writeFile('/workspace/scratch/review-pr3-native-bfcache-failure.json',JSON.stringify({error:String(error),stack:error.stack,result,errors},null,2)+'\n');throw error}finally{await browser.close()}

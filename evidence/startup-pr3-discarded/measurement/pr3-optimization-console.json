@@ -1,0 +1,73 @@
+{
+  "output": "/workspace/scratch/startup-benchmark/pr3-optimization-result.json",
+  "status": "COMPLETED",
+  "decision": {
+    "valid_complete_comparison": true,
+    "purpose": "optimization",
+    "improving_pairs": 3,
+    "paired_saving_ms": {
+      "count": 5,
+      "min": -381.90000000037253,
+      "max": 279.80000000074506,
+      "p50": 43.90000000037253,
+      "p95": 279.80000000074506
+    },
+    "eligible_for_adoption_review": false,
+    "optimization_gate": "FAIL",
+    "recommendation": "DISCARD_OPTIMIZATION"
+  },
+  "summary": {
+    "A": {
+      "first_editable_ms": {
+        "count": 5,
+        "min": 3498.5999999996275,
+        "max": 3946.0999999996275,
+        "p50": 3822.0999999996275,
+        "p95": 3946.0999999996275
+      },
+      "first_edit_confirmed_ms": {
+        "count": 5,
+        "min": 3680.0999999996275,
+        "max": 4157.5999999996275,
+        "p50": 4018.2000000011176,
+        "p95": 4157.5999999996275
+      },
+      "rules_ready_ms": {
+        "count": 5,
+        "min": 3498.5,
+        "max": 3946,
+        "p50": 3822.0999999996275,
+        "p95": 3946
+      },
+      "first_editable_p95_le_3000_ms": false,
+      "cold_rules_p95_le_12000_ms": true,
+      "hot_evaluation_p95_le_150_ms": "NOT_RUN"
+    },
+    "B": {
+      "first_editable_ms": {
+        "count": 5,
+        "min": 3466.800000000745,
+        "max": 4311.5999999996275,
+        "p50": 3666.2999999988824,
+        "p95": 4311.5999999996275
+      },
+      "first_edit_confirmed_ms": {
+        "count": 5,
+        "min": 3642.300000000745,
+        "max": 4514.4000000003725,
+        "p50": 3875.5,
+        "p95": 4514.4000000003725
+      },
+      "rules_ready_ms": {
+        "count": 5,
+        "min": 3466.800000000745,
+        "max": 4311.5999999996275,
+        "p50": 3666.2999999988824,
+        "p95": 4311.5999999996275
+      },
+      "first_editable_p95_le_3000_ms": false,
+      "cold_rules_p95_le_12000_ms": true,
+      "hot_evaluation_p95_le_150_ms": "NOT_RUN"
+    }
+  }
+}

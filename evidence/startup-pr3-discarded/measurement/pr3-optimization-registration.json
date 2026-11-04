@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "experiment_id": "PR3_LIGHT_ENTRY_20261104_FIXED_FIVE_PAIRS",
+  "purpose": "optimization",
+  "pair_order": [
+    [
+      "A",
+      "B"
+    ],
+    [
+      "B",
+      "A"
+    ],
+    [
+      "A",
+      "B"
+    ],
+    [
+      "B",
+      "A"
+    ],
+    [
+      "A",
+      "B"
+    ]
+  ],
+  "baseline_definition": "A is frozen PR2 canonical split + PR1 trace; source inventory is preserved pre-PR3 frontend/worker hashes plus PR2 canonical ZIP. Not bare64e1665 and not rebuilt from active PR3 source.",
+  "single_change": "PR3 light entry with explicit unique EvaluationController/Worker ownership, lifecycle and early dynamic App mounting; same PR2 canonical core.",
+  "trace_comparability_note": "Both A and B require the same final PR1 trace analyzer and identical external editable/move/hash measurement harness; same browser/runtime/lock. No producttrace or canonical-model optimization is added in this comparison.",
+  "treatments": {
+    "A": {
+      "url": "http://127.0.0.1:4200/pr2-baseline/",
+      "trace_mode": "required",
+      "source_revision": "64e1665 + PR1 instrumentation + PR2 canonical split working snapshot",
+      "source_fingerprint_sha256": "79ce366fb4c02c4e4dbd7a2f25525c98954351b1b85c36598d22aeefb8682ec1",
+      "lock_sha256": "5916b596901449dc42736a8e50bb8ee647ae1b90c06f63e818c6a654401da84d",
+      "dist_manifest_sha256": "3ee69e5e576a0f9a54efdb1fb050c88354b814a4a212f0a1df4dc000f2fdb9f4",
+      "core_hash": "9292ae7a2ec4a2e91cf90640dbf318ecafa0a25bc2698875c311e5d6a1540be8",
+      "source_fingerprint_scope": "Preserved PR2-candidate-source-runtime-inventory.json (not current PR3 frontend)"
+    },
+    "B": {
+      "url": "http://127.0.0.1:4200/candidate/",
+      "trace_mode": "required",
+      "source_revision": "64e1665 + independently reviewed PR1/PR2 + final frozen PR3 unique-worker light-entry candidate",
+      "source_fingerprint_sha256": "4b0d88cd4d3e43ef5f329bdd24ccbc050e89be2f3b6feece0b5375900d6e29a7",
+      "lock_sha256": "5916b596901449dc42736a8e50bb8ee647ae1b90c06f63e818c6a654401da84d",
+      "dist_manifest_sha256": "c7a4096f70b5ef0ff2023575f82214d24d77806ca3e606228657b4d201c30ff9",
+      "core_hash": "9292ae7a2ec4a2e91cf90640dbf318ecafa0a25bc2698875c311e5d6a1540be8",
+      "source_fingerprint_scope": "PR3-candidate-source-runtime-inventory.json; actual frozen runtime source plus seven explicit implementation/test files"
+    }
+  },
+  "chrome": {
+    "executable": "/usr/bin/chromium",
+    "expected_version": "Chrome/154.0.8037.57"
+  },
+  "driver": {
+    "path": "/workspace/homesafe-browser/node_modules/puppeteer-core/lib/esm/puppeteer/puppeteer-core.js",
+    "sha256": "8e51079d7c2c493ca8ea928bc734ac50fd4700f38674a669cf9da2a9a2dae545"
+  },
+  "harness_sha256": "dd4992e09ad258c1f5a0f5f373656e6146c3c94d5a516355aef7831756bf1353",
+  "measurement_fingerprints_sha256": "3654fa7f6ae24dc08ee6368a068eb54a498d006f6971681b7c145463aaf6ef82",
+  "expected_runtime": {
+    "pyodide": "314.0.6",
+    "pydantic": "2.12.5"
+  },
+  "expected_environment": {
+    "cgroup_cpu_max": "400000 100000",
+    "cgroup_memory_max": "17179869184"
+  },
+  "execution_preconditions": [
+    "Parent final freeze GO and stated independent browser correctness satisfied; exact source and dist identities reverified offline",
+    "Independent final prereg comparability review still required before execution",
+    "Only root executes once in exclusive window; no concurrent browser or heavy CPU work",
+    "Retain all failures and fixed10attempts; no retries or edits to earlier registration/result files"
+  ],
+  "registration_status": "FROZEN_AWAITING_INDEPENDENT_PRE_RUN_REVIEW_AND_PARENT_EXCLUSIVE_EXECUTION"
+}

@@ -1,0 +1,18 @@
+{
+  "status": "REPRODUCED_MISSING_POST_ADOPTION_PAGEHIDE_CLEANUP",
+  "scope": "Actual prepareStartup/startEntry/EvaluationController with EventTarget modeling main.ts listener handover; not actual browser",
+  "before_pagehide": {
+    "active": 1,
+    "created": 1,
+    "owner": "ui"
+  },
+  "after_pagehide": {
+    "active": 1,
+    "created": 1,
+    "owner": "ui"
+  },
+  "explicit_unmount_equivalent_cleanup": {
+    "active": 0,
+    "owner": "disposed"
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "decision": "ADOPT_PR2_SCOPED_OPTIMIZATION",
+  "correctness": "PASS",
+  "first_editable_budget": "FAIL_OPEN_NOT_MET",
+  "reviewer": "/root/review_challenge",
+  "baseline_commit": "64e166540495126f618dd65aa8dc88760ed70604",
+  "baseline_treatment": "64e1665 plus frozen PR1 instrumentation, not bare64e1665",
+  "independently_run": [
+    "5 scoped native tests",
+    "guarded preparation reproduction (all 11 files including tests)",
+    "actual baseline and candidate fresh-FS Pyodide all-RPC closure"
+  ],
+  "independently_verified": [
+    "46 original git class ASTs and helpers unchanged",
+    "3 original git contract files exact bytes",
+    "5 fixed pairs and all accepted edits from raw records",
+    "full enforce original thresholds and nearest-rank summary"
+  ],
+  "pair_values": [
+    {
+      "pair": 1,
+      "A_ms": 4163.5,
+      "B_ms": 3660.300000000745,
+      "saving_ms": 503.19999999925494
+    },
+    {
+      "pair": 2,
+      "A_ms": 4125.800000000745,
+      "B_ms": 3667.5,
+      "saving_ms": 458.30000000074506
+    },
+    {
+      "pair": 3,
+      "A_ms": 3983.89999999851,
+      "B_ms": 3649.5,
+      "saving_ms": 334.3999999985099
+    },
+    {
+      "pair": 4,
+      "A_ms": 4144.89999999851,
+      "B_ms": 3877.9000000003725,
+      "saving_ms": 266.99999999813735
+    },
+    {
+      "pair": 5,
+      "A_ms": 3952.4000000003725,
+      "B_ms": 3690.5999999996275,
+      "saving_ms": 261.80000000074506
+    }
+  ],
+  "improving_pairs": 5,
+  "median_saving_ms": 334.3999999985099,
+  "enforce": {
+    "process_exit_code_reported_by_executor": 1,
+    "cold_samples_ms": [
+      3671.4000000003725,
+      3858.5,
+      3522.89999999851,
+      3543.60000000149,
+      3838.5
+    ],
+    "cold_first_editable_p95_ms": 3858.5,
+    "hot_evaluation_p95_ms": 12.5,
+    "targets": {
+      "first_editable_p95_le_3000_ms": false,
+      "cold_rules_le_12000_ms": true,
+      "hot_evaluation_p95_le_150_ms": true
+    }
+  },
+  "source_sha256": {
+    "reference/homesafe_core/models.py": "0194bd5ec04ecc80c65aed60214244f73b9002500d0de993fe769edf8cecd541",
+    "reference/homesafe_core/asset_models.py": "acc654b97eb99d45077cb34b8afdd92ed4da21547a4e26f3a827e1405f24627c",
+    "reference/homesafe_core/api_models.py": "611ec7770ea19ba068436107890aafe0ad0e02ff55a453041f79fd4607a1f161",
+    "reference/homesafe_core/contract_bundle.py": "c1d5dced3753d183a97bf33ec59e419337239877a4c4abebad39bb87fcbf09de",
+    "reference/homesafe_core/asset_publication.py": "0b3de88e467accd418727bbb9793f316fe52041bee765b8020180d8a3950e44e",
+    "scripts/generate_contracts.py": "926b64386857d5ced950512e4c287959cfb06944f2567b4e55fd6afdb687a6ab",
+    "scripts/stage_browser_core.py": "9d029e99c7fdee5e617be9435e27c7c5144718858c3d67fdc3181fa1e55f88bc",
+    "reference/tests/test_core.py": "6965d668edb12f12e4202bfde9a7468e69eaeebc4dcb7e6de797804e2859e2d4",
+    "reference/tests/test_v6_review.py": "21f352227b62645aa5ffcb2f94e19cec546ff575831a61f0e2b1caabdad2f06b",
+    "evidence/model-split-baseline-64e1665.json": "a0534c4eef94a71b2f664040b82e0baf126131454ee256e47db4983641e421f2",
+    "reference/tests/test_browser_model_split.py": "015993630d99d5c712b527266ccc5d869900efacefb5968315e6c643a6e8d42c",
+    "scripts/check_runtime_bundle.mjs": "bfda62ac610cabb8e06e7000389733c7f38a0ca0d583b578780d1c81446346f0",
+    "scripts/runtime_bundle_commands.py": "181c351c1b0e490b705a2903215c159c04e51bcf1c47747a8cd014ce3f185d40",
+    "browser-spike/python/homesafe_core.zip": "9292ae7a2ec4a2e91cf90640dbf318ecafa0a25bc2698875c311e5d6a1540be8",
+    "browser-spike/python/manifest.json": "ccb0dbffe5f31bfabb3d3a621e6c3eae78ab9d2d30288c6259a1642956bd4b78"
+  },
+  "archived_exact_sha256": {
+    "startup-pr2-paired-comparison-20261104.json": "a8604f03a5a1070407575cf08dbe5c7b4f801bfbf43385d8a7212eba79205364",
+    "startup-pr2-enforce-performance-20261104.json": "94458dc6ad915241dbc2cc3f715973cf81c4427de2a5901a8022fa070e215564",
+    "review-startup-pr2-baseline-closure-20261104.json": "2f4594f0239f9670fceab0ea67b33cfd992b81117c8f6a4a3c3f19376546e47d",
+    "review-startup-pr2-candidate-closure-20261104.json": "ebd32cca6b07fad551a6c88c03180f56f3dfb0170c01d22df4e18d5ee6110d4f"
+  },
+  "scope_limits": [
+    "local synthetic scene only",
+    "first-use timings are one diagnostic pair, not repeated browser interaction benchmark",
+    "all schemas eagerly complete before RPC, no deferred loading introduced",
+    "do not attribute whole startup saving to schema build; trace includes other phase differences",
+    "T07 first-editable budget remains open; assets/public/cross-browser gates unaffected"
+  ]
+}

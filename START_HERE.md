@@ -2,6 +2,8 @@
 
 小杂接手续作：先读[全部后续任务执行提示词](docs/NEXT_AGENT_PROMPT_20261104.md)。它覆盖剩余功能、真实模型、部署、材料与逐项独立审查；实际状态仍以最新证据为准。
 
+本地启动调整进度见[本轮阶段记录](evidence/STARTUP_ADJUSTMENTS_20261104.md)：PR-1 已独立通过、PR-2 模型拆分已采纳；PR-3 固定实验未达采纳标准，已决定舍弃并还原 PR-2。已独立核验还原，最终 enforce 首次可编辑 p95=4086.1 ms 仍失败、热评估 p95=12.6 ms 通过；新远端 CI 未运行。
+
 当前工作是合成客厅的三维开发预览。界面使用程序占位家具，同源 module Worker 加载同一份 Python 参考内核。当前验证和交付阻断见[接手记录](evidence/HANDOFF.md)和[任务状态](evidence/task-status.json)。
 
 先读 [AGENTS.md](AGENTS.md)、[总体方案](docs/v6.1/00-overview.md)和[实施计划](docs/v6.1/05-delivery-plan.md)。恢复的 docs 根目录设计明细与 reference/ 为现行参考。历史导入结果见[源码导入验证](evidence/IMPORT_VALIDATION_20261103.md)。
@@ -75,10 +77,10 @@ python scripts/check_scene_snapshot.py /path/to/homesafe-scene-snapshot.json
 ```bash
 node scripts/check_web_preview.mjs http://127.0.0.1:4173/ /path/to/chromium /path/to/puppeteer-core.js
 node scripts/check_web_experience.mjs http://127.0.0.1:4173/ /path/to/chromium /path/to/puppeteer-core.js /tmp/homesafe-experience
-node scripts/check_web_performance.mjs http://127.0.0.1:4173/ /path/to/chromium /path/to/puppeteer-core.js
+node scripts/check_web_performance.mjs http://127.0.0.1:4173/ /path/to/chromium /path/to/puppeteer-core.js enforce
 ```
 
-性能脚本采集五组全新浏览器上下文/缓存重载及三次预热后的三十次热评估，输出原始样本和 nearest-rank p95。首个观察界面指可见画布与视角按钮，不代表布局编辑或规则已就绪；结果仅适用于实际测试环境。可选 `HOMESAFE_VIDEO_PATH=/tmp/development-regression.webm` 记录浏览器实帧（需 ffmpeg），这是开发回归原片，不自动成为最终参赛视频。容器测试沿用 CI 的隔离启动配置 `CI=1`。
+性能脚本采集五组全新浏览器上下文/缓存重载及三次预热后的三十次热评估，输出原始样本和 nearest-rank p95。当前门槛使用已接受报告、空闲评估及启用移动按钮的首次可编辑时间，并在每个样本实际移动、核验接受的输入哈希改变。首个观察界面只作诊断；结果仅适用于实际测试环境。传入末尾参数 `enforce` 将 3000/12000/150 ms 三项预算作为失败门禁；省略时仅报告。固定源码 `64e1665` 的 [CI 41807603537](evidence/CI_PUSH_64e1665_20261104.md) 功能通过、首次可编辑 p95=3386 ms 导致整体失败；最终保留 PR-1/PR-2、撤回 PR-3 后唯一完整 enforce p95=4086.1 ms 仍失败（此前 PR-2 阶段 3858.5 ms 另作历史保留）；该环境与旧 CI 不同，不能直接相减归因。本轮启动调整尚未远端运行，见[阶段记录](evidence/STARTUP_ADJUSTMENTS_20261104.md)。可选 `HOMESAFE_VIDEO_PATH=/tmp/development-regression.webm` 记录浏览器实帧（需 ffmpeg），这是开发回归原片，不自动成为最终参赛视频。容器测试沿用 CI 的隔离启动配置 `CI=1`。
 
 ```bash
 npm --prefix apps/web run build

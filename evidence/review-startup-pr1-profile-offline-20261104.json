@@ -1,0 +1,87 @@
+{
+  "status": "PASS_PROFILE_VALIDATION_BUDGET_REMAINS_FAIL",
+  "scope": "INDEPENDENT_OFFLINE_REVALIDATION_NO_RESAMPLING",
+  "profile_sha256": "cf8d768669da71bea03695a7916518f86cac944fff5ab48dc3c81dbb937cc1b4",
+  "profile_measured_at": "2026-11-04T10:23:36.018Z",
+  "analyzer_sha256": "3601bc320f999f433c871e9e5cfe27d9350eee6b5ff716b89b443ce65183952b",
+  "samples": [
+    {
+      "trial": 1,
+      "cache": "cold",
+      "status": "PASS"
+    },
+    {
+      "trial": 1,
+      "cache": "warm",
+      "status": "PASS"
+    },
+    {
+      "trial": 2,
+      "cache": "cold",
+      "status": "PASS"
+    },
+    {
+      "trial": 2,
+      "cache": "warm",
+      "status": "PASS"
+    },
+    {
+      "trial": 3,
+      "cache": "cold",
+      "status": "PASS"
+    },
+    {
+      "trial": 3,
+      "cache": "warm",
+      "status": "PASS"
+    },
+    {
+      "trial": 4,
+      "cache": "cold",
+      "status": "PASS"
+    },
+    {
+      "trial": 4,
+      "cache": "warm",
+      "status": "PASS"
+    },
+    {
+      "trial": 5,
+      "cache": "cold",
+      "status": "PASS"
+    },
+    {
+      "trial": 5,
+      "cache": "warm",
+      "status": "PASS"
+    }
+  ],
+  "author_functional_cases_revalidated": 3,
+  "counterexample_mutations_rejected": [
+    "missing:init_enqueued",
+    "missing:init_handler_started",
+    "missing:init_reply_ready",
+    "missing:worker_module_evaluated",
+    "wrong-kind:runtime_module",
+    "wrong-kind:core_fetch",
+    "wrong-kind:core_hash",
+    "wrong-kind:load_pyodide",
+    "wrong-kind:ensure_package",
+    "wrong-kind:pydantic_import",
+    "wrong-kind:bundle_join_wait",
+    "wrong-kind:unpack",
+    "wrong-kind:canonical_import",
+    "wrong-kind:dispatcher_bind",
+    "wrong-kind:first_evaluation"
+  ],
+  "independent_nearest_rank": {
+    "cold_first_editable_p95": 4128.5,
+    "cold_rules_p95": 4128.39999999851,
+    "hot_eval_p95": 16.59999999962747
+  },
+  "budget": {
+    "first_editable_p95_le_3000_ms": false,
+    "cold_rules_le_12000_ms": true,
+    "hot_evaluation_p95_le_150_ms": true
+  }
+}

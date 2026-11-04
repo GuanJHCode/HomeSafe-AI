@@ -1,0 +1,45 @@
+{
+  "decision": "DISCARDED",
+  "reason": "Predeclared adoption gate failed:3/5improving pairs;median paired savings43.9ms(<100ms)",
+  "archived_at": "2026-11-04T11:02:23.974922+00:00",
+  "files": [
+    {
+      "path": "apps/web/src/main.ts",
+      "baseline_sha256": "41a79ccb7d440dcb55dd3a28c6a62056c59b4e877d9fcbe17c9cd5d7fbbe2c14",
+      "candidate_sha256": "f1f141bea6287aef8a05ff60976508dd3535746b609c696ee9171e71141b41b4"
+    },
+    {
+      "path": "apps/web/src/App.vue",
+      "baseline_sha256": "65d20797d5d806a219f94390fe6e23bde1eb55ae97af7799c7e7886199599bc4",
+      "candidate_sha256": "37a145619654d5198b1977729b3af832aa0e26c59112b10b725b64d80c06243d"
+    },
+    {
+      "path": "apps/web/src/useLivingRoom.ts",
+      "baseline_sha256": "2293e7fb501563be0d94dd1501f0301b43a248ffc124f4b39410512786df5327",
+      "candidate_sha256": "e0938538bc4bd0378f7e168180aeb96e158ae74b117167b478d8eba604f0f0c2"
+    },
+    {
+      "path": "apps/web/src/domain/PreparedStartup.ts",
+      "baseline_sha256": null,
+      "candidate_sha256": "dc22c0700084a7c683d0ce145ac79d6d89a7885185292fe2a807fc019d15d126"
+    },
+    {
+      "path": "apps/web/src/domain/entry-lifecycle.ts",
+      "baseline_sha256": null,
+      "candidate_sha256": "8e729036fcb864605c10dd678dd289e2bb7ac2399fc50e2c7b8bf5be5135ea60"
+    },
+    {
+      "path": "apps/web/src/mountApp.ts",
+      "baseline_sha256": null,
+      "candidate_sha256": "299d5ef1db1e683c537b2f61f561f138bfb89ec9e282f18dd436511ab42db998"
+    },
+    {
+      "path": "apps/web/tests/prepared-startup.test.ts",
+      "baseline_sha256": null,
+      "candidate_sha256": "2a2f2183428181a03df104177f6070fdc6c03e6159e2b616de015bb5b935a9bd"
+    }
+  ],
+  "candidate_manifest_sha256": "c7a4096f70b5ef0ff2023575f82214d24d77806ca3e606228657b4d201c30ff9",
+  "patch_sha256": "7e77f48bfccf6484dedbe75c1b274fdb251efcafe22f3e29978ffb8f6a134055",
+  "raw_result_sha256": "20479c43d8430cafb4e81dd45fec35216379b0410e187699725d0fcbc94e8904"
+}

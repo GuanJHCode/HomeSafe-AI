@@ -1,0 +1,615 @@
+--- a/apps/web/src/main.ts
++++ b/apps/web/src/main.ts
+@@ -1,5 +1,46 @@
+-import { createApp } from "vue";
+-import App from "./App.vue";
++import { prepareStartup } from './domain/PreparedStartup.ts';
++import { listenForPageExit, startEntry } from './domain/entry-lifecycle.ts';
+ import "./style.css";
+ 
+-createApp(App).mount("#app");
++const base = new URL(import.meta.env.BASE_URL, window.location.href).href;
++const host = document.querySelector<HTMLElement>('#app')!;
++const loading = document.createElement('div');
++loading.className = 'shell';
++loading.setAttribute('role', 'status');
++const status = document.createElement('p');
++const cancel = document.createElement('button');
++cancel.textContent = '取消加载';
++const retry = document.createElement('button');
++retry.textContent = '重试加载';
++loading.append(status,cancel,retry);
++host.append(loading);
++let stopWatchingExit = () => {};
++let entryState: 'loading' | 'cancelled' | 'failed' | 'mounted' = 'loading';
++const entry = startEntry({
++  prepare: generation => prepareStartup({base,generation,publish(trace,snapshot) {
++    try { window.dispatchEvent(new CustomEvent('homesafe-startup-trace', {
++      detail:{window_trace:trace.snapshot(),...(snapshot ? {worker_trace:snapshot} : {})},
++    })); } catch {}
++  }}),
++  loadUi: () => import('./mountApp.ts'),
++  mount: (ui,startup) => ui.mountApp(startup),
++  state(value) {
++    entryState = value;
++    if (value !== 'mounted' && !loading.isConnected) host.replaceChildren(loading);
++    status.textContent = value === 'loading' ? '正在加载客厅和同源规则'
++      : value === 'cancelled' ? '已取消加载。可重试。' : '界面加载失败，请重新加载页面重试。';
++    retry.textContent = value === 'failed' ? '重新加载页面' : '重试加载';
++    cancel.hidden = value !== 'loading';
++    retry.hidden = value === 'loading';
++    if (value === 'mounted') {
++      cancel.onclick = retry.onclick = null;
++      stopWatchingExit();
++    }
++  },
++});
++cancel.onclick = () => entry.cancel();
++// Browsers may cache a failed module import for this document. A user-requested
++// fresh document retries that failure; there is no accepted UI layout yet.
++retry.onclick = () => { if (entryState === 'failed') window.location.reload(); else entry.retry(); };
++// Keep the cancelled loader retryable when a persisted page is shown again.
++stopWatchingExit = listenForPageExit(window,() => entry.cancel());
+--- a/apps/web/src/App.vue
++++ b/apps/web/src/App.vue
+@@ -1,6 +1,9 @@
+ <script setup lang="ts">
+ import { useLivingRoom } from './useLivingRoom.ts';
+ import ObservationPanel from './ObservationPanel.vue';
++import type { PreparedStartup } from './domain/PreparedStartup.ts';
++
++const props = defineProps<{startup?: PreparedStartup}>();
+ 
+ const {
+   observationOptions, observationsOpen, observationNotice, openObservations, applyObservation, closeObservations,
+@@ -11,7 +14,7 @@
+   roleSummaries, initializing, cancelLoading,
+   retryModels,
+   retryRenderer,
+-} = useLivingRoom();
++} = useLivingRoom(props.startup);
+ 
+ const coverageLabels = {
+   evaluated: '已评估', missing_input: '资料不足', not_applicable: '不适用',
+--- a/apps/web/src/useLivingRoom.ts
++++ b/apps/web/src/useLivingRoom.ts
+@@ -13,6 +13,8 @@
+ import { SceneRuntime, type AssetLoadState } from './scene/SceneRuntime.ts';
+ import { TransformController } from './scene/TransformController.ts';
+ import { readJsonResource } from './domain/resource-loading.ts';
++import type { PreparedStartup } from './domain/PreparedStartup.ts';
++import { listenForPageExit } from './domain/entry-lifecycle.ts';
+ 
+ const exercises = {
+   challenge: {
+@@ -36,7 +38,9 @@
+   return details?.code === 'INVALID_PLACEMENT' && Array.isArray(details.issues) ? details.issues : [];
+ }
+ 
+-export function useLivingRoom() {
++export function useLivingRoom(prepared?: PreparedStartup) {
++  let adopted: PreparedStartup | null = prepared ?? null;
++  adopted?.claim();
+   const host = ref<HTMLElement | null>(null);
+   const mode = ref<'workspace' | 'challenge' | 'main-challenge'>('workspace');
+   const exercise = computed(() => mode.value === 'workspace' ? null : exercises[mode.value]);
+@@ -73,8 +77,9 @@
+   let revision = 0;
+   let disposed = false;
+   let startup: AbortController | null = null;
+-  let startupGeneration = 0;
++  let startupGeneration = adopted?.trace.generation ?? 0;
+   let startupTrace: StartupTraceHandle | null = null;
++  let stopWatchingExit: (() => void) | null = null;
+ 
+   function publishStartupTrace(trace: StartupTraceHandle, workerTrace?: TraceSnapshot) {
+     try {
+@@ -82,6 +87,13 @@
+         detail: { window_trace: trace.snapshot(), ...(workerTrace ? { worker_trace: workerTrace } : {}) },
+       }));
+     } catch { /* Passive diagnostics never alter scene or Worker lifecycle. */ }
++  }
++
++  function disposeEvaluation() {
++    if (adopted) { adopted.dispose(); adopted = null; }
++    else evaluation?.dispose();
++    evaluation = null;
++    challenge = null;
+   }
+ 
+   const base = new URL(import.meta.env.BASE_URL, window.location.href).href;
+@@ -368,16 +380,20 @@
+ 
+   async function initialize(retry: boolean) {
+     if (disposed) return;
++    const initial = !retry ? adopted : null;
+     if (startupTrace?.status === 'running') {
+       startupTrace.finish('cancelled');
+       publishStartupTrace(startupTrace);
+     }
+-    const trace = createStartupTrace({ thread: 'window', generation: ++startupGeneration });
++    const trace = initial?.trace ?? createStartupTrace({ thread: 'window', generation: ++startupGeneration });
+     startupTrace = trace;
+-    trace.mark('attempt_started');
++    if (!initial) trace.mark('attempt_started');
+     startup?.abort(new Error('已取消旧加载'));
+-    const attempt = new AbortController();
++    const attempt = initial?.abort ?? new AbortController();
+     startup = attempt;
++    initial?.observe(snapshot => {
++      if (startupTrace?.generation === snapshot.generation) publishStartupTrace(startupTrace, snapshot);
++    });
+     const active = () => !disposed && startup === attempt && !attempt.signal.aborted;
+     initializing.value = true;
+     busy.value = true;
+@@ -389,6 +405,14 @@
+       // Observe both promises immediately: scene/network errors cannot leave an
+       // unhandled rule startup, and cancellation prevents late controller creation.
+       const loadRules = async () => {
++        if (initial) {
++          const result = await initial.ready;
++          if (!active()) return null;
++          if (!result.ok) throw result.error;
++          evaluation = result.evaluation;
++          challenge = new ChallengeController(evaluation);
++          return result.metadata;
++        }
+         const config = await trace.measure('config_fetch', () => readJsonResource<WorkerConfig>(new URL('engine/config.json', base), { cache: 'no-store', signal: attempt.signal }));
+         if (!active()) return null;
+         if (!evaluation) {
+@@ -437,15 +461,15 @@
+       if (active()) {
+         // A scene fetch can fail while parallel rule startup is still running.
+         // Stop that worker too; explicit retry creates a fresh controller.
+-        evaluation?.dispose();
+-        evaluation = null;
+-        challenge = null;
++        trace.finish('failed');
++        disposeEvaluation();
+         failure.value = error instanceof Error ? error.message : String(error);
+-        trace.finish('failed');
+         publishStartupTrace(trace);
+       }
+     } finally {
+-      if (active()) {
++      // Disposing an adopted failed session aborts this same attempt. It still
++      // owns UI cleanup; only replacement/cancellation/unmount may skip it.
++      if (!disposed && startup === attempt) {
+         busy.value = false;
+         initializing.value = false;
+         startup = null;
+@@ -470,12 +494,25 @@
+     if (startupTrace) publishStartupTrace(startupTrace);
+     startup?.abort(new Error('已取消加载'));
+     startup = null;
+-    evaluation?.dispose();
+-    evaluation = null;
+-    challenge = null;
++    disposeEvaluation();
+     initializing.value = false;
+     busy.value = false;
+     failure.value = '已取消加载。重试将重新加载规则，不重放之前的操作。';
++  }
++
++  function suspendForPageExit() {
++    if (disposed) return;
++    transforms?.cancelDrag();
++    if (startupTrace?.status === 'running') startupTrace.finish('cancelled');
++    if (startupTrace) publishStartupTrace(startupTrace);
++    startup?.abort(new Error('页面已暂停'));
++    startup = null;
++    disposeEvaluation();
++    initializing.value = false;
++    busy.value = false;
++    // A persisted back/forward return retains the accepted layout/history, but
++    // requires explicit Worker retry. Never replay an interrupted proposal.
++    failure.value = '页面已暂停。请重建 Worker 并重试；保留当前布局，不重放之前的操作。';
+   }
+ 
+   function focus(ids: readonly string[]) {
+@@ -518,14 +555,18 @@
+       .filter(finding => finding.status === 'triggered')
+       .flatMap(finding => finding.object_ids) ?? []);
+   });
+-  onMounted(() => void initialize(false));
++  onMounted(() => {
++    stopWatchingExit = listenForPageExit(window,suspendForPageExit);
++    void initialize(false);
++  });
+   onUnmounted(() => {
+     disposed = true;
++    stopWatchingExit?.();
+     if (startupTrace?.status === 'running') startupTrace.finish('cancelled');
+     startup?.abort(new Error('页面已关闭'));
+     transforms?.dispose();
+     runtime?.dispose();
+-    evaluation?.dispose();
++    disposeEvaluation();
+   });
+ 
+   return {
+--- /dev/null
++++ b/apps/web/src/domain/PreparedStartup.ts
+@@ -0,0 +1,86 @@
++import { EvaluationController, type WorkerConfig, type WorkerMetadata } from './EvaluationController.ts';
++import { readJsonResource } from './resource-loading.ts';
++import { createStartupTrace, type StartupTraceHandle, type TraceSnapshot } from '../../../../browser-spike/startup-trace.mjs';
++
++export type StartupOutcome = { ok: true; evaluation: EvaluationController; metadata: WorkerMetadata }
++  | { ok: false; error: unknown };
++type Owner = 'bootstrap' | 'ui' | 'disposed';
++type Observer = (snapshot: TraceSnapshot) => void;
++export type PreparedStartup = {
++  readonly trace: StartupTraceHandle;
++  readonly abort: AbortController;
++  readonly ready: Promise<StartupOutcome>;
++  readonly owner: Owner;
++  claim(): void;
++  observe(observer: Observer): void;
++  dispose(reason?: Error): void;
++};
++
++/** Starts synchronously; readiness always has a rejection observer before returning. */
++export function prepareStartup(options: {
++  base: string;
++  generation: number;
++  publish?: (trace: StartupTraceHandle, snapshot?: TraceSnapshot) => void;
++  readConfig?: (signal: AbortSignal) => Promise<WorkerConfig>;
++  createEvaluation?: (options: ConstructorParameters<typeof EvaluationController>[0]) => EvaluationController;
++}): PreparedStartup {
++  const trace = createStartupTrace({thread:'window',generation:options.generation});
++  const abort = new AbortController();
++  let owner: Owner = 'bootstrap';
++  let evaluation: EvaluationController | null = null;
++  let observer: Observer | null = null;
++  let latest: TraceSnapshot | null = null;
++  const publish = (snapshot?: TraceSnapshot) => { try { options.publish?.(trace, snapshot); } catch {} };
++  const observe = (snapshot: TraceSnapshot) => {
++    if (owner === 'disposed') return;
++    latest = snapshot;
++    if (observer) { try { observer(snapshot); } catch {} }
++    else publish(snapshot);
++  };
++  const active = () => owner !== 'disposed' && !abort.signal.aborted;
++  trace.mark('attempt_started');
++  publish();
++  const ready: Promise<StartupOutcome> = (async () => {
++    try {
++      const config = await trace.measure('config_fetch', () => options.readConfig
++        ? options.readConfig(abort.signal)
++        : readJsonResource<WorkerConfig>(new URL('engine/config.json', options.base), {cache:'no-store',signal:abort.signal}));
++      if (!active()) return {ok:false,error:abort.signal.reason ?? new Error('已取消加载')};
++      evaluation = options.createEvaluation
++        ? options.createEvaluation({config,base:options.base,trace,onStartupTrace:observe})
++        : new EvaluationController({config,base:options.base,trace,onStartupTrace:observe});
++      const metadata = await evaluation.ensureReady();
++      if (!active()) return {ok:false,error:abort.signal.reason ?? new Error('已取消加载')};
++      if (!metadata) throw new Error('规则 Worker 未就绪。');
++      return {ok:true,evaluation,metadata};
++    } catch (error) {
++      // Failure before UI import must never become an unhandled rejection or leak a Worker.
++      evaluation?.dispose();
++      evaluation = null;
++      if (active()) { trace.finish('failed'); publish(latest ?? undefined); }
++      return {ok:false,error};
++    }
++  })();
++  return {
++    trace, abort, ready,
++    get owner() { return owner; },
++    claim() {
++      if (owner !== 'bootstrap') throw new Error('启动会话不能重复接管。');
++      owner = 'ui';
++    },
++    observe(next) {
++      if (owner !== 'ui') throw new Error('启动会话尚未由界面接管。');
++      observer = next;
++      if (latest) { try { next(latest); } catch {} }
++    },
++    dispose(reason = new Error('已取消加载')) {
++      if (owner === 'disposed') return;
++      owner = 'disposed';
++      abort.abort(reason);
++      evaluation?.dispose();
++      evaluation = null;
++      observer = null;
++      if (trace.status === 'running') { trace.finish('cancelled'); publish(latest ?? undefined); }
++    },
++  };
++}
+--- /dev/null
++++ b/apps/web/src/domain/entry-lifecycle.ts
+@@ -0,0 +1,85 @@
++import type { PreparedStartup } from './PreparedStartup.ts';
++
++export function listenForPageExit(target: EventTarget, suspend: () => void) {
++  target.addEventListener('pagehide',suspend);
++  return () => target.removeEventListener('pagehide',suspend);
++}
++
++/** Frameworks can report a mount error without throwing from mount(). */
++export function mountOwnedUi(startup: PreparedStartup, ui: {
++  config: {errorHandler?: (error: unknown, ...rest: any[]) => void};
++  mount: () => unknown;
++  unmount: () => unknown;
++}) {
++  const previous = ui.config.errorHandler;
++  let reported = false;
++  let reportedError: unknown;
++  ui.config.errorHandler = error => { if (!reported) { reported=true; reportedError=error; } };
++  try {
++    ui.mount();
++    if (reported) throw reportedError;
++  } catch (error) {
++    startup.trace.finish('failed');
++    startup.dispose(new Error('界面加载失败'));
++    try { ui.unmount(); } finally { throw error; }
++  } finally { ui.config.errorHandler=previous; }
++}
++
++/** Only owns pre-mount startup; the mounted UI claims and cleans up the same handle. */
++export function startEntry<T>(options: {
++  prepare: (generation: number) => PreparedStartup;
++  loadUi: () => Promise<T>;
++  mount: (ui: T, startup: PreparedStartup) => void;
++  state: (state: 'loading' | 'cancelled' | 'failed' | 'mounted') => void;
++}) {
++  let generation = 0;
++  let current: PreparedStartup | null = null;
++  let disposed = false;
++  let mounted = false;
++  const notify = (state: Parameters<typeof options.state>[0]) => options.state(state);
++  const cancel = () => {
++    if (disposed || mounted) return;
++    generation++;
++    current?.dispose();
++    current = null;
++    notify('cancelled');
++  };
++  const retry = () => {
++    if (disposed || mounted) return;
++    current?.dispose();
++    const attempt = ++generation;
++    const startup = options.prepare(attempt);
++    current = startup;
++    notify('loading');
++    // Config/Worker startup has begun, but is deliberately not awaited here.
++    void Promise.resolve().then(options.loadUi).then(ui => {
++      if (disposed || attempt !== generation || current !== startup || startup.owner === 'disposed') return;
++      try {
++        options.mount(ui, startup);
++        if (startup.owner !== 'ui') throw new Error('界面未接管启动会话。');
++        mounted = true;
++        current = null;
++        notify('mounted');
++      } catch {
++        startup.trace.finish('failed');
++        startup.dispose(new Error('界面加载失败'));
++        current = null;
++        notify('failed');
++      }
++    }, () => {
++      if (disposed || attempt !== generation || current !== startup) return;
++      startup.trace.finish('failed');
++      startup.dispose(new Error('界面加载失败'));
++      current = null;
++      notify('failed');
++    });
++  };
++  retry();
++  return {cancel,retry,dispose() {
++    if (disposed) return;
++    disposed = true;
++    generation++;
++    current?.dispose(new Error('页面已关闭'));
++    current = null;
++  }};
++}
+--- /dev/null
++++ b/apps/web/src/mountApp.ts
+@@ -0,0 +1,9 @@
++import { createApp } from 'vue';
++import App from './App.vue';
++import type { PreparedStartup } from './domain/PreparedStartup.ts';
++import { mountOwnedUi } from './domain/entry-lifecycle.ts';
++
++export function mountApp(startup: PreparedStartup) {
++  const app = createApp(App, {startup});
++  mountOwnedUi(startup,{config:app.config,mount:()=>app.mount('#app'),unmount:()=>app.unmount()});
++}
+--- /dev/null
++++ b/apps/web/tests/prepared-startup.test.ts
+@@ -0,0 +1,193 @@
++import test from 'node:test';
++import assert from 'node:assert/strict';
++import { EvaluationController, type WorkerConfig } from '../src/domain/EvaluationController.ts';
++import { prepareStartup, type PreparedStartup } from '../src/domain/PreparedStartup.ts';
++import { listenForPageExit, mountOwnedUi, startEntry } from '../src/domain/entry-lifecycle.ts';
++import { StartupTrace, type TraceSnapshot } from '../../../browser-spike/startup-trace.mjs';
++
++function deferred<T>() {
++  let resolve!: (value: T) => void;
++  let reject!: (error: unknown) => void;
++  const promise = new Promise<T>((yes,no) => { resolve=yes; reject=no; });
++  return {promise,resolve,reject};
++}
++const config: WorkerConfig = {pyodideVersion:'0.29.3',pydanticVersion:'2.11.7',
++  pyodideIndexURL:'vendor/pyodide/',coreBundle:'engine/core.zip',coreManifest:'engine/manifest.json'};
++const metadata = {pyodide:'0.29.3',pydantic:'2.11.7',core_hash:'a'.repeat(64),startup_ms:1,packages_ms:1,total_ready_ms:3};
++const tick = async () => { for (let i=0;i<12;i++) await Promise.resolve(); };
++function fixture(generation = 1) {
++  const configGate=deferred<WorkerConfig>();
++  const clients: {gate:ReturnType<typeof deferred<unknown>>; disposed:number}[]=[];
++  let reads=0;
++  let evaluation: EvaluationController | undefined;
++  let observe: ((trace: TraceSnapshot) => void) | undefined;
++  const handle=prepareStartup({base:'https://example.test/nested/',generation,
++    readConfig:() => {reads++;return configGate.promise;},
++    createEvaluation:options => {
++      observe=options.onStartupTrace;
++      evaluation=new EvaluationController({...options,createClient:() => {
++        const client={gate:deferred<unknown>(),disposed:0};clients.push(client);
++        return {initialize:()=>client.gate.promise,request:async()=>({}),dispose:()=>{client.disposed++;}};
++      }});
++      return evaluation;
++    },
++  });
++  return {handle,configGate,clients,get reads(){return reads;},get evaluation(){return evaluation;},
++    emit:(trace:TraceSnapshot)=>observe?.(trace)};
++}
++
++test('pending config adoption retains same trace/abort and creates exactly one existing controller',async()=>{
++  const f=fixture();const originalTrace=f.handle.trace;const originalAbort=f.handle.abort;
++  assert.equal(f.reads,1);assert.equal(f.clients.length,0);assert.equal(f.handle.owner,'bootstrap');
++  f.handle.claim();assert.equal(f.handle.owner,'ui');assert.throws(()=>f.handle.claim(),/重复接管/);
++  f.configGate.resolve(config);await tick();assert.equal(f.clients.length,1);
++  f.clients[0].gate.resolve({result:metadata});
++  const result=await f.handle.ready;assert.equal(result.ok,true);
++  if(result.ok) assert.equal(result.evaluation,f.evaluation);
++  assert.equal(f.handle.trace,originalTrace);assert.equal(f.handle.abort,originalAbort);assert.equal(f.reads,1);
++  f.handle.dispose();f.handle.dispose();assert.equal(f.handle.owner,'disposed');assert.equal(f.clients[0].disposed,1);
++});
++
++test('cancelled config resolution never creates a controller and preserves cancellation reason',async()=>{
++  const f=fixture();const reason=new Error('cancelled before config');
++  f.handle.dispose(reason);f.configGate.resolve(config);
++  const result=await f.handle.ready;assert.equal(result.ok,false);
++  if(!result.ok) assert.equal(result.error,reason);
++  assert.equal(f.clients.length,0);assert.throws(()=>f.handle.claim(),/重复接管/);
++  assert.equal(f.handle.trace.snapshot()?.status,'cancelled');
++});
++
++for(const claimFirst of [false,true]) test(`init rejection ${claimFirst?'after':'before'} claim is handled with original error`,async()=>{
++  const f=fixture();f.configGate.resolve(config);await tick();
++  if(claimFirst) f.handle.claim();
++  const error=Object.assign(new Error('runtime init failed'),{details:{code:'EXACT_FAILURE'}});
++  f.clients[0].gate.reject(error);
++  const result=await f.handle.ready;assert.equal(result.ok,false);
++  if(!result.ok) assert.equal(result.error,error);
++  if(!claimFirst)f.handle.claim();
++  assert.equal(f.clients[0].disposed,1);assert.equal(f.handle.trace.status,'failed');
++  f.handle.dispose();assert.equal(f.clients[0].disposed,1);
++});
++
++test('diagnostics buffered before claim relay to current UI observer and stop after disposal',async()=>{
++  const f=fixture();f.configGate.resolve(config);await tick();
++  const worker=new StartupTrace({thread:'worker',generation:1,now:()=>1,timeOrigin:100});
++  worker.finish('ready');f.emit(worker.snapshot());
++  const seen:TraceSnapshot[]=[];f.handle.claim();f.handle.observe(trace=>seen.push(trace));
++  assert.equal(seen.length,1);assert.equal(seen[0].generation,1);
++  const next={...worker.snapshot(),generation:2};f.emit(next);
++  assert.equal(seen.at(-1)?.generation,2,'Relay cannot remain bound to first generation');
++  f.handle.dispose();f.emit(next);assert.equal(seen.length,2);
++  f.clients[0].gate.resolve({result:metadata});await f.handle.ready;
++});
++
++test('UI restart keeps one owner and cleanup closes the replacement client only once',async()=>{
++  const f=fixture();f.handle.claim();f.configGate.resolve(config);await tick();
++  f.clients[0].gate.resolve({result:metadata});const result=await f.handle.ready;
++  assert.equal(result.ok,true);if(!result.ok)return;
++  const ready=result.evaluation.restart(config);assert.equal(f.clients.length,2);assert.equal(f.clients[0].disposed,1);
++  f.clients[1].gate.resolve({result:metadata});await ready;
++  f.handle.dispose();assert.deepEqual(f.clients.map(client=>client.disposed),[1,1]);
++});
++
++function entryFixture() {
++  const starts:ReturnType<typeof fixture>[]=[];
++  const imports:ReturnType<typeof deferred<string>>[]=[];
++  const mounted:{ui:string;handle:PreparedStartup}[]=[];
++  const states:string[]=[];
++  let throwMount=false;
++  const entry=startEntry({
++    prepare:generation=>{const f=fixture(generation);starts.push(f);return f.handle;},
++    loadUi:()=>{const gate=deferred<string>();imports.push(gate);return gate.promise;},
++    mount:(ui,handle)=>{handle.claim();if(throwMount)throw new Error('mount failed after claim');mounted.push({ui,handle});},
++    state:value=>states.push(value),
++  });
++  return {entry,starts,imports,mounted,states,setThrowMount:()=>{throwMount=true;}};
++}
++
++test('UI import begins while config is pending; late import cannot mount after cancellation',async()=>{
++  const f=entryFixture();assert.equal(f.starts[0].reads,1);await tick();assert.equal(f.imports.length,1);
++  assert.equal(f.starts[0].clients.length,0);
++  f.entry.cancel();f.imports[0].resolve('old UI');await tick();
++  assert.equal(f.mounted.length,0);assert.equal(f.starts[0].handle.owner,'disposed');assert.equal(f.states.at(-1),'cancelled');
++  f.starts[0].configGate.resolve(config);await f.starts[0].handle.ready;assert.equal(f.starts[0].clients.length,0);
++});
++
++test('stale import and readiness rejection cannot mount or dispose a newer retry',async()=>{
++  const f=entryFixture();await tick();f.starts[0].configGate.resolve(config);await tick();
++  f.entry.retry();await tick();f.starts[1].configGate.resolve(config);await tick();
++  f.starts[0].clients[0].gate.reject(new Error('old rejection'));await tick();
++  assert.equal(f.starts[0].clients[0].disposed,1);assert.equal(f.starts[1].clients[0].disposed,0);
++  f.imports[0].resolve('old UI');await tick();assert.equal(f.mounted.length,0);
++  f.imports[1].resolve('new UI');await tick();assert.equal(f.mounted.length,1);assert.equal(f.mounted[0].ui,'new UI');
++  f.entry.dispose();assert.equal(f.starts[1].clients[0].disposed,0,'Entry no longer owns adopted UI');
++  f.mounted[0].handle.dispose();f.starts[1].clients[0].gate.resolve({result:metadata});await f.starts[1].handle.ready;
++  assert.equal(f.starts[1].clients[0].disposed,1);
++});
++
++test('UI import failure disposes startup and late config cannot create a Worker',async()=>{
++  const f=entryFixture();await tick();f.imports[0].reject(new Error('chunk unavailable'));await tick();
++  assert.equal(f.states.at(-1),'failed');assert.equal(f.starts[0].handle.owner,'disposed');
++  assert.equal(f.starts[0].handle.trace.status,'failed');
++  f.starts[0].configGate.resolve(config);await f.starts[0].handle.ready;assert.equal(f.starts[0].clients.length,0);
++});
++
++test('mount exception after claim disposes adopted startup and is retryable',async()=>{
++  const f=entryFixture();await tick();f.starts[0].configGate.resolve(config);await tick();
++  f.setThrowMount();f.imports[0].resolve('failing UI');await tick();
++  assert.equal(f.states.at(-1),'failed');assert.equal(f.starts[0].handle.owner,'disposed');
++  assert.equal(f.starts[0].clients[0].disposed,1);assert.equal(f.mounted.length,0);
++  f.entry.retry();await tick();assert.equal(f.starts.length,2);
++  f.entry.dispose();for(const start of f.starts){start.configGate.resolve(config);start.clients[0]?.gate.resolve({result:metadata});}
++  await Promise.all(f.starts.map(start=>start.handle.ready));
++});
++
++test('page exit before import completion leaves no late mount or Worker',async()=>{
++  const f=entryFixture();await tick();f.entry.dispose();f.entry.retry();
++  f.imports[0].resolve('late UI');f.starts[0].configGate.resolve(config);await tick();
++  assert.equal(f.starts.length,1);assert.equal(f.mounted.length,0);assert.equal(f.starts[0].clients.length,0);
++  await f.starts[0].handle.ready;
++});
++
++test('framework-reported mount failure disposes claimed owner and retains original error and handler',async()=>{
++  const f=fixture();f.configGate.resolve(config);await tick();
++  const error=Object.assign(new Error('setup failed'),{details:{code:'SETUP_ERROR'}});
++  const previous=()=>{};
++  const uiConfig:{errorHandler?:(error:unknown)=>void}={errorHandler:previous};
++  let unmounted=0;
++  assert.throws(()=>mountOwnedUi(f.handle,{config:uiConfig,mount:()=>{f.handle.claim();uiConfig.errorHandler?.(error);},
++    unmount:()=>{unmounted++;throw new Error('secondary cleanup failure');}}),caught=>caught===error);
++  assert.equal(uiConfig.errorHandler,previous);assert.equal(unmounted,1);assert.equal(f.handle.owner,'disposed');
++  assert.equal(f.handle.trace.status,'failed');assert.equal(f.clients[0].disposed,1);
++  f.clients[0].gate.resolve({result:metadata});await f.handle.ready;
++});
++
++test('pre-adoption pagehide leaves explicit retry usable on persisted return and rejects stale imports',async()=>{
++  const target=new EventTarget();const f=entryFixture();await tick();
++  const unlisten=listenForPageExit(target,()=>f.entry.cancel());
++  target.dispatchEvent(new Event('pagehide'));
++  assert.equal(f.states.at(-1),'cancelled');assert.equal(f.starts[0].handle.owner,'disposed');
++  target.dispatchEvent(new Event('pageshow'));
++  assert.equal(f.starts.length,1,'No automatic startup on persisted return');
++  f.entry.retry();await tick();assert.equal(f.starts.length,2);
++  f.imports[0].resolve('stale before pagehide');await tick();assert.equal(f.mounted.length,0);
++  f.imports[1].resolve('explicit retry UI');await tick();assert.equal(f.mounted.length,1);
++  unlisten();f.mounted[0].handle.dispose();
++  for(const start of f.starts)start.configGate.resolve(config);
++  await Promise.all(f.starts.map(start=>start.handle.ready));
++});
++
++test('pagehide ownership handover terminates active UI Worker and removes obsolete bootstrap listener',async()=>{
++  const target=new EventTarget();const f=entryFixture();await tick();
++  let bootstrapCalls=0;let uiCalls=0;
++  const stopBootstrap=listenForPageExit(target,()=>{bootstrapCalls++;f.entry.cancel();});
++  f.starts[0].configGate.resolve(config);await tick();
++  f.starts[0].clients[0].gate.resolve({result:metadata});await f.starts[0].handle.ready;
++  f.imports[0].resolve('UI');await tick();
++  // Mirrors actual onMounted listener registration and main's mounted handover.
++  const stopUi=listenForPageExit(target,()=>{uiCalls++;f.mounted[0].handle.dispose();});
++  stopBootstrap();target.dispatchEvent(new Event('pagehide'));
++  assert.equal(bootstrapCalls,0);assert.equal(uiCalls,1);assert.equal(f.starts[0].clients[0].disposed,1);
++  target.dispatchEvent(new Event('pageshow'));assert.equal(f.starts.length,1);
++  stopUi();target.dispatchEvent(new Event('pagehide'));assert.equal(uiCalls,1);
++});

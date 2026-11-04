@@ -1,0 +1,31 @@
+{
+  "scope": "CONTROLLED_LOCAL_IFRAME_PROBE",
+  "measured_at": "2026-11-04T10:33:18.988Z",
+  "browser": "Chrome/154.0.8037.57",
+  "app_url": "http://127.0.0.1:4200/candidate/",
+  "results": [
+    {
+      "kind": "same-origin",
+      "parent_origin": "http://127.0.0.1:4200",
+      "child_origin": "http://127.0.0.1:4200",
+      "result": "PASS",
+      "cases": [
+        "frame loads",
+        "real Worker/WASM accepted assessment",
+        "button move recomputes current report"
+      ]
+    },
+    {
+      "kind": "cross-origin",
+      "parent_origin": "http://127.0.0.1:4201",
+      "child_origin": "http://127.0.0.1:4200",
+      "result": "PASS",
+      "cases": [
+        "frame loads",
+        "real Worker/WASM accepted assessment",
+        "button move recomputes current report"
+      ]
+    }
+  ],
+  "limitation": "Temporary unsandboxed parent documents; does not prove target platform CSP/sandbox/HTTPS or other-network behavior."
+}

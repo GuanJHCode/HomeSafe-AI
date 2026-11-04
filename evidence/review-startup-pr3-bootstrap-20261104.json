@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "scope": "ISOLATED_CHROMIUM_BOOTSTRAP_FUNCTIONAL",
+  "browser": "Chrome/154.0.8037.57",
+  "url": "http://127.0.0.1:4200/candidate/",
+  "executed_at": "2026-11-04T10:50:05.335Z",
+  "cases": [
+    {
+      "case": "pre_adoption_cancel",
+      "status": "PASS",
+      "navigations": 1,
+      "intercepted_ui_requests": 1,
+      "workers": {
+        "created": 2,
+        "active": 1
+      }
+    },
+    {
+      "case": "ui_chunk_failure",
+      "status": "PASS",
+      "navigations": 2,
+      "intercepted_ui_requests": 2,
+      "workers": {
+        "created": 1,
+        "active": 1
+      }
+    },
+    {
+      "case": "adopted_suspend",
+      "status": "PASS",
+      "navigations": 1,
+      "intercepted_ui_requests": 0,
+      "workers": {
+        "created": 3,
+        "active": 1
+      }
+    }
+  ],
+  "fault_injection": {
+    "ui_chunk": "page-only CDP holds/fails actual mountApp module fetch",
+    "lifecycle": "PageTransitionEvent pagehide/pageshow with persisted=true injected into real Window handlers; native BFCache navigation NOT_RUN",
+    "dragging": "real Puppeteer pointer drag cancelled by pagehide",
+    "pending_move": "real evaluate posted, then pagehide in the same Window task"
+  },
+  "limits": [
+    "No performance claim",
+    "No public/private-model/Edge/Safari certification"
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "scope": "FIXED_SOURCE_REMOTE_CI_RECEIPT_NOT_CURRENT_STARTUP_CHANGES",
+  "source_commit": "64e166540495126f618dd65aa8dc88760ed70604",
+  "remote_branch": "codex/v6.1-browser-3d",
+  "run_id": 41807603537,
+  "job_id": 126498424922,
+  "run_attempt": 1,
+  "run_url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41807603537",
+  "conclusion": "failure",
+  "functional_validation": "PASS_CI_LOCALHOST",
+  "performance_budget": "FAIL_FIRST_EDITABLE",
+  "performance_record": "evidence/ci-performance-64e1665.json",
+  "performance_record_origin": "Exact previously extracted JSON record from raw CI job log; not an artifact ZIP download",
+  "checks": [
+    {
+      "name": "native_python",
+      "status": "PASS",
+      "count": 321
+    },
+    {
+      "name": "app_tests",
+      "status": "PASS",
+      "count": 34
+    },
+    {
+      "name": "browser_spike_js_tests",
+      "status": "PASS",
+      "count": 16
+    },
+    {
+      "name": "scripts_js_tests",
+      "status": "PASS",
+      "count": 3
+    },
+    {
+      "name": "canonical_contracts",
+      "status": "PASS",
+      "files": 3
+    },
+    {
+      "name": "package_checks",
+      "status": "PASS",
+      "count": 8
+    },
+    {
+      "name": "generated_core_git_diff",
+      "status": "PASS"
+    },
+    {
+      "name": "worker_controller_worker_main_node_syntax",
+      "status": "PASS"
+    },
+    {
+      "name": "contract_strict_typescript",
+      "status": "PASS"
+    },
+    {
+      "name": "Vue_typecheck_and_build",
+      "status": "PASS",
+      "verified_dist_files": 25
+    },
+    {
+      "name": "Node_WASM_controller_integration",
+      "status": "PASS",
+      "scope": "NOT_BROWSER"
+    },
+    {
+      "name": "procedural_geometry_and_browser_intake",
+      "status": "PASS",
+      "scope": "PROCEDURAL_FIXTURE_ONLY; RIGHTS_PENDING"
+    },
+    {
+      "name": "nested_path_HTTP_transport",
+      "status": "PASS",
+      "scope": "LOCAL_HTTP_ONLY"
+    },
+    {
+      "name": "browser_spike",
+      "status": "PASS",
+      "expected_scenarios": 3
+    },
+    {
+      "name": "browser_preview",
+      "status": "PASS",
+      "real_assets": 0
+    },
+    {
+      "name": "experience",
+      "status": "PASS"
+    },
+    {
+      "name": "simulated_observations",
+      "status": "PASS"
+    },
+    {
+      "name": "recovery",
+      "status": "PASS"
+    },
+    {
+      "name": "same_and_cross_origin_embedding",
+      "status": "PASS",
+      "scope": "CONTROLLED_LOCAL_IFRAMES"
+    }
+  ],
+  "performance": {
+    "status": "FAIL",
+    "mode": "enforce",
+    "metrics": {
+      "first_editable": {
+        "status": "FAIL",
+        "p95_ms": 3386,
+        "budget_ms": 3000,
+        "count": 5,
+        "independently_recomputed": true
+      },
+      "cold_rules": {
+        "status": "PASS",
+        "p95_ms": 3386,
+        "budget_ms": 12000,
+        "count": 5,
+        "independently_recomputed": true
+      },
+      "hot_evaluation": {
+        "status": "PASS",
+        "p95_ms": 9.899999999965075,
+        "budget_ms": 150,
+        "count": 30,
+        "independently_recomputed": true
+      }
+    },
+    "cached_editable_p95_ms": 2914.5999999999767,
+    "first_observation_diagnostic_p95_ms": 457.29999999998836,
+    "cold_trials": 5,
+    "cached_trials": 5,
+    "accepted_edit_confirmations": 10,
+    "hot_evaluations": 30,
+    "warmups": 3,
+    "browser": "Chrome/156.0.8078.47",
+    "device": {
+      "platform": "linux",
+      "arch": "x64",
+      "cpu": "AMD EPYC 9V74 80-Core Processor",
+      "logical_cpus": 4,
+      "memory_bytes": 16760344576,
+      "requested_renderer": "SwiftShader software rendering (launch flags; not observed GPU identity)"
+    },
+    "failure_exit_code": 1,
+    "error_log_records": [
+      "##[error]first_editable_p95_le_3000_ms. See performance.json; the strict performance step fails.",
+      "##[error]Process completed with exit code 1."
+    ],
+    "interpretation": "Only first-editable p95 violates its threshold. Cached readiness or first observation does not replace the cold first-editable gate. Different CI environment/browser does not establish causal improvement over earlier local runs."
+  },
+  "artifact": {
+    "status": "UPLOADED_CONFIRMED",
+    "id": 13310537586,
+    "name": "development-preview-64e166540495126f618dd65aa8dc88760ed70604",
+    "size_in_bytes": 9414266,
+    "sha256": "b429004a7c3307a55776aa94536fbf9665be49a70fec6693bb3c6bce23162ee1",
+    "expired_at_review": false,
+    "expires_at": "2026-11-18T09:30:03Z",
+    "url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41807603537/artifacts/13310537586",
+    "verification": "Raw upload-success log and independently queried GitHub artifact metadata agree",
+    "archive_download_or_content_inspection": "OFFICIAL_CONNECTOR_RETRIEVAL_ATTEMPTED; LOCAL_ZIP_BYTES_NOT_OBTAINED; DIGEST_AND_CONTENT_CHECK_NOT_RUN",
+    "local_materialization": {
+      "source": "Parent session report; raw transfer failure not independently inspected",
+      "official_connector_download": "RETURNED_REUSABLE_FILE_ID",
+      "library_materialize": "FAILED",
+      "reported_error": "download failed",
+      "exit_code": 1,
+      "http_status": "NOT_REPORTED",
+      "local_zip_bytes": "NOT_OBTAINED",
+      "digest_and_content_check": "NOT_RUN",
+      "bypass_or_retry": "NOT_PERFORMED"
+    }
+  },
+  "raw_evidence_digests": [
+    {
+      "name": "ci-64e1665-job.log",
+      "sha256": "c833fa2e7df4ee5c06d70087e19ef90077a94af4d904f72d48aab3119a43262f"
+    },
+    {
+      "name": "ci-64e1665-records.json",
+      "sha256": "768864909aa3e04083ac8b0ac1ce9010e67e1ac001dbb885174900624bfa765b"
+    },
+    {
+      "name": "ci-64e1665-performance.json",
+      "sha256": "d18d4ab3cc6c6e3d7fdd3d2e790b9fef69d809f6361c6364faa34178ec370f66"
+    }
+  ],
+  "prior_independent_receipt_review": {
+    "reviewer": "/root/review_delivery",
+    "decision": "PASS_FOR_RECEIPT_INTERPRETATION; CI_FAILURE_CONFIRMED; FIRST_EDITABLE_TARGET_OPEN",
+    "reviewed_at": "2026-11-04T09:33:58.439741+00:00"
+  },
+  "current_startup_changes_remote_ci": "NOT_RUN",
+  "real_asset_browser": "BLOCKED_NOT_RUN_FILE_UNAVAILABLE",
+  "public_host": "BLOCKED_NOT_RUN_NO_APPROVED_HOST",
+  "limits": [
+    "Actual Lux3D asset rights/intake/render/release acceptance",
+    "Public anonymous HTTPS hosting/deployment",
+    "Other-network/device acceptance",
+    "Edge or Safari",
+    "Full competition submission or publication",
+    "Artifact ZIP download/content inspection by this reviewer",
+    "Fresh branch/master comparison in this bounded audit"
+  ]
+}

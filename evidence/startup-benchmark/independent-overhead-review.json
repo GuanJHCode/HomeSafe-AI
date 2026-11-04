@@ -1,0 +1,87 @@
+{
+  "scope": "INDEPENDENT_OFFLINE_OVERHEAD_RECEIPT_AUDIT",
+  "reviewer": "/root/review_delivery",
+  "reviewed_at": "2026-11-04T10:32:50.731822+00:00",
+  "decision": "PASS_FOR_MEASUREMENT_AND_OVERHEAD_DISCLOSURE_ONLY",
+  "overhead_result_sha256": "6709bc9fca868265853a0b1dd4a623034a738833ec8cda1293ae737beb1888da",
+  "registration_sha256": "3882ed851fe46796ae806bf4f2ab8b94cc6653cab024c664b2f989aaf0008f02",
+  "harness_sha256": "dd4992e09ad258c1f5a0f5f373656e6146c3c94d5a516355aef7831756bf1353",
+  "checks": {
+    "fixed_schedule_10_attempts": "PASS",
+    "accepted_edit_and_pair_hashes": "PASS",
+    "all_sample_runtime_core_metadata": "PASS",
+    "frozen_helper_and_registration_identity": "PASS",
+    "raw_trace_analysis_recomputed_with_frozen_analyzer": "PASS; all10;5required B complete",
+    "thread_epoch_alignment_and_UI_monotonic_timestamps": "PASS",
+    "B_trace_input_hash_matches_initial_UI_hash": "PASS",
+    "all_reported_p50_p95_and_pair_differences": "PASS",
+    "frozen_A_25_and_B_26_dist_file_bytes": "PASS; every manifest entry size+SHA verified offline",
+    "source64_fullgit_inventory_B_frozenZIP_receipt_and_lock": "PASS"
+  },
+  "pairs": [
+    {
+      "pair": 1,
+      "order": [
+        "A",
+        "B"
+      ],
+      "A_ms": 3840.300000000745,
+      "B_ms": 3713.89999999851,
+      "B_minus_A_ms": -126.40000000223517
+    },
+    {
+      "pair": 2,
+      "order": [
+        "B",
+        "A"
+      ],
+      "A_ms": 4338.9000000003725,
+      "B_ms": 3488,
+      "B_minus_A_ms": -850.9000000003725
+    },
+    {
+      "pair": 3,
+      "order": [
+        "A",
+        "B"
+      ],
+      "A_ms": 4246.300000000745,
+      "B_ms": 3848.5999999996275,
+      "B_minus_A_ms": -397.7000000011176
+    },
+    {
+      "pair": 4,
+      "order": [
+        "B",
+        "A"
+      ],
+      "A_ms": 3667.2000000011176,
+      "B_ms": 3884.7000000011176,
+      "B_minus_A_ms": 217.5
+    },
+    {
+      "pair": 5,
+      "order": [
+        "A",
+        "B"
+      ],
+      "A_ms": 4178.9000000003725,
+      "B_ms": 3900,
+      "B_minus_A_ms": -278.90000000037253
+    }
+  ],
+  "B_minus_A_ms": {
+    "count": 5,
+    "min": -850.9000000003725,
+    "max": 217.5,
+    "p50": -278.90000000037253,
+    "p95": 217.5
+  },
+  "first_editable_p95_ms": {
+    "A": 4338.9000000003725,
+    "B": 3900
+  },
+  "interpretation": "Negative observed overhead is not evidence that tracing accelerates startup, nor proof of zero overhead. Five pairs show substantial variability; only the bounded observed distribution is reported. Both first-editable p95 fail3000ms. Hot budget is NOT_RUN here.",
+  "implementation_approval": "PR1 observation/overhead-disclosure subtask only; no optimization adoption or performance-budget closure",
+  "new_browser_runs_by_reviewer": 0
+}

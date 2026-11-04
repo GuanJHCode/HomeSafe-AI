@@ -29,7 +29,7 @@ def project(publication, monkeypatch):
         target = root / 'reference/homesafe_core' / name
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(ROOT / 'reference/homesafe_core' / name, target)
-    for name in ('config.same-origin.json', 'rule-worker.mjs', 'worker-controller.mjs'):
+    for name in ('config.same-origin.json', 'rule-worker.mjs', 'worker-controller.mjs', 'startup-trace.mjs'):
         target = root / 'browser-spike' / name
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(ROOT / 'browser-spike' / name, target)

@@ -1,0 +1,46 @@
+{
+  "scope": "USER_SUPPLIED_STARTUP_ADJUSTMENT_ATTACHMENTS_READ_IN_FULL",
+  "date": "2026-11-04",
+  "source_read_response": "/workspace/scratch/adjustment-library-read-response.json",
+  "materialize": "FAILED_INITIAL_AND_ONE_BOUNDED_FRESH_TRANSFER_RETRY",
+  "reported_error": "download failed",
+  "http_status": "NOT_REPORTED",
+  "reconstruction": "UTF-8 text content plus exactly one trailing LF; matches provider byte sizes and all three supplied SHA-256 checksums",
+  "parent_independent_byte_verification": "CONFIRMED",
+  "files": [
+    {
+      "name": "后续调整方案.md",
+      "library_file_id": "libfile_33d111f476248191bd647a0bbe624304",
+      "bytes_with_restored_final_lf": 18825,
+      "sha256": "758aa8cf5d2ba1d1bf76eb00f3a76326680926a0630095de525fb64c8053768f",
+      "checksum_verification": "MATCHES_SUPPLIED_CHECKSUMS",
+      "has_more": false
+    },
+    {
+      "name": "接手执行提示词.md",
+      "library_file_id": "libfile_8e7a04f057948191950671e245ce520f",
+      "bytes_with_restored_final_lf": 3952,
+      "sha256": "2007356cc70c6e575e289f52c193890f5368d9600d3808843bccea852a8c63b0",
+      "checksum_verification": "MATCHES_SUPPLIED_CHECKSUMS",
+      "has_more": false
+    },
+    {
+      "name": "CHECKSUMS.sha256",
+      "library_file_id": "libfile_6d0a25bcd3a08191bca5ae7e8d4e6a79",
+      "bytes_with_restored_final_lf": 266,
+      "sha256": "b35efb0acad38c2612a4edcfc3a0be62472d73528560d9a78454b715c65de42b",
+      "checksum_verification": "CHECKSUM_LIST_ITSELF",
+      "has_more": false
+    },
+    {
+      "name": "CI_指标摘录.json",
+      "library_file_id": "libfile_301cc277c1d8819193bb035ef3d8a900",
+      "bytes_with_restored_final_lf": 1772,
+      "sha256": "a0610c19a524e58fab6312ded940b3994bd987af76cf7725408672f3650de428",
+      "checksum_verification": "MATCHES_SUPPLIED_CHECKSUMS",
+      "has_more": false
+    }
+  ],
+  "full_attachment_publication": "NOT_PERFORMED",
+  "materialize_history_source": "Parent session report; no persisted raw transfer-failure receipt independently inspected"
+}
