@@ -1,0 +1,68 @@
+{
+  "scope": "INDEPENDENT_PARALLEL_STARTUP_AND_INTEGRITY_FAULT_REVIEW",
+  "baseline_commit": "f6245e1",
+  "parallel_scene_failure_before": {
+    "created": 1,
+    "terminated": 0,
+    "active": 1,
+    "failure": "规则暂不可用。资源加载失败：/preview/engine/scene-before.json（503）重建 Worker 并重试",
+    "report_present": false,
+    "busy": "false",
+    "page_errors": [],
+    "scope": "SCENE_503_AFTER_WORKER_STARTED",
+    "expectation": "Terminal startup error terminates parallel Worker"
+  },
+  "parallel_scene_failure_after": {
+    "created": 1,
+    "terminated": 1,
+    "active": 0,
+    "failure": "规则暂不可用。资源加载失败：/preview/engine/scene-before.json（503）重建 Worker 并重试",
+    "report_present": false,
+    "busy": "false",
+    "page_errors": [],
+    "scope": "SCENE_503_AFTER_WORKER_STARTED",
+    "expectation": "Terminal startup error terminates parallel Worker"
+  },
+  "worker_integrity": {
+    "scope": "ISOLATED_CHROMIUM_INTENTIONAL_SOURCE_FAULTS",
+    "results": [
+      {
+        "case": "bundle-hash-mismatch",
+        "failure": {
+          "workers_created": 1,
+          "workers_terminated": 1,
+          "active_workers": 0,
+          "report_present": false,
+          "text": "规则暂不可用。Python bundle hash mismatch重建 Worker 并重试"
+        },
+        "recovered": {
+          "workers_created": 2,
+          "workers_terminated": 1,
+          "active_workers": 1,
+          "hash": "输入摘要 a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+        },
+        "page_errors": [],
+        "result": "PASS"
+      },
+      {
+        "case": "pydantic-version-mismatch",
+        "failure": {
+          "workers_created": 1,
+          "workers_terminated": 1,
+          "active_workers": 0,
+          "report_present": false,
+          "text": "规则暂不可用。Pydantic version mismatch重建 Worker 并重试"
+        },
+        "recovered": {
+          "workers_created": 2,
+          "workers_terminated": 1,
+          "active_workers": 1,
+          "hash": "输入摘要 a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+        },
+        "page_errors": [],
+        "result": "PASS"
+      }
+    ]
+  },
+  "note": "First503run assertion failed active_workers1; after catch disposal samecounterexample passes active_workers0. Source hashes recorded in accompanying review."
+}

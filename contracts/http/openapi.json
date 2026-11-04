@@ -1589,6 +1589,108 @@
         "title": "ObjectPatch",
         "type": "object"
       },
+      "ObservationEdit": {
+        "additionalProperties": false,
+        "properties": {
+          "object_id": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "title": "Object Id",
+            "type": "string"
+          },
+          "field": {
+            "enum": [
+              "anchored",
+              "protection_reported",
+              "locked",
+              "accessible",
+              "secured",
+              "raised_threshold_present"
+            ],
+            "title": "Field",
+            "type": "string"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          }
+        },
+        "required": [
+          "object_id",
+          "field",
+          "value"
+        ],
+        "title": "ObservationEdit",
+        "type": "object"
+      },
+      "ObservationOption": {
+        "additionalProperties": false,
+        "properties": {
+          "object_id": {
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_.:-]+$",
+            "title": "Object Id",
+            "type": "string"
+          },
+          "field": {
+            "enum": [
+              "anchored",
+              "protection_reported",
+              "locked",
+              "accessible",
+              "secured",
+              "raised_threshold_present"
+            ],
+            "title": "Field",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "observation": {
+            "$ref": "#/components/schemas/BoolObservation"
+          }
+        },
+        "required": [
+          "object_id",
+          "field",
+          "label",
+          "observation"
+        ],
+        "title": "ObservationOption",
+        "type": "object"
+      },
+      "ObservationResult": {
+        "additionalProperties": false,
+        "properties": {
+          "scene": {
+            "$ref": "#/components/schemas/Scene"
+          },
+          "assessment": {
+            "$ref": "#/components/schemas/Assessment"
+          },
+          "comparison": {
+            "$ref": "#/components/schemas/Comparison"
+          }
+        },
+        "required": [
+          "scene",
+          "assessment",
+          "comparison"
+        ],
+        "title": "ObservationResult",
+        "type": "object"
+      },
       "PlacementIssue": {
         "additionalProperties": false,
         "properties": {

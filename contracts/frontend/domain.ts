@@ -174,6 +174,25 @@ export type ObjectPatch = {
   "transform": TransformInput;
 };
 
+export type ObservationEdit = {
+  "object_id": string;
+  "field": "anchored" | "protection_reported" | "locked" | "accessible" | "secured" | "raised_threshold_present";
+  "value": boolean | null;
+};
+
+export type ObservationOption = {
+  "object_id": string;
+  "field": "anchored" | "protection_reported" | "locked" | "accessible" | "secured" | "raised_threshold_present";
+  "label": string;
+  "observation": BoolObservation;
+};
+
+export type ObservationResult = {
+  "scene": Scene;
+  "assessment": Assessment;
+  "comparison": Comparison;
+};
+
 export type PlacementIssue = {
   "object_id"?: string | null;
   "related_object_ids"?: Array<string>;

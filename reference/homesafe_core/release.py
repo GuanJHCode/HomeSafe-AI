@@ -3,7 +3,8 @@ Untrusted GLB needs additional full glTF validation/browser tests in the product
 """
 from __future__ import annotations
 from pathlib import Path, PurePosixPath
-import hashlib,json,struct,subprocess,shutil,re
+import hashlib,json,struct,subprocess,shutil,re,ipaddress
+from urllib.parse import urlsplit
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -21,6 +22,35 @@ def contained_file(root: Path, relative: str) -> Path:
     resolved=current.resolve()
     if not resolved.is_relative_to(base) or not resolved.is_file():raise ValueError('file missing or outside root')
     return resolved
+
+def validate_public_demo_url(url: str) -> None:
+    """Reject non-public/credentialed URL syntax; no DNS or availability claim."""
+    if (not isinstance(url, str) or not url or any(c.isspace() or ord(c) < 32 for c in url)
+            or any(c in url for c in ('\\', '?', '#'))):
+        raise ValueError('public demo requires a plain anonymous HTTPS URL')
+    parsed = urlsplit(url)
+    host = (parsed.hostname or '').rstrip('.').lower()
+    if (parsed.scheme != 'https' or not host or parsed.username is not None
+            or parsed.password is not None or parsed.query or parsed.fragment or '%' in host
+            or (parsed.port is not None and not 1 <= parsed.port <= 65535)):
+        raise ValueError('public demo requires an anonymous HTTPS host and valid port')
+    try:
+        address = ipaddress.ip_address(host)
+    except ValueError:
+        # Reject browser-normalized numeric IP forms and obvious local DNS names.
+        # DNS names can still resolve privately: the deployment/browser receipts
+        # remain mandatory, and this syntax guard is not a network verification.
+        labels = host.split('.')
+        if (len(labels) < 2 or len(host) > 253 or
+                any(not re.fullmatch(r'[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?', label) for label in labels) or
+                re.fullmatch(r'(?:0x[0-9a-f]+|[0-9]+)', labels[-1]) or
+                labels[-1] in {'localhost', 'local', 'localdomain', 'internal', 'test', 'invalid', 'example'} or
+                host == 'home.arpa' or host.endswith('.home.arpa')):
+            raise ValueError('public demo host is local, ambiguous, or malformed')
+    else:
+        if not address.is_global or address.is_multicast or address.is_reserved:
+            raise ValueError('public demo IP address is not public unicast')
+
 
 def validate_glb(path: Path, max_bytes=50_000_000) -> dict:
     """Structural subset only; rejects external resources and malformed chunks."""

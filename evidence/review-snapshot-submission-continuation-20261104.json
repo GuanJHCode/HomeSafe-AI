@@ -1,0 +1,29 @@
+{
+  "reviewer": "/root/review_ux",
+  "base_commit": "f6245e1",
+  "decision": "PASS_SCOPED_SNAPSHOT_AND_URL_PREFLIGHT",
+  "independent_checks": {
+    "snapshot_and_url_pytest": "43 passed",
+    "existing_release_export_pytest": "38 passed",
+    "snapshot_node_tests": "3 passed",
+    "typecheck": "PASS",
+    "actual_downloaded_snapshots_recomputed": 3,
+    "submission_preflight": "BLOCKED_EXIT_2"
+  },
+  "files": {
+    "apps/web/src/domain/SceneSnapshotBuilder.ts": "5352257fe433f5878b721f3d57a184cd2363c927faa789b23f83cec5aba41d5c",
+    "apps/web/tests/scene-snapshot.test.ts": "4fc11e674540dcf23a578223a047ab1f1c05d0875547e751d095d32f8e5b6c16",
+    "scripts/check_scene_snapshot.py": "50f7bc5edcf454471081d3631168bb10dbf00d5e1f2092122c6c6f0527b27654",
+    "reference/tests/test_scene_snapshot.py": "441fad8a3c53093a1b783dff08cc1088acabfd17a9b3d9f65546c547433506d0",
+    "reference/homesafe_core/release.py": "a60dd4543caaaabc426e7c8477b51afddc17ebabb3e5caaa224d438d8c931a7e",
+    "scripts/check_submission.py": "a47f2f79a6317f9551a60f601403dac0a9bd24cff775cd0fea1a2c8d2588c6b4",
+    "reference/tests/test_submission_url.py": "6f9a0b182c4862d8419f8bb9d5ad344e4c3774ff92c826fa53fe79eff20bcaf5",
+    "scripts/check_web_preview.mjs": "435bf276576af0f3917eda5c4ca188c71e53c2b8ff70682b6ee0c437e35e6f40",
+    "evidence/scene-snapshot-browser-20261104.json": "abb36f05597b0e247836cee8558d3d5331f9698485942f2cef68ff42784641dc"
+  },
+  "downloaded_snapshots": {
+    "snapshot-initial.json": "5c25ddbc076b030f245a70a27bdc24f863bd540c31ccda504f51d3a7b08b9396",
+    "snapshot-layout.json": "e6fe4ead66bd4d26facb1907e9508b9a26ed6e76288ccea54135b5c9d4cf5785",
+    "snapshot-challenge.json": "6f94804906d1edd578ff6c698323f123b4e826aa896104c5c164d2cf36a1f184"
+  }
+}

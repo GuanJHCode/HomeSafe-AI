@@ -1,0 +1,50 @@
+{
+  "scope": "ISOLATED_DEFER_BUILD_EXPERIMENT_NOT_PRODUCTION",
+  "source_worktree": "/workspace/HomeSafe-AI-continuation",
+  "source_models_sha256": "551b87a607e5319c7dc203cc4ff55a0ed21e3cb1ab062bc319adbd8e51f09cd3",
+  "experiment_models_sha256": "2c8dacfecd86dca8eddcb02d51aa9533b726f8f9cdaeac6535dcdd7c7460c065",
+  "change": "Model ConfigDict defer_build=True; no other source change",
+  "browser_status": "COMPLETED_BUDGET_FAIL",
+  "changed_distribution_inputs": [
+    "engine/python/homesafe_core.zip",
+    "engine/python/manifest.json"
+  ],
+  "core_bundle_sha256": "433e260ea79ab3c90346b55679c6151960d1965fb16e7f92bcbed4b492fa4e97",
+  "source_distribution_manifest_sha256": "98b27b321d0a3dc9bbb3daad96e2f1f23128c0b75cfdf544d32e107c5d10b5a2",
+  "experimental_distribution_manifest_sha256": "2e18b6ba2e0f915ad854eec642346b1378ad0bd0ab769bb962f78987039ebeb5",
+  "native_tests": "PASS",
+  "contracts": "PASS_UNCHANGED",
+  "production_models_still_unchanged": true,
+  "non_core_distribution_files_verified_equal": 23,
+  "changed_bundle_modules": [
+    "homesafe_core/models.py"
+  ],
+  "browser_exit_code": 1,
+  "targets": {
+    "first_editable_p95_le_3000_ms": false,
+    "cold_rules_le_12000_ms": true,
+    "hot_evaluation_p95_le_150_ms": true
+  },
+  "performance_probe_sha256": "1138ed66db682cea992a88277e77d837db0accd44be6bc1f37b76c5981536c6a",
+  "browser_receipt_sha256": "a75e9bda0431345655397d4af6a0d7806b5fcc700d83a72cf565b6ab1e921d3e",
+  "initial_recommendation": "DO_NOT_PROMOTE: first editable p95 remains above3seconds; native first-use total regressed and schema cost shifts to first evaluation.",
+  "recommendation": "DISCARD_EXPERIMENT: independent fixed AB/BA comparison improved in only 2/5 pairs; paired median saving -37.8ms fails predefined >=4/5 and >=100ms benefit gate.",
+  "final_paired_status": "COMPLETED",
+  "final_paired_decision": {
+    "improving_pairs": 2,
+    "paired_saving_ms": {
+      "count": 5,
+      "min": -221.89999999850988,
+      "max": 158.40000000037253,
+      "p50": -37.80000000074506,
+      "p95": 158.40000000037253
+    },
+    "passes_predefined_benefit_gate": false,
+    "candidate_first_editable_p95_le_3000_ms": false,
+    "actual_accepted_edits": 10,
+    "same_initial_and_edited_hash_in_every_pair": true,
+    "recommendation": "DISCARD_EXPERIMENT"
+  },
+  "final_paired_receipt_sha256": "33084eecec8910455d816f182286f4fa32fea274770cb20b84ed1b9bd452d62c",
+  "paired_harness_sha256": "ef59e00490461154f5f22b24143f795e079c97da4ac46f1d3c3d214c957117d8"
+}

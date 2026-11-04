@@ -1,5 +1,5 @@
 {
-  "bundle_sha256": "0dc027b2f0cddec16b165db12a9f4708e3873b91d5082aa575eb543de5d0b455",
+  "bundle_sha256": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
   "files": [
     {
       "path": "__init__.py",
@@ -7,7 +7,7 @@
     },
     {
       "path": "models.py",
-      "sha256": "f23453ff309bfab8d65b73c5b7eaf3ae0c992021f9ed8a279546cdfc74364876"
+      "sha256": "551b87a607e5319c7dc203cc4ff55a0ed21e3cb1ab062bc319adbd8e51f09cd3"
     },
     {
       "path": "geometry.py",
@@ -38,8 +38,12 @@
       "sha256": "bcb4d3dd33cac7f88c2ba51b51add6b981823c48a125fb069b004f7b4d949f9c"
     },
     {
+      "path": "observations.py",
+      "sha256": "8394329f47a477cf37fc4d6a26bfc9e14574f482fe12b6243c6160555659b5c8"
+    },
+    {
       "path": "browser_bridge.py",
-      "sha256": "881b077e51a7e7837df16b391c03fb4c2f081008caae55cd065c4b2bbd5eddfd"
+      "sha256": "1e722dc78192916c180644e78c7d295704d161148bf2346a2fb10fd75993a2ab"
     }
   ],
   "contains_paid_sdk": false,

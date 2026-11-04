@@ -5,7 +5,8 @@ import assert from 'node:assert/strict';
 import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { pathToFileURL, fileURLToPath } from 'node:url';
+import { execFileSync } from 'node:child_process';
 import { setTimeout as delay } from 'node:timers/promises';
 import { failNextConfig } from './browser_fault.mjs';
 
@@ -63,6 +64,9 @@ try {
   await ready();
   await page.waitForSelector(canvas, { visible: true });
   const coldReadyMs = performance.now() - opened;
+  const snapshotRecords = [];
+  const initialSnapshot = await downloadSceneSnapshot('initial');
+  assertPositionFromSnapshot(initialSnapshot, 'chair', chairBefore);
   if (expectedRealAssets) {
     await assertModelsLoaded();
     if (process.env.HOMESAFE_EVIDENCE_DIR) {
@@ -105,6 +109,9 @@ try {
   assert.ok(finding(layoutReport, 'R001', 'child', 'not_triggered'));
   assert.ok(finding(layoutReport, 'R005', 'elder', 'triggered'));
   assert.equal(layoutReport.comparison.conflict, true);
+  const layoutSnapshot = await downloadSceneSnapshot('layout');
+  assert.equal(layoutSnapshot.assessment.input_hash, layoutReport.input_hash);
+  assertPositionFromSnapshot(layoutSnapshot, 'chair', chairConflict);
 
   await click(labels.overview);
   await dragChair(chairConflict, cabinet);
@@ -144,6 +151,9 @@ try {
   const summary = await visibleText(challengeSummary);
   assert.match(summary, /本关布局目标已完成/);
   const challengeReport = await downloadReport();
+  const challengeSnapshot = await downloadSceneSnapshot('challenge');
+  assertPositionFromSnapshot(challengeSnapshot, 'chair', chairImproved);
+  assert.equal(challengeSnapshot.assessment.input_hash, challengeReport.input_hash);
   const remaining = status => challengeReport.findings.filter(item => item.status === status).length;
   assert.match(summary, new RegExp(`仍有${remaining('triggered')}项已触发、${remaining('needs_review')}项待核查`));
   assert.match(summary, new RegExp(`未覆盖 ${challengeReport.unsupportedDomains.length} 类`));
@@ -255,10 +265,12 @@ try {
     expected_real_assets: expectedRealAssets,
     asset_provenance: expectedRealAssets ? (process.env.HOMESAFE_ASSET_PROVENANCE || 'lux3d_web') : 'none',
     main_challenge_layouts: mainLayouts,
+    scene_snapshots: snapshotRecords,
     cases: [
       'real pointer drag and one-entry undo', 'invalid placement rebound',
       'child and elder views', 'layout conflict', 'redo, reset and rotation',
       'challenge remaining findings and coverage', 'JSON and printable action checklist',
+      'downloaded scene snapshots independently recompute in native Python',
       'cabinet main challenge: three distinct legal solutions and rotation',
       'main challenge invalid rebound, Python counters, undo/reset and fixed objects',
       'tutorial/main/free practice transitions preserve separate layouts',
@@ -323,6 +335,45 @@ try {
       await delay(50);
     }
     throw new Error('JSON download did not complete');
+  }
+
+  function assertPositionFromSnapshot(snapshot, id, target) {
+    const object = snapshot.scene.objects.find(item => item.id === id);
+    assert.ok(object, 'Snapshot retains canonical scene objects');
+    assert.ok(Math.abs(object.position.x - target.x) < 0.05);
+    assert.ok(Math.abs(object.position.z - target.z) < 0.05);
+  }
+
+  async function downloadSceneSnapshot(label) {
+    const before = new Set(await readdir(downloadPath));
+    await click('导出场景快照');
+    const deadline = performance.now() + 10_000;
+    while (performance.now() < deadline) {
+      const filename = (await readdir(downloadPath)).find(name => name.startsWith('homesafe-scene-') && name.endsWith('.json') && !before.has(name));
+      if (filename) {
+        const path = join(downloadPath, filename);
+        const raw = await readFile(path, 'utf8');
+        const snapshot = JSON.parse(raw);
+        assert.equal(snapshot.assessment.input_hash, await currentHash());
+        assert.equal(snapshot.assessment.scene_revision, snapshot.scene.revision);
+        assert.equal(snapshot.source_kind, 'synthetic_demo');
+        assert.equal(snapshot.includes_asset_bytes, false);
+        // Verify actual downloaded inputs with the same authoritative Python core;
+        // a UI-presented hash string alone cannot establish reproducibility.
+        const verification = JSON.parse(execFileSync(process.env.HOMESAFE_PYTHON || 'python3',
+          [fileURLToPath(new URL('./check_scene_snapshot.py', import.meta.url)), path], { encoding: 'utf8' }));
+        assert.equal(verification.result, 'MATCHES_CURRENT_CORE');
+        snapshotRecords.push({ label, filename, verification });
+        if (process.env.HOMESAFE_EVIDENCE_DIR) {
+          await mkdir(process.env.HOMESAFE_EVIDENCE_DIR, { recursive: true });
+          await writeFile(resolve(process.env.HOMESAFE_EVIDENCE_DIR, `snapshot-${label}.json`), raw);
+        }
+        await rm(path);
+        return snapshot;
+      }
+      await delay(50);
+    }
+    throw new Error('Scene snapshot download did not complete');
   }
 
   async function canvasBounds() {

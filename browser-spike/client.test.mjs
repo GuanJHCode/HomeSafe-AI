@@ -42,3 +42,12 @@ test('synchronous postMessage failure rejects and clears pending request',async(
   await assert.rejects(client.evaluate({},1),/DataCloneError/);
   assert.equal(client.pending.size,0);client.dispose();
 });
+
+test('an idle Worker crash rejects the next request immediately without posting or replay',async()=>{
+  const worker=new FakeWorker(),client=new BrowserRuleClient(worker);
+  worker.listeners.get('error')();
+  const result=client.request('evaluate',{},4,5);
+  await assert.rejects(result,/Worker crashed/);
+  assert.equal(worker.sent.length,0);
+  client.dispose();
+});

@@ -1,0 +1,173 @@
+{
+  "scope": "PRIVATE_LOOPBACK_PROCEDURAL_FIXTURE",
+  "source_kind": "procedural",
+  "result": "PASS",
+  "rights_status": "PENDING",
+  "public_deployment": "NOT_RUN",
+  "publication_catalog_changed": false,
+  "original_bytes_unchanged": true,
+  "orientation": "Y-up/+Z front; visual review required",
+  "dimensions": "Synthetic scenario fit, not measured real furniture",
+  "assets": [
+    {
+      "id": "chair",
+      "asset_id": "private-procedural-chair",
+      "provenance": "procedural",
+      "bytes": 1540,
+      "sha256": "980910f95f58720b4c6421d87b27ade552944bf390efa8d9c614244932eb0439",
+      "dimensions": {
+        "width": 0.5,
+        "height": 0.8,
+        "depth": 0.5
+      }
+    },
+    {
+      "id": "cabinet",
+      "asset_id": "private-procedural-cabinet",
+      "provenance": "procedural",
+      "bytes": 1540,
+      "sha256": "f8eb6749c012108e3040fe0fa8dc08ba4dc8fb8ba9f20273967e457c324f3c62",
+      "dimensions": {
+        "width": 0.7,
+        "height": 1.6,
+        "depth": 0.5
+      }
+    }
+  ],
+  "checks": [
+    {
+      "object_id": "chair",
+      "sha256": "980910f95f58720b4c6421d87b27ade552944bf390efa8d9c614244932eb0439",
+      "bytes": 1540,
+      "triangles": 12,
+      "textures_decoded": 2,
+      "source_bounds": [
+        0.5,
+        0.800000011920929,
+        0.5
+      ],
+      "target_dimensions": {
+        "width": 0.5,
+        "height": 0.8,
+        "depth": 0.5
+      },
+      "fit": "PASS",
+      "bottom_center": "PASS",
+      "rotation_90": "PASS",
+      "multiple_instances": "PASS",
+      "release_preserves_other_instance": "PASS"
+    },
+    {
+      "object_id": "cabinet",
+      "sha256": "f8eb6749c012108e3040fe0fa8dc08ba4dc8fb8ba9f20273967e457c324f3c62",
+      "bytes": 1540,
+      "triangles": 12,
+      "textures_decoded": 2,
+      "source_bounds": [
+        0.699999988079071,
+        1.600000023841858,
+        0.5
+      ],
+      "target_dimensions": {
+        "width": 0.7,
+        "height": 1.6,
+        "depth": 0.5
+      },
+      "fit": "PASS",
+      "bottom_center": "PASS",
+      "rotation_90": "PASS",
+      "multiple_instances": "PASS",
+      "release_preserves_other_instance": "PASS"
+    }
+  ],
+  "interaction": {
+    "scope": "REAL_CHROME_PREVIEW",
+    "url": "http://127.0.0.1:5173/",
+    "browser": "Chrome/154.0.8037.57",
+    "cold_ready_ms": 4160,
+    "warm_ready_ms": 3448,
+    "ruleset": "demo-rules-3.0",
+    "result": "PASS",
+    "expected_real_assets": 2,
+    "asset_provenance": "procedural",
+    "main_challenge_layouts": [
+      {
+        "target": {
+          "x": 4.5,
+          "z": 3.2
+        },
+        "input_hash": "f34b1fabcc6d00a82b0250bc598f0fd07c66b25ddb7ae7e6fed942d3bdd29fb3"
+      },
+      {
+        "target": {
+          "x": 3.2,
+          "z": 3.2
+        },
+        "input_hash": "9ff8a2bb6a27af77dd96dafafc6b9a9c592a13b97b5eed1876edaaa091c4e2ce"
+      },
+      {
+        "target": {
+          "x": 4.8,
+          "z": 0.8
+        },
+        "input_hash": "511b5782681aa5fd57911e22a951a2fbef5ce0395e49a70b458104847c079d97"
+      }
+    ],
+    "scene_snapshots": [
+      {
+        "label": "initial",
+        "filename": "homesafe-scene-v1-12e8cc2dadfe-2026-11-04T09-01-39-053Z-1.json",
+        "verification": {
+          "result": "MATCHES_CURRENT_CORE",
+          "scene_id": "demo-living-room",
+          "scene_revision": 1,
+          "input_hash": "12e8cc2dadfedca7f8a616c0a9722179efab080cf3d6915008853577cd32bc60",
+          "ruleset_version": "demo-rules-3.0",
+          "source_kind": "synthetic_demo",
+          "scope": "Local canonical input and rule-version verification only; no safety or challenge certification."
+        }
+      },
+      {
+        "label": "layout",
+        "filename": "homesafe-scene-v7-aa2108a7aeb1-2026-11-04T09-01-40-724Z-2.json",
+        "verification": {
+          "result": "MATCHES_CURRENT_CORE",
+          "scene_id": "demo-living-room",
+          "scene_revision": 7,
+          "input_hash": "aa2108a7aeb14b49090acd5e0fe71d3e149d7e5f2440e8729347e10d2d063200",
+          "ruleset_version": "demo-rules-3.0",
+          "source_kind": "synthetic_demo",
+          "scope": "Local canonical input and rule-version verification only; no safety or challenge certification."
+        }
+      },
+      {
+        "label": "challenge",
+        "filename": "homesafe-scene-v2-7812d0bf3ba4-2026-11-04T09-01-42-314Z-3.json",
+        "verification": {
+          "result": "MATCHES_CURRENT_CORE",
+          "scene_id": "demo-living-room",
+          "scene_revision": 2,
+          "input_hash": "7812d0bf3ba4bc9be1561875269b100df5666db046697388ccefede40e295dc7",
+          "ruleset_version": "demo-rules-3.0",
+          "source_kind": "synthetic_demo",
+          "scope": "Local canonical input and rule-version verification only; no safety or challenge certification."
+        }
+      }
+    ],
+    "cases": [
+      "real pointer drag and one-entry undo",
+      "invalid placement rebound",
+      "child and elder views",
+      "layout conflict",
+      "redo, reset and rotation",
+      "challenge remaining findings and coverage",
+      "JSON and printable action checklist",
+      "downloaded scene snapshots independently recompute in native Python",
+      "cabinet main challenge: three distinct legal solutions and rotation",
+      "main challenge invalid rebound, Python counters, undo/reset and fixed objects",
+      "tutorial/main/free practice transitions preserve separate layouts",
+      "refresh",
+      "real Worker recovery without refresh"
+    ]
+  }
+}

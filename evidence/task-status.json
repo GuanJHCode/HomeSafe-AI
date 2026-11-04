@@ -231,7 +231,8 @@
       "owner": null,
       "commit": null,
       "evidence": [
-        "evidence/CONTINUATION_20261104.md"
+        "evidence/CONTINUATION_20261104.md",
+        "evidence/FEATURE_CONTINUATION_20261104.md"
       ],
       "subtasks": [
         {
@@ -240,6 +241,13 @@
           "acceptance_scope": "Three modes, canonical cabinet challenge,3 legal layouts and75-pose independent grid, illegal counters",
           "review": "PASS_INDEPENDENT_BROWSER",
           "evidence": "evidence/REVIEW_T06_20261104.md"
+        },
+        {
+          "id": "T06-simulated-observation-practice",
+          "status": "DONE",
+          "acceptance_scope": "Python allowlist/tri-state/simulated provenance; explicit new data baseline and history clearing; immutable challenge baseline; actual browser/print/snapshot",
+          "review": "PASS_INDEPENDENT",
+          "evidence": "evidence/REVIEW_OBSERVATIONS_CONTINUATION_20261104.md"
         }
       ],
       "remaining": [
@@ -255,7 +263,8 @@
       "owner": null,
       "commit": null,
       "evidence": [
-        "evidence/CONTINUATION_20261104.md"
+        "evidence/CONTINUATION_20261104.md",
+        "evidence/FEATURE_CONTINUATION_20261104.md"
       ],
       "subtasks": [
         {
@@ -268,14 +277,50 @@
         {
           "id": "T07-performance-probe",
           "status": "DONE",
-          "acceptance_scope": "5 cold/warm pairs +30 hot evaluations, actual local measurements only",
+          "acceptance_scope": "Historical observation-ready probe only; editing readiness target NOT established. Superseded by current actual-editable metric.",
           "review": "PASS_INDEPENDENT",
           "evidence": "evidence/REVIEW_BROWSER_PROBES_20261104.md"
+        },
+        {
+          "id": "T07-renderer-terminal-worker-recovery",
+          "status": "DONE",
+          "acceptance_scope": "Context lost/initial WebGL failure, explicit renderer rebuild preserving accepted state; terminal Worker failure and startup503 cleanup; nine isolated browser checks",
+          "review": "PASS_INDEPENDENT",
+          "evidence": "evidence/REVIEW_RECOVERY_CONTINUATION_20261104.md"
+        },
+        {
+          "id": "T07-canonical-scene-snapshot",
+          "status": "DONE",
+          "acceptance_scope": "Complete canonical scene export with provenance/identity; actual downloads independently recomputed; no model bytes/import/challenge restore",
+          "review": "PASS_INDEPENDENT",
+          "evidence": "evidence/REVIEW_SNAPSHOT_SUBMISSION_CONTINUATION_20261104.md"
+        },
+        {
+          "id": "T07-editable-measurement-and-strict-ci",
+          "status": "DONE",
+          "acceptance_scope": "Actual editable readiness and accepted edit in every sample; parallel verified startup; CI runs experience/embedding/observations/recovery/performance with unchanged strict budgets. Tooling complete;3s goal separately OPEN.",
+          "review": "PASS_INDEPENDENT",
+          "evidence": "evidence/REVIEW_PERFORMANCE_CI_CONTINUATION_20261104.md"
+        },
+        {
+          "id": "T07-first-editable-budget",
+          "status": "OPEN_NOT_MET",
+          "acceptance_scope": "Cold first editable p95 <=3000ms, with actual accepted edit per sample; no canvas-proxy substitution",
+          "evidence": "evidence/REVIEW_PERFORMANCE_CI_CONTINUATION_20261104.md"
         }
       ],
       "remaining": [
-        "Actual Lux3D load/render/release and print validation; final target device/network performance."
-      ]
+        "Actual Lux3D load/render/release and print validation; final target device/network performance.",
+        "First-editable <=3s budget is NOT MET in isolated cloud Chrome; engineering work remains, separate from external asset/hosting blockers."
+      ],
+      "checks": {
+        "first_editable_budget": "NOT_MET",
+        "hot_evaluation_budget": "PASS_LOCAL_ONLY",
+        "cold_rule_budget": "PASS_LOCAL_ONLY",
+        "current_remote_ci": "NOT_RUN_NO_PUSH",
+        "local_ci_equivalent_functional_steps": "PASS",
+        "strict_ci_failure_propagation": "PASS_INDEPENDENT_SYNTHETIC_SHELL_TEST"
+      }
     },
     {
       "id": "T08",
@@ -340,10 +385,20 @@
       "owner": null,
       "commit": null,
       "evidence": [
-        "evidence/CONTINUATION_20261104.md"
+        "evidence/CONTINUATION_20261104.md",
+        "evidence/FEATURE_CONTINUATION_20261104.md"
       ],
       "blockers": [
         "G1/G3/G4 incomplete; no verified account/form or final submission authorization/receipt."
+      ],
+      "subtasks": [
+        {
+          "id": "T11-public-url-syntax-guard",
+          "status": "DONE",
+          "acceptance_scope": "Reject local/private/ambiguous host and credential URL forms; does not replace actual public access proof; submission remains BLOCKED",
+          "review": "PASS_INDEPENDENT",
+          "evidence": "evidence/REVIEW_SNAPSHOT_SUBMISSION_CONTINUATION_20261104.md"
+        }
       ]
     },
     {
@@ -393,7 +448,7 @@
     }
   ],
   "timezone": "Asia/Shanghai",
-  "planning_status": "SCOPED_IMPLEMENTATIONS_REVIEWED_EXTERNAL_GATES_BLOCKED",
+  "planning_status": "SCOPED_FEATURES_REVIEWED_FIRST_EDITABLE_BUDGET_OPEN_EXTERNAL_GATES_BLOCKED",
   "source_import_status": "IMPORTED_AND_NATIVE_VALIDATED",
   "source_import": {
     "base_commit": "01d48fca76f77856b5e9f31a37090bb1284e47db",
@@ -405,11 +460,11 @@
   },
   "baseline_commit": "2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f",
   "implementation_branch": "codex/v6.1-browser-3d",
-  "continuation_base_commit": "57faf384d64e9770407b28086fdfeb5b193a6d6f",
-  "current_validation_scope": "evidence/CONTINUATION_20261104.md",
+  "continuation_base_commit": "f6245e13bc41e36a0efeabeba3ca0fba2174c2f5",
+  "current_validation_scope": "evidence/FEATURE_CONTINUATION_20261104.md",
   "historical_validation_scope": "Current CI/browser evidence: evidence/CI_CONTINUATION_20261104.md. T02 development preview passed real Linux Chrome; T03 real Lux3D and T04 public hosting remain blocked. Historical local-only limits are retained in earlier evidence.",
   "historical_validated_source_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6",
-  "validation_scope": "Current isolated cloud local browser: evidence/CONTINUATION_20261104.md; CI receipts remain historical. Actual Lux3D and public hosting BLOCKED.",
+  "validation_scope": "Current isolated cloud local browser and canonical tests: evidence/FEATURE_CONTINUATION_20261104.md. Modified CI not remotely run. First-editable budget OPEN; actual Lux3D/public hosting BLOCKED.",
   "recovery_sync": {
     "task_id": "RECOVERY-SYNC-20261104",
     "date": "2026-11-04",
@@ -426,5 +481,14 @@
     },
     "python_application_browser_retest": "NOT_RUN",
     "evidence": "evidence/RECOVERY_SYNC_20261104.md"
-  }
+  },
+  "continuation_worktree": {
+    "base_commit": "f6245e13bc41e36a0efeabeba3ca0fba2174c2f5",
+    "local_branch": "codex/continuation-features-20261104",
+    "original_worktree_preserved": true,
+    "remote_write": "NOT_RUN",
+    "current_scope": "evidence/FEATURE_CONTINUATION_20261104.md"
+  },
+  "previous_continuation_base_commit": "57faf384d64e9770407b28086fdfeb5b193a6d6f",
+  "current_source_sync": "LOCAL_ONLY_NOT_PUSHED"
 }

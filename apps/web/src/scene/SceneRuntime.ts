@@ -48,16 +48,21 @@ export class SceneRuntime {
   private boundaryIssue = false;
   private frame = 0;
   private disposed = false;
+  private renderFailed = false;
+  private readonly onRenderFailure: (message: string) => void;
 
   constructor(host: HTMLElement, assets: readonly AssetRenderDTO[] = [],
-    onAssetState: (id: string, state: AssetLoadState | null) => void = () => {}) {
+    onAssetState: (id: string, state: AssetLoadState | null) => void = () => {},
+    onRenderFailure: (message: string) => void = () => {}) {
     this.host = host;
     this.onAssetState = onAssetState;
+    this.onRenderFailure = onRenderFailure;
     this.renderer = new WebGLRenderer({ antialias: true });
     this.assets = new AssetLoader(assets);
     this.renderer.shadowMap.enabled = true;
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     this.canvas = this.renderer.domElement;
+    this.canvas.addEventListener('webglcontextlost', this.contextLost);
     this.canvas.setAttribute('aria-label', '样例客厅三维场景');
     this.canvas.setAttribute('role', 'img');
     this.canvas.style.display = 'block';
@@ -319,17 +324,36 @@ export class SceneRuntime {
   }
 
   private requestRender(): void {
-    if (!this.frame && !this.disposed) this.frame = requestAnimationFrame(this.renderFrame);
+    if (!this.frame && !this.disposed && !this.renderFailed) this.frame = requestAnimationFrame(this.renderFrame);
+  }
+
+  private contextLost = (event: Event): void => {
+    event.preventDefault();
+    this.failRender('三维绘图上下文已丢失。布局和检查结果仍保留，可继续用家具按钮操作。');
+  };
+
+  private failRender(message: string): void {
+    if (this.disposed || this.renderFailed) return;
+    this.renderFailed = true;
+    cancelAnimationFrame(this.frame);
+    this.frame = 0;
+    this.onRenderFailure(message);
   }
 
   private renderFrame = (): void => {
     this.frame = 0;
-    this.renderer.render(this.world, this.camera);
+    if (this.disposed || this.renderFailed) return;
+    try {
+      this.renderer.render(this.world, this.camera);
+    } catch (error) {
+      this.failRender(`三维绘制失败：${error instanceof Error ? error.message : String(error)}`);
+    }
   };
 
   dispose(): void {
     if (this.disposed) return;
     this.disposed = true;
+    this.canvas.removeEventListener('webglcontextlost', this.contextLost);
     cancelAnimationFrame(this.frame);
     this.resizeObserver.disconnect();
     for (const id of this.objects.keys()) this.removeObject(id);

@@ -5,7 +5,7 @@ permissions:
 jobs:
   reference:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -55,9 +55,11 @@ jobs:
           cp -R browser-spike/. "$RUNNER_TEMP/homesafe-host/probe/"
           python -m http.server 4173 --bind 127.0.0.1 --directory "$RUNNER_TEMP/homesafe-host" > ci-evidence/http.log 2>&1 &
           server_pid=$!
-          trap 'kill "$server_pid"' EXIT
+          python -m http.server 4174 --bind 127.0.0.1 --directory "$RUNNER_TEMP/homesafe-host" > ci-evidence/parent-http.log 2>&1 &
+          parent_pid=$!
+          trap 'kill "$server_pid" "$parent_pid"' EXIT
           for attempt in {1..30}; do
-            if curl --fail --silent http://127.0.0.1:4173/preview/ > /dev/null; then break; fi
+            if curl --fail --silent http://127.0.0.1:4173/preview/ > /dev/null && curl --fail --silent http://127.0.0.1:4174/ > /dev/null; then break; fi
             sleep 1
           done
           python scripts/check_deployment.py --url http://127.0.0.1:4173/preview --dist apps/web/dist --allow-local-http --output ci-evidence/deployment-transport.json
@@ -65,6 +67,29 @@ jobs:
           driver="$RUNNER_TEMP/homesafe-browser/node_modules/puppeteer-core/lib/esm/puppeteer/puppeteer-core.js"
           node scripts/check_browser_spike.mjs http://127.0.0.1:4173/probe/ "$chrome" "$driver" | tee ci-evidence/browser-spike.json
           node scripts/check_web_preview.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" | tee ci-evidence/web-preview.json
+          node scripts/check_web_experience.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" ci-evidence/experience | tee ci-evidence/experience.json
+          node scripts/check_web_observations.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" ci-evidence/observations | tee ci-evidence/observations.json
+          node scripts/check_web_recovery.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" ci-evidence/recovery | tee ci-evidence/recovery.json
+          node scripts/check_web_embedding.mjs http://127.0.0.1:4173/preview/ http://127.0.0.1:4174/ "$chrome" "$driver" | tee ci-evidence/embedding.json
+          # Keep the exact budgets blocking, including the known-open 3s target.
+          # Preserve evidence/summary even when enforce returns a budget failure.
+          # Sequential execution avoids competing Chromium instances during timing.
+          performance_status=0
+          node scripts/check_web_performance.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" enforce | tee ci-evidence/performance.json || performance_status=$?
+          python - <<'PYREPORT'
+          import json, os
+          result = json.load(open('ci-evidence/performance.json'))
+          lines = ['## Local isolated Chromium performance', '', '| Budget | Result |', '| --- | --- |']
+          for target, passed in result['targets'].items():
+              lines.append(f"| {target} | {'PASS' if passed else 'NOT MET'} |")
+              if not passed:
+                  print(f'::error title=Performance budget not met::{target}. See performance.json; the strict performance step fails.')
+          lines.extend(['', 'First-editable p95 (ms): ' + str(result['summary']['cold_first_editable']['p95']),
+                        'Local synthetic scene only; no public, real-asset or other-browser performance claim.'])
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as report:
+              report.write('\n'.join(lines) + '\n')
+          PYREPORT
+          exit "$performance_status"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

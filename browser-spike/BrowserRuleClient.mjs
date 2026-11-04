@@ -5,6 +5,7 @@ export class BrowserRuleClient {
     this.pending = new Map();
     this.nextId = 1;
     this.closed = false;
+    this.failure = null;
     this.onMessage = ({data}) => {
       const pending = this.pending.get(data.id);
       if (!pending) return;
@@ -14,12 +15,16 @@ export class BrowserRuleClient {
       else pending.reject(Object.assign(new Error(data.error?.message || "Evaluation failed"),
                                         {details:data.error,clientRevision:data.clientRevision}));
     };
-    this.onError = () => this.failAll(new Error("Worker crashed; restart explicitly"));
+    this.onError = () => {
+      this.failure = new Error("Worker crashed; restart explicitly");
+      this.failAll(this.failure);
+    };
     worker.addEventListener("message",this.onMessage);
     worker.addEventListener("error",this.onError);
   }
   request(op,payload={},clientRevision=0,timeoutMs=45000) {
     if (this.closed) return Promise.reject(new Error("Worker disposed"));
+    if (this.failure) return Promise.reject(this.failure);
     const id=this.nextId++;
     return new Promise((resolve,reject) => {
       const timer=setTimeout(() => {

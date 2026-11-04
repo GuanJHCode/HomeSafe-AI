@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { useLivingRoom } from './useLivingRoom.ts';
+import ObservationPanel from './ObservationPanel.vue';
 
 const {
+  observationOptions, observationsOpen, observationNotice, openObservations, applyObservation, closeObservations,
   host, mode, exercise, role, view, busy, failure, renderFailure, modelCounts, selectedModel, stage, selected, selectedObject,
   layout, checks, comparison, progress, feedback, report, canUndo, canRedo,
   objectName, movable, canMove, select, useView, moveBy, rotate, history, switchMode, focus,
-  retry, exportReport, printReport,
+  retry, exportReport, exportSceneSnapshot, printReport,
   roleSummaries, initializing, cancelLoading,
   retryModels,
+  retryRenderer,
 } = useLivingRoom();
 
 const coverageLabels = {
@@ -18,6 +21,7 @@ const roleName = (value: 'child' | 'elder' | null) =>
   value === 'child' ? '儿童' : value === 'elder' ? '老人' : '通用';
 const actionSections = [
   { key: 'layout', label: '本次布局变化' },
+  { key: 'observations', label: '资料更新（不是空间整改）' },
   { key: 'onSite', label: '仍已触发，现场核查' },
   { key: 'information', label: '待补充资料' },
 ] as const;
@@ -58,7 +62,11 @@ const actionSections = [
           <span v-if="modelCounts.failed"> · {{ modelCounts.failed }} 件加载失败，保留占位模型</span>
           <button v-if="modelCounts.failed" @click="retryModels">重试失败模型</button>
         </p>
-        <p v-if="renderFailure" class="warning" role="alert">当前浏览器无法打开 3D。可用下面的家具按钮操作。{{ renderFailure }}</p>
+        <div v-if="renderFailure" class="warning" role="alert" data-testid="renderer-failure">
+          <p>3D 暂不可用。可用下面的家具按钮继续操作。{{ renderFailure }}</p>
+          <button :disabled="busy" @click="retryRenderer">重试 3D 显示</button>
+          <p class="small">只重建画面，保留当前布局、检查结果和历史。</p>
+        </div>
         <p class="small">相机高度仅用于观察示意。实际触及能力需要独立确认。</p>
 
         <div v-if="layout" class="toolbar">
@@ -107,6 +115,9 @@ const actionSections = [
           </p>
         </div>
         <p v-else class="small">自由演练可移动椅子和柜体；返回这里会保留自由布局，进入任一挑战则从该关初始布局开始。刷新页面会重置所有练习。</p>
+        <button :disabled="busy || !!failure" @click="openObservations">{{ mode === 'workspace' ? '补充模拟资料' : '退出挑战并补充资料' }}</button>
+        <p v-if="mode === 'workspace' && observationNotice" role="status" data-testid="observation-baseline">{{ observationNotice }}</p>
+        <ObservationPanel v-if="mode === 'workspace' && observationsOpen" :options="observationOptions" :busy="busy || !!failure" :object-name="objectName" @apply="applyObservation" @close="closeObservations" />
       </section>
 
       <section class="panel findings-panel" aria-label="检查结果" :aria-busy="busy">
@@ -138,7 +149,7 @@ const actionSections = [
           </div>
           <p class="small">两类检查始终使用同一布局。这里切换检查焦点，不改变观察视角或成员能力。</p>
           <div v-if="comparison" class="delta" :class="{ conflict: comparison.conflict }" data-testid="layout-comparison">
-            <h3>{{ comparison.conflict ? '出现双角色取舍' : '与上一合法布局比较' }}</h3>
+            <h3>{{ comparison.changeKinds.includes('observation') ? '资料更新前后比较（不是空间整改）' : comparison.conflict ? '出现双角色取舍' : '与上一合法布局比较' }}</h3>
             <p v-if="!comparison.newTriggered.length && !comparison.noLongerTriggered.length">本次没有新增或解除已触发条件。</p>
             <p v-for="finding in comparison.newTriggered" :key="finding.key">新增已触发 · {{ roleName(finding.role) }} {{ finding.title }} · {{ finding.objectLabels.join('、') }}</p>
             <p v-for="finding in comparison.noLongerTriggered" :key="finding.key">当前条件不再触发 · {{ roleName(finding.role) }} {{ finding.title }} · {{ finding.objectLabels.join('、') }}</p>
@@ -185,9 +196,11 @@ const actionSections = [
         </div>
         <div class="switches report-buttons">
           <button @click="exportReport">导出 JSON</button>
+          <button @click="exportSceneSnapshot">导出场景快照</button>
           <button @click="printReport">打印清单</button>
         </div>
       </header>
+      <p class="small snapshot-note">场景快照保存当前输入和资料来源，不包含模型或挑战进度；当前页面不支持导入恢复。</p>
       <p>合成样例 · 布局 v{{ report.scene_revision }} · 规则 {{ report.ruleset_version }}</p>
       <p class="hash">输入摘要 {{ report.input_hash }}</p>
       <div class="action-grid">
@@ -204,6 +217,7 @@ const actionSections = [
         </section>
       </div>
       <h3>资料与覆盖范围</h3>
+      <p v-for="item in report.simulatedObservations" :key="`${item.object_id}:${item.field}`" class="small">模拟资料 · {{ objectName(item.object_id) }} / {{ item.label }}：{{ item.observation.value === null ? '未知' : item.observation.value ? '是' : '否' }} · {{ item.observation.observed_at }}；未做现场确认。</p>
       <p v-for="item in report.setupItems" :key="item.object_id">{{ item.objectLabel }} · {{ item.unknownLabels.join('、') }}</p>
       <ul class="report-coverage">
         <li v-for="entry in report.coverage" :key="`${entry.rule_id}:${entry.profile_id}`">

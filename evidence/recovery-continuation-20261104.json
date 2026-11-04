@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "scope": "ISOLATED_CHROMIUM_LOCALHOST_RECOVERY",
+  "url": "http://127.0.0.1:4175/preview/",
+  "executed_at": "2026-11-04T08:57:04.978Z",
+  "browser": "Chrome/154.0.8037.57",
+  "checks": [
+    "real WebGL context lost visible warning",
+    "button fallback keeps evaluating",
+    "explicit renderer reconstruction preserves layout/hash/selection/view/history",
+    "idle Worker crash rejects next action without posting",
+    "failed proposal never accepted/replayed",
+    "workspace Worker retry preserves scene and undo history",
+    "challenge retry explicitly resets scene and counters",
+    "initial WebGL creation failure supports buttons and explicit renderer retry",
+    "scene 503 after parallel Worker starts terminates that Worker; explicit retry uses one fresh Worker"
+  ],
+  "fault_injection": {
+    "context_loss": "WEBGL_lose_context.loseContext() on actual WebGL2 context",
+    "worker": "test terminates actual Worker then dispatches terminal error event; not a naturally occurring browser crash",
+    "initial_renderer": "test getContext returns null for WebGL until explicit retry; original native getContext then restored by test gate",
+    "parallel_startup": "page-only CDP holds scene response until Worker creation, then returns HTTP503"
+  },
+  "real_assets": "NOT_RUN",
+  "public_host": "NOT_RUN",
+  "edge_safari": "NOT_RUN"
+}

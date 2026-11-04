@@ -1,0 +1,529 @@
+{
+  "scope": "ISOLATED_BROWSER_MEASUREMENT",
+  "url": "http://127.0.0.1:4175/preview/",
+  "measured_at": "2026-11-04T09:00:05.840Z",
+  "browser": "Chrome/154.0.8037.57",
+  "device": {
+    "platform": "linux",
+    "arch": "x64",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "logical_cpus": 5,
+    "memory_bytes": 18882662400,
+    "requested_renderer": "SwiftShader software rendering (launch flags; not observed GPU identity)"
+  },
+  "network": "No throttling; only the supplied URL/network was measured. No other-network claim.",
+  "method": "Five fresh contexts and paired cached reloads; rAF selects chair through DOM change event and measures enabled movement with accepted report, idle evaluation and rendered canvas. Every sample clicks move and requires a changed accepted hash. Confirmation time includes harness scheduling and is reported separately. Nearest-rank percentiles; 30 real Worker evaluations after 3 warmups.",
+  "limits": [
+    "First observation is diagnostic only; the 3s target uses cold first-editable p95. Every sample verifies an actual accepted edit.",
+    "Placeholder model scene; real Lux3D load/render/release performance NOT_RUN.",
+    "Fresh contexts isolate browser cache, not operating-system caches or all runtime process reuse.",
+    "Localhost results do not establish anonymous HTTPS or public performance.",
+    "Chrome only; Edge and Safari NOT_RUN."
+  ],
+  "budget_mode": "enforce",
+  "targets": {
+    "first_editable_p95_le_3000_ms": false,
+    "cold_rules_le_12000_ms": true,
+    "hot_evaluation_p95_le_150_ms": true
+  },
+  "summary": {
+    "first_observation": {
+      "count": 5,
+      "min": 245.09999999962747,
+      "max": 533.2000000001863,
+      "p50": 289,
+      "p95": 533.2000000001863
+    },
+    "cold_first_editable": {
+      "count": 5,
+      "min": 3441.2000000001863,
+      "max": 4231.199999999255,
+      "p50": 3970,
+      "p95": 4231.199999999255
+    },
+    "warm_first_editable": {
+      "count": 5,
+      "min": 3385.7999999998137,
+      "max": 3843.9000000003725,
+      "p50": 3774.7000000001863,
+      "p95": 3843.9000000003725
+    },
+    "cold_first_edit_confirmed": {
+      "count": 5,
+      "min": 3583,
+      "max": 4449,
+      "p50": 4157.299999999814,
+      "p95": 4449
+    },
+    "cold_document_to_worker": {
+      "count": 5,
+      "min": 151,
+      "max": 204.19999999925494,
+      "p50": 169.5,
+      "p95": 204.19999999925494
+    },
+    "cold_init_request_roundtrip": {
+      "count": 5,
+      "min": 3184.5999999996275,
+      "max": 3986.5,
+      "p50": 3695.5,
+      "p95": 3986.5
+    },
+    "cold_worker_initialization": {
+      "count": 5,
+      "min": 2904.5,
+      "max": 3615.2000000001863,
+      "p50": 3359.0999999996275,
+      "p95": 3615.2000000001863
+    },
+    "cold_worker_init_received": {
+      "count": 5,
+      "min": 3345.7999999998137,
+      "max": 4137.800000000745,
+      "p50": 3869,
+      "p95": 4137.800000000745
+    },
+    "cold_after_worker_to_editable": {
+      "count": 5,
+      "min": 89.5,
+      "max": 109.09999999962747,
+      "p50": 95.40000000037253,
+      "p95": 109.09999999962747
+    },
+    "cold_rules_ready": {
+      "count": 5,
+      "min": 3441.2000000001863,
+      "max": 4231.0999999996275,
+      "p50": 3969.9000000003725,
+      "p95": 4231.0999999996275
+    },
+    "warm_rules_ready": {
+      "count": 5,
+      "min": 3385.699999999255,
+      "max": 3843.800000000745,
+      "p50": 3774.600000000559,
+      "p95": 3843.800000000745
+    },
+    "hot_evaluation": {
+      "count": 30,
+      "min": 6,
+      "max": 13,
+      "p50": 8.099999999627471,
+      "p95": 12.800000000745058
+    },
+    "hot_roundtrip": {
+      "count": 30,
+      "min": 6.6000000005587935,
+      "max": 15.199999999254942,
+      "p50": 8.800000000745058,
+      "p95": 14.600000000558794
+    }
+  },
+  "samples": [
+    {
+      "trial": 1,
+      "cache": "cold",
+      "first_observation_ms": 533.2000000001863,
+      "rules_ready_ms": 4227.100000000559,
+      "first_editable_ms": 4227.300000000745,
+      "ui_worker": {
+        "created_ms": 151,
+        "init_sent_ms": 151.30000000074506,
+        "init_received_ms": 4137.800000000745,
+        "metadata": {
+          "pyodide": "314.0.6",
+          "pydantic": "2.12.5",
+          "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+          "startup_mode": "runtime_with_preloaded_pydantic",
+          "startup_ms": 2684.7000000001863,
+          "packages_ms": 178.59999999962747,
+          "timing_note": "startup_ms includes runtime and preloaded packages; packages_ms is final package/import validation",
+          "total_ready_ms": 3478.0999999996275
+        }
+      },
+      "first_edit_confirmed_ms": 4427.4000000003725,
+      "accepted_input_hash": "输入摘要 586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+    },
+    {
+      "trial": 1,
+      "cache": "warm",
+      "first_observation_ms": 200.59999999962747,
+      "rules_ready_ms": 3788.5,
+      "first_editable_ms": 3788.5,
+      "ui_worker": {
+        "created_ms": 347,
+        "init_sent_ms": 347.20000000018626,
+        "init_received_ms": 3708.2000000001863,
+        "metadata": {
+          "pyodide": "314.0.6",
+          "pydantic": "2.12.5",
+          "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+          "startup_mode": "runtime_with_preloaded_pydantic",
+          "startup_ms": 2590,
+          "packages_ms": 156.90000000037253,
+          "timing_note": "startup_ms includes runtime and preloaded packages; packages_ms is final package/import validation",
+          "total_ready_ms": 3345.2999999998137
+        }
+      },
+      "first_edit_confirmed_ms": 3934,
+      "accepted_input_hash": "输入摘要 586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+    },
+    {
+      "trial": 2,
+      "cache": "cold",
+      "first_observation_ms": 315.30000000074506,
+      "rules_ready_ms": 3710.4000000003725,
+      "first_editable_ms": 3710.4000000003725,
+      "ui_worker": {
+        "created_ms": 189.5,
+        "init_sent_ms": 189.80000000074506,
+        "init_received_ms": 3619.800000000745,
+        "metadata": {
+          "pyodide": "314.0.6",
+          "pydantic": "2.12.5",
+          "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+          "startup_mode": "runtime_with_preloaded_pydantic",
+          "startup_ms": 2358.2999999998137,
+          "packages_ms": 166.30000000074506,
+          "timing_note": "startup_ms includes runtime and preloaded packages; packages_ms is final package/import validation",
+          "total_ready_ms": 3117.2999999998137
+        }
+      },
+      "first_edit_confirmed_ms": 3900.800000000745,
+      "accepted_input_hash": "输入摘要 586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+    },
+    {
+      "trial": 2,
+      "cache": "warm",
+      "first_observation_ms": 131.40000000037253,
+      "rules_ready_ms": 3843.800000000745,
+      "first_editable_ms": 3843.9000000003725,
+      "ui_worker": {
+        "created_ms": 77.40000000037253,
+        "init_sent_ms": 77.5,
+        "init_received_ms": 3745.2000000001863,
+        "metadata": {
+          "pyodide": "314.0.6",
+          "pydantic": "2.12.5",
+          "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+          "startup_mode": "runtime_with_preloaded_pydantic",
+          "startup_ms": 2638.399999999441,
+          "packages_ms": 162.20000000018626,
+          "timing_note": "startup_ms includes runtime and preloaded packages; packages_ms is final package/import validation",
+          "total_ready_ms": 3417.5
+        }
+      },
+      "first_edit_confirmed_ms": 4011.7000000001863,
+      "accepted_input_hash": "输入摘要 586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+    },
+    {
+      "trial": 3,
+      "cache": "cold",
+      "first_observation_ms": 289,
+      "rules_ready_ms": 3969.9000000003725,
+      "first_editable_ms": 3970,
+      "ui_worker": {
+        "created_ms": 169.5,
+        "init_sent_ms": 173.5,
+        "init_received_ms": 3869,
+        "metadata": {
+          "pyodide": "314.0.6",
+          "pydantic": "2.12.5",
+          "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+          "startup_mode": "runtime_with_preloaded_pydantic",
+          "startup_ms": 2628.5999999996275,
+          "packages_ms": 141.09999999962747,
+          "timing_note": "startup_ms includes runtime and preloaded packages; packages_ms is final package/import validation",
+          "total_ready_ms": 3359.0999999996275
+        }
+      },
+      "first_edit_confirmed_ms": 4157.299999999814,
+      "accepted_input_hash": "输入摘要 586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+    },
+    {
+      "trial": 3,
+      "cache": "warm",
+      "first_observation_ms": 139.20000000018626,
+      "rules_ready_ms": 3605.5,
+      "first_editable_ms": 3605.5,
+      "ui_worker": {
+        "created_ms": 72.90000000037253,
+        "init_sent_ms": 72.90000000037253,
+        "init_received_ms": 3512.0999999996275,
+        "metadata": {
+          "pyodide": "314.0.6",
+          "pydantic": "2.12.5",
+          "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+          "startup_mode": "runtime_with_preloaded_pydantic",
+          "startup_ms": 2545.4000000003725,
+          "packages_ms": 132,
+          "timing_note": "startup_ms includes runtime and preloaded packages; packages_ms is final package/import validation",
+          "total_ready_ms": 3216.4000000003725
+        }
+      },
+      "first_edit_confirmed_ms": 3729.0999999996275,
+      "accepted_input_hash": "输入摘要 586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+    },
+    {
+      "trial": 4,
+      "cache": "cold",
+      "first_observation_ms": 245.09999999962747,
+      "rules_ready_ms": 3441.2000000001863,
+      "first_editable_ms": 3441.2000000001863,
+      "ui_worker": {
+        "created_ms": 161,
+        "init_sent_ms": 161.20000000018626,
+        "init_received_ms": 3345.7999999998137,
+        "metadata": {
+          "pyodide": "314.0.6",
+          "pydantic": "2.12.5",
+          "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+          "startup_mode": "runtime_with_preloaded_pydantic",
+          "startup_ms": 2239.2000000001863,
+          "packages_ms": 146.90000000037253,
+          "timing_note": "startup_ms includes runtime and preloaded packages; packages_ms is final package/import validation",
+          "total_ready_ms": 2904.5
+        }
+      },
+      "first_edit_confirmed_ms": 3583,
+      "accepted_input_hash": "输入摘要 586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+    },
+    {
+      "trial": 4,
+      "cache": "warm",
+      "first_observation_ms": 122.3999999994412,
+      "rules_ready_ms": 3385.699999999255,
+      "first_editable_ms": 3385.7999999998137,
+      "ui_worker": {
+        "created_ms": 85.29999999981374,
+        "init_sent_ms": 85.29999999981374,
+        "init_received_ms": 3321.2999999998137,
+        "metadata": {
+          "pyodide": "314.0.6",
+          "pydantic": "2.12.5",
+          "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+          "startup_mode": "runtime_with_preloaded_pydantic",
+          "startup_ms": 2305.2999999998137,
+          "packages_ms": 151.20000000018626,
+          "timing_note": "startup_ms includes runtime and preloaded packages; packages_ms is final package/import validation",
+          "total_ready_ms": 3026.5
+        }
+      },
+      "first_edit_confirmed_ms": 3539.699999999255,
+      "accepted_input_hash": "输入摘要 586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+    },
+    {
+      "trial": 5,
+      "cache": "cold",
+      "first_observation_ms": 281.5,
+      "rules_ready_ms": 4231.0999999996275,
+      "first_editable_ms": 4231.199999999255,
+      "ui_worker": {
+        "created_ms": 204.19999999925494,
+        "init_sent_ms": 204.5,
+        "init_received_ms": 4122.0999999996275,
+        "metadata": {
+          "pyodide": "314.0.6",
+          "pydantic": "2.12.5",
+          "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+          "startup_mode": "runtime_with_preloaded_pydantic",
+          "startup_ms": 2687.100000000559,
+          "packages_ms": 207.5,
+          "timing_note": "startup_ms includes runtime and preloaded packages; packages_ms is final package/import validation",
+          "total_ready_ms": 3615.2000000001863
+        }
+      },
+      "first_edit_confirmed_ms": 4449,
+      "accepted_input_hash": "输入摘要 586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+    },
+    {
+      "trial": 5,
+      "cache": "warm",
+      "first_observation_ms": 144.5,
+      "rules_ready_ms": 3774.600000000559,
+      "first_editable_ms": 3774.7000000001863,
+      "ui_worker": {
+        "created_ms": 144.30000000074506,
+        "init_sent_ms": 144.30000000074506,
+        "init_received_ms": 3685.9000000003725,
+        "metadata": {
+          "pyodide": "314.0.6",
+          "pydantic": "2.12.5",
+          "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+          "startup_mode": "runtime_with_preloaded_pydantic",
+          "startup_ms": 2595.5999999996275,
+          "packages_ms": 141.20000000018626,
+          "timing_note": "startup_ms includes runtime and preloaded packages; packages_ms is final package/import validation",
+          "total_ready_ms": 3339.7999999998137
+        }
+      },
+      "first_edit_confirmed_ms": 3987.9000000003725,
+      "accepted_input_hash": "输入摘要 586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+    }
+  ],
+  "engine": {
+    "metadata": {
+      "pyodide": "314.0.6",
+      "pydantic": "2.12.5",
+      "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+      "startup_mode": "runtime_with_preloaded_pydantic",
+      "startup_ms": 1940.7999999998137,
+      "packages_ms": 171.5,
+      "timing_note": "startup_ms includes runtime and preloaded packages; packages_ms is final package/import validation",
+      "total_ready_ms": 2644.9000000003725
+    },
+    "warmup_count": 3,
+    "samples": [
+      {
+        "evaluation_ms": 13,
+        "roundtrip_ms": 14.600000000558794,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 11.199999999254942,
+        "roundtrip_ms": 15.199999999254942,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 12.800000000745058,
+        "roundtrip_ms": 13.5,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 8.599999999627471,
+        "roundtrip_ms": 9.200000000186265,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 6.599999999627471,
+        "roundtrip_ms": 7.2999999998137355,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 8,
+        "roundtrip_ms": 8.799999999813735,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 10.900000000372529,
+        "roundtrip_ms": 11.599999999627471,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 8.099999999627471,
+        "roundtrip_ms": 11.800000000745058,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 8.199999999254942,
+        "roundtrip_ms": 8.899999999441206,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 7.300000000745058,
+        "roundtrip_ms": 7.900000000372529,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 6.900000000372529,
+        "roundtrip_ms": 7.5,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 7.5,
+        "roundtrip_ms": 8.899999999441206,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 6.6000000005587935,
+        "roundtrip_ms": 8,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 6.2999999998137355,
+        "roundtrip_ms": 6.7000000001862645,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 9.400000000372529,
+        "roundtrip_ms": 9.900000000372529,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 6.599999999627471,
+        "roundtrip_ms": 7.599999999627471,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 7.8999999994412065,
+        "roundtrip_ms": 8.5,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 7.400000000372529,
+        "roundtrip_ms": 7.7999999998137355,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 8.099999999627471,
+        "roundtrip_ms": 8.400000000372529,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 7.800000000745058,
+        "roundtrip_ms": 8.399999999441206,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 8.200000000186265,
+        "roundtrip_ms": 8.800000000745058,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 8.100000000558794,
+        "roundtrip_ms": 8.899999999441206,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 6.2999999998137355,
+        "roundtrip_ms": 7,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 11.5,
+        "roundtrip_ms": 12.5,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 9.099999999627471,
+        "roundtrip_ms": 9.5,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 6,
+        "roundtrip_ms": 6.6000000005587935,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 7,
+        "roundtrip_ms": 7.699999999254942,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 9.799999999813735,
+        "roundtrip_ms": 10.400000000372529,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 9.5,
+        "roundtrip_ms": 10.799999999813735,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 8.700000000186265,
+        "roundtrip_ms": 9.299999999813735,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      }
+    ]
+  }
+}

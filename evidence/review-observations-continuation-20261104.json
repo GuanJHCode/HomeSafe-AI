@@ -1,0 +1,120 @@
+{
+  "result": "PASS",
+  "scope": "SIMULATED_OBSERVATION_PRACTICE_ONLY",
+  "reviewer": "/root/review_challenge",
+  "implementer": "/root/challenge",
+  "baseline_commit": "f6245e13bc41e36a0efeabeba3ca0fba2174c2f5",
+  "reviewed_at_utc": "2026-11-04T08:59:43.978702+00:00",
+  "independently_executed": {
+    "native_scoped_tests": 52,
+    "frontend_scoped_tests": 12,
+    "typecheck": "PASS",
+    "generated_contract_check": "PASS",
+    "all_editable_field_transitions": 21,
+    "malformed_rpc_cases_rejected": 8,
+    "malformed_response_counterexamples_fixed": 2
+  },
+  "browser": {
+    "result": "PASS",
+    "scope": "ISOLATED_LOCAL_BROWSER_SIMULATED_OBSERVATIONS",
+    "browser": "Chrome/154.0.8037.57",
+    "url": "http://127.0.0.1:4175/preview/",
+    "cases": [
+      "unknown/true/false round trip",
+      "explicit baseline acknowledgement",
+      "layout history cleared and rebuilt; undo/reset preserve data baseline",
+      "no spatial-remediation credit",
+      "Python-derived editable fields",
+      "challenge exit and immutable challenge baseline",
+      "JSON and scene snapshot observation provenance",
+      "printable checklist",
+      "refresh resets practice"
+    ],
+    "hashes": {
+      "before": "d2060f28fe6895fed07349c81caf0f3af6c2408a7197ed3efce52deed93a9429",
+      "confirmed": "1f32c77ab7005ea9457f61dd8ea072ec6a74e2bd8f1c21658f62899d9ef7dea9",
+      "false": "40bef594d12e6c3b6da2ef7b828ca6d5d9203ced9e0d7c1307617995f3012a3c",
+      "unknown": "d2060f28fe6895fed07349c81caf0f3af6c2408a7197ed3efce52deed93a9429"
+    }
+  },
+  "source_sha256": {
+    "reference/homesafe_core/observations.py": "8394329f47a477cf37fc4d6a26bfc9e14574f482fe12b6243c6160555659b5c8",
+    "reference/homesafe_core/models.py": "551b87a607e5319c7dc203cc4ff55a0ed21e3cb1ab062bc319adbd8e51f09cd3",
+    "reference/homesafe_core/browser_bridge.py": "1e722dc78192916c180644e78c7d295704d161148bf2346a2fb10fd75993a2ab",
+    "reference/tests/test_observations.py": "fbbff75682785a8bdd464b156a04a78cebd4bbc0e73866ee76b7694f7f73681c",
+    "apps/web/src/domain/ObservationController.ts": "ac8a7ac83cca96d49ec8100356380794e8dc3d385f21a9dcaa191233927ef0f6",
+    "apps/web/src/ObservationPanel.vue": "b7aadf595239800b970a416659d9708187c493a271b75ba7e5389be0a6fe9c18",
+    "apps/web/src/domain/WorkspaceController.ts": "758e0b69f463c4067281c78f53a6d73fcada53e831c5120e8895df287c57cd8d",
+    "apps/web/src/domain/ReportBuilder.ts": "eac1e6d9866234120378c09e8a052bf2b8ed4e210960b080538321662614110a",
+    "apps/web/src/useLivingRoom.ts": "59edda282d2c0b77cdba12ae31d0559db229943b20d1e4c8f077fc6a6d27b8eb",
+    "apps/web/src/App.vue": "65d20797d5d806a219f94390fe6e23bde1eb55ae97af7799c7e7886199599bc4",
+    "apps/web/tests/observation.test.ts": "c60b48cca6b52c3d0afefae0d2be904725b3127826746b4022c3f89ad951df03",
+    "scripts/check_web_observations.mjs": "9c6e4877b56f1d3a192c3b2cfd9b22d3424f3812fe43cff71bd35a0844889ef1",
+    "scripts/stage_browser_core.py": "eb18c09fa25ed978e2963efdeea4e5ff4b59248909bd4d28fee9d9eeb12a73d7",
+    "contracts/domain.schema.json": "071cc41fb725c6e8e208bf03ff8688a5f2f86f5d7617908647cce9508f361bd5",
+    "contracts/frontend/domain.ts": "8e7287feed4365cae0bff6a6d6df5e41fb96176d4b3010538753c4ad3ee62586",
+    "contracts/http/openapi.json": "16603ec9e0987f66605e393e8502dc550a03264f98a43a8037ca4199830b0da6"
+  },
+  "browser_artifacts": [
+    {
+      "path": "/workspace/scratch/review-observations-final/confirmed-observations.pdf",
+      "sha256": "cb40f9d2d68a405ee1aa51afc5aef6757bae536ae4556acb8944aa22e12496d0",
+      "bytes": 445327
+    },
+    {
+      "path": "/workspace/scratch/review-observations-final/confirmed-observations.png",
+      "sha256": "3c2645ef6c2699d670ca996eab1e551a3e7803b1c216a0206e4325e08a18635a",
+      "bytes": 680343
+    },
+    {
+      "path": "/workspace/scratch/review-observations-final/confirmed-report.json",
+      "sha256": "fff989164419ed538fafe441bb093b2dbadfade1db78d5b90b5eb7c0124acf38",
+      "bytes": 37799
+    },
+    {
+      "path": "/workspace/scratch/review-observations-final/confirmed-scene-snapshot.json",
+      "sha256": "68eac257cefba760f929a4f99777972ae66b1de6cffadda7ebba2352f9dcb0b0",
+      "bytes": 29903
+    },
+    {
+      "path": "/workspace/scratch/review-observations-final/observation-checklist.pdf",
+      "sha256": "812ce6e457323c21bbbf1f9d8c0dcd0ae970b2e11b58a871fa99d7e158bd58f4",
+      "bytes": 438299
+    },
+    {
+      "path": "/workspace/scratch/review-observations-final/observation-practice.png",
+      "sha256": "76249e5d9c7962a6afb2fa7ae63845589d38297f76fb577eeff93630f7a479dd",
+      "bytes": 684607
+    },
+    {
+      "path": "/workspace/scratch/review-observations-final/observations.json",
+      "sha256": "2d44c4d898ec3d05623fc05372c505f20c92ad0f7572b9a401127180d4f2aa55",
+      "bytes": 925
+    },
+    {
+      "path": "/workspace/scratch/review-observations-final/stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "/workspace/scratch/review-observations-final/stdout.json",
+      "sha256": "43cda80e624d938cd58eea3b383bc895b789c768395c2825118c4d0c4df8ae81",
+      "bytes": 926
+    }
+  ],
+  "visual_inspection": {
+    "run_directory": "/workspace/scratch/review-observations-continuation",
+    "artifacts": [
+      "confirmed-observations.png",
+      "confirmed-page1.png",
+      "confirmed-print.txt"
+    ],
+    "result": "PASS; Chinese printed report, simulated provenance, separate information changes and no layout credit"
+  },
+  "limitations": [
+    "Synthetic local practice only; no real household validation",
+    "No original GLB/assets or public deployment tested",
+    "No Edge/Safari/mobile or human usability claim",
+    "Does not close performance, public deployment or real-asset gates"
+  ]
+}

@@ -974,6 +974,108 @@
       "title": "ObjectPatch",
       "type": "object"
     },
+    "ObservationEdit": {
+      "additionalProperties": false,
+      "properties": {
+        "object_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Object Id",
+          "type": "string"
+        },
+        "field": {
+          "enum": [
+            "anchored",
+            "protection_reported",
+            "locked",
+            "accessible",
+            "secured",
+            "raised_threshold_present"
+          ],
+          "title": "Field",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "object_id",
+        "field",
+        "value"
+      ],
+      "title": "ObservationEdit",
+      "type": "object"
+    },
+    "ObservationOption": {
+      "additionalProperties": false,
+      "properties": {
+        "object_id": {
+          "maxLength": 100,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9_.:-]+$",
+          "title": "Object Id",
+          "type": "string"
+        },
+        "field": {
+          "enum": [
+            "anchored",
+            "protection_reported",
+            "locked",
+            "accessible",
+            "secured",
+            "raised_threshold_present"
+          ],
+          "title": "Field",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "observation": {
+          "$ref": "#/$defs/BoolObservation"
+        }
+      },
+      "required": [
+        "object_id",
+        "field",
+        "label",
+        "observation"
+      ],
+      "title": "ObservationOption",
+      "type": "object"
+    },
+    "ObservationResult": {
+      "additionalProperties": false,
+      "properties": {
+        "scene": {
+          "$ref": "#/$defs/Scene"
+        },
+        "assessment": {
+          "$ref": "#/$defs/Assessment"
+        },
+        "comparison": {
+          "$ref": "#/$defs/Comparison"
+        }
+      },
+      "required": [
+        "scene",
+        "assessment",
+        "comparison"
+      ],
+      "title": "ObservationResult",
+      "type": "object"
+    },
     "PlacementIssue": {
       "additionalProperties": false,
       "properties": {
@@ -1692,6 +1794,15 @@
     "challenge_goal": {
       "$ref": "#/$defs/ChallengeGoal"
     },
+    "observation_edit": {
+      "$ref": "#/$defs/ObservationEdit"
+    },
+    "observation_option": {
+      "$ref": "#/$defs/ObservationOption"
+    },
+    "observation_result": {
+      "$ref": "#/$defs/ObservationResult"
+    },
     "challenge_result": {
       "$ref": "#/$defs/ChallengeResult"
     },
@@ -1746,6 +1857,9 @@
     "assessment",
     "comparison",
     "challenge_goal",
+    "observation_edit",
+    "observation_option",
+    "observation_result",
     "challenge_result",
     "asset",
     "public_assets",

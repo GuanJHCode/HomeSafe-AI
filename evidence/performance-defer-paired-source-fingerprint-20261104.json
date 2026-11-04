@@ -1,0 +1,7 @@
+{
+  "production_probe_sha256": "1138ed66db682cea992a88277e77d837db0accd44be6bc1f37b76c5981536c6a",
+  "exact_instrumentation_snippet_sha256": "bede47a556af63a582b18efa0c53c766f9fd9aef38e7419622f7a5651eaa9e9f",
+  "baseline_url": "http://127.0.0.1:4175/preview/",
+  "baseline_distribution_manifest_sha256": "98b27b321d0a3dc9bbb3daad96e2f1f23128c0b75cfdf544d32e107c5d10b5a2",
+  "exact_actual_edit_validation_sha256": "4c22637697693b985dd5e243f7c3071d94983a328afe6c0cba3d2542f6fa5304"
+}

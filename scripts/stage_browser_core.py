@@ -4,7 +4,7 @@ import hashlib, io, json, zipfile, shutil
 from pathlib import Path
 R=Path(__file__).resolve().parents[1]
 FILES=("__init__.py","models.py","geometry.py","validation.py","rule_support.py",
-       "policy.py","rules.py","engine.py","challenge.py","browser_bridge.py")
+       "policy.py","rules.py","engine.py","challenge.py","observations.py","browser_bridge.py")
 def build_bundle():
     buffer=io.BytesIO();records=[]
     with zipfile.ZipFile(buffer,"w",zipfile.ZIP_DEFLATED) as archive:

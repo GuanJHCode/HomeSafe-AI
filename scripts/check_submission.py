@@ -8,12 +8,12 @@ try:
  manifest=json.loads(a.manifest.read_text())
  errors=ReleaseVerifier().verify(R,manifest)
  if manifest.get('release_profile')=='interactive_browser_demo_with_video':
-  from homesafe_core.release import contained_file, sha256
-  from urllib.parse import urlparse
+  from homesafe_core.release import contained_file, sha256, validate_public_demo_url
   url=manifest.get('primary_demo_url') or ''
-  host=urlparse(url).hostname
-  if not url.startswith('https://') or not host or host in {'localhost','127.0.0.1','0.0.0.0'}:
-   errors.append('V6.1 primary public interactive HTTPS URL not recorded')
+  try:
+   validate_public_demo_url(url)
+  except ValueError as error:
+   errors.append('V6.1 primary public interactive HTTPS URL invalid: '+str(error))
   receipt=manifest.get('deployment_receipt')
   if not isinstance(receipt,dict):
    errors.append('V6.1 real browser/anonymous access evidence missing')

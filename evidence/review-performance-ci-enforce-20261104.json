@@ -1,0 +1,343 @@
+{
+  "scope": "ISOLATED_BROWSER_MEASUREMENT",
+  "url": "http://127.0.0.1:4175/preview/",
+  "measured_at": "2026-11-04T08:54:50.228Z",
+  "browser": "Chrome/154.0.8037.57",
+  "device": {
+    "platform": "linux",
+    "arch": "x64",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "logical_cpus": 5,
+    "memory_bytes": 18882662400,
+    "requested_renderer": "SwiftShader software rendering (launch flags; not observed GPU identity)"
+  },
+  "network": "No throttling; only the supplied URL/network was measured. No other-network claim.",
+  "method": "Five fresh contexts and paired cached reloads; rAF selects chair through DOM change event and measures enabled movement with accepted report, idle evaluation and rendered canvas. Every sample clicks move and requires a changed accepted hash. Confirmation time includes harness scheduling and is reported separately. Nearest-rank percentiles; 30 real Worker evaluations after 3 warmups.",
+  "limits": [
+    "First observation is diagnostic only; the 3s target uses cold first-editable p95. Every sample verifies an actual accepted edit.",
+    "Placeholder model scene; real Lux3D load/render/release performance NOT_RUN.",
+    "Localhost results do not establish anonymous HTTPS or public performance.",
+    "Chrome only; Edge and Safari NOT_RUN."
+  ],
+  "budget_mode": "enforce",
+  "targets": {
+    "first_editable_p95_le_3000_ms": false,
+    "cold_rules_le_12000_ms": true,
+    "hot_evaluation_p95_le_150_ms": true
+  },
+  "summary": {
+    "first_observation": {
+      "count": 5,
+      "min": 236.80000000074506,
+      "max": 444.69999999925494,
+      "p50": 263.19999999925494,
+      "p95": 444.69999999925494
+    },
+    "cold_first_editable": {
+      "count": 5,
+      "min": 3436.600000000559,
+      "max": 3867.7000000001863,
+      "p50": 3723.699999999255,
+      "p95": 3867.7000000001863
+    },
+    "warm_first_editable": {
+      "count": 5,
+      "min": 3368.0999999996275,
+      "max": 3908.7999999998137,
+      "p50": 3538.399999999441,
+      "p95": 3908.7999999998137
+    },
+    "cold_first_edit_confirmed": {
+      "count": 5,
+      "min": 3610.100000000559,
+      "max": 4045.5999999996275,
+      "p50": 3951.399999999441,
+      "p95": 4045.5999999996275
+    },
+    "cold_rules_ready": {
+      "count": 5,
+      "min": 3436.600000000559,
+      "max": 3867.7000000001863,
+      "p50": 3723.699999999255,
+      "p95": 3867.7000000001863
+    },
+    "warm_rules_ready": {
+      "count": 5,
+      "min": 3368.0999999996275,
+      "max": 3908.7000000001863,
+      "p50": 3538.2999999998137,
+      "p95": 3908.7000000001863
+    },
+    "hot_evaluation": {
+      "count": 30,
+      "min": 6.3999999994412065,
+      "max": 12.399999999441206,
+      "p50": 7,
+      "p95": 12.299999999813735
+    },
+    "hot_roundtrip": {
+      "count": 30,
+      "min": 6.900000000372529,
+      "max": 13.700000000186265,
+      "p50": 7.800000000745058,
+      "p95": 13.199999999254942
+    }
+  },
+  "samples": [
+    {
+      "trial": 1,
+      "cache": "cold",
+      "first_observation_ms": 444.69999999925494,
+      "rules_ready_ms": 3723.699999999255,
+      "first_editable_ms": 3723.699999999255,
+      "first_edit_confirmed_ms": 3951.399999999441,
+      "accepted_input_hash": "输入摘要 586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+    },
+    {
+      "trial": 1,
+      "cache": "warm",
+      "first_observation_ms": 253.69999999925494,
+      "rules_ready_ms": 3592.7999999998137,
+      "first_editable_ms": 3592.7999999998137,
+      "first_edit_confirmed_ms": 3708.0999999996275,
+      "accepted_input_hash": "输入摘要 586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+    },
+    {
+      "trial": 2,
+      "cache": "cold",
+      "first_observation_ms": 263.19999999925494,
+      "rules_ready_ms": 3845.2999999998137,
+      "first_editable_ms": 3845.899999999441,
+      "first_edit_confirmed_ms": 4017.899999999441,
+      "accepted_input_hash": "输入摘要 586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+    },
+    {
+      "trial": 2,
+      "cache": "warm",
+      "first_observation_ms": 123,
+      "rules_ready_ms": 3538.2999999998137,
+      "first_editable_ms": 3538.399999999441,
+      "first_edit_confirmed_ms": 3702.7999999998137,
+      "accepted_input_hash": "输入摘要 586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+    },
+    {
+      "trial": 3,
+      "cache": "cold",
+      "first_observation_ms": 236.80000000074506,
+      "rules_ready_ms": 3436.600000000559,
+      "first_editable_ms": 3436.600000000559,
+      "first_edit_confirmed_ms": 3610.100000000559,
+      "accepted_input_hash": "输入摘要 586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+    },
+    {
+      "trial": 3,
+      "cache": "warm",
+      "first_observation_ms": 102.29999999981374,
+      "rules_ready_ms": 3401.7000000001863,
+      "first_editable_ms": 3401.7999999998137,
+      "first_edit_confirmed_ms": 3562,
+      "accepted_input_hash": "输入摘要 586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+    },
+    {
+      "trial": 4,
+      "cache": "cold",
+      "first_observation_ms": 255.29999999981374,
+      "rules_ready_ms": 3867.7000000001863,
+      "first_editable_ms": 3867.7000000001863,
+      "first_edit_confirmed_ms": 4045.5999999996275,
+      "accepted_input_hash": "输入摘要 586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+    },
+    {
+      "trial": 4,
+      "cache": "warm",
+      "first_observation_ms": 149,
+      "rules_ready_ms": 3908.7000000001863,
+      "first_editable_ms": 3908.7999999998137,
+      "first_edit_confirmed_ms": 4066.4000000003725,
+      "accepted_input_hash": "输入摘要 586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+    },
+    {
+      "trial": 5,
+      "cache": "cold",
+      "first_observation_ms": 270.20000000018626,
+      "rules_ready_ms": 3471.7000000001863,
+      "first_editable_ms": 3471.9000000003725,
+      "first_edit_confirmed_ms": 3647.2000000001863,
+      "accepted_input_hash": "输入摘要 586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+    },
+    {
+      "trial": 5,
+      "cache": "warm",
+      "first_observation_ms": 115.09999999962747,
+      "rules_ready_ms": 3368.0999999996275,
+      "first_editable_ms": 3368.0999999996275,
+      "first_edit_confirmed_ms": 3498.2000000001863,
+      "accepted_input_hash": "输入摘要 586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+    }
+  ],
+  "engine": {
+    "metadata": {
+      "pyodide": "314.0.6",
+      "pydantic": "2.12.5",
+      "core_hash": "ee006f87a81fff99e3447ed7e1aa8438d125332beed617d2694a5f711dfcaa2d",
+      "startup_mode": "runtime_with_preloaded_pydantic",
+      "startup_ms": 2019.0999999996275,
+      "packages_ms": 132.29999999981374,
+      "timing_note": "startup_ms includes runtime and preloaded packages; packages_ms is final package/import validation",
+      "total_ready_ms": 2614.0999999996275
+    },
+    "warmup_count": 3,
+    "samples": [
+      {
+        "evaluation_ms": 11.900000000372529,
+        "roundtrip_ms": 12.600000000558794,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 12.399999999441206,
+        "roundtrip_ms": 13.199999999254942,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 11.700000000186265,
+        "roundtrip_ms": 13.100000000558794,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 12.299999999813735,
+        "roundtrip_ms": 13.700000000186265,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 8,
+        "roundtrip_ms": 12.5,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 7.099999999627471,
+        "roundtrip_ms": 7.800000000745058,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 7.2999999998137355,
+        "roundtrip_ms": 8.099999999627471,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 8.200000000186265,
+        "roundtrip_ms": 8.900000000372529,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 8.099999999627471,
+        "roundtrip_ms": 9.099999999627471,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 7.3999999994412065,
+        "roundtrip_ms": 7.900000000372529,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 7.2999999998137355,
+        "roundtrip_ms": 7.900000000372529,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 6.7999999998137355,
+        "roundtrip_ms": 7.699999999254942,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 6.699999999254942,
+        "roundtrip_ms": 7,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 7.2999999998137355,
+        "roundtrip_ms": 8.800000000745058,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 8.200000000186265,
+        "roundtrip_ms": 8.899999999441206,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 7.2000000001862645,
+        "roundtrip_ms": 8,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 6.400000000372529,
+        "roundtrip_ms": 7,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 6.7999999998137355,
+        "roundtrip_ms": 7.3999999994412065,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 6.3999999994412065,
+        "roundtrip_ms": 6.900000000372529,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 6.900000000372529,
+        "roundtrip_ms": 7.3999999994412065,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 6.5,
+        "roundtrip_ms": 6.900000000372529,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 7,
+        "roundtrip_ms": 7.5,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 6.5,
+        "roundtrip_ms": 6.900000000372529,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 7.400000000372529,
+        "roundtrip_ms": 7.900000000372529,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 6.7000000001862645,
+        "roundtrip_ms": 7.199999999254942,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 6.599999999627471,
+        "roundtrip_ms": 7.2000000001862645,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 6.400000000372529,
+        "roundtrip_ms": 6.900000000372529,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 6.7000000001862645,
+        "roundtrip_ms": 7.2999999998137355,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 6.400000000372529,
+        "roundtrip_ms": 8,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      },
+      {
+        "evaluation_ms": 7,
+        "roundtrip_ms": 7.5,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+      }
+    ]
+  }
+}

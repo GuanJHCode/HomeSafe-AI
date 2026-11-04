@@ -1,0 +1,27 @@
+✔ diagnostic exercises both moves, undo and reset without losing coverage (9.218867ms)
+✔ restarting a diagnostic stops it before issuing more challenge commands (3.595357ms)
+✔ request IDs route out-of-order replies without stale acceptance (1.630683ms)
+✔ structured placement failures propagate (0.62509ms)
+✔ dispose rejects pending work and terminates worker (0.387924ms)
+✔ timeouts never manufacture a success (5.409246ms)
+✔ synchronous postMessage failure rejects and clears pending request (0.383988ms)
+✔ an idle Worker crash rejects the next request immediately without posting or replay (0.214022ms)
+✔ rejected initialization is cleared and a second attempt can succeed (3.13174ms)
+✔ evaluation after failed init cannot turn into success (0.423057ms)
+✔ successful initialization is reused and queued evaluation waits for it (7.435694ms)
+✔ dispatch failure does not poison subsequent commands (1.077561ms)
+✔ oversized message is rejected before calling Python (2.203173ms)
+✔ malformed message remains structured and the queue recovers (0.393461ms)
+✔ goal-met summary never omits outstanding triggered findings (0.513602ms)
+✔ missing summary counts cannot masquerade as zero (0.135784ms)
+✔ private intake rejects corrupt headers and external resources (1.945987ms)
+✔ private output cannot enter public trees, overwrite files, or follow symlinks (7.139889ms)
+✔ local server rejects foreign hosts and origins (0.283447ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 137.021028

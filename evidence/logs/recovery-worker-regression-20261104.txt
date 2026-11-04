@@ -1,0 +1,14 @@
+✔ request IDs route out-of-order replies without stale acceptance (1.318766ms)
+✔ structured placement failures propagate (0.459782ms)
+✔ dispose rejects pending work and terminates worker (0.227232ms)
+✔ timeouts never manufacture a success (6.047302ms)
+✔ synchronous postMessage failure rejects and clears pending request (0.609998ms)
+✔ an idle Worker crash rejects the next request immediately without posting or replay (0.217748ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 70.960432

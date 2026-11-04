@@ -1,11 +1,13 @@
 import { computed, onMounted, onUnmounted, ref, shallowRef, watch } from 'vue';
 import type {
-  Assessment, AssetRenderDTO, ChallengeResult, Comparison, PlacementIssue, Profile, Scene, TransformInput,
+  Assessment, AssetRenderDTO, ChallengeResult, Comparison, ObservationEdit, ObservationOption, PlacementIssue, Profile, Scene, TransformInput,
 } from '../../../contracts/frontend/domain.ts';
 import { ChallengeController } from './domain/ChallengeController.ts';
+import { ObservationController } from './domain/ObservationController.ts';
 import { EvaluationController, type WorkerConfig } from './domain/EvaluationController.ts';
 import { FindingsPresenter, type ComparisonPresentation } from './domain/FindingsPresenter.ts';
 import { ReportBuilder } from './domain/ReportBuilder.ts';
+import { SceneSnapshotBuilder } from './domain/SceneSnapshotBuilder.ts';
 import { placementFeedback, WorkspaceController, type LayoutChange } from './domain/WorkspaceController.ts';
 import { SceneRuntime, type AssetLoadState } from './scene/SceneRuntime.ts';
 import { TransformController } from './scene/TransformController.ts';
@@ -55,6 +57,9 @@ export function useLivingRoom() {
   const workspaceUndo = ref(false);
   const workspaceRedo = ref(false);
   const challengeUndo = ref(0);
+  const observationOptions = shallowRef<ObservationOption[]>([]);
+  const observationsOpen = ref(false);
+  const observationNotice = ref('');
 
   let template: Scene | null = null;
   let mainTemplate: Scene | null = null;
@@ -258,12 +263,91 @@ export function useLivingRoom() {
   function switchMode(next: typeof mode.value) {
     if (busy.value || failure.value || next === mode.value) return;
     transforms?.cancelDrag();
-    void run(async () => {
+    return run(async () => {
+      observationsOpen.value = false;
       mode.value = next;
       if (next !== 'workspace') await startChallenge();
-      else publishWorkspace();
+      else {
+        const ended = await evaluation?.runCurrent(++revision, request => request('challenge_end', {}));
+        if (!ended) throw new Error('未能结束挑战会话，请重试。');
+        publishWorkspace();
+      }
       select(null);
     });
+  }
+
+  async function openObservations() {
+    if (busy.value || failure.value) return;
+    transforms?.cancelDrag();
+    if (mode.value !== 'workspace') await switchMode('workspace');
+    if (failure.value || mode.value !== 'workspace') return;
+    await run(async () => {
+      if (!workspace || !evaluation) return;
+      const options = await new ObservationController(evaluation).options(workspace.snapshot, ++revision);
+      if (disposed) return;
+      if (!options) throw new Error('未取得当前布局的可补充资料。');
+      observationOptions.value = options;
+      observationsOpen.value = true;
+    });
+  }
+
+  async function applyObservation(edit: ObservationEdit) {
+    if (mode.value !== 'workspace' || busy.value || failure.value) return;
+    transforms?.cancelDrag();
+    await run(async () => {
+      if (!workspace?.assessment || !evaluation) return;
+      const previous = workspace.assessment;
+      const result = await new ObservationController(evaluation).apply(workspace.snapshot, previous, edit, ++revision);
+      if (disposed) return;
+      if (!result) throw new Error('未取得资料更新的评估结果。');
+      if (result.scene.revision === workspace.snapshot.revision) return;
+      const replacement = new WorkspaceController(result.scene);
+      if (!replacement.setAssessment(result.assessment)) throw new Error('资料基线与评估版本不匹配。');
+      workspace = replacement;
+      workspaceComparison = presentDelta(result.scene, result.assessment, previous, result.comparison);
+      observationNotice.value = '已建立新的资料基线，旧布局撤销/重做记录已清空。后续重置保留这些资料；本次不是空间整改，也不计挑战胜利。';
+      publishWorkspace();
+      observationOptions.value = observationOptions.value.map(option => ({ ...option,
+        observation: result.scene.objects.find(object => object.id === option.object_id)!.properties[option.field]!,
+      }));
+    });
+  }
+
+  function mountRenderer() {
+    if (disposed || !host.value) return;
+    transforms?.dispose();
+    transforms = null;
+    runtime?.dispose();
+    runtime = null;
+    renderFailure.value = '';
+    assetStates.value = {};
+    try {
+      const mounted = new SceneRuntime(host.value, renderAssets.value, (id, state) => {
+        if (disposed) return;
+        if (state === null) delete assetStates.value[id];
+        else assetStates.value[id] = state;
+      }, message => {
+        if (disposed) return;
+        renderFailure.value = message;
+        transforms?.dispose();
+        transforms = null;
+      });
+      runtime = mounted;
+      transforms = new TransformController(mounted, { canMove, select, commit });
+      if (layout.value) mounted.setSnapshot(layout.value);
+      mounted.setRoleView(view.value);
+      mounted.setSelected(selected.value);
+      mounted.setFindings(checks.value?.findings.filter(finding => finding.status === 'triggered')
+        .flatMap(finding => finding.object_ids) ?? []);
+      mounted.showPlacementIssues(placement.value);
+    } catch (error) {
+      transforms?.dispose();
+      transforms = null;
+      runtime?.dispose();
+      runtime = null;
+      assetStates.value = {};
+      renderFailure.value = error instanceof Error ? error.message : String(error);
+    }
   }
 
   async function initialize(retry: boolean) {
@@ -278,42 +362,37 @@ export function useLivingRoom() {
     placement.value = [];
     runtime?.showPlacementIssues([]);
     try {
-      if (!template) {
-        const [scene, assets, mainScene] = await Promise.all([
-          readJsonResource<Scene>(new URL('engine/scene-before.json', base), { signal: attempt.signal }),
-          readJsonResource<AssetRenderDTO[]>(new URL('engine/assets.json', base), { signal: attempt.signal }),
-          readJsonResource<Scene>(new URL('engine/scene-main-challenge.json', base), { signal: attempt.signal }),
-        ]);
-        if (!active()) return;
-        template = scene;
-        mainTemplate = mainScene;
-        renderAssets.value = assets;
-        workspace = new WorkspaceController(scene);
-        if (host.value) {
-          try {
-            runtime = new SceneRuntime(host.value, assets, (id, state) => {
-              if (disposed) return;
-              if (state === null) delete assetStates.value[id];
-              else assetStates.value[id] = state;
-            });
-            transforms = new TransformController(runtime, { canMove, select, commit });
-          } catch (error) {
-            renderFailure.value = error instanceof Error ? error.message : String(error);
-          }
+      stage.value = '正在加载场景和同源规则';
+      // Observe both promises immediately: scene/network errors cannot leave an
+      // unhandled rule startup, and cancellation prevents late controller creation.
+      const loadRules = async () => {
+        const config = await readJsonResource<WorkerConfig>(new URL('engine/config.json', base), { cache: 'no-store', signal: attempt.signal });
+        if (!active()) return null;
+        if (!evaluation) {
+          evaluation = new EvaluationController({ config, base });
+          challenge = new ChallengeController(evaluation);
         }
-        publishWorkspace();
-        runtime?.setRoleView(view.value);
-      }
-      stage.value = '正在加载同源 Pyodide、依赖和规则';
-      const config = await readJsonResource<WorkerConfig>(new URL('engine/config.json', base), { cache: 'no-store', signal: attempt.signal });
+        return retry ? evaluation.restart(config) : evaluation.ensureReady();
+      };
+      const loadScene = async () => {
+        if (!template) {
+          const [scene, assets, mainScene] = await Promise.all([
+            readJsonResource<Scene>(new URL('engine/scene-before.json', base), { signal: attempt.signal }),
+            readJsonResource<AssetRenderDTO[]>(new URL('engine/assets.json', base), { signal: attempt.signal }),
+            readJsonResource<Scene>(new URL('engine/scene-main-challenge.json', base), { signal: attempt.signal }),
+          ]);
+          if (!active()) return;
+          template = scene;
+          mainTemplate = mainScene;
+          renderAssets.value = assets;
+          workspace = new WorkspaceController(scene);
+          publishWorkspace();
+          mountRenderer();
+        }
+      };
+      const [metadata] = await Promise.all([loadRules(), loadScene()]);
       if (!active()) return;
-      if (!evaluation) {
-        evaluation = new EvaluationController({ config, base });
-        challenge = new ChallengeController(evaluation);
-      }
-      const metadata = await (retry ? evaluation.restart(config) : evaluation.ensureReady());
-      if (!active()) return;
-      if (!metadata) throw new Error('规则 Worker 未就绪。');
+      if (!metadata || !evaluation) throw new Error('规则 Worker 未就绪。');
       if (mode.value !== 'workspace') await startChallenge();
       else if (workspace) {
         const result = await evaluation.evaluateDraft(workspace.snapshot, ++revision);
@@ -323,7 +402,14 @@ export function useLivingRoom() {
       }
       stage.value = '规则已就绪';
     } catch (error) {
-      if (active()) failure.value = error instanceof Error ? error.message : String(error);
+      if (active()) {
+        // A scene fetch can fail while parallel rule startup is still running.
+        // Stop that worker too; explicit retry creates a fresh controller.
+        evaluation?.dispose();
+        evaluation = null;
+        challenge = null;
+        failure.value = error instanceof Error ? error.message : String(error);
+      }
     } finally {
       if (active()) {
         busy.value = false;
@@ -365,6 +451,22 @@ export function useLivingRoom() {
     window.setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
 
+  function exportSceneSnapshot() {
+    // Use the same current-result gate as the action list; never export a draft
+    // while evaluation or recovery is pending.
+    if (!report.value || !layout.value || !accepted.value) return;
+    const snapshot = SceneSnapshotBuilder.build(layout.value, accepted.value);
+    const blob = new Blob([SceneSnapshotBuilder.exportJson(snapshot)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = SceneSnapshotBuilder.fileName(snapshot);
+    document.body.append(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
   watch(checks, result => {
     runtime?.setFindings(result?.findings
       .filter(finding => finding.status === 'triggered')
@@ -380,6 +482,8 @@ export function useLivingRoom() {
   });
 
   return {
+    observationOptions, observationsOpen, observationNotice, openObservations, applyObservation,
+    closeObservations: () => { observationsOpen.value = false; },
     host, mode, exercise, role, view, busy, failure, renderFailure, modelCounts, selectedModel, stage, selected, selectedObject,
     layout, checks, comparison, progress, feedback, report, canUndo, canRedo,
     objectName, movable, canMove, select, useView, moveBy, rotate, history, switchMode, focus,
@@ -389,7 +493,8 @@ export function useLivingRoom() {
       if (layout.value) runtime?.retryFailedAssets(layout.value);
     },
     retry: () => void initialize(true),
-    exportReport,
+    retryRenderer: mountRenderer,
+    exportReport, exportSceneSnapshot,
     printReport: () => { if (report.value) ReportBuilder.print(); },
   };
 }

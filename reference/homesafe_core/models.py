@@ -227,6 +227,24 @@ class Comparison(Model):
     change_kinds: list[Literal['layout', 'observation', 'scope', 'visual_or_metadata']] = Field(default_factory=list)
     change_interpretation: str = '仅为相同检查基础下的条件变化；不证明现实中完成整改。'
 
+ObservationProperty = Literal['anchored', 'protection_reported', 'locked', 'accessible', 'secured', 'raised_threshold_present']
+
+class ObservationEdit(Model):
+    object_id: Id
+    field: ObservationProperty
+    value: bool | None
+
+class ObservationOption(Model):
+    object_id: Id
+    field: ObservationProperty
+    label: str
+    observation: BoolObservation
+
+class ObservationResult(Model):
+    scene: Scene
+    assessment: Assessment
+    comparison: Comparison
+
 class ChallengeGoal(Model):
     rule_id: str
     profile_id: str
@@ -371,6 +389,9 @@ class ContractBundle(Model):
     assessment: Assessment
     comparison: Comparison
     challenge_goal: ChallengeGoal
+    observation_edit: ObservationEdit
+    observation_option: ObservationOption
+    observation_result: ObservationResult
     challenge_result: ChallengeResult
     asset: AssetRenderDTO
     public_assets: PublicAssetCatalog

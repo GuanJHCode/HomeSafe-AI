@@ -1,0 +1,36 @@
+✔ request IDs route out-of-order replies without stale acceptance (1.53648ms)
+✔ structured placement failures propagate (0.797089ms)
+✔ dispose rejects pending work and terminates worker (0.382515ms)
+✔ timeouts never manufacture a success (10.004265ms)
+✔ synchronous postMessage failure rejects and clears pending request (0.785462ms)
+✖ an idle Worker crash rejects the next request immediately without posting or replay (6.568378ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 103.773075
+
+✖ failing tests:
+
+test at browser-spike/client.test.mjs:46:1
+✖ an idle Worker crash rejects the next request immediately without posting or replay (6.568378ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Worker crashed/. Input:
+
+  'Error: Worker timeout; result is not a safe/not-triggered conclusion'
+
+      at async TestContext.<anonymous> (file:///workspace/HomeSafe-AI-continuation/browser-spike/client.test.mjs:50:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: Error: Worker timeout; result is not a safe/not-triggered conclusion
+        at Timeout._onTimeout (file:///workspace/HomeSafe-AI-continuation/browser-spike/BrowserRuleClient.mjs:27:16)
+        at listOnTimeout (node:internal/timers:635:17)
+        at process.processTimers (node:internal/timers:571:7),
+    expected: /Worker crashed/,
+    operator: 'rejects',
+    diff: 'simple'
+  }

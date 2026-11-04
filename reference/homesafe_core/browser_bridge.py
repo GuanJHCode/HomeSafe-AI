@@ -6,6 +6,7 @@ from pydantic import ValidationError
 from .engine import RuleEngine, FindingDiffer
 from .validation import PlacementValidationError, validate_scene
 from .challenge import ChallengeService
+from .observations import observation_options, edit_observation
 
 MAX_REQUEST_BYTES = 512_000
 MAX_JSON_DEPTH = 64
@@ -36,6 +37,19 @@ def dispatch(request: dict):
         if set(payload) != {'scene','movable_ids','goals'}: raise ValueError('challenge_start fields invalid')
         _session = ChallengeService(_scene(payload['scene']), payload['movable_ids'], payload['goals'])
         return _session.result()
+    if op == 'challenge_end':
+        if payload: raise ValueError('unexpected payload')
+        _session = None
+        return {'ended': True}
+    if op in {'observation_options', 'observation_edit'}:
+        if _session is not None:
+            raise ValueError('exit the challenge before changing practice observations')
+        expected = {'scene'} if op == 'observation_options' else {'scene', 'edit'}
+        if set(payload) != expected: raise ValueError('observation fields invalid')
+        scene = _scene(payload['scene'])
+        if op == 'observation_options':
+            return [item.model_dump(mode='json') for item in observation_options(scene)]
+        return edit_observation(scene, payload['edit']).model_dump(mode='json')
     if _session is None:
         raise ValueError('challenge not started')
     if op == 'challenge_move':
