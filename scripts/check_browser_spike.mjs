@@ -3,6 +3,7 @@
 import assert from 'node:assert/strict';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { failNextConfig } from './browser_fault.mjs';
 
 const [entry, chrome, puppeteerEntry] = process.argv.slice(2);
 if (!entry || !chrome) throw new Error('Pass the spike URL and Chrome executable.');
@@ -80,22 +81,12 @@ try {
     assert.match(resource.mime, resource.path.endsWith('.wasm')
       ? /^application\/wasm\b/ : /^(?:application|text)\/(?:java|ecma)script\b/);
   }
-  let failNextConfig = true;
-  await page.setRequestInterception(true);
-  page.on('request', request => {
-    if (failNextConfig && new URL(request.url()).pathname.endsWith('/config.same-origin.json')) {
-      failNextConfig = false;
-      void request.respond({
-        contentType: 'application/json',
-        body: JSON.stringify({ pyodideIndexURL: './vendor/intentional-missing-runtime/' }),
-      });
-    } else {
-      void request.continue();
-    }
+  const fault = await failNextConfig(page, 'config.same-origin.json', {
+    pyodideIndexURL: './vendor/intentional-missing-runtime/',
   });
   await page.click('#init');
   await read('data => !!data.error && !!data.retry');
-  assert.equal(failNextConfig, false);
+  assert.equal(fault.used(), true);
   assert.equal(await page.$eval('#examples', button => button.disabled), true);
   const recovered = await initialize();
   assert.equal(recovered.core_hash, cold.core_hash);

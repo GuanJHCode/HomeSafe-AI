@@ -2,11 +2,12 @@
 // locally installed puppeteer-core entry point. No browser or packages are downloaded.
 // node scripts/check_web_preview.mjs http://127.0.0.1:4173/ /path/to/chrome /path/to/puppeteer-core.js
 import assert from 'node:assert/strict';
-import { mkdtemp, readFile, readdir, rm } from 'node:fs/promises';
+import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { setTimeout as delay } from 'node:timers/promises';
+import { failNextConfig } from './browser_fault.mjs';
 
 const [url, chrome, puppeteerEntry] = process.argv.slice(2);
 if (!url || !chrome) throw new Error('Pass the application URL and Chrome executable, plus a puppeteer-core entry point if needed.');
@@ -42,6 +43,8 @@ try {
   await page.setViewport({ width: 1280, height: 1000, deviceScaleFactor: 1 });
   page.setDefaultTimeout(60_000);
   const pageErrors = [];
+  let workerCount = 0;
+  page.on('workercreated', () => workerCount++);
   page.on('pageerror', error => pageErrors.push(error.message));
   const cdp = await page.createCDPSession();
   await cdp.send('Browser.setDownloadBehavior', { behavior: 'allow', downloadPath });
@@ -112,6 +115,20 @@ try {
   assert.match(summary, new RegExp(`仍有${remaining('triggered')}项已触发、${remaining('needs_review')}项待核查`));
   assert.match(summary, new RegExp(`未覆盖 ${challengeReport.unsupportedDomains.length} 类`));
 
+  const evidenceDir = process.env.HOMESAFE_EVIDENCE_DIR;
+  if (evidenceDir) {
+    await mkdir(evidenceDir, { recursive: true });
+    await page.screenshot({ path: resolve(evidenceDir, 'challenge.png'), fullPage: true });
+  }
+
+  await page.emulateMediaType('print');
+  assert.equal(await currentHash(), challengeReport.input_hash);
+  assert.match(await visibleText('.report'), /未覆盖/);
+  const printable = await page.pdf({ format: 'A4', printBackground: true });
+  assert.ok(printable.length > 1000, 'Print layout produces a nonempty PDF');
+  if (evidenceDir) await writeFile(resolve(evidenceDir, 'action-list.pdf'), printable);
+  await page.emulateMediaType('screen');
+
   await click(labels.undo);
   await ready();
   assertPosition(await visibleText(position), chairBefore);
@@ -119,18 +136,38 @@ try {
   await ready();
   assert.match(await visibleText(challengeSummary), /本关布局目标尚未完成/);
 
+  const warmOpened = performance.now();
   await page.reload({ waitUntil: 'domcontentloaded' });
   await ready();
   await page.waitForSelector(canvas, { visible: true });
+  const warmReadyMs = performance.now() - warmOpened;
+
+  const config = await page.evaluate(async () =>
+    (await fetch(new URL('engine/config.json', location.href))).json());
+  const fault = await failNextConfig(page, 'engine/config.json', {
+    ...config, pyodideIndexURL: 'vendor/intentional-missing-runtime/',
+  });
+  await page.goto(url, { waitUntil: 'domcontentloaded' });
+  await page.waitForSelector(`${resultPanel} [role="alert"]`);
+  assert.equal(fault.used(), true);
+  assert.equal(await page.$('.report .hash'), null, 'Failure cannot display a stale report');
+  const failedDocument = await page.evaluate(() => performance.timeOrigin);
+  const failedWorkers = workerCount;
+  await click('重建 Worker 并重试');
+  await ready();
+  assert.equal(await page.evaluate(() => performance.timeOrigin), failedDocument, 'Recovery needs no page refresh');
+  assert.ok(workerCount > failedWorkers, 'Recovery creates a new real Worker');
   assert.deepEqual(pageErrors, []);
   console.log(JSON.stringify({
     scope: 'REAL_CHROME_PREVIEW', url, browser: await browser.version(),
-    cold_ready_ms: Math.round(coldReadyMs), ruleset: challengeReport.ruleset_version,
+    cold_ready_ms: Math.round(coldReadyMs), warm_ready_ms: Math.round(warmReadyMs),
+    ruleset: challengeReport.ruleset_version,
     result: 'PASS',
     cases: [
       'real pointer drag and one-entry undo', 'invalid placement rebound',
       'child and elder views', 'layout conflict', 'redo, reset and rotation',
-      'challenge remaining findings and coverage', 'JSON action checklist', 'refresh',
+      'challenge remaining findings and coverage', 'JSON and printable action checklist',
+      'refresh', 'real Worker recovery without refresh',
     ],
   }, null, 2));
 

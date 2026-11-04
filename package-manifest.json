@@ -13,8 +13,8 @@
     },
     {
       "path": ".github/workflows/reference-checks.yml",
-      "sha256": "90421969c2ea09769d60ef674ff8463557b894dbcbcf06fadc8694cd3ebcd1e7",
-      "bytes": 3550,
+      "sha256": "c8f941e32394eb83ad19696327e6e417a786c83170d115916273b9b0ec2d2170",
+      "bytes": 3797,
       "classification": "generated_project_source"
     },
     {
@@ -589,8 +589,8 @@
     },
     {
       "path": "evidence/CI_CONTINUATION_20261104.md",
-      "sha256": "59bc0f88f8ebcc70d4a62600372e3615f1d8efc7923cd437e16468b43f4b1e4e",
-      "bytes": 1982,
+      "sha256": "33422733b2e599c2ccc891f74522810a1666c535ff0e0de0439a7be6448c83cb",
+      "bytes": 2623,
       "classification": "generated_project_source"
     },
     {
@@ -1362,9 +1362,15 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "scripts/browser_fault.mjs",
+      "sha256": "53a9feb2ad8ee60d0b94d91a9df75860d53cbfdffc4c5cf206b201cce100ce06",
+      "bytes": 930,
+      "classification": "generated_project_source"
+    },
+    {
       "path": "scripts/check_browser_spike.mjs",
-      "sha256": "3f9e34ac9d97b49520de6dc977db9a1ba7fd0782c93698a157f6ed846d4142b9",
-      "bytes": 5351,
+      "sha256": "e105ae2f8333a4d0a585759177f67da03bf3ab45117efed0a7e59af126290fb9",
+      "bytes": 5080,
       "classification": "generated_project_source"
     },
     {
@@ -1381,8 +1387,8 @@
     },
     {
       "path": "scripts/check_web_preview.mjs",
-      "sha256": "97fb44de89748e7e7070232bbe9d41801e4c7e34bd9154f43d5278472a898ffc",
-      "bytes": 11108,
+      "sha256": "8c3f2325fefff9ab9eccd065ace993ff1755045b7644d929b90889fd692d2214",
+      "bytes": 13013,
       "classification": "generated_project_source"
     },
     {

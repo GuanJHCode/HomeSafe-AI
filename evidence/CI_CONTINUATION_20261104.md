@@ -10,4 +10,6 @@
 
 本轮扩展 CI：完整构建、同源 Python 集成、临时 Linux Chrome 中的真实探针与三维交互、子路径和刷新、构建与证据 artifact。没有操作用户 Mac 的 Chrome，也不发布公网网站。新增 CI 尚待实际执行；运行结果将单独补记，不能把配置存在记作验收通过。
 
+第二次 CI：[运行 41768151675](https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41768151675)，提交 `6ad8e1e`。完整类型检查、209 项 Python、17 项应用测试、官方运行时下载、完整 Vite 构建及 22 个分发文件校验通过。真实浏览器探针运行至故障注入时失败：Puppeteer 的全局拦截把 `Fetch.enable` 发给不支持它的 Worker target。改为仅拦截页面配置请求的 CDP session；不替换真实 Worker 或 Python 评估。该次构建 artifact 已实际生成，浏览器整体仍未通过。补充应用 Worker 重建、打印 PDF 与热启动测量后继续复验。
+
 官方工具需求遵循 [资产方案](../docs/v6.1/03-assets.md)：Lux3D 网页生成并手动导出两件 GLB 是主路径；官方 API/SDK 不是当前阻断项，也没有获准收费调用。仍需真实椅子、柜体、来源和公开分发权利、摘要及人工校准。官方 Pyodide 分发已核验，保持原样使用。

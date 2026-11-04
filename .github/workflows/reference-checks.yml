@@ -27,6 +27,8 @@ jobs:
       - run: npm install --no-save --package-lock=false typescript@5.8.3
       - run: npx tsc --strict --noEmit --target ES2022 contracts/frontend/domain.ts
       - run: npm --prefix apps/web install --no-audit --no-fund
+      - name: Record resolved dependency lock
+        run: node -e "console.log('HOMESAFE_LOCK_BASE64 ' + require('node:fs').readFileSync('apps/web/package-lock.json').toString('base64'))"
       - run: npm --prefix apps/web test
       - name: Download pinned official runtime
         run: python scripts/download_pyodide.py --dest "$RUNNER_TEMP/homesafe-pyodide"
@@ -40,6 +42,8 @@ jobs:
         run: npm --prefix "$RUNNER_TEMP/homesafe-browser" install --no-audit --no-fund puppeteer-core@24.15.0
       - name: Real browser on a nested path
         shell: bash
+        env:
+          HOMESAFE_EVIDENCE_DIR: ci-evidence
         run: |
           mkdir -p "$RUNNER_TEMP/homesafe-host/preview" "$RUNNER_TEMP/homesafe-host/probe" ci-evidence
           cp -R apps/web/dist/. "$RUNNER_TEMP/homesafe-host/preview/"
