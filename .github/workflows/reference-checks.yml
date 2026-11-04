@@ -53,6 +53,7 @@ jobs:
             if curl --fail --silent http://127.0.0.1:4173/preview/ > /dev/null; then break; fi
             sleep 1
           done
+          python scripts/check_deployment.py --url http://127.0.0.1:4173/preview --dist apps/web/dist --allow-local-http --output ci-evidence/deployment-transport.json
           chrome=$(command -v google-chrome)
           driver="$RUNNER_TEMP/homesafe-browser/node_modules/puppeteer-core/lib/esm/puppeteer/puppeteer-core.js"
           node scripts/check_browser_spike.mjs http://127.0.0.1:4173/probe/ "$chrome" "$driver" | tee ci-evidence/browser-spike.json

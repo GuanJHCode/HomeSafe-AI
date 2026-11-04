@@ -121,7 +121,8 @@
         "evidence/TAKEOVER_VALIDATION_20261104.md",
         "reference/tests/test_web_staging.py",
         "evidence/CI_CONTINUATION_20261104.md",
-        "evidence/ci-artifact-4bb18cd.json"
+        "evidence/ci-artifact-4bb18cd.json",
+        "evidence/DEPLOYMENT_PROBE_20261104.md"
       ],
       "checks": {
         "preview_distribution": "PASS_CI_ARTIFACT",
@@ -131,6 +132,15 @@
       },
       "blockers": [
         "No approved target hosting entry or anonymous public deployment verification."
+      ],
+      "subtasks": [
+        {
+          "id": "T04-anonymous-resource-probe",
+          "status": "IN_PROGRESS",
+          "review": "PASS",
+          "ci": "PENDING",
+          "evidence": "evidence/DEPLOYMENT_PROBE_20261104.md"
+        }
       ]
     },
     {

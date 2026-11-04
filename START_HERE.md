@@ -67,3 +67,15 @@ npm --prefix apps/web run preview
 `build` 重新暂存同源资源和经审核的模型，运行严格检查和 Vite 构建，并生成 `apps/web/dist/preview-manifest.json` 与 `CHECKSUMS.sha256`。发布校验会对照当前源码重新生成的 Python bundle、官方 vendor 清单和审核资产字节，拒绝过期或被改写的资源。只有上述命令成功才有可用构建目录。最新实测与构建 artifact 见[CI 接续验证](evidence/CI_CONTINUATION_20261104.md)，托管步骤见[实施记录](evidence/WEB_PREVIEW_20261104.md)。
 
 CI 在临时 Linux 环境运行真实 Chrome 和完整构建，不会启动用户电脑上的浏览器。artifact 中的 `apps/web/dist/` 才是静态页面目录；`ci-evidence/` 是验收输出、截图与打印 PDF，不能作为公网部署成功的证明。下载后先进入 dist 运行 SHA-256 校验，只将该目录提交给已核准的静态托管入口。
+
+## 目标托管资源核验
+
+取得已核准的静态托管地址后，保留与上传内容相同的 `apps/web/dist/`（或下载 artifact 中的 dist），执行：
+
+```bash
+python scripts/check_deployment.py --url https://YOUR-APPROVED-HOST/preview/ --dist apps/web/dist --output deployment-transport.json
+```
+
+此命令先核验本地分发清单、摘要和未列出文件，再匿名请求目标首页、清单与全部资源；检查精确字节、Worker/WASM MIME 和子路径尾斜杠跳转。无登录、Cookie 或 API Key。资源重定向、登录页和 SPA 回退不能通过。输出必须放在 dist 外。
+
+HTTP 检查通过仍不是浏览器或公开部署验收：回执固定保留 `browser_interaction: NOT_RUN`、`public_deployment: NOT_VERIFIED`。随后按浏览器验收脚本在同一目标完成真实交互、刷新、恢复与性能检查，再人工更新部署证据。`--allow-local-http` 仅供显式 loopback 测试，回执不会声称匿名 HTTPS 通过。CI 在真实 HTTP 子路径运行该命令；目前没有公开托管地址。

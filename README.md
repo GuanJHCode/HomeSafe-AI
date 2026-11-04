@@ -28,3 +28,5 @@
 
 V6.1 以 docs/v6.1/ 为概要导航，恢复的原包详细文档和源码为实现基线，关系见[源码补齐说明](docs/V6_1_SOURCE_IMPORT.md)。任务状态见 [task-status.json](evidence/task-status.json)，待办和阻断见 [HANDOFF](evidence/HANDOFF.md)。
 
+
+部署资源核验使用 `scripts/check_deployment.py`，命令与验收边界见 [START_HERE](START_HERE.md#目标托管资源核验)。公开托管尚未验收，HTTP 资源通过不等于浏览器或上线通过。
