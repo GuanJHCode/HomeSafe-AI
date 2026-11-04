@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "baseline": "V6.1-source-imported",
-  "product_status": "REFERENCE_AND_SPIKE_SOURCE_ONLY",
+  "product_status": "DEVELOPMENT_PREVIEW_SOURCE",
   "tasks": [
     {
       "id": "T00",
@@ -26,43 +26,94 @@
       "commit": null,
       "evidence": [
         "evidence/IMPORT_VALIDATION_20261103.md",
-        "evidence/logs/source-import-20261103.txt"
+        "evidence/logs/source-import-20261103.txt",
+        "evidence/T01-browser-20261104.md",
+        "evidence/WEB_PREVIEW_20261104.md"
       ],
-      "blockers": [],
+      "blockers": [
+        "Terminal sandbox rejects binding a local HTTP port; target hosting entry has not been established."
+      ],
       "remaining": [
-        "Verify official same-origin Pyodide distribution and real browser recovery",
-        "Verify target hosting and anonymous access"
-      ]
+        "Verify official same-origin runtime, challenge moves, undo, reset, recovery and timing in Chrome.",
+        "Verify target hosting, subpath, iframe, Worker, MIME and anonymous access."
+      ],
+      "checks": {
+        "official_distribution": "PASS",
+        "node_wasm_samples": "PASS",
+        "real_browser": "NOT_RUN",
+        "target_host": "NOT_RUN"
+      }
     },
     {
       "id": "T02",
       "target_date": "2026-11-06",
       "title": "第一条3D互动",
       "priority": "P0",
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "owner": null,
       "commit": null,
-      "evidence": []
+      "evidence": [
+        "evidence/WEB_PREVIEW_20261104.md",
+        "scripts/check_web_core.mjs",
+        "scripts/check_web_preview.mjs"
+      ],
+      "checks": {
+        "preview_source": "IMPLEMENTED",
+        "native_controller_tests": "PASS",
+        "node_wasm_integration": "PASS",
+        "app_strict_typecheck": "BLOCKED",
+        "synthetic_glb_regression": "BLOCKED",
+        "production_build": "BLOCKED",
+        "real_browser": "NOT_RUN"
+      },
+      "blockers": [
+        "npm registry DNS is unavailable and the local cache lacks required Vue, Three.js and build dependencies."
+      ],
+      "remaining": [
+        "Install and lock dependencies; run all app tests, strict checks and complete build.",
+        "Verify the 3D pointer interaction, role views, rebound and export in real Chrome."
+      ]
     },
     {
       "id": "T03",
       "target_date": "2026-11-06",
       "title": "两件真实Lux3D模型",
       "priority": "P0",
-      "status": "NOT_STARTED",
+      "status": "BLOCKED",
       "owner": null,
       "commit": null,
-      "evidence": []
+      "evidence": [
+        "evidence/WEB_PREVIEW_20261104.md",
+        "assets/asset-manifest.json"
+      ],
+      "checks": {
+        "approved_lux3d_assets": 0,
+        "real_asset_browser_test": "NOT_RUN"
+      },
+      "blockers": [
+        "Awaiting approved chair and cabinet GLBs with provenance, distribution rights and calibration evidence."
+      ]
     },
     {
       "id": "T04",
       "target_date": "2026-11-07",
       "title": "首次在线部署",
       "priority": "P0",
-      "status": "NOT_STARTED",
+      "status": "BLOCKED",
       "owner": null,
       "commit": null,
-      "evidence": []
+      "evidence": [
+        "evidence/WEB_PREVIEW_20261104.md",
+        "evidence/deployment-checklist.json"
+      ],
+      "checks": {
+        "preview_distribution": "BLOCKED",
+        "public_deployment": "NOT_RUN",
+        "anonymous_access": "NOT_RUN"
+      },
+      "blockers": [
+        "No verified preview dist and no approved target hosting entry."
+      ]
     },
     {
       "id": "T05",
@@ -168,7 +219,7 @@
   "timezone": "Asia/Shanghai",
   "planning_status": "DOCUMENTATION_PREPARED",
   "source_import_status": "IMPORTED_AND_NATIVE_VALIDATED",
-  "validation_scope": "187 Python tests on each of Pydantic 2.13.5 and 2.12.5; 13 JS; 15 importer; 3 contracts; 8 package checks; TS strict. Real browser/hosting NOT_RUN.",
+  "validation_scope": "Implementation checks and their limits are recorded in evidence/WEB_PREVIEW_20261104.md and evidence/T01-browser-20261104.md. Source import results are historical.",
   "source_import": {
     "base_commit": "01d48fca76f77856b5e9f31a37090bb1284e47db",
     "supplement_sha256": "81b72b3dd0d61cfe6854414bf92a4dfd90a4cf2ef2358b019f43566a424a47ea",
@@ -176,5 +227,7 @@
     "imported_files": 186,
     "preserved_files_at_import": 21,
     "real_browser_status": "NOT_RUN"
-  }
+  },
+  "baseline_commit": "2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f",
+  "implementation_branch": "codex/v6.1-browser-3d"
 }

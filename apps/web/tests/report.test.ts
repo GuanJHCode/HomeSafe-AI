@@ -1,0 +1,34 @@
+import assert from 'node:assert/strict'
+import test from 'node:test'
+import type { Assessment, Comparison, Scene } from '../../../contracts/frontend/domain.ts'
+import conflictScene from '../../../browser-spike/examples/scene-conflict.json' with { type: 'json' }
+import beforeAssessment from '../../../browser-spike/examples/assessment-before.json' with { type: 'json' }
+import conflictAssessment from '../../../browser-spike/examples/assessment-conflict.json' with { type: 'json' }
+import comparison from '../../../examples/comparison.json' with { type: 'json' }
+import { FindingsPresenter } from '../src/domain/FindingsPresenter.ts'
+import { ReportBuilder } from '../src/domain/ReportBuilder.ts'
+
+const scene = conflictScene as Scene
+const assessment = conflictAssessment as Assessment
+const delta = new FindingsPresenter(scene, assessment).comparison(beforeAssessment as Assessment, comparison as Comparison)
+
+test('JSON and print view model use the same accepted version and actual assessment', () => {
+  const report = ReportBuilder.buildViewModel(scene, assessment, delta)
+  const exported = JSON.parse(ReportBuilder.exportJson(report))
+  assert.deepEqual(exported, report)
+  assert.equal(report.input_hash, assessment.input_hash)
+  assert.equal(report.scene_revision, scene.revision)
+  assert.equal(report.source_kind, 'synthetic_demo')
+  assert.deepEqual(report.coverage, assessment.coverage)
+  assert.deepEqual(report.unsupportedDomains, assessment.unsupported_domains)
+  assert.deepEqual(report.actions.onSite.map(finding => finding.key), assessment.findings.filter(finding => finding.status === 'triggered').map(finding => finding.key))
+  assert.deepEqual(report.actions.information.map(finding => finding.key), assessment.findings.filter(finding => finding.status === 'needs_review').map(finding => finding.key))
+  assert.ok(report.actions.layout.some(finding => finding.role === 'elder'))
+  assert.match(report.actions.onSite.find(finding => finding.rule_id === 'R005')!.action, /^现场核查/)
+  assert.ok(report.actions.information.some(finding => finding.evidence.protection_reported === null))
+})
+
+test('stale assessment and mixed-version comparison cannot be exported', () => {
+  assert.throws(() => ReportBuilder.buildViewModel(scene, beforeAssessment as Assessment), /版本/)
+  assert.throws(() => ReportBuilder.buildViewModel(scene, assessment, { ...delta!, afterInputHash: 'other' }), /版本/)
+})

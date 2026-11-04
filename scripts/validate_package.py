@@ -53,7 +53,7 @@ check('OpenAPI internal pointers and operation IDs (not HTTP validation)',oas)
 
 def local_links():
     for p in R.rglob('*.md'):
-        if 'history' in p.parts:continue
+        if {'history','node_modules','dist','vendor','.venv'} & set(p.relative_to(R).parts):continue
         for link in re.findall(r'\]\(([^)]+)\)',p.read_text()):
             if link.startswith(('http:', 'https:', '#', 'mailto:')):continue
             target=link.split('#')[0]

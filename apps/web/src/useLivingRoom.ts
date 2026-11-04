@@ -1,0 +1,313 @@
+import { computed, onMounted, onUnmounted, ref, shallowRef, watch } from 'vue';
+import type {
+  Assessment, ChallengeResult, Comparison, PlacementIssue, Profile, Scene, TransformInput,
+} from '../../../contracts/frontend/domain.ts';
+import { ChallengeController } from './domain/ChallengeController.ts';
+import { EvaluationController, type WorkerConfig } from './domain/EvaluationController.ts';
+import { FindingsPresenter, type ComparisonPresentation } from './domain/FindingsPresenter.ts';
+import { ReportBuilder } from './domain/ReportBuilder.ts';
+import { placementFeedback, WorkspaceController, type LayoutChange } from './domain/WorkspaceController.ts';
+import { SceneRuntime } from './scene/SceneRuntime.ts';
+import { TransformController } from './scene/TransformController.ts';
+
+const challengeObjects = ['chair'];
+const challengeGoals = [
+  { rule_id: 'R001', profile_id: 'child', object_id: 'chair' },
+  { rule_id: 'R005', profile_id: 'elder', object_id: 'chair' },
+];
+const workspaceObjects = ['chair', 'cabinet'];
+const names: Record<string, string> = {
+  chair: '椅子', cabinet: '柜体', window: '窗户', storage: '收纳柜',
+  rug: '地毯', cord: '线缆', gate: '儿童门栏', 'elder-route': '老人指定通道',
+};
+
+async function read<T>(url: URL): Promise<T> {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`资源加载失败：${url.pathname}（${response.status}）`);
+  return response.json() as Promise<T>;
+}
+
+function placementIssues(error: unknown): PlacementIssue[] {
+  if (!(error instanceof Error) || !('details' in error)) return [];
+  const details = error.details as { code?: string; issues?: PlacementIssue[] } | undefined;
+  return details?.code === 'INVALID_PLACEMENT' && Array.isArray(details.issues) ? details.issues : [];
+}
+
+export function useLivingRoom() {
+  const host = ref<HTMLElement | null>(null);
+  const mode = ref<'workspace' | 'challenge'>('workspace');
+  const role = ref<Profile['role']>('child');
+  const view = ref<Profile['role'] | 'overview'>('overview');
+  const busy = ref(true);
+  const failure = ref('');
+  const renderFailure = ref('');
+  const stage = ref('正在加载客厅');
+  const selected = ref<string | null>(null);
+  const placement = shallowRef<PlacementIssue[]>([]);
+  const layout = shallowRef<Scene | null>(null);
+  const accepted = shallowRef<Assessment | null>(null);
+  const comparison = shallowRef<ComparisonPresentation | null>(null);
+  const progress = shallowRef<ReturnType<ChallengeController['renderProgress']> | null>(null);
+  const workspaceUndo = ref(false);
+  const workspaceRedo = ref(false);
+  const challengeUndo = ref(0);
+
+  let template: Scene | null = null;
+  let workspace: WorkspaceController | null = null;
+  let evaluation: EvaluationController | null = null;
+  let challenge: ChallengeController | null = null;
+  let runtime: SceneRuntime | null = null;
+  let transforms: TransformController | null = null;
+  let workspaceComparison: ComparisonPresentation | null = null;
+  let revision = 0;
+  let disposed = false;
+
+  const base = new URL(import.meta.env.BASE_URL, window.location.href).href;
+  const current = computed(() => !busy.value && !failure.value && layout.value && accepted.value
+    ? new FindingsPresenter(layout.value, accepted.value) : null);
+  const checks = computed(() => current.value?.forRole(role.value) ?? null);
+  const report = computed(() => current.value && layout.value && accepted.value
+    ? ReportBuilder.buildViewModel(layout.value, accepted.value, comparison.value ?? undefined) : null);
+  const selectedObject = computed(() => layout.value?.objects.find(object => object.id === selected.value));
+  const feedback = computed(() => placementFeedback(placement.value));
+  const canUndo = computed(() => !busy.value && !failure.value &&
+    (mode.value === 'challenge' ? challengeUndo.value > 0 : workspaceUndo.value));
+  const canRedo = computed(() => !busy.value && !failure.value && mode.value === 'workspace' && workspaceRedo.value);
+  const objectName = (id: string) => names[id] ?? id;
+  const movable = (id: string) => (mode.value === 'challenge' ? challengeObjects : workspaceObjects).includes(id);
+  const canMove = (id: string) => !busy.value && !failure.value && movable(id);
+
+  function publish(scene: Scene, assessment: Assessment | null, delta: ComparisonPresentation | null) {
+    if (disposed) return;
+    layout.value = scene;
+    accepted.value = assessment;
+    comparison.value = delta;
+    runtime?.setSnapshot(scene);
+  }
+
+  function presentDelta(scene: Scene, assessment: Assessment, previous: Assessment | null, delta: Comparison | null) {
+    return previous && delta ? new FindingsPresenter(scene, assessment).comparison(previous, delta) : null;
+  }
+
+  function publishWorkspace() {
+    if (!workspace) return;
+    workspaceUndo.value = workspace.canUndo;
+    workspaceRedo.value = workspace.canRedo;
+    publish(workspace.snapshot, workspace.assessment, workspaceComparison);
+  }
+
+  function publishChallenge(result: ChallengeResult, previous: Assessment | null) {
+    publish(result.scene, result.assessment, presentDelta(result.scene, result.assessment, previous, result.comparison));
+    progress.value = challenge?.renderProgress(result) ?? null;
+  }
+
+  function select(id: string | null) {
+    selected.value = id;
+    runtime?.setSelected(id);
+  }
+
+  function useView(next: Profile['role'] | 'overview') {
+    transforms?.cancelDrag();
+    view.value = next;
+    if (next !== 'overview') role.value = next;
+    runtime?.setRoleView(next);
+  }
+
+  async function run(task: () => Promise<void>): Promise<PlacementIssue[]> {
+    if (busy.value || disposed) return [];
+    busy.value = true;
+    stage.value = '正在校验布局并重算双角色检查';
+    placement.value = [];
+    runtime?.showPlacementIssues([]);
+    try {
+      await task();
+      return [];
+    } catch (error) {
+      if (disposed) return [];
+      const issues = placementIssues(error);
+      placement.value = issues;
+      if (issues.length) runtime?.showPlacementIssues(issues);
+      else failure.value = error instanceof Error ? error.message : String(error);
+      return issues;
+    } finally {
+      stage.value = '规则已就绪';
+      busy.value = false;
+    }
+  }
+
+  async function updateWorkspace(change: LayoutChange | null) {
+    if (!change || !workspace || !evaluation) return;
+    const assessment = workspace.assessment;
+    const scene = change.scene;
+    const previous = assessment ? { scene: workspace.snapshot, assessment } : undefined;
+    const result = await evaluation.evaluateDraft(scene, ++revision, previous);
+    if (disposed) return;
+    if (!result || !workspace.accept(change, result.assessment)) throw new Error('未取得当前布局的评估结果。');
+    workspaceComparison = presentDelta(scene, result.assessment, assessment, result.comparison);
+    publishWorkspace();
+  }
+
+  async function startChallenge() {
+    if (!template || !challenge) return;
+    const result = await challenge.start(template, challengeObjects, challengeGoals, ++revision);
+    if (disposed) return;
+    if (!result) throw new Error('未取得当前挑战状态。');
+    challengeUndo.value = 0;
+    publishChallenge(result, null);
+  }
+
+  async function commit(id: string, transform: TransformInput) {
+    if (!canMove(id)) throw new Error('当前不能移动这件家具。');
+    const issues = await run(async () => {
+      if (mode.value === 'workspace') {
+        await updateWorkspace(workspace?.proposal(id, transform) ?? null);
+      } else if (challenge) {
+        const previous = accepted.value;
+        const result = await challenge.applyMove(id, transform, ++revision);
+        if (disposed) return;
+        if (!result) throw new Error('未取得当前挑战移动结果。');
+        if (result.scene.revision !== layout.value?.revision) challengeUndo.value++;
+        publishChallenge(result, previous);
+      }
+    });
+    // The transform controller restores the committed pose after any rejected evaluation.
+    if (failure.value) throw new Error(failure.value);
+    return issues;
+  }
+
+  function moveBy(x: number, z: number) {
+    const object = selectedObject.value;
+    if (!object || !canMove(object.id)) return;
+    const position = { ...object.position, x: object.position.x + x, z: object.position.z + z };
+    const transform = { position, yaw_rad: object.yaw_rad };
+    if (transforms) void transforms.commitTransform(object.id, transform);
+    else void commit(object.id, transform).catch(() => {});
+  }
+
+  function rotate() {
+    const object = selectedObject.value;
+    if (!object || !canMove(object.id)) return;
+    if (transforms) void transforms.rotate(object.id, Math.PI / 4);
+    else {
+      const yaw_rad = (object.yaw_rad + Math.PI / 4 + Math.PI) % (2 * Math.PI) - Math.PI;
+      void commit(object.id, { position: object.position, yaw_rad }).catch(() => {});
+    }
+  }
+
+  function history(action: 'undo' | 'redo' | 'reset') {
+    if (failure.value) return;
+    transforms?.cancelDrag();
+    void run(async () => {
+      if (mode.value === 'workspace') {
+        await updateWorkspace(workspace?.[action]() ?? null);
+      } else if (challenge && action !== 'redo') {
+        const previous = accepted.value;
+        const result = await challenge[action](++revision);
+        if (disposed) return;
+        if (!result) throw new Error('未取得当前挑战历史结果。');
+        challengeUndo.value = action === 'reset' ? 0 : Math.max(0, challengeUndo.value - 1);
+        publishChallenge(result, action === 'reset' ? null : previous);
+      }
+    });
+  }
+
+  function switchMode(next: typeof mode.value) {
+    if (busy.value || failure.value || next === mode.value) return;
+    transforms?.cancelDrag();
+    void run(async () => {
+      mode.value = next;
+      if (next === 'challenge') await startChallenge();
+      else publishWorkspace();
+      select(null);
+    });
+  }
+
+  async function initialize(retry: boolean) {
+    if (disposed) return;
+    busy.value = true;
+    failure.value = '';
+    placement.value = [];
+    runtime?.showPlacementIssues([]);
+    try {
+      if (!template) {
+        const scene = await read<Scene>(new URL('engine/scene-before.json', base));
+        if (disposed) return;
+        template = scene;
+        workspace = new WorkspaceController(scene);
+        if (host.value) {
+          try {
+            runtime = new SceneRuntime(host.value);
+            transforms = new TransformController(runtime, { canMove, select, commit });
+          } catch (error) {
+            renderFailure.value = error instanceof Error ? error.message : String(error);
+          }
+        }
+        publishWorkspace();
+        runtime?.setRoleView(view.value);
+      }
+      stage.value = '正在加载同源 Pyodide、依赖和规则';
+      if (!evaluation) {
+        const config = await read<WorkerConfig>(new URL('engine/config.json', base));
+        if (disposed) return;
+        evaluation = new EvaluationController({ config, base });
+        challenge = new ChallengeController(evaluation);
+      }
+      const metadata = await (retry ? evaluation.restart() : evaluation.ensureReady());
+      if (disposed) return;
+      if (!metadata) throw new Error('规则 Worker 未就绪。');
+      if (mode.value === 'challenge') await startChallenge();
+      else if (workspace) {
+        const result = await evaluation.evaluateDraft(workspace.snapshot, ++revision);
+        if (disposed) return;
+        if (!result || !workspace.setAssessment(result.assessment)) throw new Error('未取得当前布局的评估结果。');
+        publishWorkspace();
+      }
+      stage.value = '规则已就绪';
+    } catch (error) {
+      if (!disposed) failure.value = error instanceof Error ? error.message : String(error);
+    } finally {
+      busy.value = false;
+    }
+  }
+
+  function focus(ids: readonly string[]) {
+    transforms?.cancelDrag();
+    runtime?.focusObjects(ids);
+  }
+
+  function exportReport() {
+    const currentReport = report.value;
+    if (!currentReport) return;
+    const blob = new Blob([ReportBuilder.exportJson(currentReport)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `homesafe-action-list-v${currentReport.scene_revision}.json`;
+    document.body.append(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  watch(checks, result => {
+    runtime?.setFindings(result?.findings
+      .filter(finding => finding.status === 'triggered')
+      .flatMap(finding => finding.object_ids) ?? []);
+  });
+  onMounted(() => void initialize(false));
+  onUnmounted(() => {
+    disposed = true;
+    transforms?.dispose();
+    runtime?.dispose();
+    evaluation?.dispose();
+  });
+
+  return {
+    host, mode, role, view, busy, failure, renderFailure, stage, selected, selectedObject,
+    layout, checks, comparison, progress, feedback, report, canUndo, canRedo,
+    objectName, movable, canMove, select, useView, moveBy, rotate, history, switchMode, focus,
+    retry: () => void initialize(true),
+    exportReport,
+    printReport: () => { if (report.value) ReportBuilder.print(); },
+  };
+}

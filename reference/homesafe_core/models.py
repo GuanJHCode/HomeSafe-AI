@@ -227,6 +227,28 @@ class Comparison(Model):
     change_kinds: list[Literal['layout', 'observation', 'scope', 'visual_or_metadata']] = Field(default_factory=list)
     change_interpretation: str = '仅为相同检查基础下的条件变化；不证明现实中完成整改。'
 
+class ChallengeGoal(Model):
+    rule_id: str
+    profile_id: str
+    object_id: str
+
+class ChallengeProgress(Model):
+    status: Literal['goal_met', 'in_progress']
+    goal_results: list[bool]
+    steps: int
+    conflict_events: int
+    invalid_attempts: int
+    remaining_triggered: int
+    remaining_needs_review: int
+    setup_objects: int
+    label: str
+
+class ChallengeResult(Model):
+    scene: Scene
+    assessment: Assessment
+    comparison: Comparison | None
+    challenge: ChallengeProgress
+
 class Quaternion(Model):
     x: Number
     y: Number
@@ -325,6 +347,8 @@ class ContractBundle(Model):
     scene: Scene
     assessment: Assessment
     comparison: Comparison
+    challenge_goal: ChallengeGoal
+    challenge_result: ChallengeResult
     asset: AssetRenderDTO
     patch: ObjectPatch
     assess_request: AssessmentRequest

@@ -2,11 +2,11 @@
 
 面向成年照护者的三维居家空间改造演练：观察儿童与老人的空间需求，调整家具、解释冲突，并导出仍需现场核查的行动清单。
 
-**当前分支已导入 V6.1 参考源码、测试、契约、浏览器诊断和部署工具；完整三维应用尚待实现。** 活动架构为 Vue 3 / TypeScript / Three.js ＋ module Worker / Pyodide 中的单一 Python 规则内核。旧版服务端优先方案只供追溯。
+**当前功能分支包含 V6.1 三维开发预览源码。完整构建和真实浏览器验收状态见接手记录。** 活动架构为 Vue 3 / TypeScript / Three.js ＋ module Worker / Pyodide 中的单一 Python 规则内核。旧版服务端优先方案只供追溯。
 
 ## 阅读入口
 
-从 [START_HERE](START_HERE.md) 运行参考检查；本次实际结果见 [源码导入验证](evidence/IMPORT_VALIDATION_20261103.md)。
+从 [START_HERE](START_HERE.md) 准备官方同源运行时、运行检查和启动开发预览。实测范围见[本轮验证](evidence/WEB_PREVIEW_20261104.md)。
 
 | 文档 | 内容 |
 | --- | --- |
@@ -21,10 +21,10 @@
 
 ## 当前边界
 
-- 在线样例允许匿名观察、拖动、撤销和重算；无账号、照片上传、公开收费调用。
+- 开发预览面向匿名样例。界面提供拖动、双角色检查、布局历史和行动清单，无账号、照片上传和公开收费调用。
 - 真实 Lux3D 核心家具是后续交付必需项；占位模型只能用于开发。
 - 未触发只表示指定条件未触发；未知、已触发及未覆盖项必须保留。
 - 参考包的历史测试通过不等于当前仓库可运行，也不证明现实家庭安全有效性。
 
-本次从现有 main 历史创建 master，保留旧文档与原始摘要；后续以 docs/v6.1/ 为概要导航，恢复的原包详细文档和源码为实现基线，关系见 [源码补齐说明](docs/V6_1_SOURCE_IMPORT.md)。任务状态见 [task-status.json](evidence/task-status.json)，接手事项见 [HANDOFF](evidence/HANDOFF.md)。
+V6.1 以 docs/v6.1/ 为概要导航，恢复的原包详细文档和源码为实现基线，关系见[源码补齐说明](docs/V6_1_SOURCE_IMPORT.md)。任务状态见 [task-status.json](evidence/task-status.json)，待办和阻断见 [HANDOFF](evidence/HANDOFF.md)。
 

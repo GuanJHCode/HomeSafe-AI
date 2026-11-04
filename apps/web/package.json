@@ -1,0 +1,27 @@
+{
+  "name": "@homesafe/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "typecheck": "vue-tsc --noEmit",
+    "test": "node --test tests/*.test.ts",
+    "build:frontend": "npm run typecheck && vite build",
+    "build": "python3 ../../scripts/stage_web_preview.py && npm run build:frontend && python3 ../../scripts/stage_web_preview.py --verify-dist",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "three": "0.179.1",
+    "vue": "3.5.18"
+  },
+  "devDependencies": {
+    "@types/node": "24.0.3",
+    "@types/three": "0.179.0",
+    "@vitejs/plugin-vue": "5.2.4",
+    "typescript": "5.8.3",
+    "vite": "6.4.5",
+    "vue-tsc": "2.2.12"
+  }
+}

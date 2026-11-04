@@ -1,5 +1,5 @@
 {
-  "status": "NOT_DEPLOYED",
+  "status": "BLOCKED",
   "primary_url": null,
   "backup_url": null,
   "owner": null,
@@ -17,5 +17,11 @@
   "shutdown_allowed": false,
   "retention_policy": "max(2026-12-31, actual_results_date+30days); conservative project policy pending form verification",
   "user_reported_terms_verified_by_owner": false,
-  "evidence_files": []
+  "evidence_files": [
+    "evidence/WEB_PREVIEW_20261104.md"
+  ],
+  "blockers": [
+    "Complete static preview build is blocked by npm dependencies.",
+    "Target public hosting entry and deployment authorization are pending."
+  ]
 }

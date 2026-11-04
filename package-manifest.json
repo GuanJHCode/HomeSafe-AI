@@ -1,9 +1,9 @@
 {
   "manifest_version": "1.0",
-  "release": "V6.1-master-source-import-20261103-validated",
-  "base_commit": "01d48fca76f77856b5e9f31a37090bb1284e47db",
+  "release": "V6.1-browser-3d-development-preview-source-20261104",
+  "base_commit": "2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f",
   "baseline_zip_sha256": "b6c674f532fd30ff7ab086b08c814b086e94e2aa0f12cff80c1b6d94b96d3752",
-  "classification_policy": "Exact original V6.1 sources and checked public master documentation; no new private, runtime or user model files.",
+  "classification_policy": "Verified master tracked source and explicitly staged preview code/evidence. Excludes runtime vendor, build outputs, private or unapproved assets and original untracked archives.",
   "files": [
     {
       "path": ".env.example",
@@ -13,14 +13,14 @@
     },
     {
       "path": ".github/workflows/reference-checks.yml",
-      "sha256": "39be74992033c3edda60b815bc5c56377646b0bc66b135c738a2da1142fcf4bf",
-      "bytes": 1148,
+      "sha256": "9f90b4f300d544649dd7fcd5c6e05c6707144477aed151d01d774be2df6b1cae",
+      "bytes": 1306,
       "classification": "generated_project_source"
     },
     {
       "path": ".gitignore",
-      "sha256": "75e0e3f28408ff044ed9e46f1a8841c2d858ff4eb4a641f65f2ac3e79dc60626",
-      "bytes": 491,
+      "sha256": "e004f3518f7100ad06e83ccf33c817aa5861eea5f91826587a0a7680cbe154bb",
+      "bytes": 567,
       "classification": "generated_project_source"
     },
     {
@@ -37,8 +37,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "15bca868505fd65424f3cad7de064942cad5f70daf027e6ae3403cff9e014055",
-      "bytes": 2310,
+      "sha256": "e169aff8bcca39864f89306897673a399d0b34e943fe6aa23d4a8154d009f72f",
+      "bytes": 2294,
       "classification": "generated_project_source"
     },
     {
@@ -61,8 +61,158 @@
     },
     {
       "path": "START_HERE.md",
-      "sha256": "8f8432ff4d5a0222fb6fb6f83cddc70716b4328c7a037359e101c11ab8825dbe",
-      "bytes": 2356,
+      "sha256": "aa189e0842c0c0d3ffb5205b47b7e957b5a1aa1d6c6fef6d84f5687e59d61e30",
+      "bytes": 3043,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/index.html",
+      "sha256": "92090b542a0ea413e2f3bb7a7b92c953b7f2fea7fa69b5eb49946c2306016d3a",
+      "bytes": 343,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/package.json",
+      "sha256": "3a77cb70c9c630e3a2bf67edf451230558269d428cd6f2c3cede65e74af9a934",
+      "bytes": 773,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/src/App.vue",
+      "sha256": "03a65fa5f8c1a043b68469bace8d63e024c272e06be86fc97e0bdcffe4dc1021",
+      "bytes": 11034,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/src/domain/ChallengeController.ts",
+      "sha256": "905bc1d21f42b27ace25ab77dfec34d2d21a143c5b58710075cc062b67acd1c8",
+      "bytes": 3413,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/src/domain/EvaluationController.ts",
+      "sha256": "278b21d33c43e4fcc12e0c962f4f9958d06b20615df9b70fdd9a0f979ab4e7d1",
+      "bytes": 4915,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/src/domain/FindingsPresenter.ts",
+      "sha256": "626a1458bab6b520ab1c48cf9eabeb35f275df43fb0e5b61aaaf33c9f2ea1270",
+      "bytes": 9056,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/src/domain/ReportBuilder.ts",
+      "sha256": "d161b5ab4052e32a93a61f73510e81ae144cb05888bd61d2feb6b7daadb9517d",
+      "bytes": 2581,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/src/domain/WorkspaceController.ts",
+      "sha256": "758e0b69f463c4067281c78f53a6d73fcada53e831c5120e8895df287c57cd8d",
+      "bytes": 4478,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/src/domain/layout-result.ts",
+      "sha256": "e825ff574211ae896ed56d35760b12b487d6fff0b04d1d7f6d8e1732447fd248",
+      "bytes": 358,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/src/main.ts",
+      "sha256": "41a79ccb7d440dcb55dd3a28c6a62056c59b4e877d9fcbe17c9cd5d7fbbe2c14",
+      "bytes": 115,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/src/scene/AssetLoader.ts",
+      "sha256": "e39e1b3724dc11ab6993a5ca82f15098de229b67ac0e42b522330de383ddae6a",
+      "bytes": 7100,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/src/scene/SceneRuntime.ts",
+      "sha256": "072e037bc07aafadb951978820540b92481c62cc4822a92c3f31adecde011bd0",
+      "bytes": 11405,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/src/scene/TransformController.ts",
+      "sha256": "a3d8b235b0d9e44d91dad6bb665e4aba3ea4406d01302bdafefd218ac4047b86",
+      "bytes": 5754,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/src/scene/roomGeometry.ts",
+      "sha256": "697ac9f297c790f0c1ba1eee78c39f797d7b668202d65d72adb055f9dc6ba9c7",
+      "bytes": 4831,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/src/style.css",
+      "sha256": "2eb0c761ca115d88982386c33b594beddfd016b86388f40540d561c061b0be6e",
+      "bytes": 4581,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/src/useLivingRoom.ts",
+      "sha256": "4338c35383c94c940e6b1dfcf265774c854169d64d0fd97006494d4278b6be4b",
+      "bytes": 13225,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/tests/asset-loader.test.ts",
+      "sha256": "67bd069316052430e1b793595a7ac948df12697d6ec10ab2ca7b4bd64d65c5e8",
+      "bytes": 4127,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/tests/challenge.test.ts",
+      "sha256": "76b614b618d4d13ec9224c484b934dc858fc793211502179fc05660fdd161f28",
+      "bytes": 3834,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/tests/evaluation.test.ts",
+      "sha256": "c8ecb4dc44dae4167f1f97bd4d248e7c6695b988edafddf232953dad6c5d5c0a",
+      "bytes": 4378,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/tests/findings.test.ts",
+      "sha256": "20fbcb86f8448fc05fff030b7273bb6807f09b8b0591e65ea1a2ed9e235b4567",
+      "bytes": 2857,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/tests/report.test.ts",
+      "sha256": "ffaf32e6e4641a67d2b1f2d92ba66d73827e15765766b8fe48e1c0ed2846f009",
+      "bytes": 2421,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/tests/transform.test.ts",
+      "sha256": "b788f712867f79fe9dd7ea70fbb483245fcf1a8cfaf0a45ed76dafa89ba80858",
+      "bytes": 3504,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/tests/workspace.test.ts",
+      "sha256": "e301c976a1927ff0f546599aaa8860cc469b411365e948635df5a50991bc306b",
+      "bytes": 4085,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/tsconfig.json",
+      "sha256": "b17000ace3e8616e6287bd849b496debafaed0ebd59aa267d4ede56fe7a36125",
+      "bytes": 436,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/vite.config.ts",
+      "sha256": "88af0479a2cd2dafeeef848932644f3200d115de75e7b0bb0db9bcadce8a057f",
+      "bytes": 484,
       "classification": "generated_project_source"
     },
     {
@@ -103,8 +253,20 @@
     },
     {
       "path": "browser-spike/README.md",
-      "sha256": "5051cdea6a193e4774aa999661b4eaa90083d611b31db4cd1bfe3223390d8cec",
-      "bytes": 2526,
+      "sha256": "7a56b8c2c0e9f875b6c0599d735f1820c6f6a296b9ee7246236acc3f7080018b",
+      "bytes": 2991,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "browser-spike/challenge-probe.mjs",
+      "sha256": "f5044e5d5872d837b86591f8047b61198a94b74a0be9d8d7de6b5f9887a0c1ab",
+      "bytes": 1511,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "browser-spike/challenge-probe.test.mjs",
+      "sha256": "af52410f9bcb9db1e920b1162a15254b471978de71200e283b33c512278ec85e",
+      "bytes": 1911,
       "classification": "generated_project_source"
     },
     {
@@ -175,19 +337,19 @@
     },
     {
       "path": "browser-spike/main.mjs",
-      "sha256": "a6ff9bee8735ca13f93822a5ddab99017cbdeed8953584e82ead55dde0a6070c",
-      "bytes": 3733,
+      "sha256": "77b838908a55bf2026bbb1e0dbfa313002119e1436c840cf733774400e19fbd1",
+      "bytes": 3188,
       "classification": "generated_project_source"
     },
     {
       "path": "browser-spike/python/homesafe_core.zip",
-      "sha256": "22ddc26ade1546adf5ddef995c0f97bc6775173f3ccd9b2ae9e5789113ba11c7",
-      "bytes": 16846,
+      "sha256": "ab34fc57b6674e6fb72e12f5d5a09fd55ca1effdf1c4e382f46a518560f026e3",
+      "bytes": 16987,
       "classification": "generated_project_source"
     },
     {
       "path": "browser-spike/python/manifest.json",
-      "sha256": "bd8c2b63ce6473c27c07cb279bf676759b098d2c6085b74030b9e002112043de",
+      "sha256": "97f401af6199f143544e62a573c05d0b360f1adf483ca4251be5912f6e30a3ab",
       "bytes": 1425,
       "classification": "generated_project_source"
     },
@@ -217,20 +379,20 @@
     },
     {
       "path": "contracts/domain.schema.json",
-      "sha256": "37cf25a9e94d711a3478595ad5bb21eab219db6e82d3dac3b7b96ce62c6952e1",
-      "bytes": 35141,
+      "sha256": "3c31dd3e5e21378f1b371efa4b3723d03bca1e4cf4b3a61175a90fa6a2a08b85",
+      "bytes": 37991,
       "classification": "generated_project_source"
     },
     {
       "path": "contracts/frontend/domain.ts",
-      "sha256": "3f6a26432415f99c02cdc4692df29a188be1ae97c05fc7ae4a741232dc7cd538",
-      "bytes": 6779,
+      "sha256": "fd9a35376b0258b0bd0070f36a5f703924c1751326710c3b4669db86715cb970",
+      "bytes": 7337,
       "classification": "generated_project_source"
     },
     {
       "path": "contracts/http/openapi.json",
-      "sha256": "6699acb6213f9bfe86f63a9b457c2da7c66ed93bbe5e75b6673edda6297e0783",
-      "bytes": 52435,
+      "sha256": "8e9f9c992c8b5731c84ed6bdf58ff0917d7e9f71804d160000231235c303573b",
+      "bytes": 55383,
       "classification": "generated_project_source"
     },
     {
@@ -379,8 +541,8 @@
     },
     {
       "path": "docs/v6.1/01-architecture.md",
-      "sha256": "4fd11fbd715392780e51d87b6d1d26a4a98081f90619043f00951a4283d44e2a",
-      "bytes": 4877,
+      "sha256": "82c484598be3182283c4b3f5e9e5741fbe2832c26639bf512c48bff323b63f6a",
+      "bytes": 4949,
       "classification": "generated_project_source"
     },
     {
@@ -427,8 +589,8 @@
     },
     {
       "path": "evidence/HANDOFF.md",
-      "sha256": "e88ca5bfe059bd972d99999f3b6df3bd940ed0f9cc7bd771f1a885f829648e55",
-      "bytes": 1384,
+      "sha256": "6ecc67658d252c7f9cd6e287602d86ce6e9dda3ebbc6af8aa5c81b8d75e6e582",
+      "bytes": 2151,
       "classification": "generated_project_source"
     },
     {
@@ -438,9 +600,21 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "evidence/T01-browser-20261104.md",
+      "sha256": "752e96b2c92379dbe2253c29cb92383015cb591fd9e8c27992eae5cb6bf8fc1a",
+      "bytes": 2304,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "evidence/WEB_PREVIEW_20261104.md",
+      "sha256": "c4757d925e0bfea353e51f8cb63df317e1bab985c0b798a05b2e3c2475ed9022",
+      "bytes": 5440,
+      "classification": "generated_project_source"
+    },
+    {
       "path": "evidence/deployment-checklist.json",
-      "sha256": "a1285fa281e34d70421c648714bbe715b1e59820df4628fb6d371315c165d056",
-      "bytes": 680,
+      "sha256": "948c5d49532213cf4c0dc43911fe50751ce06dc8bb388107ebf526600c584211",
+      "bytes": 883,
       "classification": "generated_project_source"
     },
     {
@@ -745,8 +919,8 @@
     },
     {
       "path": "evidence/task-status.json",
-      "sha256": "110de1274047290ab2bef05c1dbcd45cf66af4a54cb658b09434c9d9920e4ac2",
-      "bytes": 4510,
+      "sha256": "dc3b4d4acb7cdc7ce79ef4a890cdc951098b19b25b245fe4dd42fb91c1fd51a8",
+      "bytes": 6552,
       "classification": "generated_project_source"
     },
     {
@@ -1039,8 +1213,8 @@
     },
     {
       "path": "reference/homesafe_core/challenge.py",
-      "sha256": "2c788692cae1fbe97bf498f9e49dc6a80c124f726577cbbb8c4973b864fd9c85",
-      "bytes": 4810,
+      "sha256": "079d697a8f8210cef673f6bfd18d8a35281c98826f0aac23abb25760c0490e11",
+      "bytes": 4734,
       "classification": "generated_project_source"
     },
     {
@@ -1063,8 +1237,8 @@
     },
     {
       "path": "reference/homesafe_core/models.py",
-      "sha256": "0dbfe657f5cf393f10d6291bbabeb4a3afcbd2e1661f706df54a8ef1f287ae4a",
-      "bytes": 13183,
+      "sha256": "a1a868f078efa3c7672a5d18dc1142f4f2dbb0a78a5c0ecc844f4e9bcf57a28d",
+      "bytes": 13756,
       "classification": "generated_project_source"
     },
     {
@@ -1146,9 +1320,27 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "scripts/check_browser_spike.mjs",
+      "sha256": "8641c36d0195557be2e10aaee629c626b4c6538ba8da6220187b4aa523de6ce1",
+      "bytes": 5303,
+      "classification": "generated_project_source"
+    },
+    {
       "path": "scripts/check_submission.py",
       "sha256": "66a750fcd712003cf17c9d5adcb8ab3bd0e8122db8585116aef00d095f3f55d6",
       "bytes": 1958,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "scripts/check_web_core.mjs",
+      "sha256": "a3f0236fc2a216ac568091776dfb495eb8b8e45de5f10dd3453ea0c8c2fbe5fc",
+      "bytes": 4914,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "scripts/check_web_preview.mjs",
+      "sha256": "4862400b1d91127b9a1c9d59283cbfd11fb204b81677adfed82a0fb12ff0c94f",
+      "bytes": 11059,
       "classification": "generated_project_source"
     },
     {
@@ -1182,9 +1374,15 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "scripts/stage_web_preview.py",
+      "sha256": "98b0b3017dc382f7a68a7e0817566d26a540b3a6ea007b33b9734e8e5640c144",
+      "bytes": 5018,
+      "classification": "generated_project_source"
+    },
+    {
       "path": "scripts/validate_package.py",
-      "sha256": "4ac04531e351fdf2090825d07ac75a22e87e5b1ef7d7337f037d615aaae9fe93",
-      "bytes": 3211,
+      "sha256": "31f58371e40d97e7e65e2663004b96919b54df93fc32f2b3ca0b5af62a8dac02",
+      "bytes": 3271,
       "classification": "generated_project_source"
     },
     {

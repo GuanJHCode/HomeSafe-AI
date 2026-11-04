@@ -43,6 +43,31 @@ export type BoolObservation = {
   "evidence_ref"?: string | null;
 };
 
+export type ChallengeGoal = {
+  "rule_id": string;
+  "profile_id": string;
+  "object_id": string;
+};
+
+export type ChallengeProgress = {
+  "status": "goal_met" | "in_progress";
+  "goal_results": Array<boolean>;
+  "steps": number;
+  "conflict_events": number;
+  "invalid_attempts": number;
+  "remaining_triggered": number;
+  "remaining_needs_review": number;
+  "setup_objects": number;
+  "label": string;
+};
+
+export type ChallengeResult = {
+  "scene": Scene;
+  "assessment": Assessment;
+  "comparison": Comparison | null;
+  "challenge": ChallengeProgress;
+};
+
 export type CompareRequest = {
   "before_assessment_id": string;
   "after_assessment_id": string;

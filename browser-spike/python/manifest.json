@@ -1,5 +1,5 @@
 {
-  "bundle_sha256": "22ddc26ade1546adf5ddef995c0f97bc6775173f3ccd9b2ae9e5789113ba11c7",
+  "bundle_sha256": "ab34fc57b6674e6fb72e12f5d5a09fd55ca1effdf1c4e382f46a518560f026e3",
   "files": [
     {
       "path": "__init__.py",
@@ -7,7 +7,7 @@
     },
     {
       "path": "models.py",
-      "sha256": "0dbfe657f5cf393f10d6291bbabeb4a3afcbd2e1661f706df54a8ef1f287ae4a"
+      "sha256": "a1a868f078efa3c7672a5d18dc1142f4f2dbb0a78a5c0ecc844f4e9bcf57a28d"
     },
     {
       "path": "geometry.py",
@@ -35,7 +35,7 @@
     },
     {
       "path": "challenge.py",
-      "sha256": "2c788692cae1fbe97bf498f9e49dc6a80c124f726577cbbb8c4973b864fd9c85"
+      "sha256": "079d697a8f8210cef673f6bfd18d8a35281c98826f0aac23abb25760c0490e11"
     },
     {
       "path": "browser_bridge.py",

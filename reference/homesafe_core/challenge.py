@@ -1,7 +1,7 @@
 """Local practice challenge. Not a safety score, leaderboard, or real-world certificate."""
 from copy import deepcopy
-from .engine import RuleEngine, FindingDiffer, digest
-from .models import Scene, TransformInput
+from .engine import RuleEngine, FindingDiffer
+from .models import ChallengeProgress, ChallengeResult, Scene, TransformInput
 from .validation import validate_scene
 
 class ChallengeService:
@@ -80,17 +80,14 @@ class ChallengeService:
         goal_results = [bool(self.match(self.assessment, g))
                         and all(f.status == 'not_triggered' for f in self.match(self.assessment, g))
                         for g in self.goals]
-        return {
-            'scene': self.scene.model_dump(mode='json'),
-            'assessment': self.assessment.model_dump(mode='json'),
-            'comparison': delta.model_dump(mode='json') if delta else None,
-            'challenge': {
-                'status': 'goal_met' if all(goal_results) else 'in_progress',
-                'goal_results': goal_results, 'steps': self.steps,
-                'conflict_events': self.conflict_events, 'invalid_attempts': self.invalid_attempts,
-                'remaining_triggered': sum(f.status == 'triggered' for f in self.assessment.findings),
-                'remaining_needs_review': sum(f.status == 'needs_review' for f in self.assessment.findings),
-                'setup_objects': len(self.assessment.setup_items),
-                'label': '仅本教学关卡目标；未解决的检查和未覆盖内容仍须核查，不表示家庭安全。'
-            }
-        }
+        progress = ChallengeProgress(
+            status='goal_met' if all(goal_results) else 'in_progress',
+            goal_results=goal_results, steps=self.steps,
+            conflict_events=self.conflict_events, invalid_attempts=self.invalid_attempts,
+            remaining_triggered=sum(f.status == 'triggered' for f in self.assessment.findings),
+            remaining_needs_review=sum(f.status == 'needs_review' for f in self.assessment.findings),
+            setup_objects=len(self.assessment.setup_items),
+            label='仅本教学关卡目标；未解决的检查和未覆盖内容仍须核查，不表示家庭安全。',
+        )
+        return ChallengeResult(scene=self.scene, assessment=self.assessment, comparison=delta,
+                               challenge=progress).model_dump(mode='json')

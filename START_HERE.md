@@ -1,10 +1,12 @@
-# 开工入口：V6.1 参考源码已导入
+# HomeSafe AI V6.1 开工入口
 
-日期：2026-11-03，Asia/Shanghai。当前提供方案、Python 参考内核、契约、测试、浏览器诊断和本地部署工具；不是完整三维应用。
+当前工作是合成客厅的三维开发预览。界面使用程序占位家具，同源 module Worker 加载同一份 Python 参考内核。当前验证和交付阻断见[接手记录](evidence/HANDOFF.md)和[任务状态](evidence/task-status.json)。
 
-先读[总体方案](docs/v6.1/00-overview.md)、[AGENTS.md](AGENTS.md)、[源码补齐说明](docs/V6_1_SOURCE_IMPORT.md)和[本次验证](evidence/IMPORT_VALIDATION_20261103.md)。
+先读 [AGENTS.md](AGENTS.md)、[总体方案](docs/v6.1/00-overview.md)和[实施计划](docs/v6.1/05-delivery-plan.md)。恢复的 docs 根目录设计明细与 reference/ 为现行参考。历史导入结果见[源码导入验证](evidence/IMPORT_VALIDATION_20261103.md)。
 
-## 运行原生检查
+## 本地检查
+
+需要 Python 3.13 或 3.14、Node.js 24 和 npm。以下命令在仓库根目录运行。
 
 ```bash
 python3 -m venv .venv
@@ -18,24 +20,40 @@ python scripts/stage_browser_core.py
 python scripts/check_submission.py
 ```
 
-最后一项当前预期 BLOCKED、退出码 2，原因是应用、真实资产、正式入口和提交材料未完成，不是源码导入失败。契约类型检查需要 TypeScript 5.8.3：`tsc --strict --noEmit --target ES2022 contracts/frontend/domain.ts`。
+当前提交预检预期为 BLOCKED、退出码 2。契约严格检查使用 TypeScript 5.8.3。
 
-## 下一步：真实同源浏览器探针
+```bash
+npm --prefix apps/web install --no-audit --no-fund
+apps/web/node_modules/.bin/tsc --strict --noEmit --target ES2022 contracts/frontend/domain.ts
+npm --prefix apps/web run typecheck
+npm --prefix apps/web test
+```
 
-从固定官方分发准备运行时到仓库外，不给 lock 人工添加 info.version：
+## 准备同源运行时
+
+准备官方 Pyodide 314.0.6 分发到仓库外。需要运行时文件及官方 lock 指定的 Pydantic 2.12.5 依赖闭包。保持官方 lock 原件，先检查复制计划，再写入空的默认目标目录。若已复制且校验通过，可直接运行暂存命令。
 
 ```bash
 python scripts/vendor_pyodide_from_dir.py --source /absolute/path/to/official-distribution
 python scripts/vendor_pyodide_from_dir.py --source /absolute/path/to/official-distribution --copy
-python -m http.server 8080 --bind 127.0.0.1 --directory browser-spike
+python scripts/stage_web_preview.py
+node scripts/check_web_core.mjs
 ```
 
-访问 `http://localhost:8080/?runtime=same-origin`，验证初始化、三样例、挑战与失败后重建 Worker。官方运行时二进制不在仓库；本次原生/JS 测试不代替这项验收。
+只运行诊断时，使用 `python -m http.server 8080 --bind 127.0.0.1 --directory browser-spike` 并打开 [同源探针](http://localhost:8080/?runtime=same-origin)。运行真实浏览器验收前先阅读[探针说明](browser-spike/README.md)。
 
-探针通过后继续 T02：创建 apps/web，完成拖动→合法布局→双角色重算→撤销→清单；T03 制作两件真实 Lux3D 小样。完整计划见[任务表](docs/v6.1/05-delivery-plan.md)。
+## 启动开发预览与打包
 
-## 文档与版本
+```bash
+npm --prefix apps/web run dev
+```
 
-docs/v6.1/ 为概要导航；恢复的 docs/00-scope-and-rules.md 等原包明细与 reference/ 为当前实现基线。原仓库六份早期文档继续保留历史标记，不要误将全部 docs 根目录文件都视为旧方案。
+打开 Vite 打印的本地地址。首次运行先等待规则就绪。自由布置允许拖动椅子和柜体。把窗边椅子拖到地面标注的老人通道，观察两类检查发生的变化。将椅子拖到房间边界外可以检查回弹。可通过按钮切换角色、撤销、重做、重置或开始只开放椅子的挑战。行动清单支持 JSON 和打印。
 
-五份冲突原文与原包清单保存在 history/v6.1-original-source/；其中相对路径和历史测试按原包上下文理解。提交格式 `<type>: <desc>`，任务 ID 写正文。只更新实际完成部分；SUBMITTED 仍需真实回执。
+```bash
+npm --prefix apps/web run build
+(cd apps/web/dist && shasum -a 256 -c CHECKSUMS.sha256)
+npm --prefix apps/web run preview
+```
+
+`build` 重新暂存同源资源，运行严格检查和 Vite 构建，并生成 `apps/web/dist/preview-manifest.json` 与 `CHECKSUMS.sha256`。只有上述命令成功才有可用构建目录。运行结果、正式托管步骤及限制见[本轮验证](evidence/WEB_PREVIEW_20261104.md)。

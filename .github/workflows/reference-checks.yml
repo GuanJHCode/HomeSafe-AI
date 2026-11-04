@@ -25,4 +25,7 @@ jobs:
       - run: node --check browser-spike/main.mjs
       - run: npm install --no-save --package-lock=false typescript@5.8.3
       - run: npx tsc --strict --noEmit --target ES2022 contracts/frontend/domain.ts
+      - run: npm --prefix apps/web install --no-audit --no-fund
+      - run: npm --prefix apps/web test
+      - run: npm --prefix apps/web run build:frontend
 # This workflow has not run on GitHub in this delivery. No paid API use.

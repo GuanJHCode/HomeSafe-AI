@@ -7,7 +7,7 @@ python scripts/stage_browser_core.py
 python -m http.server 8080 --bind 127.0.0.1 --directory browser-spike
 ```
 需要浏览器可访问运行时URL；无桌面Linux可由另一设备访问所提供的安全入口。
-按按钮初始化→验证三样例→挑战。记录真实浏览器版本、设备、网络、冷/热耗时和错误。
+按按钮初始化→验证三样例→挑战。挑战依次记录初始、冲突、达标、撤销和重置，并保留覆盖与未解决事项。记录真实浏览器版本、设备、网络、冷/热耗时和错误。
 网络加载失败后可直接再次点击初始化；页面会销毁旧Worker并重建，清除失败的模块缓存和WASM状态，挑战进度将重置。
 同一Worker的控制器也会清除失败的初始化Promise；Node回归覆盖此机制，不等于本轮已经跑真实浏览器。
 超时/崩溃时也使用显式重建，不自动重放挑战移动或收费操作。失败绝不当检查通过。
@@ -25,6 +25,12 @@ V6.1校验lock的Python3.14.2/ABI2026_0/wasm32，存在package.json时还校验3
 精确锁定需提供从可信分发独立取得的完整64位SHA，参数为 `--expected-lock-sha256`；省略时记录实际SHA但不冒称它已被权威签名验证。
 复制脚本只选择运行时与pydantic闭包，不复制fonts或全部wheel。
 这里的脚本仅本地文件操作，无下载和付费；真正部署时必须上传完整最小运行时集合。
+
+已安装 Chrome 和 Puppeteer Core 时，可执行真实浏览器探针。使用目标子路径 URL 重跑可验证同源路径与 MIME。脚本会拦截一次本页运行时配置，复现加载失败并在同页重建 Worker。
+
+```bash
+node scripts/check_browser_spike.mjs http://127.0.0.1:8080/ /absolute/path/to/chrome /absolute/path/to/puppeteer-core.js
+```
 
 ## Node兼容探针（不是浏览器性能）
 ```bash

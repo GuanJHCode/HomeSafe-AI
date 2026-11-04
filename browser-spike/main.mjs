@@ -1,5 +1,5 @@
 import {BrowserRuleClient} from "./BrowserRuleClient.mjs";
-import {formatChallengeSummary} from "./challenge-summary.mjs";
+import {runChallengeProbe} from "./challenge-probe.mjs";
 const output=document.querySelector("#output");
 let client=null;
 let initAttempt=0;
@@ -47,23 +47,13 @@ document.querySelector("#examples").onclick=async()=>{
 };
 document.querySelector("#challenge").onclick=async()=>{
   const current=client, attempt=initAttempt;
+  const button=document.querySelector("#challenge");
+  button.disabled=true;
   try {
-    const scene=await read("examples/scene-before.json");
-    const goals=[{rule_id:"R001",profile_id:"child",object_id:"chair"},
-                 {rule_id:"R005",profile_id:"elder",object_id:"chair"}];
-    await current.request("challenge_start",{scene,movable_ids:["chair"],goals});
-    if(current!==client || attempt!==initAttempt) return;
-    const states=[];
-    for(const name of ["conflict","improved"]) {
-      const next=await read(`examples/scene-${name}.json`);
-      const chair=next.objects.find(o=>o.id==="chair");
-      const response=await current.request("challenge_move",
-        {object_id:"chair",transform:{position:chair.position,yaw_rad:chair.yaw_rad}},next.revision);
-      if(current!==client || attempt!==initAttempt) return;
-      states.push({name,...response.result.challenge,
-                   summary:formatChallengeSummary(response.result.challenge)});
-    }
-    show({notice:"诊断自动调用，不是实际3D拖拽演示",states});
+    const states=await runChallengeProbe(current, name => read(`examples/scene-${name}.json`),
+                                         () => current===client && attempt===initAttempt);
+    if(states) show({notice:"诊断自动调用，不是实际3D拖拽演示",states});
   }catch(e){if(current===client && attempt===initAttempt) show({error:e.message,details:e.details});}
+  finally{if(current===client && attempt===initAttempt) button.disabled=false;}
 };
 window.addEventListener("pagehide",()=>client?.dispose(),{once:true});

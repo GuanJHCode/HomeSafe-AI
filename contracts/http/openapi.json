@@ -849,6 +849,123 @@
         "title": "BoolObservation",
         "type": "object"
       },
+      "ChallengeGoal": {
+        "additionalProperties": false,
+        "properties": {
+          "rule_id": {
+            "title": "Rule Id",
+            "type": "string"
+          },
+          "profile_id": {
+            "title": "Profile Id",
+            "type": "string"
+          },
+          "object_id": {
+            "title": "Object Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "rule_id",
+          "profile_id",
+          "object_id"
+        ],
+        "title": "ChallengeGoal",
+        "type": "object"
+      },
+      "ChallengeProgress": {
+        "additionalProperties": false,
+        "properties": {
+          "status": {
+            "enum": [
+              "goal_met",
+              "in_progress"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "goal_results": {
+            "items": {
+              "type": "boolean"
+            },
+            "title": "Goal Results",
+            "type": "array"
+          },
+          "steps": {
+            "title": "Steps",
+            "type": "integer"
+          },
+          "conflict_events": {
+            "title": "Conflict Events",
+            "type": "integer"
+          },
+          "invalid_attempts": {
+            "title": "Invalid Attempts",
+            "type": "integer"
+          },
+          "remaining_triggered": {
+            "title": "Remaining Triggered",
+            "type": "integer"
+          },
+          "remaining_needs_review": {
+            "title": "Remaining Needs Review",
+            "type": "integer"
+          },
+          "setup_objects": {
+            "title": "Setup Objects",
+            "type": "integer"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "goal_results",
+          "steps",
+          "conflict_events",
+          "invalid_attempts",
+          "remaining_triggered",
+          "remaining_needs_review",
+          "setup_objects",
+          "label"
+        ],
+        "title": "ChallengeProgress",
+        "type": "object"
+      },
+      "ChallengeResult": {
+        "additionalProperties": false,
+        "properties": {
+          "scene": {
+            "$ref": "#/components/schemas/Scene"
+          },
+          "assessment": {
+            "$ref": "#/components/schemas/Assessment"
+          },
+          "comparison": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Comparison"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "challenge": {
+            "$ref": "#/components/schemas/ChallengeProgress"
+          }
+        },
+        "required": [
+          "scene",
+          "assessment",
+          "comparison",
+          "challenge"
+        ],
+        "title": "ChallengeResult",
+        "type": "object"
+      },
       "CompareRequest": {
         "additionalProperties": false,
         "properties": {

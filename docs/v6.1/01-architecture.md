@@ -1,6 +1,6 @@
 # 架构、数据与契约
 
-V6.1 参考内核、browser-spike、contracts、scripts、tools 和资产规划已导入；apps/web 仍待创建。接口分为可运行参考实现和待建应用层，不能混称完整产品。
+V6.1 参考内核、browser-spike、contracts、scripts、tools 和资产规划已导入。功能分支提供 apps/web 开发预览源码，实际构建、浏览器与资产状态见[本轮验证](../../evidence/WEB_PREVIEW_20261104.md)。
 
 ## 运行结构
 
@@ -25,7 +25,7 @@ flowchart TD
 | --- | --- |
 | reference/homesafe_core/ | canonical 模型、八条规则、几何、覆盖、比较与挑战 |
 | browser-spike/ | Worker、客户端和诊断；不是完整作品 |
-| apps/web/ | 待建正式 Vue / TypeScript / Three.js 工程 |
+| apps/web/ | Vue / TypeScript / Three.js 开发预览，使用合成客厅与占位模型 |
 | contracts/ | 从 Python 模型生成 Schema / TypeScript；HTTP 契约仅供备用路径 |
 | assets/public/ | 逐项核准的公共 GLB 与清单 |
 | scripts/、tools/ | 本地检查、打包、契约生成及可选 CLI |
