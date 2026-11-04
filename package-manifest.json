@@ -637,8 +637,8 @@
     },
     {
       "path": "evidence/HANDOFF.md",
-      "sha256": "3fbea73060de9a629f80f9a9cf3d15e6bfdc79215963de33a09c710afa2bd6df",
-      "bytes": 4448,
+      "sha256": "96b829a3d7b13960ed307c978123aa147d62a3a6a5303479188f9f225928b5a0",
+      "bytes": 4743,
       "classification": "generated_project_source"
     },
     {
@@ -655,8 +655,8 @@
     },
     {
       "path": "evidence/T03_PRIVATE_INTAKE_20261104.md",
-      "sha256": "a824bf7cd3e1cfcc2a93ff76934e2a0a1a8371134a63c8a6573eaeb92d66b38c",
-      "bytes": 2132,
+      "sha256": "f044d719f9ea7b124b9e5c7f18dbe74d82761d81df77289b74a2dec33baee70e",
+      "bytes": 2663,
       "classification": "generated_project_source"
     },
     {
@@ -705,6 +705,12 @@
       "path": "evidence/ci-deployment-transport-0be5873.json",
       "sha256": "d4b6870acef7900a4052e83084356866a2e590809d653a9e25ef40c2444faf7a",
       "bytes": 7342,
+      "classification": "generated_project_source"
+    },
+    {
+      "path": "evidence/ci-private-intake-9cf7660.json",
+      "sha256": "b9660bb3d3e74285361d0ee4d1cb0b07301dcc103cd31f48db8a3d730d77564c",
+      "bytes": 6379,
       "classification": "generated_project_source"
     },
     {
@@ -1051,8 +1057,8 @@
     },
     {
       "path": "evidence/task-status.json",
-      "sha256": "8bacc07143fcb3e4103ed1c17d1d7d27506e59daa417ea6c3134dfa8b42b6529",
-      "bytes": 8805,
+      "sha256": "072feb886b4a05414ebd3bcbc114f3fe769853b523674c24d00e9d7a4ef644b5",
+      "bytes": 9002,
       "classification": "generated_project_source"
     },
     {

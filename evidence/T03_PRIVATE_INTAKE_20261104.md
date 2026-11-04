@@ -23,4 +23,6 @@
 
 首审发现校准页相对路径错误、来源硬编码、刷新/恢复后模型检查缺失、柜体操作覆盖不足。已补根地址回归、显式来源模式、重复加载检查和柜体操作。首审为需修复，未提前关闭任务。
 
-复审与 procedural CI 结果待补。工具子项 IN_PROGRESS；T03 整体 BLOCKED。合成CI只验证工具，不能替代实际模型浏览器验收。用法见[私下接收流程](../docs/v6.1/08-private-asset-intake.md)。公开清单保持为空，T04仍缺获准托管入口。
+独立 agent 复审代码 PASS，并自行重跑3项输入、21项应用、类型检查和两件原件的Node几何检查。随后独立核对 [CI 41785654240](https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41785654240) 全部通过，批准关闭 T03-private-intake-tooling。CI 包含 Python228、探针15、工具3、应用21；带纹理 procedural 夹具的隔离浏览器流程和原有子路径Chrome回归均通过。
+
+远端源码提交9cf76600与本地dc7eaaa文件树7b643f13一致；[CI与审查回执](ci-private-intake-9cf7660.json)记录完整状态。工具子项 DONE；T03 整体仍 BLOCKED。合成CI只验证工具，不能替代实际模型浏览器验收。用法见[私下接收流程](../docs/v6.1/08-private-asset-intake.md)。公开清单保持为空，T04仍缺获准托管入口。

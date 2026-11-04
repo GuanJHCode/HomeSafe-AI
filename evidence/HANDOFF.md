@@ -26,3 +26,5 @@
 ## T03 接续（2026-11-04）
 
 已取得用户提供的椅子与柜体原始GLB及来源材料，替代上文“未提供”的历史状态。18个摘要通过；两原件Node/Three.js数值校准通过。公开分发仍待确认，真实浏览器被当前云环境socket权限阻断，不用Node结果代替。私下工具与复审进展见[T03记录](T03_PRIVATE_INTAKE_20261104.md)。公开manifest为空，T03整体仍BLOCKED。
+
+私下接入工具已在9cf76600通过完整CI41785654240。独立agent复审代码并核对CI后批准关闭T03-private-intake-tooling；两真实模型Node数值检查通过，但真实模型浏览器仍NOT_RUN，公开分发权利待确认。CI只用procedural夹具，未外传实际GLB。

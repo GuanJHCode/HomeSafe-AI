@@ -97,7 +97,8 @@
         "reference/tests/test_public_assets.py",
         "assets/README.md",
         "evidence/T03_PRIVATE_INTAKE_20261104.md",
-        "evidence/lux3d-geometry-20261104.json"
+        "evidence/lux3d-geometry-20261104.json",
+        "evidence/ci-private-intake-9cf7660.json"
       ],
       "checks": {
         "approved_lux3d_assets": 0,
@@ -115,9 +116,11 @@
       "subtasks": [
         {
           "id": "T03-private-intake-tooling",
-          "status": "IN_PROGRESS",
-          "review": "CHANGES_REQUESTED_FIRST_REVIEW",
-          "ci": "PENDING"
+          "status": "DONE",
+          "review": "PASS_AFTER_FIXES_AND_INDEPENDENT_CI_CHECK",
+          "ci": "PASS_PROCEDURAL_ONLY",
+          "commit": "9cf76600aed2bc65512dfc5780411b0cea418c42",
+          "evidence": "evidence/ci-private-intake-9cf7660.json"
         }
       ]
     },
