@@ -409,5 +409,22 @@
   "current_validation_scope": "evidence/CONTINUATION_20261104.md",
   "historical_validation_scope": "Current CI/browser evidence: evidence/CI_CONTINUATION_20261104.md. T02 development preview passed real Linux Chrome; T03 real Lux3D and T04 public hosting remain blocked. Historical local-only limits are retained in earlier evidence.",
   "historical_validated_source_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6",
-  "validation_scope": "Current isolated cloud local browser: evidence/CONTINUATION_20261104.md; CI receipts remain historical. Actual Lux3D and public hosting BLOCKED."
+  "validation_scope": "Current isolated cloud local browser: evidence/CONTINUATION_20261104.md; CI receipts remain historical. Actual Lux3D and public hosting BLOCKED.",
+  "recovery_sync": {
+    "task_id": "RECOVERY-SYNC-20261104",
+    "date": "2026-11-04",
+    "restored_commit": "00301080c3f910538b8274053785c44db8266721",
+    "branch": "codex/v6.1-browser-3d",
+    "source_push": "VERIFIED_REMOTE_HEAD",
+    "workspace_restored": true,
+    "source_checksum_passed": 526,
+    "js_tests": {
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0,
+      "environment": "explicit symlink-free TMPDIR"
+    },
+    "python_application_browser_retest": "NOT_RUN",
+    "evidence": "evidence/RECOVERY_SYNC_20261104.md"
+  }
 }

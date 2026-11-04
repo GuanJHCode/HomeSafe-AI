@@ -667,8 +667,8 @@
     },
     {
       "path": "evidence/HANDOFF.md",
-      "sha256": "61e1fb2c1500a4656309048a2d6b5bcdcc135532f9cf5c7221235e9c3d7c11b6",
-      "bytes": 7076,
+      "sha256": "a5c788cecdd709a2bd778e0bced8411481d901e22f2f2aae060baec736da590d",
+      "bytes": 7613,
       "classification": "generated_project_source"
     },
     {
@@ -1261,8 +1261,8 @@
     },
     {
       "path": "evidence/task-status.json",
-      "sha256": "737a34bac0578a1a9991bc9f4f6d5e8471604105bbf7519eda5960cc3bb956dd",
-      "bytes": 14664,
+      "sha256": "b8f1455b0af966045310bf347e0873d9ce4199a87dae10ce38ecb91b232592c3",
+      "bytes": 15214,
       "classification": "generated_project_source"
     },
     {
@@ -3154,6 +3154,12 @@
       "sha256": "f37453a5581d27a37810f1a3caa2c8780a36022d29afd0161c861ff0411ac9a3",
       "bytes": 5465,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "evidence/RECOVERY_SYNC_20261104.md",
+      "classification": "generated_project_source",
+      "sha256": "0a4e8b1274992691091a6d0ad4bb255366b783c9e8f30729f9bd6281a6bab12c",
+      "bytes": 2870
     }
   ]
 }
