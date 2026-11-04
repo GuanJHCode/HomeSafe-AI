@@ -1,0 +1,266 @@
+{
+  "checked_at": "2026-11-04T07:08:19.546909+00:00",
+  "url": "http://127.0.0.1:4174/preview",
+  "base_url": "http://127.0.0.1:4174/preview/",
+  "scope": "LOCAL_HTTP_TRANSPORT_ONLY",
+  "result": "PASS",
+  "anonymous_https": "NOT_RUN",
+  "browser_interaction": "NOT_RUN",
+  "public_deployment": "NOT_VERIFIED",
+  "reference_manifest_sha256": "887dc5156e4e8ea7fcef220e85d98821fd9b3266903104d66423ea3a6c4d00c0",
+  "resources": [
+    {
+      "path": "THIRD_PARTY_NOTICES.txt",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "text/plain",
+      "bytes": 1579147,
+      "sha256": "7a91d4e9eb0a87d78a77ff2e49f45049e746e1d8a108099e1a09216c0f912cc0",
+      "errors": []
+    },
+    {
+      "path": "assets/index-BVOvjtV4.js",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "text/javascript",
+      "bytes": 688387,
+      "sha256": "4af964f8b7492d23f88f2b617323b882ec2db478ff35f459086aaea2a95e9cd2",
+      "errors": []
+    },
+    {
+      "path": "assets/index-r_TTxtwP.css",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "text/css",
+      "bytes": 4161,
+      "sha256": "4c6a675cca57adc34eb7dec85d18477a55233ab9d96bfb7ae9a890ec0bc8a8d0",
+      "errors": []
+    },
+    {
+      "path": "assets/rule-worker-ClONKgg2.js",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "text/javascript",
+      "bytes": 2362,
+      "sha256": "e6804aae0f1837cbda3782efb18dc46ef76dc0c345a49a7820a075c0ef9edffe",
+      "errors": []
+    },
+    {
+      "path": "dependency-notices.json",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "application/json",
+      "bytes": 101135,
+      "sha256": "ba73bd356625e169f961a8c3eb3ddeab11bb427471ff97dcf28167b0ff59e06d",
+      "errors": []
+    },
+    {
+      "path": "engine/assets.json",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "application/json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "errors": []
+    },
+    {
+      "path": "engine/config.json",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "application/json",
+      "bytes": 365,
+      "sha256": "b75168bdca112d87d9387bf1d8c3e8196735072b8f651e44a4100e5553a82e1f",
+      "errors": []
+    },
+    {
+      "path": "engine/python/homesafe_core.zip",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "application/zip",
+      "bytes": 17546,
+      "sha256": "0dc027b2f0cddec16b165db12a9f4708e3873b91d5082aa575eb543de5d0b455",
+      "errors": []
+    },
+    {
+      "path": "engine/python/manifest.json",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "application/json",
+      "bytes": 1425,
+      "sha256": "64eb79df4e7f76f11a99e8c0d46903410f23160074a378d40a75961abeaebad1",
+      "errors": []
+    },
+    {
+      "path": "engine/rule-worker.mjs",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "text/javascript",
+      "bytes": 2060,
+      "sha256": "69e055ec3959de5b044b20fee1b021d9c86c3e8ca19dab5bd002bb1c941c59c0",
+      "errors": []
+    },
+    {
+      "path": "engine/scene-before.json",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "application/json",
+      "bytes": 27074,
+      "sha256": "ae83f54655a647d1833ebbceabfc5b21a929abff1574e6c420863e27d418902b",
+      "errors": []
+    },
+    {
+      "path": "engine/scene-main-challenge.json",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "application/json",
+      "bytes": 27074,
+      "sha256": "7475d434bf6a1c6ba5ac0bfb9e2c695d2abe8a413579ec452e8c03770dd97031",
+      "errors": []
+    },
+    {
+      "path": "engine/worker-controller.mjs",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "text/javascript",
+      "bytes": 1972,
+      "sha256": "84cdd57f921548258cbe59d31c31a45f45d41f9415b9991f39a28a814e6ae954",
+      "errors": []
+    },
+    {
+      "path": "index.html",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "text/html",
+      "bytes": 442,
+      "sha256": "d1ef309d5789cdc88962e43ff1e5796e74d6896e9a0b633ec5f5a9f7516eec5d",
+      "errors": []
+    },
+    {
+      "path": "vendor/pyodide/annotated_types-0.7.0-py3-none-any.whl",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "bytes": 11963,
+      "sha256": "6b34f564725f8d309442f8d15abcceed1bf140fe2412e2c58da721426ae2222e",
+      "errors": []
+    },
+    {
+      "path": "vendor/pyodide/pydantic-2.12.5-py3-none-any.whl",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "bytes": 463578,
+      "sha256": "52d15d19fbe2a62ac9b63348df7b38e5ebb186063a9b923a837dd6e43273b414",
+      "errors": []
+    },
+    {
+      "path": "vendor/pyodide/pydantic_core-2.41.5-cp314-cp314-pyemscripten_2026_0_wasm32.whl",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "bytes": 1310163,
+      "sha256": "9802bd7a5e6679ec4c13be778f19f021e6147459c89cc916b913f7970f86dddb",
+      "errors": []
+    },
+    {
+      "path": "vendor/pyodide/pyodide-lock.json",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "application/json",
+      "bytes": 114440,
+      "sha256": "3fdaef09e9e365c85e002737720f8d0ab8f278c1c244a2dde6a37663cf488ad4",
+      "errors": []
+    },
+    {
+      "path": "vendor/pyodide/pyodide.asm.mjs",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "text/javascript",
+      "bytes": 1250344,
+      "sha256": "2ac5eba365ec12839c75c03b39b3be1dd63b798852cc460b014b52238be042f7",
+      "errors": []
+    },
+    {
+      "path": "vendor/pyodide/pyodide.asm.wasm",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "application/wasm",
+      "bytes": 9598218,
+      "sha256": "3a0a00dfeaa348ac20f9ef09904233d32d33f644339662d4af368f8a2010f37a",
+      "errors": []
+    },
+    {
+      "path": "vendor/pyodide/pyodide.mjs",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "text/javascript",
+      "bytes": 17931,
+      "sha256": "69e3f6ccec3e14b465df60be577ca62f536251406b9a00cce019eac5252a2495",
+      "errors": []
+    },
+    {
+      "path": "vendor/pyodide/python_stdlib.zip",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "application/zip",
+      "bytes": 2545564,
+      "sha256": "80c5be6babfe03297069703410c3c29404dcf2525d2b128746bae5536f94831f",
+      "errors": []
+    },
+    {
+      "path": "vendor/pyodide/typing_extensions-4.15.0-py3-none-any.whl",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "bytes": 44613,
+      "sha256": "3f122252f0d498d80f7a684cc1d8baa6fa65b75e99447d77a6dd90e0f04302e3",
+      "errors": []
+    },
+    {
+      "path": "vendor/pyodide/typing_inspection-0.4.2-py3-none-any.whl",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "bytes": 14610,
+      "sha256": "c9270737700f07813e1a87b63138993997afedbd2548f20fa739cc398f1b9f2f",
+      "errors": []
+    },
+    {
+      "path": "vendor/pyodide/vendor-manifest.json",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "application/json",
+      "bytes": 2112,
+      "sha256": "bb6b2f8e1805f77917999afcff301f2641852eaa23906b57443f017566106913",
+      "errors": []
+    },
+    {
+      "path": "preview-manifest.json",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "application/json",
+      "bytes": 4367,
+      "sha256": "887dc5156e4e8ea7fcef220e85d98821fd9b3266903104d66423ea3a6c4d00c0",
+      "errors": []
+    },
+    {
+      "path": "CHECKSUMS.sha256",
+      "result": "PASS",
+      "status": 200,
+      "content_type": "application/octet-stream",
+      "bytes": 2573,
+      "sha256": "7e3d20351bd5dbff4330951bdbbc035d45778aef4d324e8b3f09108ff9473182",
+      "errors": []
+    }
+  ],
+  "entry_redirect": "http://127.0.0.1:4174/preview/",
+  "entry": {
+    "path": "index.html",
+    "result": "PASS",
+    "status": 200,
+    "content_type": "text/html",
+    "bytes": 442,
+    "sha256": "d1ef309d5789cdc88962e43ff1e5796e74d6896e9a0b633ec5f5a9f7516eec5d",
+    "errors": []
+  }
+}

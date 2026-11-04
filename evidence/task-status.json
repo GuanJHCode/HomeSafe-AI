@@ -13,7 +13,11 @@
       "commit": null,
       "evidence": [
         "docs/v6.1/06-acceptance.md",
-        "docs/v6.1/07-sources.md"
+        "docs/v6.1/07-sources.md",
+        "evidence/CONTINUATION_20261104.md"
+      ],
+      "blockers": [
+        "Current official public page yielded no readable body; account page timed out. No authorized account/form receipt available."
       ]
     },
     {
@@ -32,7 +36,8 @@
         "evidence/TAKEOVER_VALIDATION_20261104.md",
         "evidence/CI_CONTINUATION_20261104.md",
         "evidence/ci-browser-spike-94c0470.json",
-        "evidence/ci-browser-spike-4bb18cd.json"
+        "evidence/ci-browser-spike-4bb18cd.json",
+        "evidence/CONTINUATION_20261104.md"
       ],
       "blockers": [
         "No verified public target hosting entry; local Linux CI browser acceptance passed. User Mac Chrome was not operated."
@@ -43,10 +48,20 @@
       "checks": {
         "official_distribution": "PASS",
         "node_wasm_samples": "PASS",
-        "real_browser": "PASS_CI_LOCALHOST",
+        "real_browser": "PASS_ISOLATED_CLOUD_LOCALHOST",
         "target_host": "NOT_RUN",
-        "worker_recovery": "PASS_REAL_BROWSER"
-      }
+        "worker_recovery": "PASS_REAL_BROWSER",
+        "controlled_iframe": "PASS_SAME_AND_CROSS_ORIGIN_LOCAL"
+      },
+      "subtasks": [
+        {
+          "id": "T01-controlled-iframe",
+          "status": "DONE",
+          "acceptance_scope": "Controlled local parents and real Worker/WASM; target host remains NOT_RUN",
+          "review": "PASS_INDEPENDENT",
+          "evidence": "evidence/REVIEW_BROWSER_PROBES_20261104.md"
+        }
+      ]
     },
     {
       "id": "T02",
@@ -98,20 +113,24 @@
         "assets/README.md",
         "evidence/T03_PRIVATE_INTAKE_20261104.md",
         "evidence/lux3d-geometry-20261104.json",
-        "evidence/ci-private-intake-9cf7660.json"
+        "evidence/ci-private-intake-9cf7660.json",
+        "evidence/CONTINUATION_20261104.md"
       ],
       "checks": {
         "approved_lux3d_assets": 0,
-        "real_asset_browser_test": "BLOCKED_NOT_RUN",
+        "real_asset_browser_test": "BLOCKED_NOT_RUN_FILE_UNAVAILABLE",
         "publication_catalog_and_binding": "IMPLEMENTED",
         "synthetic_publication_regression": "PASS",
         "received_lux3d_glbs": 2,
         "original_checksums": "PASS_18_FILES",
-        "real_asset_geometry": "PASS_NODE_GEOMETRY_ONLY"
+        "real_asset_geometry": "PASS_NODE_GEOMETRY_ONLY",
+        "current_isolated_chromium": "PASS_STARTUP_AND_PROCEDURAL_ONLY",
+        "current_original_bytes": "NOT_DOWNLOADED",
+        "private_main_mode_binding": "PASS_PROCEDURAL_BROWSER"
       },
       "blockers": [
-        "Distribution rights under applicable China-site terms remain unconfirmed.",
-        "Actual GLB browser/visual acceptance not run: current cloud Chromium socket creation denied."
+        "Library materialization download host blocked by environment proxy: Tunnel connection failed: 403 Forbidden. No actual GLB bytes in this environment.",
+        "Distribution rights under applicable China-site account terms remain unconfirmed."
       ],
       "subtasks": [
         {
@@ -121,6 +140,13 @@
           "ci": "PASS_PROCEDURAL_ONLY",
           "commit": "9cf76600aed2bc65512dfc5780411b0cea418c42",
           "evidence": "evidence/ci-private-intake-9cf7660.json"
+        },
+        {
+          "id": "T03-private-main-binding",
+          "status": "DONE",
+          "acceptance_scope": "Private assets stay bound entering main challenge; procedural fixtures only",
+          "review": "PASS_INDEPENDENT",
+          "evidence": "evidence/REVIEW_T06_20261104.md"
         }
       ]
     },
@@ -141,7 +167,8 @@
         "evidence/ci-artifact-4bb18cd.json",
         "evidence/DEPLOYMENT_PROBE_20261104.md",
         "evidence/ci-deployment-transport-0be5873.json",
-        "evidence/ci-artifact-0be5873.json"
+        "evidence/ci-artifact-0be5873.json",
+        "evidence/CONTINUATION_20261104.md"
       ],
       "checks": {
         "preview_distribution": "PASS_CI_ARTIFACT",
@@ -161,6 +188,13 @@
           "ci": "PASS",
           "evidence": "evidence/DEPLOYMENT_PROBE_20261104.md",
           "commit": "0be587345015bc99eeed4208b7a12a9d551d1926"
+        },
+        {
+          "id": "T04-dependency-notices",
+          "status": "DONE",
+          "acceptance_scope": "Exact distributed dependency notice collection/staging; scope and remaining licensing audit explicitly disclosed",
+          "review": "PASS_INDEPENDENT_FINAL_EXPANSION",
+          "evidence": "evidence/REVIEW_DELIVERY_20261104.md"
         }
       ]
     },
@@ -169,106 +203,198 @@
       "target_date": "2026-11-09",
       "title": "统一资产与双视角",
       "priority": "P0",
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "owner": null,
       "commit": null,
-      "evidence": []
+      "evidence": [
+        "evidence/CONTINUATION_20261104.md"
+      ],
+      "subtasks": [
+        {
+          "id": "T05-dual-role-summary",
+          "status": "DONE",
+          "acceptance_scope": "Persistent summaries, focus and375px button interactions in synthetic scene",
+          "review": "PASS_INDEPENDENT_BROWSER",
+          "evidence": "evidence/REVIEW_UX_RECOVERY_20261104.md"
+        }
+      ],
+      "remaining": [
+        "Actual Lux3D visual/calibration/style acceptance pending original file access and rights."
+      ]
     },
     {
       "id": "T06",
       "target_date": "2026-11-11",
       "title": "改造挑战",
       "priority": "P0",
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "owner": null,
       "commit": null,
-      "evidence": []
+      "evidence": [
+        "evidence/CONTINUATION_20261104.md"
+      ],
+      "subtasks": [
+        {
+          "id": "T06-main-challenge",
+          "status": "DONE",
+          "acceptance_scope": "Three modes, canonical cabinet challenge,3 legal layouts and75-pose independent grid, illegal counters",
+          "review": "PASS_INDEPENDENT_BROWSER",
+          "evidence": "evidence/REVIEW_T06_20261104.md"
+        }
+      ],
+      "remaining": [
+        "Revalidate main challenge with actual Lux3D assets and final target deployment; implementation subtask is complete."
+      ]
     },
     {
       "id": "T07",
       "target_date": "2026-11-12",
       "title": "清单与性能",
       "priority": "P0",
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "owner": null,
       "commit": null,
-      "evidence": []
+      "evidence": [
+        "evidence/CONTINUATION_20261104.md"
+      ],
+      "subtasks": [
+        {
+          "id": "T07-recovery-and-export",
+          "status": "DONE",
+          "acceptance_scope": "Repeated export names, startup cancel/timeout/stale filtering, explicit failed-model retry, Chinese print",
+          "review": "PASS_INDEPENDENT_BROWSER",
+          "evidence": "evidence/REVIEW_UX_RECOVERY_20261104.md"
+        },
+        {
+          "id": "T07-performance-probe",
+          "status": "DONE",
+          "acceptance_scope": "5 cold/warm pairs +30 hot evaluations, actual local measurements only",
+          "review": "PASS_INDEPENDENT",
+          "evidence": "evidence/REVIEW_BROWSER_PROBES_20261104.md"
+        }
+      ],
+      "remaining": [
+        "Actual Lux3D load/render/release and print validation; final target device/network performance."
+      ]
     },
     {
       "id": "T08",
       "target_date": "2026-11-12",
       "title": "可选本地图生3D",
       "priority": "P1",
-      "status": "NOT_STARTED",
+      "status": "DEFERRED",
       "owner": null,
       "commit": null,
-      "evidence": []
+      "evidence": [
+        "evidence/CONTINUATION_20261104.md"
+      ],
+      "remaining": [
+        "Optional local generation unnecessary while two originals exist and main release gates remain blocked; no new paid calls."
+      ]
     },
     {
       "id": "T09",
       "target_date": "2026-11-14",
       "title": "冻结与回归",
       "priority": "P0",
-      "status": "NOT_STARTED",
+      "status": "BLOCKED",
       "owner": null,
       "commit": null,
-      "evidence": []
+      "evidence": [
+        "evidence/CONTINUATION_20261104.md"
+      ],
+      "remaining": [
+        "Final freeze requires G1 real assets/rights and G3 approved public deployment plus actual Edge/Safari/other-network tests."
+      ]
     },
     {
       "id": "T10",
       "target_date": "2026-11-14",
       "title": "报告视频社媒",
       "priority": "P0",
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "owner": null,
       "commit": null,
-      "evidence": []
+      "evidence": [
+        "evidence/CONTINUATION_20261104.md"
+      ],
+      "remaining": [
+        "Final report/video must use frozen accepted real-asset/public version; current drafts and24.44s reviewed development recording only."
+      ],
+      "subtasks": [
+        {
+          "id": "T10-material-drafts",
+          "status": "DONE",
+          "acceptance_scope": "Concrete report, recording, social and release/maintenance drafts; no publication",
+          "review": "PASS_INDEPENDENT_FINAL_EXPANSION",
+          "evidence": "evidence/REVIEW_DELIVERY_20261104.md"
+        }
+      ]
     },
     {
       "id": "T11",
       "target_date": "2026-11-15",
       "title": "首次正式提交",
       "priority": "P0",
-      "status": "NOT_STARTED",
+      "status": "BLOCKED",
       "owner": null,
       "commit": null,
-      "evidence": []
+      "evidence": [
+        "evidence/CONTINUATION_20261104.md"
+      ],
+      "blockers": [
+        "G1/G3/G4 incomplete; no verified account/form or final submission authorization/receipt."
+      ]
     },
     {
       "id": "T12",
       "target_date": "2026-11-18",
       "title": "修错与复交",
       "priority": "P0",
-      "status": "NOT_STARTED",
+      "status": "WAITING_DEPENDENCIES",
       "owner": null,
       "commit": null,
-      "evidence": []
+      "evidence": [
+        "evidence/CONTINUATION_20261104.md"
+      ],
+      "remaining": [
+        "Actual submitted version and permitted resubmission process first."
+      ]
     },
     {
       "id": "T13",
       "target_date": "2026-11-19",
       "title": "截止前复核",
       "priority": "P0",
-      "status": "NOT_STARTED",
+      "status": "PLANNED_NOT_SCHEDULED",
       "owner": null,
       "commit": null,
-      "evidence": []
+      "evidence": [
+        "evidence/CONTINUATION_20261104.md"
+      ],
+      "remaining": [
+        "Reverify actual deadline/form and entry before cutoff; no future automation created."
+      ]
     },
     {
       "id": "T14",
       "target_date": null,
       "title": "评审及后续维护",
       "priority": "P0",
-      "status": "NOT_STARTED",
+      "status": "PLANNED_NOT_SCHEDULED",
       "owner": null,
       "commit": null,
-      "evidence": []
+      "evidence": [
+        "evidence/CONTINUATION_20261104.md"
+      ],
+      "remaining": [
+        "Approved hosted entry/owner and actual results date required; retain at least max(2026-12-31,results+30days), no shutdown scheduled."
+      ]
     }
   ],
   "timezone": "Asia/Shanghai",
-  "planning_status": "DOCUMENTATION_PREPARED",
+  "planning_status": "SCOPED_IMPLEMENTATIONS_REVIEWED_EXTERNAL_GATES_BLOCKED",
   "source_import_status": "IMPORTED_AND_NATIVE_VALIDATED",
-  "validation_scope": "Current CI/browser evidence: evidence/CI_CONTINUATION_20261104.md. T02 development preview passed real Linux Chrome; T03 real Lux3D and T04 public hosting remain blocked. Historical local-only limits are retained in earlier evidence.",
   "source_import": {
     "base_commit": "01d48fca76f77856b5e9f31a37090bb1284e47db",
     "supplement_sha256": "81b72b3dd0d61cfe6854414bf92a4dfd90a4cf2ef2358b019f43566a424a47ea",
@@ -279,6 +405,9 @@
   },
   "baseline_commit": "2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f",
   "implementation_branch": "codex/v6.1-browser-3d",
-  "continuation_base_commit": "69df60fdb04742ad369a6f4a54f6c1d2c35eb126",
-  "validated_source_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6"
+  "continuation_base_commit": "57faf384d64e9770407b28086fdfeb5b193a6d6f",
+  "current_validation_scope": "evidence/CONTINUATION_20261104.md",
+  "historical_validation_scope": "Current CI/browser evidence: evidence/CI_CONTINUATION_20261104.md. T02 development preview passed real Linux Chrome; T03 real Lux3D and T04 public hosting remain blocked. Historical local-only limits are retained in earlier evidence.",
+  "historical_validated_source_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6",
+  "validation_scope": "Current isolated cloud local browser: evidence/CONTINUATION_20261104.md; CI receipts remain historical. Actual Lux3D and public hosting BLOCKED."
 }

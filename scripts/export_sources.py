@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Exact-file export. Dry-run by default; no git commands, credentials or network."""
-import argparse,hashlib,json,shutil,sys
+import argparse,hashlib,json,shutil,sys,re
 from pathlib import Path, PurePosixPath
 R=Path(__file__).resolve().parents[1];sys.path.insert(0,str(R/'reference'))
 from homesafe_core.release import contained_file,sha256
@@ -17,8 +17,23 @@ def verify_plan(root,manifest):
             raise ValueError('sensitive or runtime file is never exported: '+rel)
         if rel in seen:raise ValueError('duplicate path')
         seen.add(rel)
-        if e.get('classification')!='generated_project_source':raise ValueError('private/unknown file not exportable')
+        classification=e.get('classification')
+        if classification not in {'generated_project_source','vendored_dependency_notice'}:
+            raise ValueError('private/unknown file not exportable')
         p=contained_file(root,rel)
+        if classification=='vendored_dependency_notice':
+            # Exact, reviewed upstream text only; this class is not a general vendor bypass.
+            if (len(parts)!=3 or parts[:2]!=('licenses','upstream')
+                    or not re.fullmatch(r'[A-Za-z0-9_.+-]+',parts[-1])
+                    or (p.suffix not in {'.txt','.rst','.lock'} and parts[-1]!='sources.json')):
+                raise ValueError('vendored notice must be audited text directly in licenses/upstream')
+            p.read_bytes().decode('utf-8')
+            if parts[-1]!='sources.json':
+                registry=json.loads(contained_file(root,'licenses/upstream/sources.json').read_text())
+                records=registry.get('files',[])+registry.get('build_sources',[])
+                matches=[record for record in records if record.get('path')==parts[-1]]
+                if len(matches)!=1 or matches[0].get('sha256')!=sha256(p):
+                    raise ValueError('file differs from audited notice registry: '+rel)
         if sha256(p)!=e['sha256']:raise ValueError('file changed since package review: '+rel)
         out.append((rel,p))
     return out

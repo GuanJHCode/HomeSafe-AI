@@ -41,7 +41,12 @@ test('different evaluated layouts at the same revision have traceable export fil
     beforeAssessment as unknown as Assessment)
   const after = ReportBuilder.buildViewModel(scene, assessment, delta)
   const name = ReportBuilder.fileName(after)
-  assert.match(name, /^homesafe-action-list-v\d+-[a-f0-9]{12}\.json$/)
+  assert.match(name, /^homesafe-action-list-v\d+-[a-f0-9]{12}-[0-9TZ-]+-\d+\.json$/)
   assert.ok(name.includes(after.input_hash.slice(0, 12)))
   assert.notEqual(name, ReportBuilder.fileName({ ...before, scene_revision: after.scene_revision }))
+})
+
+test('repeated exports of the same accepted layout have distinct traceable names', () => {
+  const report = ReportBuilder.buildViewModel(scene, assessment, delta)
+  assert.notEqual(ReportBuilder.fileName(report), ReportBuilder.fileName(report))
 })

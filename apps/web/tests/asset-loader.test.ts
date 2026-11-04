@@ -87,3 +87,31 @@ test('same-origin GLB replacement applies orientation, bottom pivot, and instanc
   assert.equal(object.children.length, 0);
   assert.equal(new Box3().setFromObject(second, true).getSize(new Vector3()).y, 0.5);
 });
+
+test('a stalled GLB download times out, evicts its cache entry, and permits explicit retry', async (context) => {
+  const fixture = syntheticGlb();
+  const asset: AssetRenderDTO = {
+    asset_id: 'timeout-fixture', content_hash: createHash('sha256').update(fixture).digest('hex'),
+    render_url: 'assets/public/test.glb', provenance_summary: 'procedural',
+    calibration: {
+      reviewed: true, revision: 1, strategy: 'runtime_axis_fit',
+      orientation: { x: 0, y: 0, z: 0, w: 1 },
+      pivot_offset_after_rotation: { x: 0.5, y: 0, z: 1.5 },
+      normalized_bounds_m: { width: 1, height: 2, depth: 3 },
+    },
+  };
+  let requests = 0;
+  context.mock.method(globalThis, 'fetch', async (_url: URL, options: RequestInit) => {
+    requests++;
+    if (requests > 1) return new Response(fixture);
+    return new Promise((_resolve, reject) => {
+      options.signal!.addEventListener('abort', () => reject(options.signal!.reason), { once: true });
+    });
+  });
+  const loader = new AssetLoader([asset], 'https://example.test/', 10);
+  context.after(() => loader.dispose());
+  await assert.rejects(loader.load(asset.asset_id), /超时/);
+  const template = await loader.load(asset.asset_id);
+  assert.ok(template.model);
+  assert.equal(requests, 2);
+});

@@ -8,6 +8,7 @@ from pathlib import Path
 import pytest
 
 from test_public_assets import publication
+from test_dependency_notices import install_fixture_notices, synthetic_wheel
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'scripts'))
@@ -37,7 +38,8 @@ def project(publication, monkeypatch):
     source.mkdir()
     for name in vendor.RUNTIME:
         (source / name).write_bytes(b'SYNTHETIC runtime fixture only')
-    wheel = b'SYNTHETIC wheel fixture only'
+    install_fixture_notices(root)
+    wheel = synthetic_wheel()
     (source / 'pydantic.whl').write_bytes(wheel)
     lock = {'info': vendor.EXPECTED_INFO, 'packages': {
         'pydantic': {'version': '2.12.5', 'file_name': 'pydantic.whl',
@@ -102,3 +104,15 @@ def test_extra_public_file_stops_staging(project):
         preview.stage_preview()
     assert extra.read_text() == 'unreviewed file'
     assert not (preview.PUBLIC / 'engine').exists()
+
+
+def test_missing_or_tampered_built_notice_is_rejected(project):
+    preview.stage_preview()
+    synthetic_build()
+    notice = preview.DIST / 'THIRD_PARTY_NOTICES.txt'
+    notice.write_text('missing original notices')
+    with pytest.raises(ValueError, match='differs'):
+        preview.verify_dist()
+    notice.unlink()
+    with pytest.raises(ValueError, match='Missing preview files'):
+        preview.verify_dist()

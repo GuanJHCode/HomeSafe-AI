@@ -59,12 +59,15 @@ export class AssetLoader {
   private readonly templates = new Map<string, Promise<AssetTemplate>>();
   private readonly instances = new Set<Object3D>();
   private readonly abort = new AbortController();
+  private readonly downloadTimeoutMs: number;
   private readonly gltf = new GLTFLoader(new LoadingManager().setURLModifier((url) => {
     if (!url.startsWith('blob:')) throw new Error('GLB must embed all model resources');
     return url;
   }));
 
-  constructor(assets: readonly AssetRenderDTO[], baseUrl: string = document.baseURI) {
+  constructor(assets: readonly AssetRenderDTO[], baseUrl: string = document.baseURI,
+    downloadTimeoutMs = 45000) {
+    this.downloadTimeoutMs = downloadTimeoutMs;
     this.descriptors = new Map(assets.map((asset) => [asset.asset_id, asset]));
     this.baseUrl = new URL(baseUrl);
   }
@@ -96,14 +99,23 @@ export class AssetLoader {
       ? asset.content_hash.match(/../g)?.map((part) => Number.parseInt(part, 16))
       : undefined;
     if (!hashBytes) throw new Error('Asset hash is invalid');
-    const response = await fetch(url, {
-      signal: this.abort.signal,
-      mode: 'same-origin',
-      redirect: 'error',
-      integrity: `sha256-${btoa(String.fromCharCode(...hashBytes))}`,
-    });
-    if (!response.ok) throw new Error(`GLB load failed (${response.status})`);
-    const buffer = await response.arrayBuffer();
+    const deadline = new AbortController();
+    const signal = AbortSignal.any([this.abort.signal, deadline.signal]);
+    const timer = setTimeout(() => deadline.abort(new Error('模型下载超时，请重试。')), this.downloadTimeoutMs);
+    let buffer: ArrayBuffer;
+    try {
+      const response = await fetch(url, {
+        signal,
+        mode: 'same-origin',
+        redirect: 'error',
+        integrity: `sha256-${btoa(String.fromCharCode(...hashBytes))}`,
+      });
+      if (!response.ok) throw new Error(`GLB load failed (${response.status})`);
+      buffer = await response.arrayBuffer();
+      signal.throwIfAborted();
+    } finally {
+      clearTimeout(timer);
+    }
     if (buffer.byteLength < 20 || new DataView(buffer).getUint32(0, true) !== 0x46546c67) {
       throw new Error('Asset is not a GLB');
     }

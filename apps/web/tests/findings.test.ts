@@ -49,3 +49,16 @@ test('observation-only comparisons cannot be described as layout conflicts', () 
   assert.equal(delta?.conflict, false)
   assert.equal(delta?.resolvedUnknown[0]?.rule_id, 'R002')
 })
+
+test('both role summaries remain available without changing the assessment or profile capabilities', () => {
+  const before = JSON.stringify({ scene, assessment })
+  const presenter = new FindingsPresenter(scene, assessment)
+  for (const summary of presenter.roleSummaries()) {
+    const findings = presenter.forRole(summary.role).findings
+    assert.equal(summary.triggered, findings.filter(finding => finding.status === 'triggered').length)
+    assert.equal(summary.needsReview, findings.filter(finding => finding.status === 'needs_review').length)
+    assert.equal(summary.notTriggered, findings.filter(finding => finding.status === 'not_triggered').length)
+  }
+  assert.deepEqual(presenter.roleSummaries().map(summary => summary.role), ['child', 'elder'])
+  assert.equal(JSON.stringify({ scene, assessment }), before)
+})

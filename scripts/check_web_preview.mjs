@@ -41,9 +41,14 @@ const browser = await launch({
     ...(process.env.CI ? ['--no-sandbox'] : [])],
 });
 const downloadPath = await mkdtemp(join(tmpdir(), 'homesafe-web-'));
+let recording;
 try {
   const page = await browser.newPage();
   await page.setViewport({ width: 1280, height: 1000, deviceScaleFactor: 1 });
+  if (process.env.HOMESAFE_VIDEO_PATH) {
+    // Optional genuine browser frames of this development regression, not a final submission video.
+    recording = await page.screencast({ path: resolve(process.env.HOMESAFE_VIDEO_PATH) });
+  }
   page.setDefaultTimeout(60_000);
   const pageErrors = [];
   let workerCount = 0;
@@ -129,6 +134,7 @@ try {
   await ready();
   assertPosition(await visibleText(position), chairBefore);
   assert.notEqual(await currentHash(), resetHash);
+  const freePracticeHash = await currentHash();
 
   await click(labels.challenge);
   await ready();
@@ -163,6 +169,60 @@ try {
   await ready();
   assert.match(await visibleText(challengeSummary), /本关布局目标尚未完成/);
 
+  await click('柜体主挑战');
+  await ready();
+  if (expectedRealAssets) await assertModelsLoaded();
+  await page.select('.toolbar select', 'chair');
+  assert.equal(await page.$eval('button[aria-label="向左移动"]', node => node.disabled), true,
+    'The tutorial chair is locked during the cabinet challenge');
+  await page.select('.toolbar select', 'cabinet');
+  const mainStart = { x: 5.3, z: 3.3 };
+  const mainConflict = { x: 4.8, z: 2.5 };
+  assertPosition(await visibleText(position), mainStart);
+  await dragObject('cabinet', mainStart, mainConflict, 0.8);
+  await ready();
+  assertPosition(await visibleText(position), mainConflict);
+  assert.match(await visibleText(conflict), /双角色取舍/);
+  assert.match(await visibleText('[data-testid="challenge-counts"]'), /操作 1 步 · 非法尝试 0 次 · 目标调整引发取舍 1 次/);
+  const legalMainHash = await currentHash();
+  await dragObject('cabinet', mainConflict, cabinet, 0.8);
+  await ready();
+  assert.match(await visibleText('[data-testid="placement-rejected"]'), /已恢复最后合法位置/);
+  assertPosition(await visibleText(position), mainConflict);
+  assert.equal(await currentHash(), legalMainHash);
+  assert.match(await visibleText('[data-testid="challenge-counts"]'), /操作 1 步 · 非法尝试 1 次 · 目标调整引发取舍 1 次/);
+  await click(labels.undo); await ready();
+  assertPosition(await visibleText(position), mainStart);
+  assert.match(await visibleText('[data-testid="challenge-counts"]'), /操作 2 步 · 非法尝试 1 次 · 目标调整引发取舍 1 次/);
+
+  const mainLayouts = [];
+  for (const target of [{ x: 4.5, z: 3.2 }, { x: 3.2, z: 3.2 }, { x: 4.8, z: 0.8 }]) {
+    await click(labels.reset); await ready();
+    assert.match(await visibleText('[data-testid="challenge-counts"]'), /操作 0 步 · 非法尝试 0 次 · 目标调整引发取舍 0 次/);
+    await dragObject('cabinet', mainStart, target, 0.8); await ready();
+    assertPosition(await visibleText(position), target);
+    assert.match(await visibleText(challengeSummary), /本关布局目标已完成/);
+    assert.match(await visibleText('[data-testid="challenge-counts"]'), /操作 1 步/);
+    const report = await downloadReport();
+    for (const rule of ['R001', 'R005']) {
+      assert.ok(report.findings.some(item => item.rule_id === rule && item.object_ids.includes('cabinet') && item.status === 'not_triggered'));
+    }
+    assert.ok(report.findings.some(item => item.rule_id === 'R003' && item.object_ids.includes('cabinet') && item.status === 'needs_review'));
+    mainLayouts.push({ target, input_hash: report.input_hash });
+  }
+  assert.equal(new Set(mainLayouts.map(item => item.input_hash)).size, 3);
+  await click('旋转 45°'); await ready();
+  assert.match(await visibleText(challengeSummary), /本关布局目标已完成/);
+  assert.match(await visibleText('[data-testid="challenge-counts"]'), /操作 2 步/);
+  if (evidenceDir) await page.screenshot({ path: resolve(evidenceDir, 'main-challenge.png'), fullPage: true });
+  await click('自由布置'); await ready();
+  assert.equal(await currentHash(), freePracticeHash, 'Free practice retains its separate accepted layout');
+  await page.select('.toolbar select', 'cabinet');
+  assert.equal(await page.$eval('button[aria-label="向左移动"]', node => node.disabled), false);
+  await click(labels.challenge); await ready();
+  assert.match(await visibleText(challengeSummary), /本关布局目标尚未完成/);
+  assert.match(await visibleText('[data-testid="challenge-counts"]'), /操作 0 步 · 非法尝试 0 次 · 目标调整引发取舍 0 次/);
+
   const warmOpened = performance.now();
   await page.reload({ waitUntil: 'domcontentloaded' });
   await ready();
@@ -194,10 +254,14 @@ try {
     result: 'PASS',
     expected_real_assets: expectedRealAssets,
     asset_provenance: expectedRealAssets ? (process.env.HOMESAFE_ASSET_PROVENANCE || 'lux3d_web') : 'none',
+    main_challenge_layouts: mainLayouts,
     cases: [
       'real pointer drag and one-entry undo', 'invalid placement rebound',
       'child and elder views', 'layout conflict', 'redo, reset and rotation',
       'challenge remaining findings and coverage', 'JSON and printable action checklist',
+      'cabinet main challenge: three distinct legal solutions and rotation',
+      'main challenge invalid rebound, Python counters, undo/reset and fixed objects',
+      'tutorial/main/free practice transitions preserve separate layouts',
       'refresh', 'real Worker recovery without refresh',
     ],
   }, null, 2));
@@ -270,24 +334,29 @@ try {
   }
 
   async function dragChair(from, to) {
+    return dragObject('chair', from, to, 0.4);
+  }
+
+  async function dragObject(id, from, to, hitHeight) {
     const bounds = await canvasBounds();
-    const start = project([from.x, 0.4, from.z], bounds);
+    const start = project([from.x, hitHeight, from.z], bounds);
     // The input controller uses the ground-plane delta. Project the endpoint from
     // the initial pointer ray's floor intersection so the chair reaches the target.
     const eyeHeight = overviewEye[1];
-    const groundFactor = eyeHeight / (eyeHeight - 0.4);
+    const groundFactor = eyeHeight / (eyeHeight - hitHeight);
     const groundX = overviewEye[0] + (from.x - overviewEye[0]) * groundFactor;
     const groundZ = overviewEye[2] + (from.z - overviewEye[2]) * groundFactor;
     const end = project([groundX + to.x - from.x, 0, groundZ + to.z - from.z], bounds);
     await page.mouse.move(start.x, start.y);
     await page.mouse.down();
-    assert.equal(await page.$eval(canvas, node => node.dataset.selected), 'chair');
+    assert.equal(await page.$eval(canvas, node => node.dataset.selected), id);
     assert.equal(await page.$eval(canvas, node => node.dataset.dragging), 'true');
     await page.mouse.move(end.x, end.y, { steps: 12 });
     assertPosition(await visibleText(position), from);
     await page.mouse.up();
   }
 } finally {
+  if (recording) await recording.stop();
   await browser.close();
   await rm(downloadPath, { recursive: true, force: true });
 }

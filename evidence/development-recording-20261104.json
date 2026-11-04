@@ -1,0 +1,63 @@
+{
+  "scope": "ACTUAL_DEVELOPMENT_BROWSER_RECORDING_NOT_FINAL_COMPETITION_VIDEO",
+  "path": "/workspace/scratch/reviewed-browser/development-regression-final.webm",
+  "duration_seconds": 24.44,
+  "bytes": 6894533,
+  "sha256": "b16999a99cb553b17544ec96b841d56f61760b3871d9c2e16aea40abff9bedbd",
+  "source_kind": "procedural_placeholder_scene",
+  "real_lux3d": false,
+  "public_deployment": false,
+  "browser_result": {
+    "scope": "REAL_CHROME_PREVIEW",
+    "url": "http://127.0.0.1:4174/preview/",
+    "browser": "Chrome/154.0.8037.57",
+    "cold_ready_ms": 3851,
+    "warm_ready_ms": 3720,
+    "ruleset": "demo-rules-3.0",
+    "result": "PASS",
+    "expected_real_assets": 0,
+    "asset_provenance": "none",
+    "main_challenge_layouts": [
+      {
+        "target": {
+          "x": 4.5,
+          "z": 3.2
+        },
+        "input_hash": "b82782475957fffb0798e29d1f6f2193d69ac6681b8a041596d2bbc5c13e44b1"
+      },
+      {
+        "target": {
+          "x": 3.2,
+          "z": 3.2
+        },
+        "input_hash": "e634561d7b6cf4586f66a3871de0199c11c800c3dab3a4e6d0041137af9f1dd0"
+      },
+      {
+        "target": {
+          "x": 4.8,
+          "z": 0.8
+        },
+        "input_hash": "168fd1fe886605f95c14f319546fb884047ef07797ae7d0bf60310d3911efa87"
+      }
+    ],
+    "cases": [
+      "real pointer drag and one-entry undo",
+      "invalid placement rebound",
+      "child and elder views",
+      "layout conflict",
+      "redo, reset and rotation",
+      "challenge remaining findings and coverage",
+      "JSON and printable action checklist",
+      "cabinet main challenge: three distinct legal solutions and rotation",
+      "main challenge invalid rebound, Python counters, undo/reset and fixed objects",
+      "tutorial/main/free practice transitions preserve separate layouts",
+      "refresh",
+      "real Worker recovery without refresh"
+    ]
+  },
+  "current_app_source_hashes": {
+    "apps/web/src/App.vue": "85887761c9aad98847858ce0d8e94fa0429c1daf1ca7c5110a75f41851c6ccbc",
+    "apps/web/src/useLivingRoom.ts": "ef7ebb1cbe558d0b845fb2a46fec0d5c9e71890d9781175dc2965ccccb68847c",
+    "reference/homesafe_core/challenge.py": "bcb4d3dd33cac7f88c2ba51b51add6b981823c48a125fb069b004f7b4d949f9c"
+  }
+}

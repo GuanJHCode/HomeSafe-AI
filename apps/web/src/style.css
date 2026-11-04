@@ -49,6 +49,9 @@ button[aria-pressed="true"]:hover:not(:disabled) { background: #306250; }
 .warning ul { margin-block: .3rem 0; }
 .challenge p, .delta p, .scope p { margin-block: .3rem; }
 .finding-list { display: grid; gap: .45rem; }
+.role-summaries { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; margin-block: .65rem; }
+.role-summaries button { display: flex; flex-direction: column; text-align: start; font-size: .85rem; }
+.findings-panel > .small { margin-block-end: .65rem; }
 .finding { border: 1px solid #e1e4d9; border-radius: .6rem; padding: .65rem; }
 .finding p { margin-block: .25rem; font-size: .87rem; }
 .finding-title { border: 0; background: transparent; padding: 0; width: 100%; text-align: start; font-weight: 720; display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
@@ -74,6 +77,7 @@ dd { margin: 0; }
   .shell { width: calc(100% - 1rem); }
   .intro { padding: 1rem; }
   .action-grid { grid-template-columns: 1fr; }
+  .role-summaries { grid-template-columns: 1fr; }
 }
 @media print {
   :root { background: white; }

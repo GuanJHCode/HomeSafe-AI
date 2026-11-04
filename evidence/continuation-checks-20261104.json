@@ -1,0 +1,40 @@
+{
+  "scope": "CURRENT_LOCAL_ENGINEERING_CHECKPOINT_NOT_FINAL_RELEASE",
+  "baseline_commit": "57faf384d64e9770407b28086fdfeb5b193a6d6f",
+  "checks": {
+    "native_python": {
+      "passed": 260,
+      "failed": 0
+    },
+    "app_tests": {
+      "passed": 27,
+      "failed": 0
+    },
+    "js_and_input_tests": {
+      "passed": 18,
+      "failed": 0
+    },
+    "contracts": "PASS",
+    "strict_types": "PASS_BUILD",
+    "production_build": "PASS_25_FILES",
+    "package_checks": "PASS_8",
+    "node_wasm": "PASS",
+    "local_http_transport": "PASS",
+    "public_https": "NOT_RUN",
+    "actual_lux3d": "NOT_RUN_BLOCKED_DOWNLOAD",
+    "safari": "NOT_RUN_NO_DEVICE",
+    "edge": "NOT_RUN_NEW_LICENSE_ACCEPTANCE_REQUIRED",
+    "submission": "BLOCKED_EXPECTED_EXIT_2"
+  },
+  "source_and_build_sha256": {
+    "apps/web/src/App.vue": "85887761c9aad98847858ce0d8e94fa0429c1daf1ca7c5110a75f41851c6ccbc",
+    "apps/web/src/useLivingRoom.ts": "ef7ebb1cbe558d0b845fb2a46fec0d5c9e71890d9781175dc2965ccccb68847c",
+    "reference/homesafe_core/challenge.py": "bcb4d3dd33cac7f88c2ba51b51add6b981823c48a125fb069b004f7b4d949f9c",
+    "scripts/stage_web_preview.py": "d094f04dc56f0b9106c7ae6b1ca1174250727bc70416b5f61d1f5091aa7be783",
+    "scripts/dependency_notices.py": "6d371dbe69bd9799572d4e98e7241a5cd3e6f47d4e056f10670fa69b8b6f2961",
+    "scripts/export_sources.py": "cafe9cd805743ceb5089303abd9016d9becd6fb7393a0ff03b052dbcad9bd070",
+    "licenses/upstream/sources.json": "b8c105eaadb758e9f6c4c06a1b6a1848bc504023431379c9da83c426fcfc4b86",
+    "apps/web/dist/preview-manifest.json": "887dc5156e4e8ea7fcef220e85d98821fd9b3266903104d66423ea3a6c4d00c0",
+    "apps/web/dist/CHECKSUMS.sha256": "7e3d20351bd5dbff4330951bdbbc035d45778aef4d324e8b3f09108ff9473182"
+  }
+}

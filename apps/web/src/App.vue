@@ -2,10 +2,12 @@
 import { useLivingRoom } from './useLivingRoom.ts';
 
 const {
-  host, mode, role, view, busy, failure, renderFailure, modelCounts, selectedModel, stage, selected, selectedObject,
+  host, mode, exercise, role, view, busy, failure, renderFailure, modelCounts, selectedModel, stage, selected, selectedObject,
   layout, checks, comparison, progress, feedback, report, canUndo, canRedo,
   objectName, movable, canMove, select, useView, moveBy, rotate, history, switchMode, focus,
   retry, exportReport, printReport,
+  roleSummaries, initializing, cancelLoading,
+  retryModels,
 } = useLivingRoom();
 
 const coverageLabels = {
@@ -39,8 +41,9 @@ const actionSections = [
             <h2>样例客厅</h2>
           </div>
           <div class="switches" aria-label="演练模式">
-            <button :aria-pressed="mode === 'workspace'" :disabled="busy || !!failure" @click="switchMode('workspace')">自由布置</button>
             <button :aria-pressed="mode === 'challenge'" :disabled="busy || !!failure" @click="switchMode('challenge')">窗边挑战</button>
+            <button :aria-pressed="mode === 'main-challenge'" :disabled="busy || !!failure" @click="switchMode('main-challenge')">柜体主挑战</button>
+            <button :aria-pressed="mode === 'workspace'" :disabled="busy || !!failure" @click="switchMode('workspace')">自由布置</button>
           </div>
         </header>
         <div class="switches views" aria-label="观察视角">
@@ -53,6 +56,7 @@ const actionSections = [
           已加载 {{ modelCounts.loaded }} 件模型 · {{ modelCounts.placeholders }} 件程序占位模型
           <span v-if="modelCounts.loading"> · {{ modelCounts.loading }} 件加载中</span>
           <span v-if="modelCounts.failed"> · {{ modelCounts.failed }} 件加载失败，保留占位模型</span>
+          <button v-if="modelCounts.failed" @click="retryModels">重试失败模型</button>
         </p>
         <p v-if="renderFailure" class="warning" role="alert">当前浏览器无法打开 3D。可用下面的家具按钮操作。{{ renderFailure }}</p>
         <p class="small">相机高度仅用于观察示意。实际触及能力需要独立确认。</p>
@@ -92,13 +96,17 @@ const actionSections = [
             </li>
           </ul>
         </div>
-        <div v-if="mode === 'challenge'" class="challenge">
-          <h3>给窗口和通道都留出空间</h3>
-          <p>本关只允许移动、旋转椅子。将椅子移离窗口，并避开老人指定通道。</p>
+        <div v-if="exercise" class="challenge">
+          <h3>{{ exercise.title }}</h3>
+          <p>{{ exercise.instruction }}</p>
           <p v-if="checks && progress" data-testid="challenge-summary">
             {{ progress.summary }} <span v-if="progress.uncovered !== null">未覆盖 {{ progress.uncovered }} 类。</span>
           </p>
+          <p v-if="checks && progress" class="small" data-testid="challenge-counts">
+            操作 {{ progress.steps }} 步 · 非法尝试 {{ progress.invalidAttempts }} 次 · 目标调整引发取舍 {{ progress.conflictEvents }} 次
+          </p>
         </div>
+        <p v-else class="small">自由演练可移动椅子和柜体；返回这里会保留自由布局，进入任一挑战则从该关初始布局开始。刷新页面会重置所有练习。</p>
       </section>
 
       <section class="panel findings-panel" aria-label="检查结果" :aria-busy="busy">
@@ -109,13 +117,26 @@ const actionSections = [
           </div>
           <span v-if="layout" class="revision">布局 v{{ layout.revision }}</span>
         </header>
-        <p v-if="busy" class="status" role="status">结果更新中 · {{ stage }}</p>
+        <div v-if="busy" class="status" role="status">
+          <p>结果更新中 · {{ stage }}</p>
+          <button v-if="initializing" @click="cancelLoading">取消加载</button>
+        </div>
         <div v-else-if="failure" class="warning" role="alert">
           <p>规则暂不可用。{{ failure }}</p>
           <button @click="retry">重建 Worker 并重试</button>
-          <p v-if="mode === 'challenge'" class="small">重试会从本关初始布局开始。</p>
+          <p v-if="mode !== 'workspace'" class="small">重试会从本关初始布局开始。</p>
         </div>
         <template v-else-if="checks">
+          <div class="role-summaries" aria-label="双角色检查摘要">
+            <button v-for="summary in roleSummaries" :key="summary.role"
+              :aria-pressed="role === summary.role" @click="role = summary.role">
+              <strong>{{ roleName(summary.role) }}</strong>
+              <span>已触发 {{ summary.triggered }} · 待核查 {{ summary.needsReview }}</span>
+              <span>当前条件未触发 {{ summary.notTriggered }}</span>
+              <span v-if="summary.unavailable">资料不足或评估错误 {{ summary.unavailable }} 类</span>
+            </button>
+          </div>
+          <p class="small">两类检查始终使用同一布局。这里切换检查焦点，不改变观察视角或成员能力。</p>
           <div v-if="comparison" class="delta" :class="{ conflict: comparison.conflict }" data-testid="layout-comparison">
             <h3>{{ comparison.conflict ? '出现双角色取舍' : '与上一合法布局比较' }}</h3>
             <p v-if="!comparison.newTriggered.length && !comparison.noLongerTriggered.length">本次没有新增或解除已触发条件。</p>

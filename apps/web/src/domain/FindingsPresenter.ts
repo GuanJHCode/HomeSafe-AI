@@ -126,6 +126,19 @@ export class FindingsPresenter {
     return this.presented.get(key)
   }
 
+  roleSummaries() {
+    return (['child', 'elder'] as const).map(role => {
+      const { findings, coverage } = this.forRole(role)
+      return {
+        role,
+        triggered: findings.filter(finding => finding.status === 'triggered').length,
+        needsReview: findings.filter(finding => finding.status === 'needs_review').length,
+        notTriggered: findings.filter(finding => finding.status === 'not_triggered').length,
+        unavailable: coverage.filter(entry => entry.state === 'missing_input' || entry.state === 'error').length,
+      }
+    })
+  }
+
   showSetupItems(): PresentedSetupItem[] {
     return (this.assessment.setup_items ?? []).map(item => ({
       ...item,

@@ -31,3 +31,7 @@ apps/web/public/vendor/
 apps/web/public/engine/
 apps/web/public/assets/
 ci-evidence/
+
+# Generated dependency notices are rebuilt from reviewed license inputs.
+apps/web/public/THIRD_PARTY_NOTICES.txt
+apps/web/public/dependency-notices.json

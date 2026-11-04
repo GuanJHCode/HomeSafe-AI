@@ -1,0 +1,262 @@
+{
+  "reviewer": "review_challenge (independent from implementing challenge agent)",
+  "baseline_commit": "57faf384d64e9770407b28086fdfeb5b193a6d6f",
+  "decision": "PASS_SCOPED_T06_MAIN_CHALLENGE_AND_PRIVATE_BINDING_FIX",
+  "reviewed_file_sha256": {
+    "reference/homesafe_core/challenge.py": "bcb4d3dd33cac7f88c2ba51b51add6b981823c48a125fb069b004f7b4d949f9c",
+    "reference/tests/test_main_challenge.py": "5ff31f786f27a70543e040624372b267124b2cb695e5924f0178863cb5e12eea",
+    "apps/web/src/domain/ChallengeController.ts": "191f5bb5e962dbf46d18232e43e7732687bbb3f739dc2d3b9aa90034cedd7dc9",
+    "apps/web/src/useLivingRoom.ts": "ef7ebb1cbe558d0b845fb2a46fec0d5c9e71890d9781175dc2965ccccb68847c",
+    "apps/web/src/App.vue": "85887761c9aad98847858ce0d8e94fa0429c1daf1ca7c5110a75f41851c6ccbc",
+    "scripts/stage_web_preview.py": "d094f04dc56f0b9106c7ae6b1ca1174250727bc70416b5f61d1f5091aa7be783",
+    "scripts/check_web_preview.mjs": "cc7fea85ef7448c2df23e4d245476a5b745310f5121c2a649715b992bc18cf61",
+    "scripts/check_private_assets.mjs": "ebbfaf01f20b3c7066880938beb8dd53d812f0f6f264bbc11340c720aec638f0"
+  },
+  "native_targeted": "51 passed: test_main_challenge.py test_v6_review.py test_v61_vendor_bridge.py",
+  "app_tests": "27 passed",
+  "typecheck": "PASS",
+  "native_grid": {
+    "scope": "independent native main challenge grid",
+    "samples": 75,
+    "counts": {
+      "goal_met": 48,
+      "in_progress": 16,
+      "invalid": 11
+    },
+    "solutions": [
+      {
+        "x": 1,
+        "z": 0.5,
+        "yaw": 0,
+        "hash": "6d3a84ba9014f46ad8572b16779a46fbf4e60e12ab3470677dfe5c356ae86b40"
+      },
+      {
+        "x": 1,
+        "z": 0.5,
+        "yaw": 0.7853981633974483,
+        "hash": "2c0dc618ae8b0e4524defd8fb3b61f056dcdffc0155a8ac3a45a6784e63830f9"
+      },
+      {
+        "x": 1,
+        "z": 0.5,
+        "yaw": 1.5707963267948966,
+        "hash": "919ef115b61a6385953beb895222e59375ac1b3041e7ab3ec75832c78d443521"
+      },
+      {
+        "x": 1,
+        "z": 1,
+        "yaw": 0,
+        "hash": "081a322a6b42386f433480bb11ea001cde0c55470ff390154ca1d5b119eea5ff"
+      },
+      {
+        "x": 1,
+        "z": 1,
+        "yaw": 0.7853981633974483,
+        "hash": "f750af65549629086398cd59c5fe41cf01a5b29a901f5181f1508f0695f988bc"
+      },
+      {
+        "x": 1,
+        "z": 1,
+        "yaw": 1.5707963267948966,
+        "hash": "8ba215301a714e6dcf22127d0c6d23704223fead38d628efff5a2a8b2e297c1d"
+      }
+    ]
+  },
+  "built_browser": {
+    "scope": "REAL_CHROME_PREVIEW",
+    "url": "http://127.0.0.1:4174/preview/",
+    "browser": "Chrome/154.0.8037.57",
+    "cold_ready_ms": 4089,
+    "warm_ready_ms": 3519,
+    "ruleset": "demo-rules-3.0",
+    "result": "PASS",
+    "expected_real_assets": 0,
+    "asset_provenance": "none",
+    "main_challenge_layouts": [
+      {
+        "target": {
+          "x": 4.5,
+          "z": 3.2
+        },
+        "input_hash": "b82782475957fffb0798e29d1f6f2193d69ac6681b8a041596d2bbc5c13e44b1"
+      },
+      {
+        "target": {
+          "x": 3.2,
+          "z": 3.2
+        },
+        "input_hash": "e634561d7b6cf4586f66a3871de0199c11c800c3dab3a4e6d0041137af9f1dd0"
+      },
+      {
+        "target": {
+          "x": 4.8,
+          "z": 0.8
+        },
+        "input_hash": "168fd1fe886605f95c14f319546fb884047ef07797ae7d0bf60310d3911efa87"
+      }
+    ],
+    "cases": [
+      "real pointer drag and one-entry undo",
+      "invalid placement rebound",
+      "child and elder views",
+      "layout conflict",
+      "redo, reset and rotation",
+      "challenge remaining findings and coverage",
+      "JSON and printable action checklist",
+      "cabinet main challenge: three distinct legal solutions and rotation",
+      "main challenge invalid rebound, Python counters, undo/reset and fixed objects",
+      "tutorial/main/free practice transitions preserve separate layouts",
+      "refresh",
+      "real Worker recovery without refresh"
+    ]
+  },
+  "procedural_private_tool": {
+    "scope": "PRIVATE_LOOPBACK_PROCEDURAL_FIXTURE",
+    "source_kind": "procedural",
+    "result": "PASS",
+    "rights_status": "PENDING",
+    "public_deployment": "NOT_RUN",
+    "publication_catalog_changed": false,
+    "original_bytes_unchanged": true,
+    "orientation": "Y-up/+Z front; visual review required",
+    "dimensions": "Synthetic scenario fit, not measured real furniture",
+    "assets": [
+      {
+        "id": "chair",
+        "asset_id": "private-procedural-chair",
+        "provenance": "procedural",
+        "bytes": 1540,
+        "sha256": "980910f95f58720b4c6421d87b27ade552944bf390efa8d9c614244932eb0439",
+        "dimensions": {
+          "width": 0.5,
+          "height": 0.8,
+          "depth": 0.5
+        }
+      },
+      {
+        "id": "cabinet",
+        "asset_id": "private-procedural-cabinet",
+        "provenance": "procedural",
+        "bytes": 1540,
+        "sha256": "f8eb6749c012108e3040fe0fa8dc08ba4dc8fb8ba9f20273967e457c324f3c62",
+        "dimensions": {
+          "width": 0.7,
+          "height": 1.6,
+          "depth": 0.5
+        }
+      }
+    ],
+    "checks": [
+      {
+        "object_id": "chair",
+        "sha256": "980910f95f58720b4c6421d87b27ade552944bf390efa8d9c614244932eb0439",
+        "bytes": 1540,
+        "triangles": 12,
+        "textures_decoded": 2,
+        "source_bounds": [
+          0.5,
+          0.800000011920929,
+          0.5
+        ],
+        "target_dimensions": {
+          "width": 0.5,
+          "height": 0.8,
+          "depth": 0.5
+        },
+        "fit": "PASS",
+        "bottom_center": "PASS",
+        "rotation_90": "PASS",
+        "multiple_instances": "PASS",
+        "release_preserves_other_instance": "PASS"
+      },
+      {
+        "object_id": "cabinet",
+        "sha256": "f8eb6749c012108e3040fe0fa8dc08ba4dc8fb8ba9f20273967e457c324f3c62",
+        "bytes": 1540,
+        "triangles": 12,
+        "textures_decoded": 2,
+        "source_bounds": [
+          0.699999988079071,
+          1.600000023841858,
+          0.5
+        ],
+        "target_dimensions": {
+          "width": 0.7,
+          "height": 1.6,
+          "depth": 0.5
+        },
+        "fit": "PASS",
+        "bottom_center": "PASS",
+        "rotation_90": "PASS",
+        "multiple_instances": "PASS",
+        "release_preserves_other_instance": "PASS"
+      }
+    ],
+    "interaction": {
+      "scope": "REAL_CHROME_PREVIEW",
+      "url": "http://127.0.0.1:5173/",
+      "browser": "Chrome/154.0.8037.57",
+      "cold_ready_ms": 4717,
+      "warm_ready_ms": 3432,
+      "ruleset": "demo-rules-3.0",
+      "result": "PASS",
+      "expected_real_assets": 2,
+      "asset_provenance": "procedural",
+      "main_challenge_layouts": [
+        {
+          "target": {
+            "x": 4.5,
+            "z": 3.2
+          },
+          "input_hash": "f34b1fabcc6d00a82b0250bc598f0fd07c66b25ddb7ae7e6fed942d3bdd29fb3"
+        },
+        {
+          "target": {
+            "x": 3.2,
+            "z": 3.2
+          },
+          "input_hash": "9ff8a2bb6a27af77dd96dafafc6b9a9c592a13b97b5eed1876edaaa091c4e2ce"
+        },
+        {
+          "target": {
+            "x": 4.8,
+            "z": 0.8
+          },
+          "input_hash": "511b5782681aa5fd57911e22a951a2fbef5ce0395e49a70b458104847c079d97"
+        }
+      ],
+      "cases": [
+        "real pointer drag and one-entry undo",
+        "invalid placement rebound",
+        "child and elder views",
+        "layout conflict",
+        "redo, reset and rotation",
+        "challenge remaining findings and coverage",
+        "JSON and printable action checklist",
+        "cabinet main challenge: three distinct legal solutions and rotation",
+        "main challenge invalid rebound, Python counters, undo/reset and fixed objects",
+        "tutorial/main/free practice transitions preserve separate layouts",
+        "refresh",
+        "real Worker recovery without refresh"
+      ]
+    }
+  },
+  "limits": [
+    "Procedural and placeholder fixtures only; actual Lux3D bytes unavailable in this environment.",
+    "Private model distribution rights remain pending.",
+    "Local HTTP isolated Chromium only; public hosting, another network, Edge/Safari and adult user testing NOT_RUN.",
+    "Cold/warm single-run timings here are not performance acceptance."
+  ],
+  "recording_option_followup": {
+    "previous_harness_sha256": "5179cce7971121f919059e1ab432f63df088529a1313542c708629aa4ca98edc",
+    "reviewed_harness_sha256": "cc7fea85ef7448c2df23e4d245476a5b745310f5121c2a649715b992bc18cf61",
+    "scope": "Optional screencast now uses Puppeteer default framerate; no product logic or browser assertions changed. Parent final run receipt reviewed, not claimed as reviewer rerun.",
+    "parent_browser_result": "evidence/development-recording-20261104.json",
+    "decision": "PASS",
+    "video_metadata_independently_checked": {
+      "duration_seconds": 24.44,
+      "bytes": 6894533,
+      "sha256": "b16999a99cb553b17544ec96b841d56f61760b3871d9c2e16aea40abff9bedbd"
+    }
+  }
+}

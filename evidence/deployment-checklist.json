@@ -23,15 +23,23 @@
     "evidence/CI_CONTINUATION_20261104.md",
     "evidence/ci-artifact-4bb18cd.json",
     "evidence/DEPLOYMENT_PROBE_20261104.md",
-    "evidence/ci-deployment-transport-0be5873.json"
+    "evidence/ci-deployment-transport-0be5873.json",
+    "evidence/CONTINUATION_20261104.md",
+    "evidence/REVIEW_DELIVERY_20261104.md"
   ],
   "blockers": [
-    "Target public hosting entry and deployment access are pending.",
-    "Runtime and dependency redistribution notices still require review before public deployment."
+    "No approved target hosting project/URL, deployment access and owner.",
+    "Project/source license choice and asset rights remain unconfirmed; dependency audit scope documented in licenses/README.md."
   ],
-  "preview_build_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6",
-  "preview_build_status": "PASS_CI",
-  "local_browser_acceptance": "PASS_CI_LINUX_LOCALHOST",
-  "preview_artifact_url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41769312093/artifacts/13294017524",
-  "resource_probe_local_transport": "PASS_CI"
+  "preview_build_status": "PASS_CURRENT_LOCAL_BUILD",
+  "local_browser_acceptance": "PASS_ISOLATED_CLOUD_CHROMIUM_154_LOCALHOST",
+  "resource_probe_local_transport": "PASS_CURRENT_SOURCE_LOCAL_HTTP",
+  "local_performance_evidence": "evidence/browser-performance-20261104.json",
+  "controlled_iframe_evidence": "evidence/embedding-20261104.json",
+  "historical_preview_build_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6",
+  "historical_preview_artifact_url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41769312093/artifacts/13294017524",
+  "current_preview_source_commit": null,
+  "current_build_evidence": "evidence/CONTINUATION_20261104.md",
+  "current_build_directory": "apps/web/dist",
+  "current_transport_evidence": "evidence/continuation-local-transport-20261104.json"
 }

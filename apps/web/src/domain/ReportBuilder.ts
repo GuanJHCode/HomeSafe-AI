@@ -8,6 +8,7 @@ const siteActions: Record<string, string> = {
 }
 
 export class ReportBuilder {
+  private static exportSequence = 0
   static buildViewModel(scene: Scene, assessment: Assessment, comparison?: ComparisonPresentation | null) {
     if (!assessmentMatchesScene(scene, assessment) || (comparison && comparison.afterInputHash !== assessment.input_hash)) {
       throw new Error('布局与检查结果版本不一致，请重新计算后导出。')
@@ -51,7 +52,8 @@ export class ReportBuilder {
   }
 
   static fileName(report: ReportViewModel): string {
-    return `homesafe-action-list-v${report.scene_revision}-${report.input_hash.slice(0, 12)}.json`
+    const stamp = new Date().toISOString().replace(/[:.]/g, '-')
+    return `homesafe-action-list-v${report.scene_revision}-${report.input_hash.slice(0, 12)}-${stamp}-${++this.exportSequence}.json`
   }
 
   static print(): void {

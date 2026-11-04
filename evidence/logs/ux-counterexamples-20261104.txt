@@ -1,0 +1,49 @@
+✔ role switching filters findings and coverage using configured profile roles (1.317751ms)
+✔ comparison highlights a child–elder tradeoff and rejects unrelated hashes (1.64899ms)
+✔ observation-only comparisons cannot be described as layout conflicts (0.199319ms)
+✖ both role summaries remain available without changing the assessment or profile capabilities (0.474884ms)
+✔ JSON and print view model use the same accepted version and actual assessment (3.884632ms)
+✔ stale assessment and mixed-version comparison cannot be exported (0.628185ms)
+✔ different evaluated layouts at the same revision have traceable export filenames (0.456357ms)
+✖ repeated exports of the same accepted layout have distinct traceable names (1.120575ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 6
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 138.148669
+
+✖ failing tests:
+
+test at apps/web/tests/findings.test.ts:53:1
+✖ both role summaries remain available without changing the assessment or profile capabilities (0.474884ms)
+  TypeError: presenter.roleSummaries is not a function or its return value is not iterable
+      at TestContext.<anonymous> (file:///workspace/HomeSafe-AI/apps/web/tests/findings.test.ts:56:35)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+
+test at apps/web/tests/report.test.ts:49:1
+✖ repeated exports of the same accepted layout have distinct traceable names (1.120575ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to:
+  
+  'homesafe-action-list-v2-6b36e4ff1e73.json'
+      at TestContext.<anonymous> (file:///workspace/HomeSafe-AI/apps/web/tests/report.test.ts:51:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'homesafe-action-list-v2-6b36e4ff1e73.json',
+    expected: 'homesafe-action-list-v2-6b36e4ff1e73.json',
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }

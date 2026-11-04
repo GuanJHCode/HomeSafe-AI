@@ -60,13 +60,25 @@ npm --prefix apps/web run dev
 
 打开 Vite 打印的本地地址。首次运行先等待规则就绪。自由布置允许拖动椅子和柜体。把窗边椅子拖到地面标注的老人通道，观察两类检查发生的变化。将椅子拖到房间边界外可以检查回弹。可通过按钮切换角色、撤销、重做、重置或开始只开放椅子的挑战。行动清单支持 JSON 和打印。
 
+续作提供窗边挑战、柜体主挑战和自由布置三个入口。主挑战只允许柜体移动/旋转，至少有三种不同合法解；Python 决定目标、步数、非法次数和取舍事件。两角色摘要持续显示，点击摘要只切换检查焦点。加载时可取消，失败后点击“重建 Worker 并重试”；失败模型可单独重试。重复 JSON 导出使用不同文件名，内容仍绑定同一布局版本与摘要。真实 Lux3D 和公网验收仍独立保留，见[续作验收](evidence/CONTINUATION_20261104.md)。
+
+在隔离 Chromium 中验证时，显式传入浏览器和已安装的 puppeteer-core 入口，不使用个人浏览器目录：
+
+```bash
+node scripts/check_web_preview.mjs http://127.0.0.1:4173/ /path/to/chromium /path/to/puppeteer-core.js
+node scripts/check_web_experience.mjs http://127.0.0.1:4173/ /path/to/chromium /path/to/puppeteer-core.js /tmp/homesafe-experience
+node scripts/check_web_performance.mjs http://127.0.0.1:4173/ /path/to/chromium /path/to/puppeteer-core.js
+```
+
+性能脚本采集五组全新浏览器上下文/缓存重载及三次预热后的三十次热评估，输出原始样本和 nearest-rank p95。首个观察界面指可见画布与视角按钮，不代表布局编辑或规则已就绪；结果仅适用于实际测试环境。可选 `HOMESAFE_VIDEO_PATH=/tmp/development-regression.webm` 记录浏览器实帧（需 ffmpeg），这是开发回归原片，不自动成为最终参赛视频。容器测试沿用 CI 的隔离启动配置 `CI=1`。
+
 ```bash
 npm --prefix apps/web run build
 (cd apps/web/dist && shasum -a 256 -c CHECKSUMS.sha256)
 npm --prefix apps/web run preview
 ```
 
-`build` 重新暂存同源资源和经审核的模型，运行严格检查和 Vite 构建，并生成 `apps/web/dist/preview-manifest.json` 与 `CHECKSUMS.sha256`。发布校验会对照当前源码重新生成的 Python bundle、官方 vendor 清单和审核资产字节，拒绝过期或被改写的资源。只有上述命令成功才有可用构建目录。最新实测与构建 artifact 见[CI 接续验证](evidence/CI_CONTINUATION_20261104.md)，托管步骤见[实施记录](evidence/WEB_PREVIEW_20261104.md)。
+`build` 重新暂存同源资源和经审核的模型，运行严格检查和 Vite 构建，并生成 `apps/web/dist/preview-manifest.json` 与 `CHECKSUMS.sha256`。发布校验会对照当前源码重新生成的 Python bundle、官方 vendor 清单和审核资产字节，拒绝过期或被改写的资源。只有上述命令成功才有可用构建目录。历史 CI 构建 artifact 见[CI 接续验证](evidence/CI_CONTINUATION_20261104.md)；该旧包不包含本轮主挑战，当前源码的本地构建与实测见[续作验收](evidence/CONTINUATION_20261104.md)，托管步骤见[实施记录](evidence/WEB_PREVIEW_20261104.md)。
 
 CI 在临时 Linux 环境运行真实 Chrome 和完整构建，不会启动用户电脑上的浏览器。artifact 中的 `apps/web/dist/` 才是静态页面目录；`ci-evidence/` 是验收输出、截图与打印 PDF，不能作为公网部署成功的证明。下载后先进入 dist 运行 SHA-256 校验，只将该目录提交给已核准的静态托管入口。
 

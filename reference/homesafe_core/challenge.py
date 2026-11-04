@@ -4,6 +4,23 @@ from .engine import RuleEngine, FindingDiffer
 from .models import ChallengeProgress, ChallengeResult, Scene, TransformInput
 from .validation import validate_scene
 
+
+def main_challenge_scene(template: Scene | dict) -> Scene:
+    """Stage a labeled cabinet exercise; change poses only, never safety inputs.
+
+    The window-side cabinet replaces the tutorial chair's initial position.
+    Its dimensions and unknown anchor observation remain unchanged. This is a
+    synthetic teaching layout, not a measured household or a physical model fit.
+    """
+    scene = validate_scene(template).model_dump()
+    if not scene['is_demo']:
+        raise ValueError('main challenge requires a synthetic demo template')
+    objects = {obj['id']: obj for obj in scene['objects']}
+    objects['chair']['position'], objects['cabinet']['position'] = (
+        deepcopy(objects['cabinet']['position']), deepcopy(objects['chair']['position']))
+    return validate_scene(scene)
+
+
 class ChallengeService:
     def __init__(self, template: Scene | dict, movable_ids: list[str], goals: list[dict]):
         self.initial = validate_scene(template)
@@ -60,7 +77,9 @@ class ChallengeService:
         return self.result(delta)
 
     def is_tradeoff(self, delta, before, after):
-        reduced_roles = {f.profile_id for f in before.findings if f.key in delta.no_longer_triggered}
+        before_goals = {f.key for goal in self.goals for f in self.match(before, goal)}
+        reduced_roles = {f.profile_id for f in before.findings
+                         if f.key in delta.no_longer_triggered and f.key in before_goals}
         new_roles = {f.profile_id for f in after.findings if f.key in delta.new_triggered}
         return any(a != b for a in reduced_roles for b in new_roles)
 

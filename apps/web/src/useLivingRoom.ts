@@ -9,23 +9,23 @@ import { ReportBuilder } from './domain/ReportBuilder.ts';
 import { placementFeedback, WorkspaceController, type LayoutChange } from './domain/WorkspaceController.ts';
 import { SceneRuntime, type AssetLoadState } from './scene/SceneRuntime.ts';
 import { TransformController } from './scene/TransformController.ts';
+import { readJsonResource } from './domain/resource-loading.ts';
 
-const challengeObjects = ['chair'];
-const challengeGoals = [
-  { rule_id: 'R001', profile_id: 'child', object_id: 'chair' },
-  { rule_id: 'R005', profile_id: 'elder', object_id: 'chair' },
-];
+const exercises = {
+  challenge: {
+    object: 'chair', title: '引导：给窗口和通道都留出空间',
+    instruction: '本关只允许移动、旋转椅子。将椅子移离窗口，并避开老人指定通道。试着撤销一次，查看仍待核查的资料。',
+  },
+  'main-challenge': {
+    object: 'cabinet', title: '主挑战：柜体放在哪里？',
+    instruction: '本关只允许移动、旋转柜体。离开窗边后，也要给老人指定通道留出空间。可尝试沿墙或房间另一侧的不同合法摆位；柜体固定情况仍待现场核查。',
+  },
+} as const;
 const workspaceObjects = ['chair', 'cabinet'];
 const names: Record<string, string> = {
   chair: '椅子', cabinet: '柜体', window: '窗户', storage: '收纳柜',
   rug: '地毯', cord: '线缆', gate: '儿童门栏', 'elder-route': '老人指定通道',
 };
-
-async function read<T>(url: URL, options?: RequestInit): Promise<T> {
-  const response = await fetch(url, options);
-  if (!response.ok) throw new Error(`资源加载失败：${url.pathname}（${response.status}）`);
-  return response.json() as Promise<T>;
-}
 
 function placementIssues(error: unknown): PlacementIssue[] {
   if (!(error instanceof Error) || !('details' in error)) return [];
@@ -35,10 +35,12 @@ function placementIssues(error: unknown): PlacementIssue[] {
 
 export function useLivingRoom() {
   const host = ref<HTMLElement | null>(null);
-  const mode = ref<'workspace' | 'challenge'>('workspace');
+  const mode = ref<'workspace' | 'challenge' | 'main-challenge'>('workspace');
+  const exercise = computed(() => mode.value === 'workspace' ? null : exercises[mode.value]);
   const role = ref<Profile['role']>('child');
   const view = ref<Profile['role'] | 'overview'>('overview');
   const busy = ref(true);
+  const initializing = ref(false);
   const failure = ref('');
   const renderFailure = ref('');
   const assetStates = ref<Record<string, AssetLoadState>>({});
@@ -55,6 +57,7 @@ export function useLivingRoom() {
   const challengeUndo = ref(0);
 
   let template: Scene | null = null;
+  let mainTemplate: Scene | null = null;
   let workspace: WorkspaceController | null = null;
   let evaluation: EvaluationController | null = null;
   let challenge: ChallengeController | null = null;
@@ -63,11 +66,13 @@ export function useLivingRoom() {
   let workspaceComparison: ComparisonPresentation | null = null;
   let revision = 0;
   let disposed = false;
+  let startup: AbortController | null = null;
 
   const base = new URL(import.meta.env.BASE_URL, window.location.href).href;
   const current = computed(() => !busy.value && !failure.value && layout.value && accepted.value
     ? new FindingsPresenter(layout.value, accepted.value) : null);
   const checks = computed(() => current.value?.forRole(role.value) ?? null);
+  const roleSummaries = computed(() => current.value?.roleSummaries() ?? []);
   const report = computed(() => current.value && layout.value && accepted.value
     ? ReportBuilder.buildViewModel(layout.value, accepted.value, comparison.value ?? undefined) : null);
   const selectedObject = computed(() => layout.value?.objects.find(object => object.id === selected.value));
@@ -93,10 +98,10 @@ export function useLivingRoom() {
   });
   const feedback = computed(() => placementFeedback(placement.value));
   const canUndo = computed(() => !busy.value && !failure.value &&
-    (mode.value === 'challenge' ? challengeUndo.value > 0 : workspaceUndo.value));
+    (mode.value !== 'workspace' ? challengeUndo.value > 0 : workspaceUndo.value));
   const canRedo = computed(() => !busy.value && !failure.value && mode.value === 'workspace' && workspaceRedo.value);
   const objectName = (id: string) => names[id] ?? id;
-  const movable = (id: string) => (mode.value === 'challenge' ? challengeObjects : workspaceObjects).includes(id);
+  const movable = (id: string) => exercise.value ? id === exercise.value.object : workspaceObjects.includes(id);
   const canMove = (id: string) => !busy.value && !failure.value && movable(id);
 
   function publish(scene: Scene, assessment: Assessment | null, delta: ComparisonPresentation | null) {
@@ -170,8 +175,13 @@ export function useLivingRoom() {
   }
 
   async function startChallenge() {
-    if (!template || !challenge) return;
-    const result = await challenge.start(template, challengeObjects, challengeGoals, ++revision);
+    const scene = mode.value === 'main-challenge' ? mainTemplate : template;
+    if (!scene || !challenge || !exercise.value) return;
+    const object_id = exercise.value.object;
+    const result = await challenge.start(scene, [object_id], [
+      { rule_id: 'R001', profile_id: 'child', object_id },
+      { rule_id: 'R005', profile_id: 'elder', object_id },
+    ], ++revision);
     if (disposed) return;
     if (!result) throw new Error('未取得当前挑战状态。');
     challengeUndo.value = 0;
@@ -185,7 +195,19 @@ export function useLivingRoom() {
         await updateWorkspace(workspace?.proposal(id, transform) ?? null);
       } else if (challenge) {
         const previous = accepted.value;
-        const result = await challenge.applyMove(id, transform, ++revision);
+        let result: ChallengeResult | null;
+        try {
+          result = await challenge.applyMove(id, transform, ++revision);
+        } catch (error) {
+          if (placementIssues(error).length) {
+            // Python records the rejected attempt even though the layout stays put.
+            // Fetch the authoritative count instead of deriving it in the UI.
+            const state = await challenge.state(++revision);
+            if (!state) throw new Error('未取得非法尝试后的挑战状态。');
+            publishChallenge(state, previous);
+          }
+          throw error;
+        }
         if (disposed) return;
         if (!result) throw new Error('未取得当前挑战移动结果。');
         if (result.scene.revision !== layout.value?.revision) challengeUndo.value++;
@@ -238,7 +260,7 @@ export function useLivingRoom() {
     transforms?.cancelDrag();
     void run(async () => {
       mode.value = next;
-      if (next === 'challenge') await startChallenge();
+      if (next !== 'workspace') await startChallenge();
       else publishWorkspace();
       select(null);
     });
@@ -246,18 +268,25 @@ export function useLivingRoom() {
 
   async function initialize(retry: boolean) {
     if (disposed) return;
+    startup?.abort(new Error('已取消旧加载'));
+    const attempt = new AbortController();
+    startup = attempt;
+    const active = () => !disposed && startup === attempt && !attempt.signal.aborted;
+    initializing.value = true;
     busy.value = true;
     failure.value = '';
     placement.value = [];
     runtime?.showPlacementIssues([]);
     try {
       if (!template) {
-        const [scene, assets] = await Promise.all([
-          read<Scene>(new URL('engine/scene-before.json', base)),
-          read<AssetRenderDTO[]>(new URL('engine/assets.json', base)),
+        const [scene, assets, mainScene] = await Promise.all([
+          readJsonResource<Scene>(new URL('engine/scene-before.json', base), { signal: attempt.signal }),
+          readJsonResource<AssetRenderDTO[]>(new URL('engine/assets.json', base), { signal: attempt.signal }),
+          readJsonResource<Scene>(new URL('engine/scene-main-challenge.json', base), { signal: attempt.signal }),
         ]);
-        if (disposed) return;
+        if (!active()) return;
         template = scene;
+        mainTemplate = mainScene;
         renderAssets.value = assets;
         workspace = new WorkspaceController(scene);
         if (host.value) {
@@ -276,28 +305,45 @@ export function useLivingRoom() {
         runtime?.setRoleView(view.value);
       }
       stage.value = '正在加载同源 Pyodide、依赖和规则';
-      const config = await read<WorkerConfig>(new URL('engine/config.json', base), { cache: 'no-store' });
-      if (disposed) return;
+      const config = await readJsonResource<WorkerConfig>(new URL('engine/config.json', base), { cache: 'no-store', signal: attempt.signal });
+      if (!active()) return;
       if (!evaluation) {
         evaluation = new EvaluationController({ config, base });
         challenge = new ChallengeController(evaluation);
       }
       const metadata = await (retry ? evaluation.restart(config) : evaluation.ensureReady());
-      if (disposed) return;
+      if (!active()) return;
       if (!metadata) throw new Error('规则 Worker 未就绪。');
-      if (mode.value === 'challenge') await startChallenge();
+      if (mode.value !== 'workspace') await startChallenge();
       else if (workspace) {
         const result = await evaluation.evaluateDraft(workspace.snapshot, ++revision);
-        if (disposed) return;
+        if (!active()) return;
         if (!result || !workspace.setAssessment(result.assessment)) throw new Error('未取得当前布局的评估结果。');
         publishWorkspace();
       }
       stage.value = '规则已就绪';
     } catch (error) {
-      if (!disposed) failure.value = error instanceof Error ? error.message : String(error);
+      if (active()) failure.value = error instanceof Error ? error.message : String(error);
     } finally {
-      busy.value = false;
+      if (active()) {
+        busy.value = false;
+        initializing.value = false;
+        startup = null;
+        attempt.abort();
+      }
     }
+  }
+
+  function cancelLoading() {
+    if (!initializing.value) return;
+    startup?.abort(new Error('已取消加载'));
+    startup = null;
+    evaluation?.dispose();
+    evaluation = null;
+    challenge = null;
+    initializing.value = false;
+    busy.value = false;
+    failure.value = '已取消加载。重试将重新加载规则，不重放之前的操作。';
   }
 
   function focus(ids: readonly string[]) {
@@ -327,15 +373,21 @@ export function useLivingRoom() {
   onMounted(() => void initialize(false));
   onUnmounted(() => {
     disposed = true;
+    startup?.abort(new Error('页面已关闭'));
     transforms?.dispose();
     runtime?.dispose();
     evaluation?.dispose();
   });
 
   return {
-    host, mode, role, view, busy, failure, renderFailure, modelCounts, selectedModel, stage, selected, selectedObject,
+    host, mode, exercise, role, view, busy, failure, renderFailure, modelCounts, selectedModel, stage, selected, selectedObject,
     layout, checks, comparison, progress, feedback, report, canUndo, canRedo,
     objectName, movable, canMove, select, useView, moveBy, rotate, history, switchMode, focus,
+    roleSummaries, initializing, cancelLoading,
+    retryModels: () => {
+      transforms?.cancelDrag();
+      if (layout.value) runtime?.retryFailedAssets(layout.value);
+    },
     retry: () => void initialize(true),
     exportReport,
     printReport: () => { if (report.value) ReportBuilder.print(); },

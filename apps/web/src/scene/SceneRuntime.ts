@@ -20,6 +20,7 @@ interface ObjectView {
   visual: Object3D;
   asset: boolean;
   key: string;
+  failed: boolean;
 }
 
 export class SceneRuntime {
@@ -141,7 +142,7 @@ export class SceneRuntime {
     outline.renderOrder = 10;
     outline.visible = false;
     root.add(visual, hitProxy, outline);
-    const view: ObjectView = { root, hitProxy, outline, visual, asset: false, key };
+    const view: ObjectView = { root, hitProxy, outline, visual, asset: false, key, failed: false };
     this.objects.set(id, view);
     this.world.add(root);
     this.onAssetState(id, asset_id ? 'loading' : 'placeholder');
@@ -159,9 +160,20 @@ export class SceneRuntime {
         this.onAssetState(id, 'loaded');
         this.requestRender();
       }).catch(() => {
-        if (!this.disposed && this.objects.get(id) === view) this.onAssetState(id, 'error');
+        if (!this.disposed && this.objects.get(id) === view) {
+          view.failed = true;
+          this.onAssetState(id, 'error');
+        }
       });
     }
+  }
+
+  retryFailedAssets(snapshot: Scene): void {
+    if (this.disposed) return;
+    for (const [id, view] of this.objects) {
+      if (view.failed) this.removeObject(id);
+    }
+    this.setSnapshot(snapshot);
   }
 
   private removeObject(id: string): void {

@@ -110,3 +110,49 @@ def test_sensitive_files_cannot_be_approved_in_export(tmp_path,name):
     p=tmp_path/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text('secret test fixture')
     plan={'files':[dict(desc(p,tmp_path),classification='generated_project_source')]}
     with pytest.raises(ValueError,match='never exported'):exporter.verify_plan(tmp_path,plan)
+
+
+def audited_notice(root, relative='licenses/upstream/example-LICENSE.txt', payload=b'Upstream license text'):
+    path = root / relative
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(payload)
+    source = root / 'licenses/upstream/sources.json'
+    source.parent.mkdir(parents=True, exist_ok=True)
+    source.write_text(json.dumps({'files': [{'path': path.name, 'sha256': sha256(path)}], 'build_sources': []}))
+    return path
+
+
+def test_export_audited_vendored_notice_with_accurate_class(tmp_path):
+    src = tmp_path / 'src'
+    p = audited_notice(src)
+    plan = {'files': [dict(desc(p, src), classification='vendored_dependency_notice')]}
+    dst = tmp_path / 'out'
+    exporter.export(src, dst, plan, True)
+    assert (dst / 'licenses/upstream/example-LICENSE.txt').read_bytes() == p.read_bytes()
+
+
+@pytest.mark.parametrize('relative', [
+    'evidence/example-LICENSE.txt', 'licenses/upstream/run.py',
+    'licenses/upstream/model.glb', 'licenses/upstream/private/LICENSE.txt',
+    'private/LICENSE.txt', 'licenses/upstream/account.json',
+])
+def test_vendored_notice_class_cannot_export_other_content(tmp_path, relative):
+    p = audited_notice(tmp_path, relative)
+    plan = {'files': [dict(desc(p, tmp_path), classification='vendored_dependency_notice')]}
+    with pytest.raises(ValueError):
+        exporter.verify_plan(tmp_path, plan)
+
+
+def test_vendored_notice_must_match_audited_registry(tmp_path):
+    p = audited_notice(tmp_path)
+    p.write_text('changed after audit')
+    plan = {'files': [dict(desc(p, tmp_path), classification='vendored_dependency_notice')]}
+    with pytest.raises(ValueError, match='audited notice'):
+        exporter.verify_plan(tmp_path, plan)
+
+
+def test_vendored_notice_must_be_text(tmp_path):
+    p = audited_notice(tmp_path, payload=b'\xffbinary')
+    plan = {'files': [dict(desc(p, tmp_path), classification='vendored_dependency_notice')]}
+    with pytest.raises(ValueError):
+        exporter.verify_plan(tmp_path, plan)

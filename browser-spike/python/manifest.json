@@ -1,5 +1,5 @@
 {
-  "bundle_sha256": "990cd35ca344cc4a62894b19ba6ff8e825478882d3290eaac70c2b454e613abf",
+  "bundle_sha256": "0dc027b2f0cddec16b165db12a9f4708e3873b91d5082aa575eb543de5d0b455",
   "files": [
     {
       "path": "__init__.py",
@@ -35,7 +35,7 @@
     },
     {
       "path": "challenge.py",
-      "sha256": "079d697a8f8210cef673f6bfd18d8a35281c98826f0aac23abb25760c0490e11"
+      "sha256": "bcb4d3dd33cac7f88c2ba51b51add6b981823c48a125fb069b004f7b4d949f9c"
     },
     {
       "path": "browser_bridge.py",

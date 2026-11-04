@@ -1,0 +1,21 @@
+✔ same-origin GLB replacement applies orientation, bottom pivot, and instance dimensions (78.37634ms)
+✔ a stalled GLB download times out, evicts its cache entry, and permits explicit retry (15.611827ms)
+✔ role switching filters findings and coverage using configured profile roles (1.853407ms)
+✔ comparison highlights a child–elder tradeoff and rejects unrelated hashes (2.740911ms)
+✔ observation-only comparisons cannot be described as layout conflicts (0.484689ms)
+✔ both role summaries remain available without changing the assessment or profile capabilities (1.113054ms)
+✔ JSON and print view model use the same accepted version and actual assessment (3.674045ms)
+✔ stale assessment and mixed-version comparison cannot be exported (0.6915ms)
+✔ different evaluated layouts at the same revision have traceable export filenames (0.933224ms)
+✔ repeated exports of the same accepted layout have distinct traceable names (0.237107ms)
+✔ a stalled response body times out and can be loaded by an explicit retry (47.0952ms)
+✔ cancelled startup rejects even if a transport ignores abort and responds late (1.899476ms)
+✔ already cancelled startup does not start a fetch (0.887945ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 432.025683

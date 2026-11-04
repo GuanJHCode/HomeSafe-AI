@@ -1,0 +1,17 @@
+{
+  "reviewer": "/root/review_ux",
+  "decision": "PASS_SCOPED_LOCAL_PROBES_ONLY",
+  "base_commit": "57faf384d64e9770407b28086fdfeb5b193a6d6f",
+  "files": {
+    "scripts/check_web_performance.mjs": "4191de8e6dad7f3e593fc6ba91ea193ca149ebdf2d9d700b62a35f5721652580",
+    "scripts/check_web_embedding.mjs": "4c8c49218975d1e2d1b2d916c49df9c06132dfbbb1066ec518c0a3081c3aa936",
+    "evidence/browser-performance-20261104.json": "c0f2454dded1a7c8503e7b680394f8a43925719bc02c50f3ea17980da222f859",
+    "evidence/embedding-20261104.json": "c4bb511f4594e705c302861d8dfe5db8a79a317e90afe72250d7ef2ac74b0b37"
+  },
+  "counterexample": {
+    "case": "Report absent after evaluation error; panel aria-busy=false",
+    "old_embedding_predicate": true,
+    "corrected_embedding_predicate": false
+  },
+  "raw_sample_statistical_recomputation": "PASS"
+}

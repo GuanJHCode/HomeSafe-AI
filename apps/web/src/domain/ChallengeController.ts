@@ -35,10 +35,13 @@ export class ChallengeController {
     return this.#submit('challenge_state', {}, revision);
   }
 
-  renderProgress(result: ChallengeResult | null): { summary: string; uncovered: number | null } {
+  renderProgress(result: ChallengeResult | null) {
     return {
       summary: formatChallengeSummary(result?.challenge),
       uncovered: result?.assessment?.unsupported_domains?.length ?? null,
+      steps: result?.challenge.steps ?? null,
+      invalidAttempts: result?.challenge.invalid_attempts ?? null,
+      conflictEvents: result?.challenge.conflict_events ?? null,
     };
   }
 

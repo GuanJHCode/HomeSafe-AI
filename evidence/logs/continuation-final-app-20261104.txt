@@ -1,0 +1,44 @@
+
+> @homesafe/web@0.1.0 test
+> node --test tests/*.test.ts
+
+✔ same-origin GLB replacement applies orientation, bottom pivot, and instance dimensions (50.727733ms)
+✔ a stalled GLB download times out, evicts its cache entry, and permits explicit retry (13.480467ms)
+✔ sends only the canonical transform and renders remaining issues after Python confirms the goal (4.280826ms)
+✔ rejects a changed challenge state if its comparison does not bind both input hashes (0.715666ms)
+✔ a late result cannot replace the current revision (9.068273ms)
+✔ mismatched response revision and comparison hashes cannot become current (1.770682ms)
+✔ a failed Worker is terminated and a fresh Worker can evaluate without replaying the failed request (1.05757ms)
+✔ structured placement issues survive a current request failure (0.736988ms)
+✔ retry uses refreshed runtime configuration and never replays a failed operation (0.494714ms)
+✔ role switching filters findings and coverage using configured profile roles (1.888879ms)
+✔ comparison highlights a child–elder tradeoff and rejects unrelated hashes (6.630088ms)
+✔ observation-only comparisons cannot be described as layout conflicts (0.34587ms)
+✔ both role summaries remain available without changing the assessment or profile capabilities (0.752471ms)
+✔ private probe resolves GLBs at the application root, not its /tests/ document directory (1.413545ms)
+✔ calibration candidate uses raw model bounds and keeps its pending-review scope explicit (1.432524ms)
+✔ JSON and print view model use the same accepted version and actual assessment (3.478459ms)
+✔ stale assessment and mixed-version comparison cannot be exported (0.518149ms)
+✔ different evaluated layouts at the same revision have traceable export filenames (0.830008ms)
+✔ repeated exports of the same accepted layout have distinct traceable names (0.231348ms)
+✔ a stalled response body times out and can be loaded by an explicit retry (40.437037ms)
+✔ cancelled startup rejects even if a transport ignores abort and responds late (1.327456ms)
+✔ already cancelled startup does not start a fetch (0.332129ms)
+✔ drag previews until release, sends one proposal, and restores the last legal pose on rejection (2.196772ms)
+✔ a drag changes layout and history only after accepted evaluation (3.1594ms)
+✔ undo, redo and reset keep the last legal layout until reevaluated (1.235097ms)
+✔ a newer proposal supersedes an older one at the same scene revision (0.517588ms)
+✔ invalid placement highlights both colliding objects and structured room boundaries (0.46615ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 497.682677
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice

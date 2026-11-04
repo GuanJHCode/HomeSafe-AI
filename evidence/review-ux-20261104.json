@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "scope": "ISOLATED_CHROMIUM_LOCALHOST_ONLY",
+  "url": "http://127.0.0.1:4174/preview/",
+  "browser": "Chrome/154.0.8037.57",
+  "executed_at": "2026-11-04T06:58:27.949Z",
+  "checks": [
+    "startup cancel",
+    "late startup response discarded",
+    "fresh Worker retry",
+    "simultaneous dual-role summaries",
+    "role focus preserves camera and report hash",
+    "repeated-download unique names with equal content",
+    "375px button move and no overflow",
+    "print PDF",
+    "procedural model failed download then explicit retry loads without altering report hash"
+  ],
+  "filenames": [
+    "homesafe-action-list-v1-a5f096ac43e6-2026-11-04T06-58-23-497Z-1.json",
+    "homesafe-action-list-v1-a5f096ac43e6-2026-11-04T06-58-23-505Z-2.json"
+  ],
+  "procedural_model_retry": "PASS",
+  "real_asset_retry": "NOT_RUN",
+  "public_deployment": "NOT_RUN",
+  "reviewer": "independent agent /root/review_ux",
+  "base_commit": "57faf384d64e9770407b28086fdfeb5b193a6d6f",
+  "unit_tests": {
+    "app": "27 passed",
+    "typecheck": "PASS",
+    "command": "npm --prefix apps/web test && npm --prefix apps/web run typecheck"
+  },
+  "visual_review": {
+    "narrow_viewport": "375x812; no horizontal overflow; screenshot inspected",
+    "print": "2 A4 pages visually inspected and pdftotext Chinese text checked; findings, hash, coverage and caveats retained"
+  },
+  "reviewed_files": {
+    "apps/web/src/domain/resource-loading.ts": "69f4c8556bb34cb097ca1333d73be6251105b58f2931122403f9348d4edc8fad",
+    "apps/web/src/domain/FindingsPresenter.ts": "3dc296839d1777df7eeea00da7b32580b0f1719f0d8989cbcaaaa5032cad64fa",
+    "apps/web/src/domain/ReportBuilder.ts": "a5cecedd4bcf5c9fad243f763891ccf9b5e46a4e02cc03a7ad5703ce5bd65a0d",
+    "apps/web/src/scene/AssetLoader.ts": "c427b0b6ad5f4ea74c73002654561dff37d3ad7a2e609f3df1472f3bdcc6da34",
+    "apps/web/src/scene/SceneRuntime.ts": "13d8dfc398baf342e67dd5be4e3ba8115087f27c58c9f49dbe8263f172b37e35",
+    "apps/web/src/useLivingRoom.ts": "ef7ebb1cbe558d0b845fb2a46fec0d5c9e71890d9781175dc2965ccccb68847c",
+    "apps/web/src/App.vue": "85887761c9aad98847858ce0d8e94fa0429c1daf1ca7c5110a75f41851c6ccbc",
+    "apps/web/src/style.css": "5b8e006690516c3ccf9b8742a59c748426d7c1e6b262ba48d7250d50dcb154b9",
+    "scripts/check_web_experience.mjs": "c7d6104e837085a9711d1ee0c87cf599bbc01cbd9f8132ed3545e483f8041396"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "checked_at": "2026-11-04",
+  "status": "BLOCKED_LICENSE_ACCEPTANCE",
+  "browser_test": "NOT_RUN",
+  "platform": "Debian GNU/Linux 13 x86_64 isolated cloud environment",
+  "metadata_url": "https://packages.microsoft.com/repos/edge/dists/stable/main/binary-amd64/Packages.gz",
+  "metadata_sha256": "aebc75fd25e77e9290d24b0946b372e69caf898782e1304f8bea42afadba0ea1",
+  "selected_package": {
+    "Package": "microsoft-edge-stable",
+    "Version": "156.0.4314.58-1",
+    "Architecture": "amd64",
+    "Filename": "pool/main/m/microsoft-edge-stable/microsoft-edge-stable_156.0.4314.58-1_amd64.deb",
+    "SHA256": "adcf4ce88e3eb276083a561efd0cb06b6801f09dcb6585f6cc23c59730414c3d",
+    "Size": "200144638"
+  },
+  "official_download_page": "https://www.microsoft.com/en-us/edge/download",
+  "observed_page_redirect": "https://explore.microsoft.com/en-us/edge/download?form=MA13FJ",
+  "license_notice": "By downloading Edge, you agree to the Microsoft Edge Software License Terms.",
+  "completed": [
+    "official metadata read",
+    "official download-page read"
+  ],
+  "not_executed": [
+    "browser binary download",
+    "package extraction",
+    "system installation",
+    "browser launch",
+    "Edge regression"
+  ],
+  "blocker": "No authorization to accept new license terms; downloading the browser is described as agreement on the official page.",
+  "network_status": "official package metadata accessible; binary transport not tested",
+  "runtime_compatibility": "NOT_RUN",
+  "unblock_condition": "User-authorized applicable terms acceptance or an already authorized existing Edge environment, followed by isolated real Edge regression."
+}

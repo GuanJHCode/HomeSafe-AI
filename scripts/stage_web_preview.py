@@ -8,9 +8,11 @@ import sys
 
 from stage_browser_core import R, build_bundle, stage
 from vendor_pyodide_from_dir import VERSION, read_lock, selection
+from dependency_notices import notice_files
 
 sys.path.insert(0, str(R / 'reference'))
 from homesafe_core.asset_publication import prepare_public_assets
+from homesafe_core.challenge import main_challenge_scene
 
 PUBLIC = R / 'apps/web/public'
 DIST = R / 'apps/web/dist'
@@ -47,6 +49,7 @@ def preview_files():
     files.update(models)
     files['engine/assets.json'] = json_bytes([asset.model_dump(mode='json') for asset in assets])
     files['engine/scene-before.json'] = json_bytes(scene.model_dump(mode='json'))
+    files['engine/scene-main-challenge.json'] = json_bytes(main_challenge_scene(scene).model_dump(mode='json'))
     for name in ('rule-worker.mjs', 'worker-controller.mjs'):
         files[f'engine/{name}'] = (spike / name).read_bytes()
     bundle, core_manifest = build_bundle()
@@ -57,6 +60,7 @@ def preview_files():
         config[key] = f'engine/{config[key]}'
     config['mode'] = 'development_preview'
     files['engine/config.json'] = json_bytes(config)
+    files.update(notice_files(R, source))
     return files, assets
 
 

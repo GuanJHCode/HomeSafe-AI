@@ -1,0 +1,45 @@
+
+> @homesafe/web@0.1.0 build
+> python3 ../../scripts/stage_web_preview.py && npm run build:frontend && python3 ../../scripts/stage_web_preview.py --verify-dist
+
+Staged 10 modules; runtime/vendor packages are NOT included.
+Staged same-origin runtime, canonical scene and 0 reviewed asset descriptors.
+
+> @homesafe/web@0.1.0 build:frontend
+> npm run typecheck && vite build
+
+
+> @homesafe/web@0.1.0 typecheck
+> vue-tsc --noEmit
+
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+vite v6.4.5 building for production...
+transforming...
+✓ 30 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                        0.44 kB │ gzip:   0.33 kB
+dist/assets/rule-worker-ClONKgg2.js    2.36 kB
+dist/assets/index-r_TTxtwP.css         4.16 kB │ gzip:   1.55 kB
+dist/assets/index-BVOvjtV4.js        688.39 kB │ gzip: 191.12 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 2.27s
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+Verified 25 development preview files; anonymous hosting still requires verification.
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
