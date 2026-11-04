@@ -61,8 +61,8 @@
     },
     {
       "path": "START_HERE.md",
-      "sha256": "ee88fdb975df666dfedec92e34a25a9e2043ca7453d3d89161fa816cfeb74fa4",
-      "bytes": 5481,
+      "sha256": "c0d86657560f377048373edd81a065c8fef99cc19ecb3d53d90736c864e07e27",
+      "bytes": 5701,
       "classification": "generated_project_source"
     },
     {
@@ -558,6 +558,12 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "docs/NEXT_AGENT_PROMPT_20261104.md",
+      "sha256": "cc7726bb4e6db34aeabbd6909b3c098ee634ef6448416081717988833164934f",
+      "bytes": 19300,
+      "classification": "generated_project_source"
+    },
+    {
       "path": "docs/V6_1_SOURCE_IMPORT.md",
       "sha256": "0dddd0613ae2b5f914d566f0f8d53ca21aa8c10a2c0c41c3d547b064d4c18bd5",
       "bytes": 3068,
@@ -637,8 +643,8 @@
     },
     {
       "path": "evidence/HANDOFF.md",
-      "sha256": "96b829a3d7b13960ed307c978123aa147d62a3a6a5303479188f9f225928b5a0",
-      "bytes": 4743,
+      "sha256": "71ed422d7fcec235dd17560c7b5ad14ea9be0469b5c83298171edfa82c5914a1",
+      "bytes": 5429,
       "classification": "generated_project_source"
     },
     {
