@@ -1,0 +1,19 @@
+Download artifacts retained at /workspace/homesafe-download-fix/ci-evidence/continuation-next/observations-red/failed-downloads-fajO4n
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: The input did not match the regular expression /当前条件未触发.*当前输入条件未触发；仍需现场复核。/s. Input:
+
+'柜体固定 当前条件未触发柜体 · 布局调整后重新核查。查看依据柜体固定记录是资料来源模拟结果当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。'
+
+    at file:///workspace/homesafe-download-fix/scripts/check_web_observations.mjs:56:10 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: '柜体固定 当前条件未触发柜体 · 布局调整后重新核查。查看依据柜体固定记录是资料来源模拟结果当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。',
+  expected: /当前条件未触发.*当前输入条件未触发；仍需现场复核。/s,
+  operator: 'match',
+  diff: 'simple'
+}
+
+Node.js v24.19.0

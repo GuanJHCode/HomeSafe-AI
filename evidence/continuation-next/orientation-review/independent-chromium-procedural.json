@@ -1,0 +1,87 @@
+{
+  "scope": "INDEPENDENT_PROCEDURAL_CHROMIUM_RENDER",
+  "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+  "gl_version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+  "checks": [
+    {
+      "id": "chair",
+      "source_front_declared": "+Z",
+      "scene_front": "-Z",
+      "source_hash": "d8bbb6fe891bffa460f613fccf445f2d3a7830893bbd90478565c9f6cc0e4e83",
+      "marker_world_z": -0.24833887046889944,
+      "body_world_z": 0.01928755996810208,
+      "template_marker_z": -0.2691000000201166,
+      "normalized_bounds_m": {
+        "width": 0.5000000000000001,
+        "height": 0.800000011920929,
+        "depth": 0.5417999999597669
+      },
+      "output_calibration_candidate": {
+        "revision": 1,
+        "strategy": "runtime_axis_fit",
+        "reviewed": false,
+        "orientation": {
+          "x": 0,
+          "y": 1,
+          "z": 0,
+          "w": 6.123233995736766e-17
+        },
+        "pivot_offset_after_rotation": {
+          "x": -0.31,
+          "y": -0.32000000596046446,
+          "z": 0.14910000002011659
+        },
+        "normalized_bounds_m": {
+          "width": 0.5000000000000001,
+          "height": 0.800000011920929,
+          "depth": 0.5417999999597669
+        },
+        "notes": "Private test-only calibration: the runtime descriptor is temporarily marked reviewed solely to exercise its gate; the persisted candidate remains reviewed=false and is not publication approval. Declared Y-up/+Z source front maps to scene -Z; visual confirmation remains pending. Original coordinate bounds are not physical measurements. Rights and visual review remain separate."
+      },
+      "textures_decoded": true
+    },
+    {
+      "id": "cabinet",
+      "source_front_declared": "+Z",
+      "scene_front": "-Z",
+      "source_hash": "8d4fa71402ad087e31067f4f54834c0cc149b5591a84a41e452495f78c4bc6e2",
+      "marker_world_z": -0.24833887046889944,
+      "body_world_z": 0.01928755996810208,
+      "template_marker_z": -0.2691000000201166,
+      "normalized_bounds_m": {
+        "width": 0.6999999880790712,
+        "height": 1.600000023841858,
+        "depth": 0.5417999999597669
+      },
+      "output_calibration_candidate": {
+        "revision": 1,
+        "strategy": "runtime_axis_fit",
+        "reviewed": false,
+        "orientation": {
+          "x": 0,
+          "y": 1,
+          "z": 0,
+          "w": 6.123233995736766e-17
+        },
+        "pivot_offset_after_rotation": {
+          "x": -0.31,
+          "y": -0.720000011920929,
+          "z": 0.14910000002011659
+        },
+        "normalized_bounds_m": {
+          "width": 0.6999999880790712,
+          "height": 1.600000023841858,
+          "depth": 0.5417999999597669
+        },
+        "notes": "Private test-only calibration: the runtime descriptor is temporarily marked reviewed solely to exercise its gate; the persisted candidate remains reviewed=false and is not publication approval. Declared Y-up/+Z source front maps to scene -Z; visual confirmation remains pending. Original coordinate bounds are not physical measurements. Rights and visual review remain separate."
+      },
+      "textures_decoded": true
+    }
+  ],
+  "render_canvas": {
+    "width": 1100,
+    "height": 760
+  },
+  "result": "PASS",
+  "screenshot_private_path": "/workspace/homesafe-download-fix/evidence/private/orientation-review-procedural-20261105/orientation-review.png"
+}

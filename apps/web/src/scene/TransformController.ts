@@ -14,6 +14,7 @@ interface TransformActions {
   canMove(id: string): boolean;
   select(id: string | null): void;
   commit(id: string, transform: TransformInput): Promise<readonly PlacementIssue[] | void>;
+  onDraftChange?(active: boolean): void;
 }
 
 interface Drag {
@@ -33,6 +34,7 @@ export class TransformController {
   private drag: Drag | undefined;
   private pending = false;
   private disposed = false;
+  private drafting = false;
 
   constructor(surface: TransformSurface, actions: TransformActions) {
     this.surface = surface;
@@ -62,6 +64,7 @@ export class TransformController {
       clientX: event.clientX, clientY: event.clientY,
       startX: ground.x, startZ: ground.z,
     };
+    this.setDrafting(true);
   };
 
   previewTransform = (event: PointerEvent): void => {
@@ -91,6 +94,7 @@ export class TransformController {
     this.previewTransform(event);
     const drag = this.endDrag();
     if (drag?.preview) void this.commitTransform(drag.id, drag.preview);
+    else this.setDrafting(false);
   };
 
   private cancelPointer = (event: PointerEvent): void => {
@@ -100,6 +104,13 @@ export class TransformController {
   cancelDrag(): void {
     const drag = this.endDrag();
     if (drag) this.surface.restorePose(drag.id);
+    this.setDrafting(false);
+  }
+
+  private setDrafting(active: boolean): void {
+    if (this.drafting === active) return;
+    this.drafting = active;
+    this.actions.onDraftChange?.(active);
   }
 
   private endDrag(): Drag | undefined {
@@ -123,15 +134,17 @@ export class TransformController {
   async commitTransform(id: string, transform: TransformInput): Promise<void> {
     if (this.disposed || this.drag || this.pending) return;
     const current = this.surface.getPose(id);
-    if (!current) return;
+    if (!current) { this.setDrafting(false); return; }
     if (!this.actions.canMove(id) ||
         (current.position.x === transform.position.x && current.position.y === transform.position.y &&
           current.position.z === transform.position.z && current.yaw_rad === transform.yaw_rad)) {
       this.surface.restorePose(id);
+      this.setDrafting(false);
       return;
     }
     this.pending = true;
     this.surface.showPlacementIssues([]);
+    this.setDrafting(true);
     this.surface.previewTransform(id, transform);
     try {
       const issues = await this.actions.commit(id, transform);
@@ -143,12 +156,14 @@ export class TransformController {
       if (!this.disposed) this.surface.restorePose(id);
     } finally {
       this.pending = false;
+      this.setDrafting(false);
     }
   }
 
   dispose(): void {
     this.disposed = true;
     this.cancelDrag();
+    this.setDrafting(false);
     const { canvas } = this.surface;
     canvas.removeEventListener('pointerdown', this.beginDrag);
     canvas.removeEventListener('pointermove', this.previewTransform);

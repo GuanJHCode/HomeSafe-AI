@@ -1,0 +1,100 @@
+{
+  "scope": "LOCAL_SYNTHETIC_SCENE_AND_PROCEDURAL_ASSET_TOOLS_ONLY",
+  "base_commit": "be32202bbaeafd9fcfde84601c22fb5a981fab6c",
+  "branch": "codex/continuation-after-download-20261105",
+  "features": {
+    "T07-draft-export-guard": {
+      "status": "PASS_INDEPENDENT_SCOPED",
+      "reviewer": "sol_independent_review",
+      "review": "evidence/REVIEW_CONTINUATION_NEXT_20261105.md"
+    },
+    "T05-neutral-not-triggered-copy": {
+      "status": "PASS_INDEPENDENT_SCOPED",
+      "reviewer": "sol_independent_review",
+      "review": "evidence/REVIEW_CONTINUATION_NEXT_20261105.md"
+    },
+    "T03-explicit-source-front-calibration": {
+      "status": "PASS_INDEPENDENT_SCOPED_TOOLS_ONLY",
+      "reviewer": "sol_orientation_review",
+      "review": "evidence/REVIEW_ASSET_ORIENTATION_20261105.md"
+    }
+  },
+  "tests": {
+    "native_python": {
+      "passed": 334,
+      "failed": 0
+    },
+    "application": {
+      "passed": 39,
+      "failed": 0
+    },
+    "javascript": {
+      "passed": 48,
+      "failed": 0
+    },
+    "build_typecheck": "PASS",
+    "canonical_contracts": "PASS",
+    "runtime_bundle_real_pyodide": "PASS",
+    "package_checks": {
+      "passed": 8,
+      "failed": 0
+    }
+  },
+  "browser": {
+    "version": "Chromium154.0.8037.57",
+    "preview": "PASS",
+    "draft_export": "PASS",
+    "experience": "PASS",
+    "observations": "PASS",
+    "recovery": "PASS",
+    "startup_trace": "PASS",
+    "controlled_iframes": [
+      "PASS_SAME_ORIGIN",
+      "PASS_CROSS_ORIGIN"
+    ],
+    "loopback_resource_transport": "PASS",
+    "procedural_orientation_tool": "PASS",
+    "independent_procedural_orientation": "PASS",
+    "wrong_declared_front": "PASS_EXPECTED_REJECTION"
+  },
+  "direction_candidates": {
+    "explicit_source_front_required": true,
+    "scene_front": "-Z",
+    "persisted_reviewed": [
+      false,
+      false
+    ],
+    "original_objects_and_raw_bytes": "UNCHANGED_ASSERTED_FOR_PROCEDURAL_FIXTURES",
+    "real_lux3d": "BLOCKED_ORIGINAL_BYTES_UNAVAILABLE",
+    "rights": "PENDING"
+  },
+  "performance": {
+    "engineering_target_ms": 3000,
+    "target_status": "OPEN_NOT_MET",
+    "blocks_other_development": false,
+    "ci_budget_and_enforcement": "UNCHANGED",
+    "new_timing_measurement": "NOT_RUN_USER_PRIORITY_CONTINUE_FUNCTIONAL_WORK",
+    "previous_measured_first_editable_p95_ms": 4812.2,
+    "previous_metric_provenance": "Prior be32202-stage measurement, not a new measurement of this continuation"
+  },
+  "remote": {
+    "head": "394eb04e9bbaf7555a507cbc4c1fe28caa62a6a9",
+    "latest_verified_ci": 41948477248,
+    "functional": "FAIL_DOWNLOAD_JSON_PARSE",
+    "performance": "NOT_RUN_SKIPPED",
+    "current_fix_remote_ci": "NOT_RUN_NO_PUSH",
+    "write": "NOT_RUN"
+  },
+  "blockers": [
+    "Current Library model-package download failed; no SHA-matching originals available here",
+    "Actual Lux3D visual/interaction verification and distribution rights",
+    "Approved public host and final HTTPS/device/network acceptance",
+    "Current authenticated contest form and final submission materials/receipt"
+  ],
+  "raw_models_screenshots_recordings_in_source_export": false,
+  "submission_preflight": {
+    "status": "BLOCKED",
+    "exit_code": 2,
+    "expected_missing_real_materials": true
+  }
+}

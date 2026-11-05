@@ -1,0 +1,1299 @@
+{
+  "schema_version": "1.0",
+  "title": "客厅检查行动清单",
+  "source_kind": "synthetic_demo",
+  "scene_id": "demo-living-room",
+  "scene_revision": 3,
+  "input_hash": "94887d12a0a3b611e6b6db2253d089ebdc4d5dec9719064e1dfe910fad324a3c",
+  "ruleset_version": "demo-rules-3.0",
+  "actions": {
+    "layout": [],
+    "observations": [
+      {
+        "key": "5ab29a57fefca8858396c42b",
+        "rule_id": "R003",
+        "profile_id": "child",
+        "object_ids": [
+          "cabinet"
+        ],
+        "scope_id": "scene",
+        "status": "not_triggered",
+        "evidence": {
+          "anchored_reported": true,
+          "source": "simulated"
+        },
+        "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。",
+        "title": "柜体固定",
+        "statusLabel": "当前条件未触发",
+        "role": "child",
+        "routeId": null,
+        "objectLabels": [
+          "柜体"
+        ],
+        "reason": "柜体固定记录：是，资料来源：模拟结果",
+        "action": "当前输入条件未触发；仍需现场复核。",
+        "evidenceRows": [
+          {
+            "label": "柜体固定记录",
+            "value": "是"
+          },
+          {
+            "label": "资料来源",
+            "value": "模拟结果"
+          }
+        ]
+      }
+    ],
+    "information": [
+      {
+        "key": "dc26ee1c75b4081b77a77cd3",
+        "rule_id": "R002",
+        "profile_id": "child",
+        "object_ids": [
+          "window"
+        ],
+        "scope_id": "scene",
+        "status": "needs_review",
+        "evidence": {
+          "protection_reported": null,
+          "source": "unknown"
+        },
+        "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。",
+        "title": "窗口防护",
+        "statusLabel": "待核查",
+        "role": "child",
+        "routeId": null,
+        "objectLabels": [
+          "窗户"
+        ],
+        "reason": "窗口防护记录：未知，资料来源：未知",
+        "action": "核查并补充窗口防护资料。",
+        "evidenceRows": [
+          {
+            "label": "窗口防护记录",
+            "value": "未知"
+          },
+          {
+            "label": "资料来源",
+            "value": "未知"
+          }
+        ]
+      },
+      {
+        "key": "45dc67408aa623e0255c0f31",
+        "rule_id": "R006",
+        "profile_id": "elder",
+        "object_ids": [
+          "rug"
+        ],
+        "scope_id": "elder-route",
+        "status": "needs_review",
+        "evidence": {
+          "overlaps_designated_route": true,
+          "route_confirmed": true,
+          "alternative_routes_evaluated": false
+        },
+        "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。",
+        "title": "通道地毯",
+        "statusLabel": "待核查",
+        "role": "elder",
+        "routeId": "elder-route",
+        "objectLabels": [
+          "地毯"
+        ],
+        "reason": "与指定通道重叠：是，通道资料已确认：是，替代通道已评估：否",
+        "action": "核查并记录地毯固定状态。",
+        "evidenceRows": [
+          {
+            "label": "与指定通道重叠",
+            "value": "是"
+          },
+          {
+            "label": "通道资料已确认",
+            "value": "是"
+          },
+          {
+            "label": "替代通道已评估",
+            "value": "否"
+          }
+        ]
+      },
+      {
+        "key": "8113d090f561ecdcaa2fad59",
+        "rule_id": "R007",
+        "profile_id": "child",
+        "object_ids": [
+          "cord"
+        ],
+        "scope_id": "scene",
+        "status": "needs_review",
+        "evidence": {
+          "accessible_reported": true,
+          "secured_reported": null,
+          "source": "unknown"
+        },
+        "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。",
+        "title": "可接触线缆",
+        "statusLabel": "待核查",
+        "role": "child",
+        "routeId": null,
+        "objectLabels": [
+          "线缆"
+        ],
+        "reason": "可接触记录：是，已收纳记录：未知，资料来源：未知",
+        "action": "补充线缆的可接触和收纳资料。",
+        "evidenceRows": [
+          {
+            "label": "可接触记录",
+            "value": "是"
+          },
+          {
+            "label": "已收纳记录",
+            "value": "未知"
+          },
+          {
+            "label": "资料来源",
+            "value": "未知"
+          }
+        ]
+      }
+    ],
+    "onSite": [
+      {
+        "key": "92c6d93d56742aac9cdd5203",
+        "rule_id": "R001",
+        "profile_id": "child",
+        "object_ids": [
+          "chair",
+          "window"
+        ],
+        "scope_id": "scene",
+        "status": "triggered",
+        "evidence": {
+          "distance_m": 0.3000000000000007,
+          "attention_band_m": 0.6,
+          "parameter_source": "demo_heuristic",
+          "approach_route_verified": false,
+          "can_climb_source": "demo"
+        },
+        "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。",
+        "title": "窗边支点",
+        "statusLabel": "已触发",
+        "role": "child",
+        "routeId": null,
+        "objectLabels": [
+          "椅子",
+          "窗户"
+        ],
+        "reason": "对象间距（米）：0.3，教学关注距离（米）：0.6，参数来源：教学参数，接近路径已验证：否，攀爬资料来源：合成样例",
+        "action": "现场核查窗边家具位置和实际可接近条件。",
+        "evidenceRows": [
+          {
+            "label": "对象间距（米）",
+            "value": "0.3"
+          },
+          {
+            "label": "教学关注距离（米）",
+            "value": "0.6"
+          },
+          {
+            "label": "参数来源",
+            "value": "教学参数"
+          },
+          {
+            "label": "接近路径已验证",
+            "value": "否"
+          },
+          {
+            "label": "攀爬资料来源",
+            "value": "合成样例"
+          }
+        ]
+      },
+      {
+        "key": "c59dd7b69df3c0de74a49f22",
+        "rule_id": "R004",
+        "profile_id": "child",
+        "object_ids": [
+          "storage"
+        ],
+        "scope_id": "scene",
+        "status": "triggered",
+        "evidence": {
+          "storage_world_height_m": 0.5,
+          "configured_reach_height_m": 0.8,
+          "locked_reported": false,
+          "height_source": "demo",
+          "lock_source": "demo",
+          "not_total_access_proof": true
+        },
+        "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。",
+        "title": "危险品收纳",
+        "statusLabel": "已触发",
+        "role": "child",
+        "routeId": null,
+        "objectLabels": [
+          "收纳柜"
+        ],
+        "reason": "距地收纳高度（米）：0.5，配置的触及高度（米）：0.8，锁闭记录：否，高度来源：合成样例，锁闭资料来源：合成样例，不能据此判断所有可接触情况：是",
+        "action": "现场核查危险品的收纳位置与锁闭状态。",
+        "evidenceRows": [
+          {
+            "label": "距地收纳高度（米）",
+            "value": "0.5"
+          },
+          {
+            "label": "配置的触及高度（米）",
+            "value": "0.8"
+          },
+          {
+            "label": "锁闭记录",
+            "value": "否"
+          },
+          {
+            "label": "高度来源",
+            "value": "合成样例"
+          },
+          {
+            "label": "锁闭资料来源",
+            "value": "合成样例"
+          },
+          {
+            "label": "不能据此判断所有可接触情况",
+            "value": "是"
+          }
+        ]
+      },
+      {
+        "key": "4a85368d219250e4710fab58",
+        "rule_id": "R008",
+        "profile_id": "elder",
+        "object_ids": [
+          "gate"
+        ],
+        "scope_id": "elder-route",
+        "status": "triggered",
+        "evidence": {
+          "overlaps_designated_route": true,
+          "route_confirmed": true,
+          "alternative_routes_evaluated": false
+        },
+        "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。",
+        "title": "通道门栏底框",
+        "statusLabel": "已触发",
+        "role": "elder",
+        "routeId": "elder-route",
+        "objectLabels": [
+          "门栏"
+        ],
+        "reason": "与指定通道重叠：是，通道资料已确认：是，替代通道已评估：否",
+        "action": "现场核查门栏底框和实际通行需求。",
+        "evidenceRows": [
+          {
+            "label": "与指定通道重叠",
+            "value": "是"
+          },
+          {
+            "label": "通道资料已确认",
+            "value": "是"
+          },
+          {
+            "label": "替代通道已评估",
+            "value": "否"
+          }
+        ]
+      }
+    ]
+  },
+  "findings": [
+    {
+      "key": "4a279e19461caaa6006271bf",
+      "rule_id": "R001",
+      "profile_id": "child",
+      "object_ids": [
+        "cabinet",
+        "window"
+      ],
+      "scope_id": "scene",
+      "status": "not_triggered",
+      "evidence": {
+        "distance_m": 5.000000000000001,
+        "attention_band_m": 0.6,
+        "parameter_source": "demo_heuristic",
+        "approach_route_verified": false,
+        "can_climb_source": "demo"
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。",
+      "title": "窗边支点",
+      "statusLabel": "当前条件未触发",
+      "role": "child",
+      "routeId": null,
+      "objectLabels": [
+        "柜体",
+        "窗户"
+      ],
+      "reason": "对象间距（米）：5，教学关注距离（米）：0.6，参数来源：教学参数，接近路径已验证：否，攀爬资料来源：合成样例",
+      "action": "当前输入条件未触发；仍需现场复核。",
+      "evidenceRows": [
+        {
+          "label": "对象间距（米）",
+          "value": "5"
+        },
+        {
+          "label": "教学关注距离（米）",
+          "value": "0.6"
+        },
+        {
+          "label": "参数来源",
+          "value": "教学参数"
+        },
+        {
+          "label": "接近路径已验证",
+          "value": "否"
+        },
+        {
+          "label": "攀爬资料来源",
+          "value": "合成样例"
+        }
+      ]
+    },
+    {
+      "key": "92c6d93d56742aac9cdd5203",
+      "rule_id": "R001",
+      "profile_id": "child",
+      "object_ids": [
+        "chair",
+        "window"
+      ],
+      "scope_id": "scene",
+      "status": "triggered",
+      "evidence": {
+        "distance_m": 0.3000000000000007,
+        "attention_band_m": 0.6,
+        "parameter_source": "demo_heuristic",
+        "approach_route_verified": false,
+        "can_climb_source": "demo"
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。",
+      "title": "窗边支点",
+      "statusLabel": "已触发",
+      "role": "child",
+      "routeId": null,
+      "objectLabels": [
+        "椅子",
+        "窗户"
+      ],
+      "reason": "对象间距（米）：0.3，教学关注距离（米）：0.6，参数来源：教学参数，接近路径已验证：否，攀爬资料来源：合成样例",
+      "action": "在样例中把支点移离窗边，再复核指定通道。",
+      "evidenceRows": [
+        {
+          "label": "对象间距（米）",
+          "value": "0.3"
+        },
+        {
+          "label": "教学关注距离（米）",
+          "value": "0.6"
+        },
+        {
+          "label": "参数来源",
+          "value": "教学参数"
+        },
+        {
+          "label": "接近路径已验证",
+          "value": "否"
+        },
+        {
+          "label": "攀爬资料来源",
+          "value": "合成样例"
+        }
+      ]
+    },
+    {
+      "key": "dc26ee1c75b4081b77a77cd3",
+      "rule_id": "R002",
+      "profile_id": "child",
+      "object_ids": [
+        "window"
+      ],
+      "scope_id": "scene",
+      "status": "needs_review",
+      "evidence": {
+        "protection_reported": null,
+        "source": "unknown"
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。",
+      "title": "窗口防护",
+      "statusLabel": "待核查",
+      "role": "child",
+      "routeId": null,
+      "objectLabels": [
+        "窗户"
+      ],
+      "reason": "窗口防护记录：未知，资料来源：未知",
+      "action": "核查并补充窗口防护资料。",
+      "evidenceRows": [
+        {
+          "label": "窗口防护记录",
+          "value": "未知"
+        },
+        {
+          "label": "资料来源",
+          "value": "未知"
+        }
+      ]
+    },
+    {
+      "key": "5ab29a57fefca8858396c42b",
+      "rule_id": "R003",
+      "profile_id": "child",
+      "object_ids": [
+        "cabinet"
+      ],
+      "scope_id": "scene",
+      "status": "not_triggered",
+      "evidence": {
+        "anchored_reported": true,
+        "source": "simulated"
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。",
+      "title": "柜体固定",
+      "statusLabel": "当前条件未触发",
+      "role": "child",
+      "routeId": null,
+      "objectLabels": [
+        "柜体"
+      ],
+      "reason": "柜体固定记录：是，资料来源：模拟结果",
+      "action": "当前输入条件未触发；仍需现场复核。",
+      "evidenceRows": [
+        {
+          "label": "柜体固定记录",
+          "value": "是"
+        },
+        {
+          "label": "资料来源",
+          "value": "模拟结果"
+        }
+      ]
+    },
+    {
+      "key": "c59dd7b69df3c0de74a49f22",
+      "rule_id": "R004",
+      "profile_id": "child",
+      "object_ids": [
+        "storage"
+      ],
+      "scope_id": "scene",
+      "status": "triggered",
+      "evidence": {
+        "storage_world_height_m": 0.5,
+        "configured_reach_height_m": 0.8,
+        "locked_reported": false,
+        "height_source": "demo",
+        "lock_source": "demo",
+        "not_total_access_proof": true
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。",
+      "title": "危险品收纳",
+      "statusLabel": "已触发",
+      "role": "child",
+      "routeId": null,
+      "objectLabels": [
+        "收纳柜"
+      ],
+      "reason": "距地收纳高度（米）：0.5，配置的触及高度（米）：0.8，锁闭记录：否，高度来源：合成样例，锁闭资料来源：合成样例，不能据此判断所有可接触情况：是",
+      "action": "现场核查危险品的收纳位置与锁闭状态。",
+      "evidenceRows": [
+        {
+          "label": "距地收纳高度（米）",
+          "value": "0.5"
+        },
+        {
+          "label": "配置的触及高度（米）",
+          "value": "0.8"
+        },
+        {
+          "label": "锁闭记录",
+          "value": "否"
+        },
+        {
+          "label": "高度来源",
+          "value": "合成样例"
+        },
+        {
+          "label": "锁闭资料来源",
+          "value": "合成样例"
+        },
+        {
+          "label": "不能据此判断所有可接触情况",
+          "value": "是"
+        }
+      ]
+    },
+    {
+      "key": "220825f2bca4bc89ffb1759a",
+      "rule_id": "R005",
+      "profile_id": "elder",
+      "object_ids": [
+        "cabinet"
+      ],
+      "scope_id": "elder-route",
+      "status": "not_triggered",
+      "evidence": {
+        "overlaps_designated_route": false,
+        "route_confirmed": true,
+        "alternative_routes_evaluated": false
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。",
+      "title": "指定通道占用",
+      "statusLabel": "当前条件未触发",
+      "role": "elder",
+      "routeId": "elder-route",
+      "objectLabels": [
+        "柜体"
+      ],
+      "reason": "与指定通道重叠：否，通道资料已确认：是，替代通道已评估：否",
+      "action": "当前输入条件未触发；仍需现场复核。",
+      "evidenceRows": [
+        {
+          "label": "与指定通道重叠",
+          "value": "否"
+        },
+        {
+          "label": "通道资料已确认",
+          "value": "是"
+        },
+        {
+          "label": "替代通道已评估",
+          "value": "否"
+        }
+      ]
+    },
+    {
+      "key": "99f7958ea5f112a850af38ce",
+      "rule_id": "R005",
+      "profile_id": "elder",
+      "object_ids": [
+        "chair"
+      ],
+      "scope_id": "elder-route",
+      "status": "not_triggered",
+      "evidence": {
+        "overlaps_designated_route": false,
+        "route_confirmed": true,
+        "alternative_routes_evaluated": false
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。",
+      "title": "指定通道占用",
+      "statusLabel": "当前条件未触发",
+      "role": "elder",
+      "routeId": "elder-route",
+      "objectLabels": [
+        "椅子"
+      ],
+      "reason": "与指定通道重叠：否，通道资料已确认：是，替代通道已评估：否",
+      "action": "当前输入条件未触发；仍需现场复核。",
+      "evidenceRows": [
+        {
+          "label": "与指定通道重叠",
+          "value": "否"
+        },
+        {
+          "label": "通道资料已确认",
+          "value": "是"
+        },
+        {
+          "label": "替代通道已评估",
+          "value": "否"
+        }
+      ]
+    },
+    {
+      "key": "39eb28e49bb8c8fff1a14744",
+      "rule_id": "R005",
+      "profile_id": "elder",
+      "object_ids": [
+        "storage"
+      ],
+      "scope_id": "elder-route",
+      "status": "not_triggered",
+      "evidence": {
+        "overlaps_designated_route": false,
+        "route_confirmed": true,
+        "alternative_routes_evaluated": false
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。",
+      "title": "指定通道占用",
+      "statusLabel": "当前条件未触发",
+      "role": "elder",
+      "routeId": "elder-route",
+      "objectLabels": [
+        "收纳柜"
+      ],
+      "reason": "与指定通道重叠：否，通道资料已确认：是，替代通道已评估：否",
+      "action": "当前输入条件未触发；仍需现场复核。",
+      "evidenceRows": [
+        {
+          "label": "与指定通道重叠",
+          "value": "否"
+        },
+        {
+          "label": "通道资料已确认",
+          "value": "是"
+        },
+        {
+          "label": "替代通道已评估",
+          "value": "否"
+        }
+      ]
+    },
+    {
+      "key": "45dc67408aa623e0255c0f31",
+      "rule_id": "R006",
+      "profile_id": "elder",
+      "object_ids": [
+        "rug"
+      ],
+      "scope_id": "elder-route",
+      "status": "needs_review",
+      "evidence": {
+        "overlaps_designated_route": true,
+        "route_confirmed": true,
+        "alternative_routes_evaluated": false
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。",
+      "title": "通道地毯",
+      "statusLabel": "待核查",
+      "role": "elder",
+      "routeId": "elder-route",
+      "objectLabels": [
+        "地毯"
+      ],
+      "reason": "与指定通道重叠：是，通道资料已确认：是，替代通道已评估：否",
+      "action": "核查并记录地毯固定状态。",
+      "evidenceRows": [
+        {
+          "label": "与指定通道重叠",
+          "value": "是"
+        },
+        {
+          "label": "通道资料已确认",
+          "value": "是"
+        },
+        {
+          "label": "替代通道已评估",
+          "value": "否"
+        }
+      ]
+    },
+    {
+      "key": "8113d090f561ecdcaa2fad59",
+      "rule_id": "R007",
+      "profile_id": "child",
+      "object_ids": [
+        "cord"
+      ],
+      "scope_id": "scene",
+      "status": "needs_review",
+      "evidence": {
+        "accessible_reported": true,
+        "secured_reported": null,
+        "source": "unknown"
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。",
+      "title": "可接触线缆",
+      "statusLabel": "待核查",
+      "role": "child",
+      "routeId": null,
+      "objectLabels": [
+        "线缆"
+      ],
+      "reason": "可接触记录：是，已收纳记录：未知，资料来源：未知",
+      "action": "补充线缆的可接触和收纳资料。",
+      "evidenceRows": [
+        {
+          "label": "可接触记录",
+          "value": "是"
+        },
+        {
+          "label": "已收纳记录",
+          "value": "未知"
+        },
+        {
+          "label": "资料来源",
+          "value": "未知"
+        }
+      ]
+    },
+    {
+      "key": "4a85368d219250e4710fab58",
+      "rule_id": "R008",
+      "profile_id": "elder",
+      "object_ids": [
+        "gate"
+      ],
+      "scope_id": "elder-route",
+      "status": "triggered",
+      "evidence": {
+        "overlaps_designated_route": true,
+        "route_confirmed": true,
+        "alternative_routes_evaluated": false
+      },
+      "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。",
+      "title": "通道门栏底框",
+      "statusLabel": "已触发",
+      "role": "elder",
+      "routeId": "elder-route",
+      "objectLabels": [
+        "门栏"
+      ],
+      "reason": "与指定通道重叠：是，通道资料已确认：是，替代通道已评估：否",
+      "action": "现场核查门栏底框和实际通行需求。",
+      "evidenceRows": [
+        {
+          "label": "与指定通道重叠",
+          "value": "是"
+        },
+        {
+          "label": "通道资料已确认",
+          "value": "是"
+        },
+        {
+          "label": "替代通道已评估",
+          "value": "否"
+        }
+      ]
+    }
+  ],
+  "property_observations": [
+    {
+      "object_id": "chair",
+      "properties": {
+        "anchored": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "protection_reported": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "locked": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "accessible": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "secured": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "raised_threshold_present": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "storage_height": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null,
+          "coordinate_reference": "not_applicable"
+        }
+      }
+    },
+    {
+      "object_id": "window",
+      "properties": {
+        "anchored": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "protection_reported": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "locked": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "accessible": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "secured": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "raised_threshold_present": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "storage_height": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null,
+          "coordinate_reference": "not_applicable"
+        }
+      }
+    },
+    {
+      "object_id": "cabinet",
+      "properties": {
+        "anchored": {
+          "value": true,
+          "source_kind": "simulated",
+          "observed_at": "2026-11-05T03:53:31.088000+00:00",
+          "verification_state": "provided",
+          "evidence_ref": null
+        },
+        "protection_reported": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "locked": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "accessible": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "secured": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "raised_threshold_present": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "storage_height": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null,
+          "coordinate_reference": "not_applicable"
+        }
+      }
+    },
+    {
+      "object_id": "storage",
+      "properties": {
+        "anchored": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "protection_reported": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "locked": {
+          "value": false,
+          "source_kind": "demo",
+          "observed_at": null,
+          "verification_state": "provided",
+          "evidence_ref": null
+        },
+        "accessible": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "secured": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "raised_threshold_present": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "storage_height": {
+          "value": 0.5,
+          "source_kind": "demo",
+          "observed_at": null,
+          "verification_state": "provided",
+          "evidence_ref": null,
+          "coordinate_reference": "object_base"
+        }
+      }
+    },
+    {
+      "object_id": "rug",
+      "properties": {
+        "anchored": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "protection_reported": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "locked": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "accessible": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "secured": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "raised_threshold_present": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "storage_height": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null,
+          "coordinate_reference": "not_applicable"
+        }
+      }
+    },
+    {
+      "object_id": "cord",
+      "properties": {
+        "anchored": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "protection_reported": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "locked": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "accessible": {
+          "value": true,
+          "source_kind": "demo",
+          "observed_at": null,
+          "verification_state": "provided",
+          "evidence_ref": null
+        },
+        "secured": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "raised_threshold_present": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "storage_height": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null,
+          "coordinate_reference": "not_applicable"
+        }
+      }
+    },
+    {
+      "object_id": "gate",
+      "properties": {
+        "anchored": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "protection_reported": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "locked": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "accessible": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "secured": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "raised_threshold_present": {
+          "value": true,
+          "source_kind": "demo",
+          "observed_at": null,
+          "verification_state": "provided",
+          "evidence_ref": null
+        },
+        "storage_height": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null,
+          "coordinate_reference": "not_applicable"
+        }
+      }
+    }
+  ],
+  "simulatedObservations": [
+    {
+      "object_id": "cabinet",
+      "field": "anchored",
+      "label": "柜体已固定",
+      "observation": {
+        "value": true,
+        "source_kind": "simulated",
+        "observed_at": "2026-11-05T03:53:31.088000+00:00",
+        "verification_state": "provided",
+        "evidence_ref": null
+      }
+    }
+  ],
+  "coverage": [
+    {
+      "rule_id": "R001",
+      "profile_id": "child",
+      "state": "evaluated",
+      "evaluated_count": 2,
+      "pending_count": 0,
+      "reason": "仅覆盖明确建模的对象及指定关系"
+    },
+    {
+      "rule_id": "R002",
+      "profile_id": "child",
+      "state": "missing_input",
+      "evaluated_count": 0,
+      "pending_count": 1,
+      "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+    },
+    {
+      "rule_id": "R003",
+      "profile_id": "child",
+      "state": "evaluated",
+      "evaluated_count": 1,
+      "pending_count": 0,
+      "reason": "仅覆盖明确建模的对象及指定关系"
+    },
+    {
+      "rule_id": "R004",
+      "profile_id": "child",
+      "state": "evaluated",
+      "evaluated_count": 1,
+      "pending_count": 0,
+      "reason": "仅覆盖明确建模的对象及指定关系"
+    },
+    {
+      "rule_id": "R007",
+      "profile_id": "child",
+      "state": "missing_input",
+      "evaluated_count": 0,
+      "pending_count": 1,
+      "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+    },
+    {
+      "rule_id": "R005",
+      "profile_id": "elder",
+      "state": "evaluated",
+      "evaluated_count": 3,
+      "pending_count": 0,
+      "reason": "仅覆盖明确建模的对象及指定关系"
+    },
+    {
+      "rule_id": "R006",
+      "profile_id": "elder",
+      "state": "missing_input",
+      "evaluated_count": 0,
+      "pending_count": 1,
+      "reason": "待核查关系1项；未确认对象特征0件，见对象资料，不默认为否"
+    },
+    {
+      "rule_id": "R008",
+      "profile_id": "elder",
+      "state": "evaluated",
+      "evaluated_count": 1,
+      "pending_count": 0,
+      "reason": "仅覆盖明确建模的对象及指定关系"
+    }
+  ],
+  "setupItems": [],
+  "unsupportedDomains": [
+    "真实攀爬/人体可达性",
+    "家具倾倒物理",
+    "动态步态与转身",
+    "全屋及全部伤害类型",
+    "安装质量核验"
+  ],
+  "comparison": {
+    "beforeInputHash": "d2060f28fe6895fed07349c81caf0f3af6c2408a7197ed3efce52deed93a9429",
+    "afterInputHash": "94887d12a0a3b611e6b6db2253d089ebdc4d5dec9719064e1dfe910fad324a3c",
+    "conflict": false,
+    "newTriggered": [],
+    "noLongerTriggered": [],
+    "resolvedUnknown": [
+      {
+        "key": "5ab29a57fefca8858396c42b",
+        "rule_id": "R003",
+        "profile_id": "child",
+        "object_ids": [
+          "cabinet"
+        ],
+        "scope_id": "scene",
+        "status": "not_triggered",
+        "evidence": {
+          "anchored_reported": true,
+          "source": "simulated"
+        },
+        "limitation": "当前输入下的辅助检查；未触发不表示安全，示例参数不是安全标准。",
+        "title": "柜体固定",
+        "statusLabel": "当前条件未触发",
+        "role": "child",
+        "routeId": null,
+        "objectLabels": [
+          "柜体"
+        ],
+        "reason": "柜体固定记录：是，资料来源：模拟结果",
+        "action": "当前输入条件未触发；仍需现场复核。",
+        "evidenceRows": [
+          {
+            "label": "柜体固定记录",
+            "value": "是"
+          },
+          {
+            "label": "资料来源",
+            "value": "模拟结果"
+          }
+        ]
+      }
+    ],
+    "becameUnknown": [],
+    "removedFromScope": [],
+    "changeKinds": [
+      "observation"
+    ],
+    "interpretation": "仅为相同检查基础下的条件变化；不证明现实中完成整改。"
+  },
+  "limitations": [
+    "本清单使用合成客厅和模拟布局。",
+    "资料补充中的simulated表示演练假设，不是现场确认；资料变化不计为空间整改。",
+    "请在现场核实真实尺寸、实际通行路径及安装状态。",
+    "相机高度仅用于观察示意，真实触及能力需独立确认。",
+    "本清单仅覆盖列出的检查条件。未触发和关卡达标均不代表现实家庭安全。"
+  ]
+}

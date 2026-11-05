@@ -1,0 +1,71 @@
+{
+  "scope": "INDEPENDENT_PRIVATE_CLI_REJECTION_PROBES",
+  "fixture": "procedural, not Lux3D",
+  "cases": [
+    {
+      "tool": "geometry",
+      "case": "missing_chair",
+      "rejected": true,
+      "exit_code": 1,
+      "output_created": false,
+      "expected_field": "chair-front"
+    },
+    {
+      "tool": "geometry",
+      "case": "missing_cabinet",
+      "rejected": true,
+      "exit_code": 1,
+      "output_created": false,
+      "expected_field": "cabinet-front"
+    },
+    {
+      "tool": "geometry",
+      "case": "bad_chair",
+      "rejected": true,
+      "exit_code": 1,
+      "output_created": false,
+      "expected_field": "chair-front"
+    },
+    {
+      "tool": "geometry",
+      "case": "bad_cabinet",
+      "rejected": true,
+      "exit_code": 1,
+      "output_created": false,
+      "expected_field": "cabinet-front"
+    },
+    {
+      "tool": "browser",
+      "case": "missing_chair",
+      "rejected": true,
+      "exit_code": 1,
+      "output_created": false,
+      "expected_field": "chair-front"
+    },
+    {
+      "tool": "browser",
+      "case": "missing_cabinet",
+      "rejected": true,
+      "exit_code": 1,
+      "output_created": false,
+      "expected_field": "cabinet-front"
+    },
+    {
+      "tool": "browser",
+      "case": "bad_chair",
+      "rejected": true,
+      "exit_code": 1,
+      "output_created": false,
+      "expected_field": "chair-front"
+    },
+    {
+      "tool": "browser",
+      "case": "bad_cabinet",
+      "rejected": true,
+      "exit_code": 1,
+      "output_created": false,
+      "expected_field": "cabinet-front"
+    }
+  ],
+  "result": "PASS"
+}

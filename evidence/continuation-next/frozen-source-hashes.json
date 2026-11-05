@@ -1,0 +1,17 @@
+{
+  ".github/workflows/reference-checks.yml": "860d52339efbd4d4c90f0617bb1479da1ceb7bb7de366b118b3b4b139c6ff135",
+  "apps/web/src/App.vue": "865acbe4161209350c330ec05b1a2d2a1822bbecd9afcda6279221c88b1092a8",
+  "apps/web/src/useLivingRoom.ts": "f0e8824e51304da58c490d213f79f9342f9124457621f79e8b19982c28962738",
+  "apps/web/src/scene/TransformController.ts": "90710132b478f65bea24e465c826a3419b6d28561ec2fb6307766f3e9d36c9ba",
+  "apps/web/src/domain/FindingsPresenter.ts": "0df87efed4d27edd8412c0faff7ec668cdeb86c535873d3cccbc26ede1fd0ae5",
+  "apps/web/tests/transform.test.ts": "e55a53f9b72120e69a1759f70aed2a8698db1d6569a748459e97846e0943eadf",
+  "apps/web/tests/findings.test.ts": "8089476acef1671d7a0e6d6ca7db9debb5b05bd189277bf54fedbda459e01ec0",
+  "apps/web/tests/private-asset-calibration.ts": "e97d1c65a97c6def0180736c2bfe7e17b40c42214ac24a08ef59a6495b805cee",
+  "apps/web/tests/private-asset-calibration.test.ts": "38095083c9874fec9c8b891017f52af9b5f2a3fcaf9889bf75621e822b3f2a63",
+  "apps/web/tests/private-assets.ts": "7de28c477fb1f53a0112edb9153b824d7e674ea64b0ab8534f69f995e38a0f6e",
+  "scripts/check_private_asset_geometry.ts": "5aac9547d3607f3b8335bf53a5616318ad75a97a2e1a27060871de204204ac04",
+  "scripts/check_private_assets.mjs": "57e5cbb45e4b5566b7ce6b0ad50aaab35c63d1724245429c4945b4e80aaf2c47",
+  "scripts/create_private_asset_fixture.py": "4cb5e98ac3627228f15f81133a6e3d9481da8cf44017217428ef82279b6c3f92",
+  "scripts/check_web_draft_export.mjs": "b1eb4eb776b8f62a653e4832a40cb1830955a2f55606b5b7943fc91a76c04731",
+  "scripts/check_web_observations.mjs": "79910e3b902a62640b3e32ff2b8da47c3d0a66f2238c589c8e183a47b08f05f3"
+}

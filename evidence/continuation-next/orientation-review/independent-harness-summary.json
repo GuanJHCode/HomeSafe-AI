@@ -1,0 +1,24 @@
+{
+  "scope": "PRIVATE_LOOPBACK_PROCEDURAL_FIXTURE",
+  "result": "PASS",
+  "rights_status": "PENDING",
+  "persisted_reviewed": [
+    false,
+    false
+  ],
+  "source_fronts": [
+    "+Z",
+    "+Z"
+  ],
+  "orientation_mapping": [
+    "PASS",
+    "PASS"
+  ],
+  "procedural_front_marker": [
+    "PASS",
+    "PASS"
+  ],
+  "full_app_interaction": "PASS",
+  "public_catalog_changed": false,
+  "persisted_json_reviewed_true_count": 0
+}

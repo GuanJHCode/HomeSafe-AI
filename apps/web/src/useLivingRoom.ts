@@ -43,6 +43,7 @@ export function useLivingRoom() {
   const role = ref<Profile['role']>('child');
   const view = ref<Profile['role'] | 'overview'>('overview');
   const busy = ref(true);
+  const drafting = ref(false);
   const initializing = ref(false);
   const failure = ref('');
   const renderFailure = ref('');
@@ -145,6 +146,7 @@ export function useLivingRoom() {
   }
 
   function select(id: string | null) {
+    transforms?.cancelDrag();
     selected.value = id;
     runtime?.setSelected(id);
   }
@@ -346,7 +348,8 @@ export function useLivingRoom() {
         transforms = null;
       });
       runtime = mounted;
-      transforms = new TransformController(mounted, { canMove, select, commit });
+      transforms = new TransformController(mounted, { canMove, select, commit,
+        onDraftChange: active => { drafting.value = active; } });
       if (layout.value) mounted.setSnapshot(layout.value);
       mounted.setRoleView(view.value);
       mounted.setSelected(selected.value);
@@ -484,6 +487,7 @@ export function useLivingRoom() {
   }
 
   function exportReport() {
+    if (drafting.value || busy.value || failure.value) return;
     const currentReport = report.value;
     if (!currentReport) return;
     const blob = new Blob([ReportBuilder.exportJson(currentReport)], { type: 'application/json' });
@@ -500,7 +504,7 @@ export function useLivingRoom() {
   function exportSceneSnapshot() {
     // Use the same current-result gate as the action list; never export a draft
     // while evaluation or recovery is pending.
-    if (!report.value || !layout.value || !accepted.value) return;
+    if (drafting.value || busy.value || failure.value || !report.value || !layout.value || !accepted.value) return;
     const snapshot = SceneSnapshotBuilder.build(layout.value, accepted.value);
     const blob = new Blob([SceneSnapshotBuilder.exportJson(snapshot)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -531,7 +535,7 @@ export function useLivingRoom() {
   return {
     observationOptions, observationsOpen, observationNotice, openObservations, applyObservation,
     closeObservations: () => { observationsOpen.value = false; },
-    host, mode, exercise, role, view, busy, failure, renderFailure, modelCounts, selectedModel, stage, selected, selectedObject,
+    host, mode, exercise, role, view, busy, drafting, failure, renderFailure, modelCounts, selectedModel, stage, selected, selectedObject,
     layout, checks, comparison, progress, feedback, report, canUndo, canRedo,
     objectName, movable, canMove, select, useView, moveBy, rotate, history, switchMode, focus,
     roleSummaries, initializing, cancelLoading,
@@ -542,6 +546,6 @@ export function useLivingRoom() {
     retry: () => void initialize(true),
     retryRenderer: mountRenderer,
     exportReport, exportSceneSnapshot,
-    printReport: () => { if (report.value) ReportBuilder.print(); },
+    printReport: () => { if (!drafting.value && !busy.value && !failure.value && report.value) ReportBuilder.print(); },
   };
 }

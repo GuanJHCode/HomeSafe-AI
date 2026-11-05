@@ -1,0 +1,32 @@
+✖ not-triggered copy does not claim an observed change was a layout adjustment (5.04079ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 208.200974
+
+✖ failing tests:
+
+test at apps/web/tests/findings.test.ts:53:1
+✖ not-triggered copy does not claim an observed change was a layout adjustment (5.04079ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + '布局调整后重新核查。'
+  - '当前输入条件未触发；仍需现场复核。'
+  
+      at TestContext.<anonymous> (file:///workspace/homesafe-download-fix/apps/web/tests/findings.test.ts:58:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '布局调整后重新核查。',
+    expected: '当前输入条件未触发；仍需现场复核。',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

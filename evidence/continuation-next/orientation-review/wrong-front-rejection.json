@@ -1,0 +1,10 @@
+{
+  "scope": "INDEPENDENT_PROCEDURAL_WRONG_FRONT_CHROMIUM_COUNTEREXAMPLE",
+  "declared_chair_front": "-Z",
+  "actual_marker_front": "+Z",
+  "expected_result": "FAIL",
+  "actual_exit_code": 1,
+  "failure_reason": "AssertionError [ERR_ASSERTION]: Error: Procedural +Z front did not rotate toward the scene camera at -Z\n\n'FAIL' !== 'PASS'\n",
+  "result": "PASS_AS_NEGATIVE_TEST",
+  "source_kind": "procedural, not Lux3D"
+}

@@ -6,9 +6,11 @@ import {
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { AssetLoader, disposeObject } from '../src/scene/AssetLoader.ts';
 import { applicationBaseUrl, candidateCalibration } from './private-asset-calibration.ts';
+import type { SourceFront } from './private-asset-calibration.ts';
 import type { AssetRenderDTO, Dimensions } from '../../../contracts/frontend/domain';
 
-type Intake = { id: string; asset_id: string; sha256: string; bytes: number; dimensions: Dimensions; provenance: 'lux3d_web' | 'procedural' };
+type Intake = { id: string; asset_id: string; sha256: string; bytes: number; dimensions: Dimensions;
+  provenance: 'lux3d_web' | 'procedural'; source_front_candidate: SourceFront };
 const result: { status: string; assets: AssetRenderDTO[]; checks: unknown[]; error?: string } = {
   status: 'RUNNING', assets: [], checks: [],
 };
@@ -26,7 +28,7 @@ try {
   scene.add(new HemisphereLight(0xffffff, 0x919788, 2.5));
   const light = new DirectionalLight(0xffffff, 3); light.position.set(2, 5, 4); scene.add(light);
   const camera = new PerspectiveCamera(40, 1100 / 800, 0.01, 50);
-  camera.position.set(2.3, 2, 3.6); camera.lookAt(0, 0.8, 0);
+  camera.position.set(-2.3, 2, -3.6); camera.lookAt(0, 0.8, 0);
   const renderer = new WebGLRenderer({ antialias: true }); renderer.setSize(1100, 800);
   document.querySelector('#preview')!.append(renderer.domElement);
 
@@ -40,16 +42,34 @@ try {
     const bbox = new Box3().setFromObject(original, true);
     const size = bbox.getSize(new Vector3()), pivot = bbox.getCenter(new Vector3()); pivot.y = bbox.min.y;
     if (size.toArray().some(n => !Number.isFinite(n) || n <= 0)) throw new Error('Degenerate model bounds');
+    if (item.provenance === 'procedural') {
+      const sourceMarker = original.getObjectByName('PROCEDURAL_SOURCE_PLUS_Z_FRONT');
+      if (!sourceMarker || sourceMarker.getWorldPosition(new Vector3()).z <= pivot.z) {
+        throw new Error('Procedural direction fixture has no +Z front marker');
+      }
+    }
     const asset: AssetRenderDTO = {
       asset_id: item.asset_id, content_hash: hash,
       // Served only by the private harness; never written into public/ or the catalog.
       render_url: `assets/public/private-test-${item.id}.glb`, provenance_summary: item.provenance,
-      calibration: candidateCalibration(original),
+      calibration: candidateCalibration(original, item.source_front_candidate),
     };
     disposeObject(original);
     const loader = new AssetLoader([asset], applicationBaseUrl(location.href));
     const template = await loader.load(asset.asset_id);
     if (await loader.load(asset.asset_id) !== template) throw new Error('Template cache failed');
+    const sourceAxis = {
+      '+Z': new Vector3(0, 0, 1), '-Z': new Vector3(0, 0, -1),
+      '+X': new Vector3(1, 0, 0), '-X': new Vector3(-1, 0, 0),
+    }[item.source_front_candidate];
+    const mappedFront = sourceAxis.applyQuaternion(template.model.children[0].quaternion);
+    close(mappedFront.x, 0); close(mappedFront.y, 0); close(mappedFront.z, -1);
+    if (item.provenance === 'procedural') {
+      const marker = template.model.getObjectByName('PROCEDURAL_SOURCE_PLUS_Z_FRONT');
+      if (!marker || marker.getWorldPosition(new Vector3()).z >= 0) {
+        throw new Error('Procedural +Z front did not rotate toward the scene camera at -Z');
+      }
+    }
     let triangles = 0; const textures = new Set<Texture>();
     template.model.traverse(node => {
       if (!(node instanceof Mesh)) return;
@@ -82,14 +102,19 @@ try {
     second.position.x = item.id === 'chair' ? -0.65 : 0.65; scene.add(second);
     result.assets.push(asset);
     result.checks.push({ object_id: item.id, sha256: hash, bytes: bytes.byteLength, triangles,
+      source_front_candidate: item.source_front_candidate,
       textures_decoded: textures.size, source_bounds: size.toArray(), target_dimensions: item.dimensions,
-      fit: 'PASS', bottom_center: 'PASS', rotation_90: 'PASS', multiple_instances: 'PASS',
+      fit: 'PASS', bottom_center: 'PASS', orientation_mapping: 'PASS',
+      procedural_front_marker: item.provenance === 'procedural' ? 'PASS' : 'NOT_APPLICABLE',
+      rotation_90: 'PASS', multiple_instances: 'PASS',
       release_preserves_other_instance: 'PASS' });
     window.addEventListener('pagehide', () => loader.dispose(), { once: true });
   }
   renderer.render(scene, camera);
   result.status = 'PASS';
-  document.querySelector('#status')!.textContent = '实际 GLB 加载与数值校准通过；本页不代表公开授权或 T03 整体验收。';
+  document.querySelector('#status')!.textContent = input.every(item => item.provenance === 'procedural')
+    ? '程序夹具 GLB 加载与数值校准通过；这不是实际 Lux3D 模型、公开授权或 T03 整体验收。'
+    : '私下输入 GLB 加载与数值校准通过；实际原件仍需哈希、目视与权利复核。';
 } catch (error) {
   result.status = 'FAIL'; result.error = String(error);
   document.querySelector('#status')!.textContent = result.error;

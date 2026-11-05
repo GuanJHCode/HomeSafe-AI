@@ -45,8 +45,8 @@ jobs:
         shell: bash
         run: |
           python scripts/create_private_asset_fixture.py --output "$RUNNER_TEMP/private-fixtures"
-          node scripts/check_private_asset_geometry.ts --chair "$RUNNER_TEMP/private-fixtures/chair.glb" --cabinet "$RUNNER_TEMP/private-fixtures/cabinet.glb" --output evidence/private/ci-geometry
-          node scripts/check_private_assets.mjs --chair "$RUNNER_TEMP/private-fixtures/chair.glb" --cabinet "$RUNNER_TEMP/private-fixtures/cabinet.glb" --provenance procedural --chrome "$(command -v google-chrome)" --driver "$RUNNER_TEMP/homesafe-browser/node_modules/puppeteer-core/lib/esm/puppeteer/puppeteer-core.js" --output evidence/private/ci-intake
+          node scripts/check_private_asset_geometry.ts --chair "$RUNNER_TEMP/private-fixtures/chair.glb" --cabinet "$RUNNER_TEMP/private-fixtures/cabinet.glb" --chair-front +Z --cabinet-front +Z --output evidence/private/ci-geometry
+          node scripts/check_private_assets.mjs --chair "$RUNNER_TEMP/private-fixtures/chair.glb" --cabinet "$RUNNER_TEMP/private-fixtures/cabinet.glb" --chair-front +Z --cabinet-front +Z --provenance procedural --chrome "$(command -v google-chrome)" --driver "$RUNNER_TEMP/homesafe-browser/node_modules/puppeteer-core/lib/esm/puppeteer/puppeteer-core.js" --output evidence/private/ci-intake
       - name: Prepare shared nested-path browser host
         id: browser_host
         shell: bash
@@ -92,6 +92,7 @@ jobs:
           node scripts/check_browser_spike.mjs http://127.0.0.1:4173/probe/ "$chrome" "$driver" | tee ci-evidence/browser-spike.json
           node scripts/check_web_preview.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" | tee ci-evidence/web-preview.json
           node scripts/check_web_experience.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" ci-evidence/experience | tee ci-evidence/experience.json
+          node scripts/check_web_draft_export.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" | tee ci-evidence/draft-export.json
           node scripts/check_web_observations.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" ci-evidence/observations | tee ci-evidence/observations.json
           node scripts/check_web_recovery.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" ci-evidence/recovery | tee ci-evidence/recovery.json
           node scripts/check_startup_trace.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" ci-evidence/startup-trace | tee ci-evidence/startup-trace-summary.json

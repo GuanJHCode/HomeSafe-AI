@@ -1,0 +1,58 @@
+✔ diagnostic exercises both moves, undo and reset without losing coverage (10.92562ms)
+✔ restarting a diagnostic stops it before issuing more challenge commands (2.334044ms)
+✔ request IDs route out-of-order replies without stale acceptance (1.509022ms)
+✔ structured placement failures propagate (0.576628ms)
+✔ dispose rejects pending work and terminates worker (0.356937ms)
+✔ timeouts never manufacture a success (6.687218ms)
+✔ synchronous postMessage failure rejects and clears pending request (0.567044ms)
+✔ an idle Worker crash rejects the next request immediately without posting or replay (0.529337ms)
+✔ thread epochs align without subtracting relative clocks; overlapping spans remain separate (1.844167ms)
+✔ trace is bounded, snapshots detached and failure/retry generations cannot mix (2.289868ms)
+✔ resource diagnostics allow only owned runtime/build paths and never expose URL/query/model names (0.796419ms)
+✔ malformed numeric fields cannot smuggle strings into diagnostic snapshots (0.591961ms)
+✔ broken recorder/clock cannot block callbacks or swallow their real errors (1.714371ms)
+✔ rejected initialization is cleared and a second attempt can succeed (6.638214ms)
+✔ evaluation after failed init cannot turn into success (0.754426ms)
+✔ successful initialization is reused and queued evaluation waits for it (7.448966ms)
+✔ dispatch failure does not poison subsequent commands (0.970441ms)
+✔ oversized message is rejected before calling Python (3.91933ms)
+✔ malformed message remains structured and the queue recovers (0.403547ms)
+✔ goal-met summary never omits outstanding triggered findings (0.269906ms)
+✔ missing summary counts cannot masquerade as zero (0.30578ms)
+✔ startup trace carries a new generation after failure and first evaluation metadata stays outside result (1.096752ms)
+✔ cached init uses a request-only trace linked to its original runtime generation (0.722568ms)
+✔ a failed diagnostic snapshot cannot stop an otherwise successful initialization reply (1.465987ms)
+✔ private intake rejects corrupt headers and external resources (2.584191ms)
+✔ private output cannot enter public trees, overwrite files, or follow symlinks (12.106458ms)
+✔ local server rejects foreign hosts and origins (0.366802ms)
+✔ overlapping initialization stages use wall-time union, not their sum (9.059751ms)
+✔ uninstrumented baseline remains measurable while required candidate tracing fails closed (0.7769ms)
+✔ required traces reject missing lifecycle marks and wrongly typed or incomplete phases (7.136354ms)
+✔ an early empty final file is not parsed until CDP confirms completion (26.89936ms)
+✔ completion before start and duplicate events bind to one GUID (6.445434ms)
+✔ a duplicate terminal event cannot overturn the first completed state (5.545419ms)
+✔ other frames, other filenames, and unrelated progress cannot claim a download (2.94215ms)
+✔ same suggested filename works for sequential downloads because paths use GUIDs (3.217204ms)
+✔ unsafe concurrent captures are rejected without disturbing the first (2.33164ms)
+✔ two matching starts are rejected as ambiguous (1.913692ms)
+✔ cancel and start timeout fail clearly and require a fresh page (15.499276ms)
+✔ completion timeout and corrupt JSON preserve the raw artifact (20.15792ms)
+✔ failed click releases subscriptions and a fresh harness can retry (2.561026ms)
+✔ close aborts an active capture and removes listeners (1.105154ms)
+✔ a completed download cannot wait forever for a stuck click promise (13.948025ms)
+✔ close and start deadline also bound a stalled frame lookup (13.88792ms)
+✔ browser behavior uses GUID filenames and report/snapshot names stay distinct (1.379307ms)
+✔ one browser rejects a second harness before it changes global download behavior (1.282711ms)
+✔ concurrent factory setup reserves ownership and setup failure rolls it back (1.124403ms)
+Download artifacts retained at /tmp/homesafe-download-evidence-c53xZf/evidence/failed-downloads-Uw5fp0
+✔ failed run copies GUID bytes into the evidence directory (6.881701ms)
+Download artifacts retained at /tmp/homesafe-failed-downloads-hhYbOh
+✔ local failure copies partial bytes outside Chromium download directory (4.241596ms)
+ℹ tests 48
+ℹ suites 0
+ℹ pass 48
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 361.592872

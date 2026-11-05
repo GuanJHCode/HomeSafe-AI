@@ -1,0 +1,23 @@
+{
+  "result": "PASS",
+  "scope": "ISOLATED_LOCAL_BROWSER_SIMULATED_OBSERVATIONS",
+  "browser": "Chrome/154.0.8037.57",
+  "url": "http://127.0.0.1:4173/preview/",
+  "cases": [
+    "unknown/true/false round trip",
+    "explicit baseline acknowledgement",
+    "layout history cleared and rebuilt; undo/reset preserve data baseline",
+    "no spatial-remediation credit",
+    "Python-derived editable fields",
+    "challenge exit and immutable challenge baseline",
+    "JSON and scene snapshot observation provenance",
+    "printable checklist",
+    "refresh resets practice"
+  ],
+  "hashes": {
+    "before": "d2060f28fe6895fed07349c81caf0f3af6c2408a7197ed3efce52deed93a9429",
+    "confirmed": "8e31f5e5228beae8ec7b9821c572dea6ca4d067934087581f0cd63c4237b8714",
+    "false": "bdfebfc0338dd0d8a4cf393d7a3c8b8701610396dff2ae1325a4c795d1233e8e",
+    "unknown": "d2060f28fe6895fed07349c81caf0f3af6c2408a7197ed3efce52deed93a9429"
+  }
+}

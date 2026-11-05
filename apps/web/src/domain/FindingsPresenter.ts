@@ -215,7 +215,7 @@ export class FindingsPresenter {
       routeId: this.routeIds.has(finding.scope_id) ? finding.scope_id : null,
       objectLabels: finding.object_ids.map(id => this.objectLabels.get(id) ?? id),
       reason: evidenceRows.map(({ label, value }) => `${label}：${value}`).join('，'),
-      action: finding.status === 'not_triggered' ? '布局调整后重新核查。' :
+      action: finding.status === 'not_triggered' ? '当前输入条件未触发；仍需现场复核。' :
         copy?.[finding.status] ?? '查看当前依据并核查。',
       evidenceRows,
     }

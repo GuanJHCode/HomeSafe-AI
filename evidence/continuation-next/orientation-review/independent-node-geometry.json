@@ -1,0 +1,97 @@
+{
+  "scope": "INDEPENDENT_PROCEDURAL_NODE_GEOMETRY_ONLY",
+  "source_front_cases": [
+    {
+      "sourceFront": "+Z",
+      "marker_scene_z": -0.461999997228384,
+      "body_scene_z": 0.11400000277161593,
+      "normalized_bounds_m": {
+        "width": 1.429999947547913,
+        "height": 1.9800000429153446,
+        "depth": 1.0679999912381173
+      },
+      "pivot_offset_after_rotation": {
+        "x": -1.9200000000000002,
+        "y": 0.41999997854232796,
+        "z": 0.7859999972283838
+      },
+      "quaternion": {
+        "x": 0,
+        "y": 1,
+        "z": 0,
+        "w": 6.123233995736766e-17
+      },
+      "result": "PASS"
+    },
+    {
+      "sourceFront": "-Z",
+      "marker_scene_z": -0.46199999722838414,
+      "body_scene_z": 0.11400000277161593,
+      "normalized_bounds_m": {
+        "width": 1.429999947547913,
+        "height": 1.9800000429153446,
+        "depth": 1.0679999912381173
+      },
+      "pivot_offset_after_rotation": {
+        "x": 1.9200000000000002,
+        "y": 0.41999997854232796,
+        "z": -1.0140000027716158
+      },
+      "quaternion": {
+        "x": 0,
+        "y": 0,
+        "z": 0,
+        "w": 1
+      },
+      "result": "PASS"
+    },
+    {
+      "sourceFront": "+X",
+      "marker_scene_z": -0.7534999876245858,
+      "body_scene_z": 0.10450001237541451,
+      "normalized_bounds_m": {
+        "width": 0.8399999856948854,
+        "height": 1.9800000429153446,
+        "depth": 1.6389999722987418
+      },
+      "pivot_offset_after_rotation": {
+        "x": -0.8999999999999995,
+        "y": 0.41999997854232796,
+        "z": -2.0245000123754147
+      },
+      "quaternion": {
+        "x": 0,
+        "y": 0.7071067811865475,
+        "z": 0,
+        "w": 0.7071067811865476
+      },
+      "result": "PASS"
+    },
+    {
+      "sourceFront": "-X",
+      "marker_scene_z": -0.7534999876245857,
+      "body_scene_z": 0.10450001237541451,
+      "normalized_bounds_m": {
+        "width": 0.8399999856948854,
+        "height": 1.9800000429153446,
+        "depth": 1.6389999722987416
+      },
+      "pivot_offset_after_rotation": {
+        "x": 0.9000000000000004,
+        "y": 0.41999997854232796,
+        "z": 1.8154999876245854
+      },
+      "quaternion": {
+        "x": 0,
+        "y": -0.7071067811865475,
+        "z": 0,
+        "w": 0.7071067811865476
+      },
+      "result": "PASS"
+    }
+  ],
+  "unknown_front_rejections": 6,
+  "original_source_unchanged": true,
+  "multi_instance_release": "PASS",
+  "result": "PASS"
+}

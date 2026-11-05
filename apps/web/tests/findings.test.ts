@@ -50,6 +50,14 @@ test('observation-only comparisons cannot be described as layout conflicts', () 
   assert.equal(delta?.resolvedUnknown[0]?.rule_id, 'R002')
 })
 
+test('not-triggered copy does not claim an observed change was a layout adjustment', () => {
+  const observed = structuredClone(assessment)
+  const cabinet = observed.findings.find(finding => finding.rule_id === 'R003' && finding.object_ids.includes('cabinet'))!
+  cabinet.status = 'not_triggered' // Canonical observation edit: anchored=true has this status.
+  const presented = new FindingsPresenter(scene, observed).showFinding(cabinet.key)
+  assert.equal(presented?.action, '当前输入条件未触发；仍需现场复核。')
+})
+
 test('both role summaries remain available without changing the assessment or profile capabilities', () => {
   const before = JSON.stringify({ scene, assessment })
   const presenter = new FindingsPresenter(scene, assessment)

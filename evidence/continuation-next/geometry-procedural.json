@@ -1,0 +1,91 @@
+{
+  "scope": "NODE_GEOMETRY_ONLY",
+  "result": "PASS",
+  "publication_approved": false,
+  "physical_measurement": false,
+  "visual_review": "PENDING",
+  "checks": [
+    {
+      "object_id": "chair",
+      "bytes": 2164,
+      "sha256": "59997343c5f2e37efbf5eb7f11d82ead4c8270fe4b5dbe2e225e3a7f32e644c3",
+      "source_front_candidate": "+Z",
+      "calibration_candidate": {
+        "revision": 1,
+        "strategy": "runtime_axis_fit",
+        "reviewed": false,
+        "orientation": {
+          "x": 0,
+          "y": 1,
+          "z": 0,
+          "w": 6.123233995736766e-17
+        },
+        "pivot_offset_after_rotation": {
+          "x": 0,
+          "y": -0.4000000059604645,
+          "z": -0.004999999888241263
+        },
+        "normalized_bounds_m": {
+          "width": 0.5000000000000001,
+          "height": 0.800000011920929,
+          "depth": 0.5099999997764826
+        },
+        "notes": "Private test-only calibration: the runtime descriptor is temporarily marked reviewed solely to exercise its gate; the persisted candidate remains reviewed=false and is not publication approval. Declared Y-up/+Z source front maps to scene -Z; visual confirmation remains pending. Original coordinate bounds are not physical measurements. Rights and visual review remain separate."
+      },
+      "target_dimensions": {
+        "width": 0.5,
+        "height": 0.8,
+        "depth": 0.5
+      },
+      "numerical_fit": "PASS",
+      "bottom_center": "PASS",
+      "rotations_and_translation": "PASS",
+      "multiple_instances": "PASS",
+      "source_object_unchanged": true,
+      "raw_bytes_unchanged": true,
+      "textures": "NOT_DECODED",
+      "browser": "NOT_RUN"
+    },
+    {
+      "object_id": "cabinet",
+      "bytes": 2164,
+      "sha256": "73c249d4b74ab1432e6d5e5ca38150d2d44d4df7451ca5085f8d6bbb422b1c34",
+      "source_front_candidate": "+Z",
+      "calibration_candidate": {
+        "revision": 1,
+        "strategy": "runtime_axis_fit",
+        "reviewed": false,
+        "orientation": {
+          "x": 0,
+          "y": 1,
+          "z": 0,
+          "w": 6.123233995736766e-17
+        },
+        "pivot_offset_after_rotation": {
+          "x": 0,
+          "y": -0.800000011920929,
+          "z": -0.004999999888241263
+        },
+        "normalized_bounds_m": {
+          "width": 0.6999999880790712,
+          "height": 1.600000023841858,
+          "depth": 0.5099999997764826
+        },
+        "notes": "Private test-only calibration: the runtime descriptor is temporarily marked reviewed solely to exercise its gate; the persisted candidate remains reviewed=false and is not publication approval. Declared Y-up/+Z source front maps to scene -Z; visual confirmation remains pending. Original coordinate bounds are not physical measurements. Rights and visual review remain separate."
+      },
+      "target_dimensions": {
+        "width": 0.7,
+        "height": 1.6,
+        "depth": 0.5
+      },
+      "numerical_fit": "PASS",
+      "bottom_center": "PASS",
+      "rotations_and_translation": "PASS",
+      "multiple_instances": "PASS",
+      "source_object_unchanged": true,
+      "raw_bytes_unchanged": true,
+      "textures": "NOT_DECODED",
+      "browser": "NOT_RUN"
+    }
+  ]
+}

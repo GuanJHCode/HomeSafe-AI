@@ -24,6 +24,7 @@ test('drag previews until release, sends one proposal, and restores the last leg
   let visible = committed;
   let selected: string | null = null;
   let issues: readonly PlacementIssue[] = [];
+  const draftStates: boolean[] = [];
   const rejectIssue: PlacementIssue = {
     object_id: 'chair', related_object_ids: ['cabinet'], field: 'position',
     code: 'SOLID_PENETRATION', message: 'Objects overlap',
@@ -46,10 +47,12 @@ test('drag previews until release, sends one proposal, and restores the last leg
       proposals.push(pose);
       return new Promise((resolve) => { respond = resolve; });
     },
+    onDraftChange: active => { draftStates.push(active); },
   });
 
   canvas.pointer('pointerdown', 30, 50);
   assert.equal(selected, 'chair');
+  assert.equal(draftStates.at(-1), true, 'Pointer hold blocks report output before a visible move');
   canvas.pointer('pointermove', 50, 80);
   canvas.pointer('pointermove', 70, 80);
   assert.equal(proposals.length, 0);
@@ -58,30 +61,44 @@ test('drag previews until release, sends one proposal, and restores the last leg
   assert.equal(proposals.length, 1);
   assert.equal(proposals[0].position.x, 5.8);
   assert.equal(canvas.pointerId, null);
+  assert.equal(draftStates.at(-1), true, 'Draft gate stays active until evaluation settles');
 
   // A rejected edit must restore the pose from the current snapshot, even if it changed.
   committed = { position: { x: 3, y: 0, z: 3.3 }, yaw_rad: 0 };
   respond([rejectIssue]);
-  await Promise.resolve();
+  await new Promise(resolve => setImmediate(resolve));
   assert.deepEqual(visible, committed);
   assert.deepEqual(issues, [rejectIssue]);
+  assert.equal(draftStates.at(-1), false, 'Rejected proposal restores accepted report access');
 
   canvas.pointer('pointerdown', 30, 50);
   canvas.pointer('pointermove', 80, 80);
   canvas.pointer('pointercancel', 80, 80);
   assert.deepEqual(visible, committed);
   assert.equal(proposals.length, 1);
+  assert.equal(draftStates.at(-1), false, 'Canceled pointer restores report access');
+
+  canvas.pointer('pointerdown', 30, 50);
+  assert.equal(draftStates.at(-1), true);
+  canvas.pointer('lostpointercapture', 30, 50);
+  assert.equal(draftStates.at(-1), false, 'Lost capture restores report access');
 
   canvas.pointer('pointerdown', 30, 50);
   canvas.pointer('pointerup', 31, 51);
   assert.equal(proposals.length, 1);
+  assert.equal(draftStates.at(-1), false, 'A hold without a submitted change restores report access');
   const rotation = controller.rotate('chair', Math.PI / 2);
   assert.equal(proposals.length, 2);
+  assert.equal(draftStates.at(-1), true, 'Button transform also blocks output until accepted');
   assert.equal(proposals[1].yaw_rad, Math.PI / 2);
   assert.deepEqual(proposals[1].position, committed.position);
   respond();
   await rotation;
+  assert.equal(draftStates.at(-1), false);
+  canvas.pointer('pointerdown', 30, 50);
+  assert.equal(draftStates.at(-1), true);
   controller.dispose();
+  assert.equal(draftStates.at(-1), false, 'Unmounting clears draft state');
   canvas.pointer('pointerdown', 30, 50);
   assert.equal(canvas.pointerId, null);
 });

@@ -1,0 +1,90 @@
+{
+  "scope": "REAL_CHROME_PREVIEW",
+  "url": "http://127.0.0.1:4173/preview/",
+  "browser": "Chrome/154.0.8037.57",
+  "cold_ready_ms": 4580,
+  "warm_ready_ms": 3559,
+  "ruleset": "demo-rules-3.0",
+  "result": "PASS",
+  "expected_real_assets": 0,
+  "asset_provenance": "none",
+  "main_challenge_layouts": [
+    {
+      "target": {
+        "x": 4.5,
+        "z": 3.2
+      },
+      "input_hash": "b82782475957fffb0798e29d1f6f2193d69ac6681b8a041596d2bbc5c13e44b1"
+    },
+    {
+      "target": {
+        "x": 3.2,
+        "z": 3.2
+      },
+      "input_hash": "e634561d7b6cf4586f66a3871de0199c11c800c3dab3a4e6d0041137af9f1dd0"
+    },
+    {
+      "target": {
+        "x": 4.8,
+        "z": 0.8
+      },
+      "input_hash": "168fd1fe886605f95c14f319546fb884047ef07797ae7d0bf60310d3911efa87"
+    }
+  ],
+  "scene_snapshots": [
+    {
+      "label": "initial",
+      "filename": "homesafe-scene-v1-a5f096ac43e6-2026-11-05T03-51-18-710Z-1.json",
+      "verification": {
+        "result": "MATCHES_CURRENT_CORE",
+        "scene_id": "demo-living-room",
+        "scene_revision": 1,
+        "input_hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69",
+        "ruleset_version": "demo-rules-3.0",
+        "source_kind": "synthetic_demo",
+        "scope": "Local canonical input and rule-version verification only; no safety or challenge certification."
+      }
+    },
+    {
+      "label": "layout",
+      "filename": "homesafe-scene-v2-18c5d12210fc-2026-11-05T03-51-19-509Z-2.json",
+      "verification": {
+        "result": "MATCHES_CURRENT_CORE",
+        "scene_id": "demo-living-room",
+        "scene_revision": 2,
+        "input_hash": "18c5d12210fc794416386c9cbae43ac2b66aa7260f28eb76f4c334b53fea7f1f",
+        "ruleset_version": "demo-rules-3.0",
+        "source_kind": "synthetic_demo",
+        "scope": "Local canonical input and rule-version verification only; no safety or challenge certification."
+      }
+    },
+    {
+      "label": "challenge",
+      "filename": "homesafe-scene-v2-c8c61e185bd5-2026-11-05T03-51-20-992Z-3.json",
+      "verification": {
+        "result": "MATCHES_CURRENT_CORE",
+        "scene_id": "demo-living-room",
+        "scene_revision": 2,
+        "input_hash": "c8c61e185bd547373f4a10979f6e0d4310b325058950c3b20fc58ecffad86ebc",
+        "ruleset_version": "demo-rules-3.0",
+        "source_kind": "synthetic_demo",
+        "scope": "Local canonical input and rule-version verification only; no safety or challenge certification."
+      }
+    }
+  ],
+  "cases": [
+    "real pointer drag and one-entry undo",
+    "invalid placement rebound",
+    "child and elder views",
+    "layout conflict",
+    "redo, reset and rotation",
+    "challenge remaining findings and coverage",
+    "JSON and printable action checklist",
+    "downloaded scene snapshots independently recompute in native Python",
+    "cabinet main challenge: three distinct legal solutions and rotation",
+    "main challenge invalid rebound, Python counters, undo/reset and fixed objects",
+    "tutorial/main/free practice transitions preserve separate layouts",
+    "refresh",
+    "real Worker recovery without refresh"
+  ]
+}

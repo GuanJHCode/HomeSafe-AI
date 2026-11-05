@@ -7,12 +7,21 @@ import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
 import { Box3, Group, Texture, Vector3 } from '../apps/web/node_modules/three/build/three.module.js';
 import { GLTFLoader } from '../apps/web/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+import { clone } from '../apps/web/node_modules/three/examples/jsm/utils/SkeletonUtils.js';
 import { AssetLoader, disposeObject } from '../apps/web/src/scene/AssetLoader.ts';
 import { candidateCalibration } from '../apps/web/tests/private-asset-calibration.ts';
+import type { SourceFront } from '../apps/web/tests/private-asset-calibration.ts';
 import { inspectGlb, privateOutputPath } from './private_asset_inputs.mjs';
 
-const { values } = parseArgs({ options: { chair: { type: 'string' }, cabinet: { type: 'string' }, output: { type: 'string' } } });
-if (!values.chair || !values.cabinet || !values.output) throw new Error('Pass --chair, --cabinet and --output');
+const { values } = parseArgs({ options: { chair: { type: 'string' }, cabinet: { type: 'string' },
+  'chair-front': { type: 'string' }, 'cabinet-front': { type: 'string' }, output: { type: 'string' } } });
+if (!values.chair || !values.cabinet || !values.output || !values['chair-front'] || !values['cabinet-front']) {
+  throw new Error('Pass --chair, --cabinet, --chair-front, --cabinet-front and --output');
+}
+const validFronts = new Set<SourceFront>(['+Z', '-Z', '+X', '-X']);
+for (const id of ['chair', 'cabinet'] as const) {
+  if (!validFronts.has(values[`${id}-front`] as SourceFront)) throw new Error(`Invalid --${id}-front`);
+}
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const output = await privateOutputPath(root, values.output);
 const scene = JSON.parse(await readFile(resolve(root, 'examples/scene-before.json'), 'utf8'));
@@ -23,8 +32,12 @@ for (const id of ['chair', 'cabinet'] as const) {
   parser.register(() => ({ name: 'NODE_GEOMETRY_ONLY_NO_TEXTURE_DECODE',
     loadTexture: async () => new Texture() }));
   const source = (await parser.parseAsync(raw.buffer.slice(raw.byteOffset, raw.byteOffset + raw.byteLength), '')).scene;
-  const calibration = candidateCalibration(source);
-  const template = AssetLoader.normalize(source, calibration);
+  const sourceParent = source.parent;
+  const sourceJson = JSON.stringify(source.toJSON());
+  const sourceBounds = new Box3().setFromObject(source, true).clone();
+  const sourceFront = values[`${id}-front`] as SourceFront;
+  const calibration = candidateCalibration(source, sourceFront);
+  const template = AssetLoader.normalize(clone(source), calibration);
   const loader = new AssetLoader([], 'http://127.0.0.1/');
   const object = scene.objects.find((item: { id: string }) => item.id === id);
   const before = JSON.stringify(object);
@@ -45,8 +58,12 @@ for (const id of ['chair', 'cabinet'] as const) {
   loader.release(visual);
   near(new Box3().setFromObject(second, true).getSize(new Vector3()).y, dimensions.height);
   assert.equal(group.userData.objectId, id); assert.equal(JSON.stringify(object), before);
+  assert.equal(source.parent, sourceParent);
+  assert.equal(JSON.stringify(source.toJSON()), sourceJson);
+  assert.deepEqual(new Box3().setFromObject(source, true), sourceBounds);
   assert.deepEqual(await readFile(resolve(values[id]!)), raw);
-  checks.push({ object_id: id, ...envelope, calibration_candidate: { ...calibration, reviewed: false },
+  checks.push({ object_id: id, ...envelope, source_front_candidate: sourceFront,
+    calibration_candidate: { ...calibration, reviewed: false },
     target_dimensions: dimensions, numerical_fit: 'PASS', bottom_center: 'PASS',
     rotations_and_translation: 'PASS', multiple_instances: 'PASS', source_object_unchanged: true,
     raw_bytes_unchanged: true, textures: 'NOT_DECODED', browser: 'NOT_RUN' });

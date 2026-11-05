@@ -18,6 +18,9 @@
       ],
       "blockers": [
         "Current official public page yielded no readable body; account page timed out. No authorized account/form receipt available."
+      ],
+      "remaining": [
+        "Current official public/account pages again provided no readable body; authenticated account/form/receipt and applicable terms remain unverified."
       ]
     },
     {
@@ -147,7 +150,18 @@
           "acceptance_scope": "Private assets stay bound entering main challenge; procedural fixtures only",
           "review": "PASS_INDEPENDENT",
           "evidence": "evidence/REVIEW_T06_20261104.md"
+        },
+        {
+          "id": "T03-explicit-source-front-calibration",
+          "status": "DONE",
+          "review": "PASS_INDEPENDENT_TOOLS_ONLY",
+          "acceptance_scope": "Explicit sourceFront declarations mapped to scene-Z, rotated bounds/pivot, unchanged source, persisted candidatesfalse; procedural real-browser only. ActualLux3D/rights BLOCKED.",
+          "evidence": "evidence/REVIEW_ASSET_ORIENTATION_20261105.md"
         }
+      ],
+      "remaining": [
+        "Originals confirmed in another environment; current-environment expected-SHA scan found none and provided Library original ZIP download failed. Real GLB private browser/visual acceptance BLOCKED_NOT_RUN_CURRENT_ENV_ORIGINALS_UNAVAILABLE.",
+        "Distribution rights under applicable China-site account terms remain unconfirmed."
       ]
     },
     {
@@ -216,6 +230,13 @@
           "acceptance_scope": "Persistent summaries, focus and375px button interactions in synthetic scene",
           "review": "PASS_INDEPENDENT_BROWSER",
           "evidence": "evidence/REVIEW_UX_RECOVERY_20261104.md"
+        },
+        {
+          "id": "T05-neutral-not-triggered-copy",
+          "status": "DONE",
+          "review": "PASS_INDEPENDENT",
+          "acceptance_scope": "Input-neutral not_triggered copy across finding cards/report; preserves canonical state/evidence and observation-only comparison",
+          "evidence": "evidence/REVIEW_CONTINUATION_NEXT_20261105.md"
         }
       ],
       "remaining": [
@@ -309,7 +330,10 @@
           "id": "T07-first-editable-budget",
           "status": "OPEN_NOT_MET",
           "acceptance_scope": "Cold first editable p95 <=3000ms, with actual accepted edit per sample; no canvas-proxy substitution",
-          "evidence": "evidence/STARTUP_ADJUSTMENTS_20261104.md"
+          "evidence": "evidence/STARTUP_ADJUSTMENTS_20261104.md",
+          "blocks_other_development": false,
+          "decision_evidence": "evidence/CONTINUATION_NEXT_20261105.md",
+          "ci_enforcement": "UNCHANGED"
         },
         {
           "id": "T07-ci-download-completion",
@@ -318,22 +342,27 @@
           "review": "PASS_INDEPENDENT",
           "evidence": "evidence/CI_DOWNLOAD_FIX_20261105.md",
           "review_evidence": "evidence/REVIEW_CI_DOWNLOAD_FIX_20261105.md"
+        },
+        {
+          "id": "T07-draft-export-guard",
+          "status": "DONE",
+          "review": "PASS_INDEPENDENT",
+          "acceptance_scope": "Hold/preview/pending proposals gate JSON/snapshot/print; cancel/selection/view/rejection/success/dispose recovery",
+          "evidence": "evidence/REVIEW_CONTINUATION_NEXT_20261105.md"
         }
       ],
       "remaining": [
         "Actual Lux3D load/render/release and print validation; final target device/network performance.",
-        "First-editable <=3s remains OPEN_NOT_MET: latest local unchanged-distribution enforce p95=4812.2ms (historical final retained-source4086.1ms separately preserved). PR2 bounded paired benefit334.4ms remains supported; PR3 discarded/reverted. Retained startup changes ran remotely at394eb04; observation download parsing failed and performance was skipped. Current reviewed download fix awaits separate push authorization; no new remoteCI. No cross-environment inference or unauthorized runtime/backend/threshold changes."
+        "First-editable 3s project engineering target remains OPEN_NOT_MET based on prior4812.2ms measurement; user temporarily defers it as a blocker to other development. No new continuation timing; original CI budgets/enforce unchanged. New local fixes await separate push authorization; remote394eb04 functional download failed/performance skipped. No cross-environment inference."
       ],
       "checks": {
         "first_editable_budget": "OPEN_NOT_MET",
-        "hot_evaluation_budget": "PASS_LOCAL_ONLY_CURRENT_FIX",
-        "cold_rule_budget": "PASS_LOCAL_ONLY_CURRENT_FIX",
+        "hot_evaluation_budget": "NOT_RUN_THIS_CONTINUATION; prior be32202 historical PASS retained",
+        "cold_rule_budget": "NOT_RUN_THIS_CONTINUATION; prior be32202 historical PASS retained",
         "current_remote_ci": "FAIL_DOWNLOAD_JSON_PARSE_AT_394eb04",
         "local_ci_equivalent_functional_steps": "PASS",
         "strict_ci_failure_propagation": "PASS_INDEPENDENT_SYNTHETIC_SHELL_TEST",
         "functional_validation": "CURRENT_LOCAL_FIX_PASS_INDEPENDENT; REMOTE_394eb04_FAILED_DOWNLOAD",
-        "first_editable_p95_ms": 4812.2,
-        "hot_evaluation_p95_ms": 16.0,
         "current_startup_changes_remote_ci": "RAN_AT_394eb04_PERFORMANCE_SKIPPED",
         "current_local_startup_phase": {
           "functional_validation": "PASS_RETAINED_PR1_PR2_AND_INDEPENDENT_ROLLBACK",
@@ -345,7 +374,13 @@
           "evidence": "evidence/startup-benchmark/final-retained-enforce-performance.json"
         },
         "latest_remote_performance": "NOT_RUN_AT_394eb04; historical64e1665 values retained below",
-        "current_local_download_fix": {
+        "historical_remote_performance_at_64e1665": {
+          "first_editable_p95_ms": 3386,
+          "hot_evaluation_p95_ms": 9.9,
+          "evidence": "evidence/ci-performance-64e1665.json"
+        },
+        "current_performance_values_scope": "PERFORMANCE_NOT_RUN_THIS_CONTINUATION; last_measured fields are historical be32202 stage, not current continuation",
+        "historical_local_download_fix": {
           "first_editable_p95_ms": 4812.2,
           "hot_evaluation_p95_ms": 16.0,
           "cold_rules_p95_ms": 4812.1,
@@ -356,12 +391,14 @@
           "functional_validation": "PASS_INDEPENDENT_FINAL_FROZEN_SOURCE",
           "evidence": "evidence/CI_DOWNLOAD_FIX_20261105.md"
         },
-        "historical_remote_performance_at_64e1665": {
-          "first_editable_p95_ms": 3386,
-          "hot_evaluation_p95_ms": 9.9,
-          "evidence": "evidence/ci-performance-64e1665.json"
-        },
-        "current_performance_values_scope": "LOCAL_ISOLATED_CHROMIUM154_DOWNLOAD_FIX_UNCHANGED_DISTRIBUTION; not latest remote CI"
+        "last_measured_first_editable_p95_ms": 4812.2,
+        "last_measured_hot_evaluation_p95_ms": 16.0,
+        "current_local_continuation": {
+          "functional_validation": "PASS_INDEPENDENT_SCOPED",
+          "performance": "NOT_RUN_USER_PRIORITY",
+          "ci_enforcement": "UNCHANGED",
+          "evidence": "evidence/CONTINUATION_NEXT_20261105.md"
+        }
       }
     },
     {
@@ -490,7 +527,7 @@
     }
   ],
   "timezone": "Asia/Shanghai",
-  "planning_status": "SCOPED_FEATURES_REVIEWED_FIRST_EDITABLE_BUDGET_OPEN_EXTERNAL_GATES_BLOCKED",
+  "planning_status": "CONTINUATION_SCOPED_FEATURES_REVIEWED_EXTERNAL_GATES_BLOCKED_PERFORMANCE_DEPRIORITIZED_FOR_DEVELOPMENT",
   "source_import_status": "IMPORTED_AND_NATIVE_VALIDATED",
   "source_import": {
     "base_commit": "01d48fca76f77856b5e9f31a37090bb1284e47db",
@@ -503,10 +540,10 @@
   "baseline_commit": "2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f",
   "implementation_branch": "codex/v6.1-browser-3d",
   "continuation_base_commit": "f6245e13bc41e36a0efeabeba3ca0fba2174c2f5",
-  "current_validation_scope": "evidence/CI_DOWNLOAD_FIX_20261105.md",
-  "historical_validation_scope": "Earlier local and remote validation records remain historical. See evidence/FEATURE_CONTINUATION_20261104.md and evidence/CI_CONTINUATION_20261104.md; no earlier pass overrides the fixed 64e1665 first-editable failure.",
+  "current_validation_scope": "evidence/CONTINUATION_NEXT_20261105.md",
+  "historical_validation_scope": "Older 64e1665 CI41807603537 performance and 20261104 local startup measurements are historical. Latest verified remote is394eb04/CI41948477248 functional download FAIL and performance NOT_RUN. Local be32202 fixes the download protocol without a new remote run.",
   "historical_validated_source_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6",
-  "validation_scope": "394eb04 remote CI41948477248 failed at observation JSON download; strict performance NOT_RUN. Current local download fix PASS_INDEPENDENT with final JS48/Python334/apps36 and three observation runs; local unchanged-distribution enforce firsteditable4812.2ms FAIL, cold rules4812.1ms and hot16ms PASS. Fix not pushed, new remote CI NOT_RUN; real assets/public host remain blocked.",
+  "validation_scope": "Local continuation frombe32202: three scoped features independently reviewed, Python334/application39/JS48/build/browser/procedural-direction PASS. Current remote394eb04 CI41948477248 failed download and skipped performance. New local changes not pushed; this continuation performance NOT_RUN by user priority, strict budgets unchanged. Real Lux3D/public host/account acceptance remains blocked.",
   "recovery_sync": {
     "task_id": "RECOVERY-SYNC-20261104",
     "date": "2026-11-04",
@@ -532,7 +569,7 @@
     "current_scope": "evidence/FEATURE_CONTINUATION_20261104.md"
   },
   "previous_continuation_base_commit": "57faf384d64e9770407b28086fdfeb5b193a6d6f",
-  "current_source_sync": "SOURCE_394eb04_REMOTE_CI_CONFIRMED; DOWNLOAD_FIX_LOCAL_ONLY_NOT_PUSHED",
+  "current_source_sync": "LOCAL_BE32202_PLUS_REVIEWED_CONTINUATION_NOT_PUSHED; REMOTE_394eb04",
   "previous_source_sync": "LOCAL_ONLY_NOT_PUSHED",
   "latest_verified_remote_ci": {
     "source_commit": "394eb04e9bbaf7555a507cbc4c1fe28caa62a6a9",
@@ -567,7 +604,7 @@
     },
     "record_status": "FINAL_RETAINED_PR1_PR2_PR3_DISCARDED_FIRST_EDITABLE_OPEN",
     "record": "evidence/STARTUP_ADJUSTMENTS_20261104.md",
-    "source_commit": "LOCAL_COMMIT_SEE_DELIVERY_RECEIPT",
+    "source_commit": "394eb04e9bbaf7555a507cbc4c1fe28caa62a6a9",
     "pr1": {
       "status": "DONE",
       "review": "PASS_INDEPENDENT_FINAL",
@@ -609,7 +646,7 @@
     "pr4_stability": {
       "status": "OPEN",
       "step_separation": "DONE_INDEPENDENTLY_REVIEWED",
-      "three_new_remote_ci_runs": "NOT_RUN_NO_CURRENT_PHASE_PUSH_AUTHORIZATION",
+      "three_new_remote_ci_runs": "NOT_COMPLETE; one394eb04 run failed functional download and skipped performance; new fix runs NOT_RUN_NO_PUSH",
       "first_editable_budget": "OPEN_NOT_MET"
     },
     "remote_write": "NOT_PERFORMED_THIS_PHASE",
@@ -655,7 +692,8 @@
         "browser_and_performance": "NOT_RUN_IN_THIS_NON_BROWSER_CHECK_COMMAND_SET"
       }
     },
-    "historical_record_note": "Original 20261104 local phase preserved as history; retained changes later pushed as394eb04. Latest verified remote CI now41948477248, functional download failure, performance skipped."
+    "historical_record_note": "Original 20261104 local phase preserved as history; retained changes later pushed as394eb04. Latest verified remote CI now41948477248, functional download failure, performance skipped.",
+    "record_scope": "HISTORICAL_20261104_STARTUP_PHASE; retained changes later pushed as394eb04; current snapshot is latest_verified_remote_ci and continuation_next"
   },
   "previous_latest_verified_remote_ci": {
     "source_commit": "64e166540495126f618dd65aa8dc88760ed70604",
@@ -693,5 +731,39 @@
     "javascript_passed": 48,
     "targeted_download_passed": 18,
     "final_observations_passed_runs": 3
+  },
+  "continuation_next": {
+    "base_commit": "be32202bbaeafd9fcfde84601c22fb5a981fab6c",
+    "local_branch": "codex/continuation-after-download-20261105",
+    "remote_head": "394eb04e9bbaf7555a507cbc4c1fe28caa62a6a9",
+    "status": "DONE_SCOPED_LOCAL_EXTERNAL_GATES_BLOCKED",
+    "remote_write": "NOT_RUN",
+    "record": "evidence/CONTINUATION_NEXT_20261105.md",
+    "first_editable_target_decision": {
+      "target_ms": 3000,
+      "status": "OPEN_NOT_MET",
+      "requirement_kind": "PROJECT_ENGINEERING_TARGET_NOT_VERIFIED_OFFICIAL_REQUIREMENT",
+      "blocks_other_development": false,
+      "ci_budget_and_enforcement": "UNCHANGED",
+      "authorization": "User: 先忽略这个门槛，先处理后续的事项"
+    },
+    "model_availability": "OTHER_ENV_CONFIRMED; CURRENT_ENV_NO_EXPECTED_SHA_MATCH; PROVIDED_LIBRARY_PACKAGE_DOWNLOAD_FAILED",
+    "baseline_tests": {
+      "native": 334,
+      "application": 36,
+      "javascript": 48
+    },
+    "independent_review": "PASS_UI_AND_ORIENTATION_SEPARATELY",
+    "final_tests": {
+      "native_python": 334,
+      "application": 39,
+      "javascript": 48
+    },
+    "validation_summary": "evidence/continuation-next/validation-summary.json",
+    "features": [
+      "T07-draft-export-guard",
+      "T05-neutral-not-triggered-copy",
+      "T03-explicit-source-front-calibration"
+    ]
   }
 }

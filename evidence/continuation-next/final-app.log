@@ -1,0 +1,56 @@
+
+> @homesafe/web@0.1.0 test
+> node --test tests/*.test.ts
+
+✔ same-origin GLB replacement applies orientation, bottom pivot, and instance dimensions (49.959106ms)
+✔ a stalled GLB download times out, evicts its cache entry, and permits explicit retry (27.48137ms)
+✔ sends only the canonical transform and renders remaining issues after Python confirms the goal (2.765194ms)
+✔ rejects a changed challenge state if its comparison does not bind both input hashes (0.748527ms)
+✔ a late result cannot replace the current revision (13.805437ms)
+✔ mismatched response revision and comparison hashes cannot become current (2.025891ms)
+✔ a failed Worker is terminated and a fresh Worker can evaluate without replaying the failed request (0.819343ms)
+✔ structured placement issues survive a current request failure (0.700725ms)
+✔ retry uses refreshed runtime configuration and never replays a failed operation (0.450098ms)
+✔ optional trace observers cannot reject business results and wrong generations are ignored (18.98692ms)
+✔ failed first evaluation retains same-generation diagnostics while preserving its real error (1.131784ms)
+✔ role switching filters findings and coverage using configured profile roles (1.891307ms)
+✔ comparison highlights a child–elder tradeoff and rejects unrelated hashes (3.056482ms)
+✔ observation-only comparisons cannot be described as layout conflicts (0.307473ms)
+✔ not-triggered copy does not claim an observed change was a layout adjustment (0.41189ms)
+✔ both role summaries remain available without changing the assessment or profile capabilities (0.972825ms)
+✔ only sends allowlisted edit fields, binds response to hashes and shows information separately (12.879093ms)
+✔ does not accept edited dimensions, stale hashes, wrong value, or unrelated layout changes as observations (6.707991ms)
+✔ unchanged input cannot rewrite provenance or claim an observation change (1.916566ms)
+✔ restoring unknown cannot retain simulated or verified provenance (1.657105ms)
+✔ private probe resolves GLBs at the application root, not its /tests/ document directory (0.955979ms)
+✔ calibration candidate uses raw model bounds and keeps its pending-review scope explicit (3.985811ms)
+✔ a declared +Z source front faces the scene -Z after calibration without changing the source (2.223228ms)
+✔ each declared horizontal source front maps to -Z, while unknown directions are rejected (1.792058ms)
+✔ JSON and print view model use the same accepted version and actual assessment (9.970514ms)
+✔ stale assessment and mixed-version comparison cannot be exported (0.644941ms)
+✔ different evaluated layouts at the same revision have traceable export filenames (1.106036ms)
+✔ repeated exports of the same accepted layout have distinct traceable names (0.266441ms)
+✔ a stalled response body times out and can be loaded by an explicit retry (66.381405ms)
+✔ cancelled startup rejects even if a transport ignores abort and responds late (0.988338ms)
+✔ already cancelled startup does not start a fetch (0.598962ms)
+✔ snapshot preserves complete canonical inputs and accepted identity without model bytes (2.722389ms)
+✔ snapshot rejects a result for another scene or revision (0.513142ms)
+✔ snapshot keeps unknown and provenance observations and distinct filenames (2.715519ms)
+✔ drag previews until release, sends one proposal, and restores the last legal pose on rejection (4.246955ms)
+✔ a drag changes layout and history only after accepted evaluation (4.437912ms)
+✔ undo, redo and reset keep the last legal layout until reevaluated (1.701712ms)
+✔ a newer proposal supersedes an older one at the same scene revision (0.719634ms)
+✔ invalid placement highlights both colliding objects and structured room boundaries (0.795037ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1104.532624
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

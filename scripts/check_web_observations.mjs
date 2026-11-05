@@ -51,6 +51,10 @@ try {
   assert.equal(anchored.source_kind, 'simulated');
   assert.equal(anchored.verification_state, 'provided');
   assert.ok(anchored.observed_at);
+  const cabinetFindingText = await page.$$eval('.finding', nodes => nodes
+    .find(node => node.querySelector('.finding-title')?.textContent?.includes('柜体固定'))?.textContent);
+  assert.match(cabinetFindingText, /当前条件未触发.*当前输入条件未触发；仍需现场复核。/s);
+  assert.doesNotMatch(cabinetFindingText, /布局调整后重新核查/);
   const snapshot = await report('导出场景快照');
   assert.equal(snapshot.format, 'homesafe_scene_snapshot');
   assert.equal(snapshot.assessment.input_hash, confirmed.input_hash);

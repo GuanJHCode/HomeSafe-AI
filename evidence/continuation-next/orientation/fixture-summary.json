@@ -1,0 +1,71 @@
+{
+  "scope": "PROCEDURAL_BROWSER_DIRECTION_REGRESSION_ONLY",
+  "base_commit": "be32202bbaeafd9fcfde84601c22fb5a981fab6c",
+  "browser": "Chromium 154.0.8037.57 (Debian GNU/Linux 13)",
+  "prior_counterexample": "Before the fix, the +Z-source-front unit test failed because candidateCalibration returned the identity orientation.",
+  "source_front_contract": "Each private intake input declares +Z, -Z, +X, or -X; the candidate maps it to scene -Z. No direction is inferred from provenance.",
+  "fixture": {
+    "kind": "locally generated embedded-texture GLB boxes with an asymmetric +Z front marker; not Lux3D",
+    "hashes": [
+      {
+        "object_id": "chair",
+        "sha256": "59997343c5f2e37efbf5eb7f11d82ead4c8270fe4b5dbe2e225e3a7f32e644c3"
+      },
+      {
+        "object_id": "cabinet",
+        "sha256": "73c249d4b74ab1432e6d5e5ca38150d2d44d4df7451ca5085f8d6bbb422b1c34"
+      }
+    ],
+    "node_geometry": "PASS",
+    "browser_result": "PASS",
+    "browser_scope": "PRIVATE_LOOPBACK_PROCEDURAL_FIXTURE",
+    "checks": [
+      {
+        "object_id": "chair",
+        "source_front_candidate": "+Z",
+        "orientation_mapping": "PASS",
+        "procedural_front_marker": "PASS",
+        "textures_decoded": 2,
+        "fit": "PASS",
+        "bottom_center": "PASS",
+        "rotation_90": "PASS",
+        "multiple_instances": "PASS"
+      },
+      {
+        "object_id": "cabinet",
+        "source_front_candidate": "+Z",
+        "orientation_mapping": "PASS",
+        "procedural_front_marker": "PASS",
+        "textures_decoded": 2,
+        "fit": "PASS",
+        "bottom_center": "PASS",
+        "rotation_90": "PASS",
+        "multiple_instances": "PASS"
+      }
+    ],
+    "full_application_interaction": "PASS",
+    "front_marker_visible_from_scene_minus_z": true,
+    "screenshot_location": "evidence/private/orientation-browser-20261105-v4/calibration.png (private, ignored by Git)",
+    "persisted_candidate_reviewed": [
+      false,
+      false
+    ],
+    "original_fixture_bytes_unchanged": true
+  },
+  "verification": [
+    "node --test tests/*.test.ts: 39/39 PASS",
+    "npm run typecheck: PASS",
+    "Node private geometry fixture: PASS",
+    "isolated Chromium private procedural harness: PASS"
+  ],
+  "real_lux3d": {
+    "chair_expected_sha256": "e2606d75f4ef91a7395b9447ca5d65d972fd38595bcf53d6c6ef11ee9462e71a",
+    "cabinet_expected_sha256": "a8398b16be4d4d2f0c7c703575d0679ce16cc3aeacc276af48c9d26379ad940b",
+    "original_bytes_in_this_environment": "UNAVAILABLE",
+    "browser_acceptance": "BLOCKED",
+    "visual_review": "PENDING",
+    "rights_status": "PENDING"
+  },
+  "baseline_replay_log": "ci-evidence/continuation-next/orientation/red-identity.log",
+  "baseline_replay_exit_code": 1
+}

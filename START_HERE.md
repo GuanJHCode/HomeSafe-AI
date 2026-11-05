@@ -1,10 +1,12 @@
 # HomeSafe AI V6.1 开工入口
 
-2026-11-05 当前接续为 [CI 下载等待修复](evidence/CI_DOWNLOAD_FIX_20261105.md)：原 394eb04 的 CI 因下载解析失败、性能步骤跳过；本地下载协议修复已通过独立审查与最终浏览器回归，尚未推送。本轮本地 strict enforce 首次可编辑 p95=4812.2 ms，3 秒仍未达标。下面启动调整记录按其阶段保留，最新交付状态以 HANDOFF / task-status 为准。
+最新续作见 [be32202 后续开发](evidence/CONTINUATION_NEXT_20261105.md)：拖动输出保护、中性检查说明、显式方向校准工具均独立审查通过。用户暂不以3秒工程目标阻塞其他事项；现有CI预算和失败判断不变。本地be32202未推送，远端394eb04/CI41948477248下载功能失败、性能跳过；下文启动与下载历史按各自版本理解。
+
+2026-11-05 上一交付为 [CI 下载等待修复](evidence/CI_DOWNLOAD_FIX_20261105.md)：原 394eb04 的 CI 因下载解析失败、性能步骤跳过；本地下载协议修复已通过独立审查与最终浏览器回归，尚未推送。本轮本地 strict enforce 首次可编辑 p95=4812.2 ms，3 秒仍未达标。下面启动调整记录按其阶段保留，最新交付状态以 HANDOFF / task-status 为准。
 
 小杂接手续作：先读[全部后续任务执行提示词](docs/NEXT_AGENT_PROMPT_20261104.md)。它覆盖剩余功能、真实模型、部署、材料与逐项独立审查；实际状态仍以最新证据为准。
 
-本地启动调整进度见[本轮阶段记录](evidence/STARTUP_ADJUSTMENTS_20261104.md)：PR-1 已独立通过、PR-2 模型拆分已采纳；PR-3 固定实验未达采纳标准，已决定舍弃并还原 PR-2。已独立核验还原，最终 enforce 首次可编辑 p95=4086.1 ms 仍失败、热评估 p95=12.6 ms 通过；新远端 CI 未运行。
+历史本地启动调整（2026-11-04）见[阶段记录](evidence/STARTUP_ADJUSTMENTS_20261104.md)：PR-1 已独立通过、PR-2 模型拆分已采纳；PR-3 固定实验未达采纳标准，已决定舍弃并还原 PR-2。已独立核验还原，最终 enforce 首次可编辑 p95=4086.1 ms 仍失败、热评估 p95=12.6 ms 通过；当时新远端 CI 未运行，其后394eb04/CI41948477248已运行，下载功能失败并跳过性能。
 
 当前工作是合成客厅的三维开发预览。界面使用程序占位家具，同源 module Worker 加载同一份 Python 参考内核。当前验证和交付阻断见[接手记录](evidence/HANDOFF.md)和[任务状态](evidence/task-status.json)。
 
@@ -82,7 +84,7 @@ node scripts/check_web_experience.mjs http://127.0.0.1:4173/ /path/to/chromium /
 node scripts/check_web_performance.mjs http://127.0.0.1:4173/ /path/to/chromium /path/to/puppeteer-core.js enforce
 ```
 
-性能脚本采集五组全新浏览器上下文/缓存重载及三次预热后的三十次热评估，输出原始样本和 nearest-rank p95。当前门槛使用已接受报告、空闲评估及启用移动按钮的首次可编辑时间，并在每个样本实际移动、核验接受的输入哈希改变。首个观察界面只作诊断；结果仅适用于实际测试环境。传入末尾参数 `enforce` 将 3000/12000/150 ms 三项预算作为失败门禁；省略时仅报告。固定源码 `64e1665` 的 [CI 41807603537](evidence/CI_PUSH_64e1665_20261104.md) 功能通过、首次可编辑 p95=3386 ms 导致整体失败；最终保留 PR-1/PR-2、撤回 PR-3 后唯一完整 enforce p95=4086.1 ms 仍失败（此前 PR-2 阶段 3858.5 ms 另作历史保留）；该环境与旧 CI 不同，不能直接相减归因。本轮启动调整尚未远端运行，见[阶段记录](evidence/STARTUP_ADJUSTMENTS_20261104.md)。可选 `HOMESAFE_VIDEO_PATH=/tmp/development-regression.webm` 记录浏览器实帧（需 ffmpeg），这是开发回归原片，不自动成为最终参赛视频。容器测试沿用 CI 的隔离启动配置 `CI=1`。
+性能脚本采集五组全新浏览器上下文/缓存重载及三次预热后的三十次热评估，输出原始样本和 nearest-rank p95。当前门槛使用已接受报告、空闲评估及启用移动按钮的首次可编辑时间，并在每个样本实际移动、核验接受的输入哈希改变。首个观察界面只作诊断；结果仅适用于实际测试环境。传入末尾参数 `enforce` 将 3000/12000/150 ms 三项预算作为失败门禁；省略时仅报告。固定源码 `64e1665` 的 [CI 41807603537](evidence/CI_PUSH_64e1665_20261104.md) 功能通过、首次可编辑 p95=3386 ms 导致整体失败；最终保留 PR-1/PR-2、撤回 PR-3 后唯一完整 enforce p95=4086.1 ms 仍失败（此前 PR-2 阶段 3858.5 ms 另作历史保留）；该环境与旧 CI 不同，不能直接相减归因。上述启动阶段记录写于推送前；其后已随394eb04远端运行，CI41948477248因下载解析失败而跳过性能。阶段细节见[阶段记录](evidence/STARTUP_ADJUSTMENTS_20261104.md)。可选 `HOMESAFE_VIDEO_PATH=/tmp/development-regression.webm` 记录浏览器实帧（需 ffmpeg），这是开发回归原片，不自动成为最终参赛视频。容器测试沿用 CI 的隔离启动配置 `CI=1`。
 
 ```bash
 npm --prefix apps/web run build

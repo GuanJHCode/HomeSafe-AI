@@ -4,7 +4,7 @@ import ObservationPanel from './ObservationPanel.vue';
 
 const {
   observationOptions, observationsOpen, observationNotice, openObservations, applyObservation, closeObservations,
-  host, mode, exercise, role, view, busy, failure, renderFailure, modelCounts, selectedModel, stage, selected, selectedObject,
+  host, mode, exercise, role, view, busy, drafting, failure, renderFailure, modelCounts, selectedModel, stage, selected, selectedObject,
   layout, checks, comparison, progress, feedback, report, canUndo, canRedo,
   objectName, movable, canMove, select, useView, moveBy, rotate, history, switchMode, focus,
   retry, exportReport, exportSceneSnapshot, printReport,
@@ -56,6 +56,7 @@ const actionSections = [
           <button :aria-pressed="view === 'elder'" @click="useView('elder')">老人视角</button>
         </div>
         <div ref="host" class="viewport"></div>
+        <p v-if="drafting" class="small" role="status">正在预览家具位置；松开并完成检查后可导出或打印当前清单。</p>
         <p v-if="layout && !renderFailure" class="small" aria-live="polite">
           已加载 {{ modelCounts.loaded }} 件模型 · {{ modelCounts.placeholders }} 件程序占位模型
           <span v-if="modelCounts.loading"> · {{ modelCounts.loading }} 件加载中</span>
@@ -188,7 +189,7 @@ const actionSections = [
       </section>
     </div>
 
-    <section v-if="report" class="panel report">
+    <section v-if="report" v-show="!drafting" class="panel report">
       <header class="section-head">
         <div>
           <p class="eyebrow">当前布局记录</p>

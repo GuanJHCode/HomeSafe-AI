@@ -1,0 +1,13 @@
+{
+  "result": "PASS",
+  "scope": "ISOLATED_CHROMIUM_DRAFT_EXPORT_GUARD",
+  "browser": "Chrome/154.0.8037.57",
+  "before_hash": "输入摘要 a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69",
+  "after_hash": "输入摘要 3f65d441a573e81ec0b1223c031ea8d1b1f12227e3339cb11b1c2fd407febb88",
+  "checks": [
+    "pointer hold and preview hide all output",
+    "hidden callbacks cannot export JSON/snapshot or print",
+    "pointercancel and view change restore accepted report",
+    "legal release restores current JSON/snapshot/print"
+  ]
+}

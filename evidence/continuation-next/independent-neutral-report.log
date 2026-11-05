@@ -1,0 +1,15 @@
+{
+  "result": "PASS",
+  "input_hash": "94887d12a0a3b611e6b6db2253d089ebdc4d5dec9719064e1dfe910fad324a3c",
+  "rule_id": "R003",
+  "status": "not_triggered",
+  "action": "当前输入条件未触发；仍需现场复核。",
+  "evidence": {
+    "anchored_reported": true,
+    "source": "simulated"
+  },
+  "changeKinds": [
+    "observation"
+  ],
+  "layout_actions": 0
+}

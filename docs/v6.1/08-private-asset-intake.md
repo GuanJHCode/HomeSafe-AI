@@ -10,12 +10,15 @@
 node scripts/check_private_asset_geometry.ts \
   --chair /absolute/path/chair-original.glb \
   --cabinet /absolute/path/cabinet-original.glb \
+  --chair-front +Z --cabinet-front +Z \
   --output evidence/private/geometry-run-1
 ```
 
 实际 GLTFLoader 读取原始几何，调用应用 AssetLoader.normalize / instantiate，检查示例尺寸拟合、底部中心、平移、0/90/180 度旋转、多实例与释放及源对象不变。Node 跳过纹理解码，结果只能记为 NODE_GEOMETRY_ONLY。
 
-候选输出 reviewed=false。Y 向上、正面 +Z 是这批文件待视觉确认的假设；原始坐标范围与示例适配不是实物尺寸。不得将候选直接当作已审核公开资产。
+候选输出 reviewed=false。每件原件必须显式声明自身的水平正面方向，支持 +Z/-Z/+X/-X，未知值不得猜测；场景占位家具在 yaw=0 时的正面为 -Z。上面两项 +Z 是这批原件另一环境六视图诊断所支持的候选声明，仍需在可读取原件的环境中实际浏览器目视确认。候选将声明的源正面旋转到场景 -Z，并在旋转后重算边界与底部中心；不改变业务尺寸或场景 yaw。原始坐标范围与示例适配不是实物尺寸，不得将数值或程序夹具通过当作真实模型方向/公开审核通过。
+
+以减号开头的方向值使用等号参数，例如 `--chair-front=-Z`、`--cabinet-front=-X`；不要把 `-Z` 单独放在参数后的空格位置，以免被命令解析器当成另一个选项。两种私下脚本使用同一写法。
 
 ## 私下浏览器流程
 
@@ -25,6 +28,7 @@ node scripts/check_private_asset_geometry.ts \
 node scripts/check_private_assets.mjs \
   --chair /absolute/path/chair-original.glb \
   --cabinet /absolute/path/cabinet-original.glb \
+  --chair-front +Z --cabinet-front +Z \
   --provenance lux3d_web \
   --chrome /absolute/path/to/isolated-chromium \
   --driver /absolute/path/to/puppeteer-core.js \

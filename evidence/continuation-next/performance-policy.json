@@ -1,0 +1,9 @@
+{
+  "engineering_target_ms": 3000,
+  "user_requested_not_to_block_other_development": true,
+  "performance_script_identical_to_be32202": true,
+  "ci_strict_performance_step_identical_to_be32202": true,
+  "ci_other_changes": "Explicit fixture-front declarations and added draft-export functional check only",
+  "performance_rerun_this_phase": "NOT_RUN_USER_PRIORITY_CONTINUE_FUNCTIONAL_WORK",
+  "historical_first_editable_status": "OPEN_NOT_MET"
+}

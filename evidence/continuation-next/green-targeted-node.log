@@ -1,0 +1,14 @@
+✔ role switching filters findings and coverage using configured profile roles (3.520401ms)
+✔ comparison highlights a child–elder tradeoff and rejects unrelated hashes (1.191985ms)
+✔ observation-only comparisons cannot be described as layout conflicts (0.257267ms)
+✔ not-triggered copy does not claim an observed change was a layout adjustment (0.509257ms)
+✔ both role summaries remain available without changing the assessment or profile capabilities (0.653544ms)
+✔ drag previews until release, sends one proposal, and restores the last legal pose on rejection (5.108572ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 153.807421

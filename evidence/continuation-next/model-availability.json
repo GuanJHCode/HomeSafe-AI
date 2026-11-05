@@ -1,0 +1,23 @@
+{
+  "scope": "CURRENT_EXECUTION_ENVIRONMENT_ONLY",
+  "expected_original_sha256": {
+    "chair": "e2606d75f4ef91a7395b9447ca5d65d972fd38595bcf53d6c6ef11ee9462e71a",
+    "cabinet": "a8398b16be4d4d2f0c7c703575d0679ce16cc3aeacc276af48c9d26379ad940b"
+  },
+  "matching_originals": [],
+  "glb_candidates_examined": 36,
+  "other_environment": "Parent confirmed originals elsewhere; no cross-environment path assumed",
+  "public_distribution_rights": "NOT_CONFIRMED",
+  "public_manifest_unchanged": true,
+  "library_materialization": {
+    "library_file_id": "libfile_7d1a1032181c8191a7218b5e07a28102",
+    "file_name": "Lux3D_家具原始模型交付包(1).zip",
+    "expected_bytes": 20814439,
+    "route": "RESOLVED_REFERENCE_PREPARE_MATERIALIZE_WITH_CURRENT_BUNDLED_HELPER",
+    "preparation": "SUCCESS_SIGNED_TRANSFER_RETURNED",
+    "download": "FAIL_DOWNLOAD_FAILED",
+    "local_bytes_available": false,
+    "raw_error": "library file transfer failed: download failed",
+    "retry": "NOT_RETRIED_NO_BYPASS"
+  }
+}
