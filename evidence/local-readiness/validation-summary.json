@@ -1,0 +1,136 @@
+{
+  "generated_at_utc": "2026-11-05T06:00:43.179875+00:00",
+  "base_commit": "4203a3a9b7d1018417ae7ddcebcbf94c8996ab3c",
+  "branch": "codex/real-lux3d-private-20261105",
+  "scope": "CURRENT_ENVIRONMENT_NO_PUBLISH_NO_MODEL_UPLOAD",
+  "actual_current_checks": {
+    "node_syntax": "PASS_THREE_SCRIPTS",
+    "script_js_tests": {
+      "passed": 24,
+      "failed": 0
+    },
+    "independent_main_browser": "PASS",
+    "independent_model_resilience": {
+      "status": "PASS",
+      "scope": "PRIVATE_LOOPBACK_LUX3D_RESILIENCE",
+      "source_kind": "lux3d_web",
+      "browser": "Chrome/154.0.8037.57",
+      "executed_at": "2026-11-05T05:53:37.543Z",
+      "assets": [
+        {
+          "id": "chair",
+          "sha256": "296935f947dabf72026764d71d1df9f85d353d2062c7745b187ad21b417a07fc",
+          "bytes": 10352464,
+          "provenance": "lux3d_web"
+        },
+        {
+          "id": "cabinet",
+          "sha256": "92944741a7e9f2491f9220c9dff3f95d66190db80a2488a5d029fbe1b3de3350",
+          "bytes": 8689540,
+          "provenance": "lux3d_web"
+        }
+      ],
+      "checks": [
+        {
+          "id": "chair",
+          "fault": "http503",
+          "status": "PASS",
+          "attempts": {
+            "chair": 2,
+            "cabinet": 1
+          },
+          "accepted_hash": "输入摘要 6e7b888295fee7342f52cdf98b4c13e3a4028756ac19f9fa4f1d3ba9270cd63b",
+          "failed_placeholder_visible": true,
+          "retry_preserves_pose_and_hash": true
+        },
+        {
+          "id": "chair",
+          "fault": "integrity",
+          "status": "PASS",
+          "attempts": {
+            "chair": 2,
+            "cabinet": 1
+          },
+          "accepted_hash": "输入摘要 6e7b888295fee7342f52cdf98b4c13e3a4028756ac19f9fa4f1d3ba9270cd63b",
+          "failed_placeholder_visible": true,
+          "retry_preserves_pose_and_hash": true
+        },
+        {
+          "id": "cabinet",
+          "fault": "http503",
+          "status": "PASS",
+          "attempts": {
+            "chair": 1,
+            "cabinet": 2
+          },
+          "accepted_hash": "输入摘要 6e7b888295fee7342f52cdf98b4c13e3a4028756ac19f9fa4f1d3ba9270cd63b",
+          "failed_placeholder_visible": true,
+          "retry_preserves_pose_and_hash": true
+        },
+        {
+          "id": "cabinet",
+          "fault": "integrity",
+          "status": "PASS",
+          "attempts": {
+            "chair": 1,
+            "cabinet": 2
+          },
+          "accepted_hash": "输入摘要 6e7b888295fee7342f52cdf98b4c13e3a4028756ac19f9fa4f1d3ba9270cd63b",
+          "failed_placeholder_visible": true,
+          "retry_preserves_pose_and_hash": true
+        },
+        {
+          "status": "PASS",
+          "case": "375px real chair/cabinet button moves and no horizontal overflow",
+          "viewport": {
+            "width": 375,
+            "height": 812
+          },
+          "real_device": false
+        },
+        {
+          "status": "PASS",
+          "case": "actual WebGL context loss and explicit reconstruction reloads two models preserving input",
+          "fault_injection": "WEBGL_lose_context.loseContext()"
+        }
+      ],
+      "public_deployment": "NOT_RUN",
+      "physical_mobile_or_edge_safari": "NOT_RUN",
+      "rights_status": "PENDING"
+    },
+    "independent_real_asset_draft_export": {
+      "result": "PASS",
+      "scope": "ISOLATED_CHROMIUM_DRAFT_EXPORT_GUARD",
+      "browser": "Chrome/154.0.8037.57",
+      "before_hash": "输入摘要 6e7b888295fee7342f52cdf98b4c13e3a4028756ac19f9fa4f1d3ba9270cd63b",
+      "after_hash": "输入摘要 47f85c67d9b717dc620657541aa113af8ad1d53cef83327efef43f26c1b6283d",
+      "expected_loaded_assets": 2,
+      "source_kind": "lux3d_web",
+      "checks": [
+        "pointer hold and preview hide all output",
+        "hidden callbacks cannot export JSON/snapshot or print",
+        "pointercancel and view change restore accepted report",
+        "legal release restores current JSON/snapshot/print"
+      ]
+    },
+    "submission_preflight_exit_code": 2
+  },
+  "prior_4203_stage_results": {
+    "python_passed": 343,
+    "application_passed": 39,
+    "javascript_passed": 48,
+    "typecheck_build": "PASS",
+    "new_full_native_or_app_retest": "NOT_RUN_UNCHANGED_PRODUCT_CORE_AND_DEPENDENCIES"
+  },
+  "independent_review": "evidence/REVIEW_LOCAL_READINESS_20261105.md",
+  "performance": "NOT_RUN_USER_DEFERRED_TARGET_UNCHANGED",
+  "a192d51": "UNAVAILABLE_NOT_READ_NOT_INCLUDED_NOT_MERGED",
+  "remote_write": "NOT_RUN",
+  "public_deployment": "NOT_RUN",
+  "model_or_private_screenshot_upload": "NOT_RUN",
+  "final_package_plan": {
+    "source_allowlist_files": 870,
+    "checksum_entries": 871,
+    "independent_source_status_review": "PASS_RETAINED_RESPONSE_REVIEW_NO_SECOND_HTTP_FETCH"
+  }
+}

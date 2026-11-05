@@ -1,0 +1,173 @@
+{
+  "scope": "PRIVATE_TEST_USAGE_NOT_PUBLICATION_APPROVAL",
+  "public_feature_asset_map": "UNCHANGED_EMPTY",
+  "rules_source": "Unchanged native canonical RuleEngine",
+  "modes": [
+    {
+      "mode": "workspace",
+      "input_hash": "6e7b888295fee7342f52cdf98b4c13e3a4028756ac19f9fa4f1d3ba9270cd63b",
+      "ruleset": "demo-rules-3.0",
+      "objects": [
+        {
+          "object_id": "chair",
+          "source_platform": "Lux3D China web image-to-3D",
+          "source_task_id": 30471,
+          "original_sha256": "e2606d75f4ef91a7395b9447ca5d65d972fd38595bcf53d6c6ef11ee9462e71a",
+          "private_derived_sha256": "296935f947dabf72026764d71d1df9f85d353d2062c7745b187ad21b417a07fc",
+          "sample_dimensions_m": {
+            "width": 0.5,
+            "height": 0.8,
+            "depth": 0.5
+          },
+          "source_front": "+Z",
+          "scene_front": "-Z",
+          "published": false,
+          "findings_computed_from_current_synthetic_input": [
+            {
+              "rule_id": "R001",
+              "profile_id": "child",
+              "object_ids": [
+                "chair",
+                "window"
+              ],
+              "status": "triggered"
+            },
+            {
+              "rule_id": "R005",
+              "profile_id": "elder",
+              "object_ids": [
+                "chair"
+              ],
+              "status": "not_triggered"
+            }
+          ]
+        },
+        {
+          "object_id": "cabinet",
+          "source_platform": "Lux3D China web image-to-3D",
+          "source_task_id": 30475,
+          "original_sha256": "a8398b16be4d4d2f0c7c703575d0679ce16cc3aeacc276af48c9d26379ad940b",
+          "private_derived_sha256": "92944741a7e9f2491f9220c9dff3f95d66190db80a2488a5d029fbe1b3de3350",
+          "sample_dimensions_m": {
+            "width": 0.7,
+            "height": 1.6,
+            "depth": 0.5
+          },
+          "source_front": "+Z",
+          "scene_front": "-Z",
+          "published": false,
+          "findings_computed_from_current_synthetic_input": [
+            {
+              "rule_id": "R001",
+              "profile_id": "child",
+              "object_ids": [
+                "cabinet",
+                "window"
+              ],
+              "status": "not_triggered"
+            },
+            {
+              "rule_id": "R003",
+              "profile_id": "child",
+              "object_ids": [
+                "cabinet"
+              ],
+              "status": "needs_review"
+            },
+            {
+              "rule_id": "R005",
+              "profile_id": "elder",
+              "object_ids": [
+                "cabinet"
+              ],
+              "status": "not_triggered"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "main-challenge",
+      "input_hash": "28c3a4ed3f4d9d617ea934297a3a4dc860326e4390d669cf11192b1abac2c59e",
+      "ruleset": "demo-rules-3.0",
+      "objects": [
+        {
+          "object_id": "chair",
+          "source_platform": "Lux3D China web image-to-3D",
+          "source_task_id": 30471,
+          "original_sha256": "e2606d75f4ef91a7395b9447ca5d65d972fd38595bcf53d6c6ef11ee9462e71a",
+          "private_derived_sha256": "296935f947dabf72026764d71d1df9f85d353d2062c7745b187ad21b417a07fc",
+          "sample_dimensions_m": {
+            "width": 0.5,
+            "height": 0.8,
+            "depth": 0.5
+          },
+          "source_front": "+Z",
+          "scene_front": "-Z",
+          "published": false,
+          "findings_computed_from_current_synthetic_input": [
+            {
+              "rule_id": "R001",
+              "profile_id": "child",
+              "object_ids": [
+                "chair",
+                "window"
+              ],
+              "status": "not_triggered"
+            },
+            {
+              "rule_id": "R005",
+              "profile_id": "elder",
+              "object_ids": [
+                "chair"
+              ],
+              "status": "not_triggered"
+            }
+          ]
+        },
+        {
+          "object_id": "cabinet",
+          "source_platform": "Lux3D China web image-to-3D",
+          "source_task_id": 30475,
+          "original_sha256": "a8398b16be4d4d2f0c7c703575d0679ce16cc3aeacc276af48c9d26379ad940b",
+          "private_derived_sha256": "92944741a7e9f2491f9220c9dff3f95d66190db80a2488a5d029fbe1b3de3350",
+          "sample_dimensions_m": {
+            "width": 0.7,
+            "height": 1.6,
+            "depth": 0.5
+          },
+          "source_front": "+Z",
+          "scene_front": "-Z",
+          "published": false,
+          "findings_computed_from_current_synthetic_input": [
+            {
+              "rule_id": "R001",
+              "profile_id": "child",
+              "object_ids": [
+                "cabinet",
+                "window"
+              ],
+              "status": "triggered"
+            },
+            {
+              "rule_id": "R003",
+              "profile_id": "child",
+              "object_ids": [
+                "cabinet"
+              ],
+              "status": "needs_review"
+            },
+            {
+              "rule_id": "R005",
+              "profile_id": "elder",
+              "object_ids": [
+                "cabinet"
+              ],
+              "status": "not_triggered"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

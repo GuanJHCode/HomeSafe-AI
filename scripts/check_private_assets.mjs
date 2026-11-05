@@ -10,7 +10,8 @@ import { createServer } from '../apps/web/node_modules/vite/dist/node/index.js';
 import { inspectGlb, privateOutputPath, isLoopbackRequest } from './private_asset_inputs.mjs';
 
 const { values } = parseArgs({ options: Object.fromEntries(
-  ['chair', 'cabinet', 'chair-front', 'cabinet-front', 'chrome', 'driver', 'output', 'provenance'].map(name => [name, { type: 'string' }])) });
+  [...['chair', 'cabinet', 'chair-front', 'cabinet-front', 'chrome', 'driver', 'output', 'provenance']
+    .map(name => [name, { type: 'string' }]), ['resilience', { type: 'boolean', default: false }]]) });
 for (const name of ['chair', 'cabinet', 'chair-front', 'cabinet-front', 'chrome', 'driver', 'output', 'provenance']) {
   if (!values[name]) throw new Error(`Required: --${name}`);
 }
@@ -105,26 +106,35 @@ try {
   assert.deepEqual(persisted.assets.map(asset => asset.calibration.reviewed), [false, false],
     'Persisted calibration candidates must await human review');
   await browser.close(); browser = undefined;
-  const code = await new Promise((done, reject) => {
-    const child = spawn(process.execPath, [resolve(root, 'scripts/check_web_preview.mjs'), url,
-      resolve(values.chrome), resolve(values.driver)], {
-      cwd: root, timeout: 240_000, env: { ...process.env, HOMESAFE_EVIDENCE_DIR: output,
-        HOMESAFE_EXPECT_REAL_ASSETS: '2', HOMESAFE_ASSET_PROVENANCE: values.provenance },
-      stdio: ['ignore', 'pipe', 'pipe'],
+  const runCheck = async (script, basename, extra = []) => {
+    const code = await new Promise((done, reject) => {
+      const child = spawn(process.execPath, [resolve(root, 'scripts', script), url,
+        resolve(values.chrome), resolve(values.driver), ...extra], {
+        cwd: root, timeout: 240_000, env: { ...process.env, HOMESAFE_EVIDENCE_DIR: output,
+          HOMESAFE_EXPECT_REAL_ASSETS: '2', HOMESAFE_ASSET_PROVENANCE: values.provenance },
+        stdio: ['ignore', 'pipe', 'pipe'],
+      });
+      let stdout = '', stderr = '';
+      child.stdout.on('data', chunk => { stdout += chunk; });
+      child.stderr.on('data', chunk => { stderr += chunk; });
+      child.on('error', reject);
+      child.on('close', async exit => {
+        try {
+          await writeFile(resolve(output, `${basename}.json`), stdout);
+          await writeFile(resolve(output, `${basename}.stderr.txt`), stderr);
+          done(exit);
+        } catch (error) { reject(error); }
+      });
     });
-    let stdout = '', stderr = '';
-    child.stdout.on('data', chunk => { stdout += chunk; });
-    child.stderr.on('data', chunk => { stderr += chunk; });
-    child.on('error', reject);
-    child.on('close', async exit => {
-      try {
-        await writeFile(resolve(output, 'web-preview.json'), stdout);
-        await writeFile(resolve(output, 'web-preview.stderr.txt'), stderr);
-        done(exit);
-      } catch (error) { reject(error); }
-    });
-  });
-  assert.equal(code, 0, `Real interaction failed; inspect ${output}/web-preview.stderr.txt`);
+    assert.equal(code, 0, `Private check failed; inspect ${output}/${basename}.stderr.txt`);
+    return JSON.parse(await readFile(resolve(output, `${basename}.json`), 'utf8'));
+  };
+  const interaction = await runCheck('check_web_preview.mjs', 'web-preview');
+  let resilience = 'NOT_RUN', draftExport = 'NOT_RUN';
+  if (values.resilience) {
+    resilience = await runCheck('check_private_asset_resilience.mjs', 'resilience', [resolve(output, 'resilience')]);
+    draftExport = await runCheck('check_web_draft_export.mjs', 'draft-export');
+  }
   for (const id of ['chair', 'cabinet']) assert.deepEqual(await readFile(resolve(values[id])), originals.get(id));
   assert.deepEqual(await readFile(resolve(root, 'assets/asset-manifest.json')), publicBefore);
   const report = { scope: values.provenance === 'lux3d_web' ? 'PRIVATE_LOOPBACK_LUX3D_INPUTS' : 'PRIVATE_LOOPBACK_PROCEDURAL_FIXTURE',
@@ -134,7 +144,7 @@ try {
     orientation: 'Explicit per-source front mapped to scene -Z; original front and visual appearance require review',
     dimensions: 'Synthetic scenario fit, not measured real furniture',
     assets: inputs, checks: calibration.checks,
-    interaction: JSON.parse(await readFile(resolve(output, 'web-preview.json'), 'utf8')) };
+    interaction, resilience, draft_export: draftExport };
   await writeFile(resolve(output, 'result.json'), JSON.stringify(report, null, 2) + '\n');
   console.log(JSON.stringify({ result: 'PASS', scope: report.scope, output, rights_status: 'PENDING' }));
 } catch (error) {

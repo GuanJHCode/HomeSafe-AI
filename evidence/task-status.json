@@ -14,14 +14,21 @@
       "evidence": [
         "docs/v6.1/06-acceptance.md",
         "docs/v6.1/07-sources.md",
-        "evidence/CONTINUATION_20261104.md"
+        "evidence/CONTINUATION_20261104.md",
+        "evidence/LOCAL_READINESS_20261105.md",
+        "evidence/REVIEW_LOCAL_READINESS_20261105.md"
       ],
       "blockers": [
-        "Current official public page yielded no readable body; account page timed out. No authorized account/form receipt available."
+        "Authenticated account registration/team/topic/form status and accepted declarations unavailable; current public client rules and public PC agreement text have now been retrieved without login."
       ],
       "remaining": [
-        "Current official public/account pages again provided no readable body; authenticated account/form/receipt and applicable terms remain unverified."
-      ]
+        "Owner verifies account status, actual form limits and applicable accepted terms/orders. Public China deadline2026-11-19T19:00+08:00 rechecked; public facts are not an account receipt."
+      ],
+      "checks": {
+        "current_public_rules": "PASS_CURRENT_HTML_REFERENCED_CLIENT_BUNDLE",
+        "public_pc_policy_text": "RETRIEVED_APPLICABILITY_TO_SPECIFIC_LUX3D_ACCOUNT_NOT_CONFIRMED",
+        "account_form": "NOT_RUN_NO_AUTHORIZED_SESSION"
+      }
     },
     {
       "id": "T01",
@@ -119,7 +126,9 @@
         "evidence/ci-private-intake-9cf7660.json",
         "evidence/CONTINUATION_20261104.md",
         "evidence/REAL_LUX3D_PRIVATE_20261105.md",
-        "evidence/REVIEW_REAL_LUX3D_20261105.md"
+        "evidence/REVIEW_REAL_LUX3D_20261105.md",
+        "evidence/LOCAL_READINESS_20261105.md",
+        "evidence/REVIEW_LOCAL_READINESS_20261105.md"
       ],
       "checks": {
         "approved_lux3d_assets": 0,
@@ -136,7 +145,9 @@
         "actual_runtime_proxy": "PASS_0_90_180_AND_TRANSLATION",
         "original_gltf_validator": "FAIL_ZERO_NORMALS_20_24",
         "private_derived_gltf_validator": "PASS_ZERO_ISSUES",
-        "private_normal_repair_tool": "PASS_INDEPENDENT_9_TESTS"
+        "private_normal_repair_tool": "PASS_INDEPENDENT_9_TESTS",
+        "real_asset_failure_retry": "PASS_INDEPENDENT_CHAIR_CABINET_HTTP503_SRI_ONLY_FAILED_REDOWNLOAD",
+        "private_feature_usage_map": "RECORDED_NATIVE_RULE_REFERENCES_NOT_PUBLICATION_APPROVAL"
       },
       "blockers": [
         "Distribution rights under applicable China-site account terms remain unconfirmed; private browser acceptance does not authorize public GLB distribution."
@@ -244,7 +255,9 @@
       "evidence": [
         "evidence/CONTINUATION_20261104.md",
         "evidence/REAL_LUX3D_PRIVATE_20261105.md",
-        "evidence/REVIEW_REAL_LUX3D_20261105.md"
+        "evidence/REVIEW_REAL_LUX3D_20261105.md",
+        "evidence/LOCAL_READINESS_20261105.md",
+        "evidence/REVIEW_LOCAL_READINESS_20261105.md"
       ],
       "subtasks": [
         {
@@ -264,7 +277,10 @@
       ],
       "remaining": [
         "Two real core assets passed private visual/direction/proxy review with explicitly nonuniform synthetic sample fitting. Public rights, final style acceptance and any optional asset expansion remain."
-      ]
+      ],
+      "checks": {
+        "real_asset_375px": "PASS_CHROMIUM_VIEWPORT_NOT_PHYSICAL_DEVICE"
+      }
     },
     {
       "id": "T06",
@@ -315,7 +331,9 @@
         "evidence/STARTUP_ADJUSTMENTS_20261104.md",
         "evidence/CI_DOWNLOAD_FIX_20261105.md",
         "evidence/REAL_LUX3D_PRIVATE_20261105.md",
-        "evidence/REVIEW_REAL_LUX3D_20261105.md"
+        "evidence/REVIEW_REAL_LUX3D_20261105.md",
+        "evidence/LOCAL_READINESS_20261105.md",
+        "evidence/REVIEW_LOCAL_READINESS_20261105.md"
       ],
       "subtasks": [
         {
@@ -376,6 +394,14 @@
           "review": "PASS_INDEPENDENT",
           "acceptance_scope": "Hold/preview/pending proposals gate JSON/snapshot/print; cancel/selection/view/rejection/success/dispose recovery",
           "evidence": "evidence/REVIEW_CONTINUATION_NEXT_20261105.md"
+        },
+        {
+          "id": "T07-real-asset-resilience",
+          "status": "DONE",
+          "review": "PASS_INDEPENDENT_BROWSER",
+          "acceptance_scope": "Private real-derived inputs, per-object503/SRI explicit retry, no successful re-download,375px buttons,actual WebGL reconstruction, real-model drag export guard; no public/physical device/network acceptance",
+          "evidence": "evidence/LOCAL_READINESS_20261105.md",
+          "review_evidence": "evidence/REVIEW_LOCAL_READINESS_20261105.md"
         }
       ],
       "remaining": [
@@ -426,7 +452,9 @@
           "ci_enforcement": "UNCHANGED",
           "evidence": "evidence/CONTINUATION_NEXT_20261105.md"
         },
-        "current_real_lux3d_private": "PASS_ORIGINAL_AND_DERIVED_INDEPENDENT; FORMAL_PERFORMANCE_NOT_RUN"
+        "current_real_lux3d_private": "PASS_ORIGINAL_AND_DERIVED_INDEPENDENT; FORMAL_PERFORMANCE_NOT_RUN",
+        "real_asset_context_loss": "PASS_ACTUAL_WEBGL_EXTENSION_NEW_CANVAS_MODELS_HASH_PRESERVED",
+        "real_asset_draft_export": "PASS_TWO_MODELS_LOADED_ACTUAL_DOWNLOAD_HASH_CHECK"
       }
     },
     {
@@ -532,10 +560,12 @@
       "owner": null,
       "commit": null,
       "evidence": [
-        "evidence/CONTINUATION_20261104.md"
+        "evidence/CONTINUATION_20261104.md",
+        "evidence/LOCAL_READINESS_20261105.md",
+        "evidence/REVIEW_LOCAL_READINESS_20261105.md"
       ],
       "remaining": [
-        "Reverify actual deadline/form and entry before cutoff; no future automation created."
+        "Current public China deadline rechecked2026-11-19 19:00 Asia/Shanghai; authenticated form/accepted terms and final links still need owner verification before cutoff. No automation created."
       ]
     },
     {
@@ -547,15 +577,17 @@
       "owner": null,
       "commit": null,
       "evidence": [
-        "evidence/CONTINUATION_20261104.md"
+        "evidence/CONTINUATION_20261104.md",
+        "evidence/LOCAL_READINESS_20261105.md",
+        "evidence/REVIEW_LOCAL_READINESS_20261105.md"
       ],
       "remaining": [
-        "Approved hosted entry/owner and actual results date required; retain at least max(2026-12-31,results+30days), no shutdown scheduled."
+        "Approved host/owner plus actual results announcement AND publicity completion dates required; retain at least max(2026-12-31,actual publicity completion+30days), no shutdown or monitoring scheduled."
       ]
     }
   ],
   "timezone": "Asia/Shanghai",
-  "planning_status": "REAL_ORIGINAL_PRIVATE_BROWSER_AND_DERIVED_REPAIR_REVIEWED; RIGHTS_PUBLIC_HOST_ACCOUNT_GATES_REMAIN",
+  "planning_status": "LOCAL_EXECUTABLE_CHECKLIST_COMPLETE_EXTERNAL_OWNER_ENVIRONMENT_INPUTS_AND_DEFERRED_PERFORMANCE_REMAIN",
   "source_import_status": "IMPORTED_AND_NATIVE_VALIDATED",
   "source_import": {
     "base_commit": "01d48fca76f77856b5e9f31a37090bb1284e47db",
@@ -568,10 +600,10 @@
   "baseline_commit": "2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f",
   "implementation_branch": "codex/v6.1-browser-3d",
   "continuation_base_commit": "f6245e13bc41e36a0efeabeba3ca0fba2174c2f5",
-  "current_validation_scope": "evidence/REAL_LUX3D_PRIVATE_20261105.md",
+  "current_validation_scope": "evidence/LOCAL_READINESS_20261105.md",
   "historical_validation_scope": "Older 64e1665 CI41807603537 performance and 20261104 local startup measurements are historical. Latest verified remote is394eb04/CI41948477248 functional download FAIL and performance NOT_RUN. Local be32202 fixes the download protocol without a new remote run.",
   "historical_validated_source_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6",
-  "validation_scope": "Private original and normal-repaired Lux3D browser direction/proxy/full interaction independently PASS; Python343/application39/JS24+24/build/core/package PASS. Raw originals still fail20/24 zero normals; private derivatives Khronos0 issues. Rights/host/account blocked; formal performance NOT_RUN, strict budgets unchanged. a192d51 reported parallel work unavailable/not merged.",
+  "validation_scope": "4203a3a plus reviewed test-only real asset failure/retry/narrow/WebGL/draft-export coverage; public client rules and PC policy retrieved, account/plan rights not verified. Current script JS24 and browser acceptance PASS; prior4203 Python343/app39/build retained with unchanged product/core/dependencies, not new full reruns. No a192 merge or public/remote action.",
   "recovery_sync": {
     "task_id": "RECOVERY-SYNC-20261104",
     "date": "2026-11-04",
@@ -820,5 +852,26 @@
     "parallel_reported_commit": "a192d51184393187a9e1d98e9c92cd2da06b1dd7",
     "parallel_reported_commit_included": false,
     "merge": "NOT_RUN; cherry-pick this independent branch after a192d51 recovery is available"
+  },
+  "local_readiness": {
+    "base_commit": "4203a3a9b7d1018417ae7ddcebcbf94c8996ab3c",
+    "record": "evidence/LOCAL_READINESS_20261105.md",
+    "review": "evidence/REVIEW_LOCAL_READINESS_20261105.md",
+    "summary": "evidence/local-readiness/validation-summary.json",
+    "source_probe": "evidence/local-readiness/public-source-summary.json",
+    "private_usage_map": "evidence/local-readiness/private-usage-summary.json",
+    "status": "PASS_SCOPED_LOCAL_CHECKLIST_REVIEWED",
+    "new_product_implementation": "NONE_TEST_HARNESS_ONLY",
+    "formal_performance": "NOT_RUN_USER_DEFERRED",
+    "a192d51": "UNAVAILABLE_NOT_INCLUDED_NOT_MERGED",
+    "remote_write": "NOT_RUN",
+    "public_deployment": "NOT_RUN",
+    "owner_inputs": [
+      "Transfer readable a192 bundle",
+      "Confirm applicable account/plan orders and model distribution plus source rights",
+      "Approved host/project/audience and maintenance owner",
+      "Authenticated form/status and owner declarations",
+      "Actual Edge/Safari/second network access"
+    ]
   }
 }

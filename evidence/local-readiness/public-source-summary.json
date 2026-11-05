@@ -1,0 +1,60 @@
+{
+  "checked_at_utc": "2026-11-05T06:00:43.180051+00:00",
+  "authenticated": false,
+  "accepted_terms": false,
+  "security_settings_modified": false,
+  "method": "Official HTML returned exact current JS asset references; decoded static literals; current agreement client declares relative public GET path and pc_user_policy parameter; read that response using inherited proxy/CA and verified TLS. No browser certificate relaxation.",
+  "sources": {
+    "contest": {
+      "url": "https://www.aholo3d.cn/hackathon",
+      "html_sha256": "7159efb4b277224f22652f9caca7fd783e096c8b29e52d9bce203c911bf20f3e",
+      "client_url": "https://qhstaticssl.kujiale.com/__p/static/-holo-site-aholo-hackathon/pages/holo-global-main-hackathon/entry.dec1c8dc2e080e64.js?pn=holo-global-main-hackathon&ps=1851411",
+      "client_sha256": "60a1639a9652b304954ca0013dd19e4c3ae45fc2316d33b292f3c3d43c456bfc"
+    },
+    "china_terms": {
+      "url": "https://www.aholo3d.cn/agreement/termsofuse",
+      "client_url": "https://qhstaticssl.kujiale.com/__p/static/-holo-site-aholo-site/pages/holo-global-site-agreement/entry.a383fb42d6398ba6.js?pn=holo-global-site-agreement&ps=1829659",
+      "client_sha256": "4170ff05c52c21982a256a074babff8c1ae19ca2d858522bb0bc7fdd596845c5",
+      "response": {
+        "url": "https://www.aholo3d.cn/aholo/api/app/agreement/info?type=pc_user_policy",
+        "status": 200,
+        "bytes": 33677,
+        "content_type": "application/json",
+        "sha256": "35d3395d33874516aa13cc48eb3cb62ddd8b395f47293b3ff45510b32dcc1404",
+        "json_keys": [
+          "c",
+          "m",
+          "d",
+          "f"
+        ],
+        "status_fields": {}
+      },
+      "document_type": "pc_user_policy",
+      "updated_on": "2026-03-05",
+      "published_on": "2025-12-08",
+      "response_envelope_code": "0",
+      "content_characters": 12982
+    }
+  },
+  "public_facts": {
+    "submission_deadline_china": "2026-11-19T19:00:00+08:00",
+    "report_public_formats": [
+      "PDF",
+      "PPT",
+      "PPTX"
+    ],
+    "demo": "Working link or video containing actual software footage; authenticated field behavior not verified",
+    "lux3d": "Required core creation, optional API",
+    "judging": "Top50 professional70/community30 as public rule, not account result",
+    "maintenance": "At least 2026-12-31 inclusive and 30 days after results announced and publicity completed; actual completion date unknown"
+  },
+  "china_terms_scope": "Public PC policy has default noncommercial service-use condition and separate agreement/order precedence. No inference that it applies unchanged to specific Lux3D web account/plan, and no confirmation of external downloadable GLB/derivative distribution rights.",
+  "not_verified": [
+    "account identity/plan/accepted version/orders",
+    "registration/team/topic/submission status",
+    "exact authenticated field limits",
+    "raw/derived GLB external distribution authorization"
+  ],
+  "browser_diagnostic": "ERR_CERT_AUTHORITY_INVALID through session proxy; TLS verification was not disabled; standard HTTPS source retrieval succeeded",
+  "raw_third_party_text_in_source_package": false
+}

@@ -137,5 +137,14 @@
   "release": "V6.1",
   "reviewer_evidence_received": "USER_MESSAGE_WITH_DETAILED_LOCAL_VERIFICATION",
   "raw_official_js_in_package": false,
-  "verification_note": "已接受用户本地Claude官方JS核验；本环境可读取官方索引但网络DNS无法下载原JS/lock。VERIFIED不等于本环境全都重新抓取。"
+  "verification_note": "已接受用户本地Claude官方JS核验；本环境可读取官方索引但网络DNS无法下载原JS/lock。VERIFIED不等于本环境全都重新抓取。",
+  "public_followup_20261105": {
+    "record": "evidence/LOCAL_READINESS_20261105.md",
+    "source_receipt": "evidence/local-readiness/public-source-summary.json",
+    "method": "Official current HTML-linked public client bundle plus public agreement API; no authenticated session or term acceptance",
+    "public_deadline_china": "2026-11-19T19:00:00+08:00",
+    "maintenance_clarification": "30days after results announced and publicity completed; record actual completion date",
+    "account_status": "NOT_VERIFIED",
+    "specific_model_distribution_rights": "NOT_CONFIRMED"
+  }
 }

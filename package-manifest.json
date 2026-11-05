@@ -1,9 +1,9 @@
 {
   "manifest_version": "1.0",
-  "release": "V6.1-private-real-lux3d-reviewed-20261105",
-  "base_commit": "ba21f54ace3218cfa2d695092b735165c923b1b9",
+  "release": "V6.1-local-readiness-reviewed-20261105",
+  "base_commit": "4203a3a9b7d1018417ae7ddcebcbf94c8996ab3c",
   "baseline_zip_sha256": "b6c674f532fd30ff7ab086b08c814b086e94e2aa0f12cff80c1b6d94b96d3752",
-  "classification_policy": "Prior reviewed source allowlist plus explicitly reviewed private zero-normal repair utility/tests, real Lux3D private acceptance/status documents, independent review and non-sensitive JSON/text summaries. Excludes original or derived GLB, private probes/receipts, reference/user images, account screenshots, private screenshot/PDF/video, dependency/browser/runtime/build directories. Parallel reported a192d51 is not included.",
+  "classification_policy": "Prior explicit reviewed source allowlist plus independently reviewed optional private resilience browser harness, draft model-load assertion, current local checklist/status/maintenance clarifications and safe original response hash/factual/usage summaries. No raw third-party HTML/JS/terms, GLB, images, private probes/receipts/screenshots/PDF/video, runtime/build/dependencies or browser profiles. Parallel reported a192d51 is unavailable and not included.",
   "files": [
     {
       "path": ".env.example",
@@ -61,8 +61,8 @@
     },
     {
       "path": "START_HERE.md",
-      "sha256": "7afcf635cf26353e49e6e073cb399a9265c1391b1a2221f6f656058d675fb108",
-      "bytes": 10388,
+      "sha256": "3f58d74a70f07b8d347bfa525c7a19da8024a2e698795b3b33617fbf80527e60",
+      "bytes": 10790,
       "classification": "generated_project_source"
     },
     {
@@ -583,8 +583,8 @@
     },
     {
       "path": "docs/11-official-submission.md",
-      "sha256": "287e78e5aaf45b9b18be9cd009c2554aee07b959222187c855941add82ab5764",
-      "bytes": 3661,
+      "sha256": "068f1f188b863f4e36ce91014bcdff5adcb8ecd7a2284815035e63374c77ce59",
+      "bytes": 3864,
       "classification": "generated_project_source"
     },
     {
@@ -667,8 +667,8 @@
     },
     {
       "path": "docs/v6.1/06-acceptance.md",
-      "sha256": "223d16c76d0732ca0ead6240cc78e74b4e9168c9f563e780811f4667240d7e8b",
-      "bytes": 3962,
+      "sha256": "f2dddf8355083fb3fc5390a58f3d2ab83b8e8b55c279ee898984b8844e2303dc",
+      "bytes": 4209,
       "classification": "generated_project_source"
     },
     {
@@ -679,8 +679,8 @@
     },
     {
       "path": "docs/v6.1/08-private-asset-intake.md",
-      "sha256": "b2d33c0d7c08d7c28b7e729e8fa13f2fd5f825930654b9824858d21650fee1a3",
-      "bytes": 3808,
+      "sha256": "96a380e1459f9fc97d059b7a0845eea2e3c9a562de9030ae1e8add6116c080ad",
+      "bytes": 4313,
       "classification": "generated_project_source"
     },
     {
@@ -745,8 +745,8 @@
     },
     {
       "path": "evidence/HANDOFF.md",
-      "sha256": "bfa1bd361381aa59022c987c4d1afb29c3b7d54f15419c712d88efb34811fecf",
-      "bytes": 17721,
+      "sha256": "0361c323328215abd1b1aaeefa41f02040c735ea33918b615ae0d358de545527",
+      "bytes": 19435,
       "classification": "generated_project_source"
     },
     {
@@ -754,6 +754,12 @@
       "sha256": "b3e0b926bb7be97bdba36f774b361fdc3663ea5d24bfdf540227faa0f0f914f5",
       "bytes": 3113,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "evidence/LOCAL_READINESS_20261105.md",
+      "classification": "generated_project_source",
+      "sha256": "e18986897d71913a18ad2a6070f18593ab7dd392921c24a0556cc0f3bab1b9bc",
+      "bytes": 10479
     },
     {
       "path": "evidence/PERFORMANCE_DEFER_EXPERIMENT_20261104.md",
@@ -814,6 +820,12 @@
       "sha256": "6539d38649d5b3e271f16dac828a47914cfcf382e1fe101e2a369bf3651067b7",
       "bytes": 3477,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "evidence/REVIEW_LOCAL_READINESS_20261105.md",
+      "classification": "generated_project_source",
+      "sha256": "6137bc2608f89689468a7e9ae3aebfd34062a0e7d5cc4b0020e1d20c50ea33a0",
+      "bytes": 9122
     },
     {
       "path": "evidence/REVIEW_OBSERVATIONS_CONTINUATION_20261104.md",
@@ -1710,6 +1722,24 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "evidence/local-readiness/private-usage-summary.json",
+      "classification": "generated_project_source",
+      "sha256": "8a6efdb81e39bacb98929b9e858c5b87af50af0bbda1f41cab2b7a44183c586b",
+      "bytes": 5343
+    },
+    {
+      "path": "evidence/local-readiness/public-source-summary.json",
+      "classification": "generated_project_source",
+      "sha256": "5ade16dee460f7e97b51fa8db80584afa5aef44efa4e8ec2854a1806759f7100",
+      "bytes": 3144
+    },
+    {
+      "path": "evidence/local-readiness/validation-summary.json",
+      "classification": "generated_project_source",
+      "sha256": "1b2ab6423ac8db385a131003367cf0f3d505394eb6b7dcee67671656b8135ffe",
+      "bytes": 4776
+    },
+    {
       "path": "evidence/logs/ci-build-browser-4bb18cd.txt",
       "sha256": "a1ee224a41467e24654ad84f01bc0f9503e10130dcf8f52f23e6691143e79128",
       "bytes": 1085,
@@ -2407,8 +2437,8 @@
     },
     {
       "path": "evidence/rules-verification.json",
-      "sha256": "ab4822d92ad256c4a9a0e6c12b6c071edad50e363acca525ba3916ea08cad9d0",
-      "bytes": 6584,
+      "sha256": "792ecfbe0fcf3f1807ad05875acc0024b20843302c4753e7cd30aae1b12b53a5",
+      "bytes": 7166,
       "classification": "generated_project_source"
     },
     {
@@ -3151,8 +3181,8 @@
     },
     {
       "path": "evidence/task-status.json",
-      "sha256": "b563e0344b4ba3f2292720f853e3caa2dde321ddbf7a9d999b12b43285ef0ef8",
-      "bytes": 36375,
+      "sha256": "5350bcc20d1f755260b6543fb0ca0c719804674123fbc9df589d60c2dd6a0a3c",
+      "bytes": 39562,
       "classification": "generated_project_source"
     },
     {
@@ -4908,9 +4938,15 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "scripts/check_private_asset_resilience.mjs",
+      "classification": "generated_project_source",
+      "sha256": "45caaaff6bff18da79bc9baf0e68845d778e1d61706713608f7d52010a7a22d7",
+      "bytes": 9295
+    },
+    {
       "path": "scripts/check_private_assets.mjs",
-      "sha256": "57e5cbb45e4b5566b7ce6b0ad50aaab35c63d1724245429c4945b4e80aaf2c47",
-      "bytes": 8951,
+      "sha256": "2cb6af20aecabfd5964a008479704236f9ec86399b594ed4798922c7ffbfc957",
+      "bytes": 9525,
       "classification": "generated_project_source"
     },
     {
@@ -4952,8 +4988,8 @@
     {
       "path": "scripts/check_web_draft_export.mjs",
       "classification": "generated_project_source",
-      "sha256": "b1eb4eb776b8f62a653e4832a40cb1830955a2f55606b5b7943fc91a76c04731",
-      "bytes": 8682
+      "sha256": "f23885b35730027862111badadb909e756e73210c01f6fdfa454986209abfd69",
+      "bytes": 9037
     },
     {
       "path": "scripts/check_web_embedding.mjs",
@@ -5119,8 +5155,8 @@
     },
     {
       "path": "submission/drafts/release-runbook.md",
-      "sha256": "ea34670b119f60624da97aedc1d6e48df473793a72d2b1465ec12975104f5f0a",
-      "bytes": 6291,
+      "sha256": "85a07434f1be05956ba2a519024eb9ea565c757a616c1eaa1611acb9812dc9ed",
+      "bytes": 6534,
       "classification": "generated_project_source"
     },
     {
