@@ -1,0 +1,26 @@
+....FF..                                                                 [100%]
+=================================== FAILURES ===================================
+_________________ test_image_bytes_cannot_alias_normal_storage _________________
+
+    def test_image_bytes_cannot_alias_normal_storage():
+        _, document, binary = fixture()
+        document['images'][0]['bufferView'] = 3
+>       with pytest.raises(ValueError, match='Image'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+reference/tests/test_private_normal_repair.py:79: Failed
+__________ test_external_images_are_outside_the_self_contained_scope ___________
+
+    def test_external_images_are_outside_the_self_contained_scope():
+        _, document, binary = fixture()
+        document['images'] = [{'uri': 'https://example.invalid/private.png'}]
+>       with pytest.raises(ValueError, match='Image'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+reference/tests/test_private_normal_repair.py:86: Failed
+=========================== short test summary info ============================
+FAILED reference/tests/test_private_normal_repair.py::test_image_bytes_cannot_alias_normal_storage
+FAILED reference/tests/test_private_normal_repair.py::test_external_images_are_outside_the_self_contained_scope
+2 failed, 6 passed in 0.03s

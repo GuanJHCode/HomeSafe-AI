@@ -1,9 +1,9 @@
 {
   "manifest_version": "1.0",
-  "release": "V6.1-reviewed-continuation-20261105",
-  "base_commit": "be32202bbaeafd9fcfde84601c22fb5a981fab6c",
+  "release": "V6.1-private-real-lux3d-reviewed-20261105",
+  "base_commit": "ba21f54ace3218cfa2d695092b735165c923b1b9",
   "baseline_zip_sha256": "b6c674f532fd30ff7ab086b08c814b086e94e2aa0f12cff80c1b6d94b96d3752",
-  "classification_policy": "Existing reviewed source allowlist plus explicitly reviewed draft-output guard, neutral finding copy, explicit-source-front private calibration tools, CI procedural inputs, reviews and synthetic/procedural JSON/text evidence. Third-party notices retain audited classification. Excludes original Lux3D, raw/user assets, private intake directories, screenshots, PDFs, videos, runtime vendor, builds, browser profiles and dependencies.",
+  "classification_policy": "Prior reviewed source allowlist plus explicitly reviewed private zero-normal repair utility/tests, real Lux3D private acceptance/status documents, independent review and non-sensitive JSON/text summaries. Excludes original or derived GLB, private probes/receipts, reference/user images, account screenshots, private screenshot/PDF/video, dependency/browser/runtime/build directories. Parallel reported a192d51 is not included.",
   "files": [
     {
       "path": ".env.example",
@@ -61,8 +61,8 @@
     },
     {
       "path": "START_HERE.md",
-      "sha256": "3d865c4cdd3460d2afa13ba78bd351ea3b5d62592b510b9d1dbe71bb0bad975e",
-      "bytes": 9954,
+      "sha256": "7afcf635cf26353e49e6e073cb399a9265c1391b1a2221f6f656058d675fb108",
+      "bytes": 10388,
       "classification": "generated_project_source"
     },
     {
@@ -679,8 +679,8 @@
     },
     {
       "path": "docs/v6.1/08-private-asset-intake.md",
-      "sha256": "1e004a0969c3829d4ee940f5840771503681896d519ace11f0e12b2814df4be2",
-      "bytes": 3391,
+      "sha256": "b2d33c0d7c08d7c28b7e729e8fa13f2fd5f825930654b9824858d21650fee1a3",
+      "bytes": 3808,
       "classification": "generated_project_source"
     },
     {
@@ -745,8 +745,8 @@
     },
     {
       "path": "evidence/HANDOFF.md",
-      "sha256": "de825537b3b1426ba2dacaab69ae366de0135243719184ac5356e51a13f30284",
-      "bytes": 15583,
+      "sha256": "bfa1bd361381aa59022c987c4d1afb29c3b7d54f15419c712d88efb34811fecf",
+      "bytes": 17721,
       "classification": "generated_project_source"
     },
     {
@@ -760,6 +760,12 @@
       "sha256": "9f0c0b23b5117e41a9c8baeb9c5b8255c065a2a165bcfade514a64d9d3815a02",
       "bytes": 5700,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "evidence/REAL_LUX3D_PRIVATE_20261105.md",
+      "classification": "generated_project_source",
+      "sha256": "a181f8545cfbfade73b5258b8fa3199141204960ef03f5b33cd4b9e73eb78dd7",
+      "bytes": 8530
     },
     {
       "path": "evidence/RECOVERY_SYNC_20261104.md",
@@ -820,6 +826,12 @@
       "sha256": "b993be026d07bda2993df8fe3d4232aa567b1f7fe948a136c9514477ba0b42ee",
       "bytes": 14989,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "evidence/REVIEW_REAL_LUX3D_20261105.md",
+      "classification": "generated_project_source",
+      "sha256": "b791115d57509400c0005e2e345e55e2f6d88971eda347e3a56eece44a6a442f",
+      "bytes": 11961
     },
     {
       "path": "evidence/REVIEW_RECOVERY_CONTINUATION_20261104.md",
@@ -2142,6 +2154,54 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "evidence/real-lux3d/normal-repair-green.txt",
+      "classification": "generated_project_source",
+      "sha256": "7b3b0d5a921d7788afd5d0591f4f23616773499e68d52f759b0a65c29bc0ff2c",
+      "bytes": 98
+    },
+    {
+      "path": "evidence/real-lux3d/normal-repair-image-red.txt",
+      "classification": "generated_project_source",
+      "sha256": "c05b69e8e396e7859e4a7e9d185a35a2b751f5f2b0d14ccc339edeeacc920135",
+      "bytes": 1412
+    },
+    {
+      "path": "evidence/real-lux3d/normal-repair-initial-red.txt",
+      "classification": "generated_project_source",
+      "sha256": "a177ff7a23fedd4b9ff4037b5c9d799d155d8ced490f2222cc96a69b09946ca1",
+      "bytes": 965
+    },
+    {
+      "path": "evidence/real-lux3d/normal-repair-overlap-red.txt",
+      "classification": "generated_project_source",
+      "sha256": "a40ef6c8d97d3206446fb2ba24e00d86da46fb02d661496b979d0d0900130cac",
+      "bytes": 963
+    },
+    {
+      "path": "evidence/real-lux3d/python-tests.txt",
+      "classification": "generated_project_source",
+      "sha256": "3cf5ad6d43db73d822fba7916768a2014f7f1cce98f9bac34596141b53493294",
+      "bytes": 420
+    },
+    {
+      "path": "evidence/real-lux3d/script-tests.txt",
+      "classification": "generated_project_source",
+      "sha256": "c775ba72fb013aa425261583748fb9d6ef8e654f5edf0db5fae3f4d42a5bc828",
+      "bytes": 2333
+    },
+    {
+      "path": "evidence/real-lux3d/submission-preflight.txt",
+      "classification": "generated_project_source",
+      "sha256": "7f05499c6aa83367855218b7b0fd07379002552aa89e2de0fa204c301045f3e2",
+      "bytes": 491
+    },
+    {
+      "path": "evidence/real-lux3d/validation-summary.json",
+      "classification": "generated_project_source",
+      "sha256": "7ae356c0d08fb47298dbaf6f26bfb0f7928760b4e25dc33a9788a0cce43a6115",
+      "bytes": 11147
+    },
+    {
       "path": "evidence/recovery-continuation-20261104.json",
       "sha256": "a65084fd67f9febd2d750fd09115960df15a5c9007f56d6f858ffbaca65932b9",
       "bytes": 1375,
@@ -3091,8 +3151,8 @@
     },
     {
       "path": "evidence/task-status.json",
-      "sha256": "a803fbb2a39d01e1d8d8ada7f2c8421e9d3d495e4ec13ce2a7aca9b912ca0b87",
-      "bytes": 33243,
+      "sha256": "b563e0344b4ba3f2292720f853e3caa2dde321ddbf7a9d999b12b43285ef0ef8",
+      "bytes": 36375,
       "classification": "generated_project_source"
     },
     {
@@ -4758,6 +4818,12 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "reference/tests/test_private_normal_repair.py",
+      "classification": "generated_project_source",
+      "sha256": "41fd7d9814a0e2bb728609612fd717ba637a6eae2fd2f7b90118324cc566ddd2",
+      "bytes": 5841
+    },
+    {
       "path": "reference/tests/test_public_assets.py",
       "sha256": "6e3083372d97fe71ef23ce0d672c22f3e0c3d92c4835c49f11ddbeeabbabb68a",
       "bytes": 5223,
@@ -4978,6 +5044,12 @@
       "sha256": "8df324e87785d25f4477b0658dfe82b607639a94a34a3cf08b33ac4cddd0ab76",
       "bytes": 2093,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "scripts/repair_private_glb_normals.py",
+      "classification": "generated_project_source",
+      "sha256": "922b0d390de098f475aca6468685e3b8f32b7de4067ba06b6fe9c2f2083ade84",
+      "bytes": 10958
     },
     {
       "path": "scripts/run_reference_demo.py",

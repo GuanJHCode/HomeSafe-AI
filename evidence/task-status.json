@@ -117,23 +117,29 @@
         "evidence/T03_PRIVATE_INTAKE_20261104.md",
         "evidence/lux3d-geometry-20261104.json",
         "evidence/ci-private-intake-9cf7660.json",
-        "evidence/CONTINUATION_20261104.md"
+        "evidence/CONTINUATION_20261104.md",
+        "evidence/REAL_LUX3D_PRIVATE_20261105.md",
+        "evidence/REVIEW_REAL_LUX3D_20261105.md"
       ],
       "checks": {
         "approved_lux3d_assets": 0,
-        "real_asset_browser_test": "BLOCKED_NOT_RUN_FILE_UNAVAILABLE",
+        "real_asset_browser_test": "PASS_PRIVATE_ORIGINAL_AND_DERIVED_INDEPENDENT",
         "publication_catalog_and_binding": "IMPLEMENTED",
         "synthetic_publication_regression": "PASS",
         "received_lux3d_glbs": 2,
         "original_checksums": "PASS_18_FILES",
         "real_asset_geometry": "PASS_NODE_GEOMETRY_ONLY",
-        "current_isolated_chromium": "PASS_STARTUP_AND_PROCEDURAL_ONLY",
-        "current_original_bytes": "NOT_DOWNLOADED",
-        "private_main_mode_binding": "PASS_PROCEDURAL_BROWSER"
+        "current_isolated_chromium": "PASS_REAL_LUX3D_ORIGINAL_AND_DERIVED",
+        "current_original_bytes": "BOTH_AVAILABLE_EXPECTED_SHA_MATCH_UNCHANGED",
+        "private_main_mode_binding": "PASS_REAL_LUX3D_BROWSER",
+        "source_front_visual_review": "PASS_BOTH_PLUS_Z_TO_SCENE_MINUS_Z",
+        "actual_runtime_proxy": "PASS_0_90_180_AND_TRANSLATION",
+        "original_gltf_validator": "FAIL_ZERO_NORMALS_20_24",
+        "private_derived_gltf_validator": "PASS_ZERO_ISSUES",
+        "private_normal_repair_tool": "PASS_INDEPENDENT_9_TESTS"
       },
       "blockers": [
-        "Library materialization download host blocked by environment proxy: Tunnel connection failed: 403 Forbidden. No actual GLB bytes in this environment.",
-        "Distribution rights under applicable China-site account terms remain unconfirmed."
+        "Distribution rights under applicable China-site account terms remain unconfirmed; private browser acceptance does not authorize public GLB distribution."
       ],
       "subtasks": [
         {
@@ -157,11 +163,26 @@
           "review": "PASS_INDEPENDENT_TOOLS_ONLY",
           "acceptance_scope": "Explicit sourceFront declarations mapped to scene-Z, rotated bounds/pivot, unchanged source, persisted candidatesfalse; procedural real-browser only. ActualLux3D/rights BLOCKED.",
           "evidence": "evidence/REVIEW_ASSET_ORIENTATION_20261105.md"
+        },
+        {
+          "id": "T03-real-private-browser",
+          "status": "DONE",
+          "review": "PASS_INDEPENDENT",
+          "acceptance_scope": "Actual SHA-matching originals, +Z/-Z visual counterexample, textures, sample fit, actual bbox proxies and full private browser interaction; no public distribution approval",
+          "evidence": "evidence/REAL_LUX3D_PRIVATE_20261105.md",
+          "review_evidence": "evidence/REVIEW_REAL_LUX3D_20261105.md"
+        },
+        {
+          "id": "T03-private-zero-normal-derivatives",
+          "status": "DONE",
+          "review": "PASS_INDEPENDENT_AFTER_SHARED_VIEW_COUNTEREXAMPLE_FIX",
+          "acceptance_scope": "Original hashes preserved; 9 unit regressions, independent byte-equivalent derivative rebuild, protected geometry/UV/images bytes, official zero-issue validation and full private browser retest",
+          "evidence": "evidence/REAL_LUX3D_PRIVATE_20261105.md",
+          "review_evidence": "evidence/REVIEW_REAL_LUX3D_20261105.md"
         }
       ],
       "remaining": [
-        "Originals confirmed in another environment; current-environment expected-SHA scan found none and provided Library original ZIP download failed. Real GLB private browser/visual acceptance BLOCKED_NOT_RUN_CURRENT_ENV_ORIGINALS_UNAVAILABLE.",
-        "Distribution rights under applicable China-site account terms remain unconfirmed."
+        "Confirm applicable account terms and distribution rights before any public catalog acceptance or deployment. Retain originals with known format defects and separate tested derivatives; no private approval is publication approval."
       ]
     },
     {
@@ -221,7 +242,9 @@
       "owner": null,
       "commit": null,
       "evidence": [
-        "evidence/CONTINUATION_20261104.md"
+        "evidence/CONTINUATION_20261104.md",
+        "evidence/REAL_LUX3D_PRIVATE_20261105.md",
+        "evidence/REVIEW_REAL_LUX3D_20261105.md"
       ],
       "subtasks": [
         {
@@ -240,7 +263,7 @@
         }
       ],
       "remaining": [
-        "Actual Lux3D visual/calibration/style acceptance pending original file access and rights."
+        "Two real core assets passed private visual/direction/proxy review with explicitly nonuniform synthetic sample fitting. Public rights, final style acceptance and any optional asset expansion remain."
       ]
     },
     {
@@ -253,7 +276,9 @@
       "commit": null,
       "evidence": [
         "evidence/CONTINUATION_20261104.md",
-        "evidence/FEATURE_CONTINUATION_20261104.md"
+        "evidence/FEATURE_CONTINUATION_20261104.md",
+        "evidence/REAL_LUX3D_PRIVATE_20261105.md",
+        "evidence/REVIEW_REAL_LUX3D_20261105.md"
       ],
       "subtasks": [
         {
@@ -272,7 +297,7 @@
         }
       ],
       "remaining": [
-        "Revalidate main challenge with actual Lux3D assets and final target deployment; implementation subtask is complete."
+        "Main challenge revalidated with actual original and repaired Lux3D assets in private Chromium, including three legal cabinet layouts. Final target deployment remains unverified."
       ]
     },
     {
@@ -288,7 +313,9 @@
         "evidence/FEATURE_CONTINUATION_20261104.md",
         "evidence/CI_PUSH_64e1665_20261104.md",
         "evidence/STARTUP_ADJUSTMENTS_20261104.md",
-        "evidence/CI_DOWNLOAD_FIX_20261105.md"
+        "evidence/CI_DOWNLOAD_FIX_20261105.md",
+        "evidence/REAL_LUX3D_PRIVATE_20261105.md",
+        "evidence/REVIEW_REAL_LUX3D_20261105.md"
       ],
       "subtasks": [
         {
@@ -352,7 +379,7 @@
         }
       ],
       "remaining": [
-        "Actual Lux3D load/render/release and print validation; final target device/network performance.",
+        "Actual original/derived Lux3D load/render/release, JSON/print, refresh and Worker recovery passed private independent browser acceptance; final target device/network performance remains unverified.",
         "First-editable 3s project engineering target remains OPEN_NOT_MET based on prior4812.2ms measurement; user temporarily defers it as a blocker to other development. No new continuation timing; original CI budgets/enforce unchanged. New local fixes await separate push authorization; remote394eb04 functional download failed/performance skipped. No cross-environment inference."
       ],
       "checks": {
@@ -398,7 +425,8 @@
           "performance": "NOT_RUN_USER_PRIORITY",
           "ci_enforcement": "UNCHANGED",
           "evidence": "evidence/CONTINUATION_NEXT_20261105.md"
-        }
+        },
+        "current_real_lux3d_private": "PASS_ORIGINAL_AND_DERIVED_INDEPENDENT; FORMAL_PERFORMANCE_NOT_RUN"
       }
     },
     {
@@ -527,7 +555,7 @@
     }
   ],
   "timezone": "Asia/Shanghai",
-  "planning_status": "CONTINUATION_SCOPED_FEATURES_REVIEWED_EXTERNAL_GATES_BLOCKED_PERFORMANCE_DEPRIORITIZED_FOR_DEVELOPMENT",
+  "planning_status": "REAL_ORIGINAL_PRIVATE_BROWSER_AND_DERIVED_REPAIR_REVIEWED; RIGHTS_PUBLIC_HOST_ACCOUNT_GATES_REMAIN",
   "source_import_status": "IMPORTED_AND_NATIVE_VALIDATED",
   "source_import": {
     "base_commit": "01d48fca76f77856b5e9f31a37090bb1284e47db",
@@ -540,10 +568,10 @@
   "baseline_commit": "2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f",
   "implementation_branch": "codex/v6.1-browser-3d",
   "continuation_base_commit": "f6245e13bc41e36a0efeabeba3ca0fba2174c2f5",
-  "current_validation_scope": "evidence/CONTINUATION_NEXT_20261105.md",
+  "current_validation_scope": "evidence/REAL_LUX3D_PRIVATE_20261105.md",
   "historical_validation_scope": "Older 64e1665 CI41807603537 performance and 20261104 local startup measurements are historical. Latest verified remote is394eb04/CI41948477248 functional download FAIL and performance NOT_RUN. Local be32202 fixes the download protocol without a new remote run.",
   "historical_validated_source_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6",
-  "validation_scope": "Local continuation frombe32202: three scoped features independently reviewed, Python334/application39/JS48/build/browser/procedural-direction PASS. Current remote394eb04 CI41948477248 failed download and skipped performance. New local changes not pushed; this continuation performance NOT_RUN by user priority, strict budgets unchanged. Real Lux3D/public host/account acceptance remains blocked.",
+  "validation_scope": "Private original and normal-repaired Lux3D browser direction/proxy/full interaction independently PASS; Python343/application39/JS24+24/build/core/package PASS. Raw originals still fail20/24 zero normals; private derivatives Khronos0 issues. Rights/host/account blocked; formal performance NOT_RUN, strict budgets unchanged. a192d51 reported parallel work unavailable/not merged.",
   "recovery_sync": {
     "task_id": "RECOVERY-SYNC-20261104",
     "date": "2026-11-04",
@@ -569,7 +597,7 @@
     "current_scope": "evidence/FEATURE_CONTINUATION_20261104.md"
   },
   "previous_continuation_base_commit": "57faf384d64e9770407b28086fdfeb5b193a6d6f",
-  "current_source_sync": "LOCAL_BE32202_PLUS_REVIEWED_CONTINUATION_NOT_PUSHED; REMOTE_394eb04",
+  "current_source_sync": "LOCAL_BA21F54_PLUS_REVIEWED_REAL_LUX3D_PRIVATE_BRANCH_NOT_PUSHED; REPORTED_A192D51_NOT_AVAILABLE_OR_MERGED",
   "previous_source_sync": "LOCAL_ONLY_NOT_PUSHED",
   "latest_verified_remote_ci": {
     "source_commit": "394eb04e9bbaf7555a507cbc4c1fe28caa62a6a9",
@@ -765,5 +793,32 @@
       "T05-neutral-not-triggered-copy",
       "T03-explicit-source-front-calibration"
     ]
+  },
+  "real_lux3d_private": {
+    "base_commit": "ba21f54ace3218cfa2d695092b735165c923b1b9",
+    "local_branch": "codex/real-lux3d-private-20261105",
+    "status": "PASS_SCOPED_PRIVATE_RIGHTS_BLOCKED",
+    "record": "evidence/REAL_LUX3D_PRIVATE_20261105.md",
+    "review": "evidence/REVIEW_REAL_LUX3D_20261105.md",
+    "summary": "evidence/real-lux3d/validation-summary.json",
+    "originals": "AVAILABLE_BOTH_EXPECTED_SHA_MATCH",
+    "original_format": "FAIL_ZERO_NORMALS_20_24_AND_TARGET_HINTS",
+    "derived_format": "PASS_KHRONOS_ZERO_ERRORS_WARNINGS_INFOS_HINTS",
+    "private_browser": "PASS_ORIGINAL_AND_DERIVED_INDEPENDENT",
+    "source_fronts": {
+      "chair": "+Z",
+      "cabinet": "+Z"
+    },
+    "scene_front": "-Z",
+    "public_catalog_empty": true,
+    "persisted_reviewed": [
+      false,
+      false
+    ],
+    "remote_write": "NOT_RUN",
+    "formal_performance": "NOT_RUN_USER_PRIORITY",
+    "parallel_reported_commit": "a192d51184393187a9e1d98e9c92cd2da06b1dd7",
+    "parallel_reported_commit_included": false,
+    "merge": "NOT_RUN; cherry-pick this independent branch after a192d51 recovery is available"
   }
 }

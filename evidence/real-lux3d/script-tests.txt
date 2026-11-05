@@ -1,0 +1,34 @@
+✔ private intake rejects corrupt headers and external resources (2.553377ms)
+✔ private output cannot enter public trees, overwrite files, or follow symlinks (9.303108ms)
+✔ local server rejects foreign hosts and origins (0.265058ms)
+✔ overlapping initialization stages use wall-time union, not their sum (5.948628ms)
+✔ uninstrumented baseline remains measurable while required candidate tracing fails closed (0.52609ms)
+✔ required traces reject missing lifecycle marks and wrongly typed or incomplete phases (5.09205ms)
+✔ an early empty final file is not parsed until CDP confirms completion (28.058729ms)
+✔ completion before start and duplicate events bind to one GUID (2.022209ms)
+✔ a duplicate terminal event cannot overturn the first completed state (1.538011ms)
+✔ other frames, other filenames, and unrelated progress cannot claim a download (2.106786ms)
+✔ same suggested filename works for sequential downloads because paths use GUIDs (2.011722ms)
+✔ unsafe concurrent captures are rejected without disturbing the first (1.696118ms)
+✔ two matching starts are rejected as ambiguous (1.264961ms)
+✔ cancel and start timeout fail clearly and require a fresh page (14.717563ms)
+✔ completion timeout and corrupt JSON preserve the raw artifact (18.116856ms)
+✔ failed click releases subscriptions and a fresh harness can retry (2.481989ms)
+✔ close aborts an active capture and removes listeners (1.2376ms)
+✔ a completed download cannot wait forever for a stuck click promise (14.005964ms)
+✔ close and start deadline also bound a stalled frame lookup (14.286765ms)
+✔ browser behavior uses GUID filenames and report/snapshot names stay distinct (0.775285ms)
+✔ one browser rejects a second harness before it changes global download behavior (0.776016ms)
+✔ concurrent factory setup reserves ownership and setup failure rolls it back (0.608965ms)
+Download artifacts retained at /tmp/homesafe-download-evidence-olKT5o/evidence/failed-downloads-5tDQqq
+✔ failed run copies GUID bytes into the evidence directory (4.929607ms)
+Download artifacts retained at /tmp/homesafe-failed-downloads-Bq9SgK
+✔ local failure copies partial bytes outside Chromium download directory (4.744879ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 173.638742

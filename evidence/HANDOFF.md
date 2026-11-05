@@ -1,6 +1,16 @@
 # 接手记录
 
-## 当前快照：be32202 后续开发（2026-11-05 UTC）
+## 当前快照：真实 Lux3D 私下验收（2026-11-05 UTC）
+
+本轮独立分支 `codex/real-lux3d-private-20261105` 从恢复包精确 `ba21f54ace3218cfa2d695092b735165c923b1b9` 继续，旧工作区完整保留。新实例公网 unrestricted/enforced 已核实，官方 Library 助手成功物化两件匹配 SHA 的真实原件；基线853项摘要、完整bundle/fsck通过。真实原件的 +Z 正面、纹理、非均匀样例拟合、实际代理、拖动/旋转/回弹/挑战/撤销/刷新/Worker恢复及JSON/打印/三种快照重算通过独立审查。
+
+原件 Khronos 检查发现 chair20/cabinet24 个零法线错误，各4个target hint。新增私下派生修复工具保留原件及POSITION/索引/UV/图像/非零法线，仅修复零法线并补元数据；独立审查发现的共享normal/POSITION存储缺陷已有失败反例及修复。九项专项、独立重建逐字节对照、派生官方全零问题和完整真实浏览器均通过。原件仍如实保留规范错误；两件持久候选reviewed=false，公开catalog为空，未上传原件/派生件/截图，未推送或发布。
+
+本轮Python343、应用39、JS24+24、8项包检查、契约/严格类型/构建/真实Pyodide通过。无正式性能p95新测，原3秒目标OPEN_NOT_MET与严格CI预算不变；只读重核远端功能分支仍394eb04、master仍2f562a3，未重查CI。细节见[本轮记录](REAL_LUX3D_PRIVATE_20261105.md)、[独立审查](REVIEW_REAL_LUX3D_20261105.md)和[机器摘要](real-lux3d/validation-summary.json)。T03整体仅因公开分发权利仍BLOCKED；正式托管/跨设备/同版最终材料/账号提交门禁未关闭，提交预检退出2。
+
+父线程另告知 `a192d51184393187a9e1d98e9c92cd2da06b1dd7` 已有受控断网恢复、开发报告与占位演示，但其恢复包当前不可取得。本分支不含也未覆盖该提交；取得后在其隔离续作分支 cherry-pick 本轮独立提交，冲突时合并两边 HANDOFF/task-status/START_HERE 与 allowlist/checksums 的新增信息，不整份覆盖。提供的独立bundle/补丁只以ba21f54为基线；没有假称已整合a192d51。
+
+## 历史快照：be32202 后续开发（2026-11-05 UTC）
 
 最新本地已提交基线为 `be32202bbaeafd9fcfde84601c22fb5a981fab6c`，包含独立审查通过的 CI 下载修复；本轮开发分支 `codex/continuation-after-download-20261105`。重新 fetch 确认远端仍为 `394eb04e9bbaf7555a507cbc4c1fe28caa62a6a9`，最新核实远端 CI 为 **41948477248：下载功能失败，严格性能 skipped / NOT_RUN**。64e1665 等下方段落均为历史，不是当前最新远端。
 
