@@ -1,0 +1,53 @@
+
+> @homesafe/web@0.1.0 test
+> node --test tests/*.test.ts
+
+✔ same-origin GLB replacement applies orientation, bottom pivot, and instance dimensions (44.276842ms)
+✔ a stalled GLB download times out, evicts its cache entry, and permits explicit retry (13.191234ms)
+✔ sends only the canonical transform and renders remaining issues after Python confirms the goal (2.884042ms)
+✔ rejects a changed challenge state if its comparison does not bind both input hashes (0.860245ms)
+✔ a late result cannot replace the current revision (7.526974ms)
+✔ mismatched response revision and comparison hashes cannot become current (2.134014ms)
+✔ a failed Worker is terminated and a fresh Worker can evaluate without replaying the failed request (1.185605ms)
+✔ structured placement issues survive a current request failure (0.84979ms)
+✔ retry uses refreshed runtime configuration and never replays a failed operation (0.468726ms)
+✔ optional trace observers cannot reject business results and wrong generations are ignored (1.929135ms)
+✔ failed first evaluation retains same-generation diagnostics while preserving its real error (0.759984ms)
+✔ role switching filters findings and coverage using configured profile roles (1.698197ms)
+✔ comparison highlights a child–elder tradeoff and rejects unrelated hashes (2.365372ms)
+✔ observation-only comparisons cannot be described as layout conflicts (0.293612ms)
+✔ both role summaries remain available without changing the assessment or profile capabilities (0.646514ms)
+✔ only sends allowlisted edit fields, binds response to hashes and shows information separately (4.484603ms)
+✔ does not accept edited dimensions, stale hashes, wrong value, or unrelated layout changes as observations (5.029903ms)
+✔ unchanged input cannot rewrite provenance or claim an observation change (1.484385ms)
+✔ restoring unknown cannot retain simulated or verified provenance (1.635754ms)
+✔ private probe resolves GLBs at the application root, not its /tests/ document directory (0.847446ms)
+✔ calibration candidate uses raw model bounds and keeps its pending-review scope explicit (1.652529ms)
+✔ JSON and print view model use the same accepted version and actual assessment (3.465508ms)
+✔ stale assessment and mixed-version comparison cannot be exported (0.484951ms)
+✔ different evaluated layouts at the same revision have traceable export filenames (0.988259ms)
+✔ repeated exports of the same accepted layout have distinct traceable names (0.29891ms)
+✔ a stalled response body times out and can be loaded by an explicit retry (40.050128ms)
+✔ cancelled startup rejects even if a transport ignores abort and responds late (0.909089ms)
+✔ already cancelled startup does not start a fetch (0.361845ms)
+✔ snapshot preserves complete canonical inputs and accepted identity without model bytes (2.754518ms)
+✔ snapshot rejects a result for another scene or revision (1.624206ms)
+✔ snapshot keeps unknown and provenance observations and distinct filenames (0.681106ms)
+✔ drag previews until release, sends one proposal, and restores the last legal pose on rejection (2.624813ms)
+✔ a drag changes layout and history only after accepted evaluation (4.068115ms)
+✔ undo, redo and reset keep the last legal layout until reevaluated (1.653149ms)
+✔ a newer proposal supersedes an older one at the same scene revision (0.832994ms)
+✔ invalid placement highlights both colliding objects and structured room boundaries (0.581105ms)
+ℹ tests 36
+ℹ suites 0
+ℹ pass 36
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 693.341532
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

@@ -1,0 +1,25 @@
+OBSERVED {"files1":[],"files2":["464c0ac8-ac6c-4f34-83f7-186907c5272b"],"contents2":["{\"page\":1}"],"events":[{"session":"one","kind":"begin","guid":"464c0ac8-ac6c-4f34-83f7-186907c5272b","filename":"same.json"},{"session":"one","kind":"completed","guid":"464c0ac8-ac6c-4f34-83f7-186907c5272b"}]}
+{
+  "result": "PASS",
+  "controlledFrontTab": true,
+  "firstPathFiles": [],
+  "secondPathFiles": [
+    "464c0ac8-ac6c-4f34-83f7-186907c5272b"
+  ],
+  "secondPathContents": [
+    "{\"page\":1}"
+  ],
+  "events": [
+    {
+      "session": "one",
+      "kind": "begin",
+      "guid": "464c0ac8-ac6c-4f34-83f7-186907c5272b",
+      "filename": "same.json"
+    },
+    {
+      "session": "one",
+      "kind": "completed",
+      "guid": "464c0ac8-ac6c-4f34-83f7-186907c5272b"
+    }
+  ]
+}

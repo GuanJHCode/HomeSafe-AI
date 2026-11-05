@@ -1,0 +1,168 @@
+{
+  "scope": "REAL_PYODIDE_ZIP_ONLY_CLOSURE_NOT_BROWSER_OR_PERFORMANCE_ADOPTION",
+  "mode": "runtime-only",
+  "bundle_sha256": "9292ae7a2ec4a2e91cf90640dbf318ecafa0a25bc2698875c311e5d6a1540be8",
+  "manifest_sha256": "ccb0dbffe5f31bfabb3d3a621e6c3eae78ab9d2d30288c6259a1642956bd4b78",
+  "harness_sha256": "181c351c1b0e490b705a2903215c159c04e51bcf1c47747a8cd014ce3f185d40",
+  "pyodide": "314.0.6",
+  "pydantic": "2.12.5",
+  "runtime_ready_ms": 2532.258038,
+  "result": "PASS",
+  "canonical_import_ms": 569.9902680000002,
+  "first_use": [
+    {
+      "operation": "evaluate",
+      "duration_ms": 25.712266999999844,
+      "prior_calls": []
+    },
+    {
+      "operation": "challenge_start",
+      "duration_ms": 25.692004999999796,
+      "prior_calls": [
+        "evaluate"
+      ]
+    },
+    {
+      "operation": "challenge_move",
+      "duration_ms": 11.589872000000057,
+      "prior_calls": [
+        "evaluate",
+        "challenge_start"
+      ]
+    },
+    {
+      "operation": "observation_options",
+      "duration_ms": 4.361167999999971,
+      "prior_calls": [
+        "evaluate",
+        "challenge_start",
+        "challenge_move",
+        "challenge_end"
+      ]
+    },
+    {
+      "operation": "observation_edit",
+      "duration_ms": 19.917981999999945,
+      "prior_calls": [
+        "evaluate",
+        "challenge_start",
+        "challenge_move",
+        "challenge_end",
+        "observation_options"
+      ]
+    }
+  ],
+  "first_use_scope": "One initial evaluation precedes first challenge; explicit exit precedes first observation. Python dispatch+JSON timing, not browser/UI latency.",
+  "before_commands": {
+    "modules": {
+      "homesafe_core": "/homesafe_bundle_probe/homesafe_core/__init__.py",
+      "homesafe_core.models": "/homesafe_bundle_probe/homesafe_core/models.py",
+      "homesafe_core.geometry": "/homesafe_bundle_probe/homesafe_core/geometry.py",
+      "homesafe_core.validation": "/homesafe_bundle_probe/homesafe_core/validation.py",
+      "homesafe_core.rule_support": "/homesafe_bundle_probe/homesafe_core/rule_support.py",
+      "homesafe_core.policy": "/homesafe_bundle_probe/homesafe_core/policy.py",
+      "homesafe_core.rules": "/homesafe_bundle_probe/homesafe_core/rules.py",
+      "homesafe_core.engine": "/homesafe_bundle_probe/homesafe_core/engine.py",
+      "homesafe_core.challenge": "/homesafe_bundle_probe/homesafe_core/challenge.py",
+      "homesafe_core.observations": "/homesafe_bundle_probe/homesafe_core/observations.py",
+      "homesafe_core.browser_bridge": "/homesafe_bundle_probe/homesafe_core/browser_bridge.py"
+    },
+    "class_names": [
+      "Assessment",
+      "BoolObservation",
+      "ChallengeProgress",
+      "ChallengeResult",
+      "Comparison",
+      "ComparisonBasis",
+      "Coverage",
+      "Dimensions",
+      "Finding",
+      "Model",
+      "NumberObservation",
+      "ObservationEdit",
+      "ObservationOption",
+      "ObservationResult",
+      "PlacementIssue",
+      "Profile",
+      "Properties",
+      "Rect",
+      "Route",
+      "RuleConfig",
+      "Scene",
+      "SceneObject",
+      "SetupItem",
+      "Traits",
+      "TransformInput",
+      "Vec3"
+    ],
+    "all_models_eager_complete": true,
+    "offline_modules_loaded": false
+  },
+  "after_commands": {
+    "modules": {
+      "homesafe_core": "/homesafe_bundle_probe/homesafe_core/__init__.py",
+      "homesafe_core.models": "/homesafe_bundle_probe/homesafe_core/models.py",
+      "homesafe_core.geometry": "/homesafe_bundle_probe/homesafe_core/geometry.py",
+      "homesafe_core.validation": "/homesafe_bundle_probe/homesafe_core/validation.py",
+      "homesafe_core.rule_support": "/homesafe_bundle_probe/homesafe_core/rule_support.py",
+      "homesafe_core.policy": "/homesafe_bundle_probe/homesafe_core/policy.py",
+      "homesafe_core.rules": "/homesafe_bundle_probe/homesafe_core/rules.py",
+      "homesafe_core.engine": "/homesafe_bundle_probe/homesafe_core/engine.py",
+      "homesafe_core.challenge": "/homesafe_bundle_probe/homesafe_core/challenge.py",
+      "homesafe_core.observations": "/homesafe_bundle_probe/homesafe_core/observations.py",
+      "homesafe_core.browser_bridge": "/homesafe_bundle_probe/homesafe_core/browser_bridge.py"
+    },
+    "class_names": [
+      "Assessment",
+      "BoolObservation",
+      "ChallengeProgress",
+      "ChallengeResult",
+      "Comparison",
+      "ComparisonBasis",
+      "Coverage",
+      "Dimensions",
+      "Finding",
+      "Model",
+      "NumberObservation",
+      "ObservationEdit",
+      "ObservationOption",
+      "ObservationResult",
+      "PlacementIssue",
+      "Profile",
+      "Properties",
+      "Rect",
+      "Route",
+      "RuleConfig",
+      "Scene",
+      "SceneObject",
+      "SetupItem",
+      "Traits",
+      "TransformInput",
+      "Vec3"
+    ],
+    "all_models_eager_complete": true,
+    "offline_modules_loaded": false
+  },
+  "command_coverage": [
+    "evaluate",
+    "compare",
+    "challenge_start",
+    "challenge_state",
+    "challenge_move",
+    "challenge_undo",
+    "challenge_reset",
+    "challenge_end",
+    "observation_options",
+    "observation_edit"
+  ],
+  "cases": [
+    "three fixture assessments byte-equivalent as JSON",
+    "tutorial and main challenge",
+    "challenge observation isolation",
+    "observation true/false/unknown",
+    "strict provenance input",
+    "structured illegal placement",
+    "deep JSON",
+    "unknown command"
+  ]
+}

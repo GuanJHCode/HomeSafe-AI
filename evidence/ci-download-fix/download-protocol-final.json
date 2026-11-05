@@ -1,0 +1,21 @@
+{
+  "result": "PASS",
+  "scope": "ISOLATED_LOCAL_CHROMIUM_DOWNLOAD_PROTOCOL",
+  "browser": "Chrome/154.0.8037.57",
+  "filenames": [
+    "same.json",
+    "same.json"
+  ],
+  "guids": [
+    "baee3d1f-4df5-48d8-ac08-c577fd724092",
+    "72f813f3-eb8b-42fe-8c4a-54ab5320cf33"
+  ],
+  "checks": [
+    "completed GUID files",
+    "same-name consecutive exports",
+    "early empty suggested-name file ignored",
+    "second page cannot override browser download behavior",
+    "listeners released",
+    "incomplete GUID bytes retained before Chromium closes"
+  ]
+}

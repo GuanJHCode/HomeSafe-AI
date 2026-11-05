@@ -1,9 +1,9 @@
 {
   "manifest_version": "1.0",
-  "release": "V6.1-reviewed-startup-adjustments-20261104",
-  "base_commit": "64e166540495126f618dd65aa8dc88760ed70604",
+  "release": "V6.1-reviewed-CI-download-completion-fix-20261105",
+  "base_commit": "394eb04e9bbaf7555a507cbc4c1fe28caa62a6a9",
   "baseline_zip_sha256": "b6c674f532fd30ff7ab086b08c814b086e94e2aa0f12cff80c1b6d94b96d3752",
-  "classification_policy": "Existing reviewed source allowlist plus independently reviewed startup tracing, canonical model split, CI checks, final evidence and explicitly archived rejected PR3 experiment. Third-party notices retain their audited classification. Excludes actual Lux3D, raw/user assets, runtime vendor, builds, screenshots, recordings and private data.",
+  "classification_policy": "Existing reviewed source allowlist plus explicitly reviewed download-completion helper, deterministic/real-browser checks, CI integration, review and JSON/text evidence from synthetic local tests only. One deliberately failed synthetic scene snapshot and its trace are retained as regression evidence. Third-party notices retain their audited classification. Excludes actual Lux3D, raw/user assets, runtime vendor, builds, screenshots, recordings and private data.",
   "files": [
     {
       "path": ".env.example",
@@ -13,8 +13,8 @@
     },
     {
       "path": ".github/workflows/reference-checks.yml",
-      "sha256": "d878839baf97525f84fd063cc7810f63c846aae782be76accca1de5a2d9a7372",
-      "bytes": 10133,
+      "sha256": "3ddeb7b4244b3d9e0f22760d7736995bd532eeb5724b575c292e09cc50f4367b",
+      "bytes": 10278,
       "classification": "generated_project_source"
     },
     {
@@ -61,8 +61,8 @@
     },
     {
       "path": "START_HERE.md",
-      "sha256": "9362cdbea05bc9e51ada38a1fc360eaef77855b44cc6e40247f7e86063db2a74",
-      "bytes": 8938,
+      "sha256": "4093cc75e61c4c33981a5ea1c7fe639971243f10882ff89fd9919b7b0b634bc8",
+      "bytes": 9360,
       "classification": "generated_project_source"
     },
     {
@@ -696,6 +696,12 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "evidence/CI_DOWNLOAD_FIX_20261105.md",
+      "classification": "generated_project_source",
+      "sha256": "c98e65cddc1249706de3d23404abdb4e8aa1d786a46f8d73d13381dffbb59495",
+      "bytes": 6014
+    },
+    {
       "path": "evidence/CI_PUSH_64e1665_20261104.md",
       "classification": "generated_project_source",
       "sha256": "9af69af2d55fc324abf6111cbd445da3befacee6062f46462e87fbaa58e01bb6",
@@ -733,8 +739,8 @@
     },
     {
       "path": "evidence/HANDOFF.md",
-      "sha256": "35a0c7e2fff657681d29d9b82e004110ec8e41aad8b86e9c2782b5cfd5bd9d45",
-      "bytes": 11625,
+      "sha256": "eb6d0ae34c30bcdcb9cdf652e348ff1b09bfc9d6c2ffa0d0aaea579c6cc69252",
+      "bytes": 13826,
       "classification": "generated_project_source"
     },
     {
@@ -760,6 +766,12 @@
       "sha256": "3e1d708c72a7bee55bba6a85c64a4438d4e27467d52a176cd2c8952a5a0b1eda",
       "bytes": 3414,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "evidence/REVIEW_CI_DOWNLOAD_FIX_20261105.md",
+      "classification": "generated_project_source",
+      "sha256": "37dd7e9a77919c9992c213f07d3bc65bd6a105d2092db037b232eb57be2b44fa",
+      "bytes": 6379
     },
     {
       "path": "evidence/REVIEW_DELIVERY_20261104.md",
@@ -1000,6 +1012,270 @@
       "sha256": "d4b6870acef7900a4052e83084356866a2e590809d653a9e25ef40c2444faf7a",
       "bytes": 7342,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "evidence/ci-download-fix/app-tests.log",
+      "classification": "generated_project_source",
+      "sha256": "553153d7f179ca267b1955652b7c2d305f0f87ec32f8287cc60168b992245c0f",
+      "bytes": 3815
+    },
+    {
+      "path": "evidence/ci-download-fix/baseline-js.log",
+      "classification": "generated_project_source",
+      "sha256": "a6fefeee451ccec719b22931400d25f09abdc3587cebb03e05fc06d44da3920c",
+      "bytes": 2694
+    },
+    {
+      "path": "evidence/ci-download-fix/browser-spike.json",
+      "classification": "generated_project_source",
+      "sha256": "f6a32657efa6df822bf0597c6c95c14ac2115b741bad216a529699943c0c8b76",
+      "bytes": 17916
+    },
+    {
+      "path": "evidence/ci-download-fix/build.log",
+      "classification": "generated_project_source",
+      "sha256": "8b50ccda6ba68632802b19f8b8ee98e540059e70aef2eac97ae66c79143df8dc",
+      "bytes": 1861
+    },
+    {
+      "path": "evidence/ci-download-fix/contract-typecheck.log",
+      "classification": "generated_project_source",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "evidence/ci-download-fix/contracts.log",
+      "classification": "generated_project_source",
+      "sha256": "79cb740e874a6678549a2dfadae9cc939ef5b36ff26d762e763b363366aff32d",
+      "bytes": 52
+    },
+    {
+      "path": "evidence/ci-download-fix/deployment-transport.json",
+      "classification": "generated_project_source",
+      "sha256": "7c2e5904e676fdadb505a750164494d2eda11215c3212ff8aea245c05274ef6c",
+      "bytes": 8412
+    },
+    {
+      "path": "evidence/ci-download-fix/deployment.log",
+      "classification": "generated_project_source",
+      "sha256": "7c2e5904e676fdadb505a750164494d2eda11215c3212ff8aea245c05274ef6c",
+      "bytes": 8412
+    },
+    {
+      "path": "evidence/ci-download-fix/download-protocol-final.json",
+      "classification": "generated_project_source",
+      "sha256": "19499bd30109b86693d4178693ee4bcaf148d09fff8c85062cdb7113bb7ab697",
+      "bytes": 554
+    },
+    {
+      "path": "evidence/ci-download-fix/embedding.json",
+      "classification": "generated_project_source",
+      "sha256": "d82efbb755d0d17b8d4201b89526627d32e9e29afaffb77a4bbcb80820cdb854",
+      "bytes": 941
+    },
+    {
+      "path": "evidence/ci-download-fix/environment.json",
+      "classification": "generated_project_source",
+      "sha256": "c7b6fa0586dceefb07a501bddeb9c35e037ca90020d05d06a20f7eb155bd0a38",
+      "bytes": 1177
+    },
+    {
+      "path": "evidence/ci-download-fix/experience-final.json",
+      "classification": "generated_project_source",
+      "sha256": "715e156abaf2adc98d24ab30c47c9020f74dc2d07c835b768d6aea41aed186f1",
+      "bytes": 877
+    },
+    {
+      "path": "evidence/ci-download-fix/final-js.log",
+      "classification": "generated_project_source",
+      "sha256": "4a9ca0f094e8bad15852cb7609008606223d93786fd6aacc58bbbbc8d7977b4d",
+      "bytes": 4383
+    },
+    {
+      "path": "evidence/ci-download-fix/frozen-source-hashes.json",
+      "classification": "generated_project_source",
+      "sha256": "d0acb71dbec66128d9cf940d1ec1f24e9d5509ac24f913e8b530f20572f1c815",
+      "bytes": 745
+    },
+    {
+      "path": "evidence/ci-download-fix/green-browser.log",
+      "classification": "generated_project_source",
+      "sha256": "7e76c3c90fcf8faf9e4a6f166236475a7adf0468433a9cd718c2aab409ef9346",
+      "bytes": 554
+    },
+    {
+      "path": "evidence/ci-download-fix/green-node.log",
+      "classification": "generated_project_source",
+      "sha256": "17d599ad9b0f737572c9370e7f1f21be983bb8c1339ebbbc05aadfa486d1b062",
+      "bytes": 1803
+    },
+    {
+      "path": "evidence/ci-download-fix/green-two-pages-independent.log",
+      "classification": "generated_project_source",
+      "sha256": "523e2bb0d09d94602a679d2b848cdd48f51ba75dbbee7ea988d765b7a414a30d",
+      "bytes": 346
+    },
+    {
+      "path": "evidence/ci-download-fix/native.log",
+      "classification": "generated_project_source",
+      "sha256": "3e9c8b070c91f171d3169b26b2feb8c7f2fe1f46de058d63310b592b2173ef92",
+      "bytes": 420
+    },
+    {
+      "path": "evidence/ci-download-fix/observations-final.json",
+      "classification": "generated_project_source",
+      "sha256": "a8c6b14d3fc0ee67a92954259c35111f0d91153e21a8d2073d0ad4c0d5fd71d8",
+      "bytes": 926
+    },
+    {
+      "path": "evidence/ci-download-fix/observations-repeat-2.json",
+      "classification": "generated_project_source",
+      "sha256": "aa66254117176351b9fb3c9cd2b6e8dacdddf563f2c52d07970e8f3090d5283d",
+      "bytes": 926
+    },
+    {
+      "path": "evidence/ci-download-fix/observations-repeat-3.json",
+      "classification": "generated_project_source",
+      "sha256": "59222ecaa178c3cc4d1600d6906f49cf45ca71e01d4f9324aaca130081c08d3e",
+      "bytes": 926
+    },
+    {
+      "path": "evidence/ci-download-fix/original-ci-failure.log",
+      "classification": "generated_project_source",
+      "sha256": "3fe43c65622d638f6eed9d65717d39736482527dc578ed302389749c9fe72e7e",
+      "bytes": 660
+    },
+    {
+      "path": "evidence/ci-download-fix/original-ci.json",
+      "classification": "generated_project_source",
+      "sha256": "c9aee93468d27447d29184eab9ab77a45722dfa1c5fe27b42ed6068b078a9f86",
+      "bytes": 1735
+    },
+    {
+      "path": "evidence/ci-download-fix/package-final.log",
+      "classification": "generated_project_source",
+      "sha256": "6c956fe8bdb88633cf01bc8479cc92b2aea7191f4212475043c3b86af01012ec",
+      "bytes": 388
+    },
+    {
+      "path": "evidence/ci-download-fix/performance-exit.json",
+      "classification": "generated_project_source",
+      "sha256": "9494c29c6933b93d977c6761dcf925f176ef9764ee17ede5d29f58c4d8d374cc",
+      "bytes": 51
+    },
+    {
+      "path": "evidence/ci-download-fix/performance.json",
+      "classification": "generated_project_source",
+      "sha256": "3793152e848b09eccaa0d2ea791b5fddba68a9339cb1ad04d480c52438fdbb48",
+      "bytes": 358753
+    },
+    {
+      "path": "evidence/ci-download-fix/recovery.json",
+      "classification": "generated_project_source",
+      "sha256": "ad20c7daf45972f19b554eb7b6ac1b9ffa3ff5c0943ecbbe5987ec4bbaeb9b9c",
+      "bytes": 1375
+    },
+    {
+      "path": "evidence/ci-download-fix/red-browser-global-controlled.log",
+      "classification": "generated_project_source",
+      "sha256": "38ed5ad106ef56288cfb9cb16d9315081c1c6feecbda8fb7b4269b583c6c5b6e",
+      "bytes": 775
+    },
+    {
+      "path": "evidence/ci-download-fix/red-legacy-poll.log",
+      "classification": "generated_project_source",
+      "sha256": "43b60f4d93853350710294e87ef19581607c0f479dc0a71a670d590dea789546",
+      "bytes": 851
+    },
+    {
+      "path": "evidence/ci-download-fix/red-partial-close.log",
+      "classification": "generated_project_source",
+      "sha256": "db1835ec4e553bb5fec28c17c784707d8d1a08cac08cf153699fd2da00ab0cdc",
+      "bytes": 319
+    },
+    {
+      "path": "evidence/ci-download-fix/red-terminal-order.log",
+      "classification": "generated_project_source",
+      "sha256": "a7387d60c69df834b2e2d0da619f770882d3b1cbd1eee3670553b9b69eadf6c8",
+      "bytes": 1260
+    },
+    {
+      "path": "evidence/ci-download-fix/red-two-pages-controlled.log",
+      "classification": "generated_project_source",
+      "sha256": "027eb05f6770ae82d516ced7a2df574c688c9ecd1e43645b214a3f6492b69bd0",
+      "bytes": 775
+    },
+    {
+      "path": "evidence/ci-download-fix/red-two-pages-note.txt",
+      "classification": "generated_project_source",
+      "sha256": "d6b36c2c4f495bf15533099d360d1b530da32ae9d22307fda0f062e75837b9bb",
+      "bytes": 438
+    },
+    {
+      "path": "evidence/ci-download-fix/red-two-pages.log",
+      "classification": "generated_project_source",
+      "sha256": "10cdec810e9820afea10899b2925ff9718113a2892c6be704b9b479778b99124",
+      "bytes": 655
+    },
+    {
+      "path": "evidence/ci-download-fix/runtime-bundle.json",
+      "classification": "generated_project_source",
+      "sha256": "3feb198d9c26e7d962291a5409b834f17ea5b4ae74bee2da2bec28b64aba639a",
+      "bytes": 5381
+    },
+    {
+      "path": "evidence/ci-download-fix/semantic-failure-review/d4b54f50-c3df-4c03-9e6a-3e443f11fc34",
+      "classification": "generated_project_source",
+      "sha256": "cebbff62943322eabcda3eb1053f957260fd1e3a5a070a05428576509e157fed",
+      "bytes": 29870
+    },
+    {
+      "path": "evidence/ci-download-fix/semantic-failure-review/download-events.jsonl",
+      "classification": "generated_project_source",
+      "sha256": "b693f427fd7e0436ec9d32f59a3f0121c8db0592d36d8f08db5d11ee93435161",
+      "bytes": 1185
+    },
+    {
+      "path": "evidence/ci-download-fix/semantic-failure-review/negative-stderr.log",
+      "classification": "generated_project_source",
+      "sha256": "5ffda6a2fe3e7e14e050eb114d77b4079e082e919d24ce7e9c3d6734d7f8c7b5",
+      "bytes": 850
+    },
+    {
+      "path": "evidence/ci-download-fix/semantic-failure-review/summary.json",
+      "classification": "generated_project_source",
+      "sha256": "bddc26cc6ea36ded4d749f126f180d44d3bafc108e742124fe7c707152ed02d6",
+      "bytes": 613
+    },
+    {
+      "path": "evidence/ci-download-fix/stage-browser.log",
+      "classification": "generated_project_source",
+      "sha256": "07746b186d56dd6c31860c632d31a6ac867b136a605514650c9661fce928f123",
+      "bytes": 61
+    },
+    {
+      "path": "evidence/ci-download-fix/startup-trace-summary.json",
+      "classification": "generated_project_source",
+      "sha256": "4d401a86663015d19a56ac7c082552ac0670ee769aacd6bc9737241a352a230e",
+      "bytes": 106
+    },
+    {
+      "path": "evidence/ci-download-fix/validation-summary.json",
+      "classification": "generated_project_source",
+      "sha256": "a36a45ed7d813f5e89c77271d0a4ce6121deca5f38dab41a2cd3ee45217d0d53",
+      "bytes": 3217
+    },
+    {
+      "path": "evidence/ci-download-fix/web-core.log",
+      "classification": "generated_project_source",
+      "sha256": "a67c8df9620bb8fb68159b043aba89cdd1ed5bde085bd58f8fc4feb635c26ae1",
+      "bytes": 432
+    },
+    {
+      "path": "evidence/ci-download-fix/web-preview-final.json",
+      "classification": "generated_project_source",
+      "sha256": "6ea30b823508a555413570ec8e01df145af222124b016702f17ed8d2dd6756b3",
+      "bytes": 3133
     },
     {
       "path": "evidence/ci-performance-64e1665.json",
@@ -2515,8 +2791,8 @@
     },
     {
       "path": "evidence/task-status.json",
-      "sha256": "74ca005757a4ffa45496f09aa66daf79f8ddbc04e7efd3fe6e54c71005618e6d",
-      "bytes": 25654,
+      "sha256": "6afbbc679e67ce1458e8e7e12792887098d487c1456972373f227f9264e78961",
+      "bytes": 29439,
       "classification": "generated_project_source"
     },
     {
@@ -4302,6 +4578,12 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "scripts/check_web_download_browser.mjs",
+      "classification": "generated_project_source",
+      "sha256": "d76e20ffde764e5d06067372622e66b112649cae6711ce71eb4989c18e277c72",
+      "bytes": 5964
+    },
+    {
       "path": "scripts/check_web_embedding.mjs",
       "sha256": "4c8c49218975d1e2d1b2d916c49df9c06132dfbbb1066ec518c0a3081c3aa936",
       "bytes": 3339,
@@ -4309,14 +4591,14 @@
     },
     {
       "path": "scripts/check_web_experience.mjs",
-      "sha256": "c7d6104e837085a9711d1ee0c87cf599bbc01cbd9f8132ed3545e483f8041396",
-      "bytes": 10801,
+      "sha256": "38a32a5be758ea1a9026e88bbfdc76a67bba0a9ad5eb3563c5b29a1fdb7d8c37",
+      "bytes": 10967,
       "classification": "generated_project_source"
     },
     {
       "path": "scripts/check_web_observations.mjs",
-      "sha256": "9c6e4877b56f1d3a192c3b2cfd9b22d3424f3812fe43cff71bd35a0844889ef1",
-      "bytes": 9366,
+      "sha256": "3dd01f4bbce8b73332518329d26b903a093d77d4c7f910fe5692dbead648429d",
+      "bytes": 9560,
       "classification": "generated_project_source"
     },
     {
@@ -4327,8 +4609,8 @@
     },
     {
       "path": "scripts/check_web_preview.mjs",
-      "sha256": "435bf276576af0f3917eda5c4ca188c71e53c2b8ff70682b6ee0c437e35e6f40",
-      "bytes": 22546,
+      "sha256": "5620116f157723ddc5355c51bb1c7d5dcf719fb96c0e60072bd42e6431443580",
+      "bytes": 21933,
       "classification": "generated_project_source"
     },
     {
@@ -4438,6 +4720,18 @@
       "sha256": "a8ea14429b90a37470e2e4fbc55de756ab8e504bac611eb4e2e27c939716fa0a",
       "bytes": 6532,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "scripts/web_download.mjs",
+      "classification": "generated_project_source",
+      "sha256": "9834d5ceb09baef46ac04c7dacbc4f203ef18f5c024cda787226e0a3308de179",
+      "bytes": 9184
+    },
+    {
+      "path": "scripts/web_download.test.mjs",
+      "classification": "generated_project_source",
+      "sha256": "b590907626334a07471f3b1dccdbd09b879d06d7d1cd4eadaa3d88075b480f8e",
+      "bytes": 12892
     },
     {
       "path": "submission/drafts/recording-plan.md",

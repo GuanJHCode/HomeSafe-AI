@@ -1,0 +1,25 @@
+OBSERVED {"files1":[],"files2":["cc8116ff-a56b-400b-ba2a-6fac49a08836"],"contents2":["{\"page\":1}"],"events":[{"session":"one","kind":"begin","guid":"cc8116ff-a56b-400b-ba2a-6fac49a08836","filename":"same.json"},{"session":"one","kind":"completed","guid":"cc8116ff-a56b-400b-ba2a-6fac49a08836"}]}
+{
+  "result": "PASS",
+  "controlledFrontTab": true,
+  "firstPathFiles": [],
+  "secondPathFiles": [
+    "cc8116ff-a56b-400b-ba2a-6fac49a08836"
+  ],
+  "secondPathContents": [
+    "{\"page\":1}"
+  ],
+  "events": [
+    {
+      "session": "one",
+      "kind": "begin",
+      "guid": "cc8116ff-a56b-400b-ba2a-6fac49a08836",
+      "filename": "same.json"
+    },
+    {
+      "session": "one",
+      "kind": "completed",
+      "guid": "cc8116ff-a56b-400b-ba2a-6fac49a08836"
+    }
+  ]
+}

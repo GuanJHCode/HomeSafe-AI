@@ -1,0 +1,12 @@
+{
+  "result": "PASS_EXPECTED_FAILURE",
+  "injected_failure": "HOMESAFE_PYTHON=/bin/false for native snapshot recomputation",
+  "script_exit_code": 1,
+  "retained_snapshot_name": "d4b54f50-c3df-4c03-9e6a-3e443f11fc34",
+  "retained_snapshot_bytes": 29870,
+  "retained_snapshot_sha256": "cebbff62943322eabcda3eb1053f957260fd1e3a5a070a05428576509e157fed",
+  "retained_snapshot_format": "homesafe_scene_snapshot",
+  "trace_sha256": "b693f427fd7e0436ec9d32f59a3f0121c8db0592d36d8f08db5d11ee93435161",
+  "trace_contains_completed_and_parsed": true,
+  "evidence_dir": "ci-evidence/download-fix/semantic-failure-review"
+}

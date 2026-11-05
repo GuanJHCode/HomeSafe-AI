@@ -1,0 +1,2 @@
+red-two-pages.log is an initial two-page observation without foreground control. Its start timeout is confounded by background-tab download behavior and is not evidence of CDP event reassignment.
+red-browser-global-controlled.log controls page1 foreground and confirms the actual browser-wide conflict: page1 CDP receives begin/completed, while the GUID bytes land in the second directory after a second Browser.setDownloadBehavior call.

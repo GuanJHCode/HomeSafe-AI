@@ -266,7 +266,8 @@
         "evidence/CONTINUATION_20261104.md",
         "evidence/FEATURE_CONTINUATION_20261104.md",
         "evidence/CI_PUSH_64e1665_20261104.md",
-        "evidence/STARTUP_ADJUSTMENTS_20261104.md"
+        "evidence/STARTUP_ADJUSTMENTS_20261104.md",
+        "evidence/CI_DOWNLOAD_FIX_20261105.md"
       ],
       "subtasks": [
         {
@@ -309,23 +310,31 @@
           "status": "OPEN_NOT_MET",
           "acceptance_scope": "Cold first editable p95 <=3000ms, with actual accepted edit per sample; no canvas-proxy substitution",
           "evidence": "evidence/STARTUP_ADJUSTMENTS_20261104.md"
+        },
+        {
+          "id": "T07-ci-download-completion",
+          "status": "DONE",
+          "acceptance_scope": "GUID-bound completed download waits in three browser acceptance scripts, explicit failures and preserved raw evidence; no business semantics or budget changes",
+          "review": "PASS_INDEPENDENT",
+          "evidence": "evidence/CI_DOWNLOAD_FIX_20261105.md",
+          "review_evidence": "evidence/REVIEW_CI_DOWNLOAD_FIX_20261105.md"
         }
       ],
       "remaining": [
         "Actual Lux3D load/render/release and print validation; final target device/network performance.",
-        "First-editable <=3s remains OPEN_NOT_MET: final retained-source local enforce p95=4086.1ms. PR2 bounded paired benefit334.4ms remains separately supported; PR3 discarded and reverted. New fixed remoteCI awaits push authorization. No cross-environment inference or unauthorized runtime/backend/threshold changes."
+        "First-editable <=3s remains OPEN_NOT_MET: latest local unchanged-distribution enforce p95=4812.2ms (historical final retained-source4086.1ms separately preserved). PR2 bounded paired benefit334.4ms remains supported; PR3 discarded/reverted. Retained startup changes ran remotely at394eb04; observation download parsing failed and performance was skipped. Current reviewed download fix awaits separate push authorization; no new remoteCI. No cross-environment inference or unauthorized runtime/backend/threshold changes."
       ],
       "checks": {
         "first_editable_budget": "OPEN_NOT_MET",
-        "hot_evaluation_budget": "PASS_CI_LOCALHOST_AT_64e1665",
-        "cold_rule_budget": "PASS_CI_LOCALHOST_AT_64e1665",
-        "current_remote_ci": "FAIL_FIRST_EDITABLE_AT_64e1665",
+        "hot_evaluation_budget": "PASS_LOCAL_ONLY_CURRENT_FIX",
+        "cold_rule_budget": "PASS_LOCAL_ONLY_CURRENT_FIX",
+        "current_remote_ci": "FAIL_DOWNLOAD_JSON_PARSE_AT_394eb04",
         "local_ci_equivalent_functional_steps": "PASS",
         "strict_ci_failure_propagation": "PASS_INDEPENDENT_SYNTHETIC_SHELL_TEST",
-        "functional_validation": "PASS_CI_LOCALHOST_AT_64e1665",
-        "first_editable_p95_ms": 3386,
-        "hot_evaluation_p95_ms": 9.9,
-        "current_startup_changes_remote_ci": "NOT_RUN",
+        "functional_validation": "CURRENT_LOCAL_FIX_PASS_INDEPENDENT; REMOTE_394eb04_FAILED_DOWNLOAD",
+        "first_editable_p95_ms": 4812.2,
+        "hot_evaluation_p95_ms": 16.0,
+        "current_startup_changes_remote_ci": "RAN_AT_394eb04_PERFORMANCE_SKIPPED",
         "current_local_startup_phase": {
           "functional_validation": "PASS_RETAINED_PR1_PR2_AND_INDEPENDENT_ROLLBACK",
           "first_editable_p95_ms": 4086.1,
@@ -334,7 +343,25 @@
           "hot_evaluation_budget": "PASS_LOCAL_ONLY",
           "cold_rule_budget": "PASS_LOCAL_ONLY",
           "evidence": "evidence/startup-benchmark/final-retained-enforce-performance.json"
-        }
+        },
+        "latest_remote_performance": "NOT_RUN_AT_394eb04; historical64e1665 values retained below",
+        "current_local_download_fix": {
+          "first_editable_p95_ms": 4812.2,
+          "hot_evaluation_p95_ms": 16.0,
+          "cold_rules_p95_ms": 4812.1,
+          "first_editable_budget": "OPEN_NOT_MET",
+          "cold_rules_budget": "PASS_LOCAL_ONLY",
+          "hot_evaluation_budget": "PASS_LOCAL_ONLY",
+          "enforce_exit_code": 1,
+          "functional_validation": "PASS_INDEPENDENT_FINAL_FROZEN_SOURCE",
+          "evidence": "evidence/CI_DOWNLOAD_FIX_20261105.md"
+        },
+        "historical_remote_performance_at_64e1665": {
+          "first_editable_p95_ms": 3386,
+          "hot_evaluation_p95_ms": 9.9,
+          "evidence": "evidence/ci-performance-64e1665.json"
+        },
+        "current_performance_values_scope": "LOCAL_ISOLATED_CHROMIUM154_DOWNLOAD_FIX_UNCHANGED_DISTRIBUTION; not latest remote CI"
       }
     },
     {
@@ -476,10 +503,10 @@
   "baseline_commit": "2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f",
   "implementation_branch": "codex/v6.1-browser-3d",
   "continuation_base_commit": "f6245e13bc41e36a0efeabeba3ca0fba2174c2f5",
-  "current_validation_scope": "evidence/STARTUP_ADJUSTMENTS_20261104.md",
+  "current_validation_scope": "evidence/CI_DOWNLOAD_FIX_20261105.md",
   "historical_validation_scope": "Earlier local and remote validation records remain historical. See evidence/FEATURE_CONTINUATION_20261104.md and evidence/CI_CONTINUATION_20261104.md; no earlier pass overrides the fixed 64e1665 first-editable failure.",
   "historical_validated_source_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6",
-  "validation_scope": "Remote fixed64e1665 CI41807603537 functionalPASS/3386ms firsteditableFAIL remains latest remote. Local final retains reviewedPR1/PR2; PR3DISCARDED and28distfiles restoredexactly. Single final enforce4086.1ms firsteditableFAIL/hot12.6PASS. NewremoteCI NOT_RUN; realassets/publichostBLOCKED.",
+  "validation_scope": "394eb04 remote CI41948477248 failed at observation JSON download; strict performance NOT_RUN. Current local download fix PASS_INDEPENDENT with final JS48/Python334/apps36 and three observation runs; local unchanged-distribution enforce firsteditable4812.2ms FAIL, cold rules4812.1ms and hot16ms PASS. Fix not pushed, new remote CI NOT_RUN; real assets/public host remain blocked.",
   "recovery_sync": {
     "task_id": "RECOVERY-SYNC-20261104",
     "date": "2026-11-04",
@@ -505,28 +532,28 @@
     "current_scope": "evidence/FEATURE_CONTINUATION_20261104.md"
   },
   "previous_continuation_base_commit": "57faf384d64e9770407b28086fdfeb5b193a6d6f",
-  "current_source_sync": "SOURCE_64e1665_REMOTE_CI_CONFIRMED; STARTUP_PHASE_LOCAL_CHANGES_NOT_PUSHED",
+  "current_source_sync": "SOURCE_394eb04_REMOTE_CI_CONFIRMED; DOWNLOAD_FIX_LOCAL_ONLY_NOT_PUSHED",
   "previous_source_sync": "LOCAL_ONLY_NOT_PUSHED",
   "latest_verified_remote_ci": {
-    "source_commit": "64e166540495126f618dd65aa8dc88760ed70604",
+    "source_commit": "394eb04e9bbaf7555a507cbc4c1fe28caa62a6a9",
     "remote_branch": "codex/v6.1-browser-3d",
-    "run_id": 41807603537,
-    "job_id": 126498424922,
+    "run_id": 41948477248,
+    "job_id": 126986451585,
     "run_attempt": 1,
-    "run_url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41807603537",
+    "run_url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41948477248",
     "conclusion": "failure",
-    "functional_validation": "PASS_CI_LOCALHOST",
-    "performance_budget": "FAIL_FIRST_EDITABLE",
+    "functional_validation": "FAIL_DOWNLOAD_JSON_PARSE",
+    "performance_budget": "NOT_RUN_SKIPPED_AFTER_FUNCTIONAL_FAILURE",
+    "first_editable_p95_ms": null,
+    "hot_evaluation_p95_ms": null,
     "real_asset_browser": "BLOCKED_NOT_RUN_FILE_UNAVAILABLE",
     "public_host": "BLOCKED_NOT_RUN_NO_APPROVED_HOST",
-    "first_editable_p95_ms": 3386,
-    "hot_evaluation_p95_ms": 9.9,
-    "evidence": "evidence/CI_PUSH_64e1665_20261104.md"
+    "evidence": "evidence/ci-download-fix/original-ci.json"
   },
   "startup_phase": {
     "base_commit": "64e166540495126f618dd65aa8dc88760ed70604",
     "local_branch": "codex/startup-profile-20261104",
-    "current_changes_remote_ci": "NOT_RUN_NO_CURRENT_PHASE_PUSH_AUTHORIZATION",
+    "current_changes_remote_ci": "RAN_AT_394eb04_FUNCTIONAL_DOWNLOAD_FAILURE_PERFORMANCE_NOT_RUN",
     "status_sync_review": "PASS_INDEPENDENT",
     "original_and_continuation_worktrees": "PRESERVED",
     "status_sync_review_evidence": "evidence/REVIEW_STARTUP_PR0_20261104.md",
@@ -535,7 +562,7 @@
       "review": "PASS_INDEPENDENT",
       "evidence": "evidence/REVIEW_STARTUP_PR4_20261104.md",
       "synthetic_shell_regressions_passed": 8,
-      "current_changes_remote_ci": "NOT_RUN",
+      "current_changes_remote_ci": "RAN_AT_394eb04_FUNCTIONAL_FAILURE_PERFORMANCE_SKIPPED",
       "acceptance_scope": "Separate CI functional/performance steps, same distribution and servers, strict failure propagation, cleanup and honest summaries only; stability/performance objective remains OPEN"
     },
     "record_status": "FINAL_RETAINED_PR1_PR2_PR3_DISCARDED_FIRST_EDITABLE_OPEN",
@@ -627,6 +654,44 @@
         "evidence": "evidence/startup-final-checks/summary.json",
         "browser_and_performance": "NOT_RUN_IN_THIS_NON_BROWSER_CHECK_COMMAND_SET"
       }
-    }
+    },
+    "historical_record_note": "Original 20261104 local phase preserved as history; retained changes later pushed as394eb04. Latest verified remote CI now41948477248, functional download failure, performance skipped."
+  },
+  "previous_latest_verified_remote_ci": {
+    "source_commit": "64e166540495126f618dd65aa8dc88760ed70604",
+    "remote_branch": "codex/v6.1-browser-3d",
+    "run_id": 41807603537,
+    "job_id": 126498424922,
+    "run_attempt": 1,
+    "run_url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41807603537",
+    "conclusion": "failure",
+    "functional_validation": "PASS_CI_LOCALHOST",
+    "performance_budget": "FAIL_FIRST_EDITABLE",
+    "real_asset_browser": "BLOCKED_NOT_RUN_FILE_UNAVAILABLE",
+    "public_host": "BLOCKED_NOT_RUN_NO_APPROVED_HOST",
+    "first_editable_p95_ms": 3386,
+    "hot_evaluation_p95_ms": 9.9,
+    "evidence": "evidence/CI_PUSH_64e1665_20261104.md"
+  },
+  "download_fix": {
+    "task_id": "T07-ci-download-completion",
+    "base_commit": "394eb04e9bbaf7555a507cbc4c1fe28caa62a6a9",
+    "branch": "codex/download-completion-20261105",
+    "status": "DONE_SCOPED_LOCAL",
+    "implementation_model": "gpt-6-sol/max",
+    "diagnosis_model": "astra max per parent handoff",
+    "independent_review_agent": "sol_independent_review",
+    "remote_write": "NOT_RUN",
+    "current_fix_remote_ci": "NOT_RUN_NO_PUSH",
+    "record": "evidence/CI_DOWNLOAD_FIX_20261105.md",
+    "original_ci_cause_confidence": "HIGH_CONFIDENCE_NOT_ABSOLUTE_PROOF_ORIGINAL_BYTES_NOT_RETAINED",
+    "independent_review": "PASS_INDEPENDENT",
+    "review_evidence": "evidence/REVIEW_CI_DOWNLOAD_FIX_20261105.md",
+    "validation_summary": "evidence/ci-download-fix/validation-summary.json",
+    "native_passed": 334,
+    "application_passed": 36,
+    "javascript_passed": 48,
+    "targeted_download_passed": 18,
+    "final_observations_passed_runs": 3
   }
 }

@@ -1,0 +1,33 @@
+{
+  "result": {
+    "error": "Error: Download start timed out after 700 ms: /^same\\.json$/"
+  },
+  "result2": {
+    "ok": {
+      "page": 1
+    }
+  },
+  "events": [
+    {
+      "session": "b",
+      "kind": "begin",
+      "frameId": "70FA24A9DA855273F70F53DC8BBC6396",
+      "guid": "90c215d6-8843-4ea4-b28e-75c2dc561e98"
+    },
+    {
+      "session": "b",
+      "kind": "completed",
+      "guid": "90c215d6-8843-4ea4-b28e-75c2dc561e98"
+    }
+  ],
+  "firstPathFiles": [
+    "download-events.jsonl"
+  ],
+  "secondPathFiles": [
+    "90c215d6-8843-4ea4-b28e-75c2dc561e98",
+    "download-events.jsonl"
+  ],
+  "secondPathContents": [
+    "{\"page\":1}"
+  ]
+}

@@ -1,0 +1,25 @@
+✖ a duplicate terminal event cannot overturn the first completed state (11.555705ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 96.503223
+
+✖ failing tests:
+
+test at scripts/web_download.test.mjs:68:1
+✖ a duplicate terminal event cannot overturn the first completed state (11.555705ms)
+  Error: Download canceled: report.json (GUID 00000000-0000-4000-8000-000000000019)
+      at applyProgress (file:///workspace/homesafe-download-fix/scripts/web_download.mjs:65:27)
+      at FakeCDP.onProgress (file:///workspace/homesafe-download-fix/scripts/web_download.mjs:96:46)
+      at FakeCDP.emit (node:events:509:28)
+      at FakeCDP.progress (file:///workspace/homesafe-download-fix/scripts/web_download.test.mjs:22:10)
+      at file:///workspace/homesafe-download-fix/scripts/web_download.test.mjs:73:9
+      at async Promise.all (index 0)
+      at async Object.capture (file:///workspace/homesafe-download-fix/scripts/web_download.mjs:105:27)
+      at async file:///workspace/homesafe-download-fix/scripts/web_download.test.mjs:70:18
+      at async fixture (file:///workspace/homesafe-download-fix/scripts/web_download.test.mjs:32:9)
+      at async Test.run (node:internal/test_runner/test:1389:7)

@@ -1,0 +1,13 @@
+Loading annotated-types, pydantic, pydantic_core, typing-extensions, typing-inspection
+Loaded annotated-types, pydantic, pydantic_core, typing-extensions, typing-inspection
+{
+  "scope": "NODE_WASM_CONTROLLER_INTEGRATION_NOT_BROWSER",
+  "result": "PASS",
+  "pyodide": "314.0.6",
+  "pydantic": "2.12.5",
+  "conflict": true,
+  "goal": "goal_met",
+  "remaining_triggered": 2,
+  "remaining_needs_review": 4,
+  "unsupported_domains": 5
+}

@@ -1,0 +1,21 @@
+Download artifacts retained at /tmp/homesafe-semantic-review-4x2ariys/failed-downloads-s9myXw
+node:internal/errors:985
+  const err = new Error(message);
+              ^
+
+Error: Command failed: /bin/false /workspace/homesafe-download-fix/scripts/check_scene_snapshot.py /tmp/homesafe-web-hwBJau/d4b54f50-c3df-4c03-9e6a-3e443f11fc34
+    at genericNodeError (node:internal/errors:985:15)
+    at wrappedFn (node:internal/errors:539:14)
+    at checkExecSyncError (node:child_process:942:11)
+    at execFileSync (node:child_process:978:15)
+    at downloadSceneSnapshot (file:///workspace/homesafe-download-fix/scripts/check_web_preview.mjs:351:37)
+    at async file:///workspace/homesafe-download-fix/scripts/check_web_preview.mjs:72:27 {
+  status: 1,
+  signal: null,
+  output: [ null, '', '' ],
+  pid: 8944,
+  stdout: '',
+  stderr: ''
+}
+
+Node.js v24.19.0

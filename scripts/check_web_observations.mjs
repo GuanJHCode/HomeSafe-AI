@@ -1,11 +1,11 @@
 // Isolated real-browser acceptance of explicit free-practice observation edits.
 // node scripts/check_web_observations.mjs URL CHROMIUM PUPPETEER_ENTRY [OUTPUT_DIR]
 import assert from 'node:assert/strict';
-import { mkdtemp, mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdtemp, mkdir, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { resolve, join } from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { setTimeout as delay } from 'node:timers/promises';
+import { createJsonDownloadHarness, REPORT_FILENAME, SNAPSHOT_FILENAME, retainFailedDownloads } from './web_download.mjs';
 
 const [url, chrome, driver, output] = process.argv.slice(2);
 if (!url || !chrome || !driver) throw new Error('Pass URL, isolated Chromium and installed Puppeteer entry');
@@ -13,14 +13,18 @@ const { default: puppeteer } = await import(pathToFileURL(resolve(driver)).href)
 const browser = await puppeteer.launch({ executablePath: chrome, headless: true,
   args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', ...(process.env.CI ? ['--no-sandbox'] : [])] });
 const downloads = await mkdtemp(join(tmpdir(), 'homesafe-observation-'));
+let cdp;
+let downloadHarness;
+let passed = false;
+let retainedDownloads;
 try {
   const page = await browser.newPage();
   await page.setViewport({ width: 1280, height: 1000 });
   page.setDefaultTimeout(60_000);
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
-  const cdp = await page.createCDPSession();
-  await cdp.send('Browser.setDownloadBehavior', { behavior: 'allow', downloadPath: downloads });
+  cdp = await page.createCDPSession();
+  downloadHarness = await createJsonDownloadHarness({ browser, cdp, downloadPath: downloads });
   assert.ok((await page.goto(url, { waitUntil: 'domcontentloaded' }))?.ok());
   await ready();
   await page.select('.toolbar select', 'cabinet');
@@ -113,6 +117,7 @@ try {
     hashes: { before: before.input_hash, confirmed: confirmed.input_hash, false: negative.input_hash, unknown: unknown.input_hash } };
   if (output) await writeFile(resolve(output, 'observations.json'), JSON.stringify(result, null, 2));
   console.log(JSON.stringify(result, null, 2));
+  passed = true;
 
   async function ready() {
     await page.waitForFunction(() => document.querySelector('[aria-label="检查结果"]')?.getAttribute('aria-busy') === 'false'
@@ -133,21 +138,19 @@ try {
     await click('保存资料并重建基线'); await ready();
   }
   async function report(label = '导出 JSON') {
-    await click(label);
-    for (let attempt = 0; attempt < 100; attempt++) {
-      const file = (await readdir(downloads)).find(name => name.endsWith('.json'));
-      if (file) {
-        const result = JSON.parse(await readFile(join(downloads, file), 'utf8'));
-        await rm(join(downloads, file));
-        assert.ok((await text('.report .hash')).includes(result.input_hash ?? result.assessment.input_hash));
-        return result;
-      }
-      await delay(50);
-    }
-    throw new Error('Report download timed out');
+    const { json: result } = await downloadHarness.capture({
+      click: () => click(label),
+      filenamePattern: label === '导出场景快照' ? SNAPSHOT_FILENAME : REPORT_FILENAME,
+    });
+    assert.ok((await text('.report .hash')).includes(result.input_hash ?? result.assessment.input_hash));
+    return result;
   }
   function observation(report) { return report.property_observations.find(item => item.object_id === 'cabinet').properties.anchored; }
 } finally {
+  if (!passed) retainedDownloads = await retainFailedDownloads(downloads, output);
+  downloadHarness?.close();
+  await cdp?.detach().catch(() => {});
   await browser.close();
-  await rm(downloads, { recursive: true, force: true });
+  if (passed) await rm(downloads, { recursive: true, force: true });
+  else await retainFailedDownloads(downloads, output, { announce: false, destination: retainedDownloads });
 }

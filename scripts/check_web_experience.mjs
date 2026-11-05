@@ -2,10 +2,11 @@
 // node scripts/check_web_experience.mjs URL CHROMIUM PUPPETEER_ENTRY OUTPUT_DIR
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { mkdir, mkdtemp, readdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { createJsonDownloadHarness, REPORT_FILENAME, retainFailedDownloads } from './web_download.mjs';
 
 const [url, executablePath, entry, outputDirectory] = process.argv.slice(2);
 if (!url || !executablePath || !entry || !outputDirectory) throw new Error('Pass URL, Chromium, puppeteer-core entry and output directory.');
@@ -15,13 +16,17 @@ const browser = await puppeteer.launch({ executablePath, headless: true,
 const downloads = await mkdtemp(join(tmpdir(), 'homesafe-ux-'));
 await mkdir(outputDirectory, { recursive: true });
 let page;
+let cdp;
+let downloadHarness;
+let passed = false;
+let retainedDownloads;
 try {
   page = await browser.newPage();
   page.setDefaultTimeout(60000);
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
-  const cdp = await page.createCDPSession();
-  await cdp.send('Browser.setDownloadBehavior', { behavior: 'allow', downloadPath: downloads });
+  cdp = await page.createCDPSession();
+  downloadHarness = await createJsonDownloadHarness({ browser, cdp, downloadPath: downloads });
   await page.setViewport({ width: 1280, height: 1000 });
   const proceduralGlb = triangleFixture();
   const fixtureScene = await (await fetch(new URL('engine/scene-before.json', url))).json();
@@ -84,12 +89,11 @@ try {
   assert.equal(await page.$eval('.hash', node => node.textContent), baselineHash);
   assert.deepEqual(await page.$$eval('.role-summaries button', nodes => nodes.map(node => node.textContent)), summaryBefore);
 
-  await click('导出 JSON');
-  await waitDownloads(1);
-  await click('导出 JSON');
-  const filenames = await waitDownloads(2);
+  const first = await downloadHarness.capture({ click: () => click('导出 JSON'), filenamePattern: REPORT_FILENAME });
+  const second = await downloadHarness.capture({ click: () => click('导出 JSON'), filenamePattern: REPORT_FILENAME });
+  const filenames = [first.filename, second.filename];
   assert.notEqual(filenames[0], filenames[1]);
-  const reports = await Promise.all(filenames.map(name => readFile(join(downloads, name), 'utf8').then(JSON.parse)));
+  const reports = [first.json, second.json];
   assert.deepEqual(reports[0], reports[1], 'Repeated names differ but accepted report bytes agree');
   assert.ok(baselineHash.includes(reports[0].input_hash));
 
@@ -129,6 +133,7 @@ try {
   };
   await writeFile(resolve(outputDirectory, 'experience.json'), JSON.stringify(result, null, 2) + '\n');
   console.log(JSON.stringify(result, null, 2));
+  passed = true;
 
   async function click(label) {
     const clicked = await page.evaluate(text => {
@@ -142,21 +147,16 @@ try {
     await page.waitForFunction(() => !!document.querySelector('.report') &&
       document.querySelector('[aria-label="检查结果"]')?.getAttribute('aria-busy') === 'false');
   }
-  async function waitDownloads(count) {
-    const deadline = Date.now() + 10000;
-    while (Date.now() < deadline) {
-      const files = (await readdir(downloads)).filter(name => name.endsWith('.json'));
-      if (files.length >= count) return files;
-      await new Promise(resolve => setTimeout(resolve, 50));
-    }
-    throw new Error(`Expected ${count} complete downloads`);
-  }
 } catch (error) {
   if (page) await writeFile(resolve(outputDirectory, 'failure.txt'), String(error) + '\n' + await page.evaluate(() => document.body.innerText));
   throw error;
 } finally {
+  if (!passed) retainedDownloads = await retainFailedDownloads(downloads, outputDirectory);
+  downloadHarness?.close();
+  await cdp?.detach().catch(() => {});
   await browser.close();
-  await rm(downloads, { recursive: true, force: true });
+  if (passed) await rm(downloads, { recursive: true, force: true });
+  else await retainFailedDownloads(downloads, outputDirectory, { announce: false, destination: retainedDownloads });
 }
 
 // A three-vertex procedural GLB only; it is not a Lux3D model or a visual-quality fixture.

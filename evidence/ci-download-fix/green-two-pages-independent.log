@@ -1,0 +1,1 @@
+{"events":[{"session":"a","kind":"begin","frameId":"C24A74BB22B0CF5F73F5FAE1446CC588","guid":"b52ca9dd-ab8b-464c-80e1-4618c828ba29"},{"session":"a","kind":"completed","guid":"b52ca9dd-ab8b-464c-80e1-4618c828ba29"}],"result":"PASS","secondHarnessRejectedBeforeCDP":true,"firstHarnessStillWorks":true,"guid":"b52ca9dd-ab8b-464c-80e1-4618c828ba29"}

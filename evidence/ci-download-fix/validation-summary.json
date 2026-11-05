@@ -1,0 +1,96 @@
+{
+  "task_id": "T07-ci-download-completion",
+  "date_utc": "2026-11-05",
+  "base_commit": "394eb04e9bbaf7555a507cbc4c1fe28caa62a6a9",
+  "implementation_agent": "sol_download_fix",
+  "implementation_model": "gpt-6-sol/max",
+  "independent_review_agent": "sol_independent_review",
+  "independent_review": "PASS_INDEPENDENT",
+  "scope": "LOCAL_ISOLATED_LOOPBACK_SYNTHETIC_SCENE_ONLY",
+  "tests": {
+    "native_python": {
+      "passed": 334,
+      "failed": 0,
+      "source_unchanged_after_run": true
+    },
+    "web_application": {
+      "passed": 36,
+      "failed": 0,
+      "source_unchanged_after_run": true
+    },
+    "javascript": {
+      "passed": 48,
+      "failed": 0
+    },
+    "targeted_download_node": {
+      "passed": 18,
+      "failed": 0
+    },
+    "contract_typecheck": "PASS",
+    "canonical_contracts": "PASS",
+    "package_checks": {
+      "status": "PASS",
+      "passed": 8,
+      "failed": 0
+    },
+    "vue_typecheck_and_build": "PASS",
+    "runtime_bundle_real_pyodide": "PASS",
+    "staged_core_matches_base": "PASS",
+    "deployment_transport_loopback": "PASS"
+  },
+  "browser_checks": {
+    "download_protocol": "PASS",
+    "spike": "PASS",
+    "preview": "PASS_FINAL_FROZEN_SOURCE",
+    "experience": "PASS_FINAL_FROZEN_SOURCE",
+    "observations_final_runs": {
+      "passed": 3,
+      "failed": 0
+    },
+    "recovery": "PASS",
+    "startup_trace": "PASS",
+    "same_origin_iframe": "PASS",
+    "controlled_cross_origin_iframe": "PASS"
+  },
+  "performance": {
+    "mode": "enforce required",
+    "exit_code": 1,
+    "cold_samples": 5,
+    "warm_samples": 5,
+    "hot_samples_after_warmup": 30,
+    "cold_first_editable_p95_ms": 4812.2,
+    "cold_first_editable_p50_ms": 3864.0,
+    "cold_rules_p95_ms": 4812.1,
+    "hot_evaluation_p95_ms": 16.0,
+    "targets": {
+      "first_editable_p95_le_3000_ms": false,
+      "cold_rules_le_12000_ms": true,
+      "hot_evaluation_p95_le_150_ms": true
+    },
+    "first_editable_budget": "OPEN_NOT_MET",
+    "causal_comparison_to_earlier_environments": "NOT_CLAIMED"
+  },
+  "application_rules_contracts_assets_changed": false,
+  "original_ci": {
+    "source_commit": "394eb04e9bbaf7555a507cbc4c1fe28caa62a6a9",
+    "run_id": 41948477248,
+    "functional_validation": "FAIL_DOWNLOAD_JSON_PARSE",
+    "strict_performance": "NOT_RUN_SKIPPED"
+  },
+  "original_ci_cause_confidence": "HIGH_CONFIDENCE_INFERRED; original failed file was not retained",
+  "corrected_two_page_counterexample": "Controlled foreground test proves browser-wide PATH override; earlier uncontrolled background-tab timeout does not prove CDP event reassignment",
+  "current_fix_remote_ci": "NOT_RUN_NO_PUSH",
+  "remote_write": "NOT_RUN",
+  "public_deployment": "NOT_RUN",
+  "real_asset_browser": "NOT_RUN_FILE_UNAVAILABLE",
+  "raw_model_publication": "NOT_RUN",
+  "evidence": {
+    "source_hashes": "frozen-source-hashes.json",
+    "root_cause": "original-ci.json",
+    "review": "../REVIEW_CI_DOWNLOAD_FIX_20261105.md"
+  },
+  "independent_counterexamples": {
+    "foreground_controlled_browser_path_override": "REPRODUCED_AND_GUARD_VERIFIED",
+    "semantic_python_recompute_failure_retains_raw_snapshot": "PASS_EXPECTED_FAILURE_WITH_29870_BYTE_RAW_SNAPSHOT_AND_EVENT_TRACE"
+  }
+}

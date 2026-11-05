@@ -88,6 +88,7 @@ jobs:
           python scripts/check_deployment.py --url http://127.0.0.1:4173/preview --dist apps/web/dist --allow-local-http --output ci-evidence/deployment-transport.json
           chrome=$(command -v google-chrome)
           driver="$RUNNER_TEMP/homesafe-browser/node_modules/puppeteer-core/lib/esm/puppeteer/puppeteer-core.js"
+          node scripts/check_web_download_browser.mjs "$chrome" "$driver" ci-evidence/download-protocol | tee ci-evidence/download-protocol.json
           node scripts/check_browser_spike.mjs http://127.0.0.1:4173/probe/ "$chrome" "$driver" | tee ci-evidence/browser-spike.json
           node scripts/check_web_preview.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" | tee ci-evidence/web-preview.json
           node scripts/check_web_experience.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" ci-evidence/experience | tee ci-evidence/experience.json

@@ -1,0 +1,17 @@
+{
+  "result": "OBSERVED",
+  "beforeClose": [
+    {
+      "name": "0ab94671-6e57-4cfe-ac08-93e9221adef8.crdownload",
+      "text": "{\"partial\":"
+    }
+  ],
+  "afterClose": [],
+  "events": [
+    {
+      "kind": "begin",
+      "guid": "0ab94671-6e57-4cfe-ac08-93e9221adef8",
+      "filename": "partial.json"
+    }
+  ]
+}

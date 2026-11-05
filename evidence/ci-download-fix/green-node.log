@@ -1,0 +1,28 @@
+✔ an early empty final file is not parsed until CDP confirms completion (32.015738ms)
+✔ completion before start and duplicate events bind to one GUID (2.74992ms)
+✔ a duplicate terminal event cannot overturn the first completed state (2.403389ms)
+✔ other frames, other filenames, and unrelated progress cannot claim a download (2.815479ms)
+✔ same suggested filename works for sequential downloads because paths use GUIDs (3.822155ms)
+✔ unsafe concurrent captures are rejected without disturbing the first (3.069312ms)
+✔ two matching starts are rejected as ambiguous (2.542729ms)
+✔ cancel and start timeout fail clearly and require a fresh page (16.926318ms)
+✔ completion timeout and corrupt JSON preserve the raw artifact (21.998134ms)
+✔ failed click releases subscriptions and a fresh harness can retry (5.042663ms)
+✔ close aborts an active capture and removes listeners (1.595652ms)
+✔ a completed download cannot wait forever for a stuck click promise (14.287563ms)
+✔ close and start deadline also bound a stalled frame lookup (15.830346ms)
+✔ browser behavior uses GUID filenames and report/snapshot names stay distinct (1.492247ms)
+✔ one browser rejects a second harness before it changes global download behavior (1.425656ms)
+✔ concurrent factory setup reserves ownership and setup failure rolls it back (1.300107ms)
+Download artifacts retained at /tmp/homesafe-download-evidence-TjGeOc/evidence/failed-downloads-pNbUZC
+✔ failed run copies GUID bytes into the evidence directory (8.279467ms)
+Download artifacts retained at /tmp/homesafe-failed-downloads-PCXp04
+✔ local failure copies partial bytes outside Chromium download directory (5.579932ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 257.063627

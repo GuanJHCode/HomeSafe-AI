@@ -1,0 +1,21 @@
+✖ an early empty final file is not parsed until CDP confirms completion (27.816933ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 116.175405
+
+✖ failing tests:
+
+test at ../../tmp/homesafe-download-red/web_download.test.mjs:36:1
+✖ an early empty final file is not parsed until CDP confirms completion (27.816933ms)
+  SyntaxError: Unexpected end of JSON input
+      at JSON.parse (<anonymous>)
+      at Object.capture (file:///tmp/homesafe-download-red/web_download.mjs:14:52)
+      at async file:///tmp/homesafe-download-red/web_download.test.mjs:49:18
+      at async fixture (file:///tmp/homesafe-download-red/web_download.test.mjs:32:9)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)

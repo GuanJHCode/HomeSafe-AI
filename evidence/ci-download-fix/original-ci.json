@@ -1,0 +1,34 @@
+{
+  "source_commit": "394eb04e9bbaf7555a507cbc4c1fe28caa62a6a9",
+  "run_id": 41948477248,
+  "job_id": 126986451585,
+  "run_url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41948477248",
+  "conclusion": "failure",
+  "verified_via": "GitHub connector job steps and decoded job log, 2026-11-05 UTC",
+  "browser": "Chrome/156.0.8078.47",
+  "node": "v24.22.1",
+  "failure": {
+    "time_utc": "2026-11-05T01:28:05.5907901Z",
+    "message": "SyntaxError: Unexpected end of JSON input",
+    "location": "scripts/check_web_observations.mjs:140:29",
+    "caller": "scripts/check_web_observations.mjs:70:17",
+    "scenario": "fourth report download, after undo with the explicit observation baseline"
+  },
+  "functional_validation": "FAIL_DOWNLOAD_JSON_PARSE",
+  "performance_budget": "NOT_RUN_SKIPPED_AFTER_FUNCTIONAL_FAILURE",
+  "failed_download_bytes": "NOT_RETAINED_BY_ORIGINAL_SCRIPT",
+  "root_cause_confidence": "HIGH_CONFIDENCE_TIMING_RACE; original failing bytes unavailable, not absolute proof of that individual failure",
+  "astra_diagnosis_handoff": {
+    "reported_real_chromium_trials": 100,
+    "reported_empty_final_files": 3,
+    "reported_original_full_script_nonreproductions": 3,
+    "reported_diagnostic_full_script_nonreproductions": 8,
+    "provenance": "astra max parent-thread handoff; not rerun or claimed as this implementation session's measurements"
+  },
+  "previous_candidate": {
+    "commit": "2ffb193d3f0829c4552ad01b0040889afcbe8bbc",
+    "library_file_id": "libfile_6bb71999cd0481918f767b8a8a1fd04a",
+    "sha256": "0fcda3ad65c5e350bf7c10578295072b6ed8266da63ca6b7dc015fcb52a07293",
+    "retrieval": "SUPPORTED_LIBRARY_HELPER_DOWNLOAD_FAILED; bytes unavailable; no comparison or reuse claimed"
+  }
+}

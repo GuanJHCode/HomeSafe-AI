@@ -1,0 +1,10 @@
+2026-11-05T01:28:05.5906792Z <anonymous_script>:1
+2026-11-05T01:28:05.5907567Z 
+2026-11-05T01:28:05.5907579Z 
+2026-11-05T01:28:05.5907901Z SyntaxError: Unexpected end of JSON input
+2026-11-05T01:28:05.5908331Z     at JSON.parse (<anonymous>)
+2026-11-05T01:28:05.5908928Z     at report (file:///home/runner/work/HomeSafe-AI/HomeSafe-AI/scripts/check_web_observations.mjs:140:29)
+2026-11-05T01:28:05.5909695Z     at async file:///home/runner/work/HomeSafe-AI/HomeSafe-AI/scripts/check_web_observations.mjs:70:17
+2026-11-05T01:28:05.5910088Z 
+2026-11-05T01:28:05.5910175Z Node.js v24.22.1
+2026-11-05T01:28:05.6018511Z ##[error]Process completed with exit code 1.

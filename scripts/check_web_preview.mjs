@@ -2,13 +2,13 @@
 // locally installed puppeteer-core entry point. No browser or packages are downloaded.
 // node scripts/check_web_preview.mjs http://127.0.0.1:4173/ /path/to/chrome /path/to/puppeteer-core.js
 import assert from 'node:assert/strict';
-import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { pathToFileURL, fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
-import { setTimeout as delay } from 'node:timers/promises';
 import { failNextConfig } from './browser_fault.mjs';
+import { createJsonDownloadHarness, REPORT_FILENAME, SNAPSHOT_FILENAME, retainFailedDownloads } from './web_download.mjs';
 
 const [url, chrome, puppeteerEntry] = process.argv.slice(2);
 const expectedRealAssets = Number(process.env.HOMESAFE_EXPECT_REAL_ASSETS || 0);
@@ -43,6 +43,10 @@ const browser = await launch({
 });
 const downloadPath = await mkdtemp(join(tmpdir(), 'homesafe-web-'));
 let recording;
+let cdp;
+let downloadHarness;
+let passed = false;
+let retainedDownloads;
 try {
   const page = await browser.newPage();
   await page.setViewport({ width: 1280, height: 1000, deviceScaleFactor: 1 });
@@ -55,8 +59,8 @@ try {
   let workerCount = 0;
   page.on('workercreated', () => workerCount++);
   page.on('pageerror', error => pageErrors.push(error.message));
-  const cdp = await page.createCDPSession();
-  await cdp.send('Browser.setDownloadBehavior', { behavior: 'allow', downloadPath });
+  cdp = await page.createCDPSession();
+  downloadHarness = await createJsonDownloadHarness({ browser, cdp, downloadPath });
 
   const opened = performance.now();
   const response = await page.goto(url, { waitUntil: 'domcontentloaded' });
@@ -277,6 +281,7 @@ try {
       'refresh', 'real Worker recovery without refresh',
     ],
   }, null, 2));
+  passed = true;
 
   async function ready() {
     await page.waitForFunction((panel) => {
@@ -315,26 +320,15 @@ try {
   }
 
   async function downloadReport() {
-    const before = new Set(await readdir(downloadPath));
-    await click(labels.export);
-    const deadline = performance.now() + 10_000;
-    while (performance.now() < deadline) {
-      const file = (await readdir(downloadPath)).find(name => name.endsWith('.json') && !before.has(name));
-      if (file) {
-        const report = JSON.parse(await readFile(join(downloadPath, file), 'utf8'));
-        assert.equal(report.input_hash, await currentHash());
-        assert.equal(report.source_kind, 'synthetic_demo');
-        assert.match(await visibleText('.report'), new RegExp(`布局 v${report.scene_revision}\\b`));
-        assert.ok(report.actions.onSite.every(item => item.status === 'triggered'));
-        assert.ok(report.actions.information.every(item => item.status === 'needs_review'));
-        // CDP may reuse a filename. Remove only this harness-owned temporary file
-        // so a repeated export of the same layout can be observed independently.
-        await rm(join(downloadPath, file));
-        return report;
-      }
-      await delay(50);
-    }
-    throw new Error('JSON download did not complete');
+    const { json: report } = await downloadHarness.capture({
+      click: () => click(labels.export), filenamePattern: REPORT_FILENAME,
+    });
+    assert.equal(report.input_hash, await currentHash());
+    assert.equal(report.source_kind, 'synthetic_demo');
+    assert.match(await visibleText('.report'), new RegExp(`布局 v${report.scene_revision}\\b`));
+    assert.ok(report.actions.onSite.every(item => item.status === 'triggered'));
+    assert.ok(report.actions.information.every(item => item.status === 'needs_review'));
+    return report;
   }
 
   function assertPositionFromSnapshot(snapshot, id, target) {
@@ -345,35 +339,24 @@ try {
   }
 
   async function downloadSceneSnapshot(label) {
-    const before = new Set(await readdir(downloadPath));
-    await click('导出场景快照');
-    const deadline = performance.now() + 10_000;
-    while (performance.now() < deadline) {
-      const filename = (await readdir(downloadPath)).find(name => name.startsWith('homesafe-scene-') && name.endsWith('.json') && !before.has(name));
-      if (filename) {
-        const path = join(downloadPath, filename);
-        const raw = await readFile(path, 'utf8');
-        const snapshot = JSON.parse(raw);
-        assert.equal(snapshot.assessment.input_hash, await currentHash());
-        assert.equal(snapshot.assessment.scene_revision, snapshot.scene.revision);
-        assert.equal(snapshot.source_kind, 'synthetic_demo');
-        assert.equal(snapshot.includes_asset_bytes, false);
-        // Verify actual downloaded inputs with the same authoritative Python core;
-        // a UI-presented hash string alone cannot establish reproducibility.
-        const verification = JSON.parse(execFileSync(process.env.HOMESAFE_PYTHON || 'python3',
-          [fileURLToPath(new URL('./check_scene_snapshot.py', import.meta.url)), path], { encoding: 'utf8' }));
-        assert.equal(verification.result, 'MATCHES_CURRENT_CORE');
-        snapshotRecords.push({ label, filename, verification });
-        if (process.env.HOMESAFE_EVIDENCE_DIR) {
-          await mkdir(process.env.HOMESAFE_EVIDENCE_DIR, { recursive: true });
-          await writeFile(resolve(process.env.HOMESAFE_EVIDENCE_DIR, `snapshot-${label}.json`), raw);
-        }
-        await rm(path);
-        return snapshot;
-      }
-      await delay(50);
+    const { filename, path, raw, json: snapshot } = await downloadHarness.capture({
+      click: () => click('导出场景快照'), filenamePattern: SNAPSHOT_FILENAME,
+    });
+    assert.equal(snapshot.assessment.input_hash, await currentHash());
+    assert.equal(snapshot.assessment.scene_revision, snapshot.scene.revision);
+    assert.equal(snapshot.source_kind, 'synthetic_demo');
+    assert.equal(snapshot.includes_asset_bytes, false);
+    // Verify actual downloaded inputs with the same authoritative Python core;
+    // a UI-presented hash string alone cannot establish reproducibility.
+    const verification = JSON.parse(execFileSync(process.env.HOMESAFE_PYTHON || 'python3',
+      [fileURLToPath(new URL('./check_scene_snapshot.py', import.meta.url)), path], { encoding: 'utf8' }));
+    assert.equal(verification.result, 'MATCHES_CURRENT_CORE');
+    snapshotRecords.push({ label, filename, verification });
+    if (process.env.HOMESAFE_EVIDENCE_DIR) {
+      await mkdir(process.env.HOMESAFE_EVIDENCE_DIR, { recursive: true });
+      await writeFile(resolve(process.env.HOMESAFE_EVIDENCE_DIR, `snapshot-${label}.json`), raw);
     }
-    throw new Error('Scene snapshot download did not complete');
+    return snapshot;
   }
 
   async function canvasBounds() {
@@ -407,9 +390,16 @@ try {
     await page.mouse.up();
   }
 } finally {
+  if (!passed) retainedDownloads = await retainFailedDownloads(downloadPath, process.env.HOMESAFE_EVIDENCE_DIR);
   if (recording) await recording.stop();
+  downloadHarness?.close();
+  await cdp?.detach().catch(() => {});
   await browser.close();
-  await rm(downloadPath, { recursive: true, force: true });
+  if (passed) await rm(downloadPath, { recursive: true, force: true });
+  else {
+    await retainFailedDownloads(downloadPath, process.env.HOMESAFE_EVIDENCE_DIR,
+      { announce: false, destination: retainedDownloads });
+  }
 }
 
 function finding(report, rule, role, status) {
