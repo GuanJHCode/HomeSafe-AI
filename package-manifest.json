@@ -1,9 +1,9 @@
 {
   "manifest_version": "1.0",
-  "release": "V6.1-local-a192-9a-integration-20261105",
-  "base_commit": "a192d51184393187a9e1d98e9c92cd2da06b1dd7",
+  "release": "V6.1-private-real-material-tools-20261105",
+  "base_commit": "5001222413937586604e8d944ba83787c7cb06fa",
   "baseline_zip_sha256": "b6c674f532fd30ff7ab086b08c814b086e94e2aa0f12cff80c1b6d94b96d3752",
-  "classification_policy": "Explicit reviewed allowlist union of 911 a192/9a files plus 20 integration source and safe text evidence files. All SHA-256 and byte counts recomputed. No private GLB/media, raw third-party website/terms, runtime/build/dependency/browser directories. No publication approval.",
+  "classification_policy": "Reviewed5001222 source/evidence plus13 explicit private-capture tool, tests, current CI and safe text evidence files. No original/derived model, image/PDF/video, private input/config/profile, runtime/dependency/build or raw website/terms. SHA/lengths recomputed; no new push/publication authorized.",
   "files": [
     {
       "path": ".env.example",
@@ -61,8 +61,8 @@
     },
     {
       "path": "START_HERE.md",
-      "sha256": "a28e5131649daff754845c2165ed5246fda53e4c50da1045ef6479bcbe37eea0",
-      "bytes": 13189,
+      "sha256": "84fd0e205d428e6aaac820edcd54c1e699c0cd5fd6932fa5134a1798ece9aed3",
+      "bytes": 14027,
       "classification": "generated_project_source"
     },
     {
@@ -745,8 +745,8 @@
     },
     {
       "path": "evidence/HANDOFF.md",
-      "sha256": "abf6c20f8719e06e2d83fdb87a9dbb4ce96b7c6a3493141cd0134ce944ae5e66",
-      "bytes": 21785,
+      "sha256": "a2bc649c6a1ac79fecd93c16d3a170257436af511261ee706b3f5b2168333f18",
+      "bytes": 22645,
       "classification": "generated_project_source"
     },
     {
@@ -778,6 +778,12 @@
       "sha256": "9f0c0b23b5117e41a9c8baeb9c5b8255c065a2a165bcfade514a64d9d3815a02",
       "bytes": 5700,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "evidence/PRIVATE_REAL_MATERIALS_20261105.md",
+      "classification": "generated_project_source",
+      "sha256": "dc45b98d62a9f9845a8f3e9b8778a3545483693ffd8800e16542e6d2fe8ba6a8",
+      "bytes": 5660
     },
     {
       "path": "evidence/REAL_LUX3D_PRIVATE_20261105.md",
@@ -874,6 +880,12 @@
       "sha256": "b993be026d07bda2993df8fe3d4232aa567b1f7fe948a136c9514477ba0b42ee",
       "bytes": 14989,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "evidence/REVIEW_PRIVATE_REAL_MATERIALS_20261105.md",
+      "classification": "generated_project_source",
+      "sha256": "038071e63331127ef7338b43c744c0f365a4e2f3bad5df6f03697b4dd1cca3a7",
+      "bytes": 14169
     },
     {
       "path": "evidence/REVIEW_REAL_LUX3D_20261105.md",
@@ -1704,9 +1716,15 @@
       "bytes": 3253
     },
     {
+      "path": "evidence/current-ci/5001222-ci-summary.json",
+      "classification": "generated_project_source",
+      "sha256": "bee578738705fea769aba693c166e93886affc7a51388f62ab505486704f89b2",
+      "bytes": 17638
+    },
+    {
       "path": "evidence/deployment-checklist.json",
-      "sha256": "f157d884204701c302ac55d1bc34aef68835a1141403489f4c9298043b42403f",
-      "bytes": 2055,
+      "sha256": "39217dacf0713098c24c8e5b0c73b56430a53b88434630577a8eaca124f07fce",
+      "bytes": 2756,
       "classification": "generated_project_source"
     },
     {
@@ -2512,6 +2530,48 @@
       "sha256": "b9254f7b3c833893689d40a724452de25c3627b48c5f7c355a2f7cad37c7e23c",
       "bytes": 12349,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "evidence/private-materials/contracts-green.log",
+      "classification": "generated_project_source",
+      "sha256": "a77e91cd9aa250a0eb6ae7428e66ee2cfd571de4347d4349b22748b3e9a2c913",
+      "bytes": 1209
+    },
+    {
+      "path": "evidence/private-materials/counterexamples.json",
+      "classification": "generated_project_source",
+      "sha256": "cb1d30f72563454966e67999f317f61b56ad656a381c33b35a025d4d957ace6c",
+      "bytes": 2331
+    },
+    {
+      "path": "evidence/private-materials/front-red.log",
+      "classification": "generated_project_source",
+      "sha256": "fce006e6e43e3ba996e1893b450511d09ae5bf51d6025854430fd15dadc84b6c",
+      "bytes": 1004
+    },
+    {
+      "path": "evidence/private-materials/javascript.log",
+      "classification": "generated_project_source",
+      "sha256": "eea78254a8ce7d82362914e1db12d1454e8f638c21adc33da705c86cf5213a80",
+      "bytes": 5488
+    },
+    {
+      "path": "evidence/private-materials/package.log",
+      "classification": "generated_project_source",
+      "sha256": "6c956fe8bdb88633cf01bc8479cc92b2aea7191f4212475043c3b86af01012ec",
+      "bytes": 388
+    },
+    {
+      "path": "evidence/private-materials/scene-fetch-red.log",
+      "classification": "generated_project_source",
+      "sha256": "f323080cd9978ecc4ab92315c1e3a1488aef5fd2b43ce29bde776a3ffdb90b3d",
+      "bytes": 1121
+    },
+    {
+      "path": "evidence/private-materials/trial-summary.json",
+      "classification": "generated_project_source",
+      "sha256": "7920fb29244c3fe7ccfd569f7f201a6abc22f9ac52eaf42d93174c7731885eb8",
+      "bytes": 7139
     },
     {
       "path": "evidence/procedural-intake-continuation-20261104.json",
@@ -3517,8 +3577,8 @@
     },
     {
       "path": "evidence/task-status.json",
-      "sha256": "515dc7d63aec4ec8effe85accb10b22aae816396446a1f46b9dca6aa640dd1ad",
-      "bytes": 47272,
+      "sha256": "f34a3e8dcad9c83f8ee5ee19b9ee71e2883f1a99b30e11573c0b1832212d182c",
+      "bytes": 51874,
       "classification": "generated_project_source"
     },
     {
@@ -5256,6 +5316,12 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "scripts/capture_ffmpeg_fast.py",
+      "classification": "generated_project_source",
+      "sha256": "5e6f34a150cee333e0e24b105a3747254c2f6ca902147ffe1dbca3806a89db76",
+      "bytes": 552
+    },
+    {
       "path": "scripts/check_browser_spike.mjs",
       "sha256": "e105ae2f8333a4d0a585759177f67da03bf3ab45117efed0a7e59af126290fb9",
       "bytes": 5080,
@@ -5378,8 +5444,8 @@
     {
       "path": "scripts/create_development_materials.mjs",
       "classification": "generated_project_source",
-      "sha256": "f94c08df2c8d25725fa216b89c779ecccf1a8c5f3975ba0a3de2a75308c725f1",
-      "bytes": 24931
+      "sha256": "f68c4304cb1463b9b72bcd060d8e1b128bd4fd6e1381e5f22a11800c17506b19",
+      "bytes": 30706
     },
     {
       "path": "scripts/create_private_asset_fixture.py",
@@ -5396,14 +5462,14 @@
     {
       "path": "scripts/development_materials_report.mjs",
       "classification": "generated_project_source",
-      "sha256": "0c1ad334619e2079ef7c7b60119181d647daf90b0111f89b4568894b255211f3",
-      "bytes": 9654
+      "sha256": "8ef6e347a64f6b5415f7fae39221f0988a404f2bb139b7e4afee5defbb5d266b",
+      "bytes": 11457
     },
     {
       "path": "scripts/development_materials_report.test.mjs",
       "classification": "generated_project_source",
-      "sha256": "9579860dbf69cc4188f7d7dad95a0f0c1601dee25698a6fcaa0c388075839dc7",
-      "bytes": 2095
+      "sha256": "d5b65b44ec99fb2ade4ec8aa9aa7d6926d1f2acf867b3ef9a6edeebdee92d5fb",
+      "bytes": 3831
     },
     {
       "path": "scripts/download_pyodide.py",
@@ -5434,6 +5500,18 @@
       "sha256": "bc1c1833b83406aeb09a80450c05aa93b9e82c7e0904d94cce4125077edeba58",
       "bytes": 2622,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "scripts/private_materials_inputs.mjs",
+      "classification": "generated_project_source",
+      "sha256": "fac7ccbbcef34816bd1e48c9425a185fa556996bf7824fe3fb077b79486d7147",
+      "bytes": 8918
+    },
+    {
+      "path": "scripts/private_materials_inputs.test.mjs",
+      "classification": "generated_project_source",
+      "sha256": "19689d1a24b2457283693dacf6d3ec040eb59bf11681003536af1ac7b0fb786e",
+      "bytes": 7097
     },
     {
       "path": "scripts/pyodide-runtime-lock.json",
@@ -5527,14 +5605,14 @@
     },
     {
       "path": "submission/drafts/report-20261104.md",
-      "sha256": "ec44398f00e52ca2134a397dd464ef005d06490a32d22e7667897e686ce061a7",
-      "bytes": 7076,
+      "sha256": "cddf2d5a11e1daa06418db0327bd3b7b5d49c33f0ec0bf3d4976cd359b5378ae",
+      "bytes": 8040,
       "classification": "generated_project_source"
     },
     {
       "path": "submission/drafts/social-post.md",
-      "sha256": "63926046cecd3eb6f2282325ea4d661a8967c6fcb80347d7b39665cc6f09a2fd",
-      "bytes": 1067,
+      "sha256": "16e4ac4853a6a4963400f2fefc0a1e2f5b76ecda031dfafa5e0d489d12e3bdd6",
+      "bytes": 1267,
       "classification": "generated_project_source"
     },
     {

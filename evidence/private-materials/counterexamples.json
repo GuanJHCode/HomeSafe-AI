@@ -1,0 +1,34 @@
+{
+  "scope": "REAL_PRIVATE_TOOL_COUNTEREXAMPLES_NO_MEDIA_INCLUDED",
+  "cases": [
+    {
+      "id": "NODE_RESPONSE_OK",
+      "red": "Real HTTP200 scene response aborted by mistaken Response.ok() call; original trial timed out",
+      "regression": "scene-fetch-red.log",
+      "fix": "Use boolean Node Response.ok",
+      "independent": "evidence/private/reviewer-private-materials-code-20261105/scene-fetch-response-counterexample.json"
+    },
+    {
+      "id": "SOURCE_FRONT_RECEIPT_MISMATCH",
+      "red": "Copied PASS calibration with identityQuaternion accepted despite claimed +Z to -Z; originals/derivatives untouched",
+      "regression": "front-red.log",
+      "fix": "Check supported revision/strategy, finite unit Y180Quaternion, bounds, bottom pivot and dimensions",
+      "independent": "evidence/private/reviewer-private-materials-code-20261105/wrong-front-counterexample.json"
+    },
+    {
+      "id": "BROAD_INTERCEPTION_WORKER_STALL",
+      "red": "Independent actual Chromium same placeholder dist: no interception accepted report; broad Puppeteer interception even with every request continued hung Worker initialization. Pending resource varied. Two main trials retained",
+      "fix": "Main-target CDP Fetch pauses only five exact private URL responses; all Worker resources left unpaused",
+      "green": "Actual independent two-model accepted-report probe and current complete54.84sec trial",
+      "independent": "evidence/private/reviewer-private-materials-code-20261105/worker-broad-interception-ab.json"
+    },
+    {
+      "id": "PDF_REQUIRED_PHRASE",
+      "red": "Third trial generated4page PDF and57.28sec video, but presence assertion required contiguous phrase 真实 Lux3D while private title used 真实模型; exit1 retained",
+      "fix": "Explicit truthful title 真实 Lux3D 模型; fourth full workflow trial passes",
+      "scope": "Template/positive-check wording mismatch, not a failed native snapshot or false authorization claim"
+    }
+  ],
+  "encoder": "Private wrapper raises VP9 cpu-used compression-effort preset to8; leaves all input/FPS/timing/quality/frame arguments unchanged. It does not speed up recorded time or add synthetic content.",
+  "export_note": "Text log copy strips trailing whitespace for Git diff-check; original raw logs and private counterexamples unchanged."
+}

@@ -1,0 +1,9 @@
+PASS generated contracts match canonical models
+PASS JSON Schema Draft 2020-12
+PASS schema and deterministic example before
+PASS schema and deterministic example conflict
+PASS schema and deterministic example improved
+PASS example comparison reproducible
+PASS OpenAPI internal pointers and operation IDs (not HTTP validation)
+PASS active Markdown local links
+8 package checks, 0 failures

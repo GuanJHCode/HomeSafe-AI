@@ -1,0 +1,19 @@
+✔ placeholder report keeps independent environment availability separate: AVAILABLE (1.775548ms)
+✔ placeholder report keeps independent environment availability separate: UNAVAILABLE (0.223456ms)
+✔ placeholder report keeps independent environment availability separate: NOT_ASSESSED (1.30477ms)
+✔ private real-model report distinguishes repaired GLBs from originals and placeholder capture (0.435454ms)
+✔ private capture preserves pending candidates and checks byte identities after loading (29.720176ms)
+✔ a model with an unrelated content hash cannot be labelled as the supplied derivative (6.795085ms)
+✔ repair provenance must match the exact original and derived bytes (5.711617ms)
+✔ approved candidate cannot silently stand in for the private test-only gate (4.471534ms)
+✔ private overlay rejects non-loopback destinations before touching a browser (5.661497ms)
+✔ copied PASS receipt cannot approve an identity quaternion that displays the model back (7.446909ms)
+✔ actual Node HTTP200 scene response is consumed and privately bound, without aborting (69.642827ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 236.747365

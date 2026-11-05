@@ -1,0 +1,26 @@
+✖ copied PASS receipt cannot approve an identity quaternion that displays the model back (59.567158ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 166.15794
+
+✖ failing tests:
+
+test at scripts/private_materials_inputs.test.mjs:72:1
+✖ copied PASS receipt cannot approve an identity quaternion that displays the model back (59.567158ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async file:///workspace/homesafe-private/integrated-app/scripts/private_materials_inputs.test.mjs:74:3
+      at async fixture (file:///workspace/homesafe-private/integrated-app/scripts/private_materials_inputs.test.mjs:43:22)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /source front/,
+    operator: 'rejects',
+    diff: 'simple'
+  }

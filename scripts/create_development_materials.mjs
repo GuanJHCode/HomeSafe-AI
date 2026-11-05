@@ -10,10 +10,11 @@ import { parseArgs } from 'node:util';
 import { createJsonDownloadHarness, REPORT_FILENAME, SNAPSHOT_FILENAME } from './web_download.mjs';
 import { privateOutputPath } from './private_asset_inputs.mjs';
 import { renderDevelopmentReport } from './development_materials_report.mjs';
+import { loadPrivateMaterialInputs, attachPrivateMaterialInputs } from './private_materials_inputs.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const { values } = parseArgs({ options: Object.fromEntries(
-  ['url', 'chrome', 'driver', 'python', 'output', 'expected-head', 'mode'].map(name => [name, { type: 'string' }])) });
+  ['url', 'chrome', 'driver', 'python', 'output', 'expected-head', 'mode', 'private-models'].map(name => [name, { type: 'string' }])) });
 for (const name of ['url', 'chrome', 'driver', 'python', 'output', 'expected-head', 'mode']) {
   if (!values[name]) throw new Error(`Required: --${name}`);
 }
@@ -26,6 +27,9 @@ assert.ok(output.split('/').at(-1).startsWith('development-materials-'),
   'Output directory must be named development-materials-*');
 const sourceBefore = await sourceIdentity();
 assert.equal(sourceBefore.head, values['expected-head'], 'Source HEAD changed before capture');
+assert.equal(sourceBefore.app_matches_head, true, 'Capture requires unchanged App/Core');
+const privateInputs = values['private-models'] ? await loadPrivateMaterialInputs(values['private-models']) : null;
+if (privateInputs) assert.equal(sourceBefore.app_matches_authorized_source, true, 'Private capture must match authorized5001222 App/Core');
 const distCatalog = JSON.parse(await readFile(resolve(root, 'apps/web/dist/engine/assets.json'), 'utf8'));
 assert.deepEqual(distCatalog, [], 'This recording must use the public placeholder-only preview');
 const publicCatalog = JSON.parse(await readFile(resolve(root, 'assets/asset-manifest.json'), 'utf8'));
@@ -50,14 +54,15 @@ const puppeteer = await import(pathToFileURL(resolve(values.driver)).href);
 const browser = await puppeteer.default.launch({ executablePath: resolve(values.chrome), headless: true,
   args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader',
     ...(process.env.CI ? ['--no-sandbox'] : [])] });
-let page, cdp, downloads, recording;
+let page, cdp, downloads, recording, privateBinding;
 let complete = false;
 const scene = { chairBefore: { x: 5.3, z: 3.3 }, conflict: { x: 3, z: 2 },
   improved: { x: 3, z: 0.6 } };
 const phases = [];
 const seconds = values.mode === 'full'
-  ? [15, 13, 14, 13, 9, 18, 12, 11, 13, 18, 12, 12, 12, 13]
-  : [1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1];
+  ? privateInputs ? [12, 12, 12, 12, 8, 16, 10, 10, 11, 14, 10, 10, 10, 10, 11, 11]
+    : [15, 13, 14, 13, 9, 18, 12, 11, 13, 18, 12, 12, 12, 13]
+  : [1, 1, 1, 1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1];
 // Each reading segment visits several genuine app regions. The video has no
 // repeated synthetic stills; the browser scroll and pointer remain visible.
 const attention = [
@@ -75,12 +80,15 @@ const attention = [
   ['.report .hash', '.scope', '.report'],
   ['.report-buttons', '.action-grid', '.limits'],
   ['.report', '.notice', '.intro'],
+  ['.challenge', '.viewport', '.toolbar'],
+  ['.viewport', '.challenge', '.scope'],
 ];
 const recordedAt = new Date().toISOString();
 const viewport = { width: 1280, height: 900, deviceScaleFactor: 1 };
 let browserVersion;
 try {
   page = await browser.newPage();
+  if (privateInputs) privateBinding = await attachPrivateMaterialInputs(page, url.href, privateInputs);
   browserVersion = await browser.version();
   await page.setViewport(viewport);
   page.setDefaultTimeout(60_000);
@@ -90,14 +98,21 @@ try {
   page.on('pageerror', error => errors.push(error.message));
   // Puppeteer's image2pipe input defaults to 25 fps. Match its duplicated
   // screencast frame rate so the video duration follows elapsed browser time.
-  recording = await page.screencast({ path: resolve(output, 'browser-original.webm'), fps: 25 });
+  if (!privateInputs) recording = await page.screencast({ path: resolve(output, 'browser-original.webm'), fps: 25 });
   const response = await page.goto(url.href, { waitUntil: 'domcontentloaded' });
   assert.ok(response?.ok(), 'Local app did not respond');
   await ready();
   await page.waitForSelector('canvas[aria-label="样例客厅三维场景"]', { visible: true });
-  assert.match(await text('.scene-panel'), /0 件模型 · \d+ 件程序占位模型/);
+  await assertModels();
+  if (privateInputs) {
+    await page.screenshot({ path: resolve(output, 'real-models-before.png'), fullPage: true });
+    await writeFile(resolve(output, 'private-model-inputs.json'), JSON.stringify(privateInputs.evidence, null, 2) + '\n');
+    recording = await page.screencast({ path: resolve(output, 'browser-original.webm'), fps: 25,
+      ffmpegPath: resolve(root, 'scripts/capture_ffmpeg_fast.py') });
+  }
   await installAnnotation();
-  await phase(0, '录屏注释｜本地开发预览：仅程序占位；本片未使用真实 Lux3D（非产品控件）', '.intro');
+  await phase(0, privateInputs ? '录屏注释｜两件真实 Lux3D 法线修复派生件；私下教学拟合，非公开授权（非产品控件）'
+    : '录屏注释｜本地开发预览：仅程序占位；本片未使用真实 Lux3D（非产品控件）', '.intro');
 
   await click('儿童视角');
   await phase(1, '录屏注释｜儿童观察视角；相机高度仅用于示意', '.views');
@@ -127,9 +142,26 @@ try {
   await phase(8, '录屏注释｜撤销后重新摆位，进入窗边挑战', '.challenge');
   await dragChair(scene.chairBefore, scene.improved);
   await ready();
-  const challengeSummary = await text('[data-testid="challenge-summary"]');
+  let challengeSummary = await text('[data-testid="challenge-summary"]');
   assert.match(challengeSummary, /本关布局目标已完成/);
   await phase(9, '录屏注释｜本关达标；仍须看已触发、待核查与未覆盖项', '.challenge');
+
+  if (privateInputs) {
+    await click('柜体主挑战'); await ready(); await assertModels();
+    await page.select('.toolbar select', 'cabinet');
+    await phase(14, '录屏注释｜柜体主挑战：真实柜体、椅子锁定；规则仍由 Python 计算', '.challenge');
+    await dragObject({ x: 5.3, z: 3.3 }, { x: 4.5, z: 3.2 }, 0.8); await ready();
+    await click('旋转 45°'); await ready();
+    const accepted = await currentHash();
+    await dragObject({ x: 4.5, z: 3.2 }, { x: -1, z: 3.2 }, 0.8); await ready();
+    assert.equal(await currentHash(), accepted);
+    assert.match(await text('[data-testid="placement-rejected"]'), /已恢复最后合法位置/);
+    challengeSummary = await text('[data-testid="challenge-summary"]');
+    assert.match(challengeSummary, /本关布局目标已完成/);
+    await phase(15, '录屏注释｜合法摆位与旋转；越界回弹保留布局，达标后仍有未知', '.viewport');
+    await assertModels();
+    await page.screenshot({ path: resolve(output, 'real-models-main-challenge.png'), fullPage: true });
+  }
 
   const exportedReport = await downloads.capture({
     click: () => click('导出 JSON'), filenamePattern: REPORT_FILENAME,
@@ -153,6 +185,9 @@ try {
   assert.equal(snapshot.assessment.input_hash, report.input_hash);
   assert.equal(snapshot.assessment.ruleset_version, report.ruleset_version);
   assert.equal(snapshot.scene.revision, report.scene_revision);
+  if (privateInputs) for (const m of privateInputs.evidence.models) {
+    assert.equal(snapshot.scene.objects.find(o => o.id === m.id).asset_id, m.asset_id);
+  }
   const verify = JSON.parse(execFileSync(values.python,
     [resolve(root, 'scripts/check_scene_snapshot.py'), resolve(output, 'scene-snapshot.json')],
     { cwd: root, encoding: 'utf8' }));
@@ -170,7 +205,8 @@ try {
   assert.ok(!printableText.includes('录屏注释'), 'Recording annotation leaked into printed checklist');
   await page.emulateMediaType('screen');
   assert.equal(await currentHash(), report.input_hash);
-  await phase(13, '录屏注释｜无公网、无真实模型验收、无音频；本片为开发工作稿', '.report');
+  await phase(13, privateInputs ? '录屏注释｜两件真实派生模型私下操作；无公网、无公开许可、无音频，非正式提交'
+    : '录屏注释｜无公网、无真实模型验收、无音频；本片为开发工作稿', '.report');
   assert.deepEqual(errors, [], 'Browser page errors');
 
   await recording.stop(); recording = undefined;
@@ -185,16 +221,34 @@ try {
   assert.equal(sourceAfter.dist_manifest_sha256, sourceBefore.dist_manifest_sha256,
     'Served dist changed during recording');
   assert.equal(sourceAfter.head, sourceBefore.head, 'HEAD changed during recording');
+  assert.deepEqual(sourceAfter.capture_tool_sha256, sourceBefore.capture_tool_sha256, 'Capture tools changed');
+  if (privateInputs) {
+    await privateInputs.verifyUnchanged();
+    assert.deepEqual(privateBinding.errors, []);
+    assert.deepEqual(privateBinding.blockedExternal, []);
+    assert.deepEqual(privateBinding.externalRequests, []);
+    assert.deepEqual([...new Set(privateBinding.requests.map(r => r.id))].sort(), ['cabinet', 'chair']);
+    assert.equal(new Set(privateBinding.overlays.map(r => r.path)).size, 5, 'All five private overrides must be observed');
+    await writeFile(resolve(output, 'private-binding.json'), JSON.stringify(privateBinding, null, 2) + '\n');
+  }
 
   const capture = { created_at: recordedAt, finished_at: new Date().toISOString(),
     mode: values.mode, url: url.href, browser: browserVersion,
-    viewport, challenge_summary: challengeSummary, phases };
+    viewport, challenge_summary: challengeSummary, phases,
+    recording_started_after_models_ready: Boolean(privateInputs) };
   const checks = { local_transport: 'PASS（本地 HTTP 字节核对；非公网验收）',
     historical_baseline: '继承的 ba21f54 基线记录：Python 334、应用 39、JS 48 项通过；本材料流程未重跑全套测试',
     model_bytes_in_environment: 'NOT_ASSESSED_BY_PLACEHOLDER_CAPTURE',
     model_materialization: '本次占位录屏不执行模型物化；原件可用性与私下验收应查独立记录',
     real_lux3d_browser: 'NOT_RUN_BY_THIS_CAPTURE', rights: 'NOT_ASSESSED_BY_THIS_CAPTURE', public_https: 'NOT_RUN_BY_THIS_CAPTURE',
     performance_3s_goal: 'OPEN; 本材料流程未重测性能' };
+  if (privateInputs) Object.assign(checks, {
+    historical_baseline: '5001222 / CI41993004005：Python343、应用39、JS51及Chrome156功能通过；本次未重跑全套CI',
+    model_bytes_in_environment: 'TWO_PRIVATE_DERIVATIVES_LOADED_HASH_MATCH',
+    model_materialization: '原件与派生件链已核对；本次仅浏览器内存拦截绑定，不写公开目录',
+    real_lux3d_browser: 'PASS_CURRENT_PRIVATE_CAPTURE_INTERACTIONS', rights: 'PENDING_NO_PUBLIC_DISTRIBUTION',
+    performance_3s_goal: '5001222 CI首次可编辑p95=4324ms，超过内部3000ms目标；冷规则和热评估门禁通过。3秒目标不阻塞其他开发，严格阈值保持',
+  });
   const exportEvidence = { report, snapshot,
     report_filename: exportedReport.filename, snapshot_filename: exportedSnapshot.filename,
     snapshot_verification: verify.result, binding_result: 'PASS：版本、输入摘要、规则集与当前页面一致' };
@@ -202,7 +256,7 @@ try {
   video.raw_sha256 = await fileHash(resolve(output, 'browser-original.webm'));
   video.raw_last_packet_pts_seconds = lastPacketPts(resolve(output, 'browser-original.webm'));
   const reportHtml = renderDevelopmentReport({ source: sourceBefore, capture,
-    exports: exportEvidence, video, checks });
+    exports: exportEvidence, video, checks, privateCapture: privateInputs?.evidence });
   await writeFile(resolve(output, 'development-report.html'), reportHtml);
   const pdfPage = await browser.newPage();
   try {
@@ -222,10 +276,12 @@ try {
   const files = ['browser-original.webm', 'development-recording.mp4',
     'development-report.pdf', 'development-report.html',
     'action-list.json', 'scene-snapshot.json', 'printable-action-list.pdf'];
+  if (privateInputs) files.push('private-model-inputs.json', 'private-binding.json',
+    'real-models-before.png', 'real-models-main-challenge.png');
   const fileHashes = Object.fromEntries(await Promise.all(files.map(async file => [file,
     await fileHash(resolve(output, file))])));
   const manifest = {
-    status: values.mode === 'full' ? 'LOCALHOST_PLACEHOLDER_DEVELOPMENT_RECORDING'
+    status: values.mode === 'full' ? privateInputs ? 'PRIVATE_REAL_MODEL_DEVELOPMENT_RECORDING' : 'LOCALHOST_PLACEHOLDER_DEVELOPMENT_RECORDING'
       : 'TRIAL_ONLY_NOT_DELIVERABLE',
     report_status: 'DRAFT_NOT_SUBMITTABLE', source: sourceBefore,
     project_dirty_after: sourceAfter.project_dirty,
@@ -236,7 +292,8 @@ try {
       ruleset_version: report.ruleset_version, source_kind: report.source_kind,
       snapshot_verification: verify.result, binding_result: exportEvidence.binding_result },
     checks, file_sha256: fileHashes,
-    public_deployment: 'NOT_VERIFIED', real_lux3d: 'NOT_USED_IN_THIS_CAPTURE',
+    public_deployment: 'NOT_VERIFIED', real_lux3d: privateInputs ? 'TWO_PRIVATE_NORMAL_REPAIR_DERIVATIVES_USED' : 'NOT_USED_IN_THIS_CAPTURE',
+    private_models: privateInputs?.evidence,
     audio: 'NONE', native_print_preview_visible_in_recording: false,
   };
   await writeFile(resolve(output, 'materials-manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
@@ -247,21 +304,24 @@ try {
     scene_revision: report.scene_revision, input_hash: report.input_hash,
     ruleset_version: report.ruleset_version, file_sha256: fileHashes,
     model_materialization: checks.model_materialization,
-    real_lux3d: 'NOT_USED_IN_THIS_CAPTURE', public_deployment: 'NOT_VERIFIED' };
+    real_lux3d: manifest.real_lux3d, public_deployment: 'NOT_VERIFIED' };
   await mkdir(resolve(root, 'ci-evidence/network-materials/materials'), { recursive: true });
   await writeFile(resolve(root, 'ci-evidence/network-materials/materials',
     `${values.mode}-summary.json`), JSON.stringify(publicSummary, null, 2) + '\n');
   complete = true;
   console.log(JSON.stringify({ result: 'PASS', mode: values.mode, output,
     report_pages: pages, video_seconds: video.duration_seconds,
-    input_hash: report.input_hash, real_lux3d: 'NOT_USED_IN_THIS_CAPTURE' }));
+    input_hash: report.input_hash, real_lux3d: manifest.real_lux3d }));
 } catch (error) {
   await writeFile(resolve(output, 'failure.json'), JSON.stringify({ status: 'FAIL',
-    error: String(error), source_head: sourceBefore.head, mode: values.mode }, null, 2) + '\n');
+    error: String(error), source_head: sourceBefore.head, mode: values.mode,
+    privateBinding, phases, page_text: await page?.$eval('body', n => n.textContent).catch(() => null),
+  }, null, 2) + '\n');
   throw error;
 } finally {
   if (recording) await recording.stop().catch(() => {});
   downloads?.close();
+  await privateBinding?.close().catch(() => {});
   await cdp?.detach().catch(() => {});
   await browser.close();
   if (!complete) console.error(`Partial development materials kept at ${output}`);
@@ -290,13 +350,27 @@ async function sourceIdentity() {
     'apps/web/dist/engine/scene-before.json', 'apps/web/dist/engine/scene-main-challenge.json'];
   const keyFiles = Object.fromEntries(await Promise.all(keyPaths.map(async path => [path,
     await fileHash(resolve(root, path))])));
+  const toolPaths = ['scripts/create_development_materials.mjs', 'scripts/development_materials_report.mjs',
+    'scripts/private_materials_inputs.mjs', 'scripts/web_download.mjs', 'scripts/private_asset_inputs.mjs',
+    'scripts/capture_ffmpeg_fast.py'];
+  const toolHashes = Object.fromEntries(await Promise.all(toolPaths.map(async path => [path,
+    await fileHash(resolve(root, path))])));
+  const currentAppDiff = git(['diff', '--name-only', '5001222413937586604e8d944ba83787c7cb06fa', '--', ...roots]);
   return { head, branch, initial_anchor: 'ba21f54ace3218cfa2d695092b735165c923b1b9',
     project_dirty: projectStatus.length > 0, project_status: projectStatus,
     app_matches_head: appStatus.length === 0, app_anchor_match: !anchorDiff && untracked.length === 0,
     app_status: appStatus, app_source_sha256: digest.digest('hex'),
     dist_manifest_sha256: await fileHash(resolve(root, 'apps/web/dist/preview-manifest.json')),
     dist_checksums_sha256: await fileHash(resolve(root, 'apps/web/dist/CHECKSUMS.sha256')),
-    key_files: keyFiles };
+    key_files: keyFiles, capture_tool_sha256: toolHashes,
+    authorized_app_reference_commit: '5001222413937586604e8d944ba83787c7cb06fa',
+    app_matches_authorized_source: !currentAppDiff && untracked.length === 0 };
+}
+
+async function assertModels() {
+  if (!privateInputs) { assert.match(await text('.scene-panel'), /0 件模型 · \d+ 件程序占位模型/); return; }
+  await page.waitForFunction(() => /已加载 2 件模型/.test(document.querySelector('.scene-panel')?.textContent)
+    && !/件加载中|件加载失败/.test(document.querySelector('.scene-panel')?.textContent));
 }
 
 async function fileHash(path) {
@@ -347,7 +421,7 @@ async function phase(index, note, selector) {
     document.querySelector('#homesafe-recording-annotation').textContent = note;
     document.querySelector(selector)?.scrollIntoView({ block: 'center', behavior: 'instant' });
   }, { note, selector });
-  phases.push({ index, note, planned_seconds: seconds[index], started_at: new Date().toISOString() });
+  phases.push({ index: phases.length, script_segment: index, note, planned_seconds: seconds[index], started_at: new Date().toISOString() });
   const targets = attention[index];
   for (const target of targets) {
     const point = await page.evaluate(selector => {
@@ -364,6 +438,10 @@ async function phase(index, note, selector) {
 }
 
 async function dragChair(from, to) {
+  return dragObject(from, to, 0.4);
+}
+
+async function dragObject(from, to, height) {
   const bounds = await page.$eval('canvas[aria-label="样例客厅三维场景"]', node => {
     node.scrollIntoView({ block: 'center' });
     const { left, top, width, height } = node.getBoundingClientRect();
@@ -379,8 +457,8 @@ async function dragChair(from, to) {
     return { x: bounds.left + bounds.width / 2 + scale * dot(offset, right),
       y: bounds.top + bounds.height / 2 - scale * dot(offset, up) };
   };
-  const start = project([from.x, 0.4, from.z]);
-  const groundFactor = eye[1] / (eye[1] - 0.4);
+  const start = project([from.x, height, from.z]);
+  const groundFactor = eye[1] / (eye[1] - height);
   const groundX = eye[0] + (from.x - eye[0]) * groundFactor;
   const groundZ = eye[2] + (from.z - eye[2]) * groundFactor;
   const end = project([groundX + to.x - from.x, 0, groundZ + to.z - from.z]);

@@ -7,15 +7,26 @@
   "anonymous_access": "NOT_RUN",
   "browser_worker": "NOT_RUN",
   "real_glb_rendering": "NOT_RUN",
-  "cold_start_measurement": null,
-  "hot_evaluation_measurement": null,
+  "cold_start_measurement": {
+    "source": "CI41993004005",
+    "first_editable_p95_ms": 4324,
+    "threshold_ms": 3000,
+    "result": "NOT_MET_NONBLOCKING_OTHER_DEVELOPMENT",
+    "public_scope": false
+  },
+  "hot_evaluation_measurement": {
+    "source": "CI41993004005",
+    "p95_ms": 14.8,
+    "threshold_ms": 150,
+    "result": "PASS_LOCAL_CI_ONLY"
+  },
   "pyodide_version": "314.0.6",
   "pydantic_version": "2.12.5",
   "minimum_retention_date": "2026-12-31",
   "actual_results_date": null,
   "maintain_until": null,
   "shutdown_allowed": false,
-  "retention_policy": "max(2026-12-31, actual_results_date+30days); conservative project policy pending form verification",
+  "retention_policy": "max(2026-12-31, actual_publicity_completion_date+30days); announcement and publicity completion recorded separately; no shutdown while completion date unknown",
   "user_reported_terms_verified_by_owner": false,
   "evidence_files": [
     "evidence/WEB_PREVIEW_20261104.md",
@@ -32,14 +43,17 @@
     "Project/source license choice and asset rights remain unconfirmed; dependency audit scope documented in licenses/README.md."
   ],
   "preview_build_status": "PASS_CURRENT_LOCAL_BUILD",
-  "local_browser_acceptance": "PASS_ISOLATED_CLOUD_CHROMIUM_154_LOCALHOST",
+  "local_browser_acceptance": "PASS_CI_CHROME156_FUNCTIONAL_LOCALHOST_PRIVATE_REAL_CHROMIUM154_SEPARATE",
   "resource_probe_local_transport": "PASS_CURRENT_SOURCE_LOCAL_HTTP",
-  "local_performance_evidence": "evidence/browser-performance-20261104.json",
+  "local_performance_evidence": "evidence/current-ci/5001222-ci-summary.json",
   "controlled_iframe_evidence": "evidence/embedding-20261104.json",
   "historical_preview_build_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6",
   "historical_preview_artifact_url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41769312093/artifacts/13294017524",
-  "current_preview_source_commit": null,
-  "current_build_evidence": "evidence/CONTINUATION_20261104.md",
+  "current_preview_source_commit": "5001222413937586604e8d944ba83787c7cb06fa",
+  "current_build_evidence": "evidence/current-ci/5001222-ci-summary.json",
   "current_build_directory": "apps/web/dist",
-  "current_transport_evidence": "evidence/continuation-local-transport-20261104.json"
+  "current_transport_evidence": "evidence/continuation-local-transport-20261104.json",
+  "historical_retention_policy": "max(2026-12-31, actual_results_date+30days); conservative project policy pending form verification",
+  "actual_publicity_completion_date": null,
+  "private_real_glb_rendering": "PASS_INDEPENDENT_PRIVATE_ORIGINAL_AND_DERIVED; PUBLIC_NOT_RUN"
 }

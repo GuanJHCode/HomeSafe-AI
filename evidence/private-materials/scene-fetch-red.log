@@ -1,0 +1,33 @@
+✖ actual Node HTTP200 scene response is consumed and privately bound, without aborting (42.12878ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 163.516341
+
+✖ failing tests:
+
+test at scripts/private_materials_inputs.test.mjs:69:1
+✖ actual Node HTTP200 scene response is consumed and privately bound, without aborting (42.12878ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+  + [
+  +   'TypeError: response.ok is not a function'
+  + ]
+  - []
+
+      at TestContext.<anonymous> (file:///workspace/homesafe-private/integrated-app/scripts/private_materials_inputs.test.mjs:83:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'TypeError: response.ok is not a function' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

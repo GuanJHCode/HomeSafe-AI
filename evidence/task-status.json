@@ -337,7 +337,8 @@
         "evidence/LOCAL_READINESS_20261105.md",
         "evidence/REVIEW_LOCAL_READINESS_20261105.md",
         "evidence/INTEGRATION_20261105.md",
-        "evidence/REVIEW_INTEGRATION_20261105.md"
+        "evidence/REVIEW_INTEGRATION_20261105.md",
+        "evidence/current-ci/5001222-ci-summary.json"
       ],
       "subtasks": [
         {
@@ -425,9 +426,53 @@
       ],
       "remaining": [
         "Integrated private real-model/render/export, controlled network and deterministic navigation cache recovery are independently validated. Final host/device/other-network performance remains open.",
-        "3s first-editable remains OPEN_NOT_MET/deferred; strict budgets and enforce unchanged. Integrated remoteCI not run because no push."
+        "3s first-editable remains OPEN_NOT_MET/deferred; actual5001222 CI p95=4324ms, strict budgets unchanged. Only authorized500 was pushed; new private material work remains local."
       ],
       "checks": {
+        "first_editable_budget": "OPEN_NOT_MET",
+        "hot_evaluation_budget": "PASS_CI5001222_P95_14.8MS_LE150",
+        "cold_rule_budget": "PASS_CI5001222_P95_4323.9MS_LE12000",
+        "current_remote_ci": "5001222_CI41993004005_FUNCTIONAL_PASS_ONLY_FIRST_EDITABLE_3S_FAIL",
+        "local_ci_equivalent_functional_steps": "PASS",
+        "strict_ci_failure_propagation": "PASS_INDEPENDENT_SYNTHETIC_SHELL_TEST",
+        "functional_validation": "PASS_CURRENT_CI_CHROME156_AND_PRIOR_PRIVATE_REAL_CHROMIUM154",
+        "current_startup_changes_remote_ci": "RAN_AT_5001222_FUNCTIONAL_PASS_PERFORMANCE3S_FAIL",
+        "latest_remote_performance": {
+          "commit": "5001222413937586604e8d944ba83787c7cb06fa",
+          "run_id": 41993004005,
+          "first_editable_p95_ms": 4324,
+          "cold_rules_p95_ms": 4323.9,
+          "hot_evaluation_p95_ms": 14.8,
+          "first_editable_budget": "OPEN_NOT_MET_NONBLOCKING_OTHER_DEVELOPMENT",
+          "evidence": "evidence/current-ci/5001222-ci-summary.json"
+        },
+        "historical_remote_performance_at_64e1665": {
+          "first_editable_p95_ms": 3386,
+          "hot_evaluation_p95_ms": 9.9,
+          "evidence": "evidence/ci-performance-64e1665.json"
+        },
+        "current_performance_values_scope": "ACTUAL_CI5001222_CHROME156_SYNTHETIC_LOCALHOST_ONLY_NOT_PRIVATE_MODEL_OR_PUBLIC_PERFORMANCE",
+        "historical_local_download_fix": {
+          "first_editable_p95_ms": 4812.2,
+          "hot_evaluation_p95_ms": 16.0,
+          "cold_rules_p95_ms": 4812.1,
+          "first_editable_budget": "OPEN_NOT_MET",
+          "cold_rules_budget": "PASS_LOCAL_ONLY",
+          "hot_evaluation_budget": "PASS_LOCAL_ONLY",
+          "enforce_exit_code": 1,
+          "functional_validation": "PASS_INDEPENDENT_FINAL_FROZEN_SOURCE",
+          "evidence": "evidence/CI_DOWNLOAD_FIX_20261105.md"
+        },
+        "last_measured_first_editable_p95_ms": 4324,
+        "last_measured_hot_evaluation_p95_ms": 14.8,
+        "current_real_lux3d_private": "PASS_ORIGINAL_AND_DERIVED_INDEPENDENT; FORMAL_PERFORMANCE_NOT_RUN",
+        "real_asset_context_loss": "PASS_ACTUAL_WEBGL_EXTENSION_NEW_CANVAS_MODELS_HASH_PRESERVED",
+        "real_asset_draft_export": "PASS_TWO_MODELS_LOADED_ACTUAL_DOWNLOAD_HASH_CHECK",
+        "current_local_integration": "PUSHED_5001222_WITH_EXPLICIT_AUTH; CURRENT_REMOTE_FUNCTIONAL_PASS_3S_FAIL",
+        "current_private_materials_tool": "LOCAL_NEW_BRANCH_NOT_PUSHED; MATERIALS_REVIEW_PENDING"
+      },
+      "current_remote_ci": "5001222/41993004005_FUNCTIONAL_PASS_FIRST_EDITABLE_4324MS_FAIL_ONLY",
+      "historical_checks_before_5001222": {
         "first_editable_budget": "OPEN_NOT_MET",
         "hot_evaluation_budget": "NOT_RUN_THIS_CONTINUATION; prior be32202 historical PASS retained",
         "cold_rule_budget": "NOT_RUN_THIS_CONTINUATION; prior be32202 historical PASS retained",
@@ -520,10 +565,13 @@
         "evidence/NETWORK_MATERIALS_20261105.md",
         "evidence/REVIEW_DEVELOPMENT_MATERIALS_20261105.md",
         "evidence/INTEGRATION_20261105.md",
-        "evidence/REVIEW_INTEGRATION_20261105.md"
+        "evidence/REVIEW_INTEGRATION_20261105.md",
+        "evidence/current-ci/5001222-ci-summary.json",
+        "evidence/PRIVATE_REAL_MATERIALS_20261105.md",
+        "evidence/REVIEW_PRIVATE_REAL_MATERIALS_20261105.md"
       ],
       "remaining": [
-        "a192 development-material tools and historical source-bound text evidence are included; previous private binary media remain in the original environment. Final report/video require the accepted integrated/frozen rights-cleared public target version."
+        "Current5001222 private real-model report/full recording in progress. Formal rights-cleared target/freeze/account gates remain separate; no public media upload."
       ],
       "subtasks": [
         {
@@ -547,6 +595,19 @@
           "evidence": "evidence/INTEGRATION_20261105.md",
           "review_evidence": "evidence/REVIEW_INTEGRATION_20261105.md",
           "review": "PASS_INDEPENDENT_ACTUAL_PDF_VIDEO_AND3_RED_GREEN_CASES"
+        },
+        {
+          "id": "T10-private-real-model-materials",
+          "status": "IN_PROGRESS",
+          "acceptance_scope": "Two actual normal-repair derivatives, current5001222 App/Core, continuous180–240sec private capture, source/overlay hashes and same-layout exports; not formal submission"
+        },
+        {
+          "id": "T10-private-real-model-capture-tooling",
+          "status": "DONE",
+          "review": "PASS_INDEPENDENT_CODE_BROWSER_TRIAL_PDF_VIDEO_BINDING",
+          "acceptance_scope": "Explicit private input/precise5CDP overlay, actualHTTP/Quaternion/Worker red-green, pending candidates and public catalogs preserved, four-page54.84sec trial; full material remains separate",
+          "evidence": "evidence/PRIVATE_REAL_MATERIALS_20261105.md",
+          "review_evidence": "evidence/REVIEW_PRIVATE_REAL_MATERIALS_20261105.md"
         }
       ]
     },
@@ -626,7 +687,7 @@
     }
   ],
   "timezone": "Asia/Shanghai",
-  "planning_status": "LOCAL_INTEGRATION_PASS_INDEPENDENT_FACT_CACHE_FIXES_EXTERNAL_GATES_REMAIN",
+  "planning_status": "REMOTE500_FUNCTIONAL_PASS_3S_NONBLOCKING_PRIVATE_REAL_MATERIALS_IN_PROGRESS",
   "source_import_status": "IMPORTED_AND_NATIVE_VALIDATED",
   "source_import": {
     "base_commit": "01d48fca76f77856b5e9f31a37090bb1284e47db",
@@ -637,12 +698,12 @@
     "real_browser_status": "NOT_RUN"
   },
   "baseline_commit": "2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f",
-  "implementation_branch": "codex/integrate-private-models-20261105",
+  "implementation_branch": "codex/private-real-materials-20261105",
   "continuation_base_commit": "f6245e13bc41e36a0efeabeba3ca0fba2174c2f5",
-  "current_validation_scope": "evidence/INTEGRATION_20261105.md",
+  "current_validation_scope": "evidence/current-ci/5001222-ci-summary.json",
   "historical_validation_scope": "Older 64e1665 CI41807603537 performance and 20261104 local startup measurements are historical. Latest verified remote is394eb04/CI41948477248 functional download FAIL and performance NOT_RUN. Local be32202 fixes the download protocol without a new remote run.",
   "historical_validated_source_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6",
-  "validation_scope": "Local merge of read-only verified remotea192 and9a private branch: Python343/app39/JS51/build/type/core passed; independent real-model resilience, network/cache5/delayed-body and material trial26.08s passed. Material current-environment false claim fixed. Original CI41980778267 navigation fail known from retained astra report; exact original304 remains inference. No integrated push/CI/public/performance run.",
+  "validation_scope": "5001222 remote CI41993004005 Python343/app39/JS51 and allChrome156 functional checks PASS; strict3s first-editable4324ms FAIL, cold/hot thresholds PASS. User defers3s as blocker; no website publication. Earlier pre-push records remain historical. Real private model material workflow is being added locally, not pushed.",
   "recovery_sync": {
     "task_id": "RECOVERY-SYNC-20261104",
     "date": "2026-11-04",
@@ -668,20 +729,24 @@
     "current_scope": "evidence/FEATURE_CONTINUATION_20261104.md"
   },
   "previous_continuation_base_commit": "57faf384d64e9770407b28086fdfeb5b193a6d6f",
-  "current_source_sync": "LOCAL_A192_PLUS_9A_INTEGRATION_NOT_PUSHED; REMOTE_A192_VERIFIED_READ_ONLY",
+  "current_source_sync": "REMOTE_5001222_CONFIRMED_PUSHED_BY_USER_AUTH; NEW_PRIVATE_MATERIAL_TOOLS_LOCAL_NOT_PUSHED",
   "previous_source_sync": "LOCAL_ONLY_NOT_PUSHED",
   "latest_verified_remote_ci": {
-    "source_commit": "a192d51184393187a9e1d98e9c92cd2da06b1dd7",
+    "source_commit": "5001222413937586604e8d944ba83787c7cb06fa",
     "remote_branch": "codex/v6.1-browser-3d",
-    "run_id": 41980778267,
-    "job_id": 127090136585,
+    "run_id": 41993004005,
+    "job_id": 127129460804,
     "conclusion": "failure",
-    "functional_validation": "FAIL_SECOND_PAGE_NAVIGATION_OK_ASSERTION; EARLIER_CHECKS_PASS",
-    "performance_budget": "NOT_RUN_SKIPPED_AFTER_FUNCTIONAL_FAILURE",
-    "original_http_status": "NOT_OBSERVED;304_HIGH_CONFIDENCE_INFERENCE",
-    "source_of_status": "Parent astra retained Library diagnostic version1, materialized and read; not a fresh GitHub API/artifact read by integration thread",
-    "evidence": "evidence/integration/ci-cache-diagnostic-summary.json",
-    "integrated_fix_remote_ci": "NOT_RUN_NO_PUSH"
+    "functional_validation": "PASS_ALL_FUNCTIONAL_COMMANDS_CHROME156",
+    "performance_budget": "FAIL_FIRST_EDITABLE_4324_MS_GT_3000_MS_ONLY",
+    "cold_rules_p95_ms": 4323.9,
+    "hot_evaluation_p95_ms": 14.8,
+    "skipped_steps": [
+      "Post Run actions/setup-node@v4",
+      "Post Run actions/setup-python@v5"
+    ],
+    "evidence": "evidence/current-ci/5001222-ci-summary.json",
+    "source_of_status": "Direct completed GitHub API steps and actual job JSON logs; remote SHA verified after authorized normal fast-forward push"
   },
   "startup_phase": {
     "base_commit": "64e166540495126f618dd65aa8dc88760ed70604",
@@ -983,7 +1048,7 @@
     "method": "non-fast-forward merge, preserve both histories",
     "validation": "PASS_SCOPED_NATIVE_APP_JS_BUILD_PRIVATE_REAL_NETWORK_CACHE5_DELAYED_JSON_MATERIAL_TRIAL",
     "independent_review": "PASS_SCOPED_AFTER_FACT_AND_CACHE_FIXES",
-    "remote_write": "NOT_RUN",
+    "remote_write": "CONFIRMED_USER_AUTHORIZED_FAST_FORWARD_5001222",
     "public_deployment": "NOT_RUN",
     "original_private_media_from_a192": "NOT_RETRIEVED_FROM_GIT",
     "current_owner_inputs": [
@@ -1003,7 +1068,9 @@
     "summary": "evidence/integration/validation-summary.json",
     "ci_navigation_cache_fix": "Pre-goto secondary cache disable, finite-header navigation diagnostics, complete3 bootstrap JSON bodies before controlled offline; original assertions retained",
     "cache_regression": "PASS_5_CASES_AND_INDEPENDENT_2_SECOND_JSON_BODY_FIXTURE",
-    "new_integrated_remote_ci": "NOT_RUN_NO_PUSH"
+    "new_integrated_remote_ci": "COMPLETED_FUNCTIONAL_PASS_PERFORMANCE_3S_FAIL",
+    "historical_remote_write_before_authorization": "NOT_RUN",
+    "current_ci_evidence": "evidence/current-ci/5001222-ci-summary.json"
   },
   "historical_remote_ci_before_a192": {
     "source_commit": "394eb04e9bbaf7555a507cbc4c1fe28caa62a6a9",
@@ -1020,5 +1087,18 @@
     "real_asset_browser": "BLOCKED_NOT_RUN_FILE_UNAVAILABLE",
     "public_host": "BLOCKED_NOT_RUN_NO_APPROVED_HOST",
     "evidence": "evidence/ci-download-fix/original-ci.json"
+  },
+  "historical_remote_ci_a192": {
+    "source_commit": "a192d51184393187a9e1d98e9c92cd2da06b1dd7",
+    "remote_branch": "codex/v6.1-browser-3d",
+    "run_id": 41980778267,
+    "job_id": 127090136585,
+    "conclusion": "failure",
+    "functional_validation": "FAIL_SECOND_PAGE_NAVIGATION_OK_ASSERTION; EARLIER_CHECKS_PASS",
+    "performance_budget": "NOT_RUN_SKIPPED_AFTER_FUNCTIONAL_FAILURE",
+    "original_http_status": "NOT_OBSERVED;304_HIGH_CONFIDENCE_INFERENCE",
+    "source_of_status": "Parent astra retained Library diagnostic version1, materialized and read; not a fresh GitHub API/artifact read by integration thread",
+    "evidence": "evidence/integration/ci-cache-diagnostic-summary.json",
+    "integrated_fix_remote_ci": "NOT_RUN_NO_PUSH"
   }
 }

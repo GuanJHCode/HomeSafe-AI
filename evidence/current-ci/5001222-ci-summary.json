@@ -1,0 +1,597 @@
+{
+  "run": {
+    "conclusion": "failure",
+    "created_at": "2026-11-05T08:15:02Z",
+    "event": "push",
+    "head_branch": "codex/v6.1-browser-3d",
+    "head_sha": "5001222413937586604e8d944ba83787c7cb06fa",
+    "html_url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41993004005",
+    "id": 41993004005,
+    "name": "browser-first-reference-baseline",
+    "run_attempt": 1,
+    "run_started_at": "2026-11-05T08:15:02Z",
+    "status": "completed",
+    "updated_at": "2026-11-05T08:19:51Z"
+  },
+  "push": {
+    "mode": "NORMAL_FAST_FORWARD_NO_FORCE",
+    "before": "a192d51184393187a9e1d98e9c92cd2da06b1dd7",
+    "after": "5001222413937586604e8d944ba83787c7cb06fa",
+    "branch": "codex/v6.1-browser-3d",
+    "master_unchanged": "2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f",
+    "preflight": "3 authorized commits / 65 new UTF8 blobs / 933 tracked files. No flagged private models, media, credentials. Explicit allowlist matches."
+  },
+  "jobs": [
+    {
+      "id": 127129460804,
+      "name": "reference",
+      "status": "completed",
+      "conclusion": "failure",
+      "run_id": 41993004005,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Run python -m pip install -r requirements-validation.txt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Run python -m pytest reference/tests -q",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Run python scripts/generate_contracts.py --check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Run python scripts/validate_package.py",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Run node --test browser-spike/*.test.mjs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Run node --test scripts/*.test.mjs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Run python scripts/stage_browser_core.py",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Run git diff --exit-code -- browser-spike/python browser-spike/examples",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Run node --check browser-spike/worker-controller.mjs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Run node --check browser-spike/rule-worker.mjs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Run node --check browser-spike/main.mjs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Run npm install --no-save --package-lock=false typescript@5.8.3",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Run npx tsc --strict --noEmit --target ES2022 contracts/frontend/domain.ts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Run npm --prefix apps/web ci --no-audit --no-fund",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Run npm --prefix apps/web test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        },
+        {
+          "name": "Download pinned official runtime",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20
+        },
+        {
+          "name": "Preview official vendor selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21
+        },
+        {
+          "name": "Copy verified official vendor files",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22
+        },
+        {
+          "name": "Run npm --prefix apps/web run build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23
+        },
+        {
+          "name": "Run node scripts/check_web_core.mjs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24
+        },
+        {
+          "name": "Verify runtime-only ZIP closure in real Pyodide",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25
+        },
+        {
+          "name": "Install isolated browser driver",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26
+        },
+        {
+          "name": "Private intake tooling with procedural textured fixtures only",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27
+        },
+        {
+          "name": "Prepare shared nested-path browser host",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28
+        },
+        {
+          "name": "Real browser functional checks on a nested path",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29
+        },
+        {
+          "name": "Strict real-browser performance budgets",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 30
+        },
+        {
+          "name": "Stop shared browser servers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31
+        },
+        {
+          "name": "Summarize separate validation scopes",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 32
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 33
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 64
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 65
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 66
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 67
+        }
+      ]
+    }
+  ],
+  "failures": [
+    {
+      "job_id": 127129460804,
+      "name": "Strict real-browser performance budgets",
+      "status": "completed",
+      "conclusion": "failure",
+      "number": 30
+    }
+  ],
+  "skipped": [
+    {
+      "job_id": 127129460804,
+      "name": "Post Run actions/setup-node@v4",
+      "status": "completed",
+      "conclusion": "skipped",
+      "number": 64
+    },
+    {
+      "job_id": 127129460804,
+      "name": "Post Run actions/setup-python@v5",
+      "status": "completed",
+      "conclusion": "skipped",
+      "number": 65
+    }
+  ],
+  "tests": {
+    "python_passed": 343,
+    "browser_spike_js_passed": 24,
+    "scripts_js_passed": 27,
+    "application_passed": 39,
+    "package_checks": 8
+  },
+  "functional_validation": "PASS_ALL_NESTED_PATH_FUNCTIONAL_COMMANDS",
+  "current_ci_browser": "Chrome/156.0.8078.79",
+  "network_recovery": {
+    "status": "PASS",
+    "stages": [
+      "online_accepted",
+      "real_offline",
+      "offline_edit_undo_redo_export",
+      "offline_retry_failed",
+      "cancelled_recovery",
+      "online_restored_fresh_worker",
+      "initial_config_offline_failed",
+      "initial_online_retry_ready"
+    ],
+    "snapshot": "MATCHES_CURRENT_CORE",
+    "navigation": [
+      {
+        "target": "main",
+        "requested_url": "http://127.0.0.1:4173/preview/",
+        "actual_url": "http://127.0.0.1:4173/preview/",
+        "status": 200,
+        "status_text": "OK",
+        "ok": true,
+        "from_cache": false,
+        "from_service_worker": false,
+        "headers": {
+          "date": "Thu, 05 Nov 2026 08:17:40 GMT",
+          "last-modified": "Thu, 05 Nov 2026 08:16:23 GMT"
+        }
+      },
+      {
+        "target": "initial",
+        "requested_url": "http://127.0.0.1:4173/preview/",
+        "actual_url": "http://127.0.0.1:4173/preview/",
+        "status": 200,
+        "status_text": "OK",
+        "ok": true,
+        "from_cache": false,
+        "from_service_worker": false,
+        "headers": {
+          "date": "Thu, 05 Nov 2026 08:17:49 GMT",
+          "last-modified": "Thu, 05 Nov 2026 08:16:23 GMT"
+        }
+      }
+    ],
+    "initialBootstrap": [
+      {
+        "url": "http://127.0.0.1:4173/preview/engine/assets.json",
+        "status": 200,
+        "body_complete": true
+      },
+      {
+        "url": "http://127.0.0.1:4173/preview/engine/scene-before.json",
+        "status": 200,
+        "body_complete": true
+      },
+      {
+        "url": "http://127.0.0.1:4173/preview/engine/scene-main-challenge.json",
+        "status": 200,
+        "body_complete": true
+      }
+    ]
+  },
+  "cache_regression": {
+    "result": "PASS",
+    "current_script_sha256": "d6f0d9d3ff82aec18620bccea5d1366f0fe66a8db3b957f82b1f86e9a0c96b74",
+    "cases": [
+      {
+        "name": "old-order",
+        "expected_exit_code": 1,
+        "stage_count": 6,
+        "documents": [
+          {
+            "scenario": "old-order",
+            "if_modified_since": null,
+            "if_none_match": null,
+            "cache_control": null,
+            "status": 200
+          },
+          {
+            "scenario": "old-order",
+            "if_modified_since": "Wed, 01 Jan 2020 00:00:00 GMT",
+            "if_none_match": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+            "cache_control": null,
+            "status": 304
+          }
+        ]
+      },
+      {
+        "name": "pre-navigation-disabled",
+        "expected_exit_code": 0,
+        "stage_count": 8,
+        "documents": [
+          {
+            "scenario": "pre-navigation-disabled",
+            "if_modified_since": null,
+            "if_none_match": null,
+            "cache_control": null,
+            "status": 200
+          },
+          {
+            "scenario": "pre-navigation-disabled",
+            "if_modified_since": null,
+            "if_none_match": null,
+            "cache_control": "no-cache",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "name": "slow-bootstrap-body",
+        "expected_exit_code": 0,
+        "stage_count": 8,
+        "documents": [
+          {
+            "scenario": "slow-bootstrap-body",
+            "if_modified_since": null,
+            "if_none_match": null,
+            "cache_control": null,
+            "status": 200
+          },
+          {
+            "scenario": "slow-bootstrap-body",
+            "if_modified_since": null,
+            "if_none_match": null,
+            "cache_control": "no-cache",
+            "status": 200
+          }
+        ]
+      },
+      {
+        "name": "http404",
+        "expected_exit_code": 1,
+        "stage_count": 0,
+        "documents": [
+          {
+            "scenario": "http404",
+            "if_modified_since": null,
+            "if_none_match": null,
+            "cache_control": null,
+            "status": 404
+          }
+        ]
+      },
+      {
+        "name": "http500",
+        "expected_exit_code": 1,
+        "stage_count": 0,
+        "documents": [
+          {
+            "scenario": "http500",
+            "if_modified_since": null,
+            "if_none_match": null,
+            "cache_control": null,
+            "status": 500
+          }
+        ]
+      }
+    ]
+  },
+  "performance": {
+    "result": "FAIL_3_SECOND_FIRST_EDITABLE_TARGET_ONLY",
+    "budget_mode": "enforce",
+    "targets": {
+      "first_editable_p95_le_3000_ms": false,
+      "cold_rules_le_12000_ms": true,
+      "hot_evaluation_p95_le_150_ms": true
+    },
+    "summary": {
+      "first_observation": {
+        "count": 5,
+        "min": 292.0999999999767,
+        "max": 605,
+        "p50": 312.79999999993015,
+        "p95": 605
+      },
+      "cold_first_editable": {
+        "count": 5,
+        "min": 3889.5,
+        "max": 4324,
+        "p50": 3965.29999999993,
+        "p95": 4324
+      },
+      "warm_first_editable": {
+        "count": 5,
+        "min": 3618.70000000007,
+        "max": 3724,
+        "p50": 3680.70000000007,
+        "p95": 3724
+      },
+      "cold_first_edit_confirmed": {
+        "count": 5,
+        "min": 4115.900000000023,
+        "max": 4583.79999999993,
+        "p50": 4205.5,
+        "p95": 4583.79999999993
+      },
+      "cold_document_to_worker": {
+        "count": 5,
+        "min": 167.09999999997672,
+        "max": 688.0999999999767,
+        "p50": 188.40000000002328,
+        "p95": 688.0999999999767
+      },
+      "cold_init_request_roundtrip": {
+        "count": 5,
+        "min": 3558.5999999999767,
+        "max": 3731.70000000007,
+        "p50": 3641.5999999999767,
+        "p95": 3731.70000000007
+      },
+      "cold_worker_initialization": {
+        "count": 5,
+        "min": 3295.5,
+        "max": 3523.0999999999767,
+        "p50": 3366,
+        "p95": 3523.0999999999767
+      },
+      "cold_worker_init_received": {
+        "count": 5,
+        "min": 3819.0999999999767,
+        "max": 4247.099999999977,
+        "p50": 3887.6999999999534,
+        "p95": 4247.099999999977
+      },
+      "cold_after_worker_to_editable": {
+        "count": 5,
+        "min": 67.40000000002328,
+        "max": 77.59999999997672,
+        "p50": 76.69999999995343,
+        "p95": 77.59999999997672
+      },
+      "cold_rules_ready": {
+        "count": 5,
+        "min": 3889.5,
+        "max": 4323.900000000023,
+        "p50": 3965.29999999993,
+        "p95": 4323.900000000023
+      },
+      "warm_rules_ready": {
+        "count": 5,
+        "min": 3618.600000000093,
+        "max": 3724,
+        "p50": 3680.5999999999767,
+        "p95": 3724
+      },
+      "hot_evaluation": {
+        "count": 30,
+        "min": 7.800000000046566,
+        "max": 15.699999999953434,
+        "p50": 8.20000000006985,
+        "p95": 14.79999999993015
+      },
+      "hot_roundtrip": {
+        "count": 30,
+        "min": 8.199999999953434,
+        "max": 16.599999999976717,
+        "p50": 8.900000000023283,
+        "p95": 16.29999999993015
+      }
+    },
+    "scope": "ISOLATED_BROWSER_MEASUREMENT",
+    "measured_at": "2026-11-05T08:19:44.717Z",
+    "limits": [
+      "First observation is diagnostic only; the 3s target uses cold first-editable p95. Every sample verifies an actual accepted edit.",
+      "Placeholder model scene; real Lux3D load/render/release performance NOT_RUN.",
+      "Fresh contexts isolate browser cache, not operating-system caches or all runtime process reuse.",
+      "Localhost results do not establish anonymous HTTPS or public performance.",
+      "Chrome only; Edge and Safari NOT_RUN."
+    ]
+  },
+  "artifacts": [
+    {
+      "id": 13398948343,
+      "name": "development-preview-5001222413937586604e8d944ba83787c7cb06fa",
+      "size_in_bytes": 9691588,
+      "url": "https://api.github.com/repos/GuanJHCode/HomeSafe-AI/actions/artifacts/13398948343",
+      "archive_download_url": "https://api.github.com/repos/GuanJHCode/HomeSafe-AI/actions/artifacts/13398948343/zip",
+      "expired": false,
+      "created_at": "2026-11-05T08:19:47Z",
+      "expires_at": "2026-11-19T08:19:45Z",
+      "updated_at": "2026-11-05T08:19:47Z",
+      "digest": "sha256:8c45cb5ce7de15441718f4ca25d05980d022d2e4d56f169211ebdb2f56c9a328",
+      "workflow_run": {
+        "id": 41993004005,
+        "repository_id": 1443919445,
+        "head_repository_id": 1443919445,
+        "head_branch": "codex/v6.1-browser-3d",
+        "head_sha": "5001222413937586604e8d944ba83787c7cb06fa"
+      }
+    }
+  ],
+  "constraints": {
+    "only_authorized_commit_pushed": true,
+    "additional_commits_created_or_pushed": false,
+    "website_published": false,
+    "private_real_models_in_ci": "NOT_RUN_PROCEDURAL_FIXTURES_ONLY",
+    "public_host": "NOT_RUN",
+    "strict_performance_script_and_ci_block": "UNCHANGED",
+    "original_ci_41980778267_http304": "STILL_HIGH_CONFIDENCE_INFERENCE; current run has directly observed old-order fixture304 and fixed navigation200",
+    "skipped_post_steps_reason": "API reports skipped; no inferred reason"
+  },
+  "evidence_sources": [
+    "Git push output and remote ls-remote before/after",
+    "GitHub completed workflow/job/step metadata",
+    "Full completed job log fetched through authorized GitHub app and parsed as actual emitted JSON"
+  ]
+}
