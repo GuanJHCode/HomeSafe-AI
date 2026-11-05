@@ -1,8 +1,8 @@
-# 真实模型私下材料：独立工具审查
+# 真实模型私下材料：独立工具与最终产物审查
 
-日期：2026-11-05 UTC。审查工作区为 integrated-app，分支 codex/private-real-materials-20261105；实际 HEAD 为 5001222413937586604e8d944ba83787c7cb06fa，新增材料工具及文档尚未提交。本审查没有推送、部署、上传模型或媒体，也没有改产品 App/Core。
+日期：2026-11-05 UTC。审查工作区为 integrated-app，分支 codex/private-real-materials-20261105。代码和短试审查时实际HEAD为5001222413937586604e8d944ba83787c7cb06fa，工具尚未提交；随后工具本地冻结为c1d794b6ba548b450cce7e1a4dffe107500c591d，完整实录实际绑定该C1提交，产品App/Core仍与500一致。以下分阶段结果均保留实际发生的版本，不把最后文档提交当捕获HEAD。本审查没有推送、部署、上传模型或媒体，也没有改产品 App/Core。
 
-当前结论：PASS_SCOPED_TOOLS_AND_PRIVATE_TRIAL_AFTER_HTTP_FRONT_AND_WORKER_FIXES。私下模型输入链、默认占位行为的保留、精确覆盖机制、11项合同/报告测试，以及实际 Chromium 的“两模型加规则就绪”已独立检查。随后独立复核第四次短试的四页PDF、视频关键帧、完整帧数/PTS和同版导出，短试限定通过。完整180–240秒媒体及最终模板PDF仍为 PENDING_INDEPENDENT_FULL_MEDIA_REVIEW；不能据此关闭 T10 或 G4。FFmpeg包装器与产品基线条件行的补充审查见下文。
+当前结论：PASS_SCOPED_FINAL_PRIVATE_REAL_MODEL_DEVELOPMENT_MATERIALS。代码、反例修复、第四次短试及C1冻结后真实221.72秒完整材料均经独立检查；完整片四页PDF、15个阶段视频实帧、5543帧的时序、全部文件和同版原生语义核对通过。私下提交准备包的文件/绑定检查通过，原正式检查器保持BLOCKED/退出2。通过范围是私下真实模型开发材料，不能据此关闭公开权利、获准托管/真机、正式T10/G4或赛事提交门禁。
 
 ## 本次实际检查
 
@@ -64,6 +64,8 @@ HTTP修复后，独立实际页面出现两件模型成功加载、五项私下�
 | scripts/private_materials_inputs.test.mjs | 19689d1a24b2457283693dacf6d3ec040eb59bf11681003536af1ac7b0fb786e |
 | scripts/development_materials_report.test.mjs | d5b65b44ec99fb2ade4ec8aa9aa7d6926d1f2acf867b3ef9a6edeebdee92d5fb |
 | scripts/capture_ffmpeg_fast.py | 5e6f34a150cee333e0e24b105a3747254c2f6ca902147ffe1dbca3806a89db76 |
+| scripts/web_download.mjs | 9834d5ceb09baef46ac04c7dacbc4f203ef18f5c024cda787226e0a3308de179 |
+| scripts/private_asset_inputs.mjs | f53a892178aaa2c915b88e5d90826b60327ab2621bf222fba9ea5e7f68390e1f |
 
 ## 编码入口、标题与产品基线补充审查
 
@@ -71,7 +73,7 @@ HTTP修复后，独立实际页面出现两件模型成功加载、五项私下�
 
 capture_ffmpeg_fast.py 在私下 screencast 中显式作为 ffmpegPath，默认占位分支仍调用原默认入口。独立使用可执行FFmpeg替身真实运行包装器四种参数输入（含Puppeteer式VP9参数、无cpu-used、空参数和重复cpu-used），验证只把 cpu-used 后面的值设为8，其余参数逐项相同；stdin/stdout原字节、stderr和退出码17均透传。wrapper可执行、用execv替换进程，已加入 capture_tool_sha256。结果：ffmpeg-wrapper-contract.json，PASS。该结论指编码参数和字节流透传，不证明更换VP9 preset后像素或感知画质完全一致；实际画面另见短试审查。
 
-短试完成后formatter新增“产品 App/Core 基线”条件行，明确授权500完整SHA及对该基线一致状态。独立render边界使用明确标为合成的未来工具HEAD，与实际产品500作区分，两行均正确出现，结果 product-baseline-row-contract.json 为PASS。随后又将易误解的“静态分发与公开模型清单保持为空”改为“静态分发保持原占位版本，公开模型清单为空”，准确区分应用/runtime静态分发与空模型清单；独立重跑最终4项报告测试及diff检查均通过。第四次短试仍保留旧formatter SHA f33d4d284b0fd01cb446e6d0ced286cbff192a2453b1e924c7608a2b41d6f011，未覆盖其PDF；这两处最终模板变化的PDF版面仍须随完整产物实际检查。
+短试完成后formatter新增“产品 App/Core 基线”条件行，明确授权500完整SHA及对该基线一致状态。独立render边界使用明确标为合成的未来工具HEAD，与实际产品500作区分，两行均正确出现，结果 product-baseline-row-contract.json 为PASS。随后又将易误解的“静态分发与公开模型清单保持为空”改为“静态分发保持原占位版本，公开模型清单为空”，准确区分应用/runtime静态分发与空模型清单；独立重跑最终4项报告测试及diff检查均通过。第四次短试仍保留旧formatter SHA f33d4d284b0fd01cb446e6d0ced286cbff192a2453b1e924c7608a2b41d6f011，未覆盖其PDF；当时待验的两处最终模板变化，随后已在C1完整产物四页PDF中实际检查通过。
 
 ## 第四次真实模型短试的实际产物审查
 
@@ -93,4 +95,47 @@ capture_ffmpeg_fast.py 在私下 screencast 中显式作为 ffmpegPath，默认�
 
 当前入口/HANDOFF/报告/social已明确500获授权推送、真实模型私下通过但公开权利未获、本轮新工具未推送、无网站发布；历史阶段分别保留。deployment-checklist已把公布日和公示完成日分开，维护按 max(2026-12-31, actual_publicity_completion_date+30days)，完成日未知仍 maintain_until=null/shutdown_allowed=false。原CI41980778267的304仍仅为高置信推断，新受控304夹具不改写原次事实。
 
-本次发现T07根 current_remote_ci 与嵌套checks/remaining存在新旧状态冲突，已报告实施者；其修复后再次只读复核通过。旧检查完整保留在 historical_checks_before_5001222，current字段与remaining现统一为500功能通过、4324/4323.9/14.8及本轮新工具本地未推送。没有由本审查代改状态文件。其他公开权利、获准托管、本人账号/声明、实际Edge/Safari及另一网络、正式G4/提交门禁继续保留。当前无其他具体代码或短试阻断；尚未生成并独立验收的完整媒体不能计为完成。
+本次发现T07根 current_remote_ci 与嵌套checks/remaining存在新旧状态冲突，已报告实施者；其修复后再次只读复核通过。旧检查完整保留在 historical_checks_before_5001222，current字段与remaining现统一为500功能通过、4324/4323.9/14.8及本轮新工具本地未推送。没有由本审查代改状态文件。其他公开权利、获准托管、本人账号/声明、实际Edge/Safari及另一网络、正式G4/提交门禁继续保留。代码/短试阶段当时尚未完成完整媒体，后续实际完整产物及私下准备包结果如下。
+
+## C1冻结后的完整真实模型材料
+
+产物位于忽略目录 evidence/private/development-materials-real-full-c1d794b-20261105/。实际捕获为2026-11-05T09:07:05.365Z开始、09:11:15.629Z完成材料流程；录像在规则和两模型就绪后启动，录屏时长以视频实测为准。source.head为c1d794b6ba548b450cce7e1a4dffe107500c591d，source/project_dirty_after均false，前后状态列表均空；独立核查开始时HEAD为C1且工作区干净。之后补充审查/交接文档不改变这次捕获身份。
+
+独立核验11项产物SHA和6项捕获工具SHA，全部与manifest及C1中的相应工具字节一致；6个关键文件摘要一致。按同一sourceIdentity路径/摘要规则重算39个产品源文件的聚合SHA，得到7ec6dee5de77002c726a3c517602e96be17905f815bb873552bf625acb68cbb8；这39个文件还分别与C1和授权500提交逐字节一致。静态dist的26个资源逐项核对大小/摘要，另核对preview-manifest/CHECKSUMS两项元数据摘要；公开catalog和dist engine/assets保持空模型清单，静态目录不含私下GLB/PDF/视频。结果 full-source-artifact-review.json 为PASS。
+
+独立重新读取原件、派生件、repair与calibration链，输入文件摘要和两件持久候选false与完整manifest/private-model-inputs一致。没有重新运行生成或法线修复来改写原件；以此前已审同一SHA的派生件为输入。从未绑定静态scene重建仅替换两个asset_id的两份scene JSON、临时reviewed=true catalog及两个原二进制响应，五项JSON.stringify/GLB字节摘要和长度均与实际CDP overlay收据逐项一致。两模型请求各一次，摘要为既有296935f9…/92944741…；errors、blockedExternal、externalRequests均空，rights_status仍PENDING、publication_approved=false。结果 full-private-chain-review.json 为PASS。
+
+媒体独立核验结果：
+
+| 项目 | 实际结果 |
+| --- | --- |
+| 报告 | 4页A4，PDF SHA-256 d5b62521a820d04a822a850028bb030e7c2cebb49c793309f59c08811d90ceee |
+| 原VP9 WebM | 50,921,119字节，5543帧，1280×900，25fps；SHA-256 ae7f6c726269e535c27f7a0692bfb65f7c337db9e1c33bcc092997a5f5315914 |
+| H264 MP4 | 8,014,039字节，5543帧，1280×900，25fps，221.72秒；SHA-256 7e12334805dfca61f4e77ac9461e162cd1d6b0aadf72ad2f1311d95d0d569c79 |
+| 全量PTS | 原片0.04至221.72、MP4为0至221.68；去掉起点偏移后全部5543个呈现时间逐项相同，且每个25fps时间点均存在 |
+
+实际执行ffprobe -count_frames及全量packet PTS读取；221.72秒满足180–240秒范围，不用planned_seconds或短试外推代替。视频仅含画面，没有音频轨。结果 full-pts-review.json 为PASS。这证明帧数/呈现时间对应，不证明有损VP9与H264逐像素一致或每一帧的语义。
+
+实际用Poppler渲染完整片报告的四页并逐页view_image，特别检查新增产品500条件行及两种来源锚点。C1工具HEAD、500产品App/Core基线、无未提交改动、四条原/派生SHA、最终输入摘要、221.72秒和私下范围均清楚可读；没有截断、页脚覆盖或额外分页。模型段明确“静态分发保持原占位版本，公开模型清单为空”和“公开分发许可仍未确认”；没有错误“本片未使用真实模型”、许可已获或TRIAL字样。打印清单PDF亦独立文本检查包含同一输入摘要、保留未知/待核查/未覆盖，且不含录屏注释；不把headless打印说成系统原生打印预览。结果 full-report-text-review.json 为PASS。
+
+实际从最终MP4提取并view_image查看2、18、33、46、64、74、113、132、148、159、170、185、195、205、217秒共15个阶段实帧。覆盖开场私下派生件说明、儿童/老人观察、检查卡依据、椅子真实拖动和双角色冲突、撤销与窗边挑战、柜体主挑战和姿态改变、越界提示及最后接受位置、JSON/快照/打印及结尾限制。椅子坐面开口、柜门双把手、木纹和+Z→场景−Z正面可见，两模型加载状态持续出现；文字清楚，未见明显编码损坏。原始截图/取帧只留忽略目录，本报告不嵌入媒体。该结论是15个阶段的实际取样目视，不冒称逐帧看完整片或重新录制操作。
+
+同版内容独立重算：check_scene_snapshot.py返回MATCHES_CURRENT_CORE；另直接调用Python RuleEngine重新评估完整snapshot.scene，逐项对照11个finding的8项规范字段（key/rule/profile/object/scope/status/evidence/limitation），coverage和unsupported domains也完全一致。revision3、demo-rules-3.0、input_hash=2dbebe5644748e4973e2f5ccf7fef102b0642981d1c8eec178affe0ab1105a08同时出现在行动清单、快照、manifest、实际PDF和视频导出阶段。保留2项triggered、4项needs_review、5项not_triggered及5类未覆盖；窗口防护、柜体固定、线缆收纳的未知仍为null，没有改成false。最终柜体接受位置x4.5/z约3.2、yaw_rad约π/4，非法尝试没有覆盖该接受布局；场景仍synthetic_demo且快照includes_asset_bytes=false。结果 full-native-semantic-review.json 为PASS。
+
+本次不重跑已通过且未变化的全量Python/应用/故障矩阵，也没有新公网、真实设备、另一网络或真实模型正式p95测量。完整产物的结构化独立结论为 full-independent-review.json：PASS_SCOPED_FINAL_PRIVATE_ARTIFACTS。11项源产物摘要在目视检查后再次核对均未变化。
+
+## 私下提交准备包与保留门禁
+
+另独立检查 evidence/private/submission-preparation-c1d794b-20261105/private-draft-manifest.json。该包是ignored private结构准备，channel=public仅用于原门禁的阻断检查，不是公开操作或授权。其source_commit=C1、产品基线500，报告/视频descriptor准确指向上述已验收产物；final-scene与snapshot.scene完全相等。9项文件descriptor（含两件私下派生GLB、来源链及实际捕获log）逐项核对SHA/可读性；GLB副本仍为同一已审派生摘要，来源链明确历史接收记录、账号适用条款NOT_RUN、distribution_rights=PENDING、publication_approved=false。owner_review/official_receipt/primary_demo_url/deployment_receipt均未预填，status保持DRAFT，正式submission-manifest和公开asset-manifest未修改。
+
+两条feature→模型→视频映射有实际对象及规则关联：椅子双角色取舍约66.71–83.66秒，柜体旋转/回弹后说明约165.96–178.74秒。独立按首注释的wall-clock阶段重算区间并结合实际74秒/170秒实帧核对；字段已明确是近似注释阶段而非精确操作时码。不得把这两个区间说成全部鼠标动作的准确起止。
+
+实际独立执行：
+
+    /workspace/homesafe-private/app/.venv/bin/python scripts/check_submission.py --manifest evidence/private/submission-preparation-c1d794b-20261105/private-draft-manifest.json
+
+真实退出2、BLOCKED，恰有8行保留阻断：owner_review缺失；该私下scope不是final full_browser_product；两件模型各有rights未确认和不得public两项；公开HTTPS URL未提供；缺正式浏览器/匿名访问部署证据。没有source/report/video/scene/feature字段缺失、文件摘要/解析错误。实际product_acceptance scope是PRIVATE_LOOPBACK_REAL_MODEL_MATERIALS_CAPTURE、formal_full_browser_product_acceptance=NOT_CLAIMED；审查时其review字段尚为PENDING_FINAL_MEDIA_REVIEW，不能把该字符串或本报告当成更广的产品/权利核准。技术文件准备PASS_SCOPED_PRIVATE_STRUCTURE_BINDING_ONLY；正式提交结果继续BLOCKED_EXPECTED。结果 submission-preparation-independent-review.json 保存实际命令、退出码、全部阻断和绑定核对。
+
+最后只读检查新增 submission/drafts/private-materials-runbook.md：产品500与工具C1区分、当前私下路径、恢复bundle不含模型/媒体、跨环境官方Library/运行时依赖、原派生SHA、候选false/五条CDP、真实新输出命令、相对PTS和8门禁均与实际结果一致；没有重复录制或新增网络访问。后续汇总可引用 evidence/private-materials/full-summary.json 及 submission-preparation-summary.json，但不能由这些文字收据关闭外部门禁。
+
+本审查只维护此文本报告，GLB、截图、PDF、视频和准备包均保持ignored private，未上传、推送或发布。完整材料私下验收与技术整理已完成；剩余公开权利/源码许可选择、获准托管与维护责任、本人账号/表单声明及真实外部环境条件，仍需相应事实和授权后继续。

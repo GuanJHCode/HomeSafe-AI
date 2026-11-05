@@ -469,7 +469,7 @@
         "real_asset_context_loss": "PASS_ACTUAL_WEBGL_EXTENSION_NEW_CANVAS_MODELS_HASH_PRESERVED",
         "real_asset_draft_export": "PASS_TWO_MODELS_LOADED_ACTUAL_DOWNLOAD_HASH_CHECK",
         "current_local_integration": "PUSHED_5001222_WITH_EXPLICIT_AUTH; CURRENT_REMOTE_FUNCTIONAL_PASS_3S_FAIL",
-        "current_private_materials_tool": "LOCAL_NEW_BRANCH_NOT_PUSHED; MATERIALS_REVIEW_PENDING"
+        "current_private_materials_tool": "LOCAL_C1_TOOL_AND_FULL221.72SEC_PRIVATE_MATERIALS_PASS_INDEPENDENT; NOT_PUSHED"
       },
       "current_remote_ci": "5001222/41993004005_FUNCTIONAL_PASS_FIRST_EDITABLE_4324MS_FAIL_ONLY",
       "historical_checks_before_5001222": {
@@ -571,7 +571,7 @@
         "evidence/REVIEW_PRIVATE_REAL_MATERIALS_20261105.md"
       ],
       "remaining": [
-        "Current5001222 private real-model report/full recording in progress. Formal rights-cleared target/freeze/account gates remain separate; no public media upload."
+        "Full221.72sec/4page private real-model materials and technical submission preparation complete. Formal materials still require applicable public/official rights, accepted target/freeze, actual devices/other network and owner account/declarations; private draft not approved for submission."
       ],
       "subtasks": [
         {
@@ -598,8 +598,11 @@
         },
         {
           "id": "T10-private-real-model-materials",
-          "status": "IN_PROGRESS",
-          "acceptance_scope": "Two actual normal-repair derivatives, current5001222 App/Core, continuous180–240sec private capture, source/overlay hashes and same-layout exports; not formal submission"
+          "status": "DONE",
+          "acceptance_scope": "Two actual normal-repair derivatives, current5001222 App/Core, continuous180–240sec private capture, source/overlay hashes and same-layout exports; not formal submission",
+          "review": "PASS_INDEPENDENT_ACTUAL_FULL_PDF_VIDEO_PTS_HASH_NATIVE_AND_SCOPE",
+          "evidence": "evidence/PRIVATE_REAL_MATERIALS_20261105.md",
+          "review_evidence": "evidence/REVIEW_PRIVATE_REAL_MATERIALS_20261105.md"
         },
         {
           "id": "T10-private-real-model-capture-tooling",
@@ -687,7 +690,7 @@
     }
   ],
   "timezone": "Asia/Shanghai",
-  "planning_status": "REMOTE500_FUNCTIONAL_PASS_3S_NONBLOCKING_PRIVATE_REAL_MATERIALS_IN_PROGRESS",
+  "planning_status": "PRIVATE_REAL_FULL_MATERIALS_PASS_EXTERNAL_RELEASE_GATES_REMAIN",
   "source_import_status": "IMPORTED_AND_NATIVE_VALIDATED",
   "source_import": {
     "base_commit": "01d48fca76f77856b5e9f31a37090bb1284e47db",
@@ -700,10 +703,10 @@
   "baseline_commit": "2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f",
   "implementation_branch": "codex/private-real-materials-20261105",
   "continuation_base_commit": "f6245e13bc41e36a0efeabeba3ca0fba2174c2f5",
-  "current_validation_scope": "evidence/current-ci/5001222-ci-summary.json",
+  "current_validation_scope": "evidence/PRIVATE_REAL_MATERIALS_20261105.md",
   "historical_validation_scope": "Older 64e1665 CI41807603537 performance and 20261104 local startup measurements are historical. Latest verified remote is394eb04/CI41948477248 functional download FAIL and performance NOT_RUN. Local be32202 fixes the download protocol without a new remote run.",
   "historical_validated_source_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6",
-  "validation_scope": "5001222 remote CI41993004005 Python343/app39/JS51 and allChrome156 functional checks PASS; strict3s first-editable4324ms FAIL, cold/hot thresholds PASS. User defers3s as blocker; no website publication. Earlier pre-push records remain historical. Real private model material workflow is being added locally, not pushed.",
+  "validation_scope": "Current private frozenC1/AppCore500 material capture221.72sec5543frames/4PDFpages,11outputs6tools native snapshot/actual independent visuals/fullPTS PASS. LocalJS59/package8 pass; Python343/app39/Chrome156 functional CI500 retained, strict3s4324ms FAIL nonblocking. No new push, media upload, public host or formal release.",
   "recovery_sync": {
     "task_id": "RECOVERY-SYNC-20261104",
     "date": "2026-11-04",
@@ -729,7 +732,7 @@
     "current_scope": "evidence/FEATURE_CONTINUATION_20261104.md"
   },
   "previous_continuation_base_commit": "57faf384d64e9770407b28086fdfeb5b193a6d6f",
-  "current_source_sync": "REMOTE_5001222_CONFIRMED_PUSHED_BY_USER_AUTH; NEW_PRIVATE_MATERIAL_TOOLS_LOCAL_NOT_PUSHED",
+  "current_source_sync": "REMOTE500_AUTHORIZED_PUSH_CONFIRMED; LOCAL_C1_PRIVATE_TOOL_AND_FINAL_EVIDENCE_NOT_PUSHED",
   "previous_source_sync": "LOCAL_ONLY_NOT_PUSHED",
   "latest_verified_remote_ci": {
     "source_commit": "5001222413937586604e8d944ba83787c7cb06fa",
@@ -1100,5 +1103,20 @@
     "source_of_status": "Parent astra retained Library diagnostic version1, materialized and read; not a fresh GitHub API/artifact read by integration thread",
     "evidence": "evidence/integration/ci-cache-diagnostic-summary.json",
     "integrated_fix_remote_ci": "NOT_RUN_NO_PUSH"
+  },
+  "private_real_materials": {
+    "status": "PASS_INDEPENDENT_SCOPED_NOT_FORMAL_SUBMISSION",
+    "tool_capture_commit": "c1d794b6ba548b450cce7e1a4dffe107500c591d",
+    "product_app_core_base": "5001222413937586604e8d944ba83787c7cb06fa",
+    "capture_before_after_clean": true,
+    "video_seconds": 221.72,
+    "frames": 5543,
+    "pdf_pages": 4,
+    "summary": "evidence/private-materials/full-summary.json",
+    "review": "evidence/REVIEW_PRIVATE_REAL_MATERIALS_20261105.md",
+    "private_submission_preparation": "evidence/private-materials/submission-preparation-summary.json",
+    "new_remote_write": "NOT_RUN",
+    "media_upload": "NOT_RUN",
+    "public_and_official_gates": "REMAIN_BLOCKED"
   }
 }

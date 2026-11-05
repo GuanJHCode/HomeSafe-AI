@@ -1,0 +1,67 @@
+{
+  "scope": "PRIVATE_DRAFT_PREPARATION_NOT_FORMAL_SUBMISSION",
+  "source_commit": "c1d794b6ba548b450cce7e1a4dffe107500c591d",
+  "product_app_core_base": "5001222413937586604e8d944ba83787c7cb06fa",
+  "actual_files_prepared": [
+    "source_commit",
+    "report_pdf",
+    "video_mp4",
+    "canonical_scene",
+    "two_private_derived_glbs",
+    "received_generation_chain_evidence",
+    "actual_private_capture_acceptance",
+    "feature_to_real_assets_video_phase_map"
+  ],
+  "same_input_hash": "2dbebe5644748e4973e2f5ccf7fef102b0642981d1c8eec178affe0ab1105a08",
+  "formal_manifest_changed": false,
+  "private_check_exit_code": 2,
+  "remaining_blockers": [
+    "- owner_review: expected file descriptor",
+    "- not product acceptance for final version",
+    "- unconfirmed distribution rights",
+    "- asset not allowed for public distribution",
+    "- unconfirmed distribution rights",
+    "- asset not allowed for public distribution",
+    "- V6.1 primary public interactive HTTPS URL invalid: public demo requires a plain anonymous HTTPS URL",
+    "- V6.1 real browser/anonymous access evidence missing"
+  ],
+  "feature_asset_map": [
+    {
+      "feature_id": "dual_role_layout_tradeoff",
+      "asset_id": "private-lux3d_web-chair",
+      "rule_ids": [
+        "R001",
+        "R005"
+      ],
+      "video_segment": {
+        "annotation_start_approx_seconds": 66.71,
+        "annotation_end_approx_seconds": 83.66,
+        "timing_scope": "Wall-clock phases relative to first annotation, approximate video alignment; not exact edit timestamps",
+        "script_segment": 5
+      }
+    },
+    {
+      "feature_id": "cabinet_main_challenge_rotate_and_rebound",
+      "asset_id": "private-lux3d_web-cabinet",
+      "rule_ids": [
+        "R001",
+        "R005",
+        "R003"
+      ],
+      "video_segment": {
+        "annotation_start_approx_seconds": 165.96,
+        "annotation_end_approx_seconds": 178.74,
+        "timing_scope": "Wall-clock phases relative to first annotation, approximate video alignment; not exact edit timestamps",
+        "script_segment": 15
+      }
+    }
+  ],
+  "private_originals_or_media_uploaded": false,
+  "models_added_to_source_git_or_public": false,
+  "private_manifest_sha256": "259db30057cd35ef3481c9061d95815d7aa3a14f18055dd88292f84b5c1f2f6d",
+  "actual_private_manifest": "evidence/private/submission-preparation-c1d794b-20261105/private-draft-manifest.json",
+  "independent_review": "PASS_SCOPED_PRIVATE_PREPARATION_EXPECTED8_BLOCKERS",
+  "public_or_official_rights_approved": false,
+  "review_record": "evidence/REVIEW_PRIVATE_REAL_MATERIALS_20261105.md",
+  "creation_record_note": "The private actual-acceptance file was created before independent review and retains that phase metadata; this supplementary review does not relabel it full_browser_product or owner approval."
+}

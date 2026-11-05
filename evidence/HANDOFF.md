@@ -1,8 +1,10 @@
 # 接手记录
 
+当前完整私下交付见[材料续作记录](PRIVATE_REAL_MATERIALS_20261105.md)：冻结工具c1d794b、App/Core基线500，4页PDF与221.72秒/5543帧完整实录、同版导出/快照及私下提交准备均独立通过。后续证据提交不改捕获HEAD；仅本地，不推送，不上传模型或媒体。复现与具体外部动作见[执行单](../submission/drafts/private-materials-runbook.md)。
+
 ## 当前远端与私下材料续作（2026-11-05 UTC）
 
-当前已按用户明确授权将 `5001222413937586604e8d944ba83787c7cb06fa` 正常快进推送到 `codex/v6.1-browser-3d`，master未改。[CI41993004005](https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41993004005) 已终态：Python343、应用39、JS51及Chrome156功能全部通过；唯一失败为内部首次可编辑p95=4324ms >3000ms，冷规则4323.9ms<12000ms、热评估p95=14.8ms<150ms通过。用户暂不以3秒目标阻塞其他开发，严格预算未降低。两个setup后置步骤skipped，详见[当前CI回执](current-ci/5001222-ci-summary.json)。真实Lux3D原件和私下派生件已独立通过浏览器验收，公开分发权仍未确认；无网站发布。本轮在独立本地分支补真实模型私下报告与完整视频，不推送新提交。
+当前已按用户明确授权将 `5001222413937586604e8d944ba83787c7cb06fa` 正常快进推送到 `codex/v6.1-browser-3d`，master未改。[CI41993004005](https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41993004005) 已终态：Python343、应用39、JS51及Chrome156功能全部通过；唯一失败为内部首次可编辑p95=4324ms >3000ms，冷规则4323.9ms<12000ms、热评估p95=14.8ms<150ms通过。用户暂不以3秒目标阻塞其他开发，严格预算未降低。两个setup后置步骤skipped，详见[当前CI回执](current-ci/5001222-ci-summary.json)。真实Lux3D原件和私下派生件已独立通过浏览器验收，公开分发权仍未确认；无网站发布。本轮独立本地分支已完成真实模型私下报告与完整视频，当前以顶部完成段为准；不推送新提交。
 
 ## 历史本地集成：推送前（2026-11-05 UTC）
 

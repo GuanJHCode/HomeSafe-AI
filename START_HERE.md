@@ -1,6 +1,8 @@
 # HomeSafe AI V6.1 开工入口
 
-当前已按用户明确授权将 `5001222413937586604e8d944ba83787c7cb06fa` 正常快进推送到 `codex/v6.1-browser-3d`，master未改。[CI41993004005](https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41993004005) 已终态：Python343、应用39、JS51及Chrome156功能全部通过；唯一失败为内部首次可编辑p95=4324ms >3000ms，冷规则4323.9ms<12000ms、热评估p95=14.8ms<150ms通过。用户暂不以3秒目标阻塞其他开发，严格预算未降低。两个setup后置步骤skipped，详见[当前CI回执](evidence/current-ci/5001222-ci-summary.json)。真实Lux3D原件和私下派生件已独立通过浏览器验收，公开分发权仍未确认；无网站发布。本轮在独立本地分支补真实模型私下报告与完整视频，不推送新提交。
+真实模型私下材料现已完成：[4页报告、221.72秒完整实录及准备包](evidence/PRIVATE_REAL_MATERIALS_20261105.md)，均已独立实际审查。工具冻结C1、产品App/Core对500一致；新工具/证据仅本地，不推送。原/派生模型、PDF/视频和截图均私下不入恢复包；正式权利/托管/本人声明/外部设备门禁仍保留。
+
+当前已按用户明确授权将 `5001222413937586604e8d944ba83787c7cb06fa` 正常快进推送到 `codex/v6.1-browser-3d`，master未改。[CI41993004005](https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41993004005) 已终态：Python343、应用39、JS51及Chrome156功能全部通过；唯一失败为内部首次可编辑p95=4324ms >3000ms，冷规则4323.9ms<12000ms、热评估p95=14.8ms<150ms通过。用户暂不以3秒目标阻塞其他开发，严格预算未降低。两个setup后置步骤skipped，详见[当前CI回执](evidence/current-ci/5001222-ci-summary.json)。真实Lux3D原件和私下派生件已独立通过浏览器验收，公开分发权仍未确认；无网站发布。本轮独立本地分支已补齐真实模型私下报告与完整视频，见上方完成记录；不推送新提交。
 
 历史5001222推送前集成记录：
 

@@ -1,9 +1,9 @@
 {
   "manifest_version": "1.0",
-  "release": "V6.1-private-real-material-tools-20261105",
+  "release": "V6.1-reviewed-private-real-materials-20261105",
   "base_commit": "5001222413937586604e8d944ba83787c7cb06fa",
   "baseline_zip_sha256": "b6c674f532fd30ff7ab086b08c814b086e94e2aa0f12cff80c1b6d94b96d3752",
-  "classification_policy": "Reviewed5001222 source/evidence plus13 explicit private-capture tool, tests, current CI and safe text evidence files. No original/derived model, image/PDF/video, private input/config/profile, runtime/dependency/build or raw website/terms. SHA/lengths recomputed; no new push/publication authorized.",
+  "classification_policy": "948 explicit reviewed source/safe text evidence files. Complete private materials and preparation passed independently; model/PDF/video/image bytes, private inputs/profiles, raw websites/terms and runtime/build/dependencies excluded. No new push or publication authorized.",
   "files": [
     {
       "path": ".env.example",
@@ -61,8 +61,8 @@
     },
     {
       "path": "START_HERE.md",
-      "sha256": "84fd0e205d428e6aaac820edcd54c1e699c0cd5fd6932fa5134a1798ece9aed3",
-      "bytes": 14027,
+      "sha256": "a2ea6ab67b1d036b629e0bb8f0358d327add72dc02689bd4b7bb4648da96e495",
+      "bytes": 14432,
       "classification": "generated_project_source"
     },
     {
@@ -745,8 +745,8 @@
     },
     {
       "path": "evidence/HANDOFF.md",
-      "sha256": "a2bc649c6a1ac79fecd93c16d3a170257436af511261ee706b3f5b2168333f18",
-      "bytes": 22645,
+      "sha256": "d4a00482e1734d69545fc4f66d32dc847456b8013911154abd7d8249e6d7fa69",
+      "bytes": 23094,
       "classification": "generated_project_source"
     },
     {
@@ -782,8 +782,8 @@
     {
       "path": "evidence/PRIVATE_REAL_MATERIALS_20261105.md",
       "classification": "generated_project_source",
-      "sha256": "dc45b98d62a9f9845a8f3e9b8778a3545483693ffd8800e16542e6d2fe8ba6a8",
-      "bytes": 5660
+      "sha256": "aa61fcd4c554353f6daf3b898268c4a7bf6678761ed2194ad827659daef34d61",
+      "bytes": 8036
     },
     {
       "path": "evidence/REAL_LUX3D_PRIVATE_20261105.md",
@@ -884,8 +884,8 @@
     {
       "path": "evidence/REVIEW_PRIVATE_REAL_MATERIALS_20261105.md",
       "classification": "generated_project_source",
-      "sha256": "038071e63331127ef7338b43c744c0f365a4e2f3bad5df6f03697b4dd1cca3a7",
-      "bytes": 14169
+      "sha256": "ebbadeb6176543d3278d34cf8331ce783db46b9151345683e21cde1a6bd5df85",
+      "bytes": 23150
     },
     {
       "path": "evidence/REVIEW_REAL_LUX3D_20261105.md",
@@ -2544,10 +2544,22 @@
       "bytes": 2331
     },
     {
+      "path": "evidence/private-materials/formal-preflight.log",
+      "classification": "generated_project_source",
+      "sha256": "7f05499c6aa83367855218b7b0fd07379002552aa89e2de0fa204c301045f3e2",
+      "bytes": 491
+    },
+    {
       "path": "evidence/private-materials/front-red.log",
       "classification": "generated_project_source",
       "sha256": "fce006e6e43e3ba996e1893b450511d09ae5bf51d6025854430fd15dadc84b6c",
       "bytes": 1004
+    },
+    {
+      "path": "evidence/private-materials/full-summary.json",
+      "classification": "generated_project_source",
+      "sha256": "b62cf03719de482e68acef16103b4739d7502d09a9d9160a9e0ddca384b7ae90",
+      "bytes": 8557
     },
     {
       "path": "evidence/private-materials/javascript.log",
@@ -2566,6 +2578,12 @@
       "classification": "generated_project_source",
       "sha256": "f323080cd9978ecc4ab92315c1e3a1488aef5fd2b43ce29bde776a3ffdb90b3d",
       "bytes": 1121
+    },
+    {
+      "path": "evidence/private-materials/submission-preparation-summary.json",
+      "classification": "generated_project_source",
+      "sha256": "b9a9f28a17462f776111ae0cbfc988b4441677f0bc2a43896856ae129777d3d4",
+      "bytes": 2819
     },
     {
       "path": "evidence/private-materials/trial-summary.json",
@@ -3577,8 +3595,8 @@
     },
     {
       "path": "evidence/task-status.json",
-      "sha256": "f34a3e8dcad9c83f8ee5ee19b9ee71e2883f1a99b30e11573c0b1832212d182c",
-      "bytes": 51874,
+      "sha256": "0a0d55c2cde3b75c6810d57f0e38a8cf3c5dcb3d3a1f5e3c391ada014f690883",
+      "bytes": 52954,
       "classification": "generated_project_source"
     },
     {
@@ -5592,6 +5610,12 @@
       "bytes": 12892
     },
     {
+      "path": "submission/drafts/private-materials-runbook.md",
+      "classification": "generated_project_source",
+      "sha256": "eabdbac18caacd6f89588a05683610ca1fcdeaf1d26a60fbc72a5f39c6639690",
+      "bytes": 6226
+    },
+    {
       "path": "submission/drafts/recording-plan.md",
       "sha256": "bf364e17a25461b9c0e90e4f0928a8febef1a03f0570de685232db6b67e1c24a",
       "bytes": 1999,
@@ -5605,8 +5629,8 @@
     },
     {
       "path": "submission/drafts/report-20261104.md",
-      "sha256": "cddf2d5a11e1daa06418db0327bd3b7b5d49c33f0ec0bf3d4976cd359b5378ae",
-      "bytes": 8040,
+      "sha256": "6be2d1f1e68648c5a6adcb2699352aa285ba7658b7534af085c999db4fba962e",
+      "bytes": 8203,
       "classification": "generated_project_source"
     },
     {

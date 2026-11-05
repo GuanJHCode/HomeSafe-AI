@@ -1,0 +1,192 @@
+{
+  "scope": "FULL_PRIVATE_REAL_MODEL_MATERIALS_NOT_FORMAL_RELEASE",
+  "status": "PASS_IMPLEMENTER_AND_INDEPENDENT_FULL_PRIVATE_MEDIA_SOURCE_AND_BINDINGS",
+  "source": {
+    "head": "c1d794b6ba548b450cce7e1a4dffe107500c591d",
+    "branch": "codex/private-real-materials-20261105",
+    "initial_anchor": "ba21f54ace3218cfa2d695092b735165c923b1b9",
+    "project_dirty": false,
+    "project_status": [],
+    "app_matches_head": true,
+    "app_anchor_match": true,
+    "app_status": [],
+    "app_source_sha256": "7ec6dee5de77002c726a3c517602e96be17905f815bb873552bf625acb68cbb8",
+    "dist_manifest_sha256": "a795501edc2954739c311683d032c90e4a9bc9c320f07e60dfd7917aa0195192",
+    "dist_checksums_sha256": "a930b7560bebc662a78126cd53c1617fd1ba5c3cd71425746e0a28ea3de68263",
+    "key_files": {
+      "apps/web/src/App.vue": "865acbe4161209350c330ec05b1a2d2a1822bbecd9afcda6279221c88b1092a8",
+      "apps/web/src/useLivingRoom.ts": "f0e8824e51304da58c490d213f79f9342f9124457621f79e8b19982c28962738",
+      "apps/web/src/scene/SceneRuntime.ts": "4b3fb706e5c37f8db5d8573165d86211d768aba7515870353a59c8f63ac9642f",
+      "reference/homesafe_core/challenge.py": "bcb4d3dd33cac7f88c2ba51b51add6b981823c48a125fb069b004f7b4d949f9c",
+      "apps/web/dist/engine/scene-before.json": "ae83f54655a647d1833ebbceabfc5b21a929abff1574e6c420863e27d418902b",
+      "apps/web/dist/engine/scene-main-challenge.json": "7475d434bf6a1c6ba5ac0bfb9e2c695d2abe8a413579ec452e8c03770dd97031"
+    },
+    "capture_tool_sha256": {
+      "scripts/create_development_materials.mjs": "f68c4304cb1463b9b72bcd060d8e1b128bd4fd6e1381e5f22a11800c17506b19",
+      "scripts/development_materials_report.mjs": "8ef6e347a64f6b5415f7fae39221f0988a404f2bb139b7e4afee5defbb5d266b",
+      "scripts/private_materials_inputs.mjs": "fac7ccbbcef34816bd1e48c9425a185fa556996bf7824fe3fb077b79486d7147",
+      "scripts/web_download.mjs": "9834d5ceb09baef46ac04c7dacbc4f203ef18f5c024cda787226e0a3308de179",
+      "scripts/private_asset_inputs.mjs": "f53a892178aaa2c915b88e5d90826b60327ab2621bf222fba9ea5e7f68390e1f",
+      "scripts/capture_ffmpeg_fast.py": "5e6f34a150cee333e0e24b105a3747254c2f6ca902147ffe1dbca3806a89db76"
+    },
+    "authorized_app_reference_commit": "5001222413937586604e8d944ba83787c7cb06fa",
+    "app_matches_authorized_source": true
+  },
+  "source_clean_after": true,
+  "status_label": "PRIVATE_REAL_MODEL_DEVELOPMENT_RECORDING",
+  "report_status": "DRAFT_NOT_SUBMITTABLE",
+  "video": {
+    "duration_seconds": 221.72,
+    "bytes": 8014039,
+    "codec": "h264",
+    "width": 1280,
+    "height": 900,
+    "frames": 5543,
+    "sha256": "7e12334805dfca61f4e77ac9461e162cd1d6b0aadf72ad2f1311d95d0d569c79",
+    "raw_sha256": "ae7f6c726269e535c27f7a0692bfb65f7c337db9e1c33bcc092997a5f5315914",
+    "raw_last_packet_pts_seconds": 221.72
+  },
+  "report_pdf_pages": 4,
+  "exports": {
+    "report_filename": "homesafe-action-list-v3-2dbebe564474-2026-11-05T09-10-09-497Z-1.json",
+    "snapshot_filename": "homesafe-scene-v3-2dbebe564474-2026-11-05T09-10-20-069Z-1.json",
+    "scene_revision": 3,
+    "input_hash": "2dbebe5644748e4973e2f5ccf7fef102b0642981d1c8eec178affe0ab1105a08",
+    "ruleset_version": "demo-rules-3.0",
+    "source_kind": "synthetic_demo",
+    "snapshot_verification": "MATCHES_CURRENT_CORE",
+    "binding_result": "PASS：版本、输入摘要、规则集与当前页面一致"
+  },
+  "file_sha256": {
+    "browser-original.webm": "ae7f6c726269e535c27f7a0692bfb65f7c337db9e1c33bcc092997a5f5315914",
+    "development-recording.mp4": "7e12334805dfca61f4e77ac9461e162cd1d6b0aadf72ad2f1311d95d0d569c79",
+    "development-report.pdf": "d5b62521a820d04a822a850028bb030e7c2cebb49c793309f59c08811d90ceee",
+    "development-report.html": "b3f9a38dda7387f3bc1de4e230b55c5991f69fdf4a3dcc02f4aeae1d7da7bdb8",
+    "action-list.json": "b72f42df1193609359634dbdd37a15e8c3dee185081cf55a552dc82e605766d9",
+    "scene-snapshot.json": "5888d55c4a85e9583252fda7a42fbcd3099b35ea2375012be2906ccd4ba90c60",
+    "printable-action-list.pdf": "18c0f6c3ff02c28be8bdae083cb865dce7342c8155f275d754c261a0398e7f75",
+    "private-model-inputs.json": "b03683cabe442998a250efcf61f592762536525bb59ab7b898c0559457a26590",
+    "private-binding.json": "321e87e64c274a45b14a8c0b6bf23910f69888f10d1a076a2b363780bad7687f",
+    "real-models-before.png": "ad4fbda859b9fbdd486794c28c11d2575ed77b0e5573dfa803b21cdb27959727",
+    "real-models-main-challenge.png": "2e3cd474da9728a819f68f2cb7befaa96c1d49a556290fc4e37fa6a232bf95dd"
+  },
+  "private_binding": {
+    "requests": [
+      {
+        "id": "chair",
+        "sha256": "296935f947dabf72026764d71d1df9f85d353d2062c7745b187ad21b417a07fc",
+        "bytes": 10352464
+      },
+      {
+        "id": "cabinet",
+        "sha256": "92944741a7e9f2491f9220c9dff3f95d66190db80a2488a5d029fbe1b3de3350",
+        "bytes": 8689540
+      }
+    ],
+    "overlays": [
+      {
+        "path": "/preview/engine/assets.json",
+        "content_type": "application/json",
+        "sha256": "f6ea625cb1bd75bd3c38badfbeb9993ae14c0d259cd4c4e96230c67af5e54c82",
+        "bytes": 1858
+      },
+      {
+        "path": "/preview/engine/scene-before.json",
+        "content_type": "application/json",
+        "sha256": "6d93990c98175f539f0ffa4881b153de301750ec43ff73bf96330fc397491047",
+        "bytes": 16719
+      },
+      {
+        "path": "/preview/engine/scene-main-challenge.json",
+        "content_type": "application/json",
+        "sha256": "4ec90237c39174f36724db136debe3a0d0a9886b92eef5132d7f2017382f47d2",
+        "bytes": 16719
+      },
+      {
+        "path": "/preview/assets/public/private-test-chair.glb",
+        "content_type": "model/gltf-binary",
+        "sha256": "296935f947dabf72026764d71d1df9f85d353d2062c7745b187ad21b417a07fc",
+        "bytes": 10352464
+      },
+      {
+        "path": "/preview/assets/public/private-test-cabinet.glb",
+        "content_type": "model/gltf-binary",
+        "sha256": "92944741a7e9f2491f9220c9dff3f95d66190db80a2488a5d029fbe1b3de3350",
+        "bytes": 8689540
+      }
+    ],
+    "errors": [],
+    "blockedExternal": [],
+    "externalRequests": []
+  },
+  "source_models": [
+    {
+      "id": "chair",
+      "asset_id": "private-lux3d_web-chair",
+      "bytes": 10352464,
+      "sha256": "296935f947dabf72026764d71d1df9f85d353d2062c7745b187ad21b417a07fc",
+      "original_sha256": "e2606d75f4ef91a7395b9447ca5d65d972fd38595bcf53d6c6ef11ee9462e71a",
+      "repair_record_sha256": "72cdd9b8f52cf908c26206b95875c7c42a20c309a33c0c9994576994b213d222",
+      "source_front": "+Z",
+      "scene_front": "-Z",
+      "candidate_reviewed": false,
+      "synthetic_target_dimensions": {
+        "width": 0.5,
+        "height": 0.8,
+        "depth": 0.5
+      },
+      "source_bounds": [
+        0.48822829127311707,
+        0.8500000238418579,
+        0.5772185921669006
+      ],
+      "textures_decoded": 2
+    },
+    {
+      "id": "cabinet",
+      "asset_id": "private-lux3d_web-cabinet",
+      "bytes": 8689540,
+      "sha256": "92944741a7e9f2491f9220c9dff3f95d66190db80a2488a5d029fbe1b3de3350",
+      "original_sha256": "a8398b16be4d4d2f0c7c703575d0679ce16cc3aeacc276af48c9d26379ad940b",
+      "repair_record_sha256": "a093cf5d5c47bcf7d2bb619e8215dd4d6fa5b9b13635169e38bf2534f5077b79",
+      "source_front": "+Z",
+      "scene_front": "-Z",
+      "candidate_reviewed": false,
+      "synthetic_target_dimensions": {
+        "width": 0.7,
+        "height": 1.6,
+        "depth": 0.5
+      },
+      "source_bounds": [
+        0.6822696924209595,
+        1.7999999523162842,
+        0.48448124527931213
+      ],
+      "textures_decoded": 2
+    }
+  ],
+  "public_deployment": "NOT_RUN",
+  "publication_rights": "PENDING",
+  "private_media_in_source_package": false,
+  "native_snapshot_verification": {
+    "result": "MATCHES_CURRENT_CORE",
+    "scene_id": "demo-living-room",
+    "scene_revision": 3,
+    "input_hash": "2dbebe5644748e4973e2f5ccf7fef102b0642981d1c8eec178affe0ab1105a08",
+    "ruleset_version": "demo-rules-3.0",
+    "source_kind": "synthetic_demo",
+    "scope": "Local canonical input and rule-version verification only; no safety or challenge certification."
+  },
+  "independent_review": "evidence/REVIEW_PRIVATE_REAL_MATERIALS_20261105.md",
+  "independent_scope": {
+    "pdf_pages_actually_viewed": 4,
+    "video_stage_keyframes_actually_viewed": 15,
+    "all_relative_frame_pts_checked": 5543,
+    "all_output_hashes": 11,
+    "all_tool_hashes": 6,
+    "app_core_files_checked_against_C1_and_500": 39,
+    "static_resources_plus_metadata": 28,
+    "native_findings_compared": 11,
+    "public_release_or_full_formal_acceptance": false
+  }
+}
