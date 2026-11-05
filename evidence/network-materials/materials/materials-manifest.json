@@ -1,0 +1,233 @@
+{
+  "status": "LOCALHOST_PLACEHOLDER_DEVELOPMENT_RECORDING",
+  "report_status": "DRAFT_NOT_SUBMITTABLE",
+  "source": {
+    "head": "ba21f54ace3218cfa2d695092b735165c923b1b9",
+    "branch": "codex/network-materials-20261105",
+    "initial_anchor": "ba21f54ace3218cfa2d695092b735165c923b1b9",
+    "project_dirty": true,
+    "project_status": [
+      "M .github/workflows/reference-checks.yml",
+      " M START_HERE.md",
+      " M evidence/HANDOFF.md",
+      " M evidence/task-status.json",
+      "?? evidence/NETWORK_MATERIALS_20261105.md",
+      "?? evidence/REVIEW_NETWORK_RECOVERY_20261105.md",
+      "?? evidence/network-materials/anchor-transport.json",
+      "?? evidence/network-materials/application.log",
+      "?? evidence/network-materials/contracts.log",
+      "?? evidence/network-materials/javascript.log",
+      "?? evidence/network-materials/model-network-gap.json",
+      "?? evidence/network-materials/model-retry.json",
+      "?? evidence/network-materials/native.log",
+      "?? evidence/network-materials/network-review-stderr.log",
+      "?? evidence/network-materials/network-review-stdout.log",
+      "?? evidence/network-materials/network-review/independent-data-check.json",
+      "?? evidence/network-materials/network-review/network-recovery.json",
+      "?? evidence/network-materials/network-review/offline-report.json",
+      "?? evidence/network-materials/network-review/offline-snapshot.json",
+      "?? evidence/network-materials/network/final-run.log",
+      "?? evidence/network-materials/network/network-recovery.json",
+      "?? evidence/network-materials/network/offline-report.json",
+      "?? evidence/network-materials/network/offline-snapshot.json",
+      "?? evidence/network-materials/scope-checks.json",
+      "?? evidence/network-materials/typecheck.log",
+      "?? evidence/network-materials/validation-summary.json",
+      "?? scripts/check_web_network_recovery.mjs",
+      "?? scripts/create_development_materials.mjs",
+      "?? scripts/development_materials_report.mjs"
+    ],
+    "app_matches_head": true,
+    "app_anchor_match": true,
+    "app_status": [],
+    "app_source_sha256": "7ec6dee5de77002c726a3c517602e96be17905f815bb873552bf625acb68cbb8",
+    "dist_manifest_sha256": "83ab2386ad375fe1367551b0e538ce00a63675464ee1f2a4b84f2832c81357e9",
+    "dist_checksums_sha256": "c123f9f39cabf4cbf257dc07d76c1dd9681d647c3e6e0f36a70bfeea6af44f83",
+    "key_files": {
+      "apps/web/src/App.vue": "865acbe4161209350c330ec05b1a2d2a1822bbecd9afcda6279221c88b1092a8",
+      "apps/web/src/useLivingRoom.ts": "f0e8824e51304da58c490d213f79f9342f9124457621f79e8b19982c28962738",
+      "apps/web/src/scene/SceneRuntime.ts": "4b3fb706e5c37f8db5d8573165d86211d768aba7515870353a59c8f63ac9642f",
+      "reference/homesafe_core/challenge.py": "bcb4d3dd33cac7f88c2ba51b51add6b981823c48a125fb069b004f7b4d949f9c",
+      "apps/web/dist/engine/scene-before.json": "ae83f54655a647d1833ebbceabfc5b21a929abff1574e6c420863e27d418902b",
+      "apps/web/dist/engine/scene-main-challenge.json": "7475d434bf6a1c6ba5ac0bfb9e2c695d2abe8a413579ec452e8c03770dd97031"
+    }
+  },
+  "project_dirty_after": true,
+  "project_status_after": [
+    "M .github/workflows/reference-checks.yml",
+    " M START_HERE.md",
+    " M evidence/HANDOFF.md",
+    " M evidence/task-status.json",
+    "?? evidence/NETWORK_MATERIALS_20261105.md",
+    "?? evidence/REVIEW_NETWORK_RECOVERY_20261105.md",
+    "?? evidence/network-materials/anchor-transport.json",
+    "?? evidence/network-materials/application.log",
+    "?? evidence/network-materials/contracts.log",
+    "?? evidence/network-materials/current-remote-ci.json",
+    "?? evidence/network-materials/javascript.log",
+    "?? evidence/network-materials/model-network-gap.json",
+    "?? evidence/network-materials/model-retry.json",
+    "?? evidence/network-materials/native.log",
+    "?? evidence/network-materials/network-review-stderr.log",
+    "?? evidence/network-materials/network-review-stdout.log",
+    "?? evidence/network-materials/network-review/independent-data-check.json",
+    "?? evidence/network-materials/network-review/network-recovery.json",
+    "?? evidence/network-materials/network-review/offline-report.json",
+    "?? evidence/network-materials/network-review/offline-snapshot.json",
+    "?? evidence/network-materials/network/final-run.log",
+    "?? evidence/network-materials/network/network-recovery.json",
+    "?? evidence/network-materials/network/offline-report.json",
+    "?? evidence/network-materials/network/offline-snapshot.json",
+    "?? evidence/network-materials/scope-checks.json",
+    "?? evidence/network-materials/submission-preflight.log",
+    "?? evidence/network-materials/typecheck.log",
+    "?? evidence/network-materials/validation-summary.json",
+    "?? scripts/check_web_network_recovery.mjs",
+    "?? scripts/create_development_materials.mjs",
+    "?? scripts/development_materials_report.mjs"
+  ],
+  "capture": {
+    "created_at": "2026-11-05T04:55:07.224Z",
+    "finished_at": "2026-11-05T05:08:32.541Z",
+    "mode": "full",
+    "url": "http://127.0.0.1:4173/preview/",
+    "browser": "Chrome/154.0.8037.57",
+    "viewport": {
+      "width": 1280,
+      "height": 900,
+      "deviceScaleFactor": 1
+    },
+    "challenge_summary": "本关布局目标已完成；仍有2项已触发、4项待核查。未覆盖范围另见覆盖说明，不表示家庭安全。 未覆盖 5 类。",
+    "phases": [
+      {
+        "index": 0,
+        "note": "录屏注释｜本地开发预览：仅程序占位；真实 Lux3D 待验（非产品控件）",
+        "planned_seconds": 15,
+        "started_at": "2026-11-05T04:55:12.641Z"
+      },
+      {
+        "index": 1,
+        "note": "录屏注释｜儿童观察视角；相机高度仅用于示意",
+        "planned_seconds": 13,
+        "started_at": "2026-11-05T04:55:28.148Z"
+      },
+      {
+        "index": 2,
+        "note": "录屏注释｜点击检查卡，查看对象与依据",
+        "planned_seconds": 14,
+        "started_at": "2026-11-05T04:55:41.691Z"
+      },
+      {
+        "index": 3,
+        "note": "录屏注释｜老人观察视角；两类检查使用同一布局",
+        "planned_seconds": 13,
+        "started_at": "2026-11-05T04:55:56.177Z"
+      },
+      {
+        "index": 4,
+        "note": "录屏注释｜准备移动椅子；当前为合成场景",
+        "planned_seconds": 9,
+        "started_at": "2026-11-05T04:56:09.644Z"
+      },
+      {
+        "index": 5,
+        "note": "录屏注释｜一次合法移动带来儿童与老人条件取舍",
+        "planned_seconds": 18,
+        "started_at": "2026-11-05T04:56:20.222Z"
+      },
+      {
+        "index": 6,
+        "note": "录屏注释｜切换检查焦点，核对儿童结果",
+        "planned_seconds": 12,
+        "started_at": "2026-11-05T04:56:38.704Z"
+      },
+      {
+        "index": 7,
+        "note": "录屏注释｜同一布局中的老人结果仍保留",
+        "planned_seconds": 11,
+        "started_at": "2026-11-05T04:56:51.202Z"
+      },
+      {
+        "index": 8,
+        "note": "录屏注释｜撤销后重新摆位，进入窗边挑战",
+        "planned_seconds": 13,
+        "started_at": "2026-11-05T04:57:02.973Z"
+      },
+      {
+        "index": 9,
+        "note": "录屏注释｜本关达标；仍须看已触发、待核查与未覆盖项",
+        "planned_seconds": 18,
+        "started_at": "2026-11-05T04:57:17.481Z"
+      },
+      {
+        "index": 10,
+        "note": "录屏注释｜实际导出当前行动清单 JSON",
+        "planned_seconds": 12,
+        "started_at": "2026-11-05T04:57:36.067Z"
+      },
+      {
+        "index": 11,
+        "note": "录屏注释｜实际导出同版场景快照；已独立复算",
+        "planned_seconds": 12,
+        "started_at": "2026-11-05T04:57:48.743Z"
+      },
+      {
+        "index": 12,
+        "note": "录屏注释｜已点击打印；镜头未显示系统打印预览",
+        "planned_seconds": 12,
+        "started_at": "2026-11-05T04:58:01.172Z"
+      },
+      {
+        "index": 13,
+        "note": "录屏注释｜无公网、无真实模型验收、无音频；本片为开发工作稿",
+        "planned_seconds": 13,
+        "started_at": "2026-11-05T04:58:14.452Z"
+      }
+    ]
+  },
+  "video": {
+    "duration_seconds": 198.52,
+    "bytes": 7334822,
+    "codec": "h264",
+    "width": 1280,
+    "height": 900,
+    "frames": 4963,
+    "sha256": "dc3c7e275afe0de9801466da14f8784438ee5f1dbe2267170c6f61a323b7e7f3",
+    "raw_sha256": "f67e2f006da1a45f818aafbcfd417326fd5959f3d1545cb402ef24e3927cb9d7",
+    "raw_last_packet_pts_seconds": 198.52
+  },
+  "report_pdf_pages": 4,
+  "exports": {
+    "report_filename": "homesafe-action-list-v2-c8c61e185bd5-2026-11-05T04-57-36-022Z-1.json",
+    "snapshot_filename": "homesafe-scene-v2-c8c61e185bd5-2026-11-05T04-57-48-525Z-1.json",
+    "scene_revision": 2,
+    "input_hash": "c8c61e185bd547373f4a10979f6e0d4310b325058950c3b20fc58ecffad86ebc",
+    "ruleset_version": "demo-rules-3.0",
+    "source_kind": "synthetic_demo",
+    "snapshot_verification": "MATCHES_CURRENT_CORE",
+    "binding_result": "PASS：版本、输入摘要、规则集与当前页面一致"
+  },
+  "checks": {
+    "local_transport": "PASS（本地 HTTP 字节核对；非公网验收）",
+    "historical_baseline": "继承的 ba21f54 基线记录：Python 334、应用 39、JS 48 项通过；本材料流程未重跑全套测试",
+    "model_bytes_in_environment": "UNAVAILABLE",
+    "model_materialization": "本环境有界重试 1 次，helper 返回 download failed；HTTP 状态未知",
+    "real_lux3d_browser": "BLOCKED",
+    "rights": "PENDING",
+    "public_https": "NOT_RUN",
+    "performance_3s_goal": "OPEN; 本材料流程未重测性能"
+  },
+  "file_sha256": {
+    "browser-original.webm": "f67e2f006da1a45f818aafbcfd417326fd5959f3d1545cb402ef24e3927cb9d7",
+    "development-recording.mp4": "dc3c7e275afe0de9801466da14f8784438ee5f1dbe2267170c6f61a323b7e7f3",
+    "development-report.pdf": "5b0d4446bd7def725f37e5ef97fb105c113e65aee6671cf7c6ac0417234a3197",
+    "development-report.html": "db7bd3865ce9a92028dd89e18ab57592e9ba293e1aedca8222c950fb5ccc79b5",
+    "action-list.json": "579748aaff8e21e7963d91c37a15077974ad304c99b702c5dbc6eb574a1b67ef",
+    "scene-snapshot.json": "2acc1b42d35689807e59e175432334ee776090a45d0ea306a133627d55f429a0",
+    "printable-action-list.pdf": "3c648a8f46cd9bce2b32fd7ca2f6b5272810b200985ee5cb385c9d8dd67bfc10"
+  },
+  "public_deployment": "NOT_VERIFIED",
+  "real_lux3d": "BLOCKED",
+  "audio": "NONE",
+  "native_print_preview_visible_in_recording": false
+}

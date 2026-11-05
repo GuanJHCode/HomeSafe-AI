@@ -132,7 +132,7 @@
         "private_main_mode_binding": "PASS_PROCEDURAL_BROWSER"
       },
       "blockers": [
-        "Library materialization download host blocked by environment proxy: Tunnel connection failed: 403 Forbidden. No actual GLB bytes in this environment.",
+        "Original bytes unavailable in this execution environment: current official Library helper failed without exposing HTTP status; exact returned host sdmntprwestus.oaiusercontent.com is absent in current enforced policy. User approved only that host; no supported configuration write tool is available, and no post-approval transfer was issued.",
         "Distribution rights under applicable China-site account terms remain unconfirmed."
       ],
       "subtasks": [
@@ -160,7 +160,7 @@
         }
       ],
       "remaining": [
-        "Originals confirmed in another environment; current-environment expected-SHA scan found none and provided Library original ZIP download failed. Real GLB private browser/visual acceptance BLOCKED_NOT_RUN_CURRENT_ENV_ORIGINALS_UNAVAILABLE.",
+        "Apply only the approved exact-host configuration through the supported environment UI, verify effective policy in the execution task, then use official Library materialization. No local original-byte or real-browser acceptance is established.",
         "Distribution rights under applicable China-site account terms remain unconfirmed."
       ]
     },
@@ -349,6 +349,13 @@
           "review": "PASS_INDEPENDENT",
           "acceptance_scope": "Hold/preview/pending proposals gate JSON/snapshot/print; cancel/selection/view/rejection/success/dispose recovery",
           "evidence": "evidence/REVIEW_CONTINUATION_NEXT_20261105.md"
+        },
+        {
+          "id": "T07-network-interruption-recovery",
+          "status": "DONE",
+          "acceptance_scope": "Controlled Chromium window/Worker network interruption and explicit recovery; does not establish offline cold start or another real network",
+          "review": "PASS_INDEPENDENT_SCOPED",
+          "evidence": "evidence/REVIEW_NETWORK_RECOVERY_20261105.md"
         }
       ],
       "remaining": [
@@ -440,10 +447,12 @@
       "owner": null,
       "commit": null,
       "evidence": [
-        "evidence/CONTINUATION_20261104.md"
+        "evidence/CONTINUATION_20261104.md",
+        "evidence/NETWORK_MATERIALS_20261105.md",
+        "evidence/REVIEW_DEVELOPMENT_MATERIALS_20261105.md"
       ],
       "remaining": [
-        "Final report/video must use frozen accepted real-asset/public version; current drafts and24.44s reviewed development recording only."
+        "Final report/video must use frozen accepted real-asset/public version. Current independently reviewed 4-page PDF and198.52s video are localhost-placeholder development drafts only; T10/G4 remain incomplete."
       ],
       "subtasks": [
         {
@@ -452,6 +461,13 @@
           "acceptance_scope": "Concrete report, recording, social and release/maintenance drafts; no publication",
           "review": "PASS_INDEPENDENT_FINAL_EXPANSION",
           "evidence": "evidence/REVIEW_DELIVERY_20261104.md"
+        },
+        {
+          "id": "T10-development-materials",
+          "status": "DONE",
+          "acceptance_scope": "Source-bound draft Chinese reportPDF and genuine localhost placeholder operation video; not final G4/submission materials",
+          "review": "PASS_INDEPENDENT_SCOPED",
+          "evidence": "evidence/REVIEW_DEVELOPMENT_MATERIALS_20261105.md"
         }
       ]
     },
@@ -540,10 +556,10 @@
   "baseline_commit": "2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f",
   "implementation_branch": "codex/v6.1-browser-3d",
   "continuation_base_commit": "f6245e13bc41e36a0efeabeba3ca0fba2174c2f5",
-  "current_validation_scope": "evidence/CONTINUATION_NEXT_20261105.md",
+  "current_validation_scope": "evidence/NETWORK_MATERIALS_20261105.md",
   "historical_validation_scope": "Older 64e1665 CI41807603537 performance and 20261104 local startup measurements are historical. Latest verified remote is394eb04/CI41948477248 functional download FAIL and performance NOT_RUN. Local be32202 fixes the download protocol without a new remote run.",
   "historical_validated_source_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6",
-  "validation_scope": "Local continuation frombe32202: three scoped features independently reviewed, Python334/application39/JS48/build/browser/procedural-direction PASS. Current remote394eb04 CI41948477248 failed download and skipped performance. New local changes not pushed; this continuation performance NOT_RUN by user priority, strict budgets unchanged. Real Lux3D/public host/account acceptance remains blocked.",
+  "validation_scope": "Local continuation fromba21f54: controlled network recovery and development-materials subtasks independently reviewed; Python334/application39/JS48/typecheck/contracts and actual local browser/material checks PASS. App/Core/dist unchanged. No new build/performance run; strict CI enforcement unchanged. Remote394eb04 CI41948477248 functional FAIL/performance skipped. RealLux3D/rights/public/account/final-submission gates remain incomplete.",
   "recovery_sync": {
     "task_id": "RECOVERY-SYNC-20261104",
     "date": "2026-11-04",
@@ -569,7 +585,7 @@
     "current_scope": "evidence/FEATURE_CONTINUATION_20261104.md"
   },
   "previous_continuation_base_commit": "57faf384d64e9770407b28086fdfeb5b193a6d6f",
-  "current_source_sync": "LOCAL_BE32202_PLUS_REVIEWED_CONTINUATION_NOT_PUSHED; REMOTE_394eb04",
+  "current_source_sync": "LOCAL_NETWORK_MATERIALS_REVIEWED_NOT_PUSHED; REMOTE_394eb04",
   "previous_source_sync": "LOCAL_ONLY_NOT_PUSHED",
   "latest_verified_remote_ci": {
     "source_commit": "394eb04e9bbaf7555a507cbc4c1fe28caa62a6a9",
@@ -765,5 +781,62 @@
       "T05-neutral-not-triggered-copy",
       "T03-explicit-source-front-calibration"
     ]
+  },
+  "network_materials": {
+    "base_commit": "ba21f54ace3218cfa2d695092b735165c923b1b9",
+    "branch": "codex/network-materials-20261105",
+    "status": "DONE_SCOPED_LOCAL_EXTERNAL_GATES_BLOCKED",
+    "record": "evidence/NETWORK_MATERIALS_20261105.md",
+    "model_materialization_retry": {
+      "attempts_this_phase": 1,
+      "explicit_current_environment_destination": true,
+      "prepare": "SUCCESS",
+      "download_exit_code": 1,
+      "raw_error": "library file transfer failed: download failed",
+      "http_status": "NOT_EXPOSED",
+      "local_file_available": false,
+      "further_retry": "WAITING_EFFECTIVE_APPROVED_HOST_CONFIGURATION"
+    },
+    "remote_write": "NOT_RUN",
+    "public_deployment": "NOT_RUN",
+    "performance_measurement": "NOT_RUN_USER_PRIORITY",
+    "ci_budgets": "UNCHANGED",
+    "network_recovery": "PASS_INDEPENDENT_SCOPED",
+    "model_network_configuration": {
+      "approved_exact_host": "sdmntprwestus.oaiusercontent.com",
+      "authorization": "USER_APPROVED",
+      "mutation": "NOT_EXECUTED_NO_SUPPORTED_WRITE_TOOL",
+      "effective_policy": "CURRENT_ENFORCED_EXACT_HOST_ABSENT",
+      "next_step": "Supported environment UI exact-host addition and actual-task policy verification before official Library retry",
+      "root_cause": "CONFIGURATION_GAP_CONFIRMED_UNIQUE_TRANSFER_ROOT_CAUSE_NOT_ESTABLISHED"
+    },
+    "independent_reviews": [
+      "evidence/REVIEW_NETWORK_RECOVERY_20261105.md",
+      "evidence/REVIEW_DEVELOPMENT_MATERIALS_20261105.md"
+    ],
+    "features": [
+      "T07-network-interruption-recovery",
+      "T10-development-materials"
+    ],
+    "validation_summary": "evidence/network-materials/validation-summary.json",
+    "materials": {
+      "scope": "LOCALHOST_PLACEHOLDER_DEVELOPMENT_RECORDING",
+      "report_status": "DRAFT_NOT_SUBMITTABLE",
+      "video_seconds": 198.52,
+      "video_frames": 4963,
+      "pdf_pages": 4,
+      "manifest": "evidence/network-materials/materials/materials-manifest.json",
+      "real_lux3d": "BLOCKED_ORIGINAL_BYTES_UNAVAILABLE",
+      "public_deployment": "NOT_VERIFIED",
+      "final_G4": "INCOMPLETE"
+    },
+    "final_tests": {
+      "native_python": 334,
+      "application": 39,
+      "javascript": 48,
+      "typecheck": "PASS",
+      "contracts": "PASS_3_FILES"
+    },
+    "formal_submission": "NOT_PERFORMED_BLOCKED_EXIT2"
   }
 }

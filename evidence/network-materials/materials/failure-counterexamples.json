@@ -1,0 +1,36 @@
+{
+  "scope": "GENUINE_FAILURE_COUNTEREXAMPLES_AND_RETESTS",
+  "trial_1": {
+    "private_failure_path": "evidence/private/development-materials-app-trial-20261105-1/failure.json",
+    "error": "ReferenceError: Cannot access 'unit' before initialization",
+    "resolution": "Moved projection helpers before startup execution; trial-3 then passed."
+  },
+  "full_1": {
+    "private_failure_path": "evidence/private/development-materials-final-20261105-1/failure.json",
+    "error": "AssertionError [ERR_ASSERTION]: Full recording must be 180–240 seconds, got 241.92",
+    "observed_ffprobe_seconds": 241.92,
+    "print_annotation_occurrences": 2,
+    "print_annotation_excerpt": "录屏注释｜已点击打印；镜头未显示系统打印预览",
+    "resolution": "Matched Puppeteer screencast fps to 25fps image2pipe input; hid recording annotation using print-only CSS. No trimming, acceleration, or frame replacement."
+  },
+  "fps_trial": {
+    "scope": "GENUINE_CHROMIUM_SCREENCAST_TIMING_TRIAL",
+    "fps_requested": 25,
+    "monotonic_capture_seconds": 8.008496976,
+    "monotonic_stop_flush_seconds": 1.8102332539999988,
+    "raw_last_packet_pts_seconds": 7.92,
+    "absolute_difference_seconds": 0.08849697600000006
+  },
+  "trial_3": {
+    "private_manifest_path": "evidence/private/development-materials-app-trial-20261105-3/materials-manifest.json",
+    "result": "PASS",
+    "print_annotation_occurrences": 0
+  },
+  "full_2": {
+    "private_manifest_path": "evidence/private/development-materials-final-20261105-2/materials-manifest.json",
+    "result": "PASS",
+    "video_duration_seconds": 198.52,
+    "report_pdf_pages": 4,
+    "print_annotation_occurrences": 0
+  }
+}

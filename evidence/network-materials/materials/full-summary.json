@@ -1,0 +1,26 @@
+{
+  "status": "LOCALHOST_PLACEHOLDER_DEVELOPMENT_RECORDING",
+  "report_status": "DRAFT_NOT_SUBMITTABLE",
+  "source_head": "ba21f54ace3218cfa2d695092b735165c923b1b9",
+  "app_source_sha256": "7ec6dee5de77002c726a3c517602e96be17905f815bb873552bf625acb68cbb8",
+  "app_matches_head": true,
+  "project_dirty": true,
+  "url": "http://127.0.0.1:4173/preview/",
+  "browser": "Chrome/154.0.8037.57",
+  "duration_seconds": 198.52,
+  "scene_revision": 2,
+  "input_hash": "c8c61e185bd547373f4a10979f6e0d4310b325058950c3b20fc58ecffad86ebc",
+  "ruleset_version": "demo-rules-3.0",
+  "file_sha256": {
+    "browser-original.webm": "f67e2f006da1a45f818aafbcfd417326fd5959f3d1545cb402ef24e3927cb9d7",
+    "development-recording.mp4": "dc3c7e275afe0de9801466da14f8784438ee5f1dbe2267170c6f61a323b7e7f3",
+    "development-report.pdf": "5b0d4446bd7def725f37e5ef97fb105c113e65aee6671cf7c6ac0417234a3197",
+    "development-report.html": "db7bd3865ce9a92028dd89e18ab57592e9ba293e1aedca8222c950fb5ccc79b5",
+    "action-list.json": "579748aaff8e21e7963d91c37a15077974ad304c99b702c5dbc6eb574a1b67ef",
+    "scene-snapshot.json": "2acc1b42d35689807e59e175432334ee776090a45d0ea306a133627d55f429a0",
+    "printable-action-list.pdf": "3c648a8f46cd9bce2b32fd7ca2f6b5272810b200985ee5cb385c9d8dd67bfc10"
+  },
+  "model_materialization": "本环境有界重试 1 次，helper 返回 download failed；HTTP 状态未知",
+  "real_lux3d": "BLOCKED",
+  "public_deployment": "NOT_VERIFIED"
+}

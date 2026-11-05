@@ -1,0 +1,205 @@
+{
+  "node_check_capture": {
+    "command": [
+      "node",
+      "--check",
+      "scripts/create_development_materials.mjs"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "node_check_report": {
+    "command": [
+      "node",
+      "--check",
+      "scripts/development_materials_report.mjs"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "git_diff_check": {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "app_diff_anchor": {
+    "command": [
+      "git",
+      "diff",
+      "--name-only",
+      "ba21f54ace3218cfa2d695092b735165c923b1b9",
+      "--",
+      "apps/web/src",
+      "browser-spike",
+      "reference",
+      "contracts",
+      "assets",
+      "examples"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  "video_ffprobe": {
+    "command": [
+      "ffprobe",
+      "-v",
+      "error",
+      "-show_entries",
+      "format=duration:stream=codec_name,width,height,nb_frames",
+      "-of",
+      "json",
+      "/workspace/homesafe-download-fix/evidence/private/development-materials-final-20261105-2/development-recording.mp4"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "{\n    \"programs\": [\n\n    ],\n    \"stream_groups\": [\n\n    ],\n    \"streams\": [\n        {\n            \"codec_name\": \"h264\",\n            \"width\": 1280,\n            \"height\": 900,\n            \"nb_frames\": \"4963\"\n        }\n    ],\n    \"format\": {\n        \"duration\": \"198.520000\"\n    }\n}\n"
+  },
+  "report_pdfinfo": {
+    "command": [
+      "pdfinfo",
+      "/workspace/homesafe-download-fix/evidence/private/development-materials-final-20261105-2/development-report.pdf"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "Title:           安心屋 · 本地开发报告工作稿\nCreator:         Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36\nProducer:        Skia/PDF m154\nCreationDate:    Thu Nov  5 05:08:33 2026 UTC\nModDate:         Thu Nov  5 05:08:33 2026 UTC\nCustom Metadata: no\nMetadata Stream: no\nTagged:          yes\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           4\nEncrypted:       no\nPage size:       594.96 x 841.92 pts (A4)\nPage rot:        0\nFile size:       718825 bytes\nOptimized:       no\nPDF version:     1.4\n"
+  },
+  "print_pdfinfo": {
+    "command": [
+      "pdfinfo",
+      "/workspace/homesafe-download-fix/evidence/private/development-materials-final-20261105-2/printable-action-list.pdf"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "Title:           安心屋 · 客厅布置演练\nCreator:         Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36\nProducer:        Skia/PDF m154\nCreationDate:    Thu Nov  5 04:58:14 2026 UTC\nModDate:         Thu Nov  5 04:58:14 2026 UTC\nCustom Metadata: no\nMetadata Stream: no\nTagged:          yes\nUserProperties:  no\nSuspects:        no\nForm:            none\nJavaScript:      no\nPages:           2\nEncrypted:       no\nPage size:       595.92 x 841.92 pts (A4)\nPage rot:        0\nFile size:       442419 bytes\nOptimized:       no\nPDF version:     1.4\n"
+  },
+  "report_pdffonts": {
+    "command": [
+      "pdffonts",
+      "/workspace/homesafe-download-fix/evidence/private/development-materials-final-20261105-2/development-report.pdf"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes      4  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes      5  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes      6  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes      7  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes      8  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes      9  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     10  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     11  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     12  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     13  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     14  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     15  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     16  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     17  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     18  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     19  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     20  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     21  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     22  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     23  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     24  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     25  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     26  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     27  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     28  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     29  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     30  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     31  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     32  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     33  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     34  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     35  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     36  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     37  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     38  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     39  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     40  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     41  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     42  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     43  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     44  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     45  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     46  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     47  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     48  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     49  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     50  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     51  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     52  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     53  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     54  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     55  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     56  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     57  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     58  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     59  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     60  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     61  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     62  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     63  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     64  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     65  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     66  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     67  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     68  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     69  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     70  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     71  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     72  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     73  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     74  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     75  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     77  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     78  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     79  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     80  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     81  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     82  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     83  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     84  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     85  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     86  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     87  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     88  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     89  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     90  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes     91  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     92  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     93  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     94  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     95  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     96  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     97  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     98  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes     99  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    100  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    101  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    102  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    103  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    104  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    105  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    106  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    107  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    108  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    109  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    110  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    111  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    112  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    113  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    114  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    115  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    116  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    117  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    118  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    119  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    120  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    121  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    122  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    123  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    124  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    125  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    126  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    127  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    128  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    129  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    130  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    131  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    132  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    133  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    134  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    137  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    138  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    139  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    140  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    141  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    142  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    143  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    144  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    145  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    146  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    147  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    148  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    149  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    150  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    151  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    152  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    153  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    154  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    155  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    156  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    157  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    158  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    159  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    160  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    161  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    162  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    163  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    164  0\nDAAAAA+DejaVuSansMono                CID TrueType      Identity-H       yes yes yes    165  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    166  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    167  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    168  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    169  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    170  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    171  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    172  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    173  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    174  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    175  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    176  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    179  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    180  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    181  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    182  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    183  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    184  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    185  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    186  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    187  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    188  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    189  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    190  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    191  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    192  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    193  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    194  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    195  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    196  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    197  0\nCAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    198  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    199  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    200  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    201  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    202  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    203  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    204  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    205  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    206  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    207  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    210  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    211  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    212  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    213  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    214  0\nBAAAAA+NotoSansCJKsc-Regular         Type 3            Custom           yes yes yes    215  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    216  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    217  0\nAAAAAA+NotoSansCJKsc-Bold            Type 3            Custom           yes yes yes    218  0\n"
+  },
+  "report_pdftotext": {
+    "command": [
+      "pdftotext",
+      "/workspace/homesafe-download-fix/evidence/private/development-materials-final-20261105-2/development-report.pdf",
+      "-"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout_sha256": "cf68a37196ee4f21bf64174396acc0d208342355f26b25863b1119832d1083e2",
+    "stdout_chars": 3581,
+    "recording_annotation_count": 1,
+    "binding_hash_present": true,
+    "chinese_title_present": true,
+    "stdout_excerpt": "HOMESAFE AI / 安心屋 / T10 开发材料\n\n在合成客厅里，\n看见两种照护需求的取舍\nDRAFT_NOT_SUBMITTABLE · LOCALHOST_PLACEHOLDER_DEVELOPMENT_RECORDING\n\n给成年照护者的空间演练\n\n移动家具后，儿童窗边支点条件可能不再触发，同时老人指定通道条件可能新增触发。页面把每次合\n法布局的两类检查、资料缺口和行动清单放在一起，帮助练习核查依据。\n\n本稿展示"
+  },
+  "print_pdftotext": {
+    "command": [
+      "pdftotext",
+      "/workspace/homesafe-download-fix/evidence/private/development-materials-final-20261105-2/printable-action-list.pdf",
+      "-"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout_sha256": "c9a5ef41f6afa66ec9eb2a230bf8a967b9561db35be78666cf8dc2b91fa394c9",
+    "stdout_chars": 1309,
+    "recording_annotation_count": 0,
+    "binding_hash_present": true,
+    "chinese_title_present": true,
+    "stdout_excerpt": "当前布局记录\n\n客厅检查行动清单\n\n场景快照保存当前输入和资料来源，不包含模型或挑战进度；当前页面不支持导入恢复。\n\n合成样例 · 布局 v2 · 规则 demo-rules-3.0\n\n输入摘要 c8c61e185bd547373f4a10979f6e0d4310b325058950c3b20fc58ecffad86ebc\n\n本次布局变化\n儿童 · 窗边支点 · 当前条件未触发"
+  },
+  "full1_video_ffprobe": {
+    "command": [
+      "ffprobe",
+      "-v",
+      "error",
+      "-show_entries",
+      "format=duration",
+      "-of",
+      "default=noprint_wrappers=1:nokey=1",
+      "/workspace/homesafe-download-fix/evidence/private/development-materials-final-20261105-1/development-recording.mp4"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout": "241.920000\n"
+  },
+  "full1_print_pdftotext": {
+    "command": [
+      "pdftotext",
+      "/workspace/homesafe-download-fix/evidence/private/development-materials-final-20261105-1/printable-action-list.pdf",
+      "-"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdout_sha256": "dd09bee04db29e66b29b9658bbadb75e329584f533d42826b4a294d03f1fa20f",
+    "stdout_chars": 1356,
+    "recording_annotation_count": 2,
+    "binding_hash_present": true,
+    "chinese_title_present": true,
+    "stdout_excerpt": "当前布局记录\n\n客厅检查行动清单\n\n录屏注释｜已点击打印；镜头未显示系统打印预览\n\n场景快照保存当前输入和资料来源，不包含模型或挑战进度；当前页面不支持导入恢复。\n\n合成样例 · 布局 v2 · 规则 demo-rules-3.0\n\n输入摘要 c8c61e185bd547373f4a10979f6e0d4310b325058950c3b20fc58ecffad86ebc\n"
+  },
+  "file_sha256": {
+    "browser-original.webm": {
+      "expected_sha256": "f67e2f006da1a45f818aafbcfd417326fd5959f3d1545cb402ef24e3927cb9d7",
+      "actual_sha256": "f67e2f006da1a45f818aafbcfd417326fd5959f3d1545cb402ef24e3927cb9d7",
+      "matches": true,
+      "bytes": 20463661
+    },
+    "development-recording.mp4": {
+      "expected_sha256": "dc3c7e275afe0de9801466da14f8784438ee5f1dbe2267170c6f61a323b7e7f3",
+      "actual_sha256": "dc3c7e275afe0de9801466da14f8784438ee5f1dbe2267170c6f61a323b7e7f3",
+      "matches": true,
+      "bytes": 7334822
+    },
+    "development-report.pdf": {
+      "expected_sha256": "5b0d4446bd7def725f37e5ef97fb105c113e65aee6671cf7c6ac0417234a3197",
+      "actual_sha256": "5b0d4446bd7def725f37e5ef97fb105c113e65aee6671cf7c6ac0417234a3197",
+      "matches": true,
+      "bytes": 718825
+    },
+    "development-report.html": {
+      "expected_sha256": "db7bd3865ce9a92028dd89e18ab57592e9ba293e1aedca8222c950fb5ccc79b5",
+      "actual_sha256": "db7bd3865ce9a92028dd89e18ab57592e9ba293e1aedca8222c950fb5ccc79b5",
+      "matches": true,
+      "bytes": 9849
+    },
+    "action-list.json": {
+      "expected_sha256": "579748aaff8e21e7963d91c37a15077974ad304c99b702c5dbc6eb574a1b67ef",
+      "actual_sha256": "579748aaff8e21e7963d91c37a15077974ad304c99b702c5dbc6eb574a1b67ef",
+      "matches": true,
+      "bytes": 38179
+    },
+    "scene-snapshot.json": {
+      "expected_sha256": "2acc1b42d35689807e59e175432334ee776090a45d0ea306a133627d55f429a0",
+      "actual_sha256": "2acc1b42d35689807e59e175432334ee776090a45d0ea306a133627d55f429a0",
+      "matches": true,
+      "bytes": 29883
+    },
+    "printable-action-list.pdf": {
+      "expected_sha256": "3c648a8f46cd9bce2b32fd7ca2f6b5272810b200985ee5cb385c9d8dd67bfc10",
+      "actual_sha256": "3c648a8f46cd9bce2b32fd7ca2f6b5272810b200985ee5cb385c9d8dd67bfc10",
+      "matches": true,
+      "bytes": 442419
+    }
+  },
+  "source_tool_sha256": {
+    "scripts/create_development_materials.mjs": "23631d736cb6bf0db6fa9f421a714c9fbed24b1078175b8353beb779519decd4",
+    "scripts/development_materials_report.mjs": "7cffccee2ebf10fecfcc655630b71ab45f5f1c06681199f1317782f654868152"
+  },
+  "original_full2_stdout_stderr": {
+    "captured_to_file": false,
+    "note": "The full run completed and emitted the private materials-manifest.json and ci-evidence full-summary.json; no standalone original process stdout/stderr was retained. The entries here are new read-only audit command stdout/stderr, not reconstructed run output."
+  },
+  "status": "PASS"
+}

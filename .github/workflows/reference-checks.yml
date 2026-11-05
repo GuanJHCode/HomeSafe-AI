@@ -95,6 +95,7 @@ jobs:
           node scripts/check_web_draft_export.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" | tee ci-evidence/draft-export.json
           node scripts/check_web_observations.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" ci-evidence/observations | tee ci-evidence/observations.json
           node scripts/check_web_recovery.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" ci-evidence/recovery | tee ci-evidence/recovery.json
+          node scripts/check_web_network_recovery.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" ci-evidence/network-recovery | tee ci-evidence/network-recovery.json
           node scripts/check_startup_trace.mjs http://127.0.0.1:4173/preview/ "$chrome" "$driver" ci-evidence/startup-trace | tee ci-evidence/startup-trace-summary.json
           node scripts/check_web_embedding.mjs http://127.0.0.1:4173/preview/ http://127.0.0.1:4174/ "$chrome" "$driver" | tee ci-evidence/embedding.json
       - name: Strict real-browser performance budgets

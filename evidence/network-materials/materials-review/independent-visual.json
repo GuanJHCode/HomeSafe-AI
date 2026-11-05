@@ -1,0 +1,75 @@
+{
+  "scope": "INDEPENDENT_VISUAL_AND_LOCAL_BINDING_REVIEW",
+  "result": "PASS_SCOPED_DEVELOPMENT_MATERIALS",
+  "local_http_resource_count": 28,
+  "local_http_resource_hashes_match_dist": true,
+  "pdf_pages_visually_checked": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "pdf_chinese_font_embedded_and_text_extractable": true,
+  "pdf_no_visible_clipping_or_overlap": true,
+  "pdf_page_4_long_paths_wrap_but_remain_readable": true,
+  "print_pages_visually_checked": [
+    1,
+    2
+  ],
+  "print_no_recording_annotation": true,
+  "print_fields_match_export": {
+    "scene_revision": 2,
+    "input_hash": "c8c61e185bd547373f4a10979f6e0d4310b325058950c3b20fc58ecffad86ebc",
+    "ruleset_version": "demo-rules-3.0"
+  },
+  "video_sample_times_seconds": [
+    0,
+    20,
+    40,
+    60,
+    80,
+    100,
+    120,
+    140,
+    160,
+    180,
+    195
+  ],
+  "video_observed_stages": [
+    "local placeholder room",
+    "child view and finding card",
+    "elder view",
+    "chair drag conflict and two-role tradeoff",
+    "undo and challenge",
+    "improved placement with goal completed and unresolved findings",
+    "real JSON and snapshot export area",
+    "print action list button with no claimed native preview",
+    "return to local room"
+  ],
+  "video_annotation_identified_as_recording_note": true,
+  "video_motion_check": {
+    "one_fps_frames": 199,
+    "unique_1fps_frames": 136,
+    "adjacent_mean_abs_luma_median": 0.004,
+    "adjacent_change_gt_0_2": 54,
+    "max_low_change_run_seconds": 8
+  },
+  "export_status_counts": {
+    "triggered": 2,
+    "needs_review": 4,
+    "not_triggered": 5
+  },
+  "report_and_print_text_bound_to_export": true,
+  "counterexamples_retained": [
+    "trial-1 initialization failure",
+    "full-1 overlong 241.92s recording",
+    "full-1 print annotation contamination"
+  ],
+  "limits": [
+    "private localhost procedural scene only",
+    "real Lux3D visual and rights validation blocked",
+    "public HTTPS and final submission blocked",
+    "no native system print preview shown",
+    "no new performance measurement"
+  ]
+}

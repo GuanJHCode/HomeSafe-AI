@@ -1,0 +1,67 @@
+{
+  "scope": "NETWORK_MATERIALS_CONTINUATION_LOCAL_NON_BROWSER_REGRESSION",
+  "source_anchor": "ba21f54ace3218cfa2d695092b735165c923b1b9",
+  "branch": "codex/network-materials-20261105",
+  "source_state": "DIRTY_REVIEWED_CONTINUATION_WORK; App/Core/dist unchanged",
+  "native_python": {
+    "result": "PASS",
+    "passed": 334,
+    "exit_code": 0,
+    "log": "native.log"
+  },
+  "application": {
+    "result": "PASS",
+    "passed": 39,
+    "exit_code": 0,
+    "log": "application.log"
+  },
+  "javascript": {
+    "result": "PASS",
+    "passed": 48,
+    "exit_code": 0,
+    "log": "javascript.log"
+  },
+  "typecheck": {
+    "result": "PASS",
+    "exit_code": 0,
+    "log": "typecheck.log"
+  },
+  "contracts": {
+    "result": "PASS",
+    "files": 3,
+    "exit_code": 0,
+    "log": "contracts.log"
+  },
+  "network_browser": "PASS_INDEPENDENT_SCOPED_SEPARATE_RECEIPTS",
+  "new_performance_measurement": "NOT_RUN_USER_PRIORITY",
+  "strict_ci_performance_enforcement": "UNCHANGED",
+  "remote_write": "NOT_RUN",
+  "new_script_syntax": {
+    "result": "PASS",
+    "exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "scripts": [
+      "scripts/check_web_network_recovery.mjs",
+      "scripts/create_development_materials.mjs",
+      "scripts/development_materials_report.mjs"
+    ]
+  },
+  "remote_ci_read_only_refresh": "current-remote-ci.json",
+  "submission_preflight": {
+    "result": "BLOCKED_EXPECTED",
+    "exit_code": 2,
+    "log": "submission-preflight.log",
+    "formal_submission": "NOT_PERFORMED"
+  },
+  "package_checks": {
+    "result": "PASS",
+    "passed": 8,
+    "exit_code": 0,
+    "log": "package-final.log"
+  },
+  "materials_browser": "PASS_INDEPENDENT_SCOPED_198_52S_4PAGE_DRAFT",
+  "materials_review": "../REVIEW_DEVELOPMENT_MATERIALS_20261105.md"
+}

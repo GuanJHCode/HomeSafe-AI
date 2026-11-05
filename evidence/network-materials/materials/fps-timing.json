@@ -1,0 +1,8 @@
+{
+  "scope": "GENUINE_CHROMIUM_SCREENCAST_TIMING_TRIAL",
+  "fps_requested": 25,
+  "monotonic_capture_seconds": 8.008496976,
+  "monotonic_stop_flush_seconds": 1.8102332539999988,
+  "raw_last_packet_pts_seconds": 7.92,
+  "absolute_difference_seconds": 0.08849697600000006
+}

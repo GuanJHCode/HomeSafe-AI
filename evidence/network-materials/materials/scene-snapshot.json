@@ -1,0 +1,1013 @@
+{
+  "format": "homesafe_scene_snapshot",
+  "snapshot_version": "1.0",
+  "source_kind": "synthetic_demo",
+  "exported_at": "2026-11-05T04:57:48.523Z",
+  "scene": {
+    "schema_version": "2.0",
+    "scene_id": "demo-living-room",
+    "revision": 2,
+    "is_demo": true,
+    "room": {
+      "width": 6,
+      "height": 2.7,
+      "depth": 4
+    },
+    "profiles": [
+      {
+        "id": "child",
+        "role": "child",
+        "can_climb": {
+          "value": true,
+          "source_kind": "demo",
+          "observed_at": null,
+          "verification_state": "provided",
+          "evidence_ref": null
+        },
+        "reach_height": {
+          "value": 0.8,
+          "source_kind": "demo",
+          "observed_at": null,
+          "verification_state": "provided",
+          "evidence_ref": null,
+          "coordinate_reference": "world_floor"
+        }
+      },
+      {
+        "id": "elder",
+        "role": "elder",
+        "can_climb": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null
+        },
+        "reach_height": {
+          "value": null,
+          "source_kind": "unknown",
+          "observed_at": null,
+          "verification_state": "unknown",
+          "evidence_ref": null,
+          "coordinate_reference": "world_floor"
+        }
+      }
+    ],
+    "routes": [
+      {
+        "id": "elder-route",
+        "label": "合成样例指定路线；不是法定通道宽度",
+        "rect": {
+          "x": 3,
+          "z": 2,
+          "width": 5.4,
+          "depth": 0.8
+        },
+        "confirmed": true
+      }
+    ],
+    "rule_config": {
+      "near_window_m": 0.6,
+      "parameter_source": "demo_heuristic"
+    },
+    "objects": [
+      {
+        "id": "chair",
+        "asset_id": null,
+        "label": "chair",
+        "category": "support",
+        "position": {
+          "x": 3,
+          "y": 0,
+          "z": 0.5999999999999996
+        },
+        "yaw_rad": 0,
+        "dimensions_m": {
+          "width": 0.5,
+          "height": 0.8,
+          "depth": 0.5
+        },
+        "dimensions_confirmed": true,
+        "position_confirmed": true,
+        "collision_layer": "solid",
+        "placement_mode": "floor",
+        "supported_by": null,
+        "traits": {
+          "possible_climb_support": {
+            "value": true,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "requires_anchor_check": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "contains_hazardous_items": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "blocks_floor_route": {
+            "value": true,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "window_opening": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "loose_cord": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "rug": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "child_gate": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          }
+        },
+        "properties": {
+          "anchored": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "protection_reported": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "locked": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "accessible": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "secured": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "raised_threshold_present": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "storage_height": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null,
+            "coordinate_reference": "not_applicable"
+          }
+        }
+      },
+      {
+        "id": "window",
+        "asset_id": null,
+        "label": "window",
+        "category": "window",
+        "position": {
+          "x": 5.9,
+          "y": 0.8,
+          "z": 3.3
+        },
+        "yaw_rad": 0,
+        "dimensions_m": {
+          "width": 0.1,
+          "height": 1,
+          "depth": 0.9
+        },
+        "dimensions_confirmed": true,
+        "position_confirmed": true,
+        "collision_layer": "fixture",
+        "placement_mode": "wall",
+        "supported_by": null,
+        "traits": {
+          "possible_climb_support": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "requires_anchor_check": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "contains_hazardous_items": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "blocks_floor_route": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "window_opening": {
+            "value": true,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "loose_cord": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "rug": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "child_gate": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          }
+        },
+        "properties": {
+          "anchored": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "protection_reported": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "locked": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "accessible": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "secured": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "raised_threshold_present": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "storage_height": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null,
+            "coordinate_reference": "not_applicable"
+          }
+        }
+      },
+      {
+        "id": "cabinet",
+        "asset_id": null,
+        "label": "cabinet",
+        "category": "cabinet",
+        "position": {
+          "x": 0.5,
+          "y": 0,
+          "z": 3.3
+        },
+        "yaw_rad": 0,
+        "dimensions_m": {
+          "width": 0.7,
+          "height": 1.6,
+          "depth": 0.5
+        },
+        "dimensions_confirmed": true,
+        "position_confirmed": true,
+        "collision_layer": "solid",
+        "placement_mode": "floor",
+        "supported_by": null,
+        "traits": {
+          "possible_climb_support": {
+            "value": true,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "requires_anchor_check": {
+            "value": true,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "contains_hazardous_items": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "blocks_floor_route": {
+            "value": true,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "window_opening": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "loose_cord": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "rug": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "child_gate": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          }
+        },
+        "properties": {
+          "anchored": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "protection_reported": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "locked": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "accessible": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "secured": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "raised_threshold_present": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "storage_height": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null,
+            "coordinate_reference": "not_applicable"
+          }
+        }
+      },
+      {
+        "id": "storage",
+        "asset_id": null,
+        "label": "storage",
+        "category": "hazardous_storage",
+        "position": {
+          "x": 1.5,
+          "y": 0,
+          "z": 3.3
+        },
+        "yaw_rad": 0,
+        "dimensions_m": {
+          "width": 0.5,
+          "height": 0.7,
+          "depth": 0.5
+        },
+        "dimensions_confirmed": true,
+        "position_confirmed": true,
+        "collision_layer": "solid",
+        "placement_mode": "floor",
+        "supported_by": null,
+        "traits": {
+          "possible_climb_support": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "requires_anchor_check": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "contains_hazardous_items": {
+            "value": true,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "blocks_floor_route": {
+            "value": true,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "window_opening": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "loose_cord": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "rug": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "child_gate": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          }
+        },
+        "properties": {
+          "anchored": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "protection_reported": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "locked": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "accessible": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "secured": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "raised_threshold_present": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "storage_height": {
+            "value": 0.5,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null,
+            "coordinate_reference": "object_base"
+          }
+        }
+      },
+      {
+        "id": "rug",
+        "asset_id": null,
+        "label": "rug",
+        "category": "rug",
+        "position": {
+          "x": 1.8,
+          "y": 0,
+          "z": 2
+        },
+        "yaw_rad": 0,
+        "dimensions_m": {
+          "width": 1,
+          "height": 0.02,
+          "depth": 0.6
+        },
+        "dimensions_confirmed": true,
+        "position_confirmed": true,
+        "collision_layer": "surface",
+        "placement_mode": "surface",
+        "supported_by": null,
+        "traits": {
+          "possible_climb_support": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "requires_anchor_check": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "contains_hazardous_items": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "blocks_floor_route": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "window_opening": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "loose_cord": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "rug": {
+            "value": true,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "child_gate": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          }
+        },
+        "properties": {
+          "anchored": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "protection_reported": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "locked": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "accessible": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "secured": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "raised_threshold_present": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "storage_height": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null,
+            "coordinate_reference": "not_applicable"
+          }
+        }
+      },
+      {
+        "id": "cord",
+        "asset_id": null,
+        "label": "cord",
+        "category": "cord",
+        "position": {
+          "x": 4,
+          "y": 0,
+          "z": 3.3
+        },
+        "yaw_rad": 0,
+        "dimensions_m": {
+          "width": 0.4,
+          "height": 0.05,
+          "depth": 0.1
+        },
+        "dimensions_confirmed": true,
+        "position_confirmed": true,
+        "collision_layer": "marker",
+        "placement_mode": "surface",
+        "supported_by": null,
+        "traits": {
+          "possible_climb_support": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "requires_anchor_check": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "contains_hazardous_items": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "blocks_floor_route": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "window_opening": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "loose_cord": {
+            "value": true,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "rug": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "child_gate": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          }
+        },
+        "properties": {
+          "anchored": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "protection_reported": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "locked": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "accessible": {
+            "value": true,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "secured": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "raised_threshold_present": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "storage_height": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null,
+            "coordinate_reference": "not_applicable"
+          }
+        }
+      },
+      {
+        "id": "gate",
+        "asset_id": null,
+        "label": "gate",
+        "category": "child_gate",
+        "position": {
+          "x": 4,
+          "y": 0,
+          "z": 2
+        },
+        "yaw_rad": 0,
+        "dimensions_m": {
+          "width": 0.2,
+          "height": 0.8,
+          "depth": 0.6
+        },
+        "dimensions_confirmed": true,
+        "position_confirmed": true,
+        "collision_layer": "solid",
+        "placement_mode": "floor",
+        "supported_by": null,
+        "traits": {
+          "possible_climb_support": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "requires_anchor_check": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "contains_hazardous_items": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "blocks_floor_route": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "window_opening": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "loose_cord": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "rug": {
+            "value": false,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "child_gate": {
+            "value": true,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          }
+        },
+        "properties": {
+          "anchored": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "protection_reported": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "locked": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "accessible": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "secured": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null
+          },
+          "raised_threshold_present": {
+            "value": true,
+            "source_kind": "demo",
+            "observed_at": null,
+            "verification_state": "provided",
+            "evidence_ref": null
+          },
+          "storage_height": {
+            "value": null,
+            "source_kind": "unknown",
+            "observed_at": null,
+            "verification_state": "unknown",
+            "evidence_ref": null,
+            "coordinate_reference": "not_applicable"
+          }
+        }
+      }
+    ]
+  },
+  "assessment": {
+    "scene_id": "demo-living-room",
+    "scene_revision": 2,
+    "input_hash": "c8c61e185bd547373f4a10979f6e0d4310b325058950c3b20fc58ecffad86ebc",
+    "ruleset_version": "demo-rules-3.0"
+  },
+  "includes_asset_bytes": false,
+  "limitations": [
+    "这是当前已评估的输入场景，不包含模型文件、撤销历史或挑战进度。",
+    "保留未知及资料来源；示例尺寸不是现场测量，模拟补充资料不是现场核查。",
+    "当前页面刷新会重置；此文件用于本地记录与复核，页面尚不支持导入恢复。",
+    "需用相同版本的 Python 内核重算；快照与摘要不证明现实安全或挑战胜利。"
+  ]
+}

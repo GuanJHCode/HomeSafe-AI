@@ -1,0 +1,17 @@
+# 网络恢复与开发材料源码导出边界独立审查（2026-11-05 UTC）
+
+**结论：本轮新增文件的明文内容与显式源码清单审查通过；最终恢复包导出校验待核。** 本审查只判断源码包可纳入的脚本、文档和合成证据，不重复[网络功能审查](REVIEW_NETWORK_RECOVERY_20261105.md)或[开发材料功能与画面审查](REVIEW_DEVELOPMENT_MATERIALS_20261105.md)，也不关闭 T07、T10 整体及正式提交门禁。审查基线为本地 `ba21f54ace3218cfa2d695092b735165c923b1b9`，分支 `codex/network-materials-20261105`；本轮无远端推送。
+
+我只读检查了 `scripts/check_web_network_recovery.mjs`、`scripts/create_development_materials.mjs`、`scripts/development_materials_report.mjs`，以及本记录、[本轮交接](NETWORK_MATERIALS_20261105.md)、两份专项审查和 `evidence/network-materials/`。三个脚本的 SHA-256 依次为 `cd6a9326bfcfc3a2b986fbb82bdb9e1643836f2065aa0e042b171ed857a7e08b`、`23631d736cb6bf0db6fa9f421a714c9fbed24b1078175b8353beb779519decd4`、`7cffccee2ebf10fecfcc655630b71ab45f5f1c06681199f1317782f654868152`。材料工具将实际 PDF、MP4、WebM、HTML、打印清单和抽帧写到被 Git 忽略的 `evidence/private/development-materials-*`；网络脚本失败截图写到运行输出目录。`ci-evidence/` 也被忽略。源码仅包含生成与验证逻辑，未嵌入媒体、模型或认证值。
+
+归档目录最终有 **34 个文件、302224 字节**；全部可按 UTF-8 解码，25 个内容可解析为 JSON，另外 9 个为 Markdown/日志文本。逐文件检查没有 NUL、GLB/PNG/JPEG/PDF/MP4/WebM/ZIP 文件签名，没有邮箱、Bearer/Authorization、签名查询串或真实 `libfile_`/`ccarenv_` 标识。网络和材料两组行动清单/快照均标为 `synthetic_demo`；快照的 `includes_asset_bytes=false`，场景为 `demo-living-room`。这些结论只涉及归档明文；模型原包没有在本环境取得或复验。
+
+[模型重试的源码副本](network-materials/model-retry.json)明确标为 `SANITIZED_SOURCE_EXPORT_COPY`，将 Library 文件 ID、执行环境 ID 换成角色占位，并将私下目标和助手位置写为相对路径；本地原始回执 `ci-evidence/network-materials/model-retry.json` 保留且不进入源码包。副本仍保存一次有界重试、助手 exit 1、`download failed` 和 HTTP 状态未暴露等事实。[配置缺口记录](network-materials/model-network-gap.json)只记录准确主机缺失于当前生效策略、用户已批准该主机但配置未执行；它不把配置缺口写成已证实唯一下载根因。
+
+[材料索引](network-materials/materials/README.md)、[完整材料 manifest](network-materials/materials/materials-manifest.json)、[最终只读审计](network-materials/materials/final-audit.json)及[独立完整性回执](network-materials/materials-review/independent-integrity.json)均为明文。材料 manifest 的 `project_status` 仅列仓库相对路径，真实媒体只作为文件名与 SHA-256 出现；它如实标记工作树当时为 dirty、App/Core 与 HEAD 一致、稿件 `DRAFT_NOT_SUBMITTABLE`、真实 Lux3D `BLOCKED`、公网 `NOT_VERIFIED`。最终审计有 8 处 `/workspace/homesafe-download-fix/evidence/private/development-materials-final-20261105-{1,2}/...` 绝对路径，仅用于指明本地命令输入文件，没有用户名、账号、凭证或媒体字节。原始 full-2 进程 stdout/stderr 未单独留存，审计如实称其为事后只读命令回执。[远端 CI 回读](network-materials/current-remote-ci.json)仅含公开 GitHub 仓库 URL、提交与运行状态；[提交预检](network-materials/submission-preflight.log)仍退出 2、列出未满足门禁，无账号表单操作。
+
+当前 `git ls-files` 没有 PDF、MP4、WebM、GLB、PNG 或 JPEG 路径；材料原片、报告和截图仍留在私下目录。源码恢复包应只追加逐项核准的脚本、Markdown、合成 JSON 与日志，**不得把开发 PDF/视频、失败截图、真实模型、原始 Library 回执或 `evidence/private/` 收入清单**。PDF 与 MP4 若按用户授权私下交付，应作为明确标注的占位开发稿单独处理，不把源码包当成媒体交付。既有包中可能有已审查的代码 ZIP；本报告不把“纯源码”误写成“所有文件均纯文本”。
+
+交接状态已复核：`T07-network-interruption-recovery` 与 `T10-development-materials` 两个限定子项独立审查 DONE，T07/T10 整体仍 IN_PROGRESS；T03/T04/T09、真实模型与权利、公网和 G4/正式提交仍受阻。首次可编辑 3 秒为未达标的工程目标，本轮无新性能计时，严格 CI 预算和失败传播不变。最新核实远端 `394eb04` 的 CI `41948477248` 仍功能失败、性能 skipped；本地工作不得写成远端通过。`START_HERE.md`、`evidence/HANDOFF.md`、`evidence/NETWORK_MATERIALS_20261105.md` 与 `evidence/task-status.json` 的当前层和历史层对此一致。
+
+**显式清单已核：** `package-manifest.json` 从基线 852 项增至 893 项，恰好新增本轮 34 个安全明文证据（先前 33 项加 `package-final.log`）和 7 个脚本/审查文档；无删除，原有 4 个被更新的工作流/入口/状态文件摘要与实际内容一致。新增项全部归类 `generated_project_source`。我独立逐项重算 893 个文件 SHA-256，均与清单相符；全清单无 `private/`、`ci-evidence/`、`node_modules/` 路径，也无 PDF、MP4、WebM、GLB、PNG 或 JPEG 文件。`CHECKSUMS.sha256` 的 894 条校验全部通过，`python scripts/export_sources.py` dry run 列出 893 个显式文件且未写入。三脚本摘要未变，`package-final.log` 的八项包检查均通过。本报告修改后自身摘要须由根代理刷新到 manifest 与 CHECKSUMS；其导出副本及最终离线恢复包仍待最后一次只读比对，完成前不批准最终恢复包。

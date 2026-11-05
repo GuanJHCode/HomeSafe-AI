@@ -1,0 +1,84 @@
+{
+  "result": "PASS",
+  "scope": "ISOLATED_CHROMIUM_LOCALHOST_NETWORK_INTERRUPTION",
+  "url": "http://127.0.0.1:4173/preview/",
+  "browser": "Chrome/154.0.8037.57",
+  "executed_at": "2026-11-05T04:28:40.287Z",
+  "stages": [
+    {
+      "stage": "online_accepted",
+      "hash": "586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+    },
+    {
+      "stage": "real_offline",
+      "pageProbe": "TypeError: Failed to fetch",
+      "workerProbe": "TypeError: Failed to fetch"
+    },
+    {
+      "stage": "offline_edit_undo_redo_export",
+      "hash": "c3fd856859d086209d2da5ad0b774a54c38455832e31e70db4ea0ed2daa185e4",
+      "revision": 5,
+      "workerRequests": 10
+    },
+    {
+      "stage": "offline_retry_failed",
+      "failure": "规则暂不可用。Failed to fetch重建 Worker 并重试"
+    },
+    {
+      "stage": "cancelled_recovery",
+      "workers": 1
+    },
+    {
+      "stage": "online_restored_fresh_worker",
+      "hash": "c3fd856859d086209d2da5ad0b774a54c38455832e31e70db4ea0ed2daa185e4",
+      "revision": 5
+    },
+    {
+      "stage": "initial_config_offline_failed",
+      "failure": "规则暂不可用。Failed to fetch重建 Worker 并重试"
+    },
+    {
+      "stage": "initial_online_retry_ready",
+      "hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+    }
+  ],
+  "networkEvents": [
+    {
+      "target": "page",
+      "url": "http://127.0.0.1:4173/preview/engine/config.json?network-probe=offline",
+      "error": "net::ERR_INTERNET_DISCONNECTED",
+      "blocked_reason": null
+    },
+    {
+      "target": "worker",
+      "url": "http://127.0.0.1:4173/preview/engine/config.json?network-probe=offline",
+      "error": "net::ERR_INTERNET_DISCONNECTED",
+      "blocked_reason": null
+    },
+    {
+      "target": "page",
+      "url": "http://127.0.0.1:4173/preview/engine/config.json",
+      "error": "net::ERR_INTERNET_DISCONNECTED",
+      "blocked_reason": null
+    },
+    {
+      "target": "page",
+      "url": "http://127.0.0.1:4173/preview/engine/config.json",
+      "error": "net::ERR_ABORTED",
+      "blocked_reason": null
+    },
+    {
+      "target": "initial-page",
+      "url": "http://127.0.0.1:4173/preview/engine/config.json",
+      "error": "net::ERR_INTERNET_DISCONNECTED",
+      "blocked_reason": null
+    }
+  ],
+  "snapshotVerification": "MATCHES_CURRENT_CORE",
+  "faultInjection": "Terminal Worker error, config-request holds, and print-call counting are test injection; offline transport is CDP Network emulation with observed failed requests in page and Worker targets.",
+  "limitations": [
+    "Loaded session only; no offline cold start or service worker",
+    "localhost Chromium only; not a public/other network, Safari, or Edge",
+    "Offline explicit retry fails at window config fetch before a new Worker/WASM download"
+  ]
+}

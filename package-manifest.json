@@ -1,9 +1,9 @@
 {
   "manifest_version": "1.0",
-  "release": "V6.1-reviewed-continuation-20261105",
-  "base_commit": "be32202bbaeafd9fcfde84601c22fb5a981fab6c",
+  "release": "V6.1-reviewed-network-materials-20261105",
+  "base_commit": "ba21f54ace3218cfa2d695092b735165c923b1b9",
   "baseline_zip_sha256": "b6c674f532fd30ff7ab086b08c814b086e94e2aa0f12cff80c1b6d94b96d3752",
-  "classification_policy": "Existing reviewed source allowlist plus explicitly reviewed draft-output guard, neutral finding copy, explicit-source-front private calibration tools, CI procedural inputs, reviews and synthetic/procedural JSON/text evidence. Third-party notices retain audited classification. Excludes original Lux3D, raw/user assets, private intake directories, screenshots, PDFs, videos, runtime vendor, builds, browser profiles and dependencies.",
+  "classification_policy": "Existing reviewed source allowlist plus explicitly reviewed localhost network recovery and private development-material tools, scoped independent reviews, synthetic JSON and text logs. No automatic evidence inclusion. Third-party notice classifications retained. Excludes original Lux3D and user assets, private directories, screenshots/PDF/video/HTML capture artifacts, runtime vendor, builds, browser profiles, dependencies, and unredacted Library/environment IDs from this phase.",
   "files": [
     {
       "path": ".env.example",
@@ -13,8 +13,8 @@
     },
     {
       "path": ".github/workflows/reference-checks.yml",
-      "sha256": "860d52339efbd4d4c90f0617bb1479da1ceb7bb7de366b118b3b4b139c6ff135",
-      "bytes": 10487,
+      "sha256": "3833ca32095e3c15a73a1fc9f74ebfd0104140ed02f366bcfee25661ab35831c",
+      "bytes": 10661,
       "classification": "generated_project_source"
     },
     {
@@ -61,8 +61,8 @@
     },
     {
       "path": "START_HERE.md",
-      "sha256": "3d865c4cdd3460d2afa13ba78bd351ea3b5d62592b510b9d1dbe71bb0bad975e",
-      "bytes": 9954,
+      "sha256": "b00000806b4cf128c3fd4728ecf8781ced3eb0875a55dc41081012487f2f82fb",
+      "bytes": 11904,
       "classification": "generated_project_source"
     },
     {
@@ -745,8 +745,8 @@
     },
     {
       "path": "evidence/HANDOFF.md",
-      "sha256": "de825537b3b1426ba2dacaab69ae366de0135243719184ac5356e51a13f30284",
-      "bytes": 15583,
+      "sha256": "68aa246a5a093012ba36d26f581620571774a06a45a3abb665370d7e9d5cc591",
+      "bytes": 17260,
       "classification": "generated_project_source"
     },
     {
@@ -754,6 +754,12 @@
       "sha256": "b3e0b926bb7be97bdba36f774b361fdc3663ea5d24bfdf540227faa0f0f914f5",
       "bytes": 3113,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "evidence/NETWORK_MATERIALS_20261105.md",
+      "classification": "generated_project_source",
+      "sha256": "34bada80b7d804f5270aad969f7ef8a2bf6f21bef2036da35d4e904c61ec00ab",
+      "bytes": 11191
     },
     {
       "path": "evidence/PERFORMANCE_DEFER_EXPERIMENT_20261104.md",
@@ -798,6 +804,12 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "evidence/REVIEW_DEVELOPMENT_MATERIALS_20261105.md",
+      "classification": "generated_project_source",
+      "sha256": "6f4bfd921eab4c000dac462767ff7f8cf03bd26a2491b80d751d3352ecd7b281",
+      "bytes": 5375
+    },
+    {
       "path": "evidence/REVIEW_FEATURE_HANDOFF_20261104.md",
       "sha256": "26cb8a6860a7c5b2a82eb2df2c984740300214cedf9e25e4e36a7e74822b1828",
       "bytes": 5229,
@@ -808,6 +820,18 @@
       "sha256": "6539d38649d5b3e271f16dac828a47914cfcf382e1fe101e2a369bf3651067b7",
       "bytes": 3477,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "evidence/REVIEW_NETWORK_MATERIALS_EXPORT_20261105.md",
+      "classification": "generated_project_source",
+      "sha256": "b73b10e9276343e87c09271be59389499310a8bec4b35287b8fc1bebccc6836c",
+      "bytes": 5923
+    },
+    {
+      "path": "evidence/REVIEW_NETWORK_RECOVERY_20261105.md",
+      "classification": "generated_project_source",
+      "sha256": "db011d0e89e46fc1be0a5b93214e37e472a20894f23b385759c88820f89c9ae2",
+      "bytes": 4596
     },
     {
       "path": "evidence/REVIEW_OBSERVATIONS_CONTINUATION_20261104.md",
@@ -2118,6 +2142,210 @@
       "bytes": 6414
     },
     {
+      "path": "evidence/network-materials/anchor-transport.json",
+      "classification": "generated_project_source",
+      "sha256": "8a0e46eb175bff9a8e17334d284884d35b2a53d44d7d13c44d89cdef2a7ddf20",
+      "bytes": 8412
+    },
+    {
+      "path": "evidence/network-materials/application.log",
+      "classification": "generated_project_source",
+      "sha256": "31d6ed036123823f99eeed63aa6c37a643a46ccf1d5b8711ae6df3863efbe323",
+      "bytes": 4129
+    },
+    {
+      "path": "evidence/network-materials/contracts.log",
+      "classification": "generated_project_source",
+      "sha256": "79cb740e874a6678549a2dfadae9cc939ef5b36ff26d762e763b363366aff32d",
+      "bytes": 52
+    },
+    {
+      "path": "evidence/network-materials/current-remote-ci.json",
+      "classification": "generated_project_source",
+      "sha256": "7df2b759a90781637f8c8e04c6dd3c984c3d205538f9d7ae46a97c38b04c0ce6",
+      "bytes": 6920
+    },
+    {
+      "path": "evidence/network-materials/javascript.log",
+      "classification": "generated_project_source",
+      "sha256": "153782e3bb9be38767e2e6a547b5d3d1a5b485a0f5d65b4162521136ff12a44f",
+      "bytes": 4389
+    },
+    {
+      "path": "evidence/network-materials/materials-review/independent-integrity.json",
+      "classification": "generated_project_source",
+      "sha256": "8aa1d029cbe8438df3762042ad64781bce606619cfe660bc20fa4ff424f16f08",
+      "bytes": 1701
+    },
+    {
+      "path": "evidence/network-materials/materials-review/independent-visual.json",
+      "classification": "generated_project_source",
+      "sha256": "17f7a4572978a7c7b8b9806803e6bc1546da31b40bd8be8abf70a38eeafbaeef",
+      "bytes": 2050
+    },
+    {
+      "path": "evidence/network-materials/materials/README.md",
+      "classification": "generated_project_source",
+      "sha256": "d1a285a37536aef9c21166bbe8d189bad15fefc7bf1184527d3143b6305f782c",
+      "bytes": 2530
+    },
+    {
+      "path": "evidence/network-materials/materials/action-list.json",
+      "classification": "generated_project_source",
+      "sha256": "579748aaff8e21e7963d91c37a15077974ad304c99b702c5dbc6eb574a1b67ef",
+      "bytes": 38179
+    },
+    {
+      "path": "evidence/network-materials/materials/failure-counterexamples.json",
+      "classification": "generated_project_source",
+      "sha256": "a2746a9982ed108319056bda113969fe677d755f9cd83ab005ff5c988341d1e7",
+      "bytes": 1683
+    },
+    {
+      "path": "evidence/network-materials/materials/final-audit.json",
+      "classification": "generated_project_source",
+      "sha256": "89ff08eaa3383379f8c43b6198c4d0f75ae7219bced32b27daa62170a1969452",
+      "bytes": 29125
+    },
+    {
+      "path": "evidence/network-materials/materials/fps-timing.json",
+      "classification": "generated_project_source",
+      "sha256": "c7dc2380a5766f5dd0968e5230ee31cdedfe7aac79b282413f309aa9609645c5",
+      "bytes": 272
+    },
+    {
+      "path": "evidence/network-materials/materials/full-summary.json",
+      "classification": "generated_project_source",
+      "sha256": "cdf65a59ff448b69aa7e0170dbe09a4c9ecc5d75392987a9f064d1e1c8df4014",
+      "bytes": 1449
+    },
+    {
+      "path": "evidence/network-materials/materials/loopback-transport.json",
+      "classification": "generated_project_source",
+      "sha256": "4748fa530ef4bbfe22d2adeb8657ff64539b35ef49fe624b7b07c99fde5070d6",
+      "bytes": 8359
+    },
+    {
+      "path": "evidence/network-materials/materials/materials-manifest.json",
+      "classification": "generated_project_source",
+      "sha256": "a991020f558b3b36ad240b77b383f2192b1431f6aaf6a99df74c07b80eb8c430",
+      "bytes": 10565
+    },
+    {
+      "path": "evidence/network-materials/materials/scene-snapshot.json",
+      "classification": "generated_project_source",
+      "sha256": "2acc1b42d35689807e59e175432334ee776090a45d0ea306a133627d55f429a0",
+      "bytes": 29883
+    },
+    {
+      "path": "evidence/network-materials/model-network-gap.json",
+      "classification": "generated_project_source",
+      "sha256": "9fdf9d201d10237b1f07d22de54a46e939b7169af96943164a29a35de1b7a031",
+      "bytes": 1784
+    },
+    {
+      "path": "evidence/network-materials/model-retry.json",
+      "classification": "generated_project_source",
+      "sha256": "17b04b7432b6587d7ce63465fc10ecc9d74798576e3415a5c8a5fb06e9ee1d84",
+      "bytes": 2222
+    },
+    {
+      "path": "evidence/network-materials/native.log",
+      "classification": "generated_project_source",
+      "sha256": "edefdec3427f5a8c5134528d8bd93aa4fe3bb42123b7c7f288411c02b362b9c1",
+      "bytes": 420
+    },
+    {
+      "path": "evidence/network-materials/network-review-stderr.log",
+      "classification": "generated_project_source",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "evidence/network-materials/network-review-stdout.log",
+      "classification": "generated_project_source",
+      "sha256": "9505722a903144515555300b351f6cb33963be4e9c0821cfe69cc6d9ddb4ef9e",
+      "bytes": 2820
+    },
+    {
+      "path": "evidence/network-materials/network-review/independent-data-check.json",
+      "classification": "generated_project_source",
+      "sha256": "9678f2e9740645d090f735c69ec8852a962f0e0f8c5f9ea1ddf1778075538855",
+      "bytes": 293
+    },
+    {
+      "path": "evidence/network-materials/network-review/network-recovery.json",
+      "classification": "generated_project_source",
+      "sha256": "9505722a903144515555300b351f6cb33963be4e9c0821cfe69cc6d9ddb4ef9e",
+      "bytes": 2820
+    },
+    {
+      "path": "evidence/network-materials/network-review/offline-report.json",
+      "classification": "generated_project_source",
+      "sha256": "6acd9ff5f808329ae85c46f22b9e12b6de18f8f4d1db6a24b87ea6c67e86ffc1",
+      "bytes": 36535
+    },
+    {
+      "path": "evidence/network-materials/network-review/offline-snapshot.json",
+      "classification": "generated_project_source",
+      "sha256": "b7a552f1813d70c3037c31863b6c2c0b5a622af59294f39d59ec9ca9458b4b22",
+      "bytes": 29870
+    },
+    {
+      "path": "evidence/network-materials/network/final-run.log",
+      "classification": "generated_project_source",
+      "sha256": "3e9f15396999acdb4a88e87c57a6c11abb4550ce5ca946370380bad04c3c5386",
+      "bytes": 2820
+    },
+    {
+      "path": "evidence/network-materials/network/network-recovery.json",
+      "classification": "generated_project_source",
+      "sha256": "3e9f15396999acdb4a88e87c57a6c11abb4550ce5ca946370380bad04c3c5386",
+      "bytes": 2820
+    },
+    {
+      "path": "evidence/network-materials/network/offline-report.json",
+      "classification": "generated_project_source",
+      "sha256": "6acd9ff5f808329ae85c46f22b9e12b6de18f8f4d1db6a24b87ea6c67e86ffc1",
+      "bytes": 36535
+    },
+    {
+      "path": "evidence/network-materials/network/offline-snapshot.json",
+      "classification": "generated_project_source",
+      "sha256": "ef757668f5998cec5a82d280de7bd3b8e93e6f55ad15843d182f2c86e2abd644",
+      "bytes": 29870
+    },
+    {
+      "path": "evidence/network-materials/package-final.log",
+      "classification": "generated_project_source",
+      "sha256": "6c956fe8bdb88633cf01bc8479cc92b2aea7191f4212475043c3b86af01012ec",
+      "bytes": 388
+    },
+    {
+      "path": "evidence/network-materials/scope-checks.json",
+      "classification": "generated_project_source",
+      "sha256": "77abf7257b065866a9258bdd2c87633719d6ee432bd3d52183583c33358ccb1e",
+      "bytes": 815
+    },
+    {
+      "path": "evidence/network-materials/submission-preflight.log",
+      "classification": "generated_project_source",
+      "sha256": "7f05499c6aa83367855218b7b0fd07379002552aa89e2de0fa204c301045f3e2",
+      "bytes": 491
+    },
+    {
+      "path": "evidence/network-materials/typecheck.log",
+      "classification": "generated_project_source",
+      "sha256": "a590c20adec2a07c3ce0ee82aec6007e5518e9d063fedca9dfaecc1495c785ab",
+      "bytes": 261
+    },
+    {
+      "path": "evidence/network-materials/validation-summary.json",
+      "classification": "generated_project_source",
+      "sha256": "f68ae6a7fd0c14c8060e349744de05e9973275cedb32748db9a7428760fe2c4b",
+      "bytes": 1762
+    },
+    {
       "path": "evidence/performance-defer-paired-source-fingerprint-20261104.json",
       "sha256": "30cba4ddd5ae99f478e30c7472a7e581232894b572b1c58bbc1d39f415f3b164",
       "bytes": 482,
@@ -3091,8 +3319,8 @@
     },
     {
       "path": "evidence/task-status.json",
-      "sha256": "a803fbb2a39d01e1d8d8ada7f2c8421e9d3d495e4ec13ce2a7aca9b912ca0b87",
-      "bytes": 33243,
+      "sha256": "a76b87545ae136aa0228f845bad309941f91cf0d2c98a26292ba0321e581e5d2",
+      "bytes": 36768,
       "classification": "generated_project_source"
     },
     {
@@ -4902,6 +5130,12 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "scripts/check_web_network_recovery.mjs",
+      "classification": "generated_project_source",
+      "sha256": "cd6a9326bfcfc3a2b986fbb82bdb9e1643836f2065aa0e042b171ed857a7e08b",
+      "bytes": 18886
+    },
+    {
       "path": "scripts/check_web_observations.mjs",
       "sha256": "79910e3b902a62640b3e32ff2b8da47c3d0a66f2238c589c8e183a47b08f05f3",
       "bytes": 9933,
@@ -4926,6 +5160,12 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "scripts/create_development_materials.mjs",
+      "classification": "generated_project_source",
+      "sha256": "23631d736cb6bf0db6fa9f421a714c9fbed24b1078175b8353beb779519decd4",
+      "bytes": 24784
+    },
+    {
       "path": "scripts/create_private_asset_fixture.py",
       "sha256": "4cb5e98ac3627228f15f81133a6e3d9481da8cf44017217428ef82279b6c3f92",
       "bytes": 4418,
@@ -4936,6 +5176,12 @@
       "sha256": "6d371dbe69bd9799572d4e98e7241a5cd3e6f47d4e056f10670fa69b8b6f2961",
       "bytes": 9264,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "scripts/development_materials_report.mjs",
+      "classification": "generated_project_source",
+      "sha256": "7cffccee2ebf10fecfcc655630b71ab45f5f1c06681199f1317782f654868152",
+      "bytes": 9634
     },
     {
       "path": "scripts/download_pyodide.py",

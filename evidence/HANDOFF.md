@@ -1,6 +1,12 @@
 # 接手记录
 
-## 当前快照：be32202 后续开发（2026-11-05 UTC）
+## 当前续作：ba21f54 网络恢复与开发材料（2026-11-05 UTC）
+
+当前本地已提交基线ba21f54，本轮分支codex/network-materials-20261105；重新只读核实远端仍394eb04、master仍2f562a3，未推送。原模型包已按当前Library技能在本执行环境的明确私下新路径做一次有界重试，下载助手仍exit1/download failed，HTTP状态未提供，文件不可读。准确传输主机sdmntprwestus.oaiusercontent.com缺失于current/enforced允许列表；用户已批准只增加该主机，但当前工具没有配置写入接口，尚未执行变更或再下载。需在受支持的环境编辑界面增加准确主机并核对实际任务生效，不猜测403、文件损坏或唯一根因。真实模型/权利与正式托管/提交仍未完成。
+
+受控窗口/Worker断网恢复验收已获[独立审查](REVIEW_NETWORK_RECOVERY_20261105.md)通过，只关闭T07-network-interruption-recovery；它不等于另一真实网络或离线冷启动。中文开发报告4页、真实localhost占位操作视频198.52秒、同版JSON/快照与打印清单也获[独立材料审查](REVIEW_DEVELOPMENT_MATERIALS_20261105.md)通过，只关闭T10-development-materials。报告/视频明确是开发稿，T07/T10整体及真实模型/公网/G4保持未完成。原始失败材料保留；source-only恢复包不含私下媒体。3秒工程目标仅暂不阻塞其他工作，原CI预算/enforce不改；本轮Python334/应用39/JS48、类型/契约及两专项实际验收通过，性能未重测。详细过程见[本轮记录](NETWORK_MATERIALS_20261105.md)与[实际回归回执](network-materials/validation-summary.json)。
+
+## 历史交付快照：be32202 后续开发（2026-11-05 UTC）
 
 最新本地已提交基线为 `be32202bbaeafd9fcfde84601c22fb5a981fab6c`，包含独立审查通过的 CI 下载修复；本轮开发分支 `codex/continuation-after-download-20261105`。重新 fetch 确认远端仍为 `394eb04e9bbaf7555a507cbc4c1fe28caa62a6a9`，最新核实远端 CI 为 **41948477248：下载功能失败，严格性能 skipped / NOT_RUN**。64e1665 等下方段落均为历史，不是当前最新远端。
 

@@ -1,6 +1,8 @@
 # HomeSafe AI V6.1 开工入口
 
-最新续作见 [be32202 后续开发](evidence/CONTINUATION_NEXT_20261105.md)：拖动输出保护、中性检查说明、显式方向校准工具均独立审查通过。用户暂不以3秒工程目标阻塞其他事项；现有CI预算和失败判断不变。本地be32202未推送，远端394eb04/CI41948477248下载功能失败、性能跳过；下文启动与下载历史按各自版本理解。
+当前交付见[网络恢复与开发材料续作](evidence/NETWORK_MATERIALS_20261105.md)，基线ba21f54。受控网络恢复与开发材料两个限定子项分别独立通过：4页中文工作稿、198.52秒真实占位操作视频及同版导出，T07/T10整体仍未完成。模型包本环境有界重试仍失败；用户已批准仅增加准确下载主机，但当前工具无环境配置写接口，尚未生效或再下载。未推送。
+
+上一交付见 [be32202 后续开发](evidence/CONTINUATION_NEXT_20261105.md)：拖动输出保护、中性检查说明、显式方向校准工具均独立审查通过。用户暂不以3秒工程目标阻塞其他事项；现有CI预算和失败判断不变。本地be32202未推送，远端394eb04/CI41948477248下载功能失败、性能跳过；下文启动与下载历史按各自版本理解。
 
 2026-11-05 上一交付为 [CI 下载等待修复](evidence/CI_DOWNLOAD_FIX_20261105.md)：原 394eb04 的 CI 因下载解析失败、性能步骤跳过；本地下载协议修复已通过独立审查与最终浏览器回归，尚未推送。本轮本地 strict enforce 首次可编辑 p95=4812.2 ms，3 秒仍未达标。下面启动调整记录按其阶段保留，最新交付状态以 HANDOFF / task-status 为准。
 
@@ -83,6 +85,26 @@ node scripts/check_web_preview.mjs http://127.0.0.1:4173/ /path/to/chromium /pat
 node scripts/check_web_experience.mjs http://127.0.0.1:4173/ /path/to/chromium /path/to/puppeteer-core.js /tmp/homesafe-experience
 node scripts/check_web_performance.mjs http://127.0.0.1:4173/ /path/to/chromium /path/to/puppeteer-core.js enforce
 ```
+
+受控网络恢复验收使用已构建的 `/preview/` 本地入口。它对页面和实际 Worker 发禁缓存断网探针，再验证已加载会话的编辑/撤销/导出与显式恢复；范围及独立结果见[网络审查](evidence/REVIEW_NETWORK_RECOVERY_20261105.md)。
+
+```bash
+CI=1 HOMESAFE_PYTHON=/path/to/venv/bin/python node scripts/check_web_network_recovery.mjs \
+  http://127.0.0.1:4173/preview/ /path/to/chromium /path/to/puppeteer-core.js \
+  ci-evidence/network-recovery
+```
+
+本地开发材料工具需要 Chromium、puppeteer-core、FFmpeg/ffprobe、Poppler 与 Noto CJK 字体。它核对实际 HTTP 分发字节，录制真实占位场景并导出中文报告与同版行动清单；输出须使用新的 `evidence/private/development-materials-*` 目录。生成期间保持 HEAD、App/Core 和所服务分发不变。可先用 `--mode trial` 验证流程，再以新的输出目录运行 `--mode full`；完整视频时长须为180–240秒。原始失败材料保留，源码包只纳入审查过的文本证据。
+
+```bash
+CI=1 node scripts/create_development_materials.mjs \
+  --url http://127.0.0.1:4173/preview/ --chrome /path/to/chromium \
+  --driver /path/to/puppeteer-core.js --python /path/to/venv/bin/python \
+  --output evidence/private/development-materials-local-new \
+  --expected-head "$(git rev-parse HEAD)" --mode full
+```
+
+生成报告与录屏均标为开发工作稿；T10正式材料仍须绑定验收冻结后的真实模型和获准托管版本。
 
 性能脚本采集五组全新浏览器上下文/缓存重载及三次预热后的三十次热评估，输出原始样本和 nearest-rank p95。当前门槛使用已接受报告、空闲评估及启用移动按钮的首次可编辑时间，并在每个样本实际移动、核验接受的输入哈希改变。首个观察界面只作诊断；结果仅适用于实际测试环境。传入末尾参数 `enforce` 将 3000/12000/150 ms 三项预算作为失败门禁；省略时仅报告。固定源码 `64e1665` 的 [CI 41807603537](evidence/CI_PUSH_64e1665_20261104.md) 功能通过、首次可编辑 p95=3386 ms 导致整体失败；最终保留 PR-1/PR-2、撤回 PR-3 后唯一完整 enforce p95=4086.1 ms 仍失败（此前 PR-2 阶段 3858.5 ms 另作历史保留）；该环境与旧 CI 不同，不能直接相减归因。上述启动阶段记录写于推送前；其后已随394eb04远端运行，CI41948477248因下载解析失败而跳过性能。阶段细节见[阶段记录](evidence/STARTUP_ADJUSTMENTS_20261104.md)。可选 `HOMESAFE_VIDEO_PATH=/tmp/development-regression.webm` 记录浏览器实帧（需 ffmpeg），这是开发回归原片，不自动成为最终参赛视频。容器测试沿用 CI 的隔离启动配置 `CI=1`。
 

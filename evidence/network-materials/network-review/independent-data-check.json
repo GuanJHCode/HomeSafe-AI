@@ -1,0 +1,13 @@
+{
+  "result": "PASS",
+  "source_kind": "synthetic_demo",
+  "input_hash": "c3fd856859d086209d2da5ad0b774a54c38455832e31e70db4ea0ed2daa185e4",
+  "revision": 5,
+  "property_rows": 7,
+  "counts": {
+    "true": 2,
+    "false": 1,
+    "unknown": 45
+  },
+  "report_snapshot_properties_equal": true
+}
