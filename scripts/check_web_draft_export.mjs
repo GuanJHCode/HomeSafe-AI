@@ -30,6 +30,10 @@ try {
   const ready = () => page.waitForFunction(() => !!document.querySelector('.report') &&
     document.querySelector('[aria-label="检查结果"]')?.getAttribute('aria-busy') === 'false');
   await ready();
+  const expectedModels = Number(process.env.HOMESAFE_EXPECT_REAL_ASSETS || 0);
+  if (expectedModels) {
+    await page.waitForFunction(expected => document.body.innerText.includes(`已加载 ${expected} 件模型`), {}, expectedModels);
+  }
   const beforeHash = await page.$eval('.report .hash', node => node.textContent);
   const bounds = await page.$eval('.viewport canvas', node => {
     node.scrollIntoView({ block: 'center' });
@@ -123,6 +127,7 @@ try {
     assert.equal(await page.evaluate(() => window.__draftPrintCalls), 1);
     console.log(JSON.stringify({ result: 'PASS', scope: 'ISOLATED_CHROMIUM_DRAFT_EXPORT_GUARD',
       browser: await browser.version(), before_hash: beforeHash, after_hash: afterHash,
+      expected_loaded_assets: expectedModels, source_kind: process.env.HOMESAFE_ASSET_PROVENANCE || 'placeholder',
       checks: ['pointer hold and preview hide all output', 'hidden callbacks cannot export JSON/snapshot or print',
         'pointercancel and view change restore accepted report',
         'legal release restores current JSON/snapshot/print'] }, null, 2));

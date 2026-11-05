@@ -97,7 +97,7 @@ try {
   await page.waitForSelector('canvas[aria-label="样例客厅三维场景"]', { visible: true });
   assert.match(await text('.scene-panel'), /0 件模型 · \d+ 件程序占位模型/);
   await installAnnotation();
-  await phase(0, '录屏注释｜本地开发预览：仅程序占位；真实 Lux3D 待验（非产品控件）', '.intro');
+  await phase(0, '录屏注释｜本地开发预览：仅程序占位；本片未使用真实 Lux3D（非产品控件）', '.intro');
 
   await click('儿童视角');
   await phase(1, '录屏注释｜儿童观察视角；相机高度仅用于示意', '.views');
@@ -191,9 +191,9 @@ try {
     viewport, challenge_summary: challengeSummary, phases };
   const checks = { local_transport: 'PASS（本地 HTTP 字节核对；非公网验收）',
     historical_baseline: '继承的 ba21f54 基线记录：Python 334、应用 39、JS 48 项通过；本材料流程未重跑全套测试',
-    model_bytes_in_environment: 'UNAVAILABLE',
-    model_materialization: '本环境有界重试 1 次，helper 返回 download failed；HTTP 状态未知',
-    real_lux3d_browser: 'BLOCKED', rights: 'PENDING', public_https: 'NOT_RUN',
+    model_bytes_in_environment: 'NOT_ASSESSED_BY_PLACEHOLDER_CAPTURE',
+    model_materialization: '本次占位录屏不执行模型物化；原件可用性与私下验收应查独立记录',
+    real_lux3d_browser: 'NOT_RUN_BY_THIS_CAPTURE', rights: 'NOT_ASSESSED_BY_THIS_CAPTURE', public_https: 'NOT_RUN_BY_THIS_CAPTURE',
     performance_3s_goal: 'OPEN; 本材料流程未重测性能' };
   const exportEvidence = { report, snapshot,
     report_filename: exportedReport.filename, snapshot_filename: exportedSnapshot.filename,
@@ -236,7 +236,7 @@ try {
       ruleset_version: report.ruleset_version, source_kind: report.source_kind,
       snapshot_verification: verify.result, binding_result: exportEvidence.binding_result },
     checks, file_sha256: fileHashes,
-    public_deployment: 'NOT_VERIFIED', real_lux3d: 'BLOCKED',
+    public_deployment: 'NOT_VERIFIED', real_lux3d: 'NOT_USED_IN_THIS_CAPTURE',
     audio: 'NONE', native_print_preview_visible_in_recording: false,
   };
   await writeFile(resolve(output, 'materials-manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
@@ -247,14 +247,14 @@ try {
     scene_revision: report.scene_revision, input_hash: report.input_hash,
     ruleset_version: report.ruleset_version, file_sha256: fileHashes,
     model_materialization: checks.model_materialization,
-    real_lux3d: 'BLOCKED', public_deployment: 'NOT_VERIFIED' };
+    real_lux3d: 'NOT_USED_IN_THIS_CAPTURE', public_deployment: 'NOT_VERIFIED' };
   await mkdir(resolve(root, 'ci-evidence/network-materials/materials'), { recursive: true });
   await writeFile(resolve(root, 'ci-evidence/network-materials/materials',
     `${values.mode}-summary.json`), JSON.stringify(publicSummary, null, 2) + '\n');
   complete = true;
   console.log(JSON.stringify({ result: 'PASS', mode: values.mode, output,
     report_pages: pages, video_seconds: video.duration_seconds,
-    input_hash: report.input_hash, real_lux3d: 'BLOCKED' }));
+    input_hash: report.input_hash, real_lux3d: 'NOT_USED_IN_THIS_CAPTURE' }));
 } catch (error) {
   await writeFile(resolve(output, 'failure.json'), JSON.stringify({ status: 'FAIL',
     error: String(error), source_head: sourceBefore.head, mode: values.mode }, null, 2) + '\n');

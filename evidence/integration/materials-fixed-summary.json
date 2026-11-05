@@ -1,0 +1,57 @@
+{
+  "scope": "INTEGRATION_FIXED_MATERIALS_TRIAL_NOT_FINAL_COMPETITION_MEDIA",
+  "status": "TRIAL_ONLY_NOT_DELIVERABLE",
+  "report_status": "DRAFT_NOT_SUBMITTABLE",
+  "source_head_while_uncommitted_merge": "a192d51184393187a9e1d98e9c92cd2da06b1dd7",
+  "project_dirty": true,
+  "app_matches_head": true,
+  "app_anchor_match": true,
+  "app_source_sha256": "7ec6dee5de77002c726a3c517602e96be17905f815bb873552bf625acb68cbb8",
+  "mode": "trial",
+  "video_seconds": 26.08,
+  "video": {
+    "duration_seconds": 26.08,
+    "bytes": 5483654,
+    "codec": "h264",
+    "width": 1280,
+    "height": 900,
+    "frames": 652,
+    "sha256": "d8bf86cba74d26cd10efa38453b8e15a629d5e3986630d01d895952beaf64afb",
+    "raw_sha256": "443700f7f4c77be67d7baa1c6627f9336f80c0dcaf290660b3f61cb9937e39ae",
+    "raw_last_packet_pts_seconds": 26.08
+  },
+  "report_pdf_pages": 4,
+  "checks": {
+    "local_transport": "PASS（本地 HTTP 字节核对；非公网验收）",
+    "historical_baseline": "继承的 ba21f54 基线记录：Python 334、应用 39、JS 48 项通过；本材料流程未重跑全套测试",
+    "model_bytes_in_environment": "NOT_ASSESSED_BY_PLACEHOLDER_CAPTURE",
+    "model_materialization": "本次占位录屏不执行模型物化；原件可用性与私下验收应查独立记录",
+    "real_lux3d_browser": "NOT_RUN_BY_THIS_CAPTURE",
+    "rights": "NOT_ASSESSED_BY_THIS_CAPTURE",
+    "public_https": "NOT_RUN_BY_THIS_CAPTURE",
+    "performance_3s_goal": "OPEN; 本材料流程未重测性能"
+  },
+  "real_lux3d": "NOT_USED_IN_THIS_CAPTURE",
+  "exports": {
+    "report_filename": "homesafe-action-list-v2-c8c61e185bd5-2026-11-05T06-54-43-778Z-1.json",
+    "snapshot_filename": "homesafe-scene-v2-c8c61e185bd5-2026-11-05T06-54-45-223Z-1.json",
+    "scene_revision": 2,
+    "input_hash": "c8c61e185bd547373f4a10979f6e0d4310b325058950c3b20fc58ecffad86ebc",
+    "ruleset_version": "demo-rules-3.0",
+    "source_kind": "synthetic_demo",
+    "snapshot_verification": "MATCHES_CURRENT_CORE",
+    "binding_result": "PASS：版本、输入摘要、规则集与当前页面一致"
+  },
+  "file_sha256": {
+    "browser-original.webm": "443700f7f4c77be67d7baa1c6627f9336f80c0dcaf290660b3f61cb9937e39ae",
+    "development-recording.mp4": "d8bf86cba74d26cd10efa38453b8e15a629d5e3986630d01d895952beaf64afb",
+    "development-report.pdf": "b8d0885932965c34d130d0459134e4a036c9be08b1555b69a3b447b8ec3dbc2a",
+    "development-report.html": "84f545fb1b500d8a5e41d1eb58a12e91993d81c38e68bff2ff192d44f4adc971",
+    "action-list.json": "579748aaff8e21e7963d91c37a15077974ad304c99b702c5dbc6eb574a1b67ef",
+    "scene-snapshot.json": "6b54bc7076f2c69236256cbcb37e2a8b4960aeb5f4ce3ce54865e4790a37a5b3",
+    "printable-action-list.pdf": "cfc2ab0ac05fe9cc854e947eadc606b319883e75b8b987cf78b690bcafc72c9d"
+  },
+  "private_media_in_source_package": false,
+  "full180_240_second_materials_rerun": "NOT_RUN_TRIAL_ONLY",
+  "pdf_wrong_environment_claim_removed": true
+}

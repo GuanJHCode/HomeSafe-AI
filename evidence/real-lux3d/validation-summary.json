@@ -1,0 +1,337 @@
+{
+  "generated_at_utc": "2026-11-05T05:38:52.593138+00:00",
+  "base_commit": "ba21f54ace3218cfa2d695092b735165c923b1b9",
+  "branch": "codex/real-lux3d-private-20261105",
+  "scope": "PRIVATE_REAL_LUX3D_ORIGINALS_AND_ZERO_NORMAL_DERIVATIVES",
+  "network": {
+    "observations_current": true,
+    "phase": "running",
+    "connectivity": "connected",
+    "mode": "unrestricted",
+    "state": "enforced",
+    "security_settings_modified": false
+  },
+  "recovery": {
+    "baseline_sha256_entries": 853,
+    "baseline_bundle_fsck": "PASS",
+    "exact_baseline_commit": "PASS",
+    "library_identity_xattrs": "PASS"
+  },
+  "assets": [
+    {
+      "object_id": "chair",
+      "original_sha256": "e2606d75f4ef91a7395b9447ca5d65d972fd38595bcf53d6c6ef11ee9462e71a",
+      "derived_sha256": "296935f947dabf72026764d71d1df9f85d353d2062c7745b187ad21b417a07fc",
+      "source_front_verified": "+Z",
+      "scene_front": "-Z",
+      "original_bytes_unchanged": true,
+      "protected_binary_bytes_unchanged": true,
+      "zero_normals_repaired": 20,
+      "repair_methods": {
+        "coincident_vertex": 19,
+        "incident_face": 1
+      },
+      "vertices": 55667,
+      "triangles": 99798,
+      "original_validator": {
+        "numErrors": 20,
+        "numWarnings": 0,
+        "numInfos": 0,
+        "numHints": 4,
+        "truncated": false
+      },
+      "original_issue_codes": {
+        "BUFFER_VIEW_TARGET_MISSING": 4,
+        "ACCESSOR_VECTOR3_NON_UNIT": 20
+      },
+      "derived_validator": {
+        "numErrors": 0,
+        "numWarnings": 0,
+        "numInfos": 0,
+        "numHints": 0,
+        "truncated": false
+      }
+    },
+    {
+      "object_id": "cabinet",
+      "original_sha256": "a8398b16be4d4d2f0c7c703575d0679ce16cc3aeacc276af48c9d26379ad940b",
+      "derived_sha256": "92944741a7e9f2491f9220c9dff3f95d66190db80a2488a5d029fbe1b3de3350",
+      "source_front_verified": "+Z",
+      "scene_front": "-Z",
+      "original_bytes_unchanged": true,
+      "protected_binary_bytes_unchanged": true,
+      "zero_normals_repaired": 24,
+      "repair_methods": {
+        "coincident_vertex": 24
+      },
+      "vertices": 53765,
+      "triangles": 99687,
+      "original_validator": {
+        "numErrors": 24,
+        "numWarnings": 0,
+        "numInfos": 0,
+        "numHints": 4,
+        "truncated": false
+      },
+      "original_issue_codes": {
+        "BUFFER_VIEW_TARGET_MISSING": 4,
+        "ACCESSOR_VECTOR3_NON_UNIT": 24
+      },
+      "derived_validator": {
+        "numErrors": 0,
+        "numWarnings": 0,
+        "numInfos": 0,
+        "numHints": 0,
+        "truncated": false
+      }
+    }
+  ],
+  "private_browser": {
+    "original": {
+      "result": "PASS",
+      "browser": "Chrome/154.0.8037.57",
+      "source_kind": "lux3d_web",
+      "actual_input_hashes": {
+        "chair": "e2606d75f4ef91a7395b9447ca5d65d972fd38595bcf53d6c6ef11ee9462e71a",
+        "cabinet": "a8398b16be4d4d2f0c7c703575d0679ce16cc3aeacc276af48c9d26379ad940b"
+      },
+      "checks": [
+        {
+          "object_id": "chair",
+          "sha256": "e2606d75f4ef91a7395b9447ca5d65d972fd38595bcf53d6c6ef11ee9462e71a",
+          "bytes": 10352404,
+          "triangles": 99798,
+          "source_front_candidate": "+Z",
+          "textures_decoded": 2,
+          "source_bounds": [
+            0.48822829127311707,
+            0.8500000238418579,
+            0.5772185921669006
+          ],
+          "target_dimensions": {
+            "width": 0.5,
+            "height": 0.8,
+            "depth": 0.5
+          },
+          "fit": "PASS",
+          "bottom_center": "PASS",
+          "orientation_mapping": "PASS",
+          "procedural_front_marker": "NOT_APPLICABLE",
+          "rotation_90": "PASS",
+          "multiple_instances": "PASS",
+          "release_preserves_other_instance": "PASS"
+        },
+        {
+          "object_id": "cabinet",
+          "sha256": "a8398b16be4d4d2f0c7c703575d0679ce16cc3aeacc276af48c9d26379ad940b",
+          "bytes": 8689480,
+          "triangles": 99687,
+          "source_front_candidate": "+Z",
+          "textures_decoded": 2,
+          "source_bounds": [
+            0.6822696924209595,
+            1.7999999523162842,
+            0.48448124527931213
+          ],
+          "target_dimensions": {
+            "width": 0.7,
+            "height": 1.6,
+            "depth": 0.5
+          },
+          "fit": "PASS",
+          "bottom_center": "PASS",
+          "orientation_mapping": "PASS",
+          "procedural_front_marker": "NOT_APPLICABLE",
+          "rotation_90": "PASS",
+          "multiple_instances": "PASS",
+          "release_preserves_other_instance": "PASS"
+        }
+      ],
+      "cases": [
+        "real pointer drag and one-entry undo",
+        "invalid placement rebound",
+        "child and elder views",
+        "layout conflict",
+        "redo, reset and rotation",
+        "challenge remaining findings and coverage",
+        "JSON and printable action checklist",
+        "downloaded scene snapshots independently recompute in native Python",
+        "cabinet main challenge: three distinct legal solutions and rotation",
+        "main challenge invalid rebound, Python counters, undo/reset and fixed objects",
+        "tutorial/main/free practice transitions preserve separate layouts",
+        "refresh",
+        "real Worker recovery without refresh"
+      ],
+      "main_challenge_distinct_legal_layouts": 3,
+      "snapshot_recomputations": [
+        "MATCHES_CURRENT_CORE",
+        "MATCHES_CURRENT_CORE",
+        "MATCHES_CURRENT_CORE"
+      ],
+      "persisted_reviewed": [
+        false,
+        false
+      ],
+      "diagnostic_single_cold_ready_ms": 5070,
+      "diagnostic_single_warm_ready_ms": 3276,
+      "timing_scope": "Single functional-run ready times, not first-editable p95 or budget acceptance"
+    },
+    "derived": {
+      "result": "PASS",
+      "browser": "Chrome/154.0.8037.57",
+      "source_kind": "lux3d_web",
+      "actual_input_hashes": {
+        "chair": "296935f947dabf72026764d71d1df9f85d353d2062c7745b187ad21b417a07fc",
+        "cabinet": "92944741a7e9f2491f9220c9dff3f95d66190db80a2488a5d029fbe1b3de3350"
+      },
+      "checks": [
+        {
+          "object_id": "chair",
+          "sha256": "296935f947dabf72026764d71d1df9f85d353d2062c7745b187ad21b417a07fc",
+          "bytes": 10352464,
+          "triangles": 99798,
+          "source_front_candidate": "+Z",
+          "textures_decoded": 2,
+          "source_bounds": [
+            0.48822829127311707,
+            0.8500000238418579,
+            0.5772185921669006
+          ],
+          "target_dimensions": {
+            "width": 0.5,
+            "height": 0.8,
+            "depth": 0.5
+          },
+          "fit": "PASS",
+          "bottom_center": "PASS",
+          "orientation_mapping": "PASS",
+          "procedural_front_marker": "NOT_APPLICABLE",
+          "rotation_90": "PASS",
+          "multiple_instances": "PASS",
+          "release_preserves_other_instance": "PASS"
+        },
+        {
+          "object_id": "cabinet",
+          "sha256": "92944741a7e9f2491f9220c9dff3f95d66190db80a2488a5d029fbe1b3de3350",
+          "bytes": 8689540,
+          "triangles": 99687,
+          "source_front_candidate": "+Z",
+          "textures_decoded": 2,
+          "source_bounds": [
+            0.6822696924209595,
+            1.7999999523162842,
+            0.48448124527931213
+          ],
+          "target_dimensions": {
+            "width": 0.7,
+            "height": 1.6,
+            "depth": 0.5
+          },
+          "fit": "PASS",
+          "bottom_center": "PASS",
+          "orientation_mapping": "PASS",
+          "procedural_front_marker": "NOT_APPLICABLE",
+          "rotation_90": "PASS",
+          "multiple_instances": "PASS",
+          "release_preserves_other_instance": "PASS"
+        }
+      ],
+      "cases": [
+        "real pointer drag and one-entry undo",
+        "invalid placement rebound",
+        "child and elder views",
+        "layout conflict",
+        "redo, reset and rotation",
+        "challenge remaining findings and coverage",
+        "JSON and printable action checklist",
+        "downloaded scene snapshots independently recompute in native Python",
+        "cabinet main challenge: three distinct legal solutions and rotation",
+        "main challenge invalid rebound, Python counters, undo/reset and fixed objects",
+        "tutorial/main/free practice transitions preserve separate layouts",
+        "refresh",
+        "real Worker recovery without refresh"
+      ],
+      "main_challenge_distinct_legal_layouts": 3,
+      "snapshot_recomputations": [
+        "MATCHES_CURRENT_CORE",
+        "MATCHES_CURRENT_CORE",
+        "MATCHES_CURRENT_CORE"
+      ],
+      "persisted_reviewed": [
+        false,
+        false
+      ],
+      "diagnostic_single_cold_ready_ms": 4039,
+      "diagnostic_single_warm_ready_ms": 3487,
+      "timing_scope": "Single functional-run ready times, not first-editable p95 or budget acceptance"
+    },
+    "independent_original": "PASS_REVIEWER_SEPARATE_LOOPBACK_AND_PROFILE",
+    "independent_derived": "PASS_REVIEWER_SEPARATE_LOOPBACK_AND_PROFILE",
+    "independent_visual_proxy": "PASS_SOURCE_PLUS_Z_MINUS_Z_COUNTEREXAMPLE_ACTUAL_SCENERUNTIME",
+    "independent_derived_screenshots": "THREE_PNGS_BYTE_IDENTICAL_TO_INDEPENDENT_ORIGINAL_RUN"
+  },
+  "tests": {
+    "python": {
+      "passed": 343,
+      "failed": 0
+    },
+    "private_normal_repair": {
+      "passed": 9,
+      "failed": 0
+    },
+    "application": {
+      "passed": 39,
+      "failed": 0
+    },
+    "browser_spike_js": {
+      "passed": 24,
+      "failed": 0
+    },
+    "script_js": {
+      "passed": 24,
+      "failed": 0
+    },
+    "contracts": "PASS",
+    "strict_contract_types": "PASS",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "web_core_real_pyodide": "PASS",
+    "package": {
+      "passed": 8,
+      "failed": 0
+    }
+  },
+  "independent_review": {
+    "agent": "real_model_review",
+    "status": "PASS_SCOPED_ORIGINAL_DIRECTION_INTERACTION_AND_DERIVED_REPAIR_VALIDATOR_BROWSER",
+    "record": "evidence/REVIEW_REAL_LUX3D_20261105.md"
+  },
+  "boundaries": {
+    "rights_status": "PENDING",
+    "public_catalog_empty": true,
+    "persisted_calibration_reviewed": [
+      false,
+      false
+    ],
+    "public_deployment": "NOT_RUN",
+    "raw_or_derived_asset_upload": "NOT_RUN",
+    "remote_write": "NOT_RUN",
+    "new_remote_ci": "NOT_RUN",
+    "formal_performance": "NOT_RUN_USER_PRIORITY",
+    "performance_budget_and_enforcement": "UNCHANGED",
+    "submission_preflight_exit_code": 2
+  },
+  "parallel_work": {
+    "reported_commit": "a192d51184393187a9e1d98e9c92cd2da06b1dd7",
+    "reported_scope": "Controlled offline recovery, development report and placeholder demonstration",
+    "current_branch_includes_reported_commit": false,
+    "reported_commit_bytes": "UNAVAILABLE_CURRENT_ENV",
+    "merge": "NOT_RUN; keep independent branch and cherry-pick after its recovery is available"
+  },
+  "current_remote_refs": {
+    "verification": "READ_ONLY_GIT_LS_REMOTE",
+    "feature": "394eb04e9bbaf7555a507cbc4c1fe28caa62a6a9",
+    "master": "2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f",
+    "ci": "NOT_REQUERIED_THIS_RUN"
+  }
+}

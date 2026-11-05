@@ -1,0 +1,140 @@
+{
+  "scope": "ADDITIONAL_CONTROLLED_INITIAL_CONFIG_SETUP_RACE_NOT_ORIGINAL_CI_CAUSE",
+  "error": "AssertionError [ERR_ASSERTION]: initial-page must show a real CDP request failure for http://127.0.0.1:41565/preview/engine/config.json",
+  "navigation": {
+    "responses": [
+      {
+        "target": "main",
+        "requested_url": "http://127.0.0.1:41565/preview/",
+        "actual_url": "http://127.0.0.1:41565/preview/",
+        "status": 200,
+        "status_text": "OK",
+        "ok": true,
+        "from_cache": false,
+        "from_service_worker": false,
+        "headers": {
+          "cache-control": "max-age=0, must-revalidate",
+          "date": "Thu, 05 Nov 2026 07:15:33 GMT",
+          "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+          "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+        }
+      },
+      {
+        "target": "initial",
+        "requested_url": "http://127.0.0.1:41565/preview/",
+        "actual_url": "http://127.0.0.1:41565/preview/",
+        "status": 200,
+        "status_text": "OK",
+        "ok": true,
+        "from_cache": false,
+        "from_service_worker": false,
+        "headers": {
+          "cache-control": "max-age=0, must-revalidate",
+          "date": "Thu, 05 Nov 2026 07:15:44 GMT",
+          "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+          "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+        }
+      }
+    ],
+    "documents": [
+      {
+        "target": "page",
+        "url": "http://127.0.0.1:41565/preview/",
+        "request_headers": {},
+        "response_status": 200,
+        "response_headers": {
+          "cache-control": "max-age=0, must-revalidate",
+          "date": "Thu, 05 Nov 2026 07:15:33 GMT",
+          "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+          "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+        },
+        "from_disk_cache": false,
+        "extra_status": 200,
+        "extra_headers": {
+          "cache-control": "max-age=0, must-revalidate",
+          "date": "Thu, 05 Nov 2026 07:15:33 GMT",
+          "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+          "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+        }
+      },
+      {
+        "target": "initial-page",
+        "url": "http://127.0.0.1:41565/preview/",
+        "request_headers": {},
+        "extra_status": 200,
+        "extra_headers": {
+          "cache-control": "max-age=0, must-revalidate",
+          "date": "Thu, 05 Nov 2026 07:15:44 GMT",
+          "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+          "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+        },
+        "response_status": 200,
+        "response_headers": {
+          "cache-control": "max-age=0, must-revalidate",
+          "date": "Thu, 05 Nov 2026 07:15:44 GMT",
+          "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+          "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+        },
+        "from_disk_cache": false
+      }
+    ]
+  },
+  "networkEvents": [
+    {
+      "target": "page",
+      "url": "http://127.0.0.1:41565/preview/engine/config.json?network-probe=offline",
+      "error": "net::ERR_INTERNET_DISCONNECTED",
+      "blocked_reason": null
+    },
+    {
+      "target": "worker",
+      "url": "http://127.0.0.1:41565/preview/engine/config.json?network-probe=offline",
+      "error": "net::ERR_INTERNET_DISCONNECTED",
+      "blocked_reason": null
+    },
+    {
+      "target": "page",
+      "url": "http://127.0.0.1:41565/preview/engine/config.json",
+      "error": "net::ERR_INTERNET_DISCONNECTED",
+      "blocked_reason": null
+    },
+    {
+      "target": "page",
+      "url": "http://127.0.0.1:41565/preview/engine/config.json",
+      "error": "net::ERR_ABORTED",
+      "blocked_reason": null
+    },
+    {
+      "target": "initial-page",
+      "url": "http://127.0.0.1:41565/preview/engine/assets.json",
+      "error": "net::ERR_INTERNET_DISCONNECTED",
+      "blocked_reason": null
+    },
+    {
+      "target": "initial-page",
+      "url": "http://127.0.0.1:41565/preview/engine/scene-main-challenge.json",
+      "error": "net::ERR_INTERNET_DISCONNECTED",
+      "blocked_reason": null
+    },
+    {
+      "target": "initial-page",
+      "url": "http://127.0.0.1:41565/preview/engine/config.json",
+      "error": "net::ERR_ABORTED",
+      "blocked_reason": null
+    },
+    {
+      "target": "initial-page",
+      "url": "http://127.0.0.1:41565/preview/engine/scene-before.json",
+      "error": "net::ERR_ABORTED",
+      "blocked_reason": null
+    }
+  ],
+  "initial": {
+    "hash": null,
+    "revision": null,
+    "position": null,
+    "busy": "false",
+    "failure": "规则暂不可用。Failed to fetch重建 Worker 并重试"
+  },
+  "fix_intent": "Wait for other parallel startup network requests to complete, retaining only deliberately held config before offline transport; do not accept ERR_ABORTED or weaken disconnected assertion"
+}

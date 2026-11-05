@@ -69,12 +69,12 @@ ${row('演示输入摘要', state.input_hash)}
 <p>Vue 3、TypeScript 与 Three.js 负责界面和三维呈现；同源 module Worker 载入 Pyodide 与 Python 参考内核。布局校验、规则结果、比较、挑战计数和胜负以 Python 为准，前端不另写权威规则。</p>
 <h3>真实 Lux3D 原件的边界</h3>
 <p>历史接收记录包含两件 Lux3D 网页图生 3D 原始 GLB：chair 任务 30471、cabinet 任务 30475；参考图为 AI 生成家具图。原件 SHA 分别为 <span class="hash">e2606d75f4ef91a7395b9447ca5d65d972fd38595bcf53d6c6ef11ee9462e71a</span> 与 <span class="hash">a8398b16be4d4d2f0c7c703575d0679ce16cc3aeacc276af48c9d26379ad940b</span>。</p>
-<p class="callout">本次录屏只加载程序占位家具；当前环境未取得这两件原件字节（${html(checks.model_materialization)}）。真实纹理、方向、场景交互和公开再分发权利仍待核验。历史 Node 几何检查不能代替真实模型浏览器验收。</p>
+<p class="callout">本次录屏未使用或评估真实 Lux3D 原件，仅加载程序占位家具。原件可用性、真实模型私下验收和公开分发权应查独立记录；本录屏不能替代这些证据，也不判断当前环境是否已有原件（${html(checks.model_materialization)}）。</p>
 <h3>本地预览资源</h3><table>
 ${row('分发清单摘要', source.dist_manifest_sha256)}
 ${row('本地 HTTP 字节核对', checks.local_transport)}
 ${row('源文件摘要样本', `${Object.keys(source.key_files).length} 个关键文件，完整值见第 4 页`)}
-</table><p class="footer">开发预览 · 模型授权与正式托管仍待确认 · 2 / 4</p></section>
+</table><p class="footer">开发预览 · 本次材料未作模型授权或正式托管验收 · 2 / 4</p></section>
 
 <section class="page"><h2>本次真实浏览器演示</h2>
 <p>录屏为真实 Chromium 页面连续捕获，无音频解说。画面上的“录屏注释”只标明阶段和局限，不是产品功能；没有用生成帧替代软件操作。</p>
@@ -98,10 +98,10 @@ ${row('当前检查概况', score)}
 
 <section class="page"><h2>版本追溯、开放问题与下一步</h2>
 <p>首个可操作界面 ≤3 秒是项目工程目标，仍为 OPEN。此前本地严格测试 p95=4812.2 ms，属于较早版本与环境的历史结果；本次制作材料没有重测性能，也没有降低 CI 门槛。该目标不能称为已核实的赛事官方要求。</p>
-<div class="grid"><div class="card"><strong>仍需实际证据</strong>两件真实 GLB 的浏览器视觉/交互与分发权利、获准托管的匿名 HTTPS 和另一网络、同版跨设备/性能、当前账户表单与赛事规则、最终可提交材料。</div>
+<div class="grid"><div class="card"><strong>本次材料未覆盖</strong>真实模型私下验收及分发权应查独立记录；本次占位材料不能证明匿名 HTTPS、其他网络、真机/性能、本人表单或最终提交材料已通过。</div>
 <div class="card"><strong>后续维护</strong>正式入口和责任人尚未确认。只有 G0–G4 门禁、权利与实际表单均满足后，才制作并提交正式参赛版本；本稿不填写作品编号或回执。</div></div>
 <h3>关键文件内容摘要（SHA-256）</h3><table>${sourceRows}</table>
 <h3>本稿的使用方式</h3><p>供团队核对叙事、中文排版和操作顺序。公开传播、参赛提交或真实模型展示需另按实际权利与最终版本重做。当前文件和录屏均为私下开发材料。</p>
-<p class="footer">DRAFT_NOT_SUBMITTABLE · 无公网、无实际 Lux3D 浏览器验收、无用户试玩 · 4 / 4</p></section>
+<p class="footer">DRAFT_NOT_SUBMITTABLE · 本片未使用真实 Lux3D，未作公网或用户试玩验收 · 4 / 4</p></section>
 </body></html>`;
 }

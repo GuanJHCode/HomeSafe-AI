@@ -21,6 +21,9 @@ const downloadPath = await mkdtemp(join(tmpdir(), 'homesafe-network-download-'))
 const networkEvents = [];
 const pageErrors = [];
 const stages = [];
+const navigationResponses = [];
+const documentRequests = [];
+const initialBootstrap = [];
 let page;
 let firstPage;
 let cdp;
@@ -31,11 +34,46 @@ let retainedDownloads;
 
 function watchNetwork(session, target) {
   const requests = new Map();
-  session.on('Network.requestWillBeSent', event => requests.set(event.requestId, event.request.url));
+  const documents = new Map(), extra = new Map(), requestExtra = new Map();
+  session.on('Network.requestWillBeSent', event => {
+    requests.set(event.requestId, event.request.url);
+    if (event.type !== 'Document') return;
+    const record = { target, url: event.request.url,
+      request_headers: selectedHeaders(event.request.headers),
+      request_extra_headers: requestExtra.get(event.requestId) ?? {}, ...extra.get(event.requestId) };
+    documents.set(event.requestId, record); documentRequests.push(record);
+  });
+  session.on('Network.requestWillBeSentExtraInfo', event => {
+    const headers = selectedHeaders(event.headers); requestExtra.set(event.requestId, headers);
+    const record = documents.get(event.requestId); if (record) record.request_extra_headers = headers;
+  });
+  session.on('Network.responseReceived', event => {
+    const record = documents.get(event.requestId);
+    if (record) Object.assign(record, { response_status: event.response.status,
+      response_headers: selectedHeaders(event.response.headers), from_disk_cache: event.response.fromDiskCache ?? false });
+  });
+  session.on('Network.responseReceivedExtraInfo', event => {
+    const info = { extra_status: event.statusCode, extra_headers: selectedHeaders(event.headers) };
+    extra.set(event.requestId, info);
+    const record = documents.get(event.requestId); if (record) Object.assign(record, info);
+  });
   session.on('Network.loadingFailed', event => networkEvents.push({
     target, url: requests.get(event.requestId) ?? null, error: event.errorText,
     blocked_reason: event.blockedReason ?? null,
   }));
+}
+function selectedHeaders(headers = {}) {
+  const names = new Set(['date', 'last-modified', 'cache-control', 'expires', 'etag', 'age',
+    'if-modified-since', 'if-none-match', 'pragma']);
+  return Object.fromEntries(Object.entries(headers).filter(([name]) => names.has(name.toLowerCase()))
+    .map(([name, value]) => [name.toLowerCase(), value]));
+}
+function recordNavigation(target, response) {
+  navigationResponses.push({ target, requested_url: url, actual_url: response?.url() ?? null,
+    status: response?.status() ?? null, status_text: response?.statusText() ?? null,
+    ok: response?.ok() ?? false, from_cache: response?.fromCache() ?? null,
+    from_service_worker: response?.fromServiceWorker() ?? null,
+    headers: selectedHeaders(response?.headers()) });
 }
 async function emulateOffline(session, enabled) {
   await session.send('Network.emulateNetworkConditions', {
@@ -99,7 +137,8 @@ function assertDisconnected(target, address) {
   target + ' must show a real CDP request failure for ' + address);
 }
 async function failureEvidence(error) {
-  const context = { error: String(error), stack: error?.stack ?? null, stages, networkEvents, pageErrors };
+  const context = { error: String(error), stack: error?.stack ?? null, stages, networkEvents, pageErrors,
+    navigation: { responses: navigationResponses, documents: documentRequests }, initialBootstrap };
   for (const [name, target] of [['main', page], ['initial', firstPage]]) {
     if (!target || target.isClosed()) continue;
     try { context[name] = await state(target); } catch (cause) { context[name] = String(cause); }
@@ -147,6 +186,7 @@ try {
   watchNetwork(cdp, 'page');
   harness = await createJsonDownloadHarness({ browser, cdp, downloadPath });
   const response = await page.goto(url, { waitUntil: 'domcontentloaded' });
+  recordNavigation('main', response);
   assert.ok(response?.ok(), 'Online initial document must load');
   await ready(page);
   const worker = page.workers().find(item => item.url().includes('/engine/rule-worker.mjs'));
@@ -291,16 +331,37 @@ try {
   firstPage.on('pageerror', error => pageErrors.push({ page: 'initial', error: error.message }));
   firstCdp = await firstPage.createCDPSession();
   await firstCdp.send('Network.enable');
+  await firstCdp.send('Network.setCacheDisabled', { cacheDisabled: true });
   watchNetwork(firstCdp, 'initial-page');
   let firstHeld;
   firstCdp.on('Fetch.requestPaused', event => { firstHeld = event.requestId; });
   await firstCdp.send('Fetch.enable', { patterns: [{ urlPattern: '*/engine/config.json*', requestStage: 'Request' }] });
+  // Register before navigation and read complete JSON bodies. Header-only
+  // network-idle accounting cannot prove parallel bootstrap bodies finished.
+  const bootstrapBodies = ['engine/scene-before.json', 'engine/scene-main-challenge.json', 'engine/assets.json']
+    .map(async path => {
+      const address = new URL(path, url).href;
+      try {
+        const resource = await firstPage.waitForResponse(item => item.url() === address);
+        assert.ok(resource.ok(), `Bootstrap resource must load: ${address}`);
+        await resource.json();
+        const result = { url: address, status: resource.status(), body_complete: true };
+        initialBootstrap.push(result); return result;
+      } catch (error) {
+        const result = { url: address, body_complete: false, error: String(error) };
+        initialBootstrap.push(result); return result;
+      }
+    });
   const firstResponse = await firstPage.goto(url, { waitUntil: 'domcontentloaded' });
+  recordNavigation('initial', firstResponse);
   assert.ok(firstResponse?.ok());
   const firstDeadline = Date.now() + 3000;
   while (!firstHeld && Date.now() < firstDeadline) await new Promise(resolve => setTimeout(resolve, 20));
   assert.ok(firstHeld, 'First startup config request must be held');
-  await firstCdp.send('Network.setCacheDisabled', { cacheDisabled: true });
+  // Only config may remain in flight before the intended offline failure.
+  for (const resource of await Promise.all(bootstrapBodies)) {
+    assert.equal(resource.body_complete, true, `Bootstrap body incomplete: ${resource.url}: ${resource.error ?? ''}`);
+  }
   await emulateOffline(firstCdp, true);
   await firstCdp.send('Fetch.continueRequest', { requestId: firstHeld });
   await firstCdp.send('Fetch.disable');
@@ -319,7 +380,8 @@ try {
   assert.deepEqual(pageErrors, []);
   const receipt = { result: 'PASS', scope: 'ISOLATED_CHROMIUM_LOCALHOST_NETWORK_INTERRUPTION',
     url, browser: await browser.version(), executed_at: new Date().toISOString(), stages,
-    networkEvents, snapshotVerification: verification.result,
+    networkEvents, navigation: { responses: navigationResponses, documents: documentRequests }, initialBootstrap,
+    snapshotVerification: verification.result,
     faultInjection: 'Terminal Worker error, config-request holds, and print-call counting are test injection; offline transport is CDP Network emulation with observed failed requests in page and Worker targets.',
     limitations: ['Loaded session only; no offline cold start or service worker',
       'localhost Chromium only; not a public/other network, Safari, or Edge',
@@ -329,6 +391,7 @@ try {
   console.log(JSON.stringify(receipt, null, 2));
   passed = true;
 } catch (error) {
+  console.error('NETWORK_NAVIGATION_DIAGNOSTICS ' + JSON.stringify({ responses: navigationResponses, documents: documentRequests, initialBootstrap }));
   try { await failureEvidence(error); } catch (cause) { console.error('Could not preserve failure context:', cause); }
   throw error;
 } finally {

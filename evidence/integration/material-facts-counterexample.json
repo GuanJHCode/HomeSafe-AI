@@ -1,0 +1,25 @@
+{
+  "scope": "ACTUAL_GENERATED_MATERIAL_FACT_COUNTEREXAMPLE_NOT_FINAL_ACCEPTANCE",
+  "originals_available_sha256": {
+    "chair": "e2606d75f4ef91a7395b9447ca5d65d972fd38595bcf53d6c6ef11ee9462e71a",
+    "cabinet": "a8398b16be4d4d2f0c7c703575d0679ce16cc3aeacc276af48c9d26379ad940b"
+  },
+  "private_real_model_browser_result": "PASS_ORIGINAL_DERIVED_AND_RESILIENCE",
+  "before_fix_generated_pdf_sha256": "fc379da9a99080310ad5bbc53cbc2fb88f8ff7ba83cdd9964fbbcd451b2190d6",
+  "before_fix_manifest_checks": {
+    "local_transport": "PASS（本地 HTTP 字节核对；非公网验收）",
+    "historical_baseline": "继承的 ba21f54 基线记录：Python 334、应用 39、JS 48 项通过；本材料流程未重跑全套测试",
+    "model_bytes_in_environment": "UNAVAILABLE",
+    "model_materialization": "本环境有界重试 1 次，helper 返回 download failed；HTTP 状态未知",
+    "real_lux3d_browser": "BLOCKED",
+    "rights": "PENDING",
+    "public_https": "NOT_RUN",
+    "performance_3s_goal": "OPEN; 本材料流程未重测性能"
+  },
+  "incorrect_unavailable_phrase_in_actual_pdf": true,
+  "red_render_test_cases": 3,
+  "red_render_test_failed": 3,
+  "fixed_render_test_cases": 3,
+  "fixed_render_test_passed": 3,
+  "old_private_capture_kept": true
+}

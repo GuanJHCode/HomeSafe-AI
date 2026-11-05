@@ -1,0 +1,16 @@
+
+==================================== ERRORS ====================================
+________ ERROR collecting reference/tests/test_private_normal_repair.py ________
+ImportError while importing test module '/workspace/homesafe-private/app/reference/tests/test_private_normal_repair.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+reference/tests/test_private_normal_repair.py:10: in <module>
+    import repair_private_glb_normals as repair
+E   ModuleNotFoundError: No module named 'repair_private_glb_normals'
+=========================== short test summary info ============================
+ERROR reference/tests/test_private_normal_repair.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.09s

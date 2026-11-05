@@ -1,0 +1,772 @@
+{
+  "generated_at_utc": "2026-11-05T06:59:52.431230+00:00",
+  "scope": "LOCAL_UNCOMMITTED_MERGE_A192_PLUS_9A_TESTED_BEFORE_FINAL_MERGE_COMMIT",
+  "remote_base_commit": "a192d51184393187a9e1d98e9c92cd2da06b1dd7",
+  "local_private_commit": "9a0818f7c769e084bdaea0f723cb4266a0ab1224",
+  "common_base": "ba21f54ace3218cfa2d695092b735165c923b1b9",
+  "branch": "codex/integrate-private-models-20261105",
+  "all_parent_task_and_subtask_ids_retained": true,
+  "tests": {
+    "python": {
+      "passed": 343,
+      "failed": 0
+    },
+    "application": {
+      "passed": 39,
+      "failed": 0
+    },
+    "javascript": {
+      "passed": 51,
+      "failed": 0
+    },
+    "material_fact_regressions": {
+      "red_failed": 3,
+      "green_passed": 3
+    },
+    "contracts": "PASS",
+    "strict_types": "PASS",
+    "build_and_dist_hashes": "PASS",
+    "real_pyodide_core": "PASS",
+    "package": "PASS_8_CHECKS",
+    "submission_preflight_exit_code": 2
+  },
+  "browser": {
+    "private_real_models": "PASS",
+    "private_resilience": {
+      "status": "PASS",
+      "scope": "PRIVATE_LOOPBACK_LUX3D_RESILIENCE",
+      "source_kind": "lux3d_web",
+      "browser": "Chrome/154.0.8037.57",
+      "executed_at": "2026-11-05T06:47:56.302Z",
+      "assets": [
+        {
+          "id": "chair",
+          "sha256": "296935f947dabf72026764d71d1df9f85d353d2062c7745b187ad21b417a07fc",
+          "bytes": 10352464,
+          "provenance": "lux3d_web"
+        },
+        {
+          "id": "cabinet",
+          "sha256": "92944741a7e9f2491f9220c9dff3f95d66190db80a2488a5d029fbe1b3de3350",
+          "bytes": 8689540,
+          "provenance": "lux3d_web"
+        }
+      ],
+      "checks": [
+        {
+          "id": "chair",
+          "fault": "http503",
+          "status": "PASS",
+          "attempts": {
+            "chair": 2,
+            "cabinet": 1
+          },
+          "accepted_hash": "输入摘要 6e7b888295fee7342f52cdf98b4c13e3a4028756ac19f9fa4f1d3ba9270cd63b",
+          "failed_placeholder_visible": true,
+          "retry_preserves_pose_and_hash": true
+        },
+        {
+          "id": "chair",
+          "fault": "integrity",
+          "status": "PASS",
+          "attempts": {
+            "chair": 2,
+            "cabinet": 1
+          },
+          "accepted_hash": "输入摘要 6e7b888295fee7342f52cdf98b4c13e3a4028756ac19f9fa4f1d3ba9270cd63b",
+          "failed_placeholder_visible": true,
+          "retry_preserves_pose_and_hash": true
+        },
+        {
+          "id": "cabinet",
+          "fault": "http503",
+          "status": "PASS",
+          "attempts": {
+            "chair": 1,
+            "cabinet": 2
+          },
+          "accepted_hash": "输入摘要 6e7b888295fee7342f52cdf98b4c13e3a4028756ac19f9fa4f1d3ba9270cd63b",
+          "failed_placeholder_visible": true,
+          "retry_preserves_pose_and_hash": true
+        },
+        {
+          "id": "cabinet",
+          "fault": "integrity",
+          "status": "PASS",
+          "attempts": {
+            "chair": 1,
+            "cabinet": 2
+          },
+          "accepted_hash": "输入摘要 6e7b888295fee7342f52cdf98b4c13e3a4028756ac19f9fa4f1d3ba9270cd63b",
+          "failed_placeholder_visible": true,
+          "retry_preserves_pose_and_hash": true
+        },
+        {
+          "status": "PASS",
+          "case": "375px real chair/cabinet button moves and no horizontal overflow",
+          "viewport": {
+            "width": 375,
+            "height": 812
+          },
+          "real_device": false
+        },
+        {
+          "status": "PASS",
+          "case": "actual WebGL context loss and explicit reconstruction reloads two models preserving input",
+          "fault_injection": "WEBGL_lose_context.loseContext()"
+        }
+      ],
+      "public_deployment": "NOT_RUN",
+      "physical_mobile_or_edge_safari": "NOT_RUN",
+      "rights_status": "PENDING"
+    },
+    "private_draft_export": {
+      "result": "PASS",
+      "scope": "ISOLATED_CHROMIUM_DRAFT_EXPORT_GUARD",
+      "browser": "Chrome/154.0.8037.57",
+      "before_hash": "输入摘要 6e7b888295fee7342f52cdf98b4c13e3a4028756ac19f9fa4f1d3ba9270cd63b",
+      "after_hash": "输入摘要 47f85c67d9b717dc620657541aa113af8ad1d53cef83327efef43f26c1b6283d",
+      "expected_loaded_assets": 2,
+      "source_kind": "lux3d_web",
+      "checks": [
+        "pointer hold and preview hide all output",
+        "hidden callbacks cannot export JSON/snapshot or print",
+        "pointercancel and view change restore accepted report",
+        "legal release restores current JSON/snapshot/print"
+      ]
+    },
+    "main_challenge_distinct_legal_layouts": 3,
+    "real_snapshots": [
+      "MATCHES_CURRENT_CORE",
+      "MATCHES_CURRENT_CORE",
+      "MATCHES_CURRENT_CORE"
+    ],
+    "controlled_network_recovery": {
+      "result": "PASS",
+      "scope": "ISOLATED_CHROMIUM_LOCALHOST_NETWORK_INTERRUPTION",
+      "url": "http://127.0.0.1:42591/preview/",
+      "browser": "Chrome/154.0.8037.57",
+      "executed_at": "2026-11-05T06:48:03.250Z",
+      "stages": [
+        {
+          "stage": "online_accepted",
+          "hash": "586710c34c79907cfc23a2f20f94c8b60dcff48a6188c5b96850900e4958ed1b"
+        },
+        {
+          "stage": "real_offline",
+          "pageProbe": "TypeError: Failed to fetch",
+          "workerProbe": "TypeError: Failed to fetch"
+        },
+        {
+          "stage": "offline_edit_undo_redo_export",
+          "hash": "c3fd856859d086209d2da5ad0b774a54c38455832e31e70db4ea0ed2daa185e4",
+          "revision": 5,
+          "workerRequests": 10
+        },
+        {
+          "stage": "offline_retry_failed",
+          "failure": "规则暂不可用。Failed to fetch重建 Worker 并重试"
+        },
+        {
+          "stage": "cancelled_recovery",
+          "workers": 1
+        },
+        {
+          "stage": "online_restored_fresh_worker",
+          "hash": "c3fd856859d086209d2da5ad0b774a54c38455832e31e70db4ea0ed2daa185e4",
+          "revision": 5
+        },
+        {
+          "stage": "initial_config_offline_failed",
+          "failure": "规则暂不可用。Failed to fetch重建 Worker 并重试"
+        },
+        {
+          "stage": "initial_online_retry_ready",
+          "hash": "a5f096ac43e6ba2302be82d381371709f9aaa406d4905a41c4fd17f77c6ecc69"
+        }
+      ],
+      "networkEvents": [
+        {
+          "target": "page",
+          "url": "http://127.0.0.1:42591/preview/engine/config.json?network-probe=offline",
+          "error": "net::ERR_INTERNET_DISCONNECTED",
+          "blocked_reason": null
+        },
+        {
+          "target": "worker",
+          "url": "http://127.0.0.1:42591/preview/engine/config.json?network-probe=offline",
+          "error": "net::ERR_INTERNET_DISCONNECTED",
+          "blocked_reason": null
+        },
+        {
+          "target": "page",
+          "url": "http://127.0.0.1:42591/preview/engine/config.json",
+          "error": "net::ERR_INTERNET_DISCONNECTED",
+          "blocked_reason": null
+        },
+        {
+          "target": "page",
+          "url": "http://127.0.0.1:42591/preview/engine/config.json",
+          "error": "net::ERR_ABORTED",
+          "blocked_reason": null
+        },
+        {
+          "target": "initial-page",
+          "url": "http://127.0.0.1:42591/preview/engine/config.json",
+          "error": "net::ERR_INTERNET_DISCONNECTED",
+          "blocked_reason": null
+        }
+      ],
+      "snapshotVerification": "MATCHES_CURRENT_CORE",
+      "faultInjection": "Terminal Worker error, config-request holds, and print-call counting are test injection; offline transport is CDP Network emulation with observed failed requests in page and Worker targets.",
+      "limitations": [
+        "Loaded session only; no offline cold start or service worker",
+        "localhost Chromium only; not a public/other network, Safari, or Edge",
+        "Offline explicit retry fails at window config fetch before a new Worker/WASM download"
+      ]
+    },
+    "loopback_transport": "PASS_LOCAL_HTTP_ONLY",
+    "development_materials_fixed_trial": {
+      "scope": "INTEGRATION_FIXED_MATERIALS_TRIAL_NOT_FINAL_COMPETITION_MEDIA",
+      "status": "TRIAL_ONLY_NOT_DELIVERABLE",
+      "report_status": "DRAFT_NOT_SUBMITTABLE",
+      "source_head_while_uncommitted_merge": "a192d51184393187a9e1d98e9c92cd2da06b1dd7",
+      "project_dirty": true,
+      "app_matches_head": true,
+      "app_anchor_match": true,
+      "app_source_sha256": "7ec6dee5de77002c726a3c517602e96be17905f815bb873552bf625acb68cbb8",
+      "mode": "trial",
+      "video_seconds": 26.08,
+      "video": {
+        "duration_seconds": 26.08,
+        "bytes": 5483654,
+        "codec": "h264",
+        "width": 1280,
+        "height": 900,
+        "frames": 652,
+        "sha256": "d8bf86cba74d26cd10efa38453b8e15a629d5e3986630d01d895952beaf64afb",
+        "raw_sha256": "443700f7f4c77be67d7baa1c6627f9336f80c0dcaf290660b3f61cb9937e39ae",
+        "raw_last_packet_pts_seconds": 26.08
+      },
+      "report_pdf_pages": 4,
+      "checks": {
+        "local_transport": "PASS（本地 HTTP 字节核对；非公网验收）",
+        "historical_baseline": "继承的 ba21f54 基线记录：Python 334、应用 39、JS 48 项通过；本材料流程未重跑全套测试",
+        "model_bytes_in_environment": "NOT_ASSESSED_BY_PLACEHOLDER_CAPTURE",
+        "model_materialization": "本次占位录屏不执行模型物化；原件可用性与私下验收应查独立记录",
+        "real_lux3d_browser": "NOT_RUN_BY_THIS_CAPTURE",
+        "rights": "NOT_ASSESSED_BY_THIS_CAPTURE",
+        "public_https": "NOT_RUN_BY_THIS_CAPTURE",
+        "performance_3s_goal": "OPEN; 本材料流程未重测性能"
+      },
+      "real_lux3d": "NOT_USED_IN_THIS_CAPTURE",
+      "exports": {
+        "report_filename": "homesafe-action-list-v2-c8c61e185bd5-2026-11-05T06-54-43-778Z-1.json",
+        "snapshot_filename": "homesafe-scene-v2-c8c61e185bd5-2026-11-05T06-54-45-223Z-1.json",
+        "scene_revision": 2,
+        "input_hash": "c8c61e185bd547373f4a10979f6e0d4310b325058950c3b20fc58ecffad86ebc",
+        "ruleset_version": "demo-rules-3.0",
+        "source_kind": "synthetic_demo",
+        "snapshot_verification": "MATCHES_CURRENT_CORE",
+        "binding_result": "PASS：版本、输入摘要、规则集与当前页面一致"
+      },
+      "file_sha256": {
+        "browser-original.webm": "443700f7f4c77be67d7baa1c6627f9336f80c0dcaf290660b3f61cb9937e39ae",
+        "development-recording.mp4": "d8bf86cba74d26cd10efa38453b8e15a629d5e3986630d01d895952beaf64afb",
+        "development-report.pdf": "b8d0885932965c34d130d0459134e4a036c9be08b1555b69a3b447b8ec3dbc2a",
+        "development-report.html": "84f545fb1b500d8a5e41d1eb58a12e91993d81c38e68bff2ff192d44f4adc971",
+        "action-list.json": "579748aaff8e21e7963d91c37a15077974ad304c99b702c5dbc6eb574a1b67ef",
+        "scene-snapshot.json": "6b54bc7076f2c69236256cbcb37e2a8b4960aeb5f4ce3ce54865e4790a37a5b3",
+        "printable-action-list.pdf": "cfc2ab0ac05fe9cc854e947eadc606b319883e75b8b987cf78b690bcafc72c9d"
+      },
+      "private_media_in_source_package": false,
+      "full180_240_second_materials_rerun": "NOT_RUN_TRIAL_ONLY",
+      "pdf_wrong_environment_claim_removed": true
+    },
+    "independent_runs": "PASS_NETWORK_REAL_RESILIENCE_FIXED_PDF_VIDEO_CACHE5_COMPLETE_DELAYED_JSON_BODIES",
+    "final_cache_regression": {
+      "result": "PASS",
+      "scope": "DETERMINISTIC_LOOPBACK_CACHE_REVALIDATION",
+      "browser": "Chrome/154.0.8037.57",
+      "executed_at": "2026-11-05T07:29:19.882Z",
+      "current_script_sha256": "d6f0d9d3ff82aec18620bccea5d1366f0fe66a8db3b957f82b1f86e9a0c96b74",
+      "replay_source_sha256": "1bd0e28f835193508ee03781b909ceb8dd5b4b2cd311caa57710d880198795ea",
+      "replay": "Current script with secondary cache disable moved back after navigation; helper imports relocated only",
+      "cache_fixture": "HTML max-age=0,must-revalidate; fixed Last-Modified and content ETag; only conditional requests return304",
+      "cases": [
+        {
+          "name": "old-order",
+          "exit_code": 1,
+          "browser": null,
+          "documents": [
+            {
+              "scenario": "old-order",
+              "if_modified_since": null,
+              "if_none_match": null,
+              "cache_control": null,
+              "status": 200
+            },
+            {
+              "scenario": "old-order",
+              "if_modified_since": "Wed, 01 Jan 2020 00:00:00 GMT",
+              "if_none_match": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+              "cache_control": null,
+              "status": 304
+            }
+          ],
+          "stage_count": 6,
+          "navigation": {
+            "responses": [
+              {
+                "target": "main",
+                "requested_url": "http://127.0.0.1:40681/preview/",
+                "actual_url": "http://127.0.0.1:40681/preview/",
+                "status": 200,
+                "status_text": "OK",
+                "ok": true,
+                "from_cache": false,
+                "from_service_worker": false,
+                "headers": {
+                  "cache-control": "max-age=0, must-revalidate",
+                  "date": "Thu, 05 Nov 2026 07:28:41 GMT",
+                  "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+                  "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+                }
+              },
+              {
+                "target": "initial",
+                "requested_url": "http://127.0.0.1:40681/preview/",
+                "actual_url": "http://127.0.0.1:40681/preview/",
+                "status": 304,
+                "status_text": "Not Modified",
+                "ok": false,
+                "from_cache": false,
+                "from_service_worker": false,
+                "headers": {
+                  "cache-control": "max-age=0, must-revalidate",
+                  "date": "Thu, 05 Nov 2026 07:28:50 GMT",
+                  "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+                  "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+                }
+              }
+            ],
+            "documents": [
+              {
+                "target": "page",
+                "url": "http://127.0.0.1:40681/preview/",
+                "request_headers": {},
+                "request_extra_headers": {},
+                "response_status": 200,
+                "response_headers": {
+                  "cache-control": "max-age=0, must-revalidate",
+                  "date": "Thu, 05 Nov 2026 07:28:41 GMT",
+                  "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+                  "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+                },
+                "from_disk_cache": false,
+                "extra_status": 200,
+                "extra_headers": {
+                  "cache-control": "max-age=0, must-revalidate",
+                  "date": "Thu, 05 Nov 2026 07:28:41 GMT",
+                  "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+                  "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+                }
+              },
+              {
+                "target": "initial-page",
+                "url": "http://127.0.0.1:40681/preview/",
+                "request_headers": {},
+                "request_extra_headers": {
+                  "if-modified-since": "Wed, 01 Jan 2020 00:00:00 GMT",
+                  "if-none-match": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\""
+                },
+                "extra_status": 304,
+                "extra_headers": {
+                  "cache-control": "max-age=0, must-revalidate",
+                  "date": "Thu, 05 Nov 2026 07:28:50 GMT",
+                  "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+                  "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+                },
+                "response_status": 200,
+                "response_headers": {
+                  "cache-control": "max-age=0, must-revalidate",
+                  "date": "Thu, 05 Nov 2026 07:28:50 GMT",
+                  "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+                  "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+                },
+                "from_disk_cache": false
+              }
+            ]
+          },
+          "snapshot_verification": null
+        },
+        {
+          "name": "pre-navigation-disabled",
+          "exit_code": 0,
+          "browser": "Chrome/154.0.8037.57",
+          "documents": [
+            {
+              "scenario": "pre-navigation-disabled",
+              "if_modified_since": null,
+              "if_none_match": null,
+              "cache_control": null,
+              "status": 200
+            },
+            {
+              "scenario": "pre-navigation-disabled",
+              "if_modified_since": null,
+              "if_none_match": null,
+              "cache_control": "no-cache",
+              "status": 200
+            }
+          ],
+          "stage_count": 8,
+          "navigation": {
+            "responses": [
+              {
+                "target": "main",
+                "requested_url": "http://127.0.0.1:40681/preview/",
+                "actual_url": "http://127.0.0.1:40681/preview/",
+                "status": 200,
+                "status_text": "OK",
+                "ok": true,
+                "from_cache": false,
+                "from_service_worker": false,
+                "headers": {
+                  "cache-control": "max-age=0, must-revalidate",
+                  "date": "Thu, 05 Nov 2026 07:28:51 GMT",
+                  "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+                  "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+                }
+              },
+              {
+                "target": "initial",
+                "requested_url": "http://127.0.0.1:40681/preview/",
+                "actual_url": "http://127.0.0.1:40681/preview/",
+                "status": 200,
+                "status_text": "OK",
+                "ok": true,
+                "from_cache": false,
+                "from_service_worker": false,
+                "headers": {
+                  "cache-control": "max-age=0, must-revalidate",
+                  "date": "Thu, 05 Nov 2026 07:29:00 GMT",
+                  "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+                  "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+                }
+              }
+            ],
+            "documents": [
+              {
+                "target": "page",
+                "url": "http://127.0.0.1:40681/preview/",
+                "request_headers": {},
+                "request_extra_headers": {},
+                "response_status": 200,
+                "response_headers": {
+                  "cache-control": "max-age=0, must-revalidate",
+                  "date": "Thu, 05 Nov 2026 07:28:51 GMT",
+                  "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+                  "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+                },
+                "from_disk_cache": false,
+                "extra_status": 200,
+                "extra_headers": {
+                  "cache-control": "max-age=0, must-revalidate",
+                  "date": "Thu, 05 Nov 2026 07:28:51 GMT",
+                  "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+                  "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+                }
+              },
+              {
+                "target": "initial-page",
+                "url": "http://127.0.0.1:40681/preview/",
+                "request_headers": {},
+                "request_extra_headers": {
+                  "cache-control": "no-cache",
+                  "pragma": "no-cache"
+                },
+                "extra_status": 200,
+                "extra_headers": {
+                  "cache-control": "max-age=0, must-revalidate",
+                  "date": "Thu, 05 Nov 2026 07:29:00 GMT",
+                  "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+                  "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+                },
+                "response_status": 200,
+                "response_headers": {
+                  "cache-control": "max-age=0, must-revalidate",
+                  "date": "Thu, 05 Nov 2026 07:29:00 GMT",
+                  "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+                  "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+                },
+                "from_disk_cache": false
+              }
+            ]
+          },
+          "snapshot_verification": "MATCHES_CURRENT_CORE"
+        },
+        {
+          "name": "slow-bootstrap-body",
+          "exit_code": 0,
+          "browser": "Chrome/154.0.8037.57",
+          "documents": [
+            {
+              "scenario": "slow-bootstrap-body",
+              "if_modified_since": null,
+              "if_none_match": null,
+              "cache_control": null,
+              "status": 200
+            },
+            {
+              "scenario": "slow-bootstrap-body",
+              "if_modified_since": null,
+              "if_none_match": null,
+              "cache_control": "no-cache",
+              "status": 200
+            }
+          ],
+          "stage_count": 8,
+          "navigation": {
+            "responses": [
+              {
+                "target": "main",
+                "requested_url": "http://127.0.0.1:40681/preview/",
+                "actual_url": "http://127.0.0.1:40681/preview/",
+                "status": 200,
+                "status_text": "OK",
+                "ok": true,
+                "from_cache": false,
+                "from_service_worker": false,
+                "headers": {
+                  "cache-control": "max-age=0, must-revalidate",
+                  "date": "Thu, 05 Nov 2026 07:29:04 GMT",
+                  "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+                  "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+                }
+              },
+              {
+                "target": "initial",
+                "requested_url": "http://127.0.0.1:40681/preview/",
+                "actual_url": "http://127.0.0.1:40681/preview/",
+                "status": 200,
+                "status_text": "OK",
+                "ok": true,
+                "from_cache": false,
+                "from_service_worker": false,
+                "headers": {
+                  "cache-control": "max-age=0, must-revalidate",
+                  "date": "Thu, 05 Nov 2026 07:29:13 GMT",
+                  "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+                  "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+                }
+              }
+            ],
+            "documents": [
+              {
+                "target": "page",
+                "url": "http://127.0.0.1:40681/preview/",
+                "request_headers": {},
+                "request_extra_headers": {},
+                "response_status": 200,
+                "response_headers": {
+                  "cache-control": "max-age=0, must-revalidate",
+                  "date": "Thu, 05 Nov 2026 07:29:04 GMT",
+                  "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+                  "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+                },
+                "from_disk_cache": false,
+                "extra_status": 200,
+                "extra_headers": {
+                  "cache-control": "max-age=0, must-revalidate",
+                  "date": "Thu, 05 Nov 2026 07:29:04 GMT",
+                  "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+                  "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+                }
+              },
+              {
+                "target": "initial-page",
+                "url": "http://127.0.0.1:40681/preview/",
+                "request_headers": {},
+                "request_extra_headers": {
+                  "cache-control": "no-cache",
+                  "pragma": "no-cache"
+                },
+                "extra_status": 200,
+                "extra_headers": {
+                  "cache-control": "max-age=0, must-revalidate",
+                  "date": "Thu, 05 Nov 2026 07:29:13 GMT",
+                  "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+                  "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+                },
+                "response_status": 200,
+                "response_headers": {
+                  "cache-control": "max-age=0, must-revalidate",
+                  "date": "Thu, 05 Nov 2026 07:29:13 GMT",
+                  "etag": "\"f991f8f96aad4c417bdb58ea58db61da1caf0286a9a61da16fed9b4eb4e6d2eb\"",
+                  "last-modified": "Wed, 01 Jan 2020 00:00:00 GMT"
+                },
+                "from_disk_cache": false
+              }
+            ]
+          },
+          "snapshot_verification": "MATCHES_CURRENT_CORE"
+        },
+        {
+          "name": "http404",
+          "exit_code": 1,
+          "browser": null,
+          "documents": [
+            {
+              "scenario": "http404",
+              "if_modified_since": null,
+              "if_none_match": null,
+              "cache_control": null,
+              "status": 404
+            }
+          ],
+          "stage_count": 0,
+          "navigation": {
+            "responses": [
+              {
+                "target": "main",
+                "requested_url": "http://127.0.0.1:40681/preview/",
+                "actual_url": "http://127.0.0.1:40681/preview/",
+                "status": 404,
+                "status_text": "Not Found",
+                "ok": false,
+                "from_cache": false,
+                "from_service_worker": false,
+                "headers": {
+                  "cache-control": "no-store",
+                  "date": "Thu, 05 Nov 2026 07:29:18 GMT"
+                }
+              }
+            ],
+            "documents": [
+              {
+                "target": "page",
+                "url": "http://127.0.0.1:40681/preview/",
+                "request_headers": {},
+                "request_extra_headers": {},
+                "extra_status": 404,
+                "extra_headers": {
+                  "cache-control": "no-store",
+                  "date": "Thu, 05 Nov 2026 07:29:18 GMT"
+                },
+                "response_status": 404,
+                "response_headers": {
+                  "cache-control": "no-store",
+                  "date": "Thu, 05 Nov 2026 07:29:18 GMT"
+                },
+                "from_disk_cache": false
+              }
+            ]
+          },
+          "snapshot_verification": null
+        },
+        {
+          "name": "http500",
+          "exit_code": 1,
+          "browser": null,
+          "documents": [
+            {
+              "scenario": "http500",
+              "if_modified_since": null,
+              "if_none_match": null,
+              "cache_control": null,
+              "status": 500
+            }
+          ],
+          "stage_count": 0,
+          "navigation": {
+            "responses": [
+              {
+                "target": "main",
+                "requested_url": "http://127.0.0.1:40681/preview/",
+                "actual_url": "http://127.0.0.1:40681/preview/",
+                "status": 500,
+                "status_text": "Internal Server Error",
+                "ok": false,
+                "from_cache": false,
+                "from_service_worker": false,
+                "headers": {
+                  "cache-control": "no-store",
+                  "date": "Thu, 05 Nov 2026 07:29:19 GMT"
+                }
+              }
+            ],
+            "documents": [
+              {
+                "target": "page",
+                "url": "http://127.0.0.1:40681/preview/",
+                "request_headers": {},
+                "request_extra_headers": {},
+                "response_status": 500,
+                "response_headers": {
+                  "cache-control": "no-store",
+                  "date": "Thu, 05 Nov 2026 07:29:19 GMT"
+                },
+                "from_disk_cache": false,
+                "extra_status": 500,
+                "extra_headers": {
+                  "cache-control": "no-store",
+                  "date": "Thu, 05 Nov 2026 07:29:19 GMT"
+                }
+              }
+            ]
+          },
+          "snapshot_verification": null
+        }
+      ],
+      "delayedBodies": [
+        {
+          "path": "/preview/engine/assets.json",
+          "headers_sent_at": "2026-11-05T07:29:13.257Z",
+          "body_finished": true,
+          "body_finished_at": "2026-11-05T07:29:14.258Z"
+        }
+      ],
+      "original_ci_status": "304_HIGH_CONFIDENCE_INFERENCE_ORIGINAL_ARTIFACT_NOT_AVAILABLE",
+      "public_deployment": "NOT_RUN",
+      "performance": "NOT_MEASURED"
+    },
+    "startup_trace": "PASS_HAPPY_FAILED_INIT_CANCEL_PARALLEL_INIT",
+    "controlled_iframe": "PASS_SAME_ORIGIN_AND_LOCALHOST_CROSS_ORIGIN",
+    "initial_config_barrier": "All3 JSON bodies fully read before offline; no assertion relaxation"
+  },
+  "boundaries": {
+    "public_catalog_empty": true,
+    "private_model_or_media_in_public_build": false,
+    "raw_originals_unchanged": true,
+    "public_deployment": "NOT_RUN",
+    "integrated_remote_push": "NOT_RUN",
+    "formal_performance": "NOT_RUN_USER_PRIORITY",
+    "ci_budget_and_enforcement": "UNCHANGED",
+    "new_integrated_ci": "NOT_RUN_NO_PUSH",
+    "previous_a192_raw_media_retrieved": "NO_SOURCE_ONLY_GIT",
+    "full180_240_second_capture_new_run": "NOT_RUN_TRIAL_ONLY"
+  },
+  "independent_review": "PASS_SCOPED; evidence/REVIEW_INTEGRATION_20261105.md",
+  "ci_cache_fix": {
+    "scope": "PARENT_ASTRA_DIAGNOSTIC_PLUS_CURRENT_LOCAL_FINAL_FIX",
+    "library_file_id": "libfile_a2b95f5874208191b8c4fa2c1c80dd73",
+    "library_version": 1,
+    "diagnostic_bytes": 33931,
+    "diagnostic_sha256": "798fb635d7035b039601b6517054b9b7df74f0bca697a9b11b3ead6d6fc49bc5",
+    "ci_run": 41980778267,
+    "job": 127090136585,
+    "source_commit": "a192d51184393187a9e1d98e9c92cd2da06b1dd7",
+    "reported_original_failure": "firstResponse.ok() false at secondary navigation; earlier functional steps passed; performance skipped",
+    "original_http_status": "NOT_OBSERVED_ORIGINAL_ARTIFACT_UNAVAILABLE",
+    "304_cause_confidence": "HIGH_CONFIDENCE_INFERENCE_FOR_ORIGINAL_CI; DIRECT_LOCAL_REPRODUCTION_CONFIRMED",
+    "parent_reported_control_browser": "Chrome156.0.8078.79 and Chromium154.0.8037.57; read from retained report, not current integration rerun",
+    "current_final_fix_browser": "Chrome/154.0.8037.57",
+    "final_diff_chrome156_in_current_environment": "NOT_RUN",
+    "new_integrated_remote_ci": "NOT_RUN_NO_PUSH",
+    "final_network_source_sha256": "d6f0d9d3ff82aec18620bccea5d1366f0fe66a8db3b957f82b1f86e9a0c96b74",
+    "final_cache_regression_source_sha256": "88c22c70e9f7cf20406911b367bf12c49f28a81981634837c7794570b59acdb1",
+    "diagnostic_raw_report_in_source_package": false,
+    "integration_final_status": "PASS_LOCAL_INDEPENDENT; ORIGINAL_CI304_INFERENCE; NO_NEW_REMOTE_CI"
+  }
+}

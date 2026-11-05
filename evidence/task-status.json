@@ -14,14 +14,21 @@
       "evidence": [
         "docs/v6.1/06-acceptance.md",
         "docs/v6.1/07-sources.md",
-        "evidence/CONTINUATION_20261104.md"
+        "evidence/CONTINUATION_20261104.md",
+        "evidence/LOCAL_READINESS_20261105.md",
+        "evidence/REVIEW_LOCAL_READINESS_20261105.md"
       ],
       "blockers": [
-        "Current official public page yielded no readable body; account page timed out. No authorized account/form receipt available."
+        "Authenticated account registration/team/topic/form status and accepted declarations unavailable; current public client rules and public PC agreement text have now been retrieved without login."
       ],
       "remaining": [
-        "Current official public/account pages again provided no readable body; authenticated account/form/receipt and applicable terms remain unverified."
-      ]
+        "Owner verifies account status, actual form limits and applicable accepted terms/orders. Public China deadline2026-11-19T19:00+08:00 rechecked; public facts are not an account receipt."
+      ],
+      "checks": {
+        "current_public_rules": "PASS_CURRENT_HTML_REFERENCED_CLIENT_BUNDLE",
+        "public_pc_policy_text": "RETRIEVED_APPLICABILITY_TO_SPECIFIC_LUX3D_ACCOUNT_NOT_CONFIRMED",
+        "account_form": "NOT_RUN_NO_AUTHORIZED_SESSION"
+      }
     },
     {
       "id": "T01",
@@ -117,23 +124,35 @@
         "evidence/T03_PRIVATE_INTAKE_20261104.md",
         "evidence/lux3d-geometry-20261104.json",
         "evidence/ci-private-intake-9cf7660.json",
-        "evidence/CONTINUATION_20261104.md"
+        "evidence/CONTINUATION_20261104.md",
+        "evidence/REAL_LUX3D_PRIVATE_20261105.md",
+        "evidence/REVIEW_REAL_LUX3D_20261105.md",
+        "evidence/LOCAL_READINESS_20261105.md",
+        "evidence/REVIEW_LOCAL_READINESS_20261105.md",
+        "evidence/INTEGRATION_20261105.md",
+        "evidence/REVIEW_INTEGRATION_20261105.md"
       ],
       "checks": {
         "approved_lux3d_assets": 0,
-        "real_asset_browser_test": "BLOCKED_NOT_RUN_FILE_UNAVAILABLE",
+        "real_asset_browser_test": "PASS_PRIVATE_ORIGINAL_AND_DERIVED_INDEPENDENT",
         "publication_catalog_and_binding": "IMPLEMENTED",
         "synthetic_publication_regression": "PASS",
         "received_lux3d_glbs": 2,
         "original_checksums": "PASS_18_FILES",
         "real_asset_geometry": "PASS_NODE_GEOMETRY_ONLY",
-        "current_isolated_chromium": "PASS_STARTUP_AND_PROCEDURAL_ONLY",
-        "current_original_bytes": "NOT_DOWNLOADED",
-        "private_main_mode_binding": "PASS_PROCEDURAL_BROWSER"
+        "current_isolated_chromium": "PASS_REAL_LUX3D_ORIGINAL_AND_DERIVED",
+        "current_original_bytes": "BOTH_AVAILABLE_EXPECTED_SHA_MATCH_UNCHANGED",
+        "private_main_mode_binding": "PASS_REAL_LUX3D_BROWSER",
+        "source_front_visual_review": "PASS_BOTH_PLUS_Z_TO_SCENE_MINUS_Z",
+        "actual_runtime_proxy": "PASS_0_90_180_AND_TRANSLATION",
+        "original_gltf_validator": "FAIL_ZERO_NORMALS_20_24",
+        "private_derived_gltf_validator": "PASS_ZERO_ISSUES",
+        "private_normal_repair_tool": "PASS_INDEPENDENT_9_TESTS",
+        "real_asset_failure_retry": "PASS_INDEPENDENT_CHAIR_CABINET_HTTP503_SRI_ONLY_FAILED_REDOWNLOAD",
+        "private_feature_usage_map": "RECORDED_NATIVE_RULE_REFERENCES_NOT_PUBLICATION_APPROVAL"
       },
       "blockers": [
-        "Original bytes unavailable in this execution environment: current official Library helper failed without exposing HTTP status; exact returned host sdmntprwestus.oaiusercontent.com is absent in current enforced policy. User approved only that host; no supported configuration write tool is available, and no post-approval transfer was issued.",
-        "Distribution rights under applicable China-site account terms remain unconfirmed."
+        "Applicable account/plan terms and raw/derived GLB external distribution rights remain unconfirmed; matching originals and private browser acceptance are available."
       ],
       "subtasks": [
         {
@@ -157,11 +176,26 @@
           "review": "PASS_INDEPENDENT_TOOLS_ONLY",
           "acceptance_scope": "Explicit sourceFront declarations mapped to scene-Z, rotated bounds/pivot, unchanged source, persisted candidatesfalse; procedural real-browser only. ActualLux3D/rights BLOCKED.",
           "evidence": "evidence/REVIEW_ASSET_ORIENTATION_20261105.md"
+        },
+        {
+          "id": "T03-real-private-browser",
+          "status": "DONE",
+          "review": "PASS_INDEPENDENT",
+          "acceptance_scope": "Actual SHA-matching originals, +Z/-Z visual counterexample, textures, sample fit, actual bbox proxies and full private browser interaction; no public distribution approval",
+          "evidence": "evidence/REAL_LUX3D_PRIVATE_20261105.md",
+          "review_evidence": "evidence/REVIEW_REAL_LUX3D_20261105.md"
+        },
+        {
+          "id": "T03-private-zero-normal-derivatives",
+          "status": "DONE",
+          "review": "PASS_INDEPENDENT_AFTER_SHARED_VIEW_COUNTEREXAMPLE_FIX",
+          "acceptance_scope": "Original hashes preserved; 9 unit regressions, independent byte-equivalent derivative rebuild, protected geometry/UV/images bytes, official zero-issue validation and full private browser retest",
+          "evidence": "evidence/REAL_LUX3D_PRIVATE_20261105.md",
+          "review_evidence": "evidence/REVIEW_REAL_LUX3D_20261105.md"
         }
       ],
       "remaining": [
-        "Apply only the approved exact-host configuration through the supported environment UI, verify effective policy in the execution task, then use official Library materialization. No local original-byte or real-browser acceptance is established.",
-        "Distribution rights under applicable China-site account terms remain unconfirmed."
+        "Confirm account/plan/orders and publication permission; keep tested private derivatives separate from unchanged originals."
       ]
     },
     {
@@ -221,7 +255,11 @@
       "owner": null,
       "commit": null,
       "evidence": [
-        "evidence/CONTINUATION_20261104.md"
+        "evidence/CONTINUATION_20261104.md",
+        "evidence/REAL_LUX3D_PRIVATE_20261105.md",
+        "evidence/REVIEW_REAL_LUX3D_20261105.md",
+        "evidence/LOCAL_READINESS_20261105.md",
+        "evidence/REVIEW_LOCAL_READINESS_20261105.md"
       ],
       "subtasks": [
         {
@@ -240,8 +278,11 @@
         }
       ],
       "remaining": [
-        "Actual Lux3D visual/calibration/style acceptance pending original file access and rights."
-      ]
+        "Two real core assets passed private visual/direction/proxy review with explicitly nonuniform synthetic sample fitting. Public rights, final style acceptance and any optional asset expansion remain."
+      ],
+      "checks": {
+        "real_asset_375px": "PASS_CHROMIUM_VIEWPORT_NOT_PHYSICAL_DEVICE"
+      }
     },
     {
       "id": "T06",
@@ -253,7 +294,9 @@
       "commit": null,
       "evidence": [
         "evidence/CONTINUATION_20261104.md",
-        "evidence/FEATURE_CONTINUATION_20261104.md"
+        "evidence/FEATURE_CONTINUATION_20261104.md",
+        "evidence/REAL_LUX3D_PRIVATE_20261105.md",
+        "evidence/REVIEW_REAL_LUX3D_20261105.md"
       ],
       "subtasks": [
         {
@@ -272,7 +315,7 @@
         }
       ],
       "remaining": [
-        "Revalidate main challenge with actual Lux3D assets and final target deployment; implementation subtask is complete."
+        "Main challenge revalidated with actual original and repaired Lux3D assets in private Chromium, including three legal cabinet layouts. Final target deployment remains unverified."
       ]
     },
     {
@@ -288,7 +331,13 @@
         "evidence/FEATURE_CONTINUATION_20261104.md",
         "evidence/CI_PUSH_64e1665_20261104.md",
         "evidence/STARTUP_ADJUSTMENTS_20261104.md",
-        "evidence/CI_DOWNLOAD_FIX_20261105.md"
+        "evidence/CI_DOWNLOAD_FIX_20261105.md",
+        "evidence/REAL_LUX3D_PRIVATE_20261105.md",
+        "evidence/REVIEW_REAL_LUX3D_20261105.md",
+        "evidence/LOCAL_READINESS_20261105.md",
+        "evidence/REVIEW_LOCAL_READINESS_20261105.md",
+        "evidence/INTEGRATION_20261105.md",
+        "evidence/REVIEW_INTEGRATION_20261105.md"
       ],
       "subtasks": [
         {
@@ -356,17 +405,33 @@
           "acceptance_scope": "Controlled Chromium window/Worker network interruption and explicit recovery; does not establish offline cold start or another real network",
           "review": "PASS_INDEPENDENT_SCOPED",
           "evidence": "evidence/REVIEW_NETWORK_RECOVERY_20261105.md"
+        },
+        {
+          "id": "T07-real-asset-resilience",
+          "status": "DONE",
+          "review": "PASS_INDEPENDENT_BROWSER",
+          "acceptance_scope": "Private real-derived inputs, per-object503/SRI explicit retry, no successful re-download,375px buttons,actual WebGL reconstruction, real-model drag export guard; no public/physical device/network acceptance",
+          "evidence": "evidence/LOCAL_READINESS_20261105.md",
+          "review_evidence": "evidence/REVIEW_LOCAL_READINESS_20261105.md"
+        },
+        {
+          "id": "T07-network-navigation-cache-setup",
+          "status": "DONE",
+          "review": "PASS_INDEPENDENT_HTTP_REVALIDATION_AND_FULL_NETWORK",
+          "acceptance_scope": "Pre-navigation cache control, exact HTTP diagnostics and full bootstrap JSON body barrier;5 real loopback cases, all8 offline/retry stages kept; originalCI304 still inferred",
+          "evidence": "evidence/INTEGRATION_20261105.md",
+          "review_evidence": "evidence/REVIEW_INTEGRATION_20261105.md"
         }
       ],
       "remaining": [
-        "Actual Lux3D load/render/release and print validation; final target device/network performance.",
-        "First-editable 3s project engineering target remains OPEN_NOT_MET based on prior4812.2ms measurement; user temporarily defers it as a blocker to other development. No new continuation timing; original CI budgets/enforce unchanged. New local fixes await separate push authorization; remote394eb04 functional download failed/performance skipped. No cross-environment inference."
+        "Integrated private real-model/render/export, controlled network and deterministic navigation cache recovery are independently validated. Final host/device/other-network performance remains open.",
+        "3s first-editable remains OPEN_NOT_MET/deferred; strict budgets and enforce unchanged. Integrated remoteCI not run because no push."
       ],
       "checks": {
         "first_editable_budget": "OPEN_NOT_MET",
         "hot_evaluation_budget": "NOT_RUN_THIS_CONTINUATION; prior be32202 historical PASS retained",
         "cold_rule_budget": "NOT_RUN_THIS_CONTINUATION; prior be32202 historical PASS retained",
-        "current_remote_ci": "FAIL_DOWNLOAD_JSON_PARSE_AT_394eb04",
+        "current_remote_ci": "A192_CI41980778267_NETWORK_SECOND_NAVIGATION_FAILED; PERFORMANCE_SKIPPED",
         "local_ci_equivalent_functional_steps": "PASS",
         "strict_ci_failure_propagation": "PASS_INDEPENDENT_SYNTHETIC_SHELL_TEST",
         "functional_validation": "CURRENT_LOCAL_FIX_PASS_INDEPENDENT; REMOTE_394eb04_FAILED_DOWNLOAD",
@@ -405,7 +470,11 @@
           "performance": "NOT_RUN_USER_PRIORITY",
           "ci_enforcement": "UNCHANGED",
           "evidence": "evidence/CONTINUATION_NEXT_20261105.md"
-        }
+        },
+        "current_real_lux3d_private": "PASS_ORIGINAL_AND_DERIVED_INDEPENDENT; FORMAL_PERFORMANCE_NOT_RUN",
+        "real_asset_context_loss": "PASS_ACTUAL_WEBGL_EXTENSION_NEW_CANVAS_MODELS_HASH_PRESERVED",
+        "real_asset_draft_export": "PASS_TWO_MODELS_LOADED_ACTUAL_DOWNLOAD_HASH_CHECK",
+        "current_local_integration": "PASS_INDEPENDENT; NO_REMOTE_INTEGRATION_RUN"
       }
     },
     {
@@ -449,10 +518,12 @@
       "evidence": [
         "evidence/CONTINUATION_20261104.md",
         "evidence/NETWORK_MATERIALS_20261105.md",
-        "evidence/REVIEW_DEVELOPMENT_MATERIALS_20261105.md"
+        "evidence/REVIEW_DEVELOPMENT_MATERIALS_20261105.md",
+        "evidence/INTEGRATION_20261105.md",
+        "evidence/REVIEW_INTEGRATION_20261105.md"
       ],
       "remaining": [
-        "Final report/video must use frozen accepted real-asset/public version. Current independently reviewed 4-page PDF and198.52s video are localhost-placeholder development drafts only; T10/G4 remain incomplete."
+        "a192 development-material tools and historical source-bound text evidence are included; previous private binary media remain in the original environment. Final report/video require the accepted integrated/frozen rights-cleared public target version."
       ],
       "subtasks": [
         {
@@ -468,6 +539,14 @@
           "acceptance_scope": "Source-bound draft Chinese reportPDF and genuine localhost placeholder operation video; not final G4/submission materials",
           "review": "PASS_INDEPENDENT_SCOPED",
           "evidence": "evidence/REVIEW_DEVELOPMENT_MATERIALS_20261105.md"
+        },
+        {
+          "id": "T10-capture-scope-facts",
+          "status": "DONE",
+          "acceptance_scope": "Do not hardcode environment model unavailability/private browser blocked from a placeholder recording; actualPDF/receipt and3 regressions",
+          "evidence": "evidence/INTEGRATION_20261105.md",
+          "review_evidence": "evidence/REVIEW_INTEGRATION_20261105.md",
+          "review": "PASS_INDEPENDENT_ACTUAL_PDF_VIDEO_AND3_RED_GREEN_CASES"
         }
       ]
     },
@@ -520,10 +599,12 @@
       "owner": null,
       "commit": null,
       "evidence": [
-        "evidence/CONTINUATION_20261104.md"
+        "evidence/CONTINUATION_20261104.md",
+        "evidence/LOCAL_READINESS_20261105.md",
+        "evidence/REVIEW_LOCAL_READINESS_20261105.md"
       ],
       "remaining": [
-        "Reverify actual deadline/form and entry before cutoff; no future automation created."
+        "Current public China deadline rechecked2026-11-19 19:00 Asia/Shanghai; authenticated form/accepted terms and final links still need owner verification before cutoff. No automation created."
       ]
     },
     {
@@ -535,15 +616,17 @@
       "owner": null,
       "commit": null,
       "evidence": [
-        "evidence/CONTINUATION_20261104.md"
+        "evidence/CONTINUATION_20261104.md",
+        "evidence/LOCAL_READINESS_20261105.md",
+        "evidence/REVIEW_LOCAL_READINESS_20261105.md"
       ],
       "remaining": [
-        "Approved hosted entry/owner and actual results date required; retain at least max(2026-12-31,results+30days), no shutdown scheduled."
+        "Approved host/owner plus actual results announcement AND publicity completion dates required; retain at least max(2026-12-31,actual publicity completion+30days), no shutdown or monitoring scheduled."
       ]
     }
   ],
   "timezone": "Asia/Shanghai",
-  "planning_status": "CONTINUATION_SCOPED_FEATURES_REVIEWED_EXTERNAL_GATES_BLOCKED_PERFORMANCE_DEPRIORITIZED_FOR_DEVELOPMENT",
+  "planning_status": "LOCAL_INTEGRATION_PASS_INDEPENDENT_FACT_CACHE_FIXES_EXTERNAL_GATES_REMAIN",
   "source_import_status": "IMPORTED_AND_NATIVE_VALIDATED",
   "source_import": {
     "base_commit": "01d48fca76f77856b5e9f31a37090bb1284e47db",
@@ -554,12 +637,12 @@
     "real_browser_status": "NOT_RUN"
   },
   "baseline_commit": "2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f",
-  "implementation_branch": "codex/v6.1-browser-3d",
+  "implementation_branch": "codex/integrate-private-models-20261105",
   "continuation_base_commit": "f6245e13bc41e36a0efeabeba3ca0fba2174c2f5",
-  "current_validation_scope": "evidence/NETWORK_MATERIALS_20261105.md",
+  "current_validation_scope": "evidence/INTEGRATION_20261105.md",
   "historical_validation_scope": "Older 64e1665 CI41807603537 performance and 20261104 local startup measurements are historical. Latest verified remote is394eb04/CI41948477248 functional download FAIL and performance NOT_RUN. Local be32202 fixes the download protocol without a new remote run.",
   "historical_validated_source_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6",
-  "validation_scope": "Local continuation fromba21f54: controlled network recovery and development-materials subtasks independently reviewed; Python334/application39/JS48/typecheck/contracts and actual local browser/material checks PASS. App/Core/dist unchanged. No new build/performance run; strict CI enforcement unchanged. Remote394eb04 CI41948477248 functional FAIL/performance skipped. RealLux3D/rights/public/account/final-submission gates remain incomplete.",
+  "validation_scope": "Local merge of read-only verified remotea192 and9a private branch: Python343/app39/JS51/build/type/core passed; independent real-model resilience, network/cache5/delayed-body and material trial26.08s passed. Material current-environment false claim fixed. Original CI41980778267 navigation fail known from retained astra report; exact original304 remains inference. No integrated push/CI/public/performance run.",
   "recovery_sync": {
     "task_id": "RECOVERY-SYNC-20261104",
     "date": "2026-11-04",
@@ -585,23 +668,20 @@
     "current_scope": "evidence/FEATURE_CONTINUATION_20261104.md"
   },
   "previous_continuation_base_commit": "57faf384d64e9770407b28086fdfeb5b193a6d6f",
-  "current_source_sync": "LOCAL_NETWORK_MATERIALS_REVIEWED_NOT_PUSHED; REMOTE_394eb04",
+  "current_source_sync": "LOCAL_A192_PLUS_9A_INTEGRATION_NOT_PUSHED; REMOTE_A192_VERIFIED_READ_ONLY",
   "previous_source_sync": "LOCAL_ONLY_NOT_PUSHED",
   "latest_verified_remote_ci": {
-    "source_commit": "394eb04e9bbaf7555a507cbc4c1fe28caa62a6a9",
+    "source_commit": "a192d51184393187a9e1d98e9c92cd2da06b1dd7",
     "remote_branch": "codex/v6.1-browser-3d",
-    "run_id": 41948477248,
-    "job_id": 126986451585,
-    "run_attempt": 1,
-    "run_url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41948477248",
+    "run_id": 41980778267,
+    "job_id": 127090136585,
     "conclusion": "failure",
-    "functional_validation": "FAIL_DOWNLOAD_JSON_PARSE",
+    "functional_validation": "FAIL_SECOND_PAGE_NAVIGATION_OK_ASSERTION; EARLIER_CHECKS_PASS",
     "performance_budget": "NOT_RUN_SKIPPED_AFTER_FUNCTIONAL_FAILURE",
-    "first_editable_p95_ms": null,
-    "hot_evaluation_p95_ms": null,
-    "real_asset_browser": "BLOCKED_NOT_RUN_FILE_UNAVAILABLE",
-    "public_host": "BLOCKED_NOT_RUN_NO_APPROVED_HOST",
-    "evidence": "evidence/ci-download-fix/original-ci.json"
+    "original_http_status": "NOT_OBSERVED;304_HIGH_CONFIDENCE_INFERENCE",
+    "source_of_status": "Parent astra retained Library diagnostic version1, materialized and read; not a fresh GitHub API/artifact read by integration thread",
+    "evidence": "evidence/integration/ci-cache-diagnostic-summary.json",
+    "integrated_fix_remote_ci": "NOT_RUN_NO_PUSH"
   },
   "startup_phase": {
     "base_commit": "64e166540495126f618dd65aa8dc88760ed70604",
@@ -837,6 +917,108 @@
       "typecheck": "PASS",
       "contracts": "PASS_3_FILES"
     },
-    "formal_submission": "NOT_PERFORMED_BLOCKED_EXIT2"
+    "formal_submission": "NOT_PERFORMED_BLOCKED_EXIT2",
+    "record_scope": "HISTORICAL_A192_STAGE_BEFORE_PUSH_AND_NEW_NETWORK_INSTANCE",
+    "current_status_override": "integration record: a192 available/merged, original availability resolved; preserve original stage-specific results and no retroactive claims"
+  },
+  "real_lux3d_private": {
+    "base_commit": "ba21f54ace3218cfa2d695092b735165c923b1b9",
+    "local_branch": "codex/real-lux3d-private-20261105",
+    "status": "PASS_SCOPED_PRIVATE_RIGHTS_BLOCKED",
+    "record": "evidence/REAL_LUX3D_PRIVATE_20261105.md",
+    "review": "evidence/REVIEW_REAL_LUX3D_20261105.md",
+    "summary": "evidence/real-lux3d/validation-summary.json",
+    "originals": "AVAILABLE_BOTH_EXPECTED_SHA_MATCH",
+    "original_format": "FAIL_ZERO_NORMALS_20_24_AND_TARGET_HINTS",
+    "derived_format": "PASS_KHRONOS_ZERO_ERRORS_WARNINGS_INFOS_HINTS",
+    "private_browser": "PASS_ORIGINAL_AND_DERIVED_INDEPENDENT",
+    "source_fronts": {
+      "chair": "+Z",
+      "cabinet": "+Z"
+    },
+    "scene_front": "-Z",
+    "public_catalog_empty": true,
+    "persisted_reviewed": [
+      false,
+      false
+    ],
+    "remote_write": "NOT_RUN",
+    "formal_performance": "NOT_RUN_USER_PRIORITY",
+    "parallel_reported_commit": "a192d51184393187a9e1d98e9c92cd2da06b1dd7",
+    "parallel_reported_commit_included": false,
+    "merge": "NOT_RUN; cherry-pick this independent branch after a192d51 recovery is available",
+    "record_scope": "HISTORICAL_4203_PRIVATE_STAGE_BEFORE_A192_RECOVERY",
+    "current_status_override": "integration record: a192 available/merged, original availability resolved; preserve original stage-specific results and no retroactive claims"
+  },
+  "local_readiness": {
+    "base_commit": "4203a3a9b7d1018417ae7ddcebcbf94c8996ab3c",
+    "record": "evidence/LOCAL_READINESS_20261105.md",
+    "review": "evidence/REVIEW_LOCAL_READINESS_20261105.md",
+    "summary": "evidence/local-readiness/validation-summary.json",
+    "source_probe": "evidence/local-readiness/public-source-summary.json",
+    "private_usage_map": "evidence/local-readiness/private-usage-summary.json",
+    "status": "PASS_SCOPED_LOCAL_CHECKLIST_REVIEWED",
+    "new_product_implementation": "NONE_TEST_HARNESS_ONLY",
+    "formal_performance": "NOT_RUN_USER_DEFERRED",
+    "a192d51": "UNAVAILABLE_NOT_INCLUDED_NOT_MERGED",
+    "remote_write": "NOT_RUN",
+    "public_deployment": "NOT_RUN",
+    "owner_inputs": [
+      "Transfer readable a192 bundle",
+      "Confirm applicable account/plan orders and model distribution plus source rights",
+      "Approved host/project/audience and maintenance owner",
+      "Authenticated form/status and owner declarations",
+      "Actual Edge/Safari/second network access"
+    ],
+    "record_scope": "HISTORICAL_9A_STAGE_BEFORE_A192_RECOVERY",
+    "current_status_override": "integration record: a192 available/merged, original availability resolved; preserve original stage-specific results and no retroactive claims"
+  },
+  "integration": {
+    "base_remote_commit": "a192d51184393187a9e1d98e9c92cd2da06b1dd7",
+    "private_branch_commit": "9a0818f7c769e084bdaea0f723cb4266a0ab1224",
+    "common_base": "ba21f54ace3218cfa2d695092b735165c923b1b9",
+    "local_branch": "codex/integrate-private-models-20261105",
+    "a192_available": true,
+    "a192_merged_into_current_worktree": true,
+    "method": "non-fast-forward merge, preserve both histories",
+    "validation": "PASS_SCOPED_NATIVE_APP_JS_BUILD_PRIVATE_REAL_NETWORK_CACHE5_DELAYED_JSON_MATERIAL_TRIAL",
+    "independent_review": "PASS_SCOPED_AFTER_FACT_AND_CACHE_FIXES",
+    "remote_write": "NOT_RUN",
+    "public_deployment": "NOT_RUN",
+    "original_private_media_from_a192": "NOT_RETRIEVED_FROM_GIT",
+    "current_owner_inputs": [
+      "Applicable model/derivative distribution permission and source-rights decisions",
+      "Approved target host/audience/maintenance owner and publication authorization",
+      "Owner authenticated account/form/declarations",
+      "Actual Edge/Safari/second-network acceptance conditions"
+    ],
+    "scalar_merge_decisions": [
+      "/current_validation_scope",
+      "/validation_scope",
+      "/current_source_sync"
+    ],
+    "material_fact_fix": "Narrow capture-scope correction, actual oldPDF and3 red/green regressions retained",
+    "record": "evidence/INTEGRATION_20261105.md",
+    "review_record": "evidence/REVIEW_INTEGRATION_20261105.md",
+    "summary": "evidence/integration/validation-summary.json",
+    "ci_navigation_cache_fix": "Pre-goto secondary cache disable, finite-header navigation diagnostics, complete3 bootstrap JSON bodies before controlled offline; original assertions retained",
+    "cache_regression": "PASS_5_CASES_AND_INDEPENDENT_2_SECOND_JSON_BODY_FIXTURE",
+    "new_integrated_remote_ci": "NOT_RUN_NO_PUSH"
+  },
+  "historical_remote_ci_before_a192": {
+    "source_commit": "394eb04e9bbaf7555a507cbc4c1fe28caa62a6a9",
+    "remote_branch": "codex/v6.1-browser-3d",
+    "run_id": 41948477248,
+    "job_id": 126986451585,
+    "run_attempt": 1,
+    "run_url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/41948477248",
+    "conclusion": "failure",
+    "functional_validation": "FAIL_DOWNLOAD_JSON_PARSE",
+    "performance_budget": "NOT_RUN_SKIPPED_AFTER_FUNCTIONAL_FAILURE",
+    "first_editable_p95_ms": null,
+    "hot_evaluation_p95_ms": null,
+    "real_asset_browser": "BLOCKED_NOT_RUN_FILE_UNAVAILABLE",
+    "public_host": "BLOCKED_NOT_RUN_NO_APPROVED_HOST",
+    "evidence": "evidence/ci-download-fix/original-ci.json"
   }
 }

@@ -1,0 +1,11 @@
+✔ placeholder report keeps independent environment availability separate: AVAILABLE (1.48388ms)
+✔ placeholder report keeps independent environment availability separate: UNAVAILABLE (0.163396ms)
+✔ placeholder report keeps independent environment availability separate: NOT_ASSESSED (0.877639ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 76.423105

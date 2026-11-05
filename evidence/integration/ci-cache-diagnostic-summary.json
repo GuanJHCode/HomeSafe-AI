@@ -1,0 +1,20 @@
+{
+  "scope": "PARENT_ASTRA_DIAGNOSTIC_PLUS_CURRENT_LOCAL_FINAL_FIX",
+  "library_file_id": "libfile_a2b95f5874208191b8c4fa2c1c80dd73",
+  "library_version": 1,
+  "diagnostic_bytes": 33931,
+  "diagnostic_sha256": "798fb635d7035b039601b6517054b9b7df74f0bca697a9b11b3ead6d6fc49bc5",
+  "ci_run": 41980778267,
+  "job": 127090136585,
+  "source_commit": "a192d51184393187a9e1d98e9c92cd2da06b1dd7",
+  "reported_original_failure": "firstResponse.ok() false at secondary navigation; earlier functional steps passed; performance skipped",
+  "original_http_status": "NOT_OBSERVED_ORIGINAL_ARTIFACT_UNAVAILABLE",
+  "304_cause_confidence": "HIGH_CONFIDENCE_INFERENCE_FOR_ORIGINAL_CI; DIRECT_LOCAL_REPRODUCTION_CONFIRMED",
+  "parent_reported_control_browser": "Chrome156.0.8078.79 and Chromium154.0.8037.57; read from retained report, not current integration rerun",
+  "current_final_fix_browser": "Chrome/154.0.8037.57",
+  "final_diff_chrome156_in_current_environment": "NOT_RUN",
+  "new_integrated_remote_ci": "NOT_RUN_NO_PUSH",
+  "final_network_source_sha256": "d6f0d9d3ff82aec18620bccea5d1366f0fe66a8db3b957f82b1f86e9a0c96b74",
+  "final_cache_regression_source_sha256": "88c22c70e9f7cf20406911b367bf12c49f28a81981634837c7794570b59acdb1",
+  "diagnostic_raw_report_in_source_package": false
+}

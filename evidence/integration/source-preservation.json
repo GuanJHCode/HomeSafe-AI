@@ -1,0 +1,99 @@
+{
+  "parents": {
+    "a192d51184393187a9e1d98e9c92cd2da06b1dd7": [
+      ".github/workflows/reference-checks.yml",
+      "scripts/check_web_network_recovery.mjs",
+      "scripts/create_development_materials.mjs",
+      "scripts/development_materials_report.mjs"
+    ],
+    "9a0818f7c769e084bdaea0f723cb4266a0ab1224": [
+      "scripts/check_private_assets.mjs",
+      "scripts/check_private_asset_resilience.mjs",
+      "scripts/check_web_draft_export.mjs",
+      "scripts/repair_private_glb_normals.py",
+      "reference/tests/test_private_normal_repair.py"
+    ]
+  },
+  "source_bytes": [
+    {
+      "path": ".github/workflows/reference-checks.yml",
+      "preserved_from": "a192d51184393187a9e1d98e9c92cd2da06b1dd7",
+      "sha256": "3635940bd16959c7653c3791fe9eb7b2e856b98e7c5eaabf3d0d265d69c33e7c",
+      "unchanged": false,
+      "parent_sha256": "3833ca32095e3c15a73a1fc9f74ebfd0104140ed02f366bcfee25661ab35831c",
+      "change_scope": "Append one placeholder-only functional cache regression; original network command retained; strict performance block unchanged"
+    },
+    {
+      "path": "scripts/check_web_network_recovery.mjs",
+      "preserved_from": "a192d51184393187a9e1d98e9c92cd2da06b1dd7",
+      "sha256": "d6f0d9d3ff82aec18620bccea5d1366f0fe66a8db3b957f82b1f86e9a0c96b74",
+      "unchanged": false,
+      "parent_sha256": "cd6a9326bfcfc3a2b986fbb82bdb9e1643836f2065aa0e042b171ed857a7e08b",
+      "change_scope": "Move secondary cache disable before goto; add bounded cache-only navigation diagnostics and read all three bootstrap JSON bodies before controlled config disconnection"
+    },
+    {
+      "path": "scripts/create_development_materials.mjs",
+      "preserved_from": "a192d51184393187a9e1d98e9c92cd2da06b1dd7",
+      "sha256": "f94c08df2c8d25725fa216b89c779ecccf1a8c5f3975ba0a3de2a75308c725f1",
+      "unchanged": false,
+      "parent_sha256": "23631d736cb6bf0db6fa9f421a714c9fbed24b1078175b8353beb779519decd4",
+      "change_scope": "Capture-scoped annotation/metadata only; no hardcoded environment missing/blocked claim"
+    },
+    {
+      "path": "scripts/development_materials_report.mjs",
+      "preserved_from": "a192d51184393187a9e1d98e9c92cd2da06b1dd7",
+      "sha256": "0c1ad334619e2079ef7c7b60119181d647daf90b0111f89b4568894b255211f3",
+      "unchanged": false,
+      "parent_sha256": "7cffccee2ebf10fecfcc655630b71ab45f5f1c06681199f1317782f654868152",
+      "change_scope": "Capture-scoped report text only; preserve independent real model evidence"
+    },
+    {
+      "path": "scripts/check_private_assets.mjs",
+      "preserved_from": "9a0818f7c769e084bdaea0f723cb4266a0ab1224",
+      "sha256": "2cb6af20aecabfd5964a008479704236f9ec86399b594ed4798922c7ffbfc957",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/check_private_asset_resilience.mjs",
+      "preserved_from": "9a0818f7c769e084bdaea0f723cb4266a0ab1224",
+      "sha256": "45caaaff6bff18da79bc9baf0e68845d778e1d61706713608f7d52010a7a22d7",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/check_web_draft_export.mjs",
+      "preserved_from": "9a0818f7c769e084bdaea0f723cb4266a0ab1224",
+      "sha256": "f23885b35730027862111badadb909e756e73210c01f6fdfa454986209abfd69",
+      "unchanged": true
+    },
+    {
+      "path": "scripts/repair_private_glb_normals.py",
+      "preserved_from": "9a0818f7c769e084bdaea0f723cb4266a0ab1224",
+      "sha256": "922b0d390de098f475aca6468685e3b8f32b7de4067ba06b6fe9c2f2083ade84",
+      "unchanged": true
+    },
+    {
+      "path": "reference/tests/test_private_normal_repair.py",
+      "preserved_from": "9a0818f7c769e084bdaea0f723cb4266a0ab1224",
+      "sha256": "41fd7d9814a0e2bb728609612fd717ba637a6eae2fd2f7b90118324cc566ddd2",
+      "unchanged": true
+    }
+  ],
+  "assets/asset-manifest.json": {
+    "manifest_version": "2.0",
+    "assets": []
+  },
+  "assets/feature_asset_map.json": {
+    "mappings": []
+  },
+  "apps/web/public": {
+    "glb_or_private_media_files": 0
+  },
+  "apps/web/dist": {
+    "glb_or_private_media_files": 0
+  },
+  "raw_sources_originals_and_derivatives_remain_outside_public_build": true,
+  "integration_regression_test": "scripts/development_materials_report.test.mjs",
+  "unchanged_product_core_contracts_and_performance": true,
+  "strict_ci_performance_block_unchanged": true,
+  "new_cache_regression": "scripts/check_network_cache_browser.mjs"
+}
