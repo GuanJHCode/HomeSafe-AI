@@ -53,3 +53,6 @@ CI=1 node scripts/create_development_materials.mjs \
 本机另有ignored `evidence/private/submission-preparation-c1d794b-20261105/`，包含实际源码/文件descriptor、canonical最终场景、两件私下GLB与来源链、功能到视频阶段的近似映射、如实限定的私下验收。按原检查器运行该private-draft-manifest.json仍应BLOCKED/退出2；它不修改正式submission-manifest，也不批准public rights。
 
 技术准备已核对文件可读、SHA、PDF/视频解析和场景/模型映射，不应再交本人重新整理这些字段。仍需本人/权利方确认账号适用条款与源码/模型公开许可，指定获准托管/主备用URL/维护责任并授权发布，核对本人表单声明与提交授权，提供实际Edge/Safari/另一网络条件。Agent可在条件具备后继续目标站验收与最终材料冻结。维护到至少max(2026-12-31,实际公示完成日+30天)，公布/公示完成日期均未知时不安排关停。
+# 后续状态
+
+90.68秒字幕演示候选已经完成真实操作、表达和来源独立审查，并保存到仅本人Space；旧221.72秒片保留作技术验收记录。当前源码同步授权与材料边界见[源码同步范围](../../evidence/CODE_SYNC_20261107.md)。前述C1流程生成完整开发实录，不单凭其时长/技术PASS判断评委演示质量。私有素材和一次性录制/剪辑工具不进入Git；未公开发布或正式提交。

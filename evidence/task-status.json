@@ -568,10 +568,11 @@
         "evidence/REVIEW_INTEGRATION_20261105.md",
         "evidence/current-ci/5001222-ci-summary.json",
         "evidence/PRIVATE_REAL_MATERIALS_20261105.md",
-        "evidence/REVIEW_PRIVATE_REAL_MATERIALS_20261105.md"
+        "evidence/REVIEW_PRIVATE_REAL_MATERIALS_20261105.md",
+        "evidence/CODE_SYNC_20261107.md"
       ],
       "remaining": [
-        "Full221.72sec/4page private real-model materials and technical submission preparation complete. Formal materials still require applicable public/official rights, accepted target/freeze, actual devices/other network and owner account/declarations; private draft not approved for submission."
+        "Private90.68sec subtitled candidate and owner-only delivery passed independent review; original221.72sec technical record and4page draft retained. Formal materials still require applicable public/official rights, approved target/freeze, actual devices/other network and owner account/declarations."
       ],
       "subtasks": [
         {
@@ -611,6 +612,13 @@
           "acceptance_scope": "Explicit private input/precise5CDP overlay, actualHTTP/Quaternion/Worker red-green, pending candidates and public catalogs preserved, four-page54.84sec trial; full material remains separate",
           "evidence": "evidence/PRIVATE_REAL_MATERIALS_20261105.md",
           "review_evidence": "evidence/REVIEW_PRIVATE_REAL_MATERIALS_20261105.md"
+        },
+        {
+          "id": "T10-private-demo-v2",
+          "status": "DONE",
+          "review": "PASS_INDEPENDENT_FULL_TIMELINE_DENSE_ACTIONS_FULL_FRAME_BINDING_EXPORT_AND_PRIVATE_DELIVERY",
+          "acceptance_scope": "Private subtitled candidate and owner-only delivery, not public/official submission or signed-inSpace playback",
+          "evidence": "evidence/CODE_SYNC_20261107.md"
         }
       ]
     },
@@ -732,7 +740,7 @@
     "current_scope": "evidence/FEATURE_CONTINUATION_20261104.md"
   },
   "previous_continuation_base_commit": "57faf384d64e9770407b28086fdfeb5b193a6d6f",
-  "current_source_sync": "REMOTE500_AUTHORIZED_PUSH_CONFIRMED; LOCAL_C1_PRIVATE_TOOL_AND_FINAL_EVIDENCE_NOT_PUSHED",
+  "current_source_sync": "USER_AUTHORIZED_ALL_REVIEWED_SAFE_SOURCE_FAST_FORWARD_TO_EXISTING_DEVELOPMENT_BRANCH",
   "previous_source_sync": "LOCAL_ONLY_NOT_PUSHED",
   "latest_verified_remote_ci": {
     "source_commit": "5001222413937586604e8d944ba83787c7cb06fa",
@@ -1117,6 +1125,44 @@
     "private_submission_preparation": "evidence/private-materials/submission-preparation-summary.json",
     "new_remote_write": "NOT_RUN",
     "media_upload": "NOT_RUN",
-    "public_and_official_gates": "REMAIN_BLOCKED"
+    "public_and_official_gates": "REMAIN_BLOCKED",
+    "current_usage": "HISTORICAL_TECHNICAL_RECORD_NOT_CURRENT_JUDGE_FACING_VIDEO"
+  },
+  "historical_source_sync_before_20261107": "REMOTE500_AUTHORIZED_PUSH_CONFIRMED; LOCAL_C1_PRIVATE_TOOL_AND_FINAL_EVIDENCE_NOT_PUSHED",
+  "code_sync_20261107": {
+    "status": "AUTHORIZED_SAFE_SOURCE_SYNC",
+    "target_branch": "codex/v6.1-browser-3d",
+    "pre_push_remote_head": "5001222413937586604e8d944ba83787c7cb06fa",
+    "pre_handoff_local_head": "54dbe95529e13c96762f15c08979c1ab98748309",
+    "included_local_commits": [
+      "c1d794b6ba548b450cce7e1a4dffe107500c591d",
+      "54dbe95529e13c96762f15c08979c1ab98748309"
+    ],
+    "all_related_local_heads_included": true,
+    "uncommitted_product_source": false,
+    "post54_private_oneoff_scripts_preserved_and_excluded": 4,
+    "private_model_media_credentials_uploaded_to_git": false,
+    "force_push": false,
+    "master_changes": false,
+    "evidence": "evidence/CODE_SYNC_20261107.md",
+    "ci_result_at_record_creation": "NOT_YET_RUN_FOR_THIS_PUSH; inspect Actions for the final pushed SHA"
+  },
+  "private_demo_candidate_v2": {
+    "status": "PASS_INDEPENDENT_PRIVATE_CANDIDATE_AND_OWNER_ONLY_DELIVERY",
+    "capture_head": "54dbe95529e13c96762f15c08979c1ab98748309",
+    "product_app_core_base": "5001222413937586604e8d944ba83787c7cb06fa",
+    "video_seconds": 90.68,
+    "frames": 2267,
+    "resolution": "1920x1080",
+    "fps": 25,
+    "audio": "NONE_EXPLANATORY_SUBTITLES",
+    "first_readable_operation_and_result_approx_seconds": 9,
+    "full_frame_source_binding": "PASS_INDEPENDENT",
+    "native_export_recomputation": "PASS_INDEPENDENT",
+    "owner_only_delivery": "PASS_INDEPENDENT",
+    "space_player_ui": "NOT_RUN_SIGNED_IN_UI",
+    "media_in_git": false,
+    "public_and_official_gates": "REMAIN_BLOCKED",
+    "evidence": "evidence/CODE_SYNC_20261107.md"
   }
 }
