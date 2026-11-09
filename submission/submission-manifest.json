@@ -2,16 +2,134 @@
   "manifest_version": "2.0",
   "status": "DRAFT",
   "channel": "public",
-  "source_commit": "",
-  "owner_review": null,
-  "product_acceptance": null,
-  "report": null,
-  "video": null,
-  "scene": null,
-  "assets": [],
-  "feature_asset_map": [],
+  "source_commit": "3b64dd41578176456a2f62337a66dd19c823dd31",
+  "owner_review": {
+    "path": "submission/evidence/2026-11-09/owner-review-pending.json",
+    "bytes": 815,
+    "sha256": "251ea9c3da3ef60d1d7b32720e7dee55a52fe2929c77b655f852390225c5a22e"
+  },
+  "product_acceptance": {
+    "path": "submission/evidence/2026-11-09/product-acceptance.json",
+    "bytes": 1211,
+    "sha256": "2ba2d69dc96fb534f56e7532f3219d836da43f8e7b05df95e2deb504757a536a"
+  },
+  "report": {
+    "path": "submission/materials/2026-11-09/HomeSafe-AI_project-report_candidate_R2_20261109.pdf",
+    "bytes": 1979561,
+    "sha256": "86a7f745de43d38015f99c4563d0591f2c80d15b6229a1362bc27188d7f99894",
+    "candidate": "R2",
+    "capture_commit": "72964d3124b56d9b56c4ed923b9dbd254194215d",
+    "source_commit": "3b64dd41578176456a2f62337a66dd19c823dd31",
+    "pages": 8,
+    "scope": "Public review candidate, not formal submission; retains R1 image captures with version attribution",
+    "git_blob_sha": "ddeac8a78673b0548fb0f1974fa192e80f6abfa3"
+  },
+  "video": {
+    "path": "submission/materials/2026-11-09/HomeSafe-AI_demo_candidate_V4_20261109.mp4",
+    "bytes": 4005367,
+    "sha256": "ef7c31943234d2eee42951cdd177b078a60eb93aa8c0bd417e2cc6d9d8cffbde",
+    "candidate": "V4",
+    "capture_commit": "5826dab4bf8385412756e8de1f1d2491afc199d6",
+    "seconds": 90.92,
+    "frames": 2273,
+    "fps": 25,
+    "width": 1920,
+    "height": 1080,
+    "audio_streams": 0,
+    "scope": "V3 retained actual runtime; only new material is an explicitly labelled two-second freeze",
+    "historical_source_segment_seconds": [
+      10.96,
+      25.96
+    ],
+    "git_blob_sha": "202e85f64b9516c96c59ebf5d46ed3dd96fb7e02"
+  },
+  "scene": {
+    "path": "submission/evidence/2026-11-09/scene-cabinet-final.json",
+    "bytes": 27104,
+    "sha256": "01cefb6d65e3c8fc6935aac897f8c2aebd327aa35255473d8729ceaf60a6ddb1"
+  },
+  "initial_scene": {
+    "path": "submission/evidence/2026-11-09/scene-initial.json",
+    "bytes": 27072,
+    "sha256": "49b468f371e8af0a15b0afdacfe8d30a9b9e5300d17746f0e32f230d1e4ea555"
+  },
+  "assets": [
+    {
+      "path": "review-assets/2026-11-09/chair_lux3d_g1_30471.glb",
+      "bytes": 10352404,
+      "sha256": "e2606d75f4ef91a7395b9447ca5d65d972fd38595bcf53d6c6ef11ee9462e71a",
+      "asset_id": "private-lux3d_web-chair",
+      "source_kind": "lux3d_web",
+      "source_role": "retained_source_original_not_the_runtime_derivative",
+      "generation_evidence": {
+        "path": "submission/evidence/2026-11-09/retained-generation-summary.json",
+        "bytes": 2920,
+        "sha256": "8bee3faa01c1a0d79cec4643e15e8c83d075f1feba8098dfa3d3ca9fff59495f"
+      },
+      "rights_scope": "UNCONFIRMED",
+      "runtime_derivative": {
+        "sha256": "296935f947dabf72026764d71d1df9f85d353d2062c7745b187ad21b417a07fc",
+        "repair_script": "scripts/repair_private_glb_normals.py",
+        "calibration_config": "review-assets/2026-11-09/local-review.json",
+        "raw_source_sha256": "e2606d75f4ef91a7395b9447ca5d65d972fd38595bcf53d6c6ef11ee9462e71a",
+        "not_separately_published": true
+      },
+      "git_blob_sha": "eeb24bf0287f7f5232227ec37141fc63f9ee5b21"
+    },
+    {
+      "path": "review-assets/2026-11-09/cabinet_lux3d_g1_30475.glb",
+      "bytes": 8689480,
+      "sha256": "a8398b16be4d4d2f0c7c703575d0679ce16cc3aeacc276af48c9d26379ad940b",
+      "asset_id": "private-lux3d_web-cabinet",
+      "source_kind": "lux3d_web",
+      "source_role": "retained_source_original_not_the_runtime_derivative",
+      "generation_evidence": {
+        "path": "submission/evidence/2026-11-09/retained-generation-summary.json",
+        "bytes": 2920,
+        "sha256": "8bee3faa01c1a0d79cec4643e15e8c83d075f1feba8098dfa3d3ca9fff59495f"
+      },
+      "rights_scope": "UNCONFIRMED",
+      "runtime_derivative": {
+        "sha256": "92944741a7e9f2491f9220c9dff3f95d66190db80a2488a5d029fbe1b3de3350",
+        "repair_script": "scripts/repair_private_glb_normals.py",
+        "calibration_config": "review-assets/2026-11-09/local-review.json",
+        "raw_source_sha256": "a8398b16be4d4d2f0c7c703575d0679ce16cc3aeacc276af48c9d26379ad940b",
+        "not_separately_published": true
+      },
+      "git_blob_sha": "08930643090f71fe9ae448ebeafba2119d07fb55"
+    }
+  ],
+  "feature_asset_map": [
+    {
+      "feature_id": "dual_role_chair_tradeoff",
+      "asset_id": "private-lux3d_web-chair",
+      "scene_object_id": "chair",
+      "video_segment": "V4 0–10.96s and 25.96–48s, original capture retained",
+      "source_role": "Original archive validates provenance bytes; the explicitly hashed repaired derivative is rendered by local review",
+      "source_sha256": "e2606d75f4ef91a7395b9447ca5d65d972fd38595bcf53d6c6ef11ee9462e71a",
+      "runtime_sha256": "296935f947dabf72026764d71d1df9f85d353d2062c7745b187ad21b417a07fc"
+    },
+    {
+      "feature_id": "cabinet_challenge_and_rebound",
+      "asset_id": "private-lux3d_web-cabinet",
+      "scene_object_id": "cabinet",
+      "video_segment": "V4 48–70s; labelled restored-pose hold63.16–65.16s",
+      "source_role": "Original archive validates provenance bytes; the explicitly hashed repaired derivative is rendered by local review",
+      "source_sha256": "a8398b16be4d4d2f0c7c703575d0679ce16cc3aeacc276af48c9d26379ad940b",
+      "runtime_sha256": "92944741a7e9f2491f9220c9dff3f95d66190db80a2488a5d029fbe1b3de3350"
+    }
+  ],
   "official_receipt": null,
-  "release_profile": "interactive_browser_demo_with_video",
+  "release_profile": "project_report_and_video",
   "primary_demo_url": null,
-  "deployment_receipt": null
+  "deployment_receipt": null,
+  "material_binding": {
+    "path": "submission/evidence/2026-11-09/material-binding.json",
+    "bytes": 722,
+    "sha256": "eb7a577f9504a366da58ec761d39e3593ea6f9d2350b3535224e5e6757fe7762"
+  },
+  "rights_state": "Account/order-specific rights and owner declarations not confirmed; user public sharing approval is separate",
+  "runtime_reproduction": "docs/LOCAL_MODEL_REVIEW_20261109.md",
+  "normal_build_asset_catalog": "assets/asset-manifest.json remains empty; ordinary build is procedural placeholders",
+  "review_scope": "Local desktop genuine two-model case and scoped version equality; no public deployment or external device/network claim"
 }

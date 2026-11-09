@@ -1,0 +1,278 @@
+{
+  "status": "PASS_SCOPED_GIT_CONTENT_COMPARISON",
+  "source_commit": "3b64dd41578176456a2f62337a66dd19c823dd31",
+  "comparisons": [
+    {
+      "scope": "video_python_runtime",
+      "from_commit": "5826dab4bf8385412756e8de1f1d2491afc199d6",
+      "to_commit": "3b64dd41578176456a2f62337a66dd19c823dd31",
+      "paths": [
+        "reference/homesafe_core/__init__.py",
+        "reference/homesafe_core/models.py",
+        "reference/homesafe_core/geometry.py",
+        "reference/homesafe_core/validation.py",
+        "reference/homesafe_core/rule_support.py",
+        "reference/homesafe_core/policy.py",
+        "reference/homesafe_core/rules.py",
+        "reference/homesafe_core/engine.py",
+        "reference/homesafe_core/challenge.py",
+        "reference/homesafe_core/observations.py",
+        "reference/homesafe_core/browser_bridge.py"
+      ],
+      "result": "passed",
+      "comparison": "IDENTICAL_PATH_LIST_AND_SHA256_IN_THIS_SCOPE",
+      "file_count": 11,
+      "from_directory_sha256": "da4f39e17bf9fcbdb049f54fd9bb462302a92fb592e0af9fe7c9d0274963ed34",
+      "to_directory_sha256": "da4f39e17bf9fcbdb049f54fd9bb462302a92fb592e0af9fe7c9d0274963ed34",
+      "files": [
+        {
+          "path": "reference/homesafe_core/__init__.py",
+          "sha256": "c5e8710c299d2e26d971f48d464da6e63f3a58ddae8b7376c60a60e33ff09349"
+        },
+        {
+          "path": "reference/homesafe_core/browser_bridge.py",
+          "sha256": "1e722dc78192916c180644e78c7d295704d161148bf2346a2fb10fd75993a2ab"
+        },
+        {
+          "path": "reference/homesafe_core/challenge.py",
+          "sha256": "bcb4d3dd33cac7f88c2ba51b51add6b981823c48a125fb069b004f7b4d949f9c"
+        },
+        {
+          "path": "reference/homesafe_core/engine.py",
+          "sha256": "9e185d4b23c77ce7ba5896fdc7380d67f51885e0515e73b7fac68165f503c2b0"
+        },
+        {
+          "path": "reference/homesafe_core/geometry.py",
+          "sha256": "2640c467c7ccea074713d3a7a141836aa8e612e3c5387ba464e73cb9dcadbecc"
+        },
+        {
+          "path": "reference/homesafe_core/models.py",
+          "sha256": "0194bd5ec04ecc80c65aed60214244f73b9002500d0de993fe769edf8cecd541"
+        },
+        {
+          "path": "reference/homesafe_core/observations.py",
+          "sha256": "8394329f47a477cf37fc4d6a26bfc9e14574f482fe12b6243c6160555659b5c8"
+        },
+        {
+          "path": "reference/homesafe_core/policy.py",
+          "sha256": "5eae12611dcc118dc44e0654c403a7c38077a3b9b986aeeb53316e15dc8b5d67"
+        },
+        {
+          "path": "reference/homesafe_core/rule_support.py",
+          "sha256": "e7a0aea5e8f1381ec7e55cbef05544a7d5eede41811c31d4081bfc50a8db7d80"
+        },
+        {
+          "path": "reference/homesafe_core/rules.py",
+          "sha256": "8e7b7935153309b01f8befb9cd40a4461846f653e8dba10bcfdb22feb36dfd3f"
+        },
+        {
+          "path": "reference/homesafe_core/validation.py",
+          "sha256": "1480bfa9b32c45b6ae088dcf4913adef92d775de4e453d5bf7ddf9e73c0e531d"
+        }
+      ]
+    },
+    {
+      "scope": "report_runtime_frontend",
+      "from_commit": "72964d3124b56d9b56c4ed923b9dbd254194215d",
+      "to_commit": "3b64dd41578176456a2f62337a66dd19c823dd31",
+      "paths": [
+        "apps/web/src",
+        "apps/web/index.html",
+        "apps/web/package.json",
+        "apps/web/package-lock.json",
+        "apps/web/vite.config.ts",
+        "reference/homesafe_core/__init__.py",
+        "reference/homesafe_core/models.py",
+        "reference/homesafe_core/geometry.py",
+        "reference/homesafe_core/validation.py",
+        "reference/homesafe_core/rule_support.py",
+        "reference/homesafe_core/policy.py",
+        "reference/homesafe_core/rules.py",
+        "reference/homesafe_core/engine.py",
+        "reference/homesafe_core/challenge.py",
+        "reference/homesafe_core/observations.py",
+        "reference/homesafe_core/browser_bridge.py"
+      ],
+      "result": "passed",
+      "comparison": "IDENTICAL_PATH_LIST_AND_SHA256_IN_THIS_SCOPE",
+      "file_count": 35,
+      "from_directory_sha256": "2b3ad48f2a4748091e0fa7fe95c21276f3bd8ebf15042347d211846a9a88c3dc",
+      "to_directory_sha256": "2b3ad48f2a4748091e0fa7fe95c21276f3bd8ebf15042347d211846a9a88c3dc",
+      "files": [
+        {
+          "path": "apps/web/index.html",
+          "sha256": "92090b542a0ea413e2f3bb7a7b92c953b7f2fea7fa69b5eb49946c2306016d3a"
+        },
+        {
+          "path": "apps/web/package-lock.json",
+          "sha256": "5916b596901449dc42736a8e50bb8ee647ae1b90c06f63e818c6a654401da84d"
+        },
+        {
+          "path": "apps/web/package.json",
+          "sha256": "3a77cb70c9c630e3a2bf67edf451230558269d428cd6f2c3cede65e74af9a934"
+        },
+        {
+          "path": "apps/web/src/App.vue",
+          "sha256": "41308e2ce938e1302a5fc9f3558133f01c75be8d21923e9b957e3e5419148f13"
+        },
+        {
+          "path": "apps/web/src/ObservationPanel.vue",
+          "sha256": "b7aadf595239800b970a416659d9708187c493a271b75ba7e5389be0a6fe9c18"
+        },
+        {
+          "path": "apps/web/src/domain/ChallengeController.ts",
+          "sha256": "191f5bb5e962dbf46d18232e43e7732687bbb3f739dc2d3b9aa90034cedd7dc9"
+        },
+        {
+          "path": "apps/web/src/domain/DemoContent.ts",
+          "sha256": "d37670ba48c9f9b3ac994a97ba1adc0e5a14eb0c84c92ed43dec97458b758835"
+        },
+        {
+          "path": "apps/web/src/domain/EvaluationController.ts",
+          "sha256": "f62487d85097996027ef3714c5ad626ca39c8bdc8ccf1e1817607a06a3b6768d"
+        },
+        {
+          "path": "apps/web/src/domain/FindingsPresenter.ts",
+          "sha256": "0df87efed4d27edd8412c0faff7ec668cdeb86c535873d3cccbc26ede1fd0ae5"
+        },
+        {
+          "path": "apps/web/src/domain/ObservationController.ts",
+          "sha256": "ac8a7ac83cca96d49ec8100356380794e8dc3d385f21a9dcaa191233927ef0f6"
+        },
+        {
+          "path": "apps/web/src/domain/ReportBuilder.ts",
+          "sha256": "eac1e6d9866234120378c09e8a052bf2b8ed4e210960b080538321662614110a"
+        },
+        {
+          "path": "apps/web/src/domain/SceneSnapshotBuilder.ts",
+          "sha256": "5352257fe433f5878b721f3d57a184cd2363c927faa789b23f83cec5aba41d5c"
+        },
+        {
+          "path": "apps/web/src/domain/WorkspaceController.ts",
+          "sha256": "758e0b69f463c4067281c78f53a6d73fcada53e831c5120e8895df287c57cd8d"
+        },
+        {
+          "path": "apps/web/src/domain/layout-result.ts",
+          "sha256": "e825ff574211ae896ed56d35760b12b487d6fff0b04d1d7f6d8e1732447fd248"
+        },
+        {
+          "path": "apps/web/src/domain/resource-loading.ts",
+          "sha256": "69f4c8556bb34cb097ca1333d73be6251105b58f2931122403f9348d4edc8fad"
+        },
+        {
+          "path": "apps/web/src/main.ts",
+          "sha256": "41a79ccb7d440dcb55dd3a28c6a62056c59b4e877d9fcbe17c9cd5d7fbbe2c14"
+        },
+        {
+          "path": "apps/web/src/scene/AssetLoader.ts",
+          "sha256": "1e0846d38a88b232f2d4fab0ad60b3c6e4704fc119a332184c6089d157150bd9"
+        },
+        {
+          "path": "apps/web/src/scene/LocalAssetReview.ts",
+          "sha256": "e24a8b6e04ab0d6d65e3a4a24edad2ce886d9dd2ac17c4c8745464e7cec4c851"
+        },
+        {
+          "path": "apps/web/src/scene/SceneRuntime.ts",
+          "sha256": "4f75b807e9137b9d9e4fb9386e8c21e6b209d79a802a73c98306bd97c368e888"
+        },
+        {
+          "path": "apps/web/src/scene/TransformController.ts",
+          "sha256": "90710132b478f65bea24e465c826a3419b6d28561ec2fb6307766f3e9d36c9ba"
+        },
+        {
+          "path": "apps/web/src/scene/roomGeometry.ts",
+          "sha256": "697ac9f297c790f0c1ba1eee78c39f797d7b668202d65d72adb055f9dc6ba9c7"
+        },
+        {
+          "path": "apps/web/src/style.css",
+          "sha256": "31ebc14198606f215e14ad1fcab29d4202d5dab8812faee5ae49ba6e90402fb3"
+        },
+        {
+          "path": "apps/web/src/useLivingRoom.ts",
+          "sha256": "1f57299399876602d00aa7f799b8a4a787b9842a2ac2538d325a4e2badca2db7"
+        },
+        {
+          "path": "apps/web/vite.config.ts",
+          "sha256": "88af0479a2cd2dafeeef848932644f3200d115de75e7b0bb0db9bcadce8a057f"
+        },
+        {
+          "path": "reference/homesafe_core/__init__.py",
+          "sha256": "c5e8710c299d2e26d971f48d464da6e63f3a58ddae8b7376c60a60e33ff09349"
+        },
+        {
+          "path": "reference/homesafe_core/browser_bridge.py",
+          "sha256": "1e722dc78192916c180644e78c7d295704d161148bf2346a2fb10fd75993a2ab"
+        },
+        {
+          "path": "reference/homesafe_core/challenge.py",
+          "sha256": "bcb4d3dd33cac7f88c2ba51b51add6b981823c48a125fb069b004f7b4d949f9c"
+        },
+        {
+          "path": "reference/homesafe_core/engine.py",
+          "sha256": "9e185d4b23c77ce7ba5896fdc7380d67f51885e0515e73b7fac68165f503c2b0"
+        },
+        {
+          "path": "reference/homesafe_core/geometry.py",
+          "sha256": "2640c467c7ccea074713d3a7a141836aa8e612e3c5387ba464e73cb9dcadbecc"
+        },
+        {
+          "path": "reference/homesafe_core/models.py",
+          "sha256": "0194bd5ec04ecc80c65aed60214244f73b9002500d0de993fe769edf8cecd541"
+        },
+        {
+          "path": "reference/homesafe_core/observations.py",
+          "sha256": "8394329f47a477cf37fc4d6a26bfc9e14574f482fe12b6243c6160555659b5c8"
+        },
+        {
+          "path": "reference/homesafe_core/policy.py",
+          "sha256": "5eae12611dcc118dc44e0654c403a7c38077a3b9b986aeeb53316e15dc8b5d67"
+        },
+        {
+          "path": "reference/homesafe_core/rule_support.py",
+          "sha256": "e7a0aea5e8f1381ec7e55cbef05544a7d5eede41811c31d4081bfc50a8db7d80"
+        },
+        {
+          "path": "reference/homesafe_core/rules.py",
+          "sha256": "8e7b7935153309b01f8befb9cd40a4461846f653e8dba10bcfdb22feb36dfd3f"
+        },
+        {
+          "path": "reference/homesafe_core/validation.py",
+          "sha256": "1480bfa9b32c45b6ae088dcf4913adef92d775de4e453d5bf7ddf9e73c0e531d"
+        }
+      ]
+    },
+    {
+      "scope": "report_scene_calibration",
+      "from_commit": "72964d3124b56d9b56c4ed923b9dbd254194215d",
+      "to_commit": "3b64dd41578176456a2f62337a66dd19c823dd31",
+      "paths": [
+        "review-assets/2026-11-09/local-review.json",
+        "examples/scene-before.json"
+      ],
+      "result": "passed",
+      "comparison": "IDENTICAL_PATH_LIST_AND_SHA256_IN_THIS_SCOPE",
+      "file_count": 2,
+      "from_directory_sha256": "464ec1b25e57f9b36733ac698895ef0c170e3a6de3170f8a55f700eed8646be1",
+      "to_directory_sha256": "464ec1b25e57f9b36733ac698895ef0c170e3a6de3170f8a55f700eed8646be1",
+      "files": [
+        {
+          "path": "examples/scene-before.json",
+          "sha256": "2d25206150c0adf464b44db959c945c81d9a95b031dc23de1fd5f60982d297b0"
+        },
+        {
+          "path": "review-assets/2026-11-09/local-review.json",
+          "sha256": "9567538d2564a7781837c0a701bbce53f9f616db13da7b353eacaeb1f3902459"
+        }
+      ]
+    }
+  ],
+  "not_claimed": "Whole commits are not identical. release tooling/docs differ; video frontend also differs.",
+  "video_frontend_diff": [
+    "M\tapps/web/src/App.vue",
+    "M\tapps/web/src/domain/EvaluationController.ts",
+    "M\tapps/web/src/scene/AssetLoader.ts",
+    "A\tapps/web/src/scene/LocalAssetReview.ts",
+    "M\tapps/web/src/scene/SceneRuntime.ts",
+    "M\tapps/web/src/useLivingRoom.ts"
+  ]
+}

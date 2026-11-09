@@ -1,0 +1,185 @@
+{
+  "result": "passed",
+  "source_commit": "3b64dd41578176456a2f62337a66dd19c823dd31",
+  "semantic_digest_encoding": "JSON sorted keys, ensure_ascii=false, UTF-8, compact separators; not original downloaded file bytes",
+  "browser": "Chrome/154.0.8037.57",
+  "scope": "Desktop isolated loopback real two-model risk case; mobile button/restart only, 325px room may clip. Not public hosting, other device/network, or performance measurement.",
+  "phases": [
+    {
+      "name": "01-initial",
+      "input_hash": "6e7b888295fee7342f52cdf98b4c13e3a4028756ac19f9fa4f1d3ba9270cd63b",
+      "scene_revision": 1,
+      "ruleset_version": "demo-rules-3.0",
+      "canonical_report_sha256": "b9cbe9abc6fefca0e0d67fe06fe830640452fd8e86e02c8cad3aac6a1e240a4e",
+      "canonical_scene_sha256": "8cd22ba419f04f7b67600e7c59da34dc6746e8f728a5458b5728e3e52d31154e",
+      "finding_count": 11,
+      "python_replay": "MATCHES_CURRENT_CORE",
+      "child_window": {
+        "chair": "triggered",
+        "cabinet": "not_triggered"
+      },
+      "elder_route": {
+        "chair": "not_triggered",
+        "cabinet": "not_triggered"
+      }
+    },
+    {
+      "name": "02-tradeoff",
+      "input_hash": "2ca29df49f92e62f3e62ee04b152248c5a2b467dc405f49bf129a50a828cadc7",
+      "scene_revision": 2,
+      "ruleset_version": "demo-rules-3.0",
+      "canonical_report_sha256": "2ed97d220ff0e62bb657adaa32c465b4116feba99e37e4c4ef235cc24ee7774d",
+      "canonical_scene_sha256": "d1377c452b854ab47623bfbbd6d3ae6c78aa2e98acbe848dedbf89074c753d62",
+      "finding_count": 11,
+      "python_replay": "MATCHES_CURRENT_CORE",
+      "child_window": {
+        "chair": "not_triggered",
+        "cabinet": "not_triggered"
+      },
+      "elder_route": {
+        "chair": "triggered",
+        "cabinet": "not_triggered"
+      }
+    },
+    {
+      "name": "03-undo",
+      "input_hash": "6e7b888295fee7342f52cdf98b4c13e3a4028756ac19f9fa4f1d3ba9270cd63b",
+      "scene_revision": 3,
+      "ruleset_version": "demo-rules-3.0",
+      "canonical_report_sha256": "c7f86460e9b971c8cf0fd168cc30a17c0a55e7e9234ce8e3081f29e59510456c",
+      "canonical_scene_sha256": "0ed774b2b60b808d256c7dd8715f6930095a690857247ff4d02428883c22bd88",
+      "finding_count": 11,
+      "python_replay": "MATCHES_CURRENT_CORE",
+      "child_window": {
+        "chair": "triggered",
+        "cabinet": "not_triggered"
+      },
+      "elder_route": {
+        "chair": "not_triggered",
+        "cabinet": "not_triggered"
+      }
+    },
+    {
+      "name": "04-same-mode-restart",
+      "input_hash": "6e7b888295fee7342f52cdf98b4c13e3a4028756ac19f9fa4f1d3ba9270cd63b",
+      "scene_revision": 1,
+      "ruleset_version": "demo-rules-3.0",
+      "canonical_report_sha256": "b9cbe9abc6fefca0e0d67fe06fe830640452fd8e86e02c8cad3aac6a1e240a4e",
+      "canonical_scene_sha256": "8cd22ba419f04f7b67600e7c59da34dc6746e8f728a5458b5728e3e52d31154e",
+      "finding_count": 11,
+      "python_replay": "MATCHES_CURRENT_CORE",
+      "child_window": {
+        "chair": "triggered",
+        "cabinet": "not_triggered"
+      },
+      "elder_route": {
+        "chair": "not_triggered",
+        "cabinet": "not_triggered"
+      }
+    },
+    {
+      "name": "05-window-goal",
+      "input_hash": "912c192cad9f1eb9dcdb6bd3b9ee5a22f3e156eae4f2ac941fae4b4e7eb56b83",
+      "scene_revision": 2,
+      "ruleset_version": "demo-rules-3.0",
+      "canonical_report_sha256": "0e6539c4b8f50a1f4b3b40a355aa5405575750c6b066662d752563b2a770009b",
+      "canonical_scene_sha256": "c54c529c9f699290fb4b27fb208656f1722c8b860359db60c7f435a3c786ffe7",
+      "finding_count": 11,
+      "python_replay": "MATCHES_CURRENT_CORE",
+      "child_window": {
+        "chair": "not_triggered",
+        "cabinet": "not_triggered"
+      },
+      "elder_route": {
+        "chair": "not_triggered",
+        "cabinet": "not_triggered"
+      }
+    },
+    {
+      "name": "06-cabinet-initial",
+      "input_hash": "28c3a4ed3f4d9d617ea934297a3a4dc860326e4390d669cf11192b1abac2c59e",
+      "scene_revision": 1,
+      "ruleset_version": "demo-rules-3.0",
+      "canonical_report_sha256": "8dfc03660ec945a48173faf8e289abeaa04f0e8e9514e9becc48c43fd27db1c8",
+      "canonical_scene_sha256": "7b226580de6d68241c2017df655a3e0c2c1ded1702100dbda4aad9fa426c4985",
+      "finding_count": 11,
+      "python_replay": "MATCHES_CURRENT_CORE",
+      "child_window": {
+        "chair": "not_triggered",
+        "cabinet": "triggered"
+      },
+      "elder_route": {
+        "chair": "not_triggered",
+        "cabinet": "not_triggered"
+      }
+    },
+    {
+      "name": "07-cabinet-goal",
+      "input_hash": "2dbebe5644748e4973e2f5ccf7fef102b0642981d1c8eec178affe0ab1105a08",
+      "scene_revision": 3,
+      "ruleset_version": "demo-rules-3.0",
+      "canonical_report_sha256": "d175e05b39ac1c65874ffef81a674f23d7335e0cfdf6f281fe01f28dca155f30",
+      "canonical_scene_sha256": "828f6551f416a0e3b8303acf48a4b07088a6a89234eea2f1fd60aef42f75d92a",
+      "finding_count": 11,
+      "python_replay": "MATCHES_CURRENT_CORE",
+      "child_window": {
+        "chair": "not_triggered",
+        "cabinet": "not_triggered"
+      },
+      "elder_route": {
+        "chair": "not_triggered",
+        "cabinet": "not_triggered"
+      }
+    },
+    {
+      "name": "08-invalid-rebound",
+      "input_hash": "2dbebe5644748e4973e2f5ccf7fef102b0642981d1c8eec178affe0ab1105a08",
+      "scene_revision": 3,
+      "ruleset_version": "demo-rules-3.0",
+      "canonical_report_sha256": "3e367d95918149595f28d409dd4da3b25d427d67abbc30896c224173db6f86eb",
+      "canonical_scene_sha256": "828f6551f416a0e3b8303acf48a4b07088a6a89234eea2f1fd60aef42f75d92a",
+      "finding_count": 11,
+      "python_replay": "MATCHES_CURRENT_CORE",
+      "child_window": {
+        "chair": "not_triggered",
+        "cabinet": "not_triggered"
+      },
+      "elder_route": {
+        "chair": "not_triggered",
+        "cabinet": "not_triggered"
+      }
+    },
+    {
+      "name": "10-mobile-restart",
+      "input_hash": "6e7b888295fee7342f52cdf98b4c13e3a4028756ac19f9fa4f1d3ba9270cd63b",
+      "scene_revision": 1,
+      "ruleset_version": "demo-rules-3.0",
+      "canonical_report_sha256": "b9cbe9abc6fefca0e0d67fe06fe830640452fd8e86e02c8cad3aac6a1e240a4e",
+      "canonical_scene_sha256": "8cd22ba419f04f7b67600e7c59da34dc6746e8f728a5458b5728e3e52d31154e",
+      "finding_count": 11,
+      "python_replay": "MATCHES_CURRENT_CORE",
+      "child_window": {
+        "chair": "triggered",
+        "cabinet": "not_triggered"
+      },
+      "elder_route": {
+        "chair": "not_triggered",
+        "cabinet": "not_triggered"
+      }
+    }
+  ],
+  "checks": {
+    "canonical_snapshot_replay": "PASS_EVERY_PHASE",
+    "all_exported_findings_match_python": true,
+    "local_transport": "PASS",
+    "export_bytes_opened": true,
+    "same_mode_restart": true,
+    "mobile_restart": true,
+    "original_bytes_unchanged": true,
+    "public_distribution_approved": false,
+    "performance": "NOT_MEASURED_BY_THIS_WORKFLOW"
+  },
+  "errors": [],
+  "external_network_requests": [],
+  "raw_private_result_sha256": "8b3062b3d79b2aa62b6f27b0ab76495ef11f5988e715b76fb1e74e17288aa7fc"
+}

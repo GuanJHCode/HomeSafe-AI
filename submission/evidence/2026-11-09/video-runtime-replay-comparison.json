@@ -1,0 +1,90 @@
+{
+  "result": "passed",
+  "semantic_digest_encoding": "JSON sorted keys, ensure_ascii=false, UTF-8, compact separators; not original downloaded file bytes",
+  "video_capture_commit": "5826dab4bf8385412756e8de1f1d2491afc199d6",
+  "source_commit": "3b64dd41578176456a2f62337a66dd19c823dd31",
+  "retained_capture_record_sha256": "3a2f285e43391956a1b686aaa9081545eead7194f5baee278d305a44a4547ff9",
+  "comparisons": [
+    {
+      "recorded_phase": "01-initial",
+      "current_phase": "01-initial",
+      "recorded_input_hash": "6e7b888295fee7342f52cdf98b4c13e3a4028756ac19f9fa4f1d3ba9270cd63b",
+      "current_input_hash": "6e7b888295fee7342f52cdf98b4c13e3a4028756ac19f9fa4f1d3ba9270cd63b",
+      "revision": 1,
+      "recorded_canonical_report_sha256": "b9cbe9abc6fefca0e0d67fe06fe830640452fd8e86e02c8cad3aac6a1e240a4e",
+      "current_canonical_report_sha256": "b9cbe9abc6fefca0e0d67fe06fe830640452fd8e86e02c8cad3aac6a1e240a4e",
+      "scene_equal": true
+    },
+    {
+      "recorded_phase": "02-tradeoff",
+      "current_phase": "02-tradeoff",
+      "recorded_input_hash": "2ca29df49f92e62f3e62ee04b152248c5a2b467dc405f49bf129a50a828cadc7",
+      "current_input_hash": "2ca29df49f92e62f3e62ee04b152248c5a2b467dc405f49bf129a50a828cadc7",
+      "revision": 2,
+      "recorded_canonical_report_sha256": "2ed97d220ff0e62bb657adaa32c465b4116feba99e37e4c4ef235cc24ee7774d",
+      "current_canonical_report_sha256": "2ed97d220ff0e62bb657adaa32c465b4116feba99e37e4c4ef235cc24ee7774d",
+      "scene_equal": true
+    },
+    {
+      "recorded_phase": "03-undo",
+      "current_phase": "03-undo",
+      "recorded_input_hash": "6e7b888295fee7342f52cdf98b4c13e3a4028756ac19f9fa4f1d3ba9270cd63b",
+      "current_input_hash": "6e7b888295fee7342f52cdf98b4c13e3a4028756ac19f9fa4f1d3ba9270cd63b",
+      "revision": 3,
+      "recorded_canonical_report_sha256": "c7f86460e9b971c8cf0fd168cc30a17c0a55e7e9234ce8e3081f29e59510456c",
+      "current_canonical_report_sha256": "c7f86460e9b971c8cf0fd168cc30a17c0a55e7e9234ce8e3081f29e59510456c",
+      "scene_equal": true
+    },
+    {
+      "recorded_phase": "04-restart",
+      "current_phase": "04-same-mode-restart",
+      "recorded_input_hash": "6e7b888295fee7342f52cdf98b4c13e3a4028756ac19f9fa4f1d3ba9270cd63b",
+      "current_input_hash": "6e7b888295fee7342f52cdf98b4c13e3a4028756ac19f9fa4f1d3ba9270cd63b",
+      "revision": 1,
+      "recorded_canonical_report_sha256": "b9cbe9abc6fefca0e0d67fe06fe830640452fd8e86e02c8cad3aac6a1e240a4e",
+      "current_canonical_report_sha256": "b9cbe9abc6fefca0e0d67fe06fe830640452fd8e86e02c8cad3aac6a1e240a4e",
+      "scene_equal": true
+    },
+    {
+      "recorded_phase": "05-window-goal",
+      "current_phase": "05-window-goal",
+      "recorded_input_hash": "912c192cad9f1eb9dcdb6bd3b9ee5a22f3e156eae4f2ac941fae4b4e7eb56b83",
+      "current_input_hash": "912c192cad9f1eb9dcdb6bd3b9ee5a22f3e156eae4f2ac941fae4b4e7eb56b83",
+      "revision": 2,
+      "recorded_canonical_report_sha256": "0e6539c4b8f50a1f4b3b40a355aa5405575750c6b066662d752563b2a770009b",
+      "current_canonical_report_sha256": "0e6539c4b8f50a1f4b3b40a355aa5405575750c6b066662d752563b2a770009b",
+      "scene_equal": true
+    },
+    {
+      "recorded_phase": "06-cabinet-initial",
+      "current_phase": "06-cabinet-initial",
+      "recorded_input_hash": "28c3a4ed3f4d9d617ea934297a3a4dc860326e4390d669cf11192b1abac2c59e",
+      "current_input_hash": "28c3a4ed3f4d9d617ea934297a3a4dc860326e4390d669cf11192b1abac2c59e",
+      "revision": 1,
+      "recorded_canonical_report_sha256": "8dfc03660ec945a48173faf8e289abeaa04f0e8e9514e9becc48c43fd27db1c8",
+      "current_canonical_report_sha256": "8dfc03660ec945a48173faf8e289abeaa04f0e8e9514e9becc48c43fd27db1c8",
+      "scene_equal": true
+    },
+    {
+      "recorded_phase": "07-cabinet-goal",
+      "current_phase": "07-cabinet-goal",
+      "recorded_input_hash": "2dbebe5644748e4973e2f5ccf7fef102b0642981d1c8eec178affe0ab1105a08",
+      "current_input_hash": "2dbebe5644748e4973e2f5ccf7fef102b0642981d1c8eec178affe0ab1105a08",
+      "revision": 3,
+      "recorded_canonical_report_sha256": "d175e05b39ac1c65874ffef81a674f23d7335e0cfdf6f281fe01f28dca155f30",
+      "current_canonical_report_sha256": "d175e05b39ac1c65874ffef81a674f23d7335e0cfdf6f281fe01f28dca155f30",
+      "scene_equal": true
+    },
+    {
+      "recorded_phase": "08-rebound",
+      "current_phase": "08-invalid-rebound",
+      "recorded_input_hash": "2dbebe5644748e4973e2f5ccf7fef102b0642981d1c8eec178affe0ab1105a08",
+      "current_input_hash": "2dbebe5644748e4973e2f5ccf7fef102b0642981d1c8eec178affe0ab1105a08",
+      "revision": 3,
+      "recorded_canonical_report_sha256": "3e367d95918149595f28d409dd4da3b25d427d67abbc30896c224173db6f86eb",
+      "current_canonical_report_sha256": "3e367d95918149595f28d409dd4da3b25d427d67abbc30896c224173db6f86eb",
+      "scene_equal": true
+    }
+  ],
+  "meaning": "Eight real recorded V3 stages match this frozen source canonical scenes and complete exported reports; V4 retains those running frames and only adds an explicit freeze. Frontend text and review-mode transport differ across commits."
+}

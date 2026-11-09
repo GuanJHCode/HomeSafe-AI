@@ -1,0 +1,25 @@
+{
+  "candidate": "R2",
+  "bytes": 1979561,
+  "sha256": "86a7f745de43d38015f99c4563d0591f2c80d15b6229a1362bc27188d7f99894",
+  "git_blob_sha": "ddeac8a78673b0548fb0f1974fa192e80f6abfa3",
+  "pages": 8,
+  "base_r1_path": "review-assets/2026-11-09/project-report-R1/HomeSafe-AI_project-report_candidate_R1_20261109.pdf",
+  "base_r1_sha256": "ec32c8286aa1cff10e5835b1c760bfb8be3207c9548c1a06743708dcc086111b",
+  "source_commit": "3b64dd41578176456a2f62337a66dd19c823dd31",
+  "image_capture_commit": "72964d3124b56d9b56c4ed923b9dbd254194215d",
+  "changes": [
+    "Candidate/footer/capture attribution",
+    "Page4 explicit V4 two-second freeze and readable layout",
+    "Page6 image attribution as retained R1 actual GLB renders",
+    "Page8 current versions, corrected716CI facts, actual local tests and personal confirmation boundaries"
+  ],
+  "unchanged_html_image_references": 18,
+  "independently_unchanged_pdf_image_streams": 16,
+  "image_identity_method": "R1/R2 decoded per-page image payload and Image-stream multisets equal, not whole PDF byte equality",
+  "root_visual_qa": "All8 Poppler pages actually viewed at1500px, no overflow/overlap",
+  "independent_visual_qa": "All8 newly rendered pages actually viewed at1800px; no clipping/overlap",
+  "privacy": "No extra personal details/keys/Library IDs/private absolute paths;4 official URI annotations,no embedded attachments",
+  "official_submission": false,
+  "platform_license_verified": false
+}

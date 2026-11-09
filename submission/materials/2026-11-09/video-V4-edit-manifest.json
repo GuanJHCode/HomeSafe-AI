@@ -1,0 +1,67 @@
+{
+  "status": "PASS_DECODED_FRAME_TIMELINE",
+  "candidate": "V4",
+  "source_path": "review-assets/2026-11-09/HomeSafe-AI_V3_20261109.mp4",
+  "source_sha256": "184ec7f936eb08c306c4d4ba1c6ec40125600a77f2744a93447bf5dbdd8ccef2",
+  "source_capture_commit": "5826dab4bf8385412756e8de1f1d2491afc199d6",
+  "source_frames": 2223,
+  "source_seconds": 88.92,
+  "output_filename": "HomeSafe-AI_demo_candidate_V4_20261109.mp4",
+  "output_bytes": 4005367,
+  "output_sha256": "ef7c31943234d2eee42951cdd177b078a60eb93aa8c0bd417e2cc6d9d8cffbde",
+  "output_frames": 2273,
+  "output_seconds": 90.92,
+  "fps": 25,
+  "size": [
+    1920,
+    1080
+  ],
+  "audio_streams": 0,
+  "hold": {
+    "source_frame": 1578,
+    "source_seconds": 63.12,
+    "output_start_seconds": 63.16,
+    "output_end_seconds": 65.16,
+    "inserted_frames": 50,
+    "seconds": 2.0,
+    "clearly_labelled_freeze": true
+  },
+  "frame_map": [
+    {
+      "output": [
+        0,
+        1578
+      ],
+      "source": [
+        0,
+        1578
+      ]
+    },
+    {
+      "output": [
+        1579,
+        1628
+      ],
+      "source": [
+        1578,
+        1578
+      ],
+      "kind": "labelled_still"
+    },
+    {
+      "output": [
+        1629,
+        2272
+      ],
+      "source": [
+        1579,
+        2222
+      ]
+    }
+  ],
+  "font_file_sha256": "b76b0433203017ca80401b2ee0dd69350349871c4b19d504c34dbdd80541690a",
+  "source_bytes_unchanged": true,
+  "visual_review": "NOT_RUN_BY_ENCODER",
+  "continuous_browser_playback": "NOT_RUN_BY_ENCODER",
+  "meaning": "Presentation edit only; the hold is not two seconds of additional live operation"
+}

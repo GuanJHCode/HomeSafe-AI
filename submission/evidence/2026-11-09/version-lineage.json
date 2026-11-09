@@ -1,0 +1,28 @@
+{
+  "status": "VERIFIED_SCOPED_VERSION_COMPARISON",
+  "source_commit": "3b64dd41578176456a2f62337a66dd19c823dd31",
+  "video_capture_commit": "5826dab4bf8385412756e8de1f1d2491afc199d6",
+  "report_capture_commit": "72964d3124b56d9b56c4ed923b9dbd254194215d",
+  "scoped_comparisons": [
+    {
+      "scope": "Git content equality for listed report frontend/runtime/calibration scopes and video runtime",
+      "result": "passed",
+      "evidence": {
+        "path": "submission/evidence/2026-11-09/scoped-source-comparison.json",
+        "bytes": 11368,
+        "sha256": "e34f76c6a04160323867128c3998ea1bacda27760ee6ed609de98401157e90c4"
+      }
+    },
+    {
+      "scope": "Eight V3 canonical scenes and complete action reports equal current real-browser outputs",
+      "result": "passed",
+      "evidence": {
+        "path": "submission/evidence/2026-11-09/video-runtime-replay-comparison.json",
+        "bytes": 5090,
+        "sha256": "63fcfef270109bb6eadeb36ca1bea480caf8bf55157cf3d405f12cfac8cb8f13"
+      }
+    }
+  ],
+  "whole_commit_identity": false,
+  "report_image_note": "R2 retains the 18 authoring image payloads used for R1, with capture attribution; it is not a new screenshot capture of the whole app."
+}

@@ -1,0 +1,39 @@
+{
+  "source_commit": "3b64dd41578176456a2f62337a66dd19c823dd31",
+  "scope": "full_browser_product",
+  "result": "passed",
+  "browser_environment": "Chrome/154.0.8037.57; desktop 1480x1100 isolated loopback",
+  "real_lux3d_assets": [
+    "chair",
+    "cabinet"
+  ],
+  "tested_cases": [
+    "01-initial",
+    "02-tradeoff",
+    "03-undo",
+    "04-same-mode-restart",
+    "05-window-goal",
+    "06-cabinet-initial",
+    "07-cabinet-goal",
+    "08-invalid-rebound",
+    "10-mobile-restart",
+    "actual GLB byte binding",
+    "canonical native Python replay",
+    "JSON and scene snapshot exports",
+    "same bytes export preview",
+    "print list",
+    "role/camera preserve input",
+    "same-mode restart"
+  ],
+  "log": {
+    "path": "submission/evidence/2026-11-09/real-model-acceptance-log.json",
+    "bytes": 7086,
+    "sha256": "dbd1f80a37305eb59bb2308af69a96d8a1f30a35a0dfbfe7f9fc2daac1e65b2d"
+  },
+  "limitations": [
+    "Synthetic inputs and rule demonstrations, not household recognition or medical assessment",
+    "No public host or physical device/network acceptance",
+    "325px scene canvas can clip; mobile checks cover buttons and restart",
+    "Performance is NOT_MEASURED_BY_THIS_WORKFLOW"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "candidate": "V4",
+  "bytes": 4005367,
+  "sha256": "ef7c31943234d2eee42951cdd177b078a60eb93aa8c0bd417e2cc6d9d8cffbde",
+  "root_continuous_playback": {
+    "browser": "Chrome/154.0.8037.57",
+    "playback_rate": 1,
+    "ended": true,
+    "duration_seconds": 90.92,
+    "frame_callbacks": 2272,
+    "errors": 0,
+    "stalls": 0
+  },
+  "independent_continuous_playback": {
+    "playback_rate": 1,
+    "ended": true,
+    "duration_seconds": 90.92,
+    "total_frames": 2273,
+    "dropped_frames": 0,
+    "errors": 0,
+    "stalls": 0,
+    "seek": false
+  },
+  "independent_visual_scope": "91 frames at 1Hz across0–90sec,35 dense frames62.80–65.52sec,12 original-resolution key frames plus full normal playback; not manual inspection of every encoded frame",
+  "key_points": {
+    "63.08": "cabinet still outside room",
+    "63.12": "last legal pose restored",
+    "63.16–65.12": "explicit two-second still label, not live operation",
+    "65.20": "restored-position reason visible",
+    "tail": "actual exported bytes in independent text viewer, not import feature"
+  },
+  "root_all_original_mapped_frames_comparison": {
+    "status": "PASS_ALL_ORIGINAL_FRAME_ORDER_COMPARISON",
+    "original_frames_compared": 2223,
+    "mean_ssim": 0.9994881025641026,
+    "minimum_ssim": 0.997644,
+    "method": "Decode all source frames and mapped non-hold V4 frames; same frame index SSIM; lossy re-encoding, not byte/pixel identity",
+    "inserted_hold_frames": 50,
+    "continuous_playback": "PASS_REAL_BROWSER_NORMAL_SPEED_CONTINUOUS_PLAYBACK",
+    "source_v3_unchanged": true
+  },
+  "independent_all_2223_source_frames_ssim_480x270_mean": 0.999761,
+  "decode": "PASS_COMPLETE_FFMPEG_DECODE",
+  "remaining_presentation_limits": [
+    "Historical source card remains15sec static and dense; pauseable",
+    "Silent video, no voice; no official mandatory voice/duration rule found"
+  ],
+  "independent_review": "PASS_WITH_RECORDED_SCOPE_AND_LIMITS"
+}

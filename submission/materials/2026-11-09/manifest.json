@@ -1,0 +1,42 @@
+{
+  "candidate_state": "DRAFT_COMPLETE_MATERIALS_PENDING_PERSONAL_CONFIRMATION",
+  "source_commit": "3b64dd41578176456a2f62337a66dd19c823dd31",
+  "report": {
+    "path": "submission/materials/2026-11-09/HomeSafe-AI_project-report_candidate_R2_20261109.pdf",
+    "bytes": 1979561,
+    "sha256": "86a7f745de43d38015f99c4563d0591f2c80d15b6229a1362bc27188d7f99894",
+    "candidate": "R2",
+    "capture_commit": "72964d3124b56d9b56c4ed923b9dbd254194215d",
+    "source_commit": "3b64dd41578176456a2f62337a66dd19c823dd31",
+    "pages": 8,
+    "scope": "Public review candidate, not formal submission; retains R1 image captures with version attribution",
+    "git_blob_sha": "ddeac8a78673b0548fb0f1974fa192e80f6abfa3"
+  },
+  "video": {
+    "path": "submission/materials/2026-11-09/HomeSafe-AI_demo_candidate_V4_20261109.mp4",
+    "bytes": 4005367,
+    "sha256": "ef7c31943234d2eee42951cdd177b078a60eb93aa8c0bd417e2cc6d9d8cffbde",
+    "candidate": "V4",
+    "capture_commit": "5826dab4bf8385412756e8de1f1d2491afc199d6",
+    "seconds": 90.92,
+    "frames": 2273,
+    "fps": 25,
+    "width": 1920,
+    "height": 1080,
+    "audio_streams": 0,
+    "scope": "V3 retained actual runtime; only new material is an explicitly labelled two-second freeze",
+    "historical_source_segment_seconds": [
+      10.96,
+      25.96
+    ],
+    "git_blob_sha": "202e85f64b9516c96c59ebf5d46ed3dd96fb7e02"
+  },
+  "preserved_historical_paths": [
+    "review-assets/2026-11-09/HomeSafe-AI_V3_20261109.mp4",
+    "review-assets/2026-11-09/HomeSafe-AI_content-review_20261109.pdf",
+    "review-assets/2026-11-09/project-report-R1/HomeSafe-AI_project-report_candidate_R1_20261109.pdf"
+  ],
+  "formal_submission": false,
+  "platform_license_verified": false,
+  "new_raw_reference_images_or_source_json_or_models": false
+}

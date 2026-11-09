@@ -1,0 +1,13 @@
+{
+  "status": "VERIFIED_MEDIA_AND_RUNTIME_BINDINGS",
+  "source_commit": "3b64dd41578176456a2f62337a66dd19c823dd31",
+  "report_sha256": "86a7f745de43d38015f99c4563d0591f2c80d15b6229a1362bc27188d7f99894",
+  "video_sha256": "ef7c31943234d2eee42951cdd177b078a60eb93aa8c0bd417e2cc6d9d8cffbde",
+  "scene_sha256": "01cefb6d65e3c8fc6935aac897f8c2aebd327aa35255473d8729ceaf60a6ddb1",
+  "version_evidence": {
+    "path": "submission/evidence/2026-11-09/version-lineage.json",
+    "bytes": 1218,
+    "sha256": "73e868adf2c36d8037ced6e19019622522b0cd594925668ce3d14d2bc07ffe9d"
+  },
+  "meaning": "Hash-bound material identities plus scoped comparisons; not whole-commit equivalence, owner signature, license or official acceptance"
+}

@@ -1,0 +1,22 @@
+{
+  "status": "PENDING_PERSONAL_CONFIRMATION",
+  "source_commit": "3b64dd41578176456a2f62337a66dd19c823dd31",
+  "reviewed_by": null,
+  "reviewed_at": null,
+  "terms_reviewed": null,
+  "limits_confirmed": null,
+  "rule_content_reviewed": null,
+  "privacy_reviewed": null,
+  "rights_reviewed": null,
+  "agent_preparation_completed": [
+    "Public rules read",
+    "Report/video and safe evidence prepared",
+    "Independent privacy and technical review recorded separately"
+  ],
+  "owner_actions": [
+    "Confirm applicable account/order and material rights including AI/reference/model/derivative/media use for judging and public display",
+    "Confirm team, actual Lux3D use and declarations",
+    "Read current authenticated form limits and decide final notices acceptance"
+  ],
+  "not_an_owner_signature": true
+}

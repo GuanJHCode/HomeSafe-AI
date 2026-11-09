@@ -1,0 +1,67 @@
+{
+  "evidence_level": "Retained records and historical public media, not platform-signed attestation",
+  "source_kind": "lux3d_web",
+  "source_package_date_utc": "2026-11-04",
+  "reference_images": "Original AI single-object images, not photos or measurements; prompts used for reference-image creation, not Lux3D text input",
+  "platform_settings_from_retained_source_json": {
+    "mode": "image_to_3d",
+    "speed": "Turbo",
+    "model": "Lux3D-G1",
+    "target_faces": "100K",
+    "pbr": true,
+    "remove_background": false
+  },
+  "visible_historical_evidence": "V3/V4 10.96–25.96 seconds and R1/R2 page5: retained completed image-to-3D tasks and result thumbnails, not a fresh generation; screenshot does not show every setting.",
+  "preview_limit": "Platform main 3D preview was black at capture; no claim that it worked. Package hashes prove retained byte consistency, not platform signature or permission.",
+  "platform_visibility_at_source": "public; does not establish redistribution license",
+  "models": [
+    {
+      "object_id": "chair",
+      "task_id": 30471,
+      "platform_asset_id": 53424,
+      "original_path": "review-assets/2026-11-09/chair_lux3d_g1_30471.glb",
+      "original_bytes": 10352404,
+      "original_sha256": "e2606d75f4ef91a7395b9447ca5d65d972fd38595bcf53d6c6ef11ee9462e71a",
+      "derived_sha256": "296935f947dabf72026764d71d1df9f85d353d2062c7745b187ad21b417a07fc",
+      "normal_repairs": 20,
+      "runtime_asset_id": "private-lux3d_web-chair",
+      "calibration_config": "review-assets/2026-11-09/local-review.json",
+      "repair_script": "scripts/repair_private_glb_normals.py",
+      "calibration_reviewed_flag": false,
+      "rights_scope": "UNCONFIRMED",
+      "source_front": "+Z",
+      "scene_front": "-Z",
+      "pivot": "bottom_center",
+      "dimensions": {
+        "width": 0.5,
+        "height": 0.8,
+        "depth": 0.5
+      },
+      "dimensions_basis": "synthetic_nonuniform_fit_not_measurement"
+    },
+    {
+      "object_id": "cabinet",
+      "task_id": 30475,
+      "platform_asset_id": 53430,
+      "original_path": "review-assets/2026-11-09/cabinet_lux3d_g1_30475.glb",
+      "original_bytes": 8689480,
+      "original_sha256": "a8398b16be4d4d2f0c7c703575d0679ce16cc3aeacc276af48c9d26379ad940b",
+      "derived_sha256": "92944741a7e9f2491f9220c9dff3f95d66190db80a2488a5d029fbe1b3de3350",
+      "normal_repairs": 24,
+      "runtime_asset_id": "private-lux3d_web-cabinet",
+      "calibration_config": "review-assets/2026-11-09/local-review.json",
+      "repair_script": "scripts/repair_private_glb_normals.py",
+      "calibration_reviewed_flag": false,
+      "rights_scope": "UNCONFIRMED",
+      "source_front": "+Z",
+      "scene_front": "-Z",
+      "pivot": "bottom_center",
+      "dimensions": {
+        "width": 0.7,
+        "height": 1.6,
+        "depth": 0.5
+      },
+      "dimensions_basis": "synthetic_nonuniform_fit_not_measurement"
+    }
+  ]
+}

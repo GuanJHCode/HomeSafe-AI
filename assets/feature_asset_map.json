@@ -1,3 +1,25 @@
 {
-  "mappings": []
+  "manifest_version": "2.0",
+  "scope": "Published archive and video evidence mapping, not approval to populate the formal public catalog",
+  "source_commit": "3b64dd41578176456a2f62337a66dd19c823dd31",
+  "mappings": [
+    {
+      "feature_id": "dual_role_chair_tradeoff",
+      "asset_id": "private-lux3d_web-chair",
+      "scene_object_id": "chair",
+      "video_segment": "V4 0–10.96s and 25.96–48s, original capture retained",
+      "source_role": "Original archive validates provenance bytes; the explicitly hashed repaired derivative is rendered by local review",
+      "source_sha256": "e2606d75f4ef91a7395b9447ca5d65d972fd38595bcf53d6c6ef11ee9462e71a",
+      "runtime_sha256": "296935f947dabf72026764d71d1df9f85d353d2062c7745b187ad21b417a07fc"
+    },
+    {
+      "feature_id": "cabinet_challenge_and_rebound",
+      "asset_id": "private-lux3d_web-cabinet",
+      "scene_object_id": "cabinet",
+      "video_segment": "V4 48–70s; labelled restored-pose hold63.16–65.16s",
+      "source_role": "Original archive validates provenance bytes; the explicitly hashed repaired derivative is rendered by local review",
+      "source_sha256": "a8398b16be4d4d2f0c7c703575d0679ce16cc3aeacc276af48c9d26379ad940b",
+      "runtime_sha256": "92944741a7e9f2491f9220c9dff3f95d66190db80a2488a5d029fbe1b3de3350"
+    }
+  ]
 }
