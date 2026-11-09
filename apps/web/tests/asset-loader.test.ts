@@ -4,6 +4,7 @@ import { test } from 'node:test';
 import { Box3, Group, Vector3 } from 'three';
 import type { AssetRenderDTO } from '../../../contracts/frontend/domain';
 import { AssetLoader } from '../src/scene/AssetLoader.ts';
+import { localReviewPolicy } from '../src/scene/LocalAssetReview.ts';
 
 // A test-only triangle spanning all three axes. It does not represent a Lux3D asset.
 function syntheticGlb(): Buffer<ArrayBuffer> {
@@ -33,6 +34,27 @@ function syntheticGlb(): Buffer<ArrayBuffer> {
   glb.set(new Uint8Array(positions.buffer), 28 + padded.length);
   return glb;
 }
+
+test('local review exercises pending GLB without upgrading its calibration; ordinary and public loaders still reject it', async context => {
+  const raw = syntheticGlb(), hash = createHash('sha256').update(raw).digest('hex');
+  const asset: AssetRenderDTO = { asset_id:'review-chair',content_hash:hash,
+    render_url:'assets/public/test.glb',provenance_summary:'lux3d_web',calibration:{reviewed:false,revision:1,
+      strategy:'runtime_axis_fit',orientation:{x:0,y:0,z:0,w:1},
+      pivot_offset_after_rotation:{x:0.5,y:0,z:1.5},normalized_bounds_m:{width:1,height:2,depth:3}} };
+  const before = JSON.stringify(asset);
+  const policy = localReviewPolicy({mode:'local_asset_review',publication_approved:false,license_status:'NOT_VERIFIED',
+    candidates:[{asset_id:asset.asset_id,content_hash:hash},{asset_id:'review-cabinet',content_hash:'c'.repeat(64)}]}, 'http://127.0.0.1/');
+  const mock = context.mock.method(globalThis, 'fetch', async () => new Response(raw));
+  const ordinary = new AssetLoader([asset], 'http://127.0.0.1/');
+  const publicLoader = new AssetLoader([asset], 'https://example.test/', 45000, policy);
+  const local = new AssetLoader([asset], 'http://127.0.0.1/', 45000, policy);
+  context.after(() => {ordinary.dispose();publicLoader.dispose();local.dispose();});
+  await assert.rejects(ordinary.load(asset.asset_id), /reviewed/);
+  await assert.rejects(publicLoader.load(asset.asset_id), /reviewed/);
+  await local.load(asset.asset_id);
+  assert.equal(mock.mock.callCount(), 1);
+  assert.equal(JSON.stringify(asset), before);
+});
 
 test('same-origin GLB replacement applies orientation, bottom pivot, and instance dimensions', async (context) => {
   const fixture = syntheticGlb();

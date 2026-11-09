@@ -5,7 +5,7 @@ import { SCENE_BOUNDARY, RULE_BOUNDARY, RISK_CASE_STEPS } from './domain/DemoCon
 
 const {
   observationOptions, observationsOpen, observationNotice, openObservations, applyObservation, closeObservations,
-  host, mode, exercise, role, view, busy, drafting, failure, renderFailure, modelCounts, selectedModel, stage, selected, selectedObject,
+  host, mode, exercise, role, view, busy, drafting, failure, renderFailure, modelCounts, selectedModel, stage, localAssetReview, selected, selectedObject,
   layout, checks, comparison, progress, feedback, report, canUndo, canRedo,
   objectName, movable, canMove, select, useView, moveBy, rotate, history, switchMode, focus,
   retry, exportReport, exportSceneSnapshot, printReport,
@@ -38,6 +38,7 @@ const actionSections = [
 
     <div class="notice">合成客厅 · 教学演练 · 无法用于安全认证</div>
     <p class="notice" data-testid="capability-boundary">{{ SCENE_BOUNDARY }}</p>
+    <p v-if="localAssetReview" class="notice" data-testid="local-asset-review">本地模型审核模式 · 两件仓库原件经法线修复与合成尺寸拟合加载。校准候选待本轮审查，平台使用许可未核实；不是普通占位构建、公开部署或安全认证。</p>
 
     <section class="panel case-guide" aria-label="完整风险演练" data-testid="risk-case-guide">
       <header class="section-head">

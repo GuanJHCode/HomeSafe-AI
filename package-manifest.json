@@ -1,9 +1,9 @@
 {
   "manifest_version": "1.0",
-  "release": "V6.1-four-review-assets-source-index-20261109",
-  "base_commit": "29e9eae2a5a6a0c88109376f2c97b722b0758367",
+  "release": "V6.1-local-model-reproduction-report-20261109",
+  "base_commit": "4ac423e90e106541bd706e62f6f3815ea3cce8a3",
   "baseline_zip_sha256": "b6c674f532fd30ff7ab086b08c814b086e94e2aa0f12cff80c1b6d94b96d3752",
-  "classification_policy": "962 explicit source/sanitized text files. Four separately reviewed video/PDF/original-GLB binaries are tracked under review-assets/2026-11-09 per its exact manifest and are intentionally excluded from this code-only export allowlist. All other private media, source records, Space identities/temporary URLs, credentials, runtime/build/dependencies remain excluded. No main/master, deployment, formal submission or CI budget change.",
+  "classification_policy": "974 explicit source/sanitized text files. Four existing public review binaries remain outside this code-only export allowlist. All new report PDF/HTML, screenshots, model derivatives, account/source records, Space identities, signed URLs, credentials and runtime/dependencies remain excluded. This round is local only: no push, main/master changes, deployment, new Release, formal submission or CI budget change.",
   "files": [
     {
       "path": ".env.example",
@@ -61,8 +61,8 @@
     },
     {
       "path": "START_HERE.md",
-      "sha256": "34e9ed55480b1aa552448e9b4229e42c3eb6cafda18fd62ea1c747f4fec8fb7e",
-      "bytes": 16928,
+      "sha256": "1a3972ee2e2699db74c1644595fe3c4148f8dcbb852f814c5c5815974bd2135a",
+      "bytes": 18008,
       "classification": "generated_project_source"
     },
     {
@@ -85,8 +85,8 @@
     },
     {
       "path": "apps/web/src/App.vue",
-      "sha256": "76721231497f56380a09c42f16a0f0b1a1b5282ade704c2278f2a617196e7b77",
-      "bytes": 16259,
+      "sha256": "41308e2ce938e1302a5fc9f3558133f01c75be8d21923e9b957e3e5419148f13",
+      "bytes": 16569,
       "classification": "generated_project_source"
     },
     {
@@ -109,8 +109,8 @@
     },
     {
       "path": "apps/web/src/domain/EvaluationController.ts",
-      "sha256": "7e8aab26cdf1b7acf0203579227a7d120a07be7e5457243944f2ea553943d1dc",
-      "bytes": 6888,
+      "sha256": "f62487d85097996027ef3714c5ad626ca39c8bdc8ccf1e1817607a06a3b6768d",
+      "bytes": 6918,
       "classification": "generated_project_source"
     },
     {
@@ -163,14 +163,20 @@
     },
     {
       "path": "apps/web/src/scene/AssetLoader.ts",
-      "sha256": "c427b0b6ad5f4ea74c73002654561dff37d3ad7a2e609f3df1472f3bdcc6da34",
-      "bytes": 7577,
+      "sha256": "1e0846d38a88b232f2d4fab0ad60b3c6e4704fc119a332184c6089d157150bd9",
+      "bytes": 7895,
       "classification": "generated_project_source"
     },
     {
+      "path": "apps/web/src/scene/LocalAssetReview.ts",
+      "classification": "generated_project_source",
+      "sha256": "e24a8b6e04ab0d6d65e3a4a24edad2ce886d9dd2ac17c4c8745464e7cec4c851",
+      "bytes": 1786
+    },
+    {
       "path": "apps/web/src/scene/SceneRuntime.ts",
-      "sha256": "4b3fb706e5c37f8db5d8573165d86211d768aba7515870353a59c8f63ac9642f",
-      "bytes": 13129,
+      "sha256": "4f75b807e9137b9d9e4fb9386e8c21e6b209d79a802a73c98306bd97c368e888",
+      "bytes": 13277,
       "classification": "generated_project_source"
     },
     {
@@ -193,14 +199,14 @@
     },
     {
       "path": "apps/web/src/useLivingRoom.ts",
-      "sha256": "e1a288dc2343712279fd94106449c50bbcf4522839389a18b7d335b5619efbbf",
-      "bytes": 25522,
+      "sha256": "1f57299399876602d00aa7f799b8a4a787b9842a2ac2538d325a4e2badca2db7",
+      "bytes": 26121,
       "classification": "generated_project_source"
     },
     {
       "path": "apps/web/tests/asset-loader.test.ts",
-      "sha256": "bf78254857d2a37535d1fe2e15645ffef1f9b50508562f819f0403558e721003",
-      "bytes": 5383,
+      "sha256": "ff67abc8e633d9f4828dfd7a2f17e626dfd93d97c06781871c213dd68519df45",
+      "bytes": 7010,
       "classification": "generated_project_source"
     },
     {
@@ -226,6 +232,18 @@
       "sha256": "8089476acef1671d7a0e6d6ca7db9debb5b05bd189277bf54fedbda459e01ec0",
       "bytes": 4418,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/tests/local-asset-review.test.ts",
+      "classification": "generated_project_source",
+      "sha256": "37b0f851897f1b9e3019dd92c18a8ca4617696d06f6aa611e31641da4027f693",
+      "bytes": 1900
+    },
+    {
+      "path": "apps/web/tests/local-review-models.html",
+      "classification": "generated_project_source",
+      "sha256": "0cd47ee8a1258222f1a59ab4eb4435f7f6d58f66d28d8bae7b39212e67d4490f",
+      "bytes": 5129
     },
     {
       "path": "apps/web/tests/observation.test.ts",
@@ -636,6 +654,12 @@
       "bytes": 6440
     },
     {
+      "path": "docs/LOCAL_MODEL_REVIEW_20261109.md",
+      "classification": "generated_project_source",
+      "sha256": "dcce1d02b0dec6389e8853ce8c45878b0405de5afab48944981151d22b86e08d",
+      "bytes": 5784
+    },
+    {
       "path": "docs/NEXT_AGENT_PROMPT_20261104.md",
       "sha256": "702ccb45357db46653290feaabfc611a0226c19d0e513b39f0ec40a3a49d0698",
       "bytes": 19967,
@@ -775,8 +799,8 @@
     },
     {
       "path": "evidence/HANDOFF.md",
-      "sha256": "69607d45e9142e649176eedd043db1be88bd3ecd73c7a29a60578f77467eecbf",
-      "bytes": 25527,
+      "sha256": "2230a43dc38b48f5c354eac42076f9495342154a605387fcf7c021ee2f417cd0",
+      "bytes": 26544,
       "classification": "generated_project_source"
     },
     {
@@ -796,6 +820,12 @@
       "classification": "generated_project_source",
       "sha256": "8d0aead7abf26b5a100da4300447dccb8292a7971d889ccba0c10c73462e6880",
       "bytes": 10798
+    },
+    {
+      "path": "evidence/LOCAL_REVIEW_REPORT_20261109.md",
+      "classification": "generated_project_source",
+      "sha256": "f014eb82656f19a1e15fa22e4a095ad7fc8080275677add16d01f998a4032c12",
+      "bytes": 3855
     },
     {
       "path": "evidence/NETWORK_MATERIALS_20261105.md",
@@ -1756,6 +1786,12 @@
       "classification": "generated_project_source",
       "sha256": "1d4ed98095597035795d58f711d67c61e240ed23f98c636461662ec9d6bea350",
       "bytes": 3253
+    },
+    {
+      "path": "evidence/current-ci/4ac423e-ci-summary.json",
+      "classification": "generated_project_source",
+      "sha256": "57c9f0f2d6c0785edf313e3f8b011ee4a9cafee6057214363cf26b6d9916be30",
+      "bytes": 662
     },
     {
       "path": "evidence/current-ci/5001222-ci-summary.json",
@@ -3643,8 +3679,8 @@
     },
     {
       "path": "evidence/task-status.json",
-      "sha256": "9fb51a5219eadaa6578b0231a34b341b3b9e1e50fabdc43a43ca01a4b4f0ffdc",
-      "bytes": 62990,
+      "sha256": "954ae76252873111e9c31d812f9bee1eb60d796dd6d7c8f6f5923c00a597781c",
+      "bytes": 64563,
       "classification": "generated_project_source"
     },
     {
@@ -5298,6 +5334,12 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "reference/tests/test_local_asset_review.py",
+      "classification": "generated_project_source",
+      "sha256": "1a23ecc25979e4e7f4ce538ee69a281af4384725f2e431c095648da8f0dcbd0d",
+      "bytes": 2832
+    },
+    {
       "path": "reference/tests/test_main_challenge.py",
       "sha256": "5ff31f786f27a70543e040624372b267124b2cb695e5924f0178863cb5e12eea",
       "bytes": 5502,
@@ -5382,10 +5424,22 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "review-assets/2026-11-09/CURRENT_STATUS.md",
+      "classification": "generated_project_source",
+      "sha256": "392c6fc7bfe8f46117b5e7be26ece1199f9341bec6e286753bc29d779d7b5185",
+      "bytes": 1492
+    },
+    {
       "path": "review-assets/2026-11-09/README.md",
       "classification": "generated_project_source",
-      "sha256": "7b3d1c0f119a1a7373a4ebb94df34eeab1ef5caeb96256f9201c5c5d3acb810e",
-      "bytes": 3332
+      "sha256": "569eda4ba67858931d1b409b1135a34f7204e9fa374c19dec511a2abfe3389ae",
+      "bytes": 3718
+    },
+    {
+      "path": "review-assets/2026-11-09/local-review.json",
+      "classification": "generated_project_source",
+      "sha256": "9567538d2564a7781837c0a701bbce53f9f616db13da7b353eacaeb1f3902459",
+      "bytes": 3253
     },
     {
       "path": "review-assets/2026-11-09/manifest.json",
@@ -5534,8 +5588,8 @@
     {
       "path": "scripts/check_web_risk_case.mjs",
       "classification": "generated_project_source",
-      "sha256": "a588fb35b3a266ce34ec5ce80738700c2ba48190a06fb6f5a621f3dca86d150b",
-      "bytes": 19247
+      "sha256": "95a31aa3ea5c29db4511fd3212044ea6210412f185d55c61f657c9b67fb2c41c",
+      "bytes": 21261
     },
     {
       "path": "scripts/create_development_materials.mjs",
@@ -5584,6 +5638,18 @@
       "sha256": "926b64386857d5ced950512e4c287959cfb06944f2567b4e55fd6afdb687a6ab",
       "bytes": 5026,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "scripts/local_review_transport.mjs",
+      "classification": "generated_project_source",
+      "sha256": "8c1527d8dabbc5bc256dff2cb882dc7d5269eaa74f507003588bef3313699760",
+      "bytes": 2445
+    },
+    {
+      "path": "scripts/local_review_transport.test.mjs",
+      "classification": "generated_project_source",
+      "sha256": "ab8c3af82bba59e31dfa4c9fb633f8279a2728332a369a61bad481e842ccee9c",
+      "bytes": 1542
     },
     {
       "path": "scripts/private_asset_inputs.mjs",
@@ -5638,6 +5704,12 @@
       "classification": "generated_project_source",
       "sha256": "181c351c1b0e490b705a2903215c159c04e51bcf1c47747a8cd014ce3f185d40",
       "bytes": 7209
+    },
+    {
+      "path": "scripts/serve_local_asset_review.py",
+      "classification": "generated_project_source",
+      "sha256": "50d7ed9b8c5fb945be57a60abcfbba81db93bbc462a68b2e196640e50c399773",
+      "bytes": 10876
     },
     {
       "path": "scripts/stage_browser_core.py",

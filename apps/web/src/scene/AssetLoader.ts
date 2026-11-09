@@ -5,6 +5,7 @@ import {
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { clone } from 'three/addons/utils/SkeletonUtils.js';
 import type { AssetCalibration, AssetRenderDTO, Dimensions } from '../../../../contracts/frontend/domain';
+import { permitsReviewCandidate, type LocalReviewPolicy } from './LocalAssetReview.ts';
 
 export interface AssetTemplate {
   model: Object3D;
@@ -60,21 +61,24 @@ export class AssetLoader {
   private readonly instances = new Set<Object3D>();
   private readonly abort = new AbortController();
   private readonly downloadTimeoutMs: number;
+  private readonly localReview: LocalReviewPolicy | null;
   private readonly gltf = new GLTFLoader(new LoadingManager().setURLModifier((url) => {
     if (!url.startsWith('blob:')) throw new Error('GLB must embed all model resources');
     return url;
   }));
 
   constructor(assets: readonly AssetRenderDTO[], baseUrl: string = document.baseURI,
-    downloadTimeoutMs = 45000) {
+    downloadTimeoutMs = 45000, localReview: LocalReviewPolicy | null = null) {
     this.downloadTimeoutMs = downloadTimeoutMs;
+    this.localReview = localReview;
     this.descriptors = new Map(assets.map((asset) => [asset.asset_id, asset]));
     this.baseUrl = new URL(baseUrl);
   }
 
   load(assetId: string): Promise<AssetTemplate> {
     const asset = this.descriptors.get(assetId);
-    if (this.abort.signal.aborted || !asset?.calibration.reviewed ||
+    if (this.abort.signal.aborted || !asset || (!asset.calibration.reviewed &&
+        !permitsReviewCandidate(asset, this.localReview, this.baseUrl.href)) ||
         asset.provenance_summary === 'unverified') {
       return Promise.reject(new Error('Asset has no reviewed calibration and provenance'));
     }

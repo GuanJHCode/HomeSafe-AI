@@ -8,6 +8,7 @@ import type {
   AssetRenderDTO, PlacementIssue, Profile, Scene, SceneObject, TransformInput,
 } from '../../../../contracts/frontend/domain';
 import { AssetLoader, disposeObject } from './AssetLoader.ts';
+import type { LocalReviewPolicy } from './LocalAssetReview.ts';
 import { createPlaceholder, createRoom } from './roomGeometry.ts';
 
 type View = Profile['role'] | 'overview';
@@ -53,12 +54,12 @@ export class SceneRuntime {
 
   constructor(host: HTMLElement, assets: readonly AssetRenderDTO[] = [],
     onAssetState: (id: string, state: AssetLoadState | null) => void = () => {},
-    onRenderFailure: (message: string) => void = () => {}) {
+    onRenderFailure: (message: string) => void = () => {}, localReview: LocalReviewPolicy | null = null) {
     this.host = host;
     this.onAssetState = onAssetState;
     this.onRenderFailure = onRenderFailure;
     this.renderer = new WebGLRenderer({ antialias: true });
-    this.assets = new AssetLoader(assets);
+    this.assets = new AssetLoader(assets, document.baseURI, 45000, localReview);
     this.renderer.shadowMap.enabled = true;
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     this.canvas = this.renderer.domElement;

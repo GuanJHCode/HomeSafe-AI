@@ -1,0 +1,22 @@
+{
+  "commit": "4ac423e90e106541bd706e62f6f3815ea3cce8a3",
+  "run_id": 42558752605,
+  "url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/42558752605",
+  "status": "completed",
+  "conclusion": "failure",
+  "attempt": 1,
+  "successful_steps": 34,
+  "failed_steps": 1,
+  "skipped_steps": 2,
+  "only_failure": "Strict real-browser performance budgets",
+  "cold_first_editable_p95_ms": 4027.399999999965,
+  "cold_rules_ready_p95_ms": 4027.399999999965,
+  "hot_evaluation_p95_ms": 14.900000000023283,
+  "budgets_ms": [
+    3000,
+    12000,
+    150
+  ],
+  "rerun": false,
+  "scope": "4ac baseline synthetic placeholder scene; not this unpushed local work"
+}

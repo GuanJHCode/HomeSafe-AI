@@ -751,7 +751,7 @@
   "baseline_commit": "2f562a3d0c6cae7aedbe2ea13a469a98a24ee57f",
   "implementation_branch": "codex/private-real-materials-20261105",
   "continuation_base_commit": "f6245e13bc41e36a0efeabeba3ca0fba2174c2f5",
-  "current_validation_scope": "evidence/PRIVATE_REAL_MATERIALS_20261105.md",
+  "current_validation_scope": "evidence/LOCAL_REVIEW_REPORT_20261109.md",
   "historical_validation_scope": "Older 64e1665 CI41807603537 performance and 20261104 local startup measurements are historical. Latest verified remote is394eb04/CI41948477248 functional download FAIL and performance NOT_RUN. Local be32202 fixes the download protocol without a new remote run.",
   "historical_validated_source_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6",
   "validation_scope": "Current private frozenC1/AppCore500 material capture221.72sec5543frames/4PDFpages,11outputs6tools native snapshot/actual independent visuals/fullPTS PASS. LocalJS59/package8 pass; Python343/app39/Chrome156 functional CI500 retained, strict3s4324ms FAIL nonblocking. No new push, media upload, public host or formal release.",
@@ -780,16 +780,29 @@
     "current_scope": "evidence/FEATURE_CONTINUATION_20261104.md"
   },
   "previous_continuation_base_commit": "57faf384d64e9770407b28086fdfeb5b193a6d6f",
-  "current_source_sync": "AUTHORIZED_NORMAL_FAST_FORWARD_REVIEWED_SAFE_SOURCE_AND_SANITIZED_DRAFTS_TO_EXISTING_DEVELOPMENT_BRANCH",
+  "current_source_sync": "LOCAL_ONLY_REPRO_REPORT_NO_PUSH_AUTHORIZATION_THIS_ROUND",
   "previous_source_sync": "LOCAL_ONLY_NOT_PUSHED",
   "latest_verified_remote_ci": {
-    "status": "PENDING_FOR_NEW_PUSH_AT_RECORD_CREATION",
-    "baseline_source_commit": "6dc418dfa3e9dfa0d5e94ce62cde3475a57854c2",
-    "baseline_run_id": 42323926769,
-    "baseline_conclusion": "success",
-    "new_run_id": null,
-    "evidence": "evidence/current-ci/6dc418d-ci-summary.json",
-    "note": "This is a source snapshot before authorized push; do not call the baseline run the new commit CI."
+    "commit": "4ac423e90e106541bd706e62f6f3815ea3cce8a3",
+    "run_id": 42558752605,
+    "url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/42558752605",
+    "status": "completed",
+    "conclusion": "failure",
+    "attempt": 1,
+    "successful_steps": 34,
+    "failed_steps": 1,
+    "skipped_steps": 2,
+    "only_failure": "Strict real-browser performance budgets",
+    "cold_first_editable_p95_ms": 4027.399999999965,
+    "cold_rules_ready_p95_ms": 4027.399999999965,
+    "hot_evaluation_p95_ms": 14.900000000023283,
+    "budgets_ms": [
+      3000,
+      12000,
+      150
+    ],
+    "rerun": false,
+    "scope": "4ac baseline synthetic placeholder scene; not this unpushed local work"
   },
   "startup_phase": {
     "base_commit": "64e166540495126f618dd65aa8dc88760ed70604",
@@ -1308,13 +1321,48 @@
         "git_blob_sha": "08930643090f71fe9ae448ebeafba2119d07fb55"
       }
     ],
-    "status": "FOUR_EXISTING_FILES_PREPARED_FOR_EXPLICIT_PUBLIC_REVIEW_SHARE",
+    "status": "FOUR_EXISTING_FILES_PUBLICLY_PUSHED_AND_INDEPENDENTLY_BYTE_VERIFIED",
     "privacy_review": "PASS_NEW_ACTUAL_DISCLOSURE_REVIEW",
     "platform_specific_redistribution_license_verified": false,
     "runtime_catalog_changed": false,
     "extra_private_materials_included": false,
     "draft_release_published": false,
     "main_or_master_changed": false,
-    "ci_budgets_changed": false
+    "ci_budgets_changed": false,
+    "verified_remote_commit": "4ac423e90e106541bd706e62f6f3815ea3cce8a3"
+  },
+  "local_reproduction_report_20261109": {
+    "base_commit": "4ac423e90e106541bd706e62f6f3815ea3cce8a3",
+    "branch": "codex/repro-report-20261109",
+    "entry": "scripts/serve_local_asset_review.py",
+    "config": "review-assets/2026-11-09/local-review.json",
+    "review_status": "FINAL_CODE_BROWSER_REVIEW_IN_PROGRESS",
+    "runtime_catalog_changed": false,
+    "calibration_reviewed_flags": [
+      false,
+      false
+    ],
+    "license_status": "NOT_VERIFIED",
+    "report": "NEW_8_PAGE_CANDIDATE_USER_PREVIEW_ONLY_FINAL_METADATA_PENDING",
+    "v3_re_recorded": false,
+    "source_model_bytes_changed": false,
+    "tests": {
+      "python": 358,
+      "app": 44,
+      "scripts_and_probes": 62,
+      "contracts_types_build": "PASS",
+      "ordinary_browser": "PASS",
+      "local_review_risk_case_phases": 9,
+      "canonical_findings_compared": 99
+    },
+    "remote_push": "NOT_AUTHORIZED_THIS_ROUND",
+    "release": "NOT_CREATED_OR_PUBLISHED",
+    "deployment": "NOT_RUN",
+    "formal_submission": "NOT_RUN",
+    "remaining_external": [
+      "Account/order and final registration terms applicability",
+      "Final report sharing scope",
+      "External devices/network and approved hosting if an online demo is later chosen"
+    ]
   }
 }

@@ -14,6 +14,7 @@ import { SceneRuntime, type AssetLoadState } from './scene/SceneRuntime.ts';
 import { TransformController } from './scene/TransformController.ts';
 import { readJsonResource } from './domain/resource-loading.ts';
 import { modelSourceLabel, modelSourceBoundary } from './domain/DemoContent.ts';
+import { localReviewPolicy, type LocalReviewPolicy } from './scene/LocalAssetReview.ts';
 
 const exercises = {
   challenge: {
@@ -51,6 +52,7 @@ export function useLivingRoom() {
   const assetStates = ref<Record<string, AssetLoadState>>({});
   const renderAssets = shallowRef<AssetRenderDTO[]>([]);
   const stage = ref('正在加载客厅');
+  const localAssetReview = shallowRef<LocalReviewPolicy | null>(null);
   const selected = ref<string | null>(null);
   const placement = shallowRef<PlacementIssue[]>([]);
   const layout = shallowRef<Scene | null>(null);
@@ -363,7 +365,7 @@ export function useLivingRoom() {
         renderFailure.value = message;
         transforms?.dispose();
         transforms = null;
-      });
+      }, localAssetReview.value);
       runtime = mounted;
       transforms = new TransformController(mounted, { canMove, select, commit,
         onDraftChange: active => { drafting.value = active; } });
@@ -406,10 +408,11 @@ export function useLivingRoom() {
     runtime?.showPlacementIssues([]);
     try {
       stage.value = '正在加载场景和同源规则';
+      const configReady = trace.measure('config_fetch', () => readJsonResource<WorkerConfig>(new URL('engine/config.json', base), { cache: 'no-store', signal: attempt.signal }));
       // Observe both promises immediately: scene/network errors cannot leave an
       // unhandled rule startup, and cancellation prevents late controller creation.
       const loadRules = async () => {
-        const config = await trace.measure('config_fetch', () => readJsonResource<WorkerConfig>(new URL('engine/config.json', base), { cache: 'no-store', signal: attempt.signal }));
+        const config = await configReady;
         if (!active()) return null;
         if (!evaluation) {
           evaluation = new EvaluationController({ config, base, trace,
@@ -423,16 +426,22 @@ export function useLivingRoom() {
       };
       const loadScene = async () => {
         if (!template) {
-          const [scene, assets, mainScene] = await trace.measure('scene_fetch', () => Promise.all([
+          const [scene, assets, mainScene, config] = await trace.measure('scene_fetch', () => Promise.all([
             readJsonResource<Scene>(new URL('engine/scene-before.json', base), { signal: attempt.signal }),
             readJsonResource<AssetRenderDTO[]>(new URL('engine/assets.json', base), { signal: attempt.signal }),
             readJsonResource<Scene>(new URL('engine/scene-main-challenge.json', base), { signal: attempt.signal }),
+            configReady,
           ]));
           if (!active()) return;
+          // Validate before publishing any initialization state. A rejected
+          // local policy must leave no template that a later retry can reuse.
+          const policy = localReviewPolicy(config.localAssetReview, base);
+          const loadedWorkspace = new WorkspaceController(scene);
           template = scene;
           mainTemplate = mainScene;
           renderAssets.value = assets;
-          workspace = new WorkspaceController(scene);
+          localAssetReview.value = policy;
+          workspace = loadedWorkspace;
           publishWorkspace();
           mountRenderer();
         } else {
@@ -552,7 +561,7 @@ export function useLivingRoom() {
   return {
     observationOptions, observationsOpen, observationNotice, openObservations, applyObservation,
     closeObservations: () => { observationsOpen.value = false; },
-    host, mode, exercise, role, view, busy, drafting, failure, renderFailure, modelCounts, selectedModel, stage, selected, selectedObject,
+    host, mode, exercise, role, view, busy, drafting, failure, renderFailure, modelCounts, selectedModel, stage, localAssetReview, selected, selectedObject,
     layout, checks, comparison, progress, feedback, report, canUndo, canRedo,
     objectName, movable, canMove, select, useView, moveBy, rotate, history, switchMode, focus,
     roleSummaries, initializing, cancelLoading,

@@ -1,0 +1,44 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>原件、法线修复与合成尺寸校准 · 本地审核</title>
+<style>body{font:18px 'Noto Sans CJK SC',sans-serif;background:#f4f5ef;color:#173e38;margin:24px}h1{font-size:30px}p{line-height:1.6}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}figure{min-width:0;margin:0;background:white;border:1px solid #ccd8d0;padding:10px}canvas{display:block;width:100%;height:auto}figcaption{font-size:16px;line-height:1.6}h2{margin-top:28px}</style>
+<h1>两件实际 GLB：原件 → 法线修复 → 方向与尺寸校准</h1>
+<p>本地审核图，不是平台重新生成。原件与修复件按源 +Z 观察正面；校准后正面为场景 −Z。仅适配手工样例尺寸，非实测。校准候选仍 reviewed=false，平台许可未核实。</p>
+<div id="models"></div><p id="status">实际解码与渲染中…</p>
+<script type="importmap">{"imports":{"three":"./three.module.js"}}</script>
+<script type="module">
+import * as T from 'three';
+import {GLTFLoader} from './loaders/GLTFLoader.js';
+const assets=await (await fetch('../engine/assets.json')).json();
+const manifest=await (await fetch('../review-manifest.json')).json();
+const result={status:'RUNNING',scope:'ACTUAL_BROWSER_MODEL_RENDERS',checks:[]};window.reviewModelResult=result;
+const parser=new GLTFLoader();
+try{
+for(const id of ['chair','cabinet']){
+ const record=manifest.models.find(m=>m.object_id===id),asset=assets.find(a=>a.content_hash===record.derived_sha256);
+ const section=document.createElement('section');section.innerHTML=`<h2>${id==='chair'?'椅子':'柜体'}</h2><div class="grid"></div>`;document.querySelector('#models').append(section);
+ for(const variant of ['original','repaired','calibrated-front','calibrated-side']){
+  const source=await parser.loadAsync(variant==='original'?`./original-${id}.glb`:`../${asset.render_url}`);
+  let zeros=0,textures=new Set();source.scene.traverse(n=>{if(!n.isMesh)return;const a=n.geometry.attributes.normal;for(let i=0;i<a.count;i++)if(a.getX(i)===0&&a.getY(i)===0&&a.getZ(i)===0)zeros++;for(const v of Object.values(n.material))if(v?.isTexture)textures.add(v.source);});
+  let model=source.scene;
+  if(variant.startsWith('calibrated')){
+   const q=asset.calibration.orientation,p=asset.calibration.pivot_offset_after_rotation,b=asset.calibration.normalized_bounds_m,d=record.target_dimensions_m;
+   const oriented=new T.Group();oriented.quaternion.set(q.x,q.y,q.z,q.w);oriented.add(model);
+   model=new T.Group();model.position.set(-p.x,-p.y,-p.z);model.add(oriented);
+   const fit=new T.Group();fit.scale.set(d.width/b.width,d.height/b.height,d.depth/b.depth);fit.add(model);model=fit;
+  }
+  const box=new T.Box3().setFromObject(model,true),size=box.getSize(new T.Vector3()),center=box.getCenter(new T.Vector3());
+  const world=new T.Scene();world.background=new T.Color('#f6f6f2');world.add(model,new T.HemisphereLight(0xffffff,0x6b6657,2.5));
+  const light=new T.DirectionalLight(0xffffff,2.7);light.position.set(-2,5,4);world.add(light);
+  const distance=Math.max(size.x,size.y,size.z)*2.1;
+  const camera=new T.PerspectiveCamera(36,1,0.01,100);
+  const direction=variant==='calibrated-side'?new T.Vector3(1,0.16,0):new T.Vector3(0,0.16,variant==='calibrated-front'?-1:1);
+  camera.position.copy(center).add(direction.multiplyScalar(distance));camera.lookAt(center);
+  const renderer=new T.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setSize(480,480,false);renderer.setPixelRatio(1);renderer.render(world,camera);
+  const figure=document.createElement('figure');figure.append(renderer.domElement);figure.insertAdjacentHTML('beforeend',`<figcaption>${{original:'原始 GLB · 源 +Z 正面',repaired:'仅修复法线 · 源 +Z 正面','calibrated-front':'拟合校准 · 场景 −Z 正面','calibrated-side':'拟合校准 · 场景 +X 侧面'}[variant]}<br>零法线 ${zeros} · 实际纹理源 ${textures.size}</figcaption>`);section.querySelector('.grid').append(figure);
+  if(variant.startsWith('calibrated')){const d=record.target_dimensions_m;if(Math.max(Math.abs(size.x-d.width),Math.abs(size.y-d.height),Math.abs(size.z-d.depth),Math.abs(box.min.y),Math.abs(center.x),Math.abs(center.z))>1e-5)throw Error('Fit/origin mismatch '+id);}
+  if(zeros!==(variant==='original'?(id==='chair'?20:24):0)||textures.size!==2||!renderer.info.render.calls)throw Error('Normals, decoded textures or real draw calls mismatch '+id);
+  result.checks.push({object_id:id,variant,zero_normals:zeros,textures:textures.size,texture_dimensions:[...textures].map(t=>[t.data.width,t.data.height]),draw_calls:renderer.info.render.calls,bounds:size.toArray(),bottom:box.min.y,center:center.toArray(),reviewed:asset.calibration.reviewed});
+ }
+}
+result.status='PASS';document.querySelector('#status').textContent='两件共8幅实渲染完成；正面/侧面、纹理解码、拟合尺寸和底部中心原点已实测。此图不证明平台授权或现实尺寸。';
+}catch(e){result.status='FAIL';result.error=String(e);document.querySelector('#status').textContent=String(e);throw e;}
+</script></html>

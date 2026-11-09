@@ -4,6 +4,7 @@ import { assessmentMatchesScene } from './layout-result.ts';
 import { sanitizeTraceSnapshot, type StartupTraceHandle, type TraceSnapshot } from '../../../../browser-spike/startup-trace.mjs';
 
 export type WorkerConfig = {
+  localAssetReview?: unknown;
   pyodideVersion: string;
   pydanticVersion: string;
   pyodideIndexURL: string;

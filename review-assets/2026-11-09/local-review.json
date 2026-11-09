@@ -1,0 +1,54 @@
+{
+  "mode": "local_asset_review",
+  "source_record_basis": "Retained project records and repository originals, not a platform signature or a new Lux3D generation",
+  "publication_approved": false,
+  "license_status": "NOT_VERIFIED",
+  "calibration_status": "CANDIDATE_PENDING_RUN_REVIEW",
+  "dimensions_basis": "Nonuniform fit to hand-built synthetic scene; not measured real furniture",
+  "source_front": "+Z",
+  "scene_front": "-Z",
+  "models": [
+    {
+      "object_id": "chair",
+      "original": "review-assets/2026-11-09/chair_lux3d_g1_30471.glb",
+      "original_sha256": "e2606d75f4ef91a7395b9447ca5d65d972fd38595bcf53d6c6ef11ee9462e71a",
+      "derived_sha256": "296935f947dabf72026764d71d1df9f85d353d2062c7745b187ad21b417a07fc",
+      "normal_repair_count": 20,
+      "target_dimensions_m": { "width": 0.5, "height": 0.8, "depth": 0.5 },
+      "asset": {
+        "asset_id": "private-lux3d_web-chair",
+        "content_hash": "296935f947dabf72026764d71d1df9f85d353d2062c7745b187ad21b417a07fc",
+        "render_url": "assets/public/review-chair.glb",
+        "provenance_summary": "lux3d_web",
+        "calibration": {
+          "revision": 1, "strategy": "runtime_axis_fit", "reviewed": false,
+          "orientation": { "x": 0, "y": 1, "z": 0, "w": 6.123233995736766e-17 },
+          "pivot_offset_after_rotation": { "x": 2.7755575615628914e-17, "y": -0.42500001192092896, "z": 0 },
+          "normalized_bounds_m": { "width": 0.48822829127311707, "height": 0.8500000238418579, "depth": 0.5772185921669006 },
+          "notes": "Y-up source +Z rotated 180 degrees around Y to scene -Z; bottom-center after rotation, nonuniform fit to synthetic chair 0.50 x 0.80 x 0.50m. Calibration candidate, not license approval or physical measurement. Existing V3 asset_id retained to reproduce canonical input hashes."
+        }
+      }
+    },
+    {
+      "object_id": "cabinet",
+      "original": "review-assets/2026-11-09/cabinet_lux3d_g1_30475.glb",
+      "original_sha256": "a8398b16be4d4d2f0c7c703575d0679ce16cc3aeacc276af48c9d26379ad940b",
+      "derived_sha256": "92944741a7e9f2491f9220c9dff3f95d66190db80a2488a5d029fbe1b3de3350",
+      "normal_repair_count": 24,
+      "target_dimensions_m": { "width": 0.7, "height": 1.6, "depth": 0.5 },
+      "asset": {
+        "asset_id": "private-lux3d_web-cabinet",
+        "content_hash": "92944741a7e9f2491f9220c9dff3f95d66190db80a2488a5d029fbe1b3de3350",
+        "render_url": "assets/public/review-cabinet.glb",
+        "provenance_summary": "lux3d_web",
+        "calibration": {
+          "revision": 1, "strategy": "runtime_axis_fit", "reviewed": false,
+          "orientation": { "x": 0, "y": 1, "z": 0, "w": 6.123233995736766e-17 },
+          "pivot_offset_after_rotation": { "x": 0, "y": -0.8999999761581421, "z": 1.3877787807814457e-17 },
+          "normalized_bounds_m": { "width": 0.6822696924209595, "height": 1.7999999523162842, "depth": 0.48448124527931213 },
+          "notes": "Y-up source +Z rotated 180 degrees around Y to scene -Z; bottom-center after rotation, nonuniform fit to synthetic cabinet 0.70 x 1.60 x 0.50m. Calibration candidate, not license approval or physical measurement. Existing V3 asset_id retained to reproduce canonical input hashes."
+        }
+      }
+    }
+  ]
+}

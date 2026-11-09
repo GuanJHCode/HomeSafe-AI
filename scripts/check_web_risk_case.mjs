@@ -12,12 +12,14 @@ import { privateOutputPath } from './private_asset_inputs.mjs';
 import { loadPrivateMaterialInputs, attachPrivateMaterialInputs } from './private_materials_inputs.mjs';
 import { createJsonDownloadHarness, REPORT_FILENAME, SNAPSHOT_FILENAME } from './web_download.mjs';
 import { SCENE_BOUNDARY, RULE_BOUNDARY } from '../apps/web/src/domain/DemoContent.ts';
+import { checkLocalReviewTransport } from './local_review_transport.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const { values } = parseArgs({ options: {
   ...Object.fromEntries(['url', 'chrome', 'driver', 'python', 'output', 'expected-head',
     'private-models', 'source-receipt'].map(name => [name, { type: 'string' }])),
   recording: { type: 'boolean', default: false },
+  'local-review': { type: 'boolean', default: false },
 } });
 for (const name of ['url', 'chrome', 'driver', 'python', 'output', 'expected-head']) assert.ok(values[name], `Required --${name}`);
 const url = new URL(values.url);
@@ -30,7 +32,8 @@ const roots = ['apps/web/src', 'apps/web/index.html', 'apps/web/package.json', '
   'reference/homesafe_core', 'contracts/frontend', 'scripts/check_web_risk_case.mjs',
   'scripts/check_deployment.py', 'scripts/check_scene_snapshot.py', 'scripts/check_lux3d_source_bundle.py',
   'scripts/private_materials_inputs.mjs', 'scripts/private_asset_inputs.mjs', 'scripts/web_download.mjs',
-  'scripts/capture_ffmpeg_fast.py'];
+  'scripts/capture_ffmpeg_fast.py', 'scripts/local_review_transport.mjs',
+  'scripts/serve_local_asset_review.py', 'review-assets/2026-11-09/local-review.json'];
 const paths = flags => execFileSync('git', ['ls-files', ...flags, '-z', '--', ...roots], { cwd: root })
   .toString().split('\0').filter(Boolean);
 const sourceFiles = [...new Set([...paths([]), ...paths(['--others', '--exclude-standard'])])].sort();
@@ -40,6 +43,7 @@ const sourceStatus = git(['status', '--porcelain=v1', '--untracked-files=all', '
 // A run against uncommitted source is useful during development but is labelled
 // as such. Final delivery reruns this against a frozen source commit.
 const privateInputs = values['private-models'] ? await loadPrivateMaterialInputs(values['private-models']) : null;
+assert.ok(!(privateInputs && values['local-review']), 'Choose local review or the historical private overlay');
 assert.equal(Boolean(values['source-receipt']), Boolean(privateInputs), 'Private model runs require their source receipt');
 let sourceReceipt;
 if (privateInputs) {
@@ -57,11 +61,17 @@ if (privateInputs) {
 }
 assert.deepEqual(JSON.parse(await readFile(resolve(root, 'apps/web/dist/engine/assets.json'))), []);
 await mkdir(output, { recursive: true });
-const transport = JSON.parse(execFileSync(values.python, [resolve(root, 'scripts/check_deployment.py'),
+const transport = values['local-review'] ? await checkLocalReviewTransport(url.href) : JSON.parse(execFileSync(values.python, [resolve(root, 'scripts/check_deployment.py'),
   '--url', url.href, '--dist', resolve(root, 'apps/web/dist'), '--output', resolve(output, 'loopback-transport.json'),
   '--allow-local-http'], { cwd: root, encoding: 'utf8' }));
 assert.equal(transport.result, 'PASS');
-assert.equal(transport.scope, 'LOCAL_HTTP_TRANSPORT_ONLY');
+assert.equal(transport.scope, values['local-review'] ? 'LOCAL_REVIEW_HTTP_BYTES_ONLY' : 'LOCAL_HTTP_TRANSPORT_ONLY');
+if (values['local-review']) assert.equal(transport.manifest.config_sha256,
+  hash(await readFile(resolve(root, 'review-assets/2026-11-09/local-review.json'))), 'Served calibration config must match this checkout');
+if (values['local-review']) assert.equal(transport.manifest.source_head, values['expected-head'],
+  'Restart the review server for the expected source commit');
+if (values['local-review']) await persistTransport();
+async function persistTransport() { await writeFile(resolve(output, 'loopback-transport.json'), JSON.stringify(transport, null, 2) + '\n'); }
 const { default: puppeteer } = await import(pathToFileURL(resolve(values.driver)).href);
 const browser = await puppeteer.launch({ executablePath: resolve(values.chrome), headless: true,
   args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', ...(process.env.CI ? ['--no-sandbox'] : [])] });
@@ -83,9 +93,10 @@ try {
   const response = await page.goto(url.href, { waitUntil: 'domcontentloaded' });
   assert.ok(response?.ok()); await ready();
   await page.waitForSelector('canvas[aria-label="样例客厅三维场景"]');
-  if (privateInputs) await page.waitForFunction(() => /已加载 2 件模型/.test(document.querySelector('.scene-panel')?.textContent)
+  if (privateInputs || values['local-review']) await page.waitForFunction(() => /已加载 2 件模型/.test(document.querySelector('.scene-panel')?.textContent)
     && !/件加载中|件加载失败/.test(document.querySelector('.scene-panel')?.textContent));
   else assert.match(await text('.scene-panel'), /已加载 0 件模型/);
+  if (values['local-review']) assert.match(await text('[data-testid="local-asset-review"]'), /许可未核实/);
   assert.equal(await text('[data-testid="capability-boundary"]'), SCENE_BOUNDARY);
   await page.click('[data-testid="risk-case-guide"] summary');
   assert.equal(await page.$$eval('[data-testid="risk-case-guide"] li', nodes => nodes.length), 5);
@@ -96,7 +107,7 @@ try {
 
   await page.click('[data-testid="start-risk-case"]'); await ready();
   await page.click('[data-testid="asset-source-boundary"] summary');
-  assert.match(await text('[data-testid="asset-source-boundary"]'), privateInputs ? /来源标签.*分别核对/ : /占位形状/);
+  assert.match(await text('[data-testid="asset-source-boundary"]'), privateInputs || values['local-review'] ? /来源标签.*分别核对/ : /占位形状/);
   const initial = await capture('01-initial', 'chair', 'triggered', 'not_triggered');
   assert.match(initial.counts, /操作 0 步.*非法尝试 0 次/);
   await drag({ x: 5.3, z: 3.3 }, { x: 3, z: 2 }, 0.4); await ready();
@@ -169,17 +180,18 @@ try {
   }
   for (const [path, sha] of Object.entries(sourceHashes)) assert.equal(hash(await readFile(resolve(root, path))), sha, 'Source changed during run');
   assert.equal(git(['rev-parse', 'HEAD']), values['expected-head']);
-  await persist('result.json', { status: 'PASS_PRIVATE_REPEATABLE_RISK_CASE', recorded_at: new Date().toISOString(),
+  await persist('result.json', { status: values['local-review'] ? 'PASS_LOCAL_REVIEW_REPEATABLE_RISK_CASE' : 'PASS_PRIVATE_REPEATABLE_RISK_CASE', recorded_at: new Date().toISOString(),
     source: { head: values['expected-head'], source_status: sourceStatus, frozen_source: !sourceStatus, source_files_sha256: sourceHashes,
       dist_manifest_sha256: hash(await readFile(resolve(root, 'apps/web/dist/preview-manifest.json'))) },
     browser: await browser.version(), automation: 'Actual mouse drag, visible controls and browser downloads; no synthetic assessment injection',
     source_receipt: sourceReceipt, private_models: privateInputs?.evidence ?? null,
+    local_review: values['local-review'] ? transport.manifest : null,
     binding: binding ? { requests: binding.requests, overlays: binding.overlays, errors: binding.errors, external: binding.externalRequests } : null,
     phases, checks: { canonical_snapshot_replay: 'PASS_EVERY_PHASE', all_exported_findings_match_python: true, local_transport: transport.result, export_bytes_opened: true,
-      same_mode_restart: true, mobile_restart: true, original_bytes_unchanged: Boolean(privateInputs),
+      same_mode_restart: true, mobile_restart: true, original_bytes_unchanged: Boolean(privateInputs || values['local-review']),
       public_distribution_approved: false, performance: 'NOT_MEASURED_BY_THIS_WORKFLOW' }, errors, external });
   completed = true;
-  console.log(JSON.stringify({ status: 'PASS_PRIVATE_REPEATABLE_RISK_CASE', phases: phases.length, real_models: Boolean(privateInputs), output }));
+  console.log(JSON.stringify({ status: values['local-review'] ? 'PASS_LOCAL_REVIEW_REPEATABLE_RISK_CASE' : 'PASS_PRIVATE_REPEATABLE_RISK_CASE', phases: phases.length, real_models: Boolean(privateInputs || values['local-review']), output }));
 } catch (error) {
   await persist('failure.json', { error: String(error), stack: error.stack, phases, errors, external });
   await page.screenshot({ path: resolve(output, 'failure.png'), fullPage: true }).catch(() => {});
@@ -239,6 +251,15 @@ async function capture(name, object, child, elder) {
   // Viewport only: full-page screenshots resize the live canvas in Chromium.
   await page.$eval('.viewport', node => node.scrollIntoView({ block: 'center' }));
   await page.screenshot({ path: resolve(output, name + '.png') });
+  if (values['local-review']) {
+    const canvas = await page.$('canvas[aria-label="样例客厅三维场景"]');
+    await canvas.screenshot({ path: resolve(output, name + '-scene.png') });
+    const summaries = await page.$('.role-summaries');
+    await summaries.screenshot({ path: resolve(output, name + '-roles.png') });
+    if (await page.$('[data-testid="layout-comparison"]')) {
+      await (await page.$('[data-testid="layout-comparison"]')).screenshot({ path: resolve(output, name + '-comparison.png') });
+    }
+  }
   return phase;
 }
 async function drag(from, to, height) {
