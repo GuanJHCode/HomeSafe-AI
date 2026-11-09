@@ -56,6 +56,10 @@ th { width: 32%; color:#3b6259; font-weight: 600; }
 ul { padding-left: 5mm; margin: 2mm 0 4mm; }
 li { margin-bottom: 2mm; }
 .footer { position:absolute; bottom:0; left:0; right:0; border-top:1px solid #d1e4dd; padding-top:2mm; font-size:8pt; color:#607a72; }
+.sources-page { font-size: 9.5pt; line-height: 1.48; }
+.sources-page h3 { margin: 3mm 0 2mm; }
+.sources-page table { margin: 2mm 0; font-size: 8.6pt; }
+.sources-page th, .sources-page td { padding: 1.8mm 1.5mm; }
 </style></head><body>
 <section class="page"><p class="eyebrow">HOMESAFE AI / 安心屋 / T10 开发材料</p>
 <h1>在合成客厅里，<br>看见两种照护需求的取舍</h1>
@@ -75,7 +79,7 @@ ${row('演示输入摘要', state.input_hash)}
 </table>
 <p class="footer">工作稿 · 来源：${real ? '真实模型私下派生件／合成教学场景' : '本地程序占位场景'} · 生成时间 ${html(capture.created_at)} · 1 / 4</p></section>
 
-<section class="page"><h2>玩法、实现与素材来源</h2>
+<section class="page sources-page"><h2>玩法、实现与素材来源</h2>
 <h3>一条完整演练</h3>
 <p>从“初始状态开始窗边案例”观察椅子R001触发，将其移到通道后儿童条件解除、老人R005新增；撤销并移到离窗且通道外的位置。私下真实模型捕获还会移动、旋转柜体并验证非法回弹。达标后仍有窗口防护、柜体固定等资料待核查，按当前行动清单继续核查。JSON与快照实际下载自当前布局；另行运行完整风险案例脚本会打开下载内容作独立文字预览，本材料录屏只展示下载，不宣称产品导入。</p>
 <p>相机高度只影响观察，不代表触及能力。模型尺寸是合成教学场景中的目标尺寸，并非现实测量。未知保持未知；资料补充不算空间整改。</p>

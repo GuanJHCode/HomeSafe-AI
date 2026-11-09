@@ -196,10 +196,10 @@
         },
         {
           "id": "T03-retained-source-chain",
-          "status": "IN_REVIEW",
-          "review": "PENDING_FINAL_INDEPENDENT",
+          "status": "DONE",
+          "review": "PASS_INDEPENDENT_FROZEN_CODE_AND_REAL_CASE",
           "acceptance_scope": "18 retained source files, image/task/original association with attribution, real derivative bindings and interaction; no platform attestation or redistribution approval",
-          "evidence": "docs/CONTEST_CONTENT_20261109.md"
+          "evidence": "evidence/CONTEST_CONTENT_20261109.md"
         }
       ],
       "remaining": [
@@ -324,10 +324,10 @@
         },
         {
           "id": "T06-repeatable-complete-risk-case",
-          "status": "IN_REVIEW",
-          "review": "PENDING_FINAL_INDEPENDENT",
+          "status": "DONE",
+          "review": "PASS_INDEPENDENT_FROZEN_CODE_AND_REAL_CASE",
           "acceptance_scope": "Actual initial/tradeoff/undo/restart/window/cabinet/rebound/action/export/browser/Python replay case",
-          "evidence": "docs/CONTEST_CONTENT_20261109.md"
+          "evidence": "evidence/CONTEST_CONTENT_20261109.md"
         }
       ],
       "remaining": [
@@ -639,10 +639,26 @@
         },
         {
           "id": "T10-content-and-capability-boundaries",
-          "status": "IN_REVIEW",
-          "review": "PENDING_FINAL_INDEPENDENT",
+          "status": "DONE",
+          "review": "PASS_INDEPENDENT_FROZEN_CODE_AND_REAL_CASE",
           "acceptance_scope": "Shared honest UI/report boundaries, source evidence levels, repeatable recording plan, version-specific performance statements",
-          "evidence": "docs/CONTEST_CONTENT_20261109.md"
+          "evidence": "evidence/CONTEST_CONTENT_20261109.md"
+        },
+        {
+          "id": "T10-private-content-candidate-v3",
+          "status": "DONE_PRIVATE_REVIEW_DELIVERY_PENDING",
+          "review": "PASS_ACTUAL_NEW_MOVIE_OR_FOUR_PAGE_PDF_INDEPENDENT",
+          "acceptance_scope": "New source5826 actual model risk case, retained reference/task evidence, actual export viewer, no V2 replacement/publication",
+          "evidence": "evidence/CONTEST_CONTENT_20261109.md",
+          "review_evidence": "evidence/REVIEW_CONTEST_CONTENT_20261109.md"
+        },
+        {
+          "id": "T10-private-content-review-report",
+          "status": "DONE_PRIVATE_REVIEW_DELIVERY_PENDING",
+          "review": "PASS_ACTUAL_NEW_MOVIE_OR_FOUR_PAGE_PDF_INDEPENDENT",
+          "acceptance_scope": "Text-only private content report linked to frozen real model evidence and new V3, no screenshot/model attachment",
+          "evidence": "evidence/CONTEST_CONTENT_20261109.md",
+          "review_evidence": "evidence/REVIEW_CONTEST_CONTENT_20261109.md"
         }
       ]
     },
@@ -764,32 +780,16 @@
     "current_scope": "evidence/FEATURE_CONTINUATION_20261104.md"
   },
   "previous_continuation_base_commit": "57faf384d64e9770407b28086fdfeb5b193a6d6f",
-  "current_source_sync": "LOCAL_ONLY_CONTENT_STRENGTHENING_20261109_NO_PUSH_AUTHORIZATION",
+  "current_source_sync": "AUTHORIZED_NORMAL_FAST_FORWARD_REVIEWED_SAFE_SOURCE_AND_SANITIZED_DRAFTS_TO_EXISTING_DEVELOPMENT_BRANCH",
   "previous_source_sync": "LOCAL_ONLY_NOT_PUSHED",
   "latest_verified_remote_ci": {
-    "source_commit": "6dc418dfa3e9dfa0d5e94ce62cde3475a57854c2",
-    "remote_branch": "codex/v6.1-browser-3d",
-    "run_id": 42323926769,
-    "job_id": 128254689205,
-    "run_url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/42323926769",
-    "status": "completed",
-    "conclusion": "success",
-    "event": "push",
-    "attempt": 1,
-    "step_counts": {
-      "success": 37,
-      "failure": 0,
-      "skipped": 0
-    },
-    "functional_validation": "PASS_ALL_FUNCTIONAL_COMMANDS_CHROME156",
-    "evidence_basis": "Retained final GitHub API/jobs and actual job log parsed in push-audit-20261107; independently reviewed then. Historical measurement, not a new Nov9 run.",
-    "scope": "CI_LOCALHOST_SYNTHETIC_SCENE_ONLY; unchanged budgets; observed PASS does not establish a causal improvement or all-device consistency",
-    "performance_budget": "PASS_ALL_ORIGINAL_UNCHANGED_THRESHOLDS",
-    "first_editable_p95_ms": 2349.8,
-    "cold_rules_p95_ms": 2349.7,
-    "hot_evaluation_p95_ms": 6.5,
+    "status": "PENDING_FOR_NEW_PUSH_AT_RECORD_CREATION",
+    "baseline_source_commit": "6dc418dfa3e9dfa0d5e94ce62cde3475a57854c2",
+    "baseline_run_id": 42323926769,
+    "baseline_conclusion": "success",
+    "new_run_id": null,
     "evidence": "evidence/current-ci/6dc418d-ci-summary.json",
-    "skipped_steps": []
+    "note": "This is a source snapshot before authorized push; do not call the baseline run the new commit CI."
   },
   "startup_phase": {
     "base_commit": "64e166540495126f618dd65aa8dc88760ed70604",
@@ -1219,14 +1219,58 @@
     "source_of_status": "Direct completed GitHub API steps and actual job JSON logs; remote SHA verified after authorized normal fast-forward push"
   },
   "content_strengthening_20261109": {
-    "status": "IMPLEMENTED_AWAITING_FINAL_INDEPENDENT_REVIEW",
+    "status": "PASS_INDEPENDENT_CODE_SOURCE_RISK_CASE_PDF_AND_V3_PRIVATE_ATTACHMENT_PENDING",
     "base_commit": "6dc418dfa3e9dfa0d5e94ce62cde3475a57854c2",
     "local_branch": "codex/contest-content-20261109",
     "scope": "Private source chain, repeatable Python-backed risk case, UI/materials capability boundaries; no real-home recognition system",
-    "push_authorization": false,
+    "push_authorization": true,
     "public_model_rights": "PENDING",
     "performance_this_round": "NOT_RUN_ORIGINAL_THRESHOLDS_UNCHANGED",
     "historical_video": "V2 remains product500; does not depict Nov9 UI",
-    "evidence": "docs/CONTEST_CONTENT_20261109.md"
+    "evidence": "docs/CONTEST_CONTENT_20261109.md",
+    "product_commit": "5826dab4bf8385412756e8de1f1d2491afc199d6",
+    "independent_code_review": "PASS_FROZEN_SOURCE_AND_SEPARATE_REAL_BROWSER_RERUN",
+    "private_v3": {
+      "status": "PASS_ACTUAL_NEW_MOVIE_INDEPENDENT_REVIEW_PRIVATE_DELIVERY_PENDING",
+      "seconds": 88.92,
+      "frames": 2223,
+      "source_commit": "5826dab4bf8385412756e8de1f1d2491afc199d6",
+      "v2_preserved": true,
+      "public_media_uploaded": false
+    },
+    "report": {
+      "pages": 4,
+      "status": "PASS_ACTUAL_FOUR_PAGE_INDEPENDENT_REVIEW_PRIVATE_DELIVERY_PENDING"
+    },
+    "public_summary": "evidence/CONTEST_CONTENT_20261109.md",
+    "push_target_branch": "codex/v6.1-browser-3d",
+    "source_publication_scope": "SAFE_CODE_SANITIZED_EVIDENCE_DRAFT_TEXT_ONLY",
+    "official_materials_index": "submission/README.md"
+  },
+  "source_record_scope": "Snapshot prepared before current authorized push; post-push remote SHA and CI must be verified for the actual pushed commit. No deployment, master or private media/model publication.",
+  "historical_remote_ci_6dc418d": {
+    "source_commit": "6dc418dfa3e9dfa0d5e94ce62cde3475a57854c2",
+    "remote_branch": "codex/v6.1-browser-3d",
+    "run_id": 42323926769,
+    "job_id": 128254689205,
+    "run_url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/42323926769",
+    "status": "completed",
+    "conclusion": "success",
+    "event": "push",
+    "attempt": 1,
+    "step_counts": {
+      "success": 37,
+      "failure": 0,
+      "skipped": 0
+    },
+    "functional_validation": "PASS_ALL_FUNCTIONAL_COMMANDS_CHROME156",
+    "evidence_basis": "Retained final GitHub API/jobs and actual job log parsed in push-audit-20261107; independently reviewed then. Historical measurement, not a new Nov9 run.",
+    "scope": "CI_LOCALHOST_SYNTHETIC_SCENE_ONLY; unchanged budgets; observed PASS does not establish a causal improvement or all-device consistency",
+    "performance_budget": "PASS_ALL_ORIGINAL_UNCHANGED_THRESHOLDS",
+    "first_editable_p95_ms": 2349.8,
+    "cold_rules_p95_ms": 2349.7,
+    "hot_evaluation_p95_ms": 6.5,
+    "evidence": "evidence/current-ci/6dc418d-ci-summary.json",
+    "skipped_steps": []
   }
 }
