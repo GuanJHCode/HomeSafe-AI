@@ -1272,5 +1272,49 @@
     "hot_evaluation_p95_ms": 6.5,
     "evidence": "evidence/current-ci/6dc418d-ci-summary.json",
     "skipped_steps": []
+  },
+  "review_assets_share_20261109": {
+    "record_scope": "PRE_PUSH_SOURCE_SNAPSHOT",
+    "target_branch": "codex/v6.1-browser-3d",
+    "base_commit": "29e9eae2a5a6a0c88109376f2c97b722b0758367",
+    "directory": "review-assets/2026-11-09",
+    "files": [
+      {
+        "path": "review-assets/2026-11-09/HomeSafe-AI_V3_20261109.mp4",
+        "role": "video",
+        "bytes": 3423110,
+        "sha256": "184ec7f936eb08c306c4d4ba1c6ec40125600a77f2744a93447bf5dbdd8ccef2",
+        "git_blob_sha": "1d12edae9468d0067679b3d321e139564652bb47"
+      },
+      {
+        "path": "review-assets/2026-11-09/HomeSafe-AI_content-review_20261109.pdf",
+        "role": "report",
+        "bytes": 682670,
+        "sha256": "1befeb0b33f757e92ad0eca251197d1af0c44e5dfc02872750c76f851dca999e",
+        "git_blob_sha": "d314bddbb94f40a781b0beb58c30418121823d98"
+      },
+      {
+        "path": "review-assets/2026-11-09/chair_lux3d_g1_30471.glb",
+        "role": "chair_original",
+        "bytes": 10352404,
+        "sha256": "e2606d75f4ef91a7395b9447ca5d65d972fd38595bcf53d6c6ef11ee9462e71a",
+        "git_blob_sha": "eeb24bf0287f7f5232227ec37141fc63f9ee5b21"
+      },
+      {
+        "path": "review-assets/2026-11-09/cabinet_lux3d_g1_30475.glb",
+        "role": "cabinet_original",
+        "bytes": 8689480,
+        "sha256": "a8398b16be4d4d2f0c7c703575d0679ce16cc3aeacc276af48c9d26379ad940b",
+        "git_blob_sha": "08930643090f71fe9ae448ebeafba2119d07fb55"
+      }
+    ],
+    "status": "FOUR_EXISTING_FILES_PREPARED_FOR_EXPLICIT_PUBLIC_REVIEW_SHARE",
+    "privacy_review": "PASS_NEW_ACTUAL_DISCLOSURE_REVIEW",
+    "platform_specific_redistribution_license_verified": false,
+    "runtime_catalog_changed": false,
+    "extra_private_materials_included": false,
+    "draft_release_published": false,
+    "main_or_master_changed": false,
+    "ci_budgets_changed": false
   }
 }

@@ -1,9 +1,9 @@
 {
   "manifest_version": "1.0",
-  "release": "V6.1-reviewed-contest-content-20261109",
-  "base_commit": "6dc418dfa3e9dfa0d5e94ce62cde3475a57854c2",
+  "release": "V6.1-four-review-assets-source-index-20261109",
+  "base_commit": "29e9eae2a5a6a0c88109376f2c97b722b0758367",
   "baseline_zip_sha256": "b6c674f532fd30ff7ab086b08c814b086e94e2aa0f12cff80c1b6d94b96d3752",
-  "classification_policy": "960 explicit reviewed source/sanitized text files. Authorized normal fast-forward of reviewed code, evidence summaries and draft submission text to the existing development branch. Raw/derived models, source package, private PDF/video/screenshots, account/private paths/attachment identities, runtime/build/dependencies excluded. No master, website deployment or formal submission.",
+  "classification_policy": "962 explicit source/sanitized text files. Four separately reviewed video/PDF/original-GLB binaries are tracked under review-assets/2026-11-09 per its exact manifest and are intentionally excluded from this code-only export allowlist. All other private media, source records, Space identities/temporary URLs, credentials, runtime/build/dependencies remain excluded. No main/master, deployment, formal submission or CI budget change.",
   "files": [
     {
       "path": ".env.example",
@@ -61,8 +61,8 @@
     },
     {
       "path": "START_HERE.md",
-      "sha256": "c1d79ed8e5a38e14485b91b0be32bf402c354888a69338a40f2681663e819886",
-      "bytes": 16383,
+      "sha256": "34e9ed55480b1aa552448e9b4229e42c3eb6cafda18fd62ea1c747f4fec8fb7e",
+      "bytes": 16928,
       "classification": "generated_project_source"
     },
     {
@@ -775,8 +775,8 @@
     },
     {
       "path": "evidence/HANDOFF.md",
-      "sha256": "be1e92a2dcc4ec6e55603b1532d864b273c3f3b470b884ab38a4a4b0782257fa",
-      "bytes": 24979,
+      "sha256": "69607d45e9142e649176eedd043db1be88bd3ecd73c7a29a60578f77467eecbf",
+      "bytes": 25527,
       "classification": "generated_project_source"
     },
     {
@@ -3643,8 +3643,8 @@
     },
     {
       "path": "evidence/task-status.json",
-      "sha256": "2d5127ac72ac333fd94fd7763f35a06c7a320d37ac223b94b6da0270e1e0a219",
-      "bytes": 61131,
+      "sha256": "9fb51a5219eadaa6578b0231a34b341b3b9e1e50fabdc43a43ca01a4b4f0ffdc",
+      "bytes": 62990,
       "classification": "generated_project_source"
     },
     {
@@ -5382,6 +5382,18 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "review-assets/2026-11-09/README.md",
+      "classification": "generated_project_source",
+      "sha256": "7b3d1c0f119a1a7373a4ebb94df34eeab1ef5caeb96256f9201c5c5d3acb810e",
+      "bytes": 3332
+    },
+    {
+      "path": "review-assets/2026-11-09/manifest.json",
+      "classification": "generated_project_source",
+      "sha256": "4beff4c36598302a67f8bf8161b9f45a49161f8f8d6fb5d3784ab4c43234f277",
+      "bytes": 1720
+    },
+    {
       "path": "scripts/browser_fault.mjs",
       "sha256": "53a9feb2ad8ee60d0b94d91a9df75860d53cbfdffc4c5cf206b201cce100ce06",
       "bytes": 930,
@@ -5678,8 +5690,8 @@
     {
       "path": "submission/README.md",
       "classification": "generated_project_source",
-      "sha256": "29ee3ee31df7c2b0360442c90dec438b82561f1c7f432c2d49082bb49771f7ea",
-      "bytes": 3625
+      "sha256": "9ba089bc10bfe90cfb980dbfd673cd46587d5be2577b154841083ffea504975a",
+      "bytes": 3567
     },
     {
       "path": "submission/drafts/private-materials-runbook.md",
