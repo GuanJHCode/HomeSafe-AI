@@ -1,9 +1,9 @@
 {
   "manifest_version": "1.0",
-  "release": "V6.1-reviewed-safe-source-sync-20261107",
-  "base_commit": "5001222413937586604e8d944ba83787c7cb06fa",
+  "release": "V6.1-private-content-strengthening-20261109",
+  "base_commit": "6dc418dfa3e9dfa0d5e94ce62cde3475a57854c2",
   "baseline_zip_sha256": "b6c674f532fd30ff7ab086b08c814b086e94e2aa0f12cff80c1b6d94b96d3752",
-  "classification_policy": "950 explicit reviewed source/safe text evidence files. User authorized normal fast-forward source sync to the existing development branch. Original/derived models, PDF/video/image bytes, private inputs/profiles/links, one-off private capture/review scripts, raw websites/terms and runtime/build/dependencies excluded. No website or formal submission.",
+  "classification_policy": "957 explicit reviewed source/safe text evidence files. Local-only content strengthening; no push or deployment authorized. Original/derived GLBs, source package, screenshots, PDF/video, private paths/identities/links, raw third-party pages, runtime/build/dependencies excluded. No formal submission.",
   "files": [
     {
       "path": ".env.example",
@@ -61,8 +61,8 @@
     },
     {
       "path": "START_HERE.md",
-      "sha256": "b5bb9989ff3a2ed568b8f217d25f44bf8fcf61838a1250593134f230ffe05216",
-      "bytes": 15037,
+      "sha256": "381f426e9c4a30b9b30b350a8a703e8c435ce7f85e24a60dc72226578f36a3d3",
+      "bytes": 15976,
       "classification": "generated_project_source"
     },
     {
@@ -85,8 +85,8 @@
     },
     {
       "path": "apps/web/src/App.vue",
-      "sha256": "865acbe4161209350c330ec05b1a2d2a1822bbecd9afcda6279221c88b1092a8",
-      "bytes": 14930,
+      "sha256": "76721231497f56380a09c42f16a0f0b1a1b5282ade704c2278f2a617196e7b77",
+      "bytes": 16259,
       "classification": "generated_project_source"
     },
     {
@@ -100,6 +100,12 @@
       "sha256": "191f5bb5e962dbf46d18232e43e7732687bbb3f739dc2d3b9aa90034cedd7dc9",
       "bytes": 3544,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/src/domain/DemoContent.ts",
+      "classification": "generated_project_source",
+      "sha256": "d37670ba48c9f9b3ac994a97ba1adc0e5a14eb0c84c92ed43dec97458b758835",
+      "bytes": 2248
     },
     {
       "path": "apps/web/src/domain/EvaluationController.ts",
@@ -181,14 +187,14 @@
     },
     {
       "path": "apps/web/src/style.css",
-      "sha256": "9131331994f3310d47662e81710dc57e8ab3d48e63c8d41d7cd8dd1c8089b033",
-      "bytes": 5183,
+      "sha256": "31ebc14198606f215e14ad1fcab29d4202d5dab8812faee5ae49ba6e90402fb3",
+      "bytes": 5397,
       "classification": "generated_project_source"
     },
     {
       "path": "apps/web/src/useLivingRoom.ts",
-      "sha256": "f0e8824e51304da58c490d213f79f9342f9124457621f79e8b19982c28962738",
-      "bytes": 24965,
+      "sha256": "e1a288dc2343712279fd94106449c50bbcf4522839389a18b7d335b5619efbbf",
+      "bytes": 25522,
       "classification": "generated_project_source"
     },
     {
@@ -202,6 +208,12 @@
       "sha256": "76b614b618d4d13ec9224c484b934dc858fc793211502179fc05660fdd161f28",
       "bytes": 3834,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "apps/web/tests/demo-content.test.ts",
+      "classification": "generated_project_source",
+      "sha256": "8a1d38413bee8ee5333e3fec6b319094facbaf61d82ad79fb7efd20aa4744066",
+      "bytes": 1088
     },
     {
       "path": "apps/web/tests/evaluation.test.ts",
@@ -618,9 +630,15 @@
       "bytes": 4757
     },
     {
+      "path": "docs/CONTEST_CONTENT_20261109.md",
+      "classification": "generated_project_source",
+      "sha256": "404f43fb7dde3ea69e0d4bd82cbe86deca1d94a06a254a2d4bfc27390e286e06",
+      "bytes": 6082
+    },
+    {
       "path": "docs/NEXT_AGENT_PROMPT_20261104.md",
-      "sha256": "ae52211f752a6ac4dea97d0f0c16ffe431ebe7bd80f4c492b4240a54c7d0f379",
-      "bytes": 19513,
+      "sha256": "a1215042f863d63984a47076cb4446c3deee5d4183920f6fcce398a24164f055",
+      "bytes": 19856,
       "classification": "generated_project_source"
     },
     {
@@ -751,8 +769,8 @@
     },
     {
       "path": "evidence/HANDOFF.md",
-      "sha256": "22f43f0ca437740e156224d4dbf0b2a207afacb4a310812b6398c96b4584e044",
-      "bytes": 23648,
+      "sha256": "03264751620dae0ebe4978b03d0cd284e306e9bc54554dfdd7b0874c28dd8f78",
+      "bytes": 24581,
       "classification": "generated_project_source"
     },
     {
@@ -1732,6 +1750,12 @@
       "classification": "generated_project_source",
       "sha256": "bee578738705fea769aba693c166e93886affc7a51388f62ab505486704f89b2",
       "bytes": 17638
+    },
+    {
+      "path": "evidence/current-ci/6dc418d-ci-summary.json",
+      "classification": "generated_project_source",
+      "sha256": "68cd2229d294209fdeb769e681448ad051eb62d948b1ba92a52dcb25c5c1237e",
+      "bytes": 4142
     },
     {
       "path": "evidence/deployment-checklist.json",
@@ -3607,8 +3631,8 @@
     },
     {
       "path": "evidence/task-status.json",
-      "sha256": "05fc0323d4588a3f3672cbc95c4844269301525efc388e357fc4fae75090b7b8",
-      "bytes": 55227,
+      "sha256": "d9e74b446dfe6344e6a37f78949385487c9df7d1e17e559b65e263dccd1961b7",
+      "bytes": 58549,
       "classification": "generated_project_source"
     },
     {
@@ -5304,6 +5328,12 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "reference/tests/test_source_bundle.py",
+      "classification": "generated_project_source",
+      "sha256": "ccfdb97c0d7eae05ac5a06e986a061c3730dbaf4eafa5b3d5d3b906eaa7434ae",
+      "bytes": 4304
+    },
+    {
       "path": "reference/tests/test_submission_url.py",
       "sha256": "6f9a0b182c4862d8419f8bb9d5ad344e4c3774ff92c826fa53fe79eff20bcaf5",
       "bytes": 1450,
@@ -5362,6 +5392,12 @@
       "sha256": "7ca7318a293a0800208783390577a3bb0990f7967082df5b1c2d31fab076269c",
       "bytes": 8514,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "scripts/check_lux3d_source_bundle.py",
+      "classification": "generated_project_source",
+      "sha256": "ad8ce70c7ee5e86ab2333014729d0c1c465a115402c3d3f9f5f5948a07719bdc",
+      "bytes": 6881
     },
     {
       "path": "scripts/check_network_cache_browser.mjs",
@@ -5472,10 +5508,16 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "scripts/check_web_risk_case.mjs",
+      "classification": "generated_project_source",
+      "sha256": "a588fb35b3a266ce34ec5ce80738700c2ba48190a06fb6f5a621f3dca86d150b",
+      "bytes": 19247
+    },
+    {
       "path": "scripts/create_development_materials.mjs",
       "classification": "generated_project_source",
-      "sha256": "f68c4304cb1463b9b72bcd060d8e1b128bd4fd6e1381e5f22a11800c17506b19",
-      "bytes": 30706
+      "sha256": "85ba7d387c5843ef36621a0c2bacd7c894b3791edaf17e1bb1beefa38d6407e7",
+      "bytes": 31889
     },
     {
       "path": "scripts/create_private_asset_fixture.py",
@@ -5492,14 +5534,14 @@
     {
       "path": "scripts/development_materials_report.mjs",
       "classification": "generated_project_source",
-      "sha256": "8ef6e347a64f6b5415f7fae39221f0988a404f2bb139b7e4afee5defbb5d266b",
-      "bytes": 11457
+      "sha256": "38d21afa2c87292e0b0ce34aa28bb72044a1fd9114206a73e36305d71117cc50",
+      "bytes": 12529
     },
     {
       "path": "scripts/development_materials_report.test.mjs",
       "classification": "generated_project_source",
-      "sha256": "d5b65b44ec99fb2ade4ec8aa9aa7d6926d1f2acf867b3ef9a6edeebdee92d5fb",
-      "bytes": 3831
+      "sha256": "34b3a71567f4677ca91dea8c4aa2ffd06ae7ce659a915e375bfc1acf71daf818",
+      "bytes": 4872
     },
     {
       "path": "scripts/download_pyodide.py",
@@ -5624,13 +5666,13 @@
     {
       "path": "submission/drafts/private-materials-runbook.md",
       "classification": "generated_project_source",
-      "sha256": "11cae682da34d49c4c1047d0f9beb7e16a82e1cf979016ba7dd35e591f3a4301",
-      "bytes": 6691
+      "sha256": "f5545c7e3e0bc37f4b20cce3431af13671efadbcd354cd62ea5777998e2339c9",
+      "bytes": 7299
     },
     {
       "path": "submission/drafts/recording-plan.md",
-      "sha256": "bf364e17a25461b9c0e90e4f0928a8febef1a03f0570de685232db6b67e1c24a",
-      "bytes": 1999,
+      "sha256": "aa376ecc1ed85fe07e471590dc0e6ff485019992824d9853261f82be0d5d75f9",
+      "bytes": 3016,
       "classification": "generated_project_source"
     },
     {
@@ -5641,8 +5683,8 @@
     },
     {
       "path": "submission/drafts/report-20261104.md",
-      "sha256": "21962153457bab1e15689996aff6010d3f6ee7903bf19dea9eb11bdd9bc830ff",
-      "bytes": 8703,
+      "sha256": "c7a6848373b463cb6a9f54ccf0c8f4b53f3f2c3a88eacafbc3fb0bda996f3d8e",
+      "bytes": 9907,
       "classification": "generated_project_source"
     },
     {

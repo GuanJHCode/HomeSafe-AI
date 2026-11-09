@@ -65,6 +65,11 @@ dl div { display: flex; gap: .4rem; }
 dd { margin: 0; }
 .scope { border-top: 1px solid #e1e4d9; margin-top: .85rem; padding-top: .65rem; }
 .report { margin-block-start: 1rem; }
+.case-guide { margin-block-end: 1rem; }
+.case-guide h2 { font-size: 1.15rem; }
+.case-guide details { margin-top: .4rem; }
+.case-guide li { margin-block: .3rem; }
+.asset-origin { margin-block: .4rem; }
 .action-grid { display: grid; gap: 1rem; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-block: .8rem; }
 .action-grid section { background: #f4f5ee; border-radius: .6rem; padding: .7rem; }
 .action-grid ul, .limits, .report-coverage { padding-inline-start: 1.15rem; }
@@ -82,7 +87,7 @@ dd { margin: 0; }
 @media print {
   :root { background: white; }
   .shell { width: auto; margin: 0; }
-  .intro, .notice, .workspace, .report-buttons { display: none; }
+  .intro, .notice, .case-guide, .workspace, .report-buttons { display: none; }
   .report { padding: 0; border: 0; }
   .action-grid { grid-template-columns: 1fr; }
   .action-grid section { padding: .25rem 0; }

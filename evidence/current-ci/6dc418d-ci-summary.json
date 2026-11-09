@@ -1,0 +1,136 @@
+{
+  "source_commit": "6dc418dfa3e9dfa0d5e94ce62cde3475a57854c2",
+  "remote_branch": "codex/v6.1-browser-3d",
+  "run_id": 42323926769,
+  "job_id": 128254689205,
+  "run_url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/42323926769",
+  "status": "completed",
+  "conclusion": "success",
+  "event": "push",
+  "attempt": 1,
+  "step_counts": {
+    "success": 37,
+    "failure": 0,
+    "skipped": 0
+  },
+  "functional_validation": "PASS_ALL_FUNCTIONAL_COMMANDS_CHROME156",
+  "counts": {
+    "python": 343,
+    "app": 39,
+    "js_scripts": 35,
+    "browser_spike": 24
+  },
+  "performance": {
+    "scope": "ISOLATED_BROWSER_MEASUREMENT",
+    "browser": "Chrome/156.0.8078.79",
+    "budget_mode": "enforce",
+    "trace_mode": "required",
+    "limits": [
+      "First observation is diagnostic only; the 3s target uses cold first-editable p95. Every sample verifies an actual accepted edit.",
+      "Placeholder model scene; real Lux3D load/render/release performance NOT_RUN.",
+      "Fresh contexts isolate browser cache, not operating-system caches or all runtime process reuse.",
+      "Localhost results do not establish anonymous HTTPS or public performance.",
+      "Chrome only; Edge and Safari NOT_RUN."
+    ],
+    "targets": {
+      "first_editable_p95_le_3000_ms": true,
+      "cold_rules_le_12000_ms": true,
+      "hot_evaluation_p95_le_150_ms": true
+    },
+    "summary": {
+      "first_observation": {
+        "count": 5,
+        "min": 162.29999999998836,
+        "max": 368.5,
+        "p50": 167.20000000001164,
+        "p95": 368.5
+      },
+      "cold_first_editable": {
+        "count": 5,
+        "min": 2080.600000000006,
+        "max": 2349.7999999999884,
+        "p50": 2191.2000000000116,
+        "p95": 2349.7999999999884
+      },
+      "warm_first_editable": {
+        "count": 5,
+        "min": 1982.2999999999884,
+        "max": 2037.3999999999942,
+        "p50": 1995.8999999999942,
+        "p95": 2037.3999999999942
+      },
+      "cold_first_edit_confirmed": {
+        "count": 5,
+        "min": 2207,
+        "max": 2489.7999999999884,
+        "p50": 2325.8000000000175,
+        "p95": 2489.7999999999884
+      },
+      "cold_document_to_worker": {
+        "count": 5,
+        "min": 100.90000000002328,
+        "max": 133.5,
+        "p50": 105.80000000001746,
+        "p95": 133.5
+      },
+      "cold_init_request_roundtrip": {
+        "count": 5,
+        "min": 1938.0999999999767,
+        "max": 2174.2999999999884,
+        "p50": 2036.7999999999884,
+        "p95": 2174.2999999999884
+      },
+      "cold_worker_initialization": {
+        "count": 5,
+        "min": 1770.3999999999942,
+        "max": 1873.2000000000116,
+        "p50": 1861,
+        "p95": 1873.2000000000116
+      },
+      "cold_worker_init_received": {
+        "count": 5,
+        "min": 2043.6999999999825,
+        "max": 2308,
+        "p50": 2153,
+        "p95": 2308
+      },
+      "cold_after_worker_to_editable": {
+        "count": 5,
+        "min": 36.90000000002328,
+        "max": 44.10000000000582,
+        "p50": 41.79999999998836,
+        "p95": 44.10000000000582
+      },
+      "cold_rules_ready": {
+        "count": 5,
+        "min": 2080.600000000006,
+        "max": 2349.7000000000116,
+        "p50": 2191.2000000000116,
+        "p95": 2349.7000000000116
+      },
+      "warm_rules_ready": {
+        "count": 5,
+        "min": 1982.2999999999884,
+        "max": 2037.3999999999942,
+        "p50": 1995.8999999999942,
+        "p95": 2037.3999999999942
+      },
+      "hot_evaluation": {
+        "count": 30,
+        "min": 3.7999999999883585,
+        "max": 6.800000000017462,
+        "p50": 4.5,
+        "p95": 6.5
+      },
+      "hot_roundtrip": {
+        "count": 30,
+        "min": 4,
+        "max": 7.5,
+        "p50": 4.7000000000116415,
+        "p95": 7.199999999982538
+      }
+    }
+  },
+  "evidence_basis": "Retained final GitHub API/jobs and actual job log parsed in push-audit-20261107; independently reviewed then. Historical measurement, not a new Nov9 run.",
+  "scope": "CI_LOCALHOST_SYNTHETIC_SCENE_ONLY; unchanged budgets; observed PASS does not establish a causal improvement or all-device consistency"
+}

@@ -14,7 +14,7 @@ import { loadPrivateMaterialInputs, attachPrivateMaterialInputs } from './privat
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const { values } = parseArgs({ options: Object.fromEntries(
-  ['url', 'chrome', 'driver', 'python', 'output', 'expected-head', 'mode', 'private-models'].map(name => [name, { type: 'string' }])) });
+  ['url', 'chrome', 'driver', 'python', 'output', 'expected-head', 'mode', 'private-models', 'source-bundle'].map(name => [name, { type: 'string' }])) });
 for (const name of ['url', 'chrome', 'driver', 'python', 'output', 'expected-head', 'mode']) {
   if (!values[name]) throw new Error(`Required: --${name}`);
 }
@@ -29,7 +29,7 @@ const sourceBefore = await sourceIdentity();
 assert.equal(sourceBefore.head, values['expected-head'], 'Source HEAD changed before capture');
 assert.equal(sourceBefore.app_matches_head, true, 'Capture requires unchanged App/Core');
 const privateInputs = values['private-models'] ? await loadPrivateMaterialInputs(values['private-models']) : null;
-if (privateInputs) assert.equal(sourceBefore.app_matches_authorized_source, true, 'Private capture must match authorized5001222 App/Core');
+if (privateInputs) assert.equal(sourceBefore.app_matches_authorized_source, true, 'Private capture must match the explicitly selected --expected-head App/Core');
 const distCatalog = JSON.parse(await readFile(resolve(root, 'apps/web/dist/engine/assets.json'), 'utf8'));
 assert.deepEqual(distCatalog, [], 'This recording must use the public placeholder-only preview');
 const publicCatalog = JSON.parse(await readFile(resolve(root, 'assets/asset-manifest.json'), 'utf8'));
@@ -38,6 +38,18 @@ const previewManifest = JSON.parse(await readFile(resolve(root, 'apps/web/dist/p
 assert.equal(previewManifest.reviewed_assets, 0);
 assert.equal(previewManifest.lux3d_assets_declared, 0);
 await mkdir(output, { recursive: true });
+if (privateInputs) {
+  assert.ok(values['source-bundle'], 'Private materials require --source-bundle for reference/task/original evidence');
+  const receiptPath = resolve(output, 'source-bundle-receipt.json');
+  execFileSync(values.python, [resolve(root, 'scripts/check_lux3d_source_bundle.py'),
+    '--source', resolve(values['source-bundle']), '--output', receiptPath], { cwd: root, encoding: 'utf8' });
+  const bytes = await readFile(receiptPath), receipt = JSON.parse(bytes);
+  for (const model of privateInputs.evidence.models) assert.equal(receipt.models.find(m => m.object_id === model.id)?.original_model.sha256,
+    model.original_sha256, 'Source bundle must match actual runtime original');
+  privateInputs.evidence.source_bundle_receipt = { checked_delivery_files: receipt.checked_delivery_files,
+    sha256: createHash('sha256').update(bytes).digest('hex'), models: receipt.models,
+    platform_attestation_verified: false, public_redistribution_approved: false };
+}
 
 // Verify that the exact local HTTP resources served to Chromium match the
 // reviewed local dist bytes. This is transport evidence, not public deployment.
@@ -113,6 +125,8 @@ try {
   await installAnnotation();
   await phase(0, privateInputs ? '录屏注释｜两件真实 Lux3D 法线修复派生件；私下教学拟合，非公开授权（非产品控件）'
     : '录屏注释｜本地开发预览：仅程序占位；本片未使用真实 Lux3D（非产品控件）', '.intro');
+
+  await page.click('[data-testid="start-risk-case"]'); await ready();
 
   await click('儿童视角');
   await phase(1, '录屏注释｜儿童观察视角；相机高度仅用于示意', '.views');
@@ -241,13 +255,13 @@ try {
     model_bytes_in_environment: 'NOT_ASSESSED_BY_PLACEHOLDER_CAPTURE',
     model_materialization: '本次占位录屏不执行模型物化；原件可用性与私下验收应查独立记录',
     real_lux3d_browser: 'NOT_RUN_BY_THIS_CAPTURE', rights: 'NOT_ASSESSED_BY_THIS_CAPTURE', public_https: 'NOT_RUN_BY_THIS_CAPTURE',
-    performance_3s_goal: 'OPEN; 本材料流程未重测性能' };
+    performance_3s_goal: 'NOT_RUN_THIS_CAPTURE；本材料流程未重测性能，不从其他版本推定当前达标或未达标' };
   if (privateInputs) Object.assign(checks, {
-    historical_baseline: '5001222 / CI41993004005：Python343、应用39、JS51及Chrome156功能通过；本次未重跑全套CI',
+    historical_baseline: '历史基线6dc418d / CI42323926769：Python343、应用39、JS59及Chrome156通过，首次可编辑p95=2349.8ms，原3秒门槛通过；本次未重跑CI或性能，不推定当前版本结果',
     model_bytes_in_environment: 'TWO_PRIVATE_DERIVATIVES_LOADED_HASH_MATCH',
     model_materialization: '原件与派生件链已核对；本次仅浏览器内存拦截绑定，不写公开目录',
     real_lux3d_browser: 'PASS_CURRENT_PRIVATE_CAPTURE_INTERACTIONS', rights: 'PENDING_NO_PUBLIC_DISTRIBUTION',
-    performance_3s_goal: '5001222 CI首次可编辑p95=4324ms，超过内部3000ms目标；冷规则和热评估门禁通过。3秒目标不阻塞其他开发，严格阈值保持',
+    performance_3s_goal: 'NOT_RUN_THIS_CAPTURE；本材料流程未重测性能，已存在的 CI 结果只对其对应提交有效，严格阈值保持',
   });
   const exportEvidence = { report, snapshot,
     report_filename: exportedReport.filename, snapshot_filename: exportedSnapshot.filename,
@@ -355,7 +369,7 @@ async function sourceIdentity() {
     'scripts/capture_ffmpeg_fast.py'];
   const toolHashes = Object.fromEntries(await Promise.all(toolPaths.map(async path => [path,
     await fileHash(resolve(root, path))])));
-  const currentAppDiff = git(['diff', '--name-only', '5001222413937586604e8d944ba83787c7cb06fa', '--', ...roots]);
+  const currentAppDiff = git(['diff', '--name-only', values['expected-head'], '--', ...roots]);
   return { head, branch, initial_anchor: 'ba21f54ace3218cfa2d695092b735165c923b1b9',
     project_dirty: projectStatus.length > 0, project_status: projectStatus,
     app_matches_head: appStatus.length === 0, app_anchor_match: !anchorDiff && untracked.length === 0,
@@ -363,7 +377,7 @@ async function sourceIdentity() {
     dist_manifest_sha256: await fileHash(resolve(root, 'apps/web/dist/preview-manifest.json')),
     dist_checksums_sha256: await fileHash(resolve(root, 'apps/web/dist/CHECKSUMS.sha256')),
     key_files: keyFiles, capture_tool_sha256: toolHashes,
-    authorized_app_reference_commit: '5001222413937586604e8d944ba83787c7cb06fa',
+    authorized_app_reference_commit: values['expected-head'],
     app_matches_authorized_source: !currentAppDiff && untracked.length === 0 };
 }
 

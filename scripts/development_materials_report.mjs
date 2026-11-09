@@ -1,4 +1,5 @@
 // Printable, source-bound development report. All dynamic text is escaped.
+import { SCENE_BOUNDARY, RULE_BOUNDARY } from '../apps/web/src/domain/DemoContent.ts';
 const html = value => String(value ?? '').replace(/[&<>"']/g, char => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
 })[char]);
@@ -10,7 +11,8 @@ export function renderDevelopmentReport({ source, capture, exports, video, check
   const captureStatus = capture.mode === 'trial' ? 'TRIAL_ONLY_NOT_DELIVERABLE'
     : real ? 'PRIVATE_REAL_MODEL_DEVELOPMENT_RECORDING' : 'LOCALHOST_PLACEHOLDER_DEVELOPMENT_RECORDING';
   const modelSection = real ? `<h3>本次实际使用的真实 Lux3D 模型</h3>
-<p>两件 Lux3D 网页图生 3D 的法线修复派生件已在本次浏览器中加载：椅子与柜体。原件有零法线格式问题；派生仅修法线和必要元数据，原件、坐标、拓扑、UV 与嵌入图像保持。原始任务为 chair 30471、cabinet 30475，参考图为 AI 生成家具图。</p>
+<p>两件 Lux3D 网页图生 3D 的法线修复派生件已在本次浏览器中加载：椅子与柜体。原件有零法线格式问题；派生仅修法线和必要元数据，原件、坐标、拓扑、UV 与嵌入图像保持。原始任务为 chair 30471、cabinet 30475，参考图为 AI 单物体图，不是实拍实测；提示词用于制图，不是 Lux3D 文本输入。</p>
+<p>${privateCapture.source_bundle_receipt ? `本次来源包校验：${html(privateCapture.source_bundle_receipt.checked_delivery_files)}项文件一致。回执SHA：<span class="hash">${html(privateCapture.source_bundle_receipt.sha256)}</span>。` : '本次材料未附来源包校验回执，参考图与任务关联须查独立来源记录。'}保留任务完成截图只显示图生3D、完成和缩略图；具体设置与资产关联主要来自来源JSON。平台主预览当时黑屏，文件哈希不是平台签名或官方完整认证。平台显示公开不等于本项目获准再分发。</p>
 <table>${privateCapture.models.map(m => row(`${m.id} 原件 SHA-256`, m.original_sha256)
     + row(`${m.id} 本次派生件 SHA-256`, m.sha256)).join('')}</table>
 <p class="callout">通过浏览器请求拦截私下提供两件派生 GLB 和临时绑定；静态分发保持原占位版本，公开模型清单为空。临时 reviewed=true 只用于私下测试门禁，持久候选仍为 false，公开分发许可仍未确认。已独立确认的原件 +Z 正面转向场景 -Z；尺寸为非均匀合成场景拟合，不是实测或等比例保真。</p>`
@@ -75,8 +77,9 @@ ${row('演示输入摘要', state.input_hash)}
 
 <section class="page"><h2>玩法、实现与素材来源</h2>
 <h3>一条完整演练</h3>
-<p>切换儿童和老人观察视角，点开检查卡定位对象；拖动椅子生成双角色取舍；撤销后在窗边挑战重新摆放；达标后仍查看已触发、待核查和未覆盖项。导出的 JSON、场景快照及打印样式 PDF 都来自同一接受的布局。</p>
+<p>从“初始状态开始窗边案例”观察椅子R001触发，将其移到通道后儿童条件解除、老人R005新增；撤销并移到离窗且通道外的位置。私下真实模型捕获还会移动、旋转柜体并验证非法回弹。达标后仍有窗口防护、柜体固定等资料待核查，按当前行动清单继续核查。JSON与快照实际下载自当前布局；另行运行完整风险案例脚本会打开下载内容作独立文字预览，本材料录屏只展示下载，不宣称产品导入。</p>
 <p>相机高度只影响观察，不代表触及能力。模型尺寸是合成教学场景中的目标尺寸，并非现实测量。未知保持未知；资料补充不算空间整改。</p>
+<p>${html(SCENE_BOUNDARY)} ${html(RULE_BOUNDARY)}</p>
 <h3>单一规则内核</h3>
 <p>Vue 3、TypeScript 与 Three.js 负责界面和三维呈现；同源 module Worker 载入 Pyodide 与 Python 参考内核。布局校验、规则结果、比较、挑战计数和胜负以 Python 为准，前端不另写权威规则。</p>
 ${modelSection}
@@ -107,7 +110,7 @@ ${row('当前检查概况', score)}
 <p class="footer">${captureStatus} · ${html(capture.url)} · 3 / 4</p></section>
 
 <section class="page"><h2>版本追溯、开放问题与下一步</h2>
-<p>首个可操作界面 ≤3 秒是项目工程目标，仍为 OPEN_NOT_MET；不再阻塞其他开发。${html(checks.performance_3s_goal ?? '此前本地严格测试 p95=4812.2 ms，属于较早版本与环境的历史结果')}。本次制作材料没有重测性能，也没有降低 CI 门槛。该目标不能称为已核实的赛事官方要求。</p>
+<p>首个可操作界面 ≤3 秒是项目工程目标。${html(checks.performance_3s_goal ?? 'NOT_RUN：本次材料未附当前版本性能测量，不能据此判定达标或未达标')}。本次制作材料没有重测性能，也没有降低 CI 门槛；历史 CI 数据须注明对应版本和运行。该目标不能称为已核实的赛事官方要求。</p>
 <div class="grid"><div class="card"><strong>本次材料未覆盖</strong>${real ? '本次两件模型的私下操作不能证明其公开分发权' : '真实模型私下验收及分发权应查独立记录；本次占位材料不能证明'}；匿名 HTTPS、其他网络、真机、本人表单或最终提交材料仍需对应验收。</div>
 <div class="card"><strong>后续维护</strong>正式入口和责任人尚未确认。只有 G0–G4 门禁、权利与实际表单均满足后，才制作并提交正式参赛版本；本稿不填写作品编号或回执。</div></div>
 <h3>关键文件内容摘要（SHA-256）</h3><table>${sourceRows}</table>

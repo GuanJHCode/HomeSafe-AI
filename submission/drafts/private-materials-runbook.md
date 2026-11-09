@@ -1,5 +1,7 @@
 # 真实模型私下材料复现与交接
 
+2026-11-09补注：以下500/C1与221.72秒产物是保留历史。当前内容与完整风险复验见[内容执行单](../../docs/CONTEST_CONTENT_20261109.md)；新材料必须先冻结当前源码，再将该SHA作为 `--expected-head`。生成器已按显式SHA检查App/Core，不再强制与500一致。私下模型捕获还必须传入 `--source-bundle /absolute/path/to/retained-bundle`，实际核对参考图/来源记录/原件及运行原件哈希关联。旧V2未重录，不能标为已展示本轮新增界面。
+
 状态：PRIVATE_DRAFT_WORKFLOW。此流程只生成私下开发材料，不批准模型公开分发、网站发布或正式提交。当前产品App/Core锚点为5001222413937586604e8d944ba83787c7cb06fa；捕获工具冻结提交为c1d794b6ba548b450cce7e1a4dffe107500c591d。完整材料由该工具提交实际生成，最终证据另见[材料记录](../../evidence/PRIVATE_REAL_MATERIALS_20261105.md)。
 
 ## 现有产物与前置条件
@@ -31,7 +33,7 @@
 
 ## 捕获与核验
 
-先按START_HERE生成普通占位dist。仅在loopback静态服务上提供它的 `/preview/` 入口，服务目录不包含模型或私下输出。检查当前Git/App/Core干净且与500锚点一致。私下GLB只经主页面精确5条CDP请求覆盖，其他Worker请求不暂停；不要恢复全局Puppeteer透传拦截，已有实际挂起反例。
+先按START_HERE生成并校验普通占位dist。仅在loopback静态服务上提供它的 `/preview/` 入口，服务目录不包含模型或私下输出。检查当前Git/App/Core干净且与显式expected-head锚点一致。私下GLB只经主页面精确5条CDP请求覆盖，其他Worker请求不暂停；不要恢复全局Puppeteer透传拦截，已有实际挂起反例。
 
 命令中的浏览器/driver/Python及输入配置为真实本机路径，输出必须是尚不存在的 `evidence/private/development-materials-*` 目录：
 
@@ -41,7 +43,8 @@ CI=1 node scripts/create_development_materials.mjs \
   --driver /path/to/puppeteer-core.js --python /path/to/venv/bin/python \
   --output evidence/private/development-materials-real-new \
   --expected-head "$(git rev-parse HEAD)" --mode full \
-  --private-models evidence/private/private-inputs/inputs.json
+  --private-models evidence/private/private-inputs/inputs.json \
+  --source-bundle /absolute/path/to/retained-bundle
 ```
 
 首次配置可用新目录和 `--mode trial` 验证，不把短试当完整片。工具检查完整片180–240秒、两模型加载、实际操作/回弹/未知保留、真实下载、canonical快照复算、11输出与6工具摘要，输出materials-manifest.json和五项private-binding.json。录制在规则与模型就绪后开始，没有音频，不是冷启动性能测试。FFmpeg包装器只调整压缩工作量preset，保留输入、FPS、时间与质量参数；不承诺不同preset逐像素相同。

@@ -2,6 +2,24 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { renderDevelopmentReport } from './development_materials_report.mjs';
 
+function reportForPerformance(performance) {
+  return { source: { head: 'a'.repeat(40), key_files: {} },
+    capture: { mode: 'trial', viewport: { width: 1280, height: 900 } },
+    exports: { report: { findings: [], unsupportedDomains: [] } },
+    video: { duration_seconds: 20 }, checks: { performance_3s_goal: performance } };
+}
+test('a supplied passing version-specific result is not contradicted by a hardcoded old failure', () => {
+  const rendered = renderDevelopmentReport(reportForPerformance('基线6dc418d / CI42323926769 首次可编辑p95=2349.8ms，原门槛通过；不是本次性能测量'));
+  assert.match(rendered, /2349.8ms/);
+  assert.doesNotMatch(rendered, /OPEN_NOT_MET|4812.2|4324ms/);
+  assert.match(rendered, /没有重测性能/);
+});
+test('missing measurements are NOT_RUN rather than an invented current failure or pass', () => {
+  const rendered = renderDevelopmentReport(reportForPerformance(undefined));
+  assert.match(rendered, /NOT_RUN/);
+  assert.doesNotMatch(rendered, /OPEN_NOT_MET|4812.2|4324ms/);
+});
+
 // Synthetic render data: this regression needs no private models or browser.
 for (const availability of ['AVAILABLE', 'UNAVAILABLE', 'NOT_ASSESSED']) {
   test(`placeholder report keeps independent environment availability separate: ${availability}`, () => {

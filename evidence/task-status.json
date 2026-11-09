@@ -130,7 +130,8 @@
         "evidence/LOCAL_READINESS_20261105.md",
         "evidence/REVIEW_LOCAL_READINESS_20261105.md",
         "evidence/INTEGRATION_20261105.md",
-        "evidence/REVIEW_INTEGRATION_20261105.md"
+        "evidence/REVIEW_INTEGRATION_20261105.md",
+        "docs/CONTEST_CONTENT_20261109.md"
       ],
       "checks": {
         "approved_lux3d_assets": 0,
@@ -192,6 +193,13 @@
           "acceptance_scope": "Original hashes preserved; 9 unit regressions, independent byte-equivalent derivative rebuild, protected geometry/UV/images bytes, official zero-issue validation and full private browser retest",
           "evidence": "evidence/REAL_LUX3D_PRIVATE_20261105.md",
           "review_evidence": "evidence/REVIEW_REAL_LUX3D_20261105.md"
+        },
+        {
+          "id": "T03-retained-source-chain",
+          "status": "IN_REVIEW",
+          "review": "PENDING_FINAL_INDEPENDENT",
+          "acceptance_scope": "18 retained source files, image/task/original association with attribution, real derivative bindings and interaction; no platform attestation or redistribution approval",
+          "evidence": "docs/CONTEST_CONTENT_20261109.md"
         }
       ],
       "remaining": [
@@ -296,7 +304,8 @@
         "evidence/CONTINUATION_20261104.md",
         "evidence/FEATURE_CONTINUATION_20261104.md",
         "evidence/REAL_LUX3D_PRIVATE_20261105.md",
-        "evidence/REVIEW_REAL_LUX3D_20261105.md"
+        "evidence/REVIEW_REAL_LUX3D_20261105.md",
+        "docs/CONTEST_CONTENT_20261109.md"
       ],
       "subtasks": [
         {
@@ -312,6 +321,13 @@
           "acceptance_scope": "Python allowlist/tri-state/simulated provenance; explicit new data baseline and history clearing; immutable challenge baseline; actual browser/print/snapshot",
           "review": "PASS_INDEPENDENT",
           "evidence": "evidence/REVIEW_OBSERVATIONS_CONTINUATION_20261104.md"
+        },
+        {
+          "id": "T06-repeatable-complete-risk-case",
+          "status": "IN_REVIEW",
+          "review": "PENDING_FINAL_INDEPENDENT",
+          "acceptance_scope": "Actual initial/tradeoff/undo/restart/window/cabinet/rebound/action/export/browser/Python replay case",
+          "evidence": "docs/CONTEST_CONTENT_20261109.md"
         }
       ],
       "remaining": [
@@ -569,7 +585,8 @@
         "evidence/current-ci/5001222-ci-summary.json",
         "evidence/PRIVATE_REAL_MATERIALS_20261105.md",
         "evidence/REVIEW_PRIVATE_REAL_MATERIALS_20261105.md",
-        "evidence/CODE_SYNC_20261107.md"
+        "evidence/CODE_SYNC_20261107.md",
+        "docs/CONTEST_CONTENT_20261109.md"
       ],
       "remaining": [
         "Private90.68sec subtitled candidate and owner-only delivery passed independent review; original221.72sec technical record and4page draft retained. Formal materials still require applicable public/official rights, approved target/freeze, actual devices/other network and owner account/declarations."
@@ -619,6 +636,13 @@
           "review": "PASS_INDEPENDENT_FULL_TIMELINE_DENSE_ACTIONS_FULL_FRAME_BINDING_EXPORT_AND_PRIVATE_DELIVERY",
           "acceptance_scope": "Private subtitled candidate and owner-only delivery, not public/official submission or signed-inSpace playback",
           "evidence": "evidence/CODE_SYNC_20261107.md"
+        },
+        {
+          "id": "T10-content-and-capability-boundaries",
+          "status": "IN_REVIEW",
+          "review": "PENDING_FINAL_INDEPENDENT",
+          "acceptance_scope": "Shared honest UI/report boundaries, source evidence levels, repeatable recording plan, version-specific performance statements",
+          "evidence": "docs/CONTEST_CONTENT_20261109.md"
         }
       ]
     },
@@ -740,24 +764,32 @@
     "current_scope": "evidence/FEATURE_CONTINUATION_20261104.md"
   },
   "previous_continuation_base_commit": "57faf384d64e9770407b28086fdfeb5b193a6d6f",
-  "current_source_sync": "USER_AUTHORIZED_ALL_REVIEWED_SAFE_SOURCE_FAST_FORWARD_TO_EXISTING_DEVELOPMENT_BRANCH",
+  "current_source_sync": "LOCAL_ONLY_CONTENT_STRENGTHENING_20261109_NO_PUSH_AUTHORIZATION",
   "previous_source_sync": "LOCAL_ONLY_NOT_PUSHED",
   "latest_verified_remote_ci": {
-    "source_commit": "5001222413937586604e8d944ba83787c7cb06fa",
+    "source_commit": "6dc418dfa3e9dfa0d5e94ce62cde3475a57854c2",
     "remote_branch": "codex/v6.1-browser-3d",
-    "run_id": 41993004005,
-    "job_id": 127129460804,
-    "conclusion": "failure",
+    "run_id": 42323926769,
+    "job_id": 128254689205,
+    "run_url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/42323926769",
+    "status": "completed",
+    "conclusion": "success",
+    "event": "push",
+    "attempt": 1,
+    "step_counts": {
+      "success": 37,
+      "failure": 0,
+      "skipped": 0
+    },
     "functional_validation": "PASS_ALL_FUNCTIONAL_COMMANDS_CHROME156",
-    "performance_budget": "FAIL_FIRST_EDITABLE_4324_MS_GT_3000_MS_ONLY",
-    "cold_rules_p95_ms": 4323.9,
-    "hot_evaluation_p95_ms": 14.8,
-    "skipped_steps": [
-      "Post Run actions/setup-node@v4",
-      "Post Run actions/setup-python@v5"
-    ],
-    "evidence": "evidence/current-ci/5001222-ci-summary.json",
-    "source_of_status": "Direct completed GitHub API steps and actual job JSON logs; remote SHA verified after authorized normal fast-forward push"
+    "evidence_basis": "Retained final GitHub API/jobs and actual job log parsed in push-audit-20261107; independently reviewed then. Historical measurement, not a new Nov9 run.",
+    "scope": "CI_LOCALHOST_SYNTHETIC_SCENE_ONLY; unchanged budgets; observed PASS does not establish a causal improvement or all-device consistency",
+    "performance_budget": "PASS_ALL_ORIGINAL_UNCHANGED_THRESHOLDS",
+    "first_editable_p95_ms": 2349.8,
+    "cold_rules_p95_ms": 2349.7,
+    "hot_evaluation_p95_ms": 6.5,
+    "evidence": "evidence/current-ci/6dc418d-ci-summary.json",
+    "skipped_steps": []
   },
   "startup_phase": {
     "base_commit": "64e166540495126f618dd65aa8dc88760ed70604",
@@ -1145,7 +1177,10 @@
     "force_push": false,
     "master_changes": false,
     "evidence": "evidence/CODE_SYNC_20261107.md",
-    "ci_result_at_record_creation": "NOT_YET_RUN_FOR_THIS_PUSH; inspect Actions for the final pushed SHA"
+    "ci_result_at_record_creation": "NOT_YET_RUN_FOR_THIS_PUSH; inspect Actions for the final pushed SHA",
+    "final_pushed_head": "6dc418dfa3e9dfa0d5e94ce62cde3475a57854c2",
+    "final_ci": "PASS_42323926769_ALL37_STEPS",
+    "final_ci_evidence": "evidence/current-ci/6dc418d-ci-summary.json"
   },
   "private_demo_candidate_v2": {
     "status": "PASS_INDEPENDENT_PRIVATE_CANDIDATE_AND_OWNER_ONLY_DELIVERY",
@@ -1164,5 +1199,34 @@
     "media_in_git": false,
     "public_and_official_gates": "REMAIN_BLOCKED",
     "evidence": "evidence/CODE_SYNC_20261107.md"
+  },
+  "historical_source_sync_20261107": "USER_AUTHORIZED_ALL_REVIEWED_SAFE_SOURCE_FAST_FORWARD_TO_EXISTING_DEVELOPMENT_BRANCH",
+  "historical_remote_ci_5001222": {
+    "source_commit": "5001222413937586604e8d944ba83787c7cb06fa",
+    "remote_branch": "codex/v6.1-browser-3d",
+    "run_id": 41993004005,
+    "job_id": 127129460804,
+    "conclusion": "failure",
+    "functional_validation": "PASS_ALL_FUNCTIONAL_COMMANDS_CHROME156",
+    "performance_budget": "FAIL_FIRST_EDITABLE_4324_MS_GT_3000_MS_ONLY",
+    "cold_rules_p95_ms": 4323.9,
+    "hot_evaluation_p95_ms": 14.8,
+    "skipped_steps": [
+      "Post Run actions/setup-node@v4",
+      "Post Run actions/setup-python@v5"
+    ],
+    "evidence": "evidence/current-ci/5001222-ci-summary.json",
+    "source_of_status": "Direct completed GitHub API steps and actual job JSON logs; remote SHA verified after authorized normal fast-forward push"
+  },
+  "content_strengthening_20261109": {
+    "status": "IMPLEMENTED_AWAITING_FINAL_INDEPENDENT_REVIEW",
+    "base_commit": "6dc418dfa3e9dfa0d5e94ce62cde3475a57854c2",
+    "local_branch": "codex/contest-content-20261109",
+    "scope": "Private source chain, repeatable Python-backed risk case, UI/materials capability boundaries; no real-home recognition system",
+    "push_authorization": false,
+    "public_model_rights": "PENDING",
+    "performance_this_round": "NOT_RUN_ORIGINAL_THRESHOLDS_UNCHANGED",
+    "historical_video": "V2 remains product500; does not depict Nov9 UI",
+    "evidence": "docs/CONTEST_CONTENT_20261109.md"
   }
 }

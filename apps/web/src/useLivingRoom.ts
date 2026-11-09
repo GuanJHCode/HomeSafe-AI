@@ -13,6 +13,7 @@ import { placementFeedback, WorkspaceController, type LayoutChange } from './dom
 import { SceneRuntime, type AssetLoadState } from './scene/SceneRuntime.ts';
 import { TransformController } from './scene/TransformController.ts';
 import { readJsonResource } from './domain/resource-loading.ts';
+import { modelSourceLabel, modelSourceBoundary } from './domain/DemoContent.ts';
 
 const exercises = {
   challenge: {
@@ -105,13 +106,13 @@ export function useLivingRoom() {
   const selectedModel = computed(() => {
     const object = selectedObject.value;
     if (!object) return '';
-    const state = assetStates.value[object.id];
-    if (state === 'loading') return '模型加载中，当前显示占位模型';
-    if (state === 'error') return '模型加载失败，当前使用占位模型';
-    if (state !== 'loaded') return '程序占位模型';
     const asset = renderAssets.value.find(item => item.asset_id === object.asset_id);
-    const source = asset?.provenance_summary;
-    return source === 'lux3d_web' || source === 'lux3d_api' ? 'Lux3D 模型已加载' : '程序生成模型已加载';
+    return modelSourceLabel(assetStates.value[object.id], asset?.provenance_summary);
+  });
+  const selectedModelBoundary = computed(() => {
+    const object = selectedObject.value;
+    const asset = renderAssets.value.find(item => item.asset_id === object?.asset_id);
+    return modelSourceBoundary(object ? assetStates.value[object.id] : undefined, asset?.provenance_summary);
   });
   const feedback = computed(() => placementFeedback(placement.value));
   const canUndo = computed(() => !busy.value && !failure.value &&
@@ -286,6 +287,22 @@ export function useLivingRoom() {
         publishWorkspace();
       }
       select(null);
+    });
+  }
+
+  // Explicit restart uses the existing Python challenge, including in the same mode.
+  async function startRiskCase() {
+    if (busy.value || failure.value || drafting.value) return;
+    transforms?.cancelDrag();
+    await run(async () => {
+      observationsOpen.value = false;
+      mode.value = 'challenge';
+      await startChallenge();
+      if (disposed) return;
+      runtime?.focusObjects([]);
+      useView('overview');
+      role.value = 'child';
+      select('chair');
     });
   }
 
@@ -544,7 +561,7 @@ export function useLivingRoom() {
       if (layout.value) runtime?.retryFailedAssets(layout.value);
     },
     retry: () => void initialize(true),
-    retryRenderer: mountRenderer,
+    retryRenderer: mountRenderer, startRiskCase, selectedModelBoundary,
     exportReport, exportSceneSnapshot,
     printReport: () => { if (!drafting.value && !busy.value && !failure.value && report.value) ReportBuilder.print(); },
   };

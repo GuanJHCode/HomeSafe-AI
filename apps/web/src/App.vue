@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useLivingRoom } from './useLivingRoom.ts';
 import ObservationPanel from './ObservationPanel.vue';
+import { SCENE_BOUNDARY, RULE_BOUNDARY, RISK_CASE_STEPS } from './domain/DemoContent.ts';
 
 const {
   observationOptions, observationsOpen, observationNotice, openObservations, applyObservation, closeObservations,
@@ -10,7 +11,7 @@ const {
   retry, exportReport, exportSceneSnapshot, printReport,
   roleSummaries, initializing, cancelLoading,
   retryModels,
-  retryRenderer,
+  retryRenderer, startRiskCase, selectedModelBoundary,
 } = useLivingRoom();
 
 const coverageLabels = {
@@ -36,6 +37,19 @@ const actionSections = [
     </header>
 
     <div class="notice">合成客厅 · 教学演练 · 无法用于安全认证</div>
+    <p class="notice" data-testid="capability-boundary">{{ SCENE_BOUNDARY }}</p>
+
+    <section class="panel case-guide" aria-label="完整风险演练" data-testid="risk-case-guide">
+      <header class="section-head">
+        <h2>完整案例：窗边椅子与指定通道</h2>
+        <button data-testid="start-risk-case" :disabled="busy || drafting || !!failure" @click="startRiskCase">从初始状态开始窗边案例</button>
+      </header>
+      <p>观察初始条件 → 调整家具 → 比较两类结果 → 查看行动与边界。</p>
+      <details><summary>查看演练步骤和重置说明</summary>
+        <p>开始按钮会将窗边练习重置为样例初始输入和计数。操作由你完成，不是预播动画。</p>
+        <ol><li v-for="step in RISK_CASE_STEPS" :key="step">{{ step }}</li></ol>
+      </details>
+    </section>
 
     <div class="workspace">
       <section class="panel scene-panel" aria-label="三维客厅">
@@ -97,6 +111,10 @@ const actionSections = [
           {{ objectName(selectedObject.id) }} · x {{ selectedObject.position.x.toFixed(2) }} 米 · z {{ selectedObject.position.z.toFixed(2) }} 米
         </p>
         <p v-if="selectedObject" class="small">{{ selectedModel }}</p>
+        <details v-if="selectedObject" class="small asset-origin" data-testid="asset-source-boundary">
+          <summary>模型来源和证据边界</summary>
+          <p>{{ selectedModelBoundary }}</p>
+        </details>
         <div v-if="feedback.issues.length" class="warning" role="alert" data-testid="placement-rejected">
           <strong>已恢复最后合法位置</strong>
           <ul>
@@ -114,6 +132,7 @@ const actionSections = [
           <p v-if="checks && progress" class="small" data-testid="challenge-counts">
             操作 {{ progress.steps }} 步 · 非法尝试 {{ progress.invalidAttempts }} 次 · 目标调整引发取舍 {{ progress.conflictEvents }} 次
           </p>
+          <p class="small">{{ RULE_BOUNDARY }}</p>
         </div>
         <p v-else class="small">自由演练可移动椅子和柜体；返回这里会保留自由布局，进入任一挑战则从该关初始布局开始。刷新页面会重置所有练习。</p>
         <button :disabled="busy || !!failure" @click="openObservations">{{ mode === 'workspace' ? '补充模拟资料' : '退出挑战并补充资料' }}</button>
@@ -203,6 +222,7 @@ const actionSections = [
       </header>
       <p class="small snapshot-note">场景快照保存当前输入和资料来源，不包含模型或挑战进度；当前页面不支持导入恢复。</p>
       <p>合成样例 · 布局 v{{ report.scene_revision }} · 规则 {{ report.ruleset_version }}</p>
+      <p class="small">{{ SCENE_BOUNDARY }} {{ RULE_BOUNDARY }}</p>
       <p class="hash">输入摘要 {{ report.input_hash }}</p>
       <div class="action-grid">
         <section v-for="section in actionSections" :key="section.key">
