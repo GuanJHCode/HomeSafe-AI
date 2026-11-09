@@ -3,7 +3,7 @@
   "release": "V6.1-local-model-reproduction-report-20261109",
   "base_commit": "4ac423e90e106541bd706e62f6f3815ea3cce8a3",
   "baseline_zip_sha256": "b6c674f532fd30ff7ab086b08c814b086e94e2aa0f12cff80c1b6d94b96d3752",
-  "classification_policy": "974 explicit source/sanitized text files. Four existing public review binaries remain outside this code-only export allowlist. All new report PDF/HTML, screenshots, model derivatives, account/source records, Space identities, signed URLs, credentials and runtime/dependencies remain excluded. This round is local only: no push, main/master changes, deployment, new Release, formal submission or CI budget change.",
+  "classification_policy": "975 explicit source/sanitized text files. Four existing public review binaries remain outside this code-only export allowlist. All new report PDF/HTML, screenshots, model derivatives, account/source records, Space identities, signed URLs, credentials and runtime/dependencies remain excluded. This round is local only: no push, main/master changes, deployment, new Release, formal submission or CI budget change.",
   "files": [
     {
       "path": ".env.example",
@@ -824,8 +824,8 @@
     {
       "path": "evidence/LOCAL_REVIEW_REPORT_20261109.md",
       "classification": "generated_project_source",
-      "sha256": "f014eb82656f19a1e15fa22e4a095ad7fc8080275677add16d01f998a4032c12",
-      "bytes": 3855
+      "sha256": "887278bbfabd310ef9ce430eec2ebc29ca7c915f0e74d9a2c800051a32906a12",
+      "bytes": 5463
     },
     {
       "path": "evidence/NETWORK_MATERIALS_20261105.md",
@@ -928,6 +928,12 @@
       "classification": "generated_project_source",
       "sha256": "6137bc2608f89689468a7e9ae3aebfd34062a0e7d5cc4b0020e1d20c50ea33a0",
       "bytes": 9122
+    },
+    {
+      "path": "evidence/REVIEW_LOCAL_REPRO_REPORT_20261109.md",
+      "classification": "generated_project_source",
+      "sha256": "76f392341a95a07f9f3fcc64595102744b59cb0777b96039deaa8cede621d1cc",
+      "bytes": 4987
     },
     {
       "path": "evidence/REVIEW_NETWORK_MATERIALS_EXPORT_20261105.md",
@@ -3679,8 +3685,8 @@
     },
     {
       "path": "evidence/task-status.json",
-      "sha256": "954ae76252873111e9c31d812f9bee1eb60d796dd6d7c8f6f5923c00a597781c",
-      "bytes": 64563,
+      "sha256": "02a8e685a27ab6428af9be2b1508724697f339f8fe1fcb31e76f04f38355699d",
+      "bytes": 65891,
       "classification": "generated_project_source"
     },
     {
@@ -5849,5 +5855,6 @@
       "bytes": 5465,
       "classification": "generated_project_source"
     }
-  ]
+  ],
+  "local_product_commit": "72964d3124b56d9b56c4ed923b9dbd254194215d"
 }

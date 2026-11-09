@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "baseline": "V6.1-source-imported",
-  "product_status": "DEVELOPMENT_PREVIEW_BUILT_AND_BROWSER_VERIFIED",
+  "product_status": "Local real-model review and project-report candidate completed within desktop loopback scope; ordinary public catalog remains placeholder-only, platform/account rights unverified, no deployment or formal submission.",
   "tasks": [
     {
       "id": "T00",
@@ -754,7 +754,7 @@
   "current_validation_scope": "evidence/LOCAL_REVIEW_REPORT_20261109.md",
   "historical_validation_scope": "Older 64e1665 CI41807603537 performance and 20261104 local startup measurements are historical. Latest verified remote is394eb04/CI41948477248 functional download FAIL and performance NOT_RUN. Local be32202 fixes the download protocol without a new remote run.",
   "historical_validated_source_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6",
-  "validation_scope": "Current private frozenC1/AppCore500 material capture221.72sec5543frames/4PDFpages,11outputs6tools native snapshot/actual independent visuals/fullPTS PASS. LocalJS59/package8 pass; Python343/app39/Chrome156 functional CI500 retained, strict3s4324ms FAIL nonblocking. No new push, media upload, public host or formal release.",
+  "validation_scope": "CURRENT: clean72964d3 loopback reproduction, final project report R1 and independent scoped review; baseline4ac CI remains failure; no public deployment or formal submission.",
   "recovery_sync": {
     "task_id": "RECOVERY-SYNC-20261104",
     "date": "2026-11-04",
@@ -1336,14 +1336,14 @@
     "branch": "codex/repro-report-20261109",
     "entry": "scripts/serve_local_asset_review.py",
     "config": "review-assets/2026-11-09/local-review.json",
-    "review_status": "FINAL_CODE_BROWSER_REVIEW_IN_PROGRESS",
+    "review_status": "PASS_INDEPENDENT_FROZEN_CODE_BROWSER_AND_FINAL_REPORT",
     "runtime_catalog_changed": false,
     "calibration_reviewed_flags": [
       false,
       false
     ],
     "license_status": "NOT_VERIFIED",
-    "report": "NEW_8_PAGE_CANDIDATE_USER_PREVIEW_ONLY_FINAL_METADATA_PENDING",
+    "report": "R1_8PAGES_ACTUALLY_RENDERED_AND_INDEPENDENTLY_REVIEWED_SAVED_PERSONAL_LIBRARY_NOT_PUBLIC",
     "v3_re_recorded": false,
     "source_model_bytes_changed": false,
     "tests": {
@@ -1363,6 +1363,20 @@
       "Account/order and final registration terms applicability",
       "Final report sharing scope",
       "External devices/network and approved hosting if an online demo is later chosen"
-    ]
-  }
+    ],
+    "source_frozen_commit": "72964d3124b56d9b56c4ed923b9dbd254194215d",
+    "frozen_source": true,
+    "frontend_build": "FRESH_NPM_BUILD_THIS_INVOCATION",
+    "independent_final_browser_phases": 9,
+    "independent_final_findings_compared": 99,
+    "new_report_byte_readback": "TEXT_8PAGE_PIXELS_OFFICIAL_LINKS_MATCH_STORED_BYTES_DISTINCT_WITH_CONTENT_CREDENTIALS",
+    "video_review": "FRESH_SAMPLED_REVIEW_WITH_PRESENTATION_LIMITS_NOT_FULL_FRAMEWISE_VIEWING",
+    "known_local_limitations": [
+      "V3 complete rebound position visible for about one frame; historical source card dense",
+      "325px canvas clips parts of room despite working mobile buttons/restart/results",
+      "No current local five-run performance budget remeasurement or external device/network validation"
+    ],
+    "independent_review_summary": "evidence/REVIEW_LOCAL_REPRO_REPORT_20261109.md"
+  },
+  "historical_validation_scope_before_local_repro_20261109": "Current private frozenC1/AppCore500 material capture221.72sec5543frames/4PDFpages,11outputs6tools native snapshot/actual independent visuals/fullPTS PASS. LocalJS59/package8 pass; Python343/app39/Chrome156 functional CI500 retained, strict3s4324ms FAIL nonblocking. No new push, media upload, public host or formal release."
 }
