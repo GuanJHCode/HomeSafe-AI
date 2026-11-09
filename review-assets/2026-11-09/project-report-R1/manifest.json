@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Explicitly authorized public sharing of the existing eight-page R1 candidate report only",
+  "repository": "GuanJHCode/HomeSafe-AI",
+  "branch": "codex/v6.1-browser-3d",
+  "product_capture_commit": "72964d3124b56d9b56c4ed923b9dbd254194215d",
+  "source_push_before_report": "aa7227a1943ddef3753fea521119b2a5d5f899d7",
+  "report_pdf_creation_utc": "2026-11-09T05:12:41Z",
+  "retained_preview_saved_utc_date": "2026-11-09",
+  "public_share_authorized_utc_date": "2026-11-09",
+  "file": {
+    "path": "review-assets/2026-11-09/project-report-R1/HomeSafe-AI_project-report_candidate_R1_20261109.pdf",
+    "bytes": 1990109,
+    "sha256": "ec32c8286aa1cff10e5835b1c760bfb8be3207c9548c1a06743708dcc086111b",
+    "git_blob_sha": "5cd6dca9b12cb0632ef036cee47504545d8abbdc",
+    "pages": 8,
+    "candidate_version": "R1",
+    "content_credentials_preserved": true,
+    "existing_saved_copy_bytes_unchanged": true
+  },
+  "report_wording": "Preserved pre-publication snapshot; current public authorization and source/CI state are explained in this directory README without editing the PDF",
+  "independent_review": "PASS_EXACT_EIGHT_PAGE_R1_CONTENT_VISUAL_AND_CURRENT_PUBLIC_DISCLOSURE",
+  "platform_specific_asset_redistribution_license_verified": false,
+  "formal_submission": false,
+  "web_deployment": false,
+  "extra_private_media_or_source_records": false,
+  "four_historical_files_changed": false,
+  "formal_asset_catalog_changed": false
+}

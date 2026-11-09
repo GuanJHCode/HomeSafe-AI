@@ -1,9 +1,9 @@
 {
   "manifest_version": "1.0",
-  "release": "V6.1-local-model-reproduction-report-20261109",
-  "base_commit": "4ac423e90e106541bd706e62f6f3815ea3cce8a3",
+  "release": "V6.1-exact-R1-public-report-20261109",
+  "base_commit": "aa7227a1943ddef3753fea521119b2a5d5f899d7",
   "baseline_zip_sha256": "b6c674f532fd30ff7ab086b08c814b086e94e2aa0f12cff80c1b6d94b96d3752",
-  "classification_policy": "975 explicit source/sanitized text files. Four existing public review binaries remain outside this code-only export allowlist. All new report PDF/HTML, screenshots, model derivatives, account/source records, Space identities, signed URLs, credentials and runtime/dependencies remain excluded. This round is local only: no push, main/master changes, deployment, new Release, formal submission or CI budget change.",
+  "classification_policy": "978 explicit source/sanitized text files. Four historical review binaries and the separately authorized eight-page R1 saved PDF are intentionally outside this code-only export allowlist; obtain them from their public Git audit directories and exact binary manifests. Other private media, source records, Space/Library identities, signed URLs, credentials and runtime/dependencies remain excluded. Only the existing R1 PDF and necessary safe notes are newly authorized for public sharing; no main/master, deployment, Release, formal submission or CI budget change.",
   "files": [
     {
       "path": ".env.example",
@@ -61,8 +61,8 @@
     },
     {
       "path": "START_HERE.md",
-      "sha256": "1a3972ee2e2699db74c1644595fe3c4148f8dcbb852f814c5c5815974bd2135a",
-      "bytes": 18008,
+      "sha256": "569e8ad14b6d7f296204cbd54ddb6c4fdf12a64f5d4021b80875aa94ac669624",
+      "bytes": 18612,
       "classification": "generated_project_source"
     },
     {
@@ -799,8 +799,8 @@
     },
     {
       "path": "evidence/HANDOFF.md",
-      "sha256": "2230a43dc38b48f5c354eac42076f9495342154a605387fcf7c021ee2f417cd0",
-      "bytes": 26544,
+      "sha256": "16c449bf430f7e8efcfb2e7f2aa61822f4c80b2da4f77099005b51602eea089f",
+      "bytes": 27258,
       "classification": "generated_project_source"
     },
     {
@@ -824,8 +824,8 @@
     {
       "path": "evidence/LOCAL_REVIEW_REPORT_20261109.md",
       "classification": "generated_project_source",
-      "sha256": "887278bbfabd310ef9ce430eec2ebc29ca7c915f0e74d9a2c800051a32906a12",
-      "bytes": 5463
+      "sha256": "2abe2a3321a9a3ff3010a664eb181e7b09ae4fe66f2c5824bf7508b565d2bafd",
+      "bytes": 5730
     },
     {
       "path": "evidence/NETWORK_MATERIALS_20261105.md",
@@ -932,8 +932,8 @@
     {
       "path": "evidence/REVIEW_LOCAL_REPRO_REPORT_20261109.md",
       "classification": "generated_project_source",
-      "sha256": "76f392341a95a07f9f3fcc64595102744b59cb0777b96039deaa8cede621d1cc",
-      "bytes": 4987
+      "sha256": "f64bd44e66c521202180606f88f66b3176bb2635cea4dd94d2970ffb54865755",
+      "bytes": 5135
     },
     {
       "path": "evidence/REVIEW_NETWORK_MATERIALS_EXPORT_20261105.md",
@@ -1810,6 +1810,12 @@
       "classification": "generated_project_source",
       "sha256": "68cd2229d294209fdeb769e681448ad051eb62d948b1ba92a52dcb25c5c1237e",
       "bytes": 4142
+    },
+    {
+      "path": "evidence/current-ci/aa7227a-ci-summary.json",
+      "classification": "generated_project_source",
+      "sha256": "71a75bb36a590fd6df13ffdd9e63c1d63bf500e422c8da171b279d42900c0c86",
+      "bytes": 1510
     },
     {
       "path": "evidence/deployment-checklist.json",
@@ -3685,8 +3691,8 @@
     },
     {
       "path": "evidence/task-status.json",
-      "sha256": "02a8e685a27ab6428af9be2b1508724697f339f8fe1fcb31e76f04f38355699d",
-      "bytes": 65891,
+      "sha256": "4e95af3cc517021a6064b218b935e568ad9d1f3569bdd2b3f77db7fc428297a4",
+      "bytes": 67794,
       "classification": "generated_project_source"
     },
     {
@@ -5432,14 +5438,14 @@
     {
       "path": "review-assets/2026-11-09/CURRENT_STATUS.md",
       "classification": "generated_project_source",
-      "sha256": "392c6fc7bfe8f46117b5e7be26ece1199f9341bec6e286753bc29d779d7b5185",
-      "bytes": 1492
+      "sha256": "2f522f4ffea1f19b2034cc43323061688c6ff6fb2f46094bd2dea9c58a545d63",
+      "bytes": 2555
     },
     {
       "path": "review-assets/2026-11-09/README.md",
       "classification": "generated_project_source",
-      "sha256": "569eda4ba67858931d1b409b1135a34f7204e9fa374c19dec511a2abfe3389ae",
-      "bytes": 3718
+      "sha256": "e05b65ed2515c2b577d88f5a681075dbbdc1b8650ae9505b62948fe1c817dcce",
+      "bytes": 4120
     },
     {
       "path": "review-assets/2026-11-09/local-review.json",
@@ -5452,6 +5458,18 @@
       "classification": "generated_project_source",
       "sha256": "4beff4c36598302a67f8bf8161b9f45a49161f8f8d6fb5d3784ab4c43234f277",
       "bytes": 1720
+    },
+    {
+      "path": "review-assets/2026-11-09/project-report-R1/README.md",
+      "classification": "generated_project_source",
+      "sha256": "3f38a37878a44e84b7a9659acab1ef60d5c93a3c8ab7a1df1eeeef916b0a7ab0",
+      "bytes": 3102
+    },
+    {
+      "path": "review-assets/2026-11-09/project-report-R1/manifest.json",
+      "classification": "generated_project_source",
+      "sha256": "48d8fb758183b3c90956e6c88ba464f009cca19ce27d7d55d0eb2aa242a0d685",
+      "bytes": 1477
     },
     {
       "path": "scripts/browser_fault.mjs",

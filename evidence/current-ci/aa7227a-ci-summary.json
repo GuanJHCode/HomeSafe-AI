@@ -1,0 +1,56 @@
+{
+  "status": "PASS_NEW_COMMIT_CI",
+  "head_sha": "aa7227a1943ddef3753fea521119b2a5d5f899d7",
+  "run_id": 42567382909,
+  "run_attempt": 1,
+  "url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/42567382909",
+  "event": "push",
+  "branch": "codex/v6.1-browser-3d",
+  "created_at": "2026-11-09T05:27:03Z",
+  "updated_at": "2026-11-09T05:30:10Z",
+  "conclusion": "success",
+  "passed_steps": 37,
+  "failed_steps": 0,
+  "skipped_steps": 0,
+  "not_run_steps": 0,
+  "metrics": {
+    "cold_first_editable": {
+      "count": 5,
+      "min": 2331,
+      "max": 2684.399999999994,
+      "p50": 2369,
+      "p95": 2684.399999999994
+    },
+    "cold_rules_ready": {
+      "count": 5,
+      "min": 2330.899999999994,
+      "max": 2684.2999999999884,
+      "p50": 2369,
+      "p95": 2684.2999999999884
+    },
+    "hot_evaluation": {
+      "count": 30,
+      "min": 4.099999999976717,
+      "max": 7.300000000017462,
+      "p50": 4.300000000017462,
+      "p95": 7.199999999982538
+    }
+  },
+  "budget_mode": "enforce",
+  "targets": {
+    "first_editable_p95_le_3000_ms": true,
+    "cold_rules_le_12000_ms": true,
+    "hot_evaluation_p95_le_150_ms": true
+  },
+  "unchanged_thresholds_ms": {
+    "first_editable_p95": 3000,
+    "cold_rules_ready_p95": 12000,
+    "hot_evaluation_p95": 150
+  },
+  "browser": [
+    "Chrome/156.0.8078.79"
+  ],
+  "performance_scope": "GitHub CI local synthetic placeholder scene; not real-model/public-host/other-device performance",
+  "rerun": false,
+  "source_budget_changed": false
+}

@@ -1,5 +1,15 @@
 # 当前审核状态（2026-11-09）
 
+## 新增源码推送与R1报告公开
+
+源码`aa7227a1943ddef3753fea521119b2a5d5f899d7`已正常快进到原开发分支，远端完整981文件Git树与本地匹配；[CI42567382909](https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/42567382909) attempt1终态success，37步骤成功、0失败／跳过。实测首次可编辑p95=2684.4ms、冷规则2684.3ms、热评估7.2ms，通过原3000／12000／150ms预算，未重跑，仅CI合成占位范围。
+
+用户随后明确授权[八页项目报告候选R1](project-report-R1/README.md)也公开推送，使用同一已保存副本的ec32摘要字节与Content Credentials，不另外发布截图／参考图／私有来源JSON／派生GLB。R1捕获729、制作时尚未推送／分享待确认等文字按快照保留；新README记录本次授权及实际公开阶段。新报告提交的CI另按新SHA检查，不能借aa绿色证明后来提交已验。
+
+以下为R1新增公开授权之前的历史核对，保留4ac等当时的事实，不作为最新许可或推送状态。
+
+## 历史4ac基线
+
 已核实的远端基线为`4ac423e90e106541bd706e62f6f3815ea3cce8a3`，四件原有文件已在公开开发分支，匿名客户端下载HTTP200、大小/SHA256/Git blob逐项匹配并经独立下载复核。该次分享不是平台账号适用许可核验。
 
 [CI42558752605](https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/42558752605)对应4ac、attempt1、completed/failure。34步骤成功，唯一失败为Strict real-browser performance budgets：cold_first_editable p95=4027.4ms>3000ms；cold_rules_ready p95=4027.4ms<12000ms、hot_evaluation p95=14.9ms<150ms。两个setup后处理跳过。没有重跑或降低门槛。

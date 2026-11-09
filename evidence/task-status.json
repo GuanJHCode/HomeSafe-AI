@@ -754,7 +754,7 @@
   "current_validation_scope": "evidence/LOCAL_REVIEW_REPORT_20261109.md",
   "historical_validation_scope": "Older 64e1665 CI41807603537 performance and 20261104 local startup measurements are historical. Latest verified remote is394eb04/CI41948477248 functional download FAIL and performance NOT_RUN. Local be32202 fixes the download protocol without a new remote run.",
   "historical_validated_source_commit": "4bb18cda5274267d4a9912e417e29f89287d12e6",
-  "validation_scope": "CURRENT: clean72964d3 loopback reproduction, final project report R1 and independent scoped review; baseline4ac CI remains failure; no public deployment or formal submission.",
+  "validation_scope": "CURRENT: product729 local model review and R1 visual review; sourceaa pushed and CI42567382909 all37 passed; R1 public disclosure prepared under new explicit authorization. New report commit CI pending, no deployment or formal submission.",
   "recovery_sync": {
     "task_id": "RECOVERY-SYNC-20261104",
     "date": "2026-11-04",
@@ -780,29 +780,28 @@
     "current_scope": "evidence/FEATURE_CONTINUATION_20261104.md"
   },
   "previous_continuation_base_commit": "57faf384d64e9770407b28086fdfeb5b193a6d6f",
-  "current_source_sync": "LOCAL_ONLY_REPRO_REPORT_NO_PUSH_AUTHORIZATION_THIS_ROUND",
+  "current_source_sync": "AUTHORIZED_NORMAL_FAST_FORWARD_SAFE_SOURCE_AND_EXACT_EXISTING_R1_REPORT_ONLY",
   "previous_source_sync": "LOCAL_ONLY_NOT_PUSHED",
   "latest_verified_remote_ci": {
-    "commit": "4ac423e90e106541bd706e62f6f3815ea3cce8a3",
-    "run_id": 42558752605,
-    "url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/42558752605",
+    "commit": "aa7227a1943ddef3753fea521119b2a5d5f899d7",
+    "run_id": 42567382909,
+    "url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/42567382909",
     "status": "completed",
-    "conclusion": "failure",
+    "conclusion": "success",
     "attempt": 1,
-    "successful_steps": 34,
-    "failed_steps": 1,
-    "skipped_steps": 2,
-    "only_failure": "Strict real-browser performance budgets",
-    "cold_first_editable_p95_ms": 4027.399999999965,
-    "cold_rules_ready_p95_ms": 4027.399999999965,
-    "hot_evaluation_p95_ms": 14.900000000023283,
+    "successful_steps": 37,
+    "failed_steps": 0,
+    "skipped_steps": 0,
+    "cold_first_editable_p95_ms": 2684.399999999994,
+    "cold_rules_ready_p95_ms": 2684.2999999999884,
+    "hot_evaluation_p95_ms": 7.199999999982538,
     "budgets_ms": [
       3000,
       12000,
       150
     ],
     "rerun": false,
-    "scope": "4ac baseline synthetic placeholder scene; not this unpushed local work"
+    "scope": "aa CI synthetic placeholder scene only; report-publication commit CI checked separately after push"
   },
   "startup_phase": {
     "base_commit": "64e166540495126f618dd65aa8dc88760ed70604",
@@ -1343,7 +1342,7 @@
       false
     ],
     "license_status": "NOT_VERIFIED",
-    "report": "R1_8PAGES_ACTUALLY_RENDERED_AND_INDEPENDENTLY_REVIEWED_SAVED_PERSONAL_LIBRARY_NOT_PUBLIC",
+    "report": "R1_EXACT_SAVED_COPY_PUBLIC_DISCLOSURE_NEWLY_AUTHORIZED",
     "v3_re_recorded": false,
     "source_model_bytes_changed": false,
     "tests": {
@@ -1355,13 +1354,12 @@
       "local_review_risk_case_phases": 9,
       "canonical_findings_compared": 99
     },
-    "remote_push": "NOT_AUTHORIZED_THIS_ROUND",
+    "remote_push": "SOURCE_AA_PUSHED; EXACT_R1_REPORT_PUSH_NEWLY_AUTHORIZED",
     "release": "NOT_CREATED_OR_PUBLISHED",
     "deployment": "NOT_RUN",
     "formal_submission": "NOT_RUN",
     "remaining_external": [
-      "Account/order and final registration terms applicability",
-      "Final report sharing scope",
+      "Account/order and final registration/license applicability",
       "External devices/network and approved hosting if an online demo is later chosen"
     ],
     "source_frozen_commit": "72964d3124b56d9b56c4ed923b9dbd254194215d",
@@ -1376,7 +1374,49 @@
       "325px canvas clips parts of room despite working mobile buttons/restart/results",
       "No current local five-run performance budget remeasurement or external device/network validation"
     ],
-    "independent_review_summary": "evidence/REVIEW_LOCAL_REPRO_REPORT_20261109.md"
+    "independent_review_summary": "evidence/REVIEW_LOCAL_REPRO_REPORT_20261109.md",
+    "historical_local_preview_report_status": "R1_8PAGES_ACTUALLY_RENDERED_AND_INDEPENDENTLY_REVIEWED_SAVED_PERSONAL_LIBRARY_NOT_PUBLIC"
   },
-  "historical_validation_scope_before_local_repro_20261109": "Current private frozenC1/AppCore500 material capture221.72sec5543frames/4PDFpages,11outputs6tools native snapshot/actual independent visuals/fullPTS PASS. LocalJS59/package8 pass; Python343/app39/Chrome156 functional CI500 retained, strict3s4324ms FAIL nonblocking. No new push, media upload, public host or formal release."
+  "historical_validation_scope_before_local_repro_20261109": "Current private frozenC1/AppCore500 material capture221.72sec5543frames/4PDFpages,11outputs6tools native snapshot/actual independent visuals/fullPTS PASS. LocalJS59/package8 pass; Python343/app39/Chrome156 functional CI500 retained, strict3s4324ms FAIL nonblocking. No new push, media upload, public host or formal release.",
+  "historical_remote_ci_4ac423e": {
+    "commit": "4ac423e90e106541bd706e62f6f3815ea3cce8a3",
+    "run_id": 42558752605,
+    "url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/42558752605",
+    "status": "completed",
+    "conclusion": "failure",
+    "attempt": 1,
+    "successful_steps": 34,
+    "failed_steps": 1,
+    "skipped_steps": 2,
+    "only_failure": "Strict real-browser performance budgets",
+    "cold_first_editable_p95_ms": 4027.399999999965,
+    "cold_rules_ready_p95_ms": 4027.399999999965,
+    "hot_evaluation_p95_ms": 14.900000000023283,
+    "budgets_ms": [
+      3000,
+      12000,
+      150
+    ],
+    "rerun": false,
+    "scope": "4ac baseline synthetic placeholder scene; not this unpushed local work"
+  },
+  "report_r1_publication_20261109": {
+    "status": "EXACT_RETAINED_COPY_PUBLIC_DISCLOSURE_INDEPENDENTLY_PASSED_READY_FOR_AUTHORIZED_PUSH",
+    "base_remote_commit": "aa7227a1943ddef3753fea521119b2a5d5f899d7",
+    "product_capture_commit": "72964d3124b56d9b56c4ed923b9dbd254194215d",
+    "path": "review-assets/2026-11-09/project-report-R1/HomeSafe-AI_project-report_candidate_R1_20261109.pdf",
+    "bytes": 1990109,
+    "sha256": "ec32c8286aa1cff10e5835b1c760bfb8be3207c9548c1a06743708dcc086111b",
+    "git_blob_sha": "5cd6dca9b12cb0632ef036cee47504545d8abbdc",
+    "pages": 8,
+    "candidate": "R1",
+    "pdf_creation_utc": "2026-11-09T05:12:41Z",
+    "preserved_snapshot_wording": true,
+    "content_credentials_preserved": true,
+    "other_private_media_or_source_json_included": false,
+    "formal_submission_or_deployment": false,
+    "platform_license_verification": false,
+    "old_four_files_changed": false,
+    "privacy_review": "PASS_TEXT_METADATA_EMBEDDED_CONTENT_CREDENTIALS_AND_DECODED_STREAMS"
+  }
 }

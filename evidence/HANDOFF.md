@@ -1,5 +1,7 @@
 # 接手记录
 
+2026-11-09最新：aa7227a已正常快进到原开发分支，完整981文件远端树复核一致，[CI42567382909](https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/42567382909)全37成功、0失败／跳过；p95首次可编辑2684.4ms、冷规则2684.3ms、热评估7.2ms，预算原样。用户随后明确要求把[八页报告候选R1](../review-assets/2026-11-09/project-report-R1/README.md)也公开，使用同一保存副本，不另发其他私有媒体或源记录。产品捕获729与报告历史措辞保留，新报告提交CI按其新SHA检查；普通正式资产清单、许可、真机／公网及正式提交状态未因此改变。以下未推送／仅预览的段落为历史阶段。
+
 2026-11-09 最新续作：远端基线4ac423e保持不动，本地独立分支`codex/repro-report-20261109`补齐[仓库模型完整复现](../docs/LOCAL_MODEL_REVIEW_20261109.md)，无需私有inputs或外置校准，候选与平台许可保持独立。默认fresh构建、loopback显式审核模式；正式资产清单未改，不push、不Release、不部署、不正式提交。旧四件字节和V2保留；新八页项目报告候选稿只交用户预览，不将新截图或PDF加入Git。详细测试、反例修复、独立复审与视觉范围见[本轮执行记录](LOCAL_REVIEW_REPORT_20261109.md)。
 
 当前4ac对应[CI42558752605](https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/42558752605)completed/failure：34步骤通过，唯一失败首次可编辑p95=4027.4ms>3000ms；冷规则同值<12000ms、热评估14.9ms<150ms。两个setup后处理skipped，未重跑或改预算。下文6dc、29e、500记录均为历史，不能替代本次值，也不能作为本轮本地改动的CI结果。
