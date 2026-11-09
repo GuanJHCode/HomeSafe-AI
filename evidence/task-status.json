@@ -1418,5 +1418,20 @@
     "platform_license_verification": false,
     "old_four_files_changed": false,
     "privacy_review": "PASS_TEXT_METADATA_EMBEDDED_CONTENT_CREDENTIALS_AND_DECODED_STREAMS"
+  },
+  "submission_finalization_20261109": {
+    "status": "IN_PROGRESS_MATERIAL_REVIEW",
+    "base_commit": "716a28aa449b39bf3d43434fed14173f0921501b",
+    "release_profile": "project_report_and_video",
+    "profile_verifier_review": "PASS_INDEPENDENT_TWO_NEGATIVE_PROBES_REJECTED_AFTER_FIX",
+    "local_python_tests": 379,
+    "local_app_tests": 44,
+    "local_js_tests": 62,
+    "type_contract_build": "PASS",
+    "video_candidate": "V4_CREATED_PLAYBACK_PASSED_INDEPENDENT_FRAME_REVIEW_PENDING",
+    "report_candidate": "R2_AUTHORING_NOT_FINAL_REVIEWED",
+    "owner_terms_rights_confirmed": false,
+    "official_submission": "NOT_RUN_NOT_AUTHORIZED",
+    "deployment": "NOT_RUN_NOT_REQUIRED_FOR_VIDEO_ROUTE"
   }
 }

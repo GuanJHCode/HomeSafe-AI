@@ -6,6 +6,10 @@ from pathlib import Path, PurePosixPath
 import hashlib,json,struct,subprocess,shutil,re,ipaddress
 from urllib.parse import urlsplit
 
+SUPPORTED_RELEASE_PROFILES = frozenset({
+    'interactive_browser_demo_with_video', 'project_report_and_video',
+})
+
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -105,6 +109,9 @@ class ReleaseVerifier:
             except (ValueError,OSError,TypeError) as e:fail(f'{label}: {e}');return None
         if manifest.get('manifest_version')!='2.0':fail('manifest_version must be 2.0')
         if manifest.get('status') not in {'DRAFT','READY_FOR_SUBMISSION','SUBMITTED'}:fail('invalid status')
+        profile=manifest.get('release_profile')
+        if not isinstance(profile,str) or profile not in SUPPORTED_RELEASE_PROFILES:
+            fail('unsupported release_profile; select interactive_browser_demo_with_video or project_report_and_video')
         commit=manifest.get('source_commit','')
         if not isinstance(commit,str) or not re.fullmatch('[a-f0-9]{40,64}',commit):fail('valid source commit required')
         else:
@@ -161,7 +168,7 @@ class ReleaseVerifier:
             if p:
                 try:validate_glb(p);valid_ids.add(aid)
                 except Exception as e:fail('invalid GLB: '+str(e))
-            if a.get('source_kind') not in {'lux3d_web','lux3d_api'}:fail('core mapped asset not proven Lux3D')
+            if a.get('source_kind') not in {'lux3d_web','lux3d_api'}:fail('core mapped asset lacks declared Lux3D source kind')
             get_file(a.get('generation_evidence'),'asset_generation_evidence')
             if a.get('rights_scope') not in {'public','official_review_only'}:fail('unconfirmed distribution rights')
             if manifest.get('channel')=='public' and a.get('rights_scope')!='public':fail('asset not allowed for public distribution')
@@ -178,6 +185,60 @@ class ReleaseVerifier:
         for entry in maps:
             if not isinstance(entry,dict) or not entry.get('feature_id') or not entry.get('video_segment') or entry.get('asset_id') not in valid_ids & used:
                 fail('feature map not linked to used, validated asset')
+        # Profile checks live here, not only in one CLI. An arbitrary string
+        # cannot disable website checks; video is an explicit permitted route.
+        if profile == 'interactive_browser_demo_with_video':
+            url=manifest.get('primary_demo_url') or ''
+            try:validate_public_demo_url(url)
+            except ValueError as error:fail('primary public interactive HTTPS URL invalid: '+str(error))
+            deployment=get_file(manifest.get('deployment_receipt'),'deployment_receipt')
+            if deployment:
+                try:
+                    record=json.loads(deployment.read_text())
+                    if (record.get('status')!='VERIFIED_INTERACTIVE' or record.get('primary_url')!=url
+                            or record.get('release_commit')!=commit):
+                        fail('deployment evidence not bound to final interactive release')
+                    logs=record.get('evidence_files')
+                    if not isinstance(logs,list) or not logs or not record.get('owner'):
+                        fail('deployment evidence lacks actual logs or responsible owner')
+                    else:
+                        for log in logs:get_file(log,'deployment evidence log')
+                except (ValueError,TypeError,AttributeError):fail('deployment_receipt malformed')
+        elif profile == 'project_report_and_video':
+            # Shared owner/rights, actual assets, scene, report and video checks
+            # above still apply. No fabricated public URL or future receipt.
+            binding=get_file(manifest.get('material_binding'),'material_binding')
+            if binding:
+                try:
+                    record=json.loads(binding.read_text())
+                    if record.get('status')!='VERIFIED_MEDIA_AND_RUNTIME_BINDINGS':
+                        fail('material binding verification missing')
+                    if record.get('source_commit')!=commit:fail('material binding source commit mismatch')
+                    for label in ('report','video','scene'):
+                        expected=manifest.get(label)
+                        if not isinstance(expected,dict) or record.get(label+'_sha256')!=expected.get('sha256'):
+                            fail('material binding '+label+' hash mismatch')
+                    version=get_file(record.get('version_evidence'),'material_version_evidence')
+                    if version:
+                        lineage=json.loads(version.read_text())
+                        if (lineage.get('status')!='VERIFIED_SCOPED_VERSION_COMPARISON'
+                                or lineage.get('source_commit')!=commit):
+                            fail('material version evidence failed or bound to another source')
+                        for label in ('video','report'):
+                            capture=(manifest.get(label) or {}).get('capture_commit')
+                            if (not isinstance(capture,str) or not re.fullmatch('[a-f0-9]{40,64}',capture)
+                                    or lineage.get(label+'_capture_commit')!=capture):
+                                fail('material version '+label+' capture mismatch')
+                        comparisons=lineage.get('scoped_comparisons')
+                        if not isinstance(comparisons,list) or not comparisons:
+                            fail('material version evidence lacks scoped comparisons')
+                        else:
+                            for comparison in comparisons:
+                                if (not isinstance(comparison,dict) or not comparison.get('scope')
+                                        or comparison.get('result')!='passed'):
+                                    fail('material version comparison failed or malformed')
+                                else:get_file(comparison.get('evidence'),'version comparison log')
+                except (ValueError,TypeError,AttributeError):fail('material_binding malformed')
         if manifest.get('status')=='SUBMITTED':get_file(manifest.get('official_receipt'),'official_receipt')
         # READY never needs a future official receipt; SUBMITTED does.
         return errors

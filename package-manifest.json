@@ -1,9 +1,9 @@
 {
   "manifest_version": "1.0",
-  "release": "V6.1-exact-R1-public-report-20261109",
-  "base_commit": "aa7227a1943ddef3753fea521119b2a5d5f899d7",
+  "release": "V6.1-submission-candidates-20261109",
+  "base_commit": "716a28aa449b39bf3d43434fed14173f0921501b",
   "baseline_zip_sha256": "b6c674f532fd30ff7ab086b08c814b086e94e2aa0f12cff80c1b6d94b96d3752",
-  "classification_policy": "978 explicit source/sanitized text files. Four historical review binaries and the separately authorized eight-page R1 saved PDF are intentionally outside this code-only export allowlist; obtain them from their public Git audit directories and exact binary manifests. Other private media, source records, Space/Library identities, signed URLs, credentials and runtime/dependencies remain excluded. Only the existing R1 PDF and necessary safe notes are newly authorized for public sharing; no main/master, deployment, Release, formal submission or CI budget change.",
+  "classification_policy": "982 explicit reviewed source/sanitized text files. Historical review binaries/R1 and new authorized R2/V4 candidate media are outside this code-only export allowlist, with separate exact media manifests. No private source records, standalone reference pictures/screenshots, Space/Library identities, signed URLs, credentials or derived GLB are exported. No main/master, deployment, Release, formal submission or CI budget change.",
   "files": [
     {
       "path": ".env.example",
@@ -666,6 +666,12 @@
       "classification": "generated_project_source"
     },
     {
+      "path": "docs/SUBMISSION_PREPARATION_20261109.md",
+      "classification": "generated_project_source",
+      "sha256": "c15220a5d8bd1b734e6183fc90427035b4d3af3a31c802fc1de28081700a7684",
+      "bytes": 5146
+    },
+    {
       "path": "docs/V6_1_SOURCE_IMPORT.md",
       "sha256": "0dddd0613ae2b5f914d566f0f8d53ca21aa8c10a2c0c41c3d547b064d4c18bd5",
       "bytes": 3068,
@@ -799,8 +805,8 @@
     },
     {
       "path": "evidence/HANDOFF.md",
-      "sha256": "16c449bf430f7e8efcfb2e7f2aa61822f4c80b2da4f77099005b51602eea089f",
-      "bytes": 27258,
+      "sha256": "a12a8f5ca2f2b4939285268799999336536b45f2610c1c08dfdc217583f1ae1e",
+      "bytes": 28021,
       "classification": "generated_project_source"
     },
     {
@@ -1072,6 +1078,12 @@
       "classification": "generated_project_source",
       "sha256": "d1524a81b39dd70959163bd9174ab7ae26721a9fb8a0d7398bb0a6310bb5e2e9",
       "bytes": 6144
+    },
+    {
+      "path": "evidence/SUBMISSION_FINALIZATION_20261109.md",
+      "classification": "generated_project_source",
+      "sha256": "d39ba216bdbb514b2b7729dbbb52fb4be9d18d6ae39b447cda1aa3823349bb4b",
+      "bytes": 2325
     },
     {
       "path": "evidence/T01-browser-20261104.md",
@@ -1810,6 +1822,12 @@
       "classification": "generated_project_source",
       "sha256": "68cd2229d294209fdeb769e681448ad051eb62d948b1ba92a52dcb25c5c1237e",
       "bytes": 4142
+    },
+    {
+      "path": "evidence/current-ci/716a28a-ci-summary.json",
+      "classification": "generated_project_source",
+      "sha256": "7f02c7192fee1e08c11b4792b540927e3e33b65421f64d96db342b68d2053d03",
+      "bytes": 1087
     },
     {
       "path": "evidence/current-ci/aa7227a-ci-summary.json",
@@ -3691,8 +3709,8 @@
     },
     {
       "path": "evidence/task-status.json",
-      "sha256": "4e95af3cc517021a6064b218b935e568ad9d1f3569bdd2b3f77db7fc428297a4",
-      "bytes": 67794,
+      "sha256": "9c61ec6f77158e3621fd4e8c6db81d573fef887192350808f282ebe94e1f1518",
+      "bytes": 68505,
       "classification": "generated_project_source"
     },
     {
@@ -5281,8 +5299,8 @@
     },
     {
       "path": "reference/homesafe_core/release.py",
-      "sha256": "a60dd4543caaaabc426e7c8477b51afddc17ebabb3e5caaa224d438d8c931a7e",
-      "bytes": 11603,
+      "sha256": "85df39bb00140b0d5acbaa9672dae8ef997c0e4842a207777f8b58421a57cf1b",
+      "bytes": 15937,
       "classification": "generated_project_source"
     },
     {
@@ -5380,6 +5398,12 @@
       "sha256": "1df7c20ab4fe6cc8ccbd9e0e3c6c600a8d81e97aa40e00425a444860461d659e",
       "bytes": 8466,
       "classification": "generated_project_source"
+    },
+    {
+      "path": "reference/tests/test_release_profiles.py",
+      "classification": "generated_project_source",
+      "sha256": "d4ac053d6d653451c04ee03fd2ac8a51f354682c0a711088e99291e37eba3e62",
+      "bytes": 7631
     },
     {
       "path": "reference/tests/test_runtime_download.py",
@@ -5545,8 +5569,8 @@
     },
     {
       "path": "scripts/check_submission.py",
-      "sha256": "a47f2f79a6317f9551a60f601403dac0a9bd24cff775cd0fea1a2c8d2588c6b4",
-      "bytes": 1900,
+      "sha256": "5d7f68dcf5c8b7d2c9cb932bfccc71e7bc1ab4629c3ce8574dfd15f3a10fc245",
+      "bytes": 901,
       "classification": "generated_project_source"
     },
     {

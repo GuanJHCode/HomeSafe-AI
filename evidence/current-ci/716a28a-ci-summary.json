@@ -1,0 +1,38 @@
+{
+  "source_commit": "716a28aa449b39bf3d43434fed14173f0921501b",
+  "run_id": 42568889355,
+  "run_attempt": 1,
+  "job_id": 129001439549,
+  "url": "https://github.com/GuanJHCode/HomeSafe-AI/actions/runs/42568889355",
+  "status": "completed",
+  "conclusion": "success",
+  "successful_steps": 37,
+  "failed_steps": 0,
+  "skipped_steps": 0,
+  "tests": {
+    "python": 358,
+    "browser_spike_js": 24,
+    "scripts_js": 38,
+    "app": 44
+  },
+  "cold_first_editable_p95_ms": 2429.7000000000116,
+  "cold_rules_ready_p95_ms": 2429.7000000000116,
+  "hot_evaluation_p95_ms": 6.5,
+  "budgets_ms": [
+    3000,
+    12000,
+    150
+  ],
+  "cold_samples": 5,
+  "hot_samples": 30,
+  "full_job_log_utf8_bytes": 845412,
+  "full_job_log_sha256": "6e803b02cab3b9b3df7a7b279edc43d03d00886da35cd769b6fa4fd52875dbe7",
+  "fresh_api_and_complete_log_independently_verified": true,
+  "review_attachment_claims_not_supported_by_this_job": [
+    "3447.5ms",
+    "445 Python",
+    "66 scripts"
+  ],
+  "scope": "716a28a only; synthetic CI loopback, not later code or public real-model performance",
+  "rerun": false
+}

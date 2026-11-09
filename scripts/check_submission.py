@@ -7,24 +7,7 @@ p=argparse.ArgumentParser();p.add_argument('--manifest',type=Path,default=R/'sub
 try:
  manifest=json.loads(a.manifest.read_text())
  errors=ReleaseVerifier().verify(R,manifest)
- if manifest.get('release_profile')=='interactive_browser_demo_with_video':
-  from homesafe_core.release import contained_file, sha256, validate_public_demo_url
-  url=manifest.get('primary_demo_url') or ''
-  try:
-   validate_public_demo_url(url)
-  except ValueError as error:
-   errors.append('V6.1 primary public interactive HTTPS URL invalid: '+str(error))
-  receipt=manifest.get('deployment_receipt')
-  if not isinstance(receipt,dict):
-   errors.append('V6.1 real browser/anonymous access evidence missing')
-  else:
-   file=contained_file(R,receipt.get('path',''))
-   if sha256(file)!=receipt.get('sha256'):errors.append('deployment evidence hash mismatch')
-   result=json.loads(file.read_text())
-   if result.get('status')!='VERIFIED_INTERACTIVE' or result.get('primary_url')!=url or result.get('release_commit')!=manifest.get('source_commit'):
-    errors.append('deployment evidence not bound to final interactive release')
-   if not result.get('evidence_files') or not result.get('owner'):
-    errors.append('deployment evidence lacks actual logs or responsible owner')
+ # Both supported delivery profiles are validated by the same core verifier.
  # Local checks do not prove current network availability; owner must open anonymous browser.
 except Exception as e:errors=['Invalid release input: '+str(e)]
 if errors:
